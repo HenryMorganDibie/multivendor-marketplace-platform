@@ -1,0 +1,416 @@
+rules_version = '2';
+
+// ============================================================================
+// THE PLATFORM — Firestore Security Rules (Milestone 1, full architecture scope)
+//
+// Role model (custom claims — set by Cloud Functions ONLY, never clients):
+//   request.auth.token.role           -> 'customer' | 'vendor' | 'admin'
+//   request.auth.token.vendorId       -> string (vendor accounts only)
+//   request.auth.token.adminRoleIds   -> string[] (admin accounts only)
+//   request.auth.token.claimsVersion  -> number (increment on every change)
+//
+// Security principles:
+//   1. Default deny: any path not explicitly matched is denied.
+//   2. Status/role/verification/aggregate fields are NEVER client-writable.
+//      All such mutations happen exclusively via Cloud Functions (Admin SDK
+//      bypasses these rules).
+//   3. Public vendor discovery requires ALL THREE: verificationStatus='approved'
+//      AND vendorStatus='active' AND isDiscoverable=true. Active-but-unapproved
+//      vendors are NOT publicly readable from global collection queries.
+//   4. User self-updates use an ALLOWLIST, not a denylist.
+//   5. Admin direct Firestore writes on sensitive collections are blocked;
+//      admins must use Cloud Functions (which write via Admin SDK, bypassing
+//      rules) to mutate status/verification fields with proper audit logging.
+// ============================================================================
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // -----------------------------------------------------------------------
+    // Helper functions
+    // -----------------------------------------------------------------------
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function uid() {
+      return request.auth.uid;
+    }
+
+    function role() {
+      return isSignedIn() ? request.auth.token.get('role', null) : null;
+    }
+
+    function isCustomer() { return role() == 'customer'; }
+    function isVendor()   { return role() == 'vendor'; }
+    function isAdmin()    { return role() == 'admin'; }
+
+    function tokenVendorId() {
+      return isSignedIn() ? request.auth.token.get('vendorId', null) : null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && uid() == userId;
+    }
+
+    function isVendorOwner(vendorId) {
+      return isVendor() && tokenVendorId() == vendorId;
+    }
+
+    function isDiscoverableVendor(data) {
+      return data.verificationStatus == 'approved'
+          && data.vendorStatus == 'active'
+          && data.isDiscoverable == true;
+    }
+
+    // Immutable once written (used for audit logs, order events, etc.)
+    function isImmutable() {
+      return request.method == 'create';
+    }
+
+    // User update allowlist — every server-only field must hold the EXACT
+    // SAME VALUE after the write as before it. This correctly blocks a
+    // client from re-asserting an unchanged value to sneak a write through
+    // (the diff()/affectedKeys() approach fails on this case, since
+    // Firestore considers "no value change" as "not affected" even when
+    // the field is explicitly present in the payload).
+    // `unchanged(field)` returns true only when the field's value in the
+    // resulting document exactly matches its value in the existing
+    // document. Both "absent before AND absent after" and "present in both
+    // with equal values" count as unchanged. Critically, "absent before,
+    // present after" (a client trying to SET a server-only field for the
+    // first time, e.g. injecting approvedAt on a never-approved vendor)
+    // correctly returns FALSE here, since the two sides differ.
+    function unchanged(field) {
+      return (!(field in request.resource.data) && !(field in resource.data)) ||
+             ((field in request.resource.data) && (field in resource.data) &&
+              request.resource.data[field] == resource.data[field]);
+    }
+
+    // SECURITY FIX (audit High-2): userUpdateAllowed() previously only
+    // verified that a fixed list of server-only fields were unchanged,
+    // which meant a user could add ANY other arbitrary field to their own
+    // document (internalNotes, riskScore, adminFlags, etc.) since nothing
+    // restricted the full set of keys in the write. This is now a true
+    // strict allowlist: every key in the resulting write must be one of
+    // the explicitly permitted client-editable fields, OR one of the
+    // fixed server-only fields with its value unchanged (handles partial
+    // updates that don't touch server fields at all, which is the normal
+    // case, while still rejecting any field not on either list).
+    function userUpdateAllowed() {
+      let clientEditable = [
+        'profile',
+        'displayName',
+        'photoURL',
+        'notificationPreferences',
+        'privacy',
+        'onboarding',
+        'updatedAt'
+      ];
+      let serverOnly = [
+        'role', 'accountStatus', 'vendorId', 'claimsVersion',
+        'createdAt', 'lastLoginAt', 'uid', 'email', 'phoneNumber'
+      ];
+      return request.resource.data.keys().hasOnly(clientEditable.concat(serverOnly))
+          && unchanged('role')
+          && unchanged('accountStatus')
+          && unchanged('vendorId')
+          && unchanged('claimsVersion')
+          && unchanged('createdAt')
+          && unchanged('lastLoginAt')
+          && unchanged('uid')
+          && unchanged('email')
+          && unchanged('phoneNumber');
+    }
+
+    // Vendor owner update allowlist — every server-only field must be
+    // unchanged (same value before/after), using the same per-field
+    // equality check as userUpdateAllowed() above, for the same reason:
+    // diff()/affectedKeys() and keys() are both insufficient here.
+    function vendorOwnerUpdateAllowed() {
+      return unchanged('vendorId') &&
+             unchanged('ownerUid') &&
+             unchanged('verificationStatus') &&
+             unchanged('vendorStatus') &&
+             unchanged('isVerified') &&
+             unchanged('isPublished') &&
+             unchanged('isDiscoverable') &&
+             unchanged('username') &&
+             unchanged('slug') &&
+             unchanged('ratingAverage') &&
+             unchanged('ratingCount') &&
+             unchanged('orderCount') &&
+             unchanged('recentOrders7Days') &&
+             unchanged('ordersLast48h') &&
+             unchanged('profileViews') &&
+             unchanged('favoritesCount') &&
+             unchanged('approvedAt') &&
+             unchanged('suspendedAt') &&
+             unchanged('deactivatedAt') &&
+             unchanged('frozenAt') &&
+             unchanged('createdAt');
+    }
+
+    // -----------------------------------------------------------------------
+    // users/{uid}
+    // -----------------------------------------------------------------------
+    match /users/{userId} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow create: if isOwner(userId)
+                    && !('role' in request.resource.data)
+                    && !('accountStatus' in request.resource.data)
+                    && !('vendorId' in request.resource.data)
+                    && !('claimsVersion' in request.resource.data);
+      allow update: if isOwner(userId) && userUpdateAllowed();
+      allow delete: if false;
+
+      match /contactCards/{cardId} {
+        allow read, write: if isOwner(userId);
+      }
+      match /recentSearches/{searchId} {
+        allow read, write: if isOwner(userId);
+      }
+      match /recentlyViewed/{entryId} {
+        allow read, write: if isOwner(userId);
+      }
+      match /favorites/{vendorId} {
+        allow read, write: if isOwner(userId);
+      }
+      match /locationChangeLogs/{logId} {
+        allow read: if isOwner(userId) || isAdmin();
+        allow write: if false;
+      }
+      match /pushTokens/{tokenId} {
+        allow read, write: if isOwner(userId);
+      }
+      match /notifications/{notificationId} {
+        allow read: if isOwner(userId);
+        allow update: if isOwner(userId)
+                      && request.resource.data.diff(resource.data)
+                           .affectedKeys().hasOnly(['read', 'readAt']);
+        allow create, delete: if false;
+      }
+    }
+
+    // -----------------------------------------------------------------------
+    // usernameReservations/{username}
+    // -----------------------------------------------------------------------
+    match /usernameReservations/{username} {
+      allow read: if true; // intentionally public for pre-auth availability checks
+      allow write: if false;
+    }
+
+    // -----------------------------------------------------------------------
+    // vendors/{vendorId}
+    // -----------------------------------------------------------------------
+    match /vendors/{vendorId} {
+      // Public/non-owner read: ONLY approved + active + discoverable vendors.
+      // Owner and admin can always read their own/any vendor regardless of
+      // status, for dashboard/moderation purposes.
+      //
+      // SECURITY FIX (audit High-1): the previous version also allowed ANY
+      // signed-in user to read ANY vendor with vendorStatus == 'active',
+      // regardless of verificationStatus or isDiscoverable. That leaked
+      // unapproved/non-discoverable vendor documents to any authenticated
+      // customer who knew or guessed a vendorId. "Direct storefront link"
+      // access for not-yet-approved vendors is NOT supported by this rule
+      // set; if that product requirement is needed later, it must be served
+      // through a dedicated callable that returns a restricted, explicitly
+      // safe field projection — never a raw Firestore document read.
+      allow read: if isDiscoverableVendor(resource.data)
+                  || isVendorOwner(vendorId)
+                  || isAdmin();
+
+      allow create: if false; // Cloud Functions only
+
+      // Vendor owner may update non-server-controlled fields only.
+      allow update: if (isVendorOwner(vendorId) && vendorOwnerUpdateAllowed());
+      // Admin direct writes BLOCKED — must use Cloud Functions for audit trail.
+      allow delete: if false;
+
+      match /settings/{settingsDoc} {
+        allow read: if isVendorOwner(vendorId) || isAdmin()
+                    || (settingsDoc == 'storefront'
+                        && get(/databases/$(database)/documents/vendors/$(vendorId)).data.isDiscoverable == true);
+        allow write: if isVendorOwner(vendorId);
+      }
+
+      match /analyticsDaily/{period} {
+        allow read: if isVendorOwner(vendorId) || isAdmin();
+        allow write: if false;
+      }
+    }
+
+    // -----------------------------------------------------------------------
+    // vendorVerification/{vendorId}
+    // -----------------------------------------------------------------------
+    match /vendorVerification/{vendorId} {
+      allow read: if isVendorOwner(vendorId) || isAdmin();
+      allow create: if false;
+      // Vendors may update only safe submission fields via Cloud Function.
+      // Status/reviewer/decision fields are blocked for direct client writes.
+      allow update: if false; // ALL updates via Cloud Functions
+      allow delete: if false;
+
+      match /documents/{docId} {
+        // Vendors CANNOT read raw uploaded files (security finding fix).
+        // Only admins can read verification documents directly.
+        allow read: if isAdmin();
+        // Vendors can create metadata records (via recordVerificationDocument callable).
+        allow create: if false; // callable creates this, not direct client
+        allow update, delete: if false;
+      }
+    }
+
+    // -----------------------------------------------------------------------
+    // adminUsers, adminRoles, adminInvites, adminSessions
+    // -----------------------------------------------------------------------
+    match /adminUsers/{adminUid} {
+      allow read: if isAdmin();
+      allow write: if false;
+    }
+
+    match /adminRoles/{roleId} {
+      allow read: if isAdmin();
+      allow write: if false;
+    }
+
+    match /adminInvites/{inviteId} {
+      allow read: if isAdmin();
+      allow write: if false;
+    }
+
+    match /adminSessions/{sessionId} {
+      allow read: if isAdmin() && resource.data.adminUid == uid();
+      allow write: if false;
+    }
+
+    // -----------------------------------------------------------------------
+    // auditLogs/{logId} — immutable, admin-readable only
+    // -----------------------------------------------------------------------
+    match /auditLogs/{logId} {
+      allow read: if isAdmin();
+      allow write: if false;
+    }
+
+    // -----------------------------------------------------------------------
+    // emailOtps/{docId} and mail/{docId}
+    // -----------------------------------------------------------------------
+    match /emailOtps/{docId} {
+      allow read, write: if false;
+    }
+
+    match /mail/{docId} {
+      allow read, write: if false;
+    }
+
+    // -----------------------------------------------------------------------
+    // countryAvailability/{countryCode} — public read, admin write
+    // -----------------------------------------------------------------------
+    match /countryAvailability/{countryCode} {
+      allow read: if true;
+      allow write: if false; // admin writes via Cloud Functions only
+    }
+
+    // -----------------------------------------------------------------------
+    // waitlistEntries, invites — public create, admin read
+    // -----------------------------------------------------------------------
+    match /waitlistEntries/{entryId} {
+      allow create: if true;
+      allow read: if isAdmin();
+      allow update, delete: if false;
+    }
+
+    match /invites/{inviteId} {
+      allow read: if isSignedIn();
+      allow write: if false;
+    }
+
+
+    // -----------------------------------------------------------------------
+    // Phase 2: Catalog subcollections
+    // -----------------------------------------------------------------------
+    match /vendors/{vendorId}/catalogCategories/{categoryId} {
+      allow read: if isDiscoverableVendor(
+        get(/databases/$(database)/documents/vendors/$(vendorId)).data
+      ) || isVendorOwner(vendorId) || isAdmin();
+      allow create, update, delete: if false;
+    }
+    match /vendors/{vendorId}/catalogItems/{itemId} {
+      allow read: if (isDiscoverableVendor(
+        get(/databases/$(database)/documents/vendors/$(vendorId)).data
+      ) && resource.data.isHidden == false) || isVendorOwner(vendorId) || isAdmin();
+      allow create, update, delete: if false;
+    }
+    // -----------------------------------------------------------------------
+    // Phase 2: Carts
+    // -----------------------------------------------------------------------
+    match /carts/{cartId} {
+      allow read: if isSignedIn() && request.auth.uid == resource.data.customerId;
+      allow create, update, delete: if false;
+    }
+    // -----------------------------------------------------------------------
+    // Phase 2: Orders and subcollections — NO direct client writes ever
+    // -----------------------------------------------------------------------
+    match /orders/{orderId} {
+      allow read: if isSignedIn() && (
+        request.auth.uid == resource.data.customerId
+        || (isVendor() && tokenVendorId() == resource.data.vendorId)
+        || isAdmin()
+      );
+      allow create, update, delete: if false;
+      match /events/{eventId} {
+        allow read: if isSignedIn() && (
+          request.auth.uid == get(/databases/$(database)/documents/orders/$(orderId)).data.customerId
+          || (isVendor() && tokenVendorId() == get(/databases/$(database)/documents/orders/$(orderId)).data.vendorId)
+          || isAdmin()
+        );
+        allow create, update, delete: if false;
+      }
+      match /changeRequests/{crId} {
+        allow read: if isSignedIn() && (
+          request.auth.uid == get(/databases/$(database)/documents/orders/$(orderId)).data.customerId
+          || (isVendor() && tokenVendorId() == get(/databases/$(database)/documents/orders/$(orderId)).data.vendorId)
+          || isAdmin()
+        );
+        allow create, update, delete: if false;
+      }
+      match /paymentProofs/{proofId} {
+        allow read: if isSignedIn() && (
+          request.auth.uid == get(/databases/$(database)/documents/orders/$(orderId)).data.customerId
+          || (isVendor() && tokenVendorId() == get(/databases/$(database)/documents/orders/$(orderId)).data.vendorId)
+          || isAdmin()
+        );
+        allow create, update, delete: if false;
+      }
+      match /receipts/{receiptId} {
+        allow read: if isSignedIn() && (
+          request.auth.uid == get(/databases/$(database)/documents/orders/$(orderId)).data.customerId
+          || (isVendor() && tokenVendorId() == get(/databases/$(database)/documents/orders/$(orderId)).data.vendorId)
+          || isAdmin()
+        );
+        allow create, update, delete: if false;
+      }
+    }
+    // -----------------------------------------------------------------------
+    // Phase 2: Vendor sequences and SMS queue — system only
+    // -----------------------------------------------------------------------
+    match /vendorSequences/{vendorId} {
+      allow read, write: if false;
+    }
+    match /smsQueue/{docId} {
+      allow read, write: if false;
+    }
+    match /phoneOtps/{docId} {
+      allow read, write: if false;
+    }
+
+    // -----------------------------------------------------------------------
+    // Default deny — anything not explicitly matched above
+    // -----------------------------------------------------------------------
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

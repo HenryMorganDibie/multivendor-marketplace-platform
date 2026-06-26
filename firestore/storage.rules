@@ -1,0 +1,141 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function uid() {
+      return request.auth.uid;
+    }
+
+    function role() {
+      return isSignedIn()
+        ? request.auth.token.get('role', null)
+        : null;
+    }
+
+    function isAdmin() {
+      return role() == 'admin';
+    }
+
+    function isVendor() {
+      return role() == 'vendor';
+    }
+
+    function tokenVendorId() {
+      return isSignedIn()
+        ? request.auth.token.get('vendorId', null)
+        : null;
+    }
+
+    function isVendorOwner(vendorId) {
+      return isVendor() &&
+             tokenVendorId() == vendorId;
+    }
+
+    function isImage() {
+      return request.resource.contentType.matches(
+        'image/(jpeg|jpg|png|webp|heic)'
+      );
+    }
+
+    function isPdfOrImage() {
+      return request.resource.contentType == 'application/pdf'
+          || request.resource.contentType.matches(
+               'image/(jpeg|jpg|png|webp|heic)'
+             );
+    }
+
+    function underMb(maxMb) {
+      return request.resource.size <
+             (maxMb * 1024 * 1024);
+    }
+
+    // ==========================================================
+    // User profile photos
+    // ==========================================================
+    match /users/{userId}/{fileName} {
+
+      allow read: if true;
+
+      allow create, update: if
+        isSignedIn()
+        && uid() == userId
+        && isImage()
+        && underMb(5);
+
+      allow delete: if
+        isSignedIn()
+        && uid() == userId;
+    }
+
+    // ==========================================================
+    // Vendor public media
+    // ==========================================================
+    match /vendorMedia/{vendorId}/logos/{fileId} {
+
+      allow read: if true;
+
+      allow create, update: if
+        isVendorOwner(vendorId)
+        && isImage()
+        && underMb(5);
+
+      allow delete: if
+        isVendorOwner(vendorId);
+    }
+
+    match /vendorMedia/{vendorId}/banners/{fileId} {
+
+      allow read: if true;
+
+      allow create, update: if
+        isVendorOwner(vendorId)
+        && isImage()
+        && underMb(8);
+
+      allow delete: if
+        isVendorOwner(vendorId);
+    }
+
+    match /vendorMedia/{vendorId}/gallery/{fileId} {
+
+      allow read: if true;
+
+      allow create, update: if
+        isVendorOwner(vendorId)
+        && isImage()
+        && underMb(8);
+
+      allow delete: if
+        isVendorOwner(vendorId);
+    }
+
+    // ==========================================================
+    // Verification documents
+    // ==========================================================
+    match /verificationDocuments/{vendorId}/{docId} {
+
+      allow read: if isAdmin();
+
+      allow create: if
+        isVendorOwner(vendorId)
+        && isPdfOrImage()
+        && underMb(15);
+
+      allow update: if false;
+
+      allow delete: if isAdmin();
+    }
+
+    // ==========================================================
+    // Default deny
+    // ==========================================================
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

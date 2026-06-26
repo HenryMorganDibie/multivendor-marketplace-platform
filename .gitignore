@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+
+# TypeScript build output
+functions/lib/
+
+# Firebase debug logs
+firebase-debug.log
+firebase-debug.*.log
+firestore-debug.log
+firestore-debug.*.log
+storage-debug.log
+ui-debug.log
+database-debug.log
+
+# Firebase emulator state
+.firebase/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+*.env
+
+# Service account keys — NEVER commit these
+*-service-account*.json
+*serviceAccount*.json
+*service-account*.json
+firebase-adminsdk*.json
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# npm
+package-lock.json
+scripts/package-lock.json
+
+# Test artifacts
+coverage/
+.nyc_output/

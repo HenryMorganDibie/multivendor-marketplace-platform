@@ -1,0 +1,12 @@
+{
+  "name": "the platform-backend-scripts",
+  "private": true,
+  "scripts": {
+    "test:m1": "node milestone1-acceptance-tests.js",
+    "test:m2": "node milestone2-acceptance-tests.js"
+  },
+  "dependencies": {
+    "firebase": "^10.12.0",
+    "firebase-admin": "^12.1.0"
+  }
+}
