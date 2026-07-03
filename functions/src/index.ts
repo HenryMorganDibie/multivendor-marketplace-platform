@@ -32,3 +32,23 @@ export { submitPaymentProof, reviewPaymentProof } from "./orders/paymentProofs";
 
 // ── Phase 2: Receipts ─────────────────────────────────────────────────────────
 export { getReceipt } from "./receipts/receiptFunctions";
+
+// ── Phase 3: Order-scoped contact + safe order reads ──────────────────────────
+export { submitDeliveryContact } from "./orders/submitDeliveryContact";
+export { getOrderDetails } from "./orders/getOrderDetails";
+
+// ── Phase 3: Chat ─────────────────────────────────────────────────────────────
+export { createCommerceConversation } from "./chat/createCommerceConversation";
+export { sendChatMessage } from "./chat/sendChatMessage";
+export { markChatRead, saveChatDraft, clearChatDraft } from "./chat/chatReadAndDrafts";
+export { updateVendorChatSettings } from "./chat/awayMessage";
+export { updateVendorPickupSettings } from "./chat/pickupSettings";
+export { createQuickReply, updateQuickReply, deleteQuickReply } from "./chat/quickReplies";
+
+// ── Phase 3: Blocks ───────────────────────────────────────────────────────────
+export { blockUser, unblockUser } from "./blocks/blockFunctions";
+
+// ── Phase 3: Notifications ────────────────────────────────────────────────────
+export { markNotificationRead, registerPushToken } from "./notifications/notificationFunctions";
+export { updateVendorNotificationPreferences,
+         updateCustomerNotificationPreferences } from "./notifications/notificationPreferences";

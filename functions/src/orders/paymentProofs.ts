@@ -5,6 +5,7 @@ import { checkAppCheck } from "../utils/appCheck";
 import { writeAuditLog } from "../utils/auditLog";
 import { newRequestId } from "../utils/requestContext";
 import { writeOrderEvent } from "./orderEvents";
+import { sendPickupDetailsIfEligible } from "../chat/sendPickupDetails";
 const MAX_SUBMISSIONS = 2, MAX_IMAGES = 3;
 export const submitPaymentProof = https.onCall(async (request) => {
   const requestId = newRequestId();
@@ -70,6 +71,16 @@ export const reviewPaymentProof = https.onCall(async (request) => {
   batch.update(orderRef, { paymentStatus: isAccept ? "PROOF_ACCEPTED" : "PROOF_REJECTED", updatedAt: now });
   await batch.commit();
   await writeOrderEvent({ orderId, vendorId: order.vendorId, eventType: isAccept ? "PAYMENT_PROOF_APPROVED" : "PAYMENT_PROOF_REJECTED", actorUid: request.auth.uid, actorRole: "vendor", after: { status: isAccept ? "REVIEWED" : "REJECTED" } });
+
+  // Phase 3: pickup auto-send eligibility check — only fires on accept,
+  // and sendPickupDetailsIfEligible internally re-validates every
+  // condition (fulfillmentType, settings, idempotency) rather than
+  // trusting this call site.
+  if (isAccept) {
+    await sendPickupDetailsIfEligible(orderId).catch((err) =>
+      console.error(`sendPickupDetailsIfEligible failed for order ${orderId}`, err)
+    );
+  }
   await writeAuditLog({ requestId, functionName: "reviewPaymentProof", actorUid: request.auth.uid, actorRole: "vendor", actorType: "vendor", targetType: "paymentProof", targetId: proofId, eventType: `payment.proof_${decision}ed`, metadata: reviewReason ? { reviewReason } : undefined, appCheck });
   return { success: true, proofId, status: isAccept ? "REVIEWED" : "REJECTED" };
 });

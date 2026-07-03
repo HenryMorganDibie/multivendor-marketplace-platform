@@ -165,9 +165,10 @@ service cloud.firestore {
       allow update: if isOwner(userId) && userUpdateAllowed();
       allow delete: if false;
 
-      match /contactCards/{cardId} {
-        allow read, write: if isOwner(userId);
-      }
+      // NOTE: contactCards subcollection intentionally removed in Phase 3.
+      // the client's decision: contact cards are local-device-only for MVP,
+      // never stored in Firebase. Only an order-scoped deliveryContact
+      // snapshot on orders/{orderId} touches Firestore.
       match /recentSearches/{searchId} {
         allow read, write: if isOwner(userId);
       }
@@ -190,6 +191,13 @@ service cloud.firestore {
                       && request.resource.data.diff(resource.data)
                            .affectedKeys().hasOnly(['read', 'readAt']);
         allow create, delete: if false;
+      }
+      match /chatDrafts/{chatId} {
+        allow read, write: if isOwner(userId);
+      }
+      match /settings/notifications {
+        allow read: if isOwner(userId);
+        allow write: if false; // updateCustomerNotificationPreferences only
       }
     }
 
@@ -233,7 +241,14 @@ service cloud.firestore {
         allow read: if isVendorOwner(vendorId) || isAdmin()
                     || (settingsDoc == 'storefront'
                         && get(/databases/$(database)/documents/vendors/$(vendorId)).data.isDiscoverable == true);
-        allow write: if isVendorOwner(vendorId);
+        // Phase 3 settings docs (notifications, chat, pickup) are
+        // Cloud-Function-only writes — they enforce guarantees like
+        // securityAlerts always being true, greeting/away message length
+        // limits, and the pickup auto-send enable-guard. Excluding them
+        // here so the stricter Phase 3 match blocks below are the sole
+        // authority for those three doc names.
+        allow write: if isVendorOwner(vendorId)
+                     && !(settingsDoc in ['notifications', 'chat', 'pickup']);
       }
 
       match /analyticsDaily/{period} {
@@ -405,6 +420,84 @@ service cloud.firestore {
     match /phoneOtps/{docId} {
       allow read, write: if false;
     }
+
+
+    // -----------------------------------------------------------------------
+    // Phase 3: Chat threads and messages
+    // ALL mutations via Cloud Functions only — participants can read, never
+    // write directly. Typed system messages are Cloud-Function-only.
+    // -----------------------------------------------------------------------
+    match /chatThreads/{chatId} {
+      allow read: if isSignedIn() && request.auth.uid in resource.data.participants;
+      allow create, update, delete: if false;
+
+      match /messages/{messageId} {
+        allow read: if isSignedIn() &&
+          request.auth.uid in get(/databases/$(database)/documents/chatThreads/$(chatId)).data.participants;
+        allow create, update, delete: if false;
+      }
+
+      match /readReceipts/{uid} {
+        allow read: if isSignedIn() &&
+          request.auth.uid in get(/databases/$(database)/documents/chatThreads/$(chatId)).data.participants;
+        // Direct write allowed only by the receipt's own owner — matches
+        // markChatRead's intended caller, kept as a rule (not function-only)
+        // since blast radius is limited to the user's own read state.
+        allow write: if isSignedIn() && request.auth.uid == uid;
+      }
+    }
+
+    // -----------------------------------------------------------------------
+    // Phase 3: Blocks
+    // Only the blocker can read their own blocked-list entries. The
+    // blocked party cannot see themselves in anyone's list (no read rule
+    // grants them access). Only the blocker can unblock (enforced in the
+    // unblockUser function; direct writes are denied here regardless).
+    // -----------------------------------------------------------------------
+    match /blocks/{blockId} {
+      allow read: if isSignedIn() && request.auth.uid == resource.data.blockerUid;
+      allow create, update, delete: if false;
+    }
+
+    // -----------------------------------------------------------------------
+    // Phase 3: Notification preferences (customer prefs are nested under
+    // users/{userId}/settings/notifications above; vendor prefs below)
+    // -----------------------------------------------------------------------
+    match /vendors/{vendorId}/settings/notifications {
+      allow read: if isVendorOwner(vendorId) || isAdmin();
+      allow write: if false; // updateVendorNotificationPreferences only —
+                              // securityAlerts must never be client-settable
+    }
+
+    // -----------------------------------------------------------------------
+    // Phase 3: Vendor chat settings (greeting, away message)
+    // -----------------------------------------------------------------------
+    match /vendors/{vendorId}/settings/chat {
+      allow read: if isVendorOwner(vendorId) || isAdmin();
+      allow write: if false; // updateVendorChatSettings only — enforces
+                              // 300-char limits server-side
+    }
+
+    // -----------------------------------------------------------------------
+    // Phase 3: Vendor pickup settings
+    // Customers must NEVER read this directly — pickup details are only
+    // ever surfaced via the structured pickup-details message snapshot.
+    // -----------------------------------------------------------------------
+    match /vendors/{vendorId}/settings/pickup {
+      allow read: if isVendorOwner(vendorId) || isAdmin();
+      allow write: if false; // updateVendorPickupSettings only — enforces
+                              // the auto-send enable-guard server-side
+    }
+
+    // -----------------------------------------------------------------------
+    // Phase 3: Quick replies — vendor-owner only, never customer-readable
+    // -----------------------------------------------------------------------
+    match /vendors/{vendorId}/quickReplies/{replyId} {
+      allow read: if isVendorOwner(vendorId) || isAdmin();
+      allow write: if false; // createQuickReply / updateQuickReply / deleteQuickReply only
+    }
+
+
 
     // -----------------------------------------------------------------------
     // Default deny — anything not explicitly matched above

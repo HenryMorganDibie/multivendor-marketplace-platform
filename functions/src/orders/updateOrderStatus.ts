@@ -6,7 +6,9 @@ import { writeAuditLog } from "../utils/auditLog";
 import { newRequestId } from "../utils/requestContext";
 import { releaseInventory, adjustInventoryAfterOrder } from "../inventory/inventoryUtils";
 import { writeOrderEvent } from "./orderEvents";
+import { isOrderTerminal } from "./orderStatus";
 import { generateReceiptInternal } from "../receipts/receiptFunctions";
+
 
 const VENDOR_TRANSITIONS: Partial<Record<OrderStatus, OrderStatus[]>> = { requested: ["accepted","rejected"], accepted: ["in_progress","rejected"], in_progress: ["completed"] };
 const CUSTOMER_TRANSITIONS: Partial<Record<OrderStatus, OrderStatus[]>> = { requested: ["cancelled"], accepted: ["cancelled"] };
@@ -39,7 +41,7 @@ export const updateOrderStatus = https.onCall(async (request) => {
   if (newStatus === "completed") ts.completedAt = now;
   if (newStatus === "cancelled") ts.cancelledAt = now;
   await orderRef.update({ status: newStatus, ...ts, updatedAt: now });
-  if (["rejected","cancelled","expired"].includes(newStatus)) await releaseInventory(order.vendorId, orderId, order.items, `order_${newStatus}`);
+  if (isOrderTerminal(newStatus) && newStatus !== "completed") await releaseInventory(order.vendorId, orderId, order.items, `order_${newStatus}`);
   if (newStatus === "completed") { await adjustInventoryAfterOrder(order.vendorId, order.items); await generateReceiptInternal(orderId, order); }
   await writeOrderEvent({ orderId, vendorId: order.vendorId, eventType: "STATUS_CHANGED", actorUid: uid, actorRole: role, before: { status: order.status }, after: { status: newStatus }, metadata: reason ? { reason } : undefined });
   await writeAuditLog({ requestId, functionName: "updateOrderStatus", actorUid: uid, actorRole: role as any, actorType: role === "vendor" ? "vendor" : "customer", targetType: "order", targetId: orderId, eventType: `order.${newStatus}`, before: { status: order.status }, after: { status: newStatus }, appCheck });

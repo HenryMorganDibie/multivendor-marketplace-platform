@@ -72,6 +72,19 @@ General notes that apply to all callables:
 - **Response:** `{ success: true, verified: true }`
 - **Errors:** `not-found`, `deadline-exceeded` (expired), `invalid-argument` (wrong code), `resource-exhausted` (too many attempts, max 5)
 
+### `sendPhoneOtp`
+- **Auth required:** no
+- **Request:** `{ phoneNumber: string }` — accepts Nigerian local format (`08012345678`), E.164 (`+2348012345678`), or the bare international form (`2348012345678`); all are normalized server-side to E.164 before use
+- **Response:** `{ success: true }`
+- **Errors:** `invalid-argument` (unparseable phone number), `resource-exhausted` (rate limited, max 5 sends per hour per number)
+- **Note:** in the emulator, the generated 6-digit code is written to an `smsQueue/{autoId}` Firestore document under an `_emulatorCode` field for test harness inspection. In production this is wired to a real SMS provider and that field does not exist. The code expires 10 minutes after generation.
+
+### `verifyPhoneOtp`
+- **Auth required:** no (but if signed in, updates `users/{uid}.phoneNumber` and the Firebase Auth record on success)
+- **Request:** `{ phoneNumber: string, code: string }`
+- **Response:** `{ success: true, verified: true }`
+- **Errors:** `not-found` (no pending code for this number), `deadline-exceeded` (expired), `invalid-argument` (wrong code — the error message reports remaining attempts), `resource-exhausted` (5 incorrect attempts exhausted, the code is invalidated and a new one must be requested)
+
 ---
 
 ## Vendor
@@ -170,3 +183,346 @@ All require an active `adminUsers/{uid}` document (`status: "active"`) in additi
 | Vendor banner | `vendorMedia/{vendorId}/banners/{fileId}` | public | vendor owner, image, <8MB |
 | Vendor gallery | `vendorMedia/{vendorId}/gallery/{fileId}` | public | vendor owner, image, <8MB |
 | Verification document | `verificationDocuments/{vendorId}/{docId}` | **admin only** (vendor cannot read raw files) | vendor owner, PDF or image, <15MB |
+
+---
+
+# Milestone 2 — Catalog, Orders, Inventory, Payments, Receipts
+
+General notes specific to Milestone 2:
+
+- The backend is the sole authority on pricing. No callable accepts a client-supplied price, subtotal, or total for anything that gets persisted. `repriceCart` recomputes all figures from the live catalog on every call.
+- Order status values (`requested`, `accepted`, `confirmed`, `in_progress`, `completed`, `rejected`, `cancelled`, `expired`) are classified as active or terminal through `isOrderActive` / `isOrderTerminal` in `orders/orderStatus.ts`. The frontend should treat this classification as authoritative rather than hard-coding its own status lists, since new statuses may be introduced in a later phase without changing this contract.
+
+## Catalog
+
+### `createCatalogCategory`
+- **Auth required:** yes, role `vendor`
+- **Request:** `{ name: string, description?: string, order?: number }`
+- **Response:** `{ success: true, categoryId: string }`
+- **Errors:** `permission-denied`, `invalid-argument` (missing name)
+
+### `createCatalogItem`
+- **Auth required:** yes, role `vendor`
+- **Request:**
+  ```ts
+  {
+    name: string;
+    description?: string;
+    basePrice: number;       // non-negative
+    salePrice?: number;
+    currency?: string;       // defaults to "NGN"
+    categoryId?: string;
+    photos?: string[];       // up to 10, first photo becomes thumbnailUrl
+    isAvailable?: boolean;   // defaults true
+    isHidden?: boolean;      // defaults false
+    trackInventory?: boolean;
+    inventoryQuantity?: number;
+    lowStockThreshold?: number;
+    addOnGroups?: AddOnGroup[];
+  }
+  ```
+- **Response:** `{ success: true, itemId: string }`
+- **Errors:** `invalid-argument` (missing name or negative price), `not-found` (vendor doc missing), `resource-exhausted` (plan catalog limit reached — see table below)
+- **Plan limits (server-enforced, counted on visible items only):**
+
+  | Plan | Max visible items |
+  |---|---|
+  | basic | 10 |
+  | standard | 30 |
+  | pro | 70 |
+  | pro_plus | 120 |
+
+- **Side effects:** new item always starts `moderationStatus: "pending"` and `reservedQuantity: 0` regardless of request payload — these fields cannot be set by the client.
+
+### `updateCatalogItem`
+- **Auth required:** yes, role `vendor`, must own the item
+- **Request:** `{ itemId: string, ...anyEditableField }`
+- **Response:** `{ success: true }`
+- **Errors:** `not-found`, `permission-denied` (not the owner), `invalid-argument` (negative price)
+- **Note:** the server silently strips `itemId`, `vendorId`, `reservedQuantity`, `orderCount`, `moderationStatus`, `createdAt` from the update payload even if present in the request. These fields are never client-writable.
+
+### `deleteCatalogItem`
+- **Auth required:** yes, role `vendor`, must own the item
+- **Request:** `{ itemId: string }`
+- **Response:** `{ success: true }`
+- **Errors:** `not-found`, `permission-denied`, `failed-precondition` (item has active inventory reservations — an open order references it)
+
+---
+
+## Cart and orders
+
+### `repriceCart`
+- **Auth required:** yes (any signed-in customer)
+- **Request:**
+  ```ts
+  {
+    vendorId: string;
+    fulfillmentType: "pickup" | "delivery" | "shipping";
+    items: { itemId: string; quantity: number; selectedAddOns?: { groupId: string; optionId: string }[] }[];
+    orderNote?: string;
+    cartId?: string; // omit to create a new cart
+  }
+  ```
+- **Response:** `{ success: true, cartId: string, subtotal: number, tax: number, discount: number, total: number, quantity: number, items: CartItem[] }`
+- **Errors:** `invalid-argument` (empty items array), `not-found` (unknown vendor or item), `failed-precondition` (vendor not discoverable, item unavailable or out of stock)
+- **Note:** every price in the response is server-computed from the live catalog. Do not display client-side estimates before calling this — the returned totals are the ones that will actually be charged.
+
+### `createOrderFromCart`
+- **Auth required:** yes, the cart owner
+- **Request:** `{ cartId: string }`
+- **Response:** `{ success: true, orderId: string, publicOrderId: string, conversationId: string }`
+- **Errors:** `invalid-argument` (missing cartId), `not-found` (cart expired or missing), `permission-denied` (cart belongs to someone else), `failed-precondition` (cart expired, vendor not accepting orders, country unavailable, blocked — see Milestone 3 Blocks section), insufficient stock surfaces as `failed-precondition` with a message naming the specific item
+- **Side effects:** atomically reserves inventory, deletes the cart, and injects an `order_context` system message into the customer/vendor commerce thread (creating that thread first if it does not already exist — see Milestone 3). The 48-hour SLA acceptance deadline is set here; there is no separate call to start it.
+- **Frontend note:** `conversationId` in the response is the `chatId` for this customer/vendor pair. Do not construct this value on the client — always use the value returned here or from `createCommerceConversation`.
+
+### `createExternalOrder`
+- **Auth required:** yes, role `vendor`
+- **Request:**
+  ```ts
+  {
+    externalCustomerName: string;
+    externalCustomerPhone?: string;
+    items: { itemId: string; quantity: number }[];
+    fulfillmentType?: "pickup" | "delivery" | "shipping"; // defaults to "pickup"
+    orderNote?: string;
+  }
+  ```
+- **Response:** `{ success: true, orderId: string, publicOrderId: string, conversationId: string }`
+- **Errors:** `permission-denied` (not a vendor), `invalid-argument`, `not-found`
+- **Note:** `publicOrderId` for external orders always contains `-EXT-` (e.g. `SPICYREST-EXT-000001`) to distinguish it from internal orders in vendor-facing UI. External orders use a synthetic per-order conversation, not the persistent customer/vendor thread, since there is no authenticated customer to link to.
+
+### `updateOrderStatus`
+- **Auth required:** yes, either the order's customer or the order's vendor
+- **Request:** `{ orderId: string, newStatus: string, reason?: string }`
+- **Response:** `{ success: true, orderId: string, newStatus: string }`
+- **Errors:** `not-found`, `permission-denied`, `failed-precondition` (illegal transition for the caller's role — see transition table below)
+- **Legal transitions:**
+
+  | Actor | From | To |
+  |---|---|---|
+  | vendor | `requested` | `accepted`, `rejected` |
+  | vendor | `accepted` | `in_progress`, `rejected` |
+  | vendor | `in_progress` | `completed` |
+  | customer | `requested` | `cancelled` |
+  | customer | `accepted` | `cancelled` |
+
+- **Side effects:** transitioning to `completed` triggers receipt generation and permanent inventory deduction. Transitioning to any terminal status other than `completed` (`rejected`, `cancelled`, `expired`) releases the reserved inventory back to available stock.
+
+### `handleChangeRequest`
+- **Auth required:** yes
+- **Request (create, vendor only):** `{ orderId: string, action: "create", message: string, proposedChanges?: { items?: OrderItemSnapshot[]; notes?: string } }`
+- **Request (respond, customer only):** `{ orderId: string, action: "accept" | "reject", changeRequestId: string }`
+- **Response:** `{ success: true, changeRequestId?: string, status?: "ACCEPTED" | "REJECTED" }`
+- **Errors:** `failed-precondition` (order not in `requested` status), `permission-denied` (wrong role for the action)
+
+---
+
+## Payment proofs
+
+### `submitPaymentProof`
+- **Auth required:** yes, the order's customer
+- **Request:** `{ orderId: string, images: { storagePath: string; thumbnailPath?: string }[], notes?: string }`
+- **Response:** `{ success: true, proofId: string, submissionCount: number }`
+- **Errors:** `invalid-argument` (no images, or more than 3), `permission-denied`, `failed-precondition` (a proof is already under review, payment already confirmed, or the abuse lock has triggered), `resource-exhausted` (maximum 2 submissions reached — see below)
+- **Abuse limits (server-enforced):** maximum 3 images per submission, maximum 2 submissions per order. After the second rejected submission, the order's payment status locks to `PROOF_LOCKED` and no further submissions are accepted through this callable.
+
+### `reviewPaymentProof`
+- **Auth required:** yes, the order's vendor
+- **Request:** `{ orderId: string, proofId: string, decision: "accept" | "reject", reviewReason?: string }`
+- **Response:** `{ success: true, proofId: string, status: "REVIEWED" | "REJECTED" }`
+- **Errors:** `invalid-argument` (`reviewReason` is required when rejecting), `not-found`, `permission-denied`, `failed-precondition` (proof not currently awaiting review)
+- **Side effects:** accepting triggers `sendPickupDetailsIfEligible` internally (see Milestone 3 Pickup section) — this is automatic and has no separate client-facing call.
+
+---
+
+## Receipts
+
+### `getReceipt`
+- **Auth required:** yes, the order's customer or vendor
+- **Request:** `{ orderId: string }`
+- **Response:** `{ success: true, receipt: ReceiptDoc }`
+- **Errors:** `permission-denied`, `not-found` (no receipt generated yet — receipts only exist after an order reaches `completed`)
+- **Receipt number format:** `LVT-{YEAR}-{VENDOR_CODE}-{SEQUENCE}`, e.g. `LVT-2026-SPICY01-000001`.
+
+---
+
+# Milestone 3 — Commerce Chat, Notifications, Blocks, Pickup Auto-Send
+
+General notes specific to Milestone 3:
+
+- There is exactly **one** commerce thread per `(customerId, vendorId)` pair, never one per order. Placing a second order with the same vendor reuses the existing thread; it does not create a new one. The thread's `relatedOrderIds` array accumulates every order ever placed in it.
+- `chatId` for a commerce thread is deterministic: `commerce_{customerId}_{vendorId}`. The frontend may compute this locally for optimistic UI purposes, but should always confirm it against the value returned by `createCommerceConversation` or an order-creation callable rather than assuming it.
+- Country availability (`countryAvailability/{countryCode}`) gates every commerce-creating action. A missing or non-`ACTIVE` country document fails closed — the callable returns `failed-precondition` rather than allowing the action through.
+- Contact cards are **local-device-only** for this milestone. There is no `users/{uid}/contactCards` collection on the backend. The frontend is responsible for storing saved contact details in device-secure storage (Keychain on iOS, Keystore on Android) and passing the relevant fields inline when the customer chooses to submit them for a specific order via `submitDeliveryContact`.
+
+## Commerce conversations and messages
+
+### `createCommerceConversation`
+- **Auth required:** yes, role `customer`
+- **Request:** `{ vendorId: string }`
+- **Response:** `{ success: true, chatId: string, created: boolean }`
+- **Errors:** `not-found` (unknown vendor), `permission-denied` (caller is not a customer), `failed-precondition` (vendor not active, storefront not accessible via discovery or direct link, country unavailable, or a block exists between the parties)
+- **Idempotent:** calling this again for the same vendor returns the same `chatId` with `created: false`. This is safe to call defensively before sending a first message.
+- **Side effects:** if the vendor has a greeting message configured (see `updateVendorChatSettings` below) and this is a true first-time creation, a system message of type `system` / `systemSubtype: "greeting_message"` is inserted automatically. The vendor also receives a `new_inquiry` notification.
+
+### `sendChatMessage`
+- **Auth required:** yes, must be a participant in the thread
+- **Request:**
+  ```ts
+  {
+    chatId: string;
+    type: "text" | "contact-card" | "catalog_item"; // these are the ONLY client-creatable types
+    content?: string;          // required for type "text", max 4000 characters
+    contactCardData?: { fullName: string; phoneNumber: string; address?: AddressObject };
+    catalogItemData?: { itemId: string };  // price/name/photo are server-fetched, never trusted from client
+    attachments?: { storagePath: string; contentType: string; sizeBytes: number }[]; // max 5, each under 15MB
+  }
+  ```
+- **Response:** `{ success: true, messageId: string }`
+- **Errors:** `not-found`, `permission-denied` (not a participant), `invalid-argument` (attempting to create a server-only type such as `order_context`, `pickup-details`, `system`, `receipt`, `invoice`, or `change_request`; empty text; attachment limits exceeded), `failed-precondition` (vendor suspended, country unavailable, or blocked with no active order — see Blocks below)
+- **Message types the client will *receive* but can never send directly:** `system`, `payment-request`, `pickup-details`, `receipt`, `invoice`, `ai`, `order_context`, `new_inquiry`, `change_request`. These are always server-assembled from real data and appear in the thread as a side effect of other actions.
+- **Side effects:** updates the thread's `lastMessage` / `lastMessageAt` / `lastSenderUid` summary fields, creates a `new_message` notification for every other participant (never the sender), and — for customer-sent messages only — checks vendor away-message eligibility.
+
+### `markChatRead`
+- **Auth required:** yes, must be a participant
+- **Request:** `{ chatId: string, lastReadMessageId?: string }`
+- **Response:** `{ success: true }`
+- **Side effects:** writes the caller's own read receipt and marks up to 50 of the most recent messages from other senders as `status: "read"`.
+
+### `saveChatDraft` / `clearChatDraft`
+- **Auth required:** yes
+- **Request:** `{ chatId: string, content: string }` (for save) / `{ chatId: string }` (for clear)
+- **Response:** `{ success: true, cleared: boolean }` / `{ success: true }`
+- **Note:** saving with empty or whitespace-only content clears the draft rather than storing an empty string. Drafts are owner-private — a vendor can never read a customer's draft or vice versa.
+
+---
+
+## Blocks
+
+### `blockUser`
+- **Auth required:** yes
+- **Request:** `{ blockedUid: string, reason?: string }`
+- **Response:** `{ success: true, blockId: string }`
+- **Errors:** `invalid-argument` (attempting to block yourself), `not-found` (unknown user), `failed-precondition` (blocker role could not be determined)
+- **Block ID is deterministic:** `{blockerUid}_{blockedUid}`. Re-blocking after an unblock is idempotent and safe.
+- **Side effects:** a display snapshot (`blockedSnapshot`) is captured at block time and never updates afterward, so the blocked-users list renders correctly even if the blocked party later changes their name or deletes their account.
+
+### `unblockUser`
+- **Auth required:** yes, must be the original blocker
+- **Request:** `{ blockedUid: string }`
+- **Response:** `{ success: true }`
+- **Errors:** `not-found` (no block record for this pair — note that only the party who created the block can find and remove it; the other party calling this receives `not-found`, not `permission-denied`), `failed-precondition` (already unblocked)
+
+**Block enforcement semantics the frontend needs to understand:**
+
+| Situation | Allowed? |
+|---|---|
+| Starting a brand-new commerce conversation while blocked | Never, regardless of any active order elsewhere |
+| Sending a message in an existing thread, no active order between the pair | Denied |
+| Sending a message in an existing thread, at least one active order exists | Allowed, until that order (and every other active order between the pair) reaches a terminal status |
+| Placing a new order while blocked | Never |
+
+"Active" and "terminal" here use the same classification as `isOrderActive` / `isOrderTerminal` referenced in the Milestone 2 notes above.
+
+---
+
+## Notifications and push tokens
+
+### `markNotificationRead`
+- **Auth required:** yes, owner of the notification
+- **Request:** `{ notificationId: string }`
+- **Response:** `{ success: true }`
+- **Note:** only `read` and `readAt` can ever change on a notification document, whether through this callable or a direct client write attempt. Every other field is immutable after creation.
+
+### `registerPushToken`
+- **Auth required:** yes
+- **Request:** `{ token: string, platform: "ios" | "android" | "web", deviceId?: string, appVersion?: string }`
+- **Response:** `{ success: true, tokenId: string }`
+- **Note:** passing `deviceId` makes the write idempotent per device (re-registering the same device updates rather than duplicates). Omitting it creates a new token record each call.
+
+### `updateVendorNotificationPreferences`
+- **Auth required:** yes, role `vendor`
+- **Request:** any subset of `{ pushEnabled, newOrderRequest, paymentConfirmed, orderChanges, actionRequired, pendingOrderReminder, newMessage, unreadMessageReminder, quietHours: { enabled, startHour, endHour } }`
+- **Response:** `{ success: true }`
+- **Note:** `securityAlerts` cannot be set through this callable under any circumstances. It is forced to `true` server-side regardless of what the request contains — this preference does not exist as a user-facing toggle.
+
+### `updateCustomerNotificationPreferences`
+- **Auth required:** yes
+- **Request:** any subset of `{ pushEnabled, orderUpdates, chatMessages, pickupReminders, cartReminders, promotions }`
+- **Response:** `{ success: true }`
+
+**Push delivery behavior the frontend should know about (not separate callables, just documented behavior):** in-app notification documents are always created regardless of push preferences — `pushEnabled: false` only suppresses the push send, never the in-app record. Quiet hours delay non-critical push notifications but never delay notification creation. A notification's `isCritical` flag, set server-side per event type, determines whether it bypasses quiet hours.
+
+---
+
+## Vendor chat settings, quick replies, pickup
+
+### `updateVendorChatSettings`
+- **Auth required:** yes, role `vendor`
+- **Request:** any subset of `{ greetingEnabled: boolean, greetingMessage: string, awayMessageEnabled: boolean, awayMessage: string, awaySchedule?: object, quietHours?: object, awayCooldownHours?: number }`
+- **Response:** `{ success: true }`
+- **Errors:** `invalid-argument` if `greetingMessage` or `awayMessage` exceeds 300 characters
+- **Behavioral notes:** the greeting message sends exactly once, on the thread's true first creation — never on subsequent messages, and never at all if `greetingMessage` is empty even with `greetingEnabled: true`. The away message has a per-thread cooldown, default 12 hours, configurable via `awayCooldownHours`, and only fires in response to a customer-sent message.
+
+### `createQuickReply` / `updateQuickReply` / `deleteQuickReply`
+- **Auth required:** yes, role `vendor`
+- **Request (create):** `{ title: string, shortcut: string, message: string, sortOrder?: number }`
+- **Request (update):** `{ replyId: string, ...anyEditableField }`
+- **Request (delete):** `{ replyId: string }`
+- **Response:** `{ success: true, replyId?: string }`
+- **Errors:** `invalid-argument` (field length exceeded — see limits below), `already-exists` (shortcut collision), `resource-exhausted` (20-reply cap reached), `not-found`
+- **Limits:** title max 50 characters, shortcut max 30 characters, message max 1000 characters, maximum 20 quick replies per vendor.
+- **Shortcut normalization:** the server automatically prepends `/` if the client-supplied shortcut does not already start with one. Do not rely on the exact string you sent — read the value back from the response or a subsequent fetch.
+- **Important:** quick replies are a client-side composer convenience only. Selecting one should populate the message composer; there is no callable that sends a quick reply directly. The frontend must still call `sendChatMessage` with `type: "text"` to actually send it.
+
+### `updateVendorPickupSettings`
+- **Auth required:** yes, role `vendor`
+- **Request:** any subset of `{ pickupAddress: PickupAddress, pickupInstructions: string, pickupContactPhone?: string, pickupVerificationCode?: string, autoSendPickupDetailsEnabled: boolean }`
+- **Response:** `{ success: true }`
+- **Errors:** `invalid-argument` (`pickupInstructions` over 300 characters), `failed-precondition` — this is the important one: attempting to set `autoSendPickupDetailsEnabled: true` without both a saved `pickupAddress.streetAddress` and `pickupInstructions` already in place (either from this same request or a prior one) is rejected server-side. The frontend should disable this toggle in the UI accordingly, but the backend enforces it regardless of what the UI allows.
+- **Note:** `pickupContactPhone` and `pickupVerificationCode` are never readable by customers directly. They only ever reach the customer through the structured `pickup-details` message, which is sent automatically — see below.
+
+**Pickup auto-send behavior — there is no callable for this.** This is the most important architectural fact in this section: no client-callable function exists to manually trigger a pickup-details message, for either the vendor or the customer. The backend automatically inserts a `pickup-details` message into the commerce thread when **all** of the following become true simultaneously:
+
+1. `order.fulfillmentType === "pickup"`
+2. the order's payment status reaches the accepted state (this happens as a side effect of `reviewPaymentProof` with `decision: "accept"`, documented above in Milestone 2)
+3. the vendor's `autoSendPickupDetailsEnabled` is `true`
+4. the vendor has a saved `pickupAddress` and `pickupInstructions`
+
+This check is idempotent — if a pickup-details message already exists for the order, it will never be duplicated, even if the payment-confirmation path is triggered more than once. If the vendor edits their pickup address or instructions after a message has already been sent for a given order, that historical message is unaffected; it retains the exact snapshot from the moment it was sent.
+
+---
+
+## Order-scoped delivery contact
+
+### `submitDeliveryContact`
+- **Auth required:** yes, the order's customer
+- **Request:** `{ orderId: string, fullName: string, phoneNumber: string, address?: AddressObject }`
+- **Response:** `{ success: true }`
+- **Errors:** `invalid-argument`, `not-found`, `permission-denied` (not your order), `already-exists` — once submitted for an order, the contact snapshot is immutable and cannot be resubmitted or edited for that same order. If the customer needs to provide different details, that only happens naturally on their next order.
+
+### `getOrderDetails`
+- **Auth required:** yes, the order's customer, the order's vendor, or an admin
+- **Request:** `{ orderId: string }`
+- **Response:** `{ success: true, order: OrderDoc & { deliveryContactExpired?: true } }`
+- **Errors:** `not-found`, `permission-denied`
+- **This is the callable the frontend should use to display order details to a vendor, rather than reading `orders/{orderId}` directly.** The reason: once an order reaches a terminal status, the vendor's copy of `deliveryContact` is stripped from the response entirely and replaced with `deliveryContactExpired: true`. The customer always retains access to their own submitted contact details regardless of order status. A raw Firestore read of the order document does not enforce this expiry — only this callable does.
+
+---
+
+## Firestore collections added in Milestone 3 (read-only from client, all writes via the callables above)
+
+| Collection | Client read access |
+|---|---|
+| `chatThreads/{chatId}` | participants only |
+| `chatThreads/{chatId}/messages/{messageId}` | participants only |
+| `chatThreads/{chatId}/readReceipts/{uid}` | participants only |
+| `users/{uid}/chatDrafts/{chatId}` | owner only |
+| `blocks/{blockId}` | the blocker only — the blocked party cannot see the block record |
+| `users/{uid}/notifications/{notificationId}` | owner only |
+| `users/{uid}/pushTokens/{tokenId}` | owner only |
+| `vendors/{vendorId}/settings/notifications` | vendor owner, admin |
+| `vendors/{vendorId}/settings/chat` | vendor owner, admin |
+| `vendors/{vendorId}/settings/pickup` | vendor owner, admin — **never** customer-readable, by design |
+| `vendors/{vendorId}/quickReplies/{replyId}` | vendor owner, admin — never customer-readable |
+| `countryAvailability/{countryCode}` | public |

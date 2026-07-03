@@ -1,203 +1,99 @@
 # the platform Backend
 
-Firebase backend for the the platform multi-vendor marketplace — a location-based discovery platform for small businesses (food, hair, mechanics, and more) in Nigeria and beyond.
+Firebase backend for the the platform multi-vendor marketplace. This repository covers three completed milestones: Auth/Users/Vendors/Verification, Catalog/Orders/Inventory/Payments/Receipts, and Commerce Chat/Notifications/Blocks/Pickup Auto-Send.
 
-## Architecture
+## Status
 
-Built entirely on Firebase:
-- **Cloud Functions** (Node 20, TypeScript) — all business logic, security enforcement, and data mutations
-- **Firestore** — primary database with strict security rules; no client writes to sensitive fields ever
-- **Firebase Auth** — custom claims for role-based access (customer / vendor / admin)
-- **Firebase Storage** — vendor media and verification documents with MIME and size enforcement
-- **App Check** — monitor mode (Phase 1–2), enforcement deferred until frontend App Check providers are confirmed
+Status is described precisely rather than as a blanket "complete." Every row below reflects what has actually been run and verified, not what is assumed to work.
 
-The backend is the **single source of truth** for all pricing, inventory, order status, and user roles. The frontend never computes totals or mutates server-controlled fields directly.
-
----
-
-## Phases Completed
-
-### Phase 1 — Auth, Users, Vendors, Verification & Security Foundation
-**Tickets:** P1-FB-001 through P1-FB-013 | **Tests:** 67/67 passing
-
-| Area | What's built |
+| Area | Status |
 |---|---|
-| Authentication | Firebase Auth with email + phone OTP sign-in support |
-| Custom claims | `role`, `vendorId`, `adminRoleIds`, `claimsVersion` — set server-side only |
-| Users | `users/{uid}` with strict allowlist-based self-update rules |
-| Vendors | Dual status model: `verificationStatus` + `vendorStatus` — fully independent state machines |
-| Verification flow | Document upload → `recordVerificationDocument` (fetches real Storage metadata) → `submitVendorVerification` → admin review |
-| Multi-role admin | `super_admin`, `verification_admin`, `support_admin`, `safety_admin`, `read_only_admin` |
-| Admin access | Invite-only (`createAdminInvite` → `acceptAdminInvite`), revocable, session-tracked |
-| Security rules | Firestore: allowlist-based user/vendor updates, correct discovery rules (approved + active + discoverable only). Storage: MIME allowlist, size limits, vendor raw-read denied |
-| Audit logging | Every sensitive action: `requestId`, `functionName`, `appCheck` status, PII-safe snapshots |
-| Email OTP | Hashed doc IDs (no PII), rate-limited, 10-min expiry |
-| Phone OTP | Nigerian formats (08xxx, +234xxx), hashed doc IDs, SMS queue for provider routing |
+| **Milestone 1** — Auth, users, vendors, verification, admin, security rules | 67/67 acceptance tests passing in developer environment |
+| **Milestone 2** — Catalog, cart pricing, orders, inventory, payment proofs, receipts | 61/61 acceptance tests passing in developer environment |
+| **Milestone 3** — Commerce chat, notifications, blocks, pickup auto-send | 85/85 acceptance tests passing in developer environment |
+| App Check | Implemented in **monitor mode only** (see App Check Rollout below). Not yet enforced. |
+| Frontend integration contracts | See `docs/frontend-contracts-phase-1.md` — despite the filename, this document now covers all three milestones |
+| Production monitoring/alerting dashboards | Not yet implemented — infrastructure and operations work, tracked separately from this code delivery |
+| Independent security audit | Not yet performed — see the Security Posture section below for an honest account of what has and has not been verified |
 
-### Phase 2 — Catalog, Orders, Inventory, Payments & Receipts
-**Tickets:** P2 full scope | **Tests:** 61/61 passing
+"Acceptance tests passing in developer environment" means: run against the local Firebase Emulator Suite, on this developer's machine, as of the date of the corresponding test run. It is not a substitute for independent review, staging deployment, or production verification.
 
-| Area | What's built |
-|---|---|
-| Catalog | Categories + items with plan limits enforced server-side (basic=10, standard=30, pro=70, pro_plus=120) |
-| Cart repricing | `repriceCart` — backend-authoritative pricing, validates real item prices, add-ons, availability |
-| Orders (internal) | `createOrderFromCart` — atomic inventory reservation, immutable price snapshot, SLA deadline set at creation |
-| Orders (external) | `createExternalOrder` — vendor creates orders on behalf of walk-in/WhatsApp customers |
-| Order lifecycle | `requested → accepted → in_progress → completed` (vendor) \| `requested/accepted → cancelled` (customer) |
-| SLA enforcement | 48-hour acceptance deadline; `expireStaleOrders` releases inventory and notifies on timeout |
-| Change requests | Vendor proposes changes on `requested` orders; customer accepts or rejects before order proceeds |
-| Payment proofs | Evidence-only (no payment processing). Max 2 submissions, max 3 images, auto-lock after 2 rejections |
-| Receipts | Auto-generated on completion. Format: `LVT-{YEAR}-{VENDOR_CODE}-{SEQUENCE}` |
-| Inventory | Atomic reservation on order create, release on reject/cancel/expire, permanent adjustment on complete |
-| Order events | Immutable subcollection audit trail for every lifecycle event |
-| Security rules | All Phase 2 collections: orders/carts/proofs/receipts/events — no direct client writes ever |
-
----
-
-## Project Structure
-
-```
-the platform-backend/
-├── functions/
-│   └── src/
-│       ├── admin.ts              # Firebase Admin SDK init
-│       ├── types.ts              # Phase 1 types
-│       ├── types2.ts             # Phase 2 types
-│       ├── index.ts              # All function exports
-│       ├── auth/                 # onUserCreate, onUserDelete, completeRegistration,
-│       │                         # emailOtp, phoneOtp, usernameReservation
-│       ├── vendors/              # onVendorWrite, setVendorPublishStatus,
-│       │                         # verificationSubmission
-│       ├── admin/                # vendorModeration, adminInvites
-│       ├── catalog/              # catalogFunctions (CRUD + plan limits)
-│       ├── orders/               # repriceCart, createOrder, updateOrderStatus,
-│       │                         # handleChangeRequest, paymentProofs,
-│       │                         # orderEvents, orderNumbers
-│       ├── inventory/            # inventoryUtils (reserve/release/adjust)
-│       ├── receipts/             # receiptFunctions
-│       └── utils/                # appCheck, auditLog, adminAuth, requestContext
-├── firestore/
-│   ├── firestore.rules           # Phase 1 + Phase 2 security rules
-│   ├── storage.rules             # MIME allowlist, ownership, size limits
-│   └── firestore.indexes.json    # Composite indexes for discovery queries
-├── scripts/
-│   ├── milestone1-acceptance-tests.js   # 67 tests — Phase 1
-│   ├── milestone2-acceptance-tests.js   # 61 tests — Phase 2
-│   └── package.json
-├── docs/
-│   └── frontend-contracts-phase-1.md    # Callable payloads, responses, error codes
-├── firebase.json
-└── .firebaserc                   # dev / staging / prod aliases
-```
-
----
-
-## Running Locally
-
-**Prerequisites:** Node 20+, Firebase CLI (`npm install -g firebase-tools`)
+## Running the acceptance tests
 
 ```bash
-# Install and build
 cd functions
 npm install
 npm run build
 cd ..
-
-# Start emulators (Phase 1 only — no Storage needed)
-firebase emulators:start --only auth,firestore,functions --project demo-the platform
-
-# Start emulators (Phase 2 — Storage required)
 firebase emulators:start --only auth,firestore,functions,storage --project demo-the platform
 ```
 
-**Run acceptance tests** (in a second terminal):
+In a second terminal:
 
 ```bash
 cd scripts
 npm install
-
-# Phase 1 (67 tests)
 node milestone1-acceptance-tests.js
-
-# Phase 2 (61 tests)
 node milestone2-acceptance-tests.js
+node milestone3-acceptance-tests.js
 ```
 
----
+The Storage emulator is required for all three suites. Milestone 1 exercises real file upload tests against Storage security rules (MIME allowlist, size limits, ownership, admin-only raw read). Milestone 2 and 3 use it for verification document setup during test provisioning.
 
-## Cloud Functions Reference
+Each suite provisions its own test accounts and vendor with a timestamped, unique identifier, so the three suites can be run independently and repeatedly without collisions.
 
-### Phase 1
+## What each milestone covers
 
-| Function | Role | Description |
-|---|---|---|
-| `onUserCreate` | system | Creates `users/{uid}` with defaults on signup |
-| `onUserDelete` | system | Deletes user doc, redacts PII in audit log |
-| `completeRegistration` | any | Finalizes customer/vendor onboarding |
-| `getClaimsVersion` | any | Returns current claims version for token refresh |
-| `checkUsernameAvailability` | public | Pre-auth username check |
-| `changeUsername` | vendor | Atomic username reassignment with audit |
-| `sendEmailOtp` / `verifyEmailOtp` | any | Email verification OTP |
-| `sendPhoneOtp` / `verifyPhoneOtp` | any | Phone verification OTP (Nigerian formats) |
-| `setVendorPublishStatus` | vendor | Go-live toggle |
-| `recordVerificationDocument` | vendor | Records uploaded doc metadata (fetches real Storage object) |
-| `submitVendorVerification` | vendor | Submits for admin review |
-| `approveVendorVerification` | verification_admin | Approves vendor |
-| `rejectVendorVerification` | verification_admin | Rejects with reason |
-| `requestVerificationRetry` | verification_admin | Sends back for resubmission |
-| `suspendVendor` / `deactivateVendor` / `reactivateVendor` | safety_admin | Account status management |
-| `createAdminInvite` | super_admin | Invite-only admin onboarding |
-| `acceptAdminInvite` | invited user | Accepts invite, sets admin claims |
-| `revokeAdminAccess` | super_admin | Revokes admin, resets claims |
-| `recordAdminSession` | admin | Logs admin portal login |
+**Milestone 1** establishes identity and access: Firebase Auth with custom claims for `customer` / `vendor` / `admin` roles, vendor registration and the verification submission flow, a five-tier admin role system (`super_admin`, `verification_admin`, `support_admin`, `safety_admin`, `read_only_admin`), and the Firestore and Storage security rules that everything else depends on.
 
-### Phase 2
+**Milestone 2** builds commerce on top of that identity layer: vendor catalog management with server-enforced plan limits, cart pricing that the backend computes authoritatively rather than trusting the client, the full order lifecycle from placement through completion, a 48-hour vendor acceptance SLA, payment proof submission with abuse limits, and receipt generation.
 
-| Function | Role | Description |
-|---|---|---|
-| `createCatalogCategory` | vendor | Creates a product category |
-| `createCatalogItem` | vendor | Creates item, enforces plan limits |
-| `updateCatalogItem` | vendor | Updates allowed fields only |
-| `deleteCatalogItem` | vendor | Blocked if active reservations exist |
-| `repriceCart` | customer | Creates/updates cart with server-computed prices |
-| `createOrderFromCart` | customer | Atomically places order + reserves inventory |
-| `createExternalOrder` | vendor | Creates order for walk-in/external customer |
-| `updateOrderStatus` | vendor/customer | Lifecycle transitions with role validation |
-| `handleChangeRequest` | vendor/customer | Propose, accept, or reject order changes |
-| `submitPaymentProof` | customer | Submit payment evidence (max 2 attempts, 3 images) |
-| `reviewPaymentProof` | vendor | Accept or reject proof with reason |
-| `getReceipt` | customer/vendor | Retrieve generated receipt |
+**Milestone 3** adds real-time communication: a single persistent commerce thread per customer/vendor pair (not per order — new orders inject context into the existing thread), in-app and push notifications with quiet-hours and critical-notification handling, a block system with a documented active-order exception, and fully automatic pickup-details delivery with no manual send path anywhere in the system.
 
----
+Full request/response contracts for every callable across all three milestones are in `docs/frontend-contracts-phase-1.md`.
 
 ## App Check Rollout
 
-App Check is implemented in **monitor mode** — missing tokens are logged but do not block requests.
+App Check is implemented as a monitor-mode helper (`functions/src/utils/appCheck.ts`) that records whether a valid App Check token was present on every sensitive callable, without blocking requests, controlled by the `APP_CHECK_ENFORCE` environment variable.
 
-| Environment | Status |
-|---|---|
-| dev | Monitor only |
-| staging | Monitor → enforce once frontend providers confirmed |
-| prod | Enforce (`APP_CHECK_ENFORCE=true`) after staging soak period |
+Planned rollout:
 
----
+- **dev**: monitor mode only. App Check status is logged and recorded in audit logs; no requests are blocked.
+- **staging**: monitor mode initially, switched to enforcement once the mobile app and Admin Web Portal both have App Check providers registered and have been confirmed sending valid tokens in real traffic.
+- **production**: enforcement (`APP_CHECK_ENFORCE=true`) only after staging enforcement has run cleanly for a defined soak period with no unexpected rejections.
 
-## Verification Document Storage Path
+This sequencing exists to avoid a scenario where enabling enforcement before the frontend is ready locks out legitimate users. This remains an open item and should be treated as a prerequisite for general availability, not an optional hardening step.
 
-Canonical path (consistent across Storage rules, `recordVerificationDocument`, and tests):
+## Verification document storage path
+
+Canonical path, used consistently across Storage rules, the `recordVerificationDocument` callable, and the acceptance tests:
+
 ```
 verificationDocuments/{vendorId}/{docId}
 ```
-Vendor owners may upload (PDF or image, max 15 MB) but **cannot read raw files back**. Only admins can read uploaded verification documents directly.
 
----
+Vendor owners may upload (PDF or image, 15 MB max) but cannot read raw files back. Only admins can read uploaded verification documents directly; vendors see document metadata via Firestore (`vendorVerification/{vendorId}/documents/{docId}`).
 
-## Environment Aliases
+## Contact card architecture (Milestone 3 decision)
 
-| Alias | Project |
-|---|---|
-| dev (default) | the platform-dev |
-| staging | the platform-staging |
-| prod | the platform-prod |
+Customer contact cards are stored on-device only, not in Firestore. There is no `users/{uid}/contactCards` collection in this backend. When a customer wants a vendor to have delivery contact details for a specific order, the frontend submits those details inline through `submitDeliveryContact`, which attaches an immutable, order-scoped snapshot to that one order. This snapshot cannot be resubmitted or edited once set, and a vendor's access to it expires automatically once the order reaches a terminal status, enforced through the `getOrderDetails` callable rather than raw Firestore reads. See `docs/frontend-contracts-phase-1.md` for the full contract.
 
-Deploy to dev: `firebase deploy --only functions,firestore:rules,firestore:indexes,storage:rules`
+This was a deliberate minimal-data-collection decision: it removes an entire class of PII exposure risk from the backend at the cost of contact details not syncing across a customer's devices, a tradeoff considered acceptable for the current stage of the product.
+
+## Security posture
+
+No system should be described as fully secure without qualification, and this backend is not an exception. The following reflects an honest account of what has been verified against and what remains open.
+
+**What has been verified:** every Firestore collection carrying business-critical or sensitive data denies direct client writes and routes exclusively through Cloud Functions. Sensitive fields use narrow, allowlisted update rules rather than broad ownership checks — a user can mark their own notification read but cannot rewrite its title or body, for example. Authentication is delegated entirely to Firebase Auth rather than a custom credential store. Server-side business logic (block enforcement, country availability, order-state transitions) is re-validated on every relevant call rather than trusted from client state. All 213 acceptance tests across the three milestones include denial-path cases, not just success-path cases.
+
+**What remains open:** App Check enforcement, as described above, is not yet active. No independent, adversarial security audit has been performed on the deployed rules and Cloud Functions — everything here has passed rigorous self-review and automated testing, which is not equivalent to a third party whose sole objective is finding a way through it. One historical bug (a Firestore rules wildcard that unintentionally granted broader write access than intended to a subset of Milestone 3 settings documents) was found and fixed during Milestone 3 development; this raises the possibility, not yet ruled out, that a similar latent rule collision exists elsewhere in `firestore.rules`. A full manual pass through every `match` block, specifically checking for cases where a general wildcard and a more specific match both apply to the same path, is recommended before production launch. Request-size and payload-complexity limits are not uniformly enforced across every callable, which is a resource-exhaustion consideration even where it is not a data-integrity risk.
+
+The two highest-priority items before general availability are App Check enforcement and an independent review of the Firestore rules file.
+
+## Known gaps / explicitly deferred
+
+- Production monitoring dashboards and alerting are not part of this code delivery.
+- App Check enforcement is deferred per the rollout plan above.
+- Admin MFA enrollment UI is not part of this milestone (the `adminUsers` schema reserves fields for it; enrollment flow is a later phase).
+- Country availability management is currently manual (a single document seeded directly in Firestore for Nigeria). Full admin tooling for managing country rollout is deferred to a later phase.
+- Typing indicators and swipe-to-reply are not implemented in this milestone. Typing indicators would require provisioning Firebase Realtime Database alongside Firestore, since that is a better fit for high-frequency, ephemeral presence data than Firestore's per-document billing model. Swipe-to-reply is primarily a frontend gesture-handling concern; the backend would need a small, additive extension to the message schema to carry a reply reference.

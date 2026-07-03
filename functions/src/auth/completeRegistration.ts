@@ -9,6 +9,7 @@ import { writeAuditLog } from "../utils/auditLog";
 import { checkAppCheck } from "../utils/appCheck";
 import { newRequestId } from "../utils/requestContext";
 import { reserveUsername } from "./usernameReservation";
+import { resolveCountryCode } from "../utils/countryCode";
 
 /**
  * completeRegistration — finalizes role selection and (for vendors)
@@ -113,7 +114,7 @@ export const completeRegistration = https.onCall(
       category: data.categoryName,
       categoryName: data.categoryName,
 
-      countryCode: data.country,
+      countryCode: resolveCountryCode(data.country),
       country: data.country,
       region: data.state,
       state: data.state,
