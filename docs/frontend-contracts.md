@@ -1,6 +1,6 @@
-# the platform Backend — Frontend Integration Contracts (Milestone 1)
+# the platform Backend — Frontend Integration Contracts (Milestones 1–3)
 
-This document describes every callable Cloud Function exposed by the Milestone 1 backend: required auth state, request payload, response payload, error codes, and any Firestore/Storage side effects the frontend needs to know about.
+This document describes every callable Cloud Function exposed by the backend across Milestones 1–3: required auth state, request payload, response payload, error codes, and any Firestore/Storage side effects the frontend needs to know about.
 
 General notes that apply to all callables:
 
