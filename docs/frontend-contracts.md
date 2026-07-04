@@ -526,3 +526,56 @@ This check is idempotent — if a pickup-details message already exists for the 
 | `vendors/{vendorId}/settings/pickup` | vendor owner, admin — **never** customer-readable, by design |
 | `vendors/{vendorId}/quickReplies/{replyId}` | vendor owner, admin — never customer-readable |
 | `countryAvailability/{countryCode}` | public |
+
+
+---
+
+# Milestone 3 Additions (P3-FB-015, P3-FB-016) — Support Tickets and AI Help Placeholder
+
+## Support tickets
+
+Support tickets use a dual-document model. Each ticket creates both a `chatThreads/{chatId}` document with `chatType: "support"` and a `supportTickets/{ticketId}` document carrying the lifecycle fields specific to a support interaction. The `chatId` and `ticketId` are always the same value. Message sending, read receipts, and drafts for a support thread all reuse the existing `sendChatMessage`, `markChatRead`, and `saveChatDraft` callables documented in Milestone 3 above, with no modification, since those functions already branch on `chatType` and skip commerce-specific checks for support threads.
+
+### `createSupportTicket` / `assignSupportTicket` / `resolveSupportTicket`
+
+**`createSupportTicket`**
+- **Auth required:** yes, role `customer` or `vendor`
+- **Request:** `{ subject: string, initialMessage: string }`
+- **Response:** `{ success: true, ticketId: string, chatId: string, created: boolean }`
+- **Errors:** `unauthenticated`, `failed-precondition` (role could not be determined), `invalid-argument` (subject missing or over 150 characters, initialMessage missing)
+- **Idempotent:** if the caller already has an open or assigned ticket, this callable returns that ticket's IDs with `created: false` rather than creating a duplicate. One open ticket per requester at a time is enforced server-side.
+- **Note:** `ticketId` and `chatId` are always equal. The initial message is written into the `chatThreads/{chatId}/messages` subcollection as a `type: "text"` message from the requester in the same batch as the thread and ticket documents. The ticket starts with `status: "open"` and `priority: "normal"`.
+
+**`assignSupportTicket`**
+- **Auth required:** yes, role `admin` with `super_admin` or `support_admin` role
+- **Request:** `{ ticketId: string, priority?: "low" | "normal" | "high" | "urgent" }`
+- **Response:** `{ success: true }`
+- **Errors:** `permission-denied` (caller is not a qualified admin), `not-found`, `failed-precondition` (ticket is already resolved or closed)
+- **Side effects:** sets `status: "assigned"` and `assignedAdminUid` on the `supportTickets` document, adds the admin to the `chatThreads` document's `participants` array with role `"admin"` so they can send messages into the thread, and sends a notification to the requester.
+
+**`resolveSupportTicket`**
+- **Auth required:** yes, role `admin` with `super_admin` or `support_admin` role
+- **Request:** `{ ticketId: string }`
+- **Response:** `{ success: true }`
+- **Errors:** `permission-denied` (caller is not the assigned agent and does not hold `super_admin`), `not-found`, `failed-precondition` (ticket is not currently in `assigned` status — only an assigned ticket can be resolved)
+- **Authorization rule:** only the admin who was assigned the ticket, or any `super_admin`, may resolve it. A `support_admin` who was not assigned the ticket receives `permission-denied` even though they passed the initial role check.
+- **Side effects:** sets `status: "resolved"`, `resolvedAt`, and `resolvedByAdminUid` on the `supportTickets` document, and sends a notification to the requester.
+
+**Firestore collections added for support tickets:**
+
+| Collection | Client read access |
+|---|---|
+| `supportTickets/{ticketId}` | the requester who opened the ticket and any admin — direct client writes always denied |
+
+---
+
+## AI help placeholder
+
+### `createAiHelpThread`
+- **Auth required:** yes, role `customer` or `vendor`
+- **Request:** `{}` (empty object)
+- **Response:** `{ success: true, chatId: string, created: boolean }`
+- **Errors:** `unauthenticated`, `failed-precondition` (role could not be determined)
+- **Thread ID is deterministic:** `ai_help_{uid}`. Each user has exactly one AI help thread for their lifetime, keyed to their uid. Calling this function repeatedly is idempotent and always returns the same `chatId` with `created: false` after the first call.
+- **Important:** this is a placeholder. No language model or AI backend is connected. The thread contains exactly one system message of `type: "ai"` and `senderRole: "ai"` with a canned response directing the user to Contact Support. The content of this message explicitly states that AI assistance is not yet available. The frontend must not present this as a functional AI assistant. The reserved collection namespaces `evaKnowledgeBases`, `evaConversations`, `evaEscalations`, and `aiAuditLogs` exist in the architecture document for the future real implementation and must not be written to by any current code path.
+- **Side effects:** on first creation only, writes the `chatThreads/{chatId}` document and one `messages/{messageId}` document atomically in a transaction, guarded against race conditions from concurrent calls.
