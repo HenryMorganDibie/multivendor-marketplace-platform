@@ -960,6 +960,186 @@ async function section9() {
   });
 }
 
+async function section10() {
+  console.log("\n📋 Section 10: Support tickets (P3-FB-015) and AI help placeholder (P3-FB-016)");
+  let ticket1Id, ticket2Id;
+
+  await test("Customer can create a support ticket", async () => {
+    await signInAs(customerEmail);
+    const r = await httpsCallable(fns, "createSupportTicket")({
+      subject: "Payment not going through",
+      initialMessage: "My proof of payment keeps getting rejected.",
+    });
+    assert(r.data.success);
+    assert(r.data.created, "First call must create a new ticket");
+    ticket1Id = r.data.ticketId;
+    assertEqual(r.data.chatId, ticket1Id);
+
+    const threadSnap = await getDoc(doc(db, "chatThreads", ticket1Id));
+    assertEqual(threadSnap.data().chatType, "support");
+    assert(threadSnap.data().participants.includes(customerUid));
+
+    const ticketSnap = await getDoc(doc(db, "supportTickets", ticket1Id));
+    assertEqual(ticketSnap.data().status, "open");
+    assertEqual(ticketSnap.data().priority, "normal");
+    assertEqual(ticketSnap.data().requesterUid, customerUid);
+
+    const msgs = await getDocs(collection(db, "chatThreads", ticket1Id, "messages"));
+    assertEqual(msgs.size, 1);
+    assertEqual(msgs.docs[0].data().content, "My proof of payment keeps getting rejected.");
+  });
+
+  await test("Creating a second ticket while one is open returns the existing ticket, not a duplicate", async () => {
+    await signInAs(customerEmail);
+    const r = await httpsCallable(fns, "createSupportTicket")({
+      subject: "Different subject",
+      initialMessage: "A different message.",
+    });
+    assertEqual(r.data.created, false);
+    assertEqual(r.data.ticketId, ticket1Id);
+  });
+
+  await test("subject and initialMessage are required", async () => {
+    await signInAs(customerEmail);
+    await assertFnError(
+      httpsCallable(fns, "createSupportTicket")({ subject: "", initialMessage: "hi" }),
+      "invalid-argument"
+    );
+    await assertFnError(
+      httpsCallable(fns, "createSupportTicket")({ subject: "Subject", initialMessage: "" }),
+      "invalid-argument"
+    );
+  });
+
+  await test("A different customer cannot read another user's support ticket or thread", async () => {
+    await signInAs(secondCustomerEmail);
+    await assertDenied(getDoc(doc(db, "supportTickets", ticket1Id)));
+    await assertDenied(getDoc(doc(db, "chatThreads", ticket1Id)));
+  });
+
+  await test("supportTickets cannot be written directly by clients", async () => {
+    await signInAs(customerEmail);
+    await assertDenied(
+      setDoc(doc(db, "supportTickets", ticket1Id), { status: "resolved" }, { merge: true })
+    );
+  });
+
+  await test("Admin can assign a support ticket, joining the thread and setting priority", async () => {
+    await signInAs(adminEmail);
+    const r = await httpsCallable(fns, "assignSupportTicket")({ ticketId: ticket1Id, priority: "high" });
+    assert(r.data.success);
+
+    const ticketSnap = await getDoc(doc(db, "supportTickets", ticket1Id));
+    assertEqual(ticketSnap.data().status, "assigned");
+    assertEqual(ticketSnap.data().priority, "high");
+    assertEqual(ticketSnap.data().assignedAdminUid, adminUid);
+
+    const threadSnap = await getDoc(doc(db, "chatThreads", ticket1Id));
+    assert(threadSnap.data().participants.includes(adminUid), "Admin must be added as a thread participant");
+    assertEqual(threadSnap.data().participantRoles[adminUid], "admin");
+  });
+
+  await test("Assigning an invalid priority is rejected", async () => {
+    await signInAs(adminEmail);
+    await assertFnError(
+      httpsCallable(fns, "assignSupportTicket")({ ticketId: ticket1Id, priority: "extreme" }),
+      "invalid-argument"
+    );
+  });
+
+  await test("Non-admin cannot assign a support ticket", async () => {
+    await signInAs(customerEmail);
+    await assertFnError(
+      httpsCallable(fns, "assignSupportTicket")({ ticketId: ticket1Id }),
+      "permission-denied"
+    );
+  });
+
+  await test("A limited support_admin who is not the assigned agent (and not super_admin) cannot resolve the ticket", async () => {
+    const limitedEmail = `p3supportadmin_${Date.now()}@the platform.com`;
+    const limitedCred = await createUserWithEmailAndPassword(auth, limitedEmail, PASSWORD);
+    const limitedUid = limitedCred.user.uid;
+    await waitFor(async () => { const s = await getDoc(doc(db, "users", limitedUid)); return s.exists() ? s : null; });
+    await admin.auth().setCustomUserClaims(limitedUid, { role: "admin", adminRoleIds: ["support_admin"], claimsVersion: 1 });
+    await admin.firestore().collection("adminUsers").doc(limitedUid).set({
+      uid: limitedUid, email: limitedEmail, roleIds: ["support_admin"], status: "active",
+      mfaRequired: true, mfaEnrolled: false, createdByAdminUid: adminUid,
+      createdAt: admin.firestore.FieldValue.serverTimestamp(), updatedAt: admin.firestore.FieldValue.serverTimestamp(),
+      lastLoginAt: null, revokedAt: null, lastMfaAt: null,
+    });
+
+    await signInAs(limitedEmail);
+    await assertFnError(
+      httpsCallable(fns, "resolveSupportTicket")({ ticketId: ticket1Id }),
+      "permission-denied"
+    );
+  });
+
+  await test("The assigned admin can resolve the ticket", async () => {
+    await signInAs(adminEmail);
+    const r = await httpsCallable(fns, "resolveSupportTicket")({ ticketId: ticket1Id });
+    assert(r.data.success);
+
+    const ticketSnap = await getDoc(doc(db, "supportTickets", ticket1Id));
+    assertEqual(ticketSnap.data().status, "resolved");
+    assertEqual(ticketSnap.data().resolvedByAdminUid, adminUid);
+  });
+
+  await test("Assigning an already-resolved ticket fails", async () => {
+    await signInAs(adminEmail);
+    await assertFnError(
+      httpsCallable(fns, "assignSupportTicket")({ ticketId: ticket1Id }),
+      "failed-precondition"
+    );
+  });
+
+  await test("Customer can open a new ticket once the previous one is resolved", async () => {
+    await signInAs(customerEmail);
+    const r = await httpsCallable(fns, "createSupportTicket")({
+      subject: "Second issue",
+      initialMessage: "Now a different problem.",
+    });
+    assert(r.data.created, "A new ticket must be created once the prior one is resolved");
+    ticket2Id = r.data.ticketId;
+    assert(ticket2Id !== ticket1Id);
+  });
+
+  await test("Resolving a ticket that is not in 'assigned' status fails", async () => {
+    await signInAs(adminEmail);
+    await assertFnError(
+      httpsCallable(fns, "resolveSupportTicket")({ ticketId: ticket2Id }),
+      "failed-precondition"
+    );
+  });
+
+  await test("createAiHelpThread creates a deterministic per-user thread with a canned response", async () => {
+    await signInAs(customerEmail);
+    const r = await httpsCallable(fns, "createAiHelpThread")({});
+    assert(r.data.success);
+    assert(r.data.created, "First call must create the thread");
+    assertEqual(r.data.chatId, `ai_help_${customerUid}`);
+
+    const threadSnap = await getDoc(doc(db, "chatThreads", r.data.chatId));
+    assertEqual(threadSnap.data().chatType, "ai_help");
+    assertEqual(threadSnap.data().lastMessageType, "ai");
+
+    const msgs = await getDocs(collection(db, "chatThreads", r.data.chatId, "messages"));
+    assertEqual(msgs.size, 1);
+    assertEqual(msgs.docs[0].data().senderRole, "ai");
+    assertEqual(msgs.docs[0].data().type, "ai");
+  });
+
+  await test("createAiHelpThread is idempotent — no duplicate thread or message on repeat calls", async () => {
+    await signInAs(customerEmail);
+    const r = await httpsCallable(fns, "createAiHelpThread")({});
+    assertEqual(r.data.created, false);
+    assertEqual(r.data.chatId, `ai_help_${customerUid}`);
+
+    const msgs = await getDocs(collection(db, "chatThreads", r.data.chatId, "messages"));
+    assertEqual(msgs.size, 1, "Repeat calls must not create a second canned message");
+  });
+}
+
 async function main() {
   console.log("🚀 THE PLATFORM — Milestone 3 Acceptance Test Suite");
   console.log("=".repeat(60));
@@ -974,6 +1154,7 @@ async function main() {
   await section7();
   await section8();
   await section9();
+  await section10();
 
   console.log("\n" + "=".repeat(60));
   console.log(`Results: ${passed}/${total} passed, ${failed} failed`);
