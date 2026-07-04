@@ -52,3 +52,9 @@ export { blockUser, unblockUser } from "./blocks/blockFunctions";
 export { markNotificationRead, registerPushToken } from "./notifications/notificationFunctions";
 export { updateVendorNotificationPreferences,
          updateCustomerNotificationPreferences } from "./notifications/notificationPreferences";
+
+// ── Phase 3: Support tickets ──────────────────────────────────────────────────
+export { createSupportTicket, assignSupportTicket, resolveSupportTicket } from "./support/supportTicketFunctions";
+
+// ── Phase 3: AI help placeholder ──────────────────────────────────────────────
+export { createAiHelpThread } from "./ai/aiHelpFunctions";

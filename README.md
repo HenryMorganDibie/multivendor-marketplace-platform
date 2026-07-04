@@ -1,6 +1,6 @@
 # the platform Backend
 
-Firebase backend for the the platform multi-vendor marketplace. This repository covers three completed milestones: Auth/Users/Vendors/Verification, Catalog/Orders/Inventory/Payments/Receipts, and Commerce Chat/Notifications/Blocks/Pickup Auto-Send.
+Firebase backend for the the platform multi-vendor marketplace. This repository covers three completed milestones: Auth/Users/Vendors/Verification, Catalog/Orders/Inventory/Payments/Receipts, and Commerce Chat/Notifications/Blocks/Pickup Auto-Send/Support Tickets/AI Help Placeholder.
 
 ## Status
 
@@ -10,10 +10,10 @@ Status is described precisely rather than as a blanket "complete." Every row bel
 |---|---|
 | **Milestone 1** — Auth, users, vendors, verification, admin, security rules | 67/67 acceptance tests passing in developer environment |
 | **Milestone 2** — Catalog, cart pricing, orders, inventory, payment proofs, receipts | 61/61 acceptance tests passing in developer environment |
-| **Milestone 3** — Commerce chat, notifications, blocks, pickup auto-send | 85/85 acceptance tests passing in developer environment |
+| **Milestone 3** — Commerce chat, notifications, blocks, pickup auto-send, support tickets, AI help placeholder | 108/108 acceptance tests passing in developer environment |
 | App Check | Implemented in **monitor mode only** (see App Check Rollout below). Not yet enforced. |
 | Frontend integration contracts | See `docs/frontend-contracts-phase-1.md` — despite the filename, this document now covers all three milestones |
-| Production monitoring/alerting dashboards | Not yet implemented — infrastructure and operations work, tracked separately from this code delivery |
+| Production monitoring/alerting | Structured operational logging exists (`functions/src/utils/operationalLogging.ts`), with documented Cloud Monitoring alert filter conditions in that file's comments. Dashboards and the alerting policies themselves are not yet provisioned — that is Google Cloud console configuration outside this codebase, not application code |
 | Independent security audit | Not yet performed — see the Security Posture section below for an honest account of what has and has not been verified |
 
 "Acceptance tests passing in developer environment" means: run against the local Firebase Emulator Suite, on this developer's machine, as of the date of the corresponding test run. It is not a substitute for independent review, staging deployment, or production verification.
@@ -48,9 +48,9 @@ Each suite provisions its own test accounts and vendor with a timestamped, uniqu
 
 **Milestone 2** builds commerce on top of that identity layer: vendor catalog management with server-enforced plan limits, cart pricing that the backend computes authoritatively rather than trusting the client, the full order lifecycle from placement through completion, a 48-hour vendor acceptance SLA, payment proof submission with abuse limits, and receipt generation.
 
-**Milestone 3** adds real-time communication: a single persistent commerce thread per customer/vendor pair (not per order — new orders inject context into the existing thread), in-app and push notifications with quiet-hours and critical-notification handling, a block system with a documented active-order exception, and fully automatic pickup-details delivery with no manual send path anywhere in the system.
+**Milestone 3** adds real-time communication and customer support capabilities: a single persistent commerce thread per customer/vendor pair (not per order — new orders inject context into the existing thread), in-app and push notifications with quiet-hours and critical-notification handling, a block system with a documented active-order exception, fully automatic pickup-details delivery with no manual send path anywhere in the system, support ticket workflows, and an AI-help placeholder surface intended for future assistant integration.
 
-Full request/response contracts for every callable across all three milestones are in `docs/frontend-contracts-phase-1.md`.
+Full request/response contracts for every callable across all three milestones are in `docs/frontend-contracts.md`.
 
 ## App Check Rollout
 
@@ -84,7 +84,7 @@ This was a deliberate minimal-data-collection decision: it removes an entire cla
 
 No system should be described as fully secure without qualification, and this backend is not an exception. The following reflects an honest account of what has been verified against and what remains open.
 
-**What has been verified:** every Firestore collection carrying business-critical or sensitive data denies direct client writes and routes exclusively through Cloud Functions. Sensitive fields use narrow, allowlisted update rules rather than broad ownership checks — a user can mark their own notification read but cannot rewrite its title or body, for example. Authentication is delegated entirely to Firebase Auth rather than a custom credential store. Server-side business logic (block enforcement, country availability, order-state transitions) is re-validated on every relevant call rather than trusted from client state. All 213 acceptance tests across the three milestones include denial-path cases, not just success-path cases.
+**What has been verified:** every Firestore collection carrying business-critical or sensitive data denies direct client writes and routes exclusively through Cloud Functions. Sensitive fields use narrow, allowlisted update rules rather than broad ownership checks — a user can mark their own notification read but cannot rewrite its title or body, for example. Authentication is delegated entirely to Firebase Auth rather than a custom credential store. Server-side business logic (block enforcement, country availability, order-state transitions) is re-validated on every relevant call rather than trusted from client state. All 236 acceptance tests across the three milestones include denial-path cases, not just success-path cases.
 
 **What remains open:** App Check enforcement, as described above, is not yet active. No independent, adversarial security audit has been performed on the deployed rules and Cloud Functions — everything here has passed rigorous self-review and automated testing, which is not equivalent to a third party whose sole objective is finding a way through it. One historical bug (a Firestore rules wildcard that unintentionally granted broader write access than intended to a subset of Milestone 3 settings documents) was found and fixed during Milestone 3 development; this raises the possibility, not yet ruled out, that a similar latent rule collision exists elsewhere in `firestore.rules`. A full manual pass through every `match` block, specifically checking for cases where a general wildcard and a more specific match both apply to the same path, is recommended before production launch. Request-size and payload-complexity limits are not uniformly enforced across every callable, which is a resource-exhaustion consideration even where it is not a data-integrity risk.
 

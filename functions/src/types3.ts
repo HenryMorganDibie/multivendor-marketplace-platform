@@ -368,6 +368,49 @@ export const QUICK_REPLY_LIMITS = {
   maxPerVendor: 20,
 } as const;
 
+// ─── Support tickets (P3-FB-015) ────────────────────────────────────────────────
+
+/**
+ * A support ticket wraps exactly one chatThreads document with
+ * chatType: "support". The chatThreads document remains the source of
+ * truth for participants, messages, and read state, following the same
+ * generic mechanics already built for commerce threads. This document
+ * carries the ticket-lifecycle fields that a commerce thread has no
+ * concept of: status, priority, and admin assignment.
+ *
+ * One open ticket per requester at a time is enforced at creation time,
+ * mirroring the "one canonical thread" discipline already established
+ * for commerce conversations, so a requester cannot flood the queue with
+ * duplicate open tickets for the same underlying issue.
+ */
+export type SupportTicketStatus = "open" | "assigned" | "resolved" | "closed";
+export type SupportTicketPriority = "low" | "normal" | "high" | "urgent";
+
+export interface SupportTicketDoc {
+  ticketId: string;       // same value as the underlying chatId
+  chatId: string;
+  requesterUid: string;
+  requesterRole: "customer" | "vendor";
+  subject: string;
+
+  status: SupportTicketStatus;
+  priority: SupportTicketPriority;
+
+  assignedAdminUid?: string | null;
+  assignedAt?: firestore.Timestamp | firestore.FieldValue | null;
+
+  resolvedAt?: firestore.Timestamp | firestore.FieldValue | null;
+  resolvedByAdminUid?: string | null;
+  closedAt?: firestore.Timestamp | firestore.FieldValue | null;
+
+  createdAt: firestore.Timestamp | firestore.FieldValue;
+  updatedAt: firestore.Timestamp | firestore.FieldValue;
+}
+
+export const SUPPORT_TICKET_LIMITS = {
+  maxSubjectLength: 150,
+} as const;
+
 // ─── Pickup settings ────────────────────────────────────────────────────────────
 
 export interface PickupAddress {

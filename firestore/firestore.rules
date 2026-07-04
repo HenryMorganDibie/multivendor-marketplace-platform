@@ -448,6 +448,24 @@ service cloud.firestore {
     }
 
     // -----------------------------------------------------------------------
+    // Phase 3: Support tickets (P3-FB-015)
+    // Readable by the requester who opened the ticket, by the currently
+    // assigned admin, and by any admin generally for queue visibility.
+    // All writes go through createSupportTicket, assignSupportTicket, and
+    // resolveSupportTicket, never direct client writes, since ticket
+    // status transitions carry business rules (only the assigned agent or
+    // a super_admin may resolve) that a Firestore rule cannot express as
+    // cleanly as the Cloud Functions that already enforce it.
+    // -----------------------------------------------------------------------
+    match /supportTickets/{ticketId} {
+      allow read: if isSignedIn() && (
+        request.auth.uid == resource.data.requesterUid
+        || isAdmin()
+      );
+      allow create, update, delete: if false;
+    }
+
+    // -----------------------------------------------------------------------
     // Phase 3: Blocks
     // Only the blocker can read their own blocked-list entries. The
     // blocked party cannot see themselves in anyone's list (no read rule

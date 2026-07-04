@@ -3,6 +3,7 @@ import { db, FieldValue } from "../admin";
 import { MessageDoc, PickupDetailsPayload, VendorPickupSettingsDoc } from "../types3";
 import { commerceThreadId } from "../chat/createCommerceConversation";
 import { createNotificationInternal } from "../notifications/notificationFunctions";
+import { logOperationalEvent } from "../utils/operationalLogging";
 
 /**
  * sendPickupDetailsIfEligible — NOT client-callable. Invoked internally
@@ -121,7 +122,16 @@ export async function sendPickupDetailsIfEligible(orderId: string): Promise<void
       });
     });
   } catch (err) {
-    logger.error(`sendPickupDetailsIfEligible transaction failed for order ${orderId}`, err);
+    logOperationalEvent({
+      functionName: "sendPickupDetailsIfEligible",
+      event: "unhandled_error",
+      severity: "ERROR",
+      metadata: {
+        orderId,
+        vendorId,
+        errorMessage: err instanceof Error ? err.message : String(err),
+      },
+    });
     return;
   }
 

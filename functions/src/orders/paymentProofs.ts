@@ -6,6 +6,7 @@ import { writeAuditLog } from "../utils/auditLog";
 import { newRequestId } from "../utils/requestContext";
 import { writeOrderEvent } from "./orderEvents";
 import { sendPickupDetailsIfEligible } from "../chat/sendPickupDetails";
+import { logOperationalEvent } from "../utils/operationalLogging";
 const MAX_SUBMISSIONS = 2, MAX_IMAGES = 3;
 export const submitPaymentProof = https.onCall(async (request) => {
   const requestId = newRequestId();
@@ -31,6 +32,12 @@ export const submitPaymentProof = https.onCall(async (request) => {
   if (totalSubmissions >= MAX_SUBMISSIONS) {
     if (lastProof && existingSnap.docs.length > 0) { await existingSnap.docs[0].ref.update({ status: "LOCKED", updatedAt: FieldValue.serverTimestamp() }); await orderRef.update({ paymentStatus: "PROOF_LOCKED", updatedAt: FieldValue.serverTimestamp() }); }
     await writeOrderEvent({ orderId, vendorId: order.vendorId, eventType: "PAYMENT_PROOF_LIMIT_REACHED", actorUid: customerId, actorRole: "customer", metadata: { submissionCount: totalSubmissions } });
+    logOperationalEvent({
+      functionName: "submitPaymentProof",
+      event: "PAYMENT_PROOF_LIMIT_REACHED",
+      severity: "WARNING",
+      metadata: { orderId, vendorId: order.vendorId, customerId, submissionCount: totalSubmissions },
+    });
     throw new https.HttpsError("resource-exhausted", "Maximum payment proof submissions reached (2). Contact the vendor directly.");
   }
   const now = FieldValue.serverTimestamp();
