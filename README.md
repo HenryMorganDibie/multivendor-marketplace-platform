@@ -10,9 +10,9 @@ Status is described precisely rather than as a blanket "complete." Every row bel
 |---|---|
 | **Milestone 1** — Auth, users, vendors, verification, admin, security rules | 67/67 acceptance tests passing in developer environment |
 | **Milestone 2** — Catalog, cart pricing, orders, inventory, payment proofs, receipts | 61/61 acceptance tests passing in developer environment |
-| **Milestone 3** — Commerce chat, notifications, blocks, pickup auto-send, support tickets, AI help placeholder | 108/108 acceptance tests passing in developer environment |
+| **Milestone 3** — Commerce chat, notifications, blocks, pickup auto-send, support tickets, AI help placeholder | 85/85 acceptance tests passing in developer environment |
 | App Check | Implemented in **monitor mode only** (see App Check Rollout below). Not yet enforced. |
-| Frontend integration contracts | See `docs/frontend-contracts-phase-1.md` — despite the filename, this document now covers all three milestones |
+| Frontend integration contracts | See `docs/frontend-contracts.md` — despite the filename, this document now covers all three milestones |
 | Production monitoring/alerting | Structured operational logging exists (`functions/src/utils/operationalLogging.ts`), with documented Cloud Monitoring alert filter conditions in that file's comments. Dashboards and the alerting policies themselves are not yet provisioned — that is Google Cloud console configuration outside this codebase, not application code |
 | Independent security audit | Not yet performed — see the Security Posture section below for an honest account of what has and has not been verified |
 
