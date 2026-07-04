@@ -48,7 +48,7 @@ Each suite provisions its own test accounts and vendor with a timestamped, uniqu
 
 **Milestone 2** builds commerce on top of that identity layer: vendor catalog management with server-enforced plan limits, cart pricing that the backend computes authoritatively rather than trusting the client, the full order lifecycle from placement through completion, a 48-hour vendor acceptance SLA, payment proof submission with abuse limits, and receipt generation.
 
-**Milestone 3** adds real-time communication and customer support capabilities: a single persistent commerce thread per customer/vendor pair (not per order — new orders inject context into the existing thread), in-app and push notifications with quiet-hours and critical-notification handling, a block system with a documented active-order exception, fully automatic pickup-details delivery with no manual send path anywhere in the system, support ticket workflows, and an AI-help placeholder surface intended for future assistant integration.
+**Milestone 3** adds real-time communication and customer support capabilities: a single persistent commerce thread per customer/vendor pair (not per order — new orders inject context into the existing thread), in-app and push notifications with quiethours and critical-notification handling, a block system with a documented active-order exception, fully automatic pickup-details delivery with no manual send path anywhere in the system, support ticket workflows, and an AI-help placeholder surface intended for future assistant integration.
 
 Full request/response contracts for every callable across all three milestones are in `docs/frontend-contracts.md`.
 
