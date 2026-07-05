@@ -3,7 +3,7 @@ import { db, FieldValue } from "../admin";
 import { ChatThreadDoc, MessageDoc, VendorChatSettingsDoc, VENDOR_CHAT_SETTINGS_DEFAULTS } from "../types3";
 import { checkAppCheck } from "../utils/appCheck";
 import { newRequestId } from "../utils/requestContext";
-import { recordModerationEvent, runModerationCheck } from "../moderation/moderationEngine";
+import { applyUserModerationScore, recordModerationEvent, runModerationCheck } from "../moderation/moderationEngine";
 
 /**
  * sendAwayMessageIfEligible — internal helper invoked from sendChatMessage
@@ -99,7 +99,7 @@ export const updateVendorChatSettings = https.onCall(async (request) => {
   for (const [label, text] of [["greetingMessage", greetingMessage], ["awayMessage", awayMessage]] as const) {
     if (!text?.trim()) continue;
     const result = await runModerationCheck(text, "chat");
-    if (result.blocked) {
+    if (result.status !== "clean") {
       await recordModerationEvent({
         actorUid: request.auth.uid,
         actorRole: "vendor",
@@ -109,6 +109,9 @@ export const updateVendorChatSettings = https.onCall(async (request) => {
         rawText: text,
         result,
       });
+      await applyUserModerationScore(request.auth.uid, result.score);
+    }
+    if (result.blocked) {
       throw new https.HttpsError(
         "invalid-argument",
         `${label} contains content that is not allowed on the platform.`

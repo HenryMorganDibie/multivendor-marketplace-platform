@@ -60,4 +60,4 @@ export { createSupportTicket, assignSupportTicket, resolveSupportTicket } from "
 export { createAiHelpThread } from "./ai/aiHelpFunctions";
 
 // ── Phase 3: Moderation ────────────────────────────────────────────────────────
-export { seedDefaultModerationRules } from "./moderation/moderationAdmin";
+export { seedDefaultModerationRules, reviewModerationRestriction } from "./moderation/moderationAdmin";

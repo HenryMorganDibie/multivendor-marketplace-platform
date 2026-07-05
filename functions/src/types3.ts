@@ -499,7 +499,9 @@ export type ModerationCategory =
   | "abusive_language"
   | "dangerous_medical_claims"
   | "gambling"
-  | "raw_restricted_food";
+  | "raw_restricted_food"
+  | "child_exploitation"
+  | "terrorism";
 
 export type ModerationSeverity = "low" | "medium" | "high" | "critical";
 
@@ -528,6 +530,14 @@ export interface ModerationRuleDoc {
   severity: ModerationSeverity;
   action: ModerationAction;
   appliesTo: ModerationAppliesTo;
+  // Per-user cumulative trust score contribution for this specific rule,
+  // overriding the generic severity-based weight. Needed because some
+  // signals (a WhatsApp link, a phone number) carry a materially different
+  // real-world risk than their block/flag severity alone implies — e.g. a
+  // phone number is only "low" severity (never blocks a message on its
+  // own) but should weigh more than an ordinary low-severity insult toward
+  // the account-level score. See moderationEngine.ts SEVERITY_WEIGHT.
+  scoreOverride?: number;
   isActive: boolean;
   createdAt: firestore.Timestamp | firestore.FieldValue;
   updatedAt: firestore.Timestamp | firestore.FieldValue;

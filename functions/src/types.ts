@@ -62,6 +62,19 @@ export interface UserDoc {
     analyticsOptOut: boolean;
   };
 
+  // Cumulative moderation trust score (P3-FB-021), server-only. Escalates
+  // accountStatus to "frozen" (temporary restriction) at 50 and "banned"
+  // (auto-suspension pending review) at 100 — reusing the same
+  // AccountStatus enum every other access check in this codebase already
+  // respects, rather than inventing a parallel status field nothing else
+  // knows to look at. Never decreases automatically; only an admin
+  // reviewing the account (reviewModerationRestriction) resets it.
+  moderationScore?: number;
+  moderationStatusReason?: string | null;
+  moderationWarnedAt?: firestore.Timestamp | firestore.FieldValue | null;
+  moderationRestrictedAt?: firestore.Timestamp | firestore.FieldValue | null;
+  moderationBannedAt?: firestore.Timestamp | firestore.FieldValue | null;
+
   createdAt: firestore.Timestamp | firestore.FieldValue;
   updatedAt: firestore.Timestamp | firestore.FieldValue;
   lastLoginAt?: firestore.Timestamp | firestore.FieldValue;

@@ -1209,20 +1209,67 @@ async function section11() {
     assertEqual(after.size, before.size, "A blocked message must never be persisted");
   });
 
+  // Critical-severity content scores +100 against the account (matching the
+  // "100 points -> automatic suspension" spec), which immediately crosses
+  // the ban threshold in a single message. That escalation is account-wide,
+  // not message-wide, so it must NOT happen on customerEmail (reused by
+  // every other test in this section) — a dedicated throwaway account
+  // carries the rest of this narrative: one critical block, immediate
+  // account-wide lockout, then an explicit admin review path back.
+  let criticalEmail, criticalUid, criticalChatId;
+
   await test("Critical-severity content (weapons) BLOCKS the message", async () => {
-    await signInAs(customerEmail);
+    criticalEmail = `p3modcrit_${Date.now()}@test.com`;
+    const cred = await createUserWithEmailAndPassword(auth, criticalEmail, PASSWORD);
+    criticalUid = cred.user.uid;
+    await waitFor(async () => { const s = await getDoc(doc(db, "users", criticalUid)); return s.exists() ? s : null; });
+    await signInAs(criticalEmail);
+    // Create the thread BEFORE the ban lands — createCommerceConversation
+    // itself checks accountStatus === "active" ahead of its idempotent
+    // thread lookup, so it could never be called again once this account
+    // is banned. Every later step in this test reuses this same chatId.
+    const convo = await httpsCallable(fns, "createCommerceConversation")({ vendorId });
+    criticalChatId = convo.data.chatId;
     await assertFnError(
-      httpsCallable(fns, "sendChatMessage")({ chatId: modChatId, type: "text", content: "I want to buy a gun" }),
+      httpsCallable(fns, "sendChatMessage")({ chatId: criticalChatId, type: "text", content: "I want to buy a gun" }),
       "invalid-argument"
     );
   });
 
-  await test("Critical-severity content (phishing) BLOCKS the message", async () => {
+  await test("A single critical match immediately bans the account (cumulative score >= 100)", async () => {
+    const userSnap = await admin.firestore().collection("users").doc(criticalUid).get();
+    assertEqual(userSnap.data().accountStatus, "banned");
+    assert(userSnap.data().moderationScore >= 100);
+  });
+
+  await test("Once banned, ANY further message — even clean content — is rejected account-wide", async () => {
+    await signInAs(criticalEmail);
+    await assertFnError(
+      httpsCallable(fns, "sendChatMessage")({ chatId: criticalChatId, type: "text", content: "hello, just saying hi" }),
+      "permission-denied"
+    );
+  });
+
+  await test("Non-admin cannot review/clear a moderation restriction", async () => {
     await signInAs(customerEmail);
     await assertFnError(
-      httpsCallable(fns, "sendChatMessage")({ chatId: modChatId, type: "text", content: "please send your otp now" }),
-      "invalid-argument"
+      httpsCallable(fns, "reviewModerationRestriction")({ uid: criticalUid, decision: "clear" }),
+      "permission-denied"
     );
+  });
+
+  await test("Admin can clear a moderation restriction after review, restoring access", async () => {
+    await signInAs(adminEmail);
+    const r = await httpsCallable(fns, "reviewModerationRestriction")({ uid: criticalUid, decision: "clear" });
+    assert(r.data.success);
+
+    const userSnap = await admin.firestore().collection("users").doc(criticalUid).get();
+    assertEqual(userSnap.data().accountStatus, "active");
+    assertEqual(userSnap.data().moderationScore, 0);
+
+    await signInAs(criticalEmail);
+    const sendResult = await httpsCallable(fns, "sendChatMessage")({ chatId: criticalChatId, type: "text", content: "hello again" });
+    assert(sendResult.data.success, "Cleared account must be able to send again");
   });
 
   await test("Client cannot set moderationStatus manually — server-computed value always wins", async () => {
@@ -1292,6 +1339,65 @@ async function section11() {
   });
 }
 
+async function section12() {
+  console.log("\n📋 Section 12: Catalog moderation, PII detection, and expanded critical categories (P3-FB-021)");
+  let section12ChatId;
+
+  await test("Setup: reuse the customer/vendor commerce thread", async () => {
+    await signInAs(customerEmail);
+    const r = await httpsCallable(fns, "createCommerceConversation")({ vendorId });
+    section12ChatId = r.data.chatId; // idempotent — same thread as Section 11's modChatId
+  });
+
+  await test("Catalog listing for a prohibited item is blocked outright", async () => {
+    await signInAs(vendorEmail);
+    await assertFnError(
+      httpsCallable(fns, "createCatalogItem")({ name: "Pistol for sale, cheap", basePrice: 5000, currency: "NGN", isAvailable: true }),
+      "invalid-argument"
+    );
+  });
+
+  await test("Catalog listing with normal content is accepted", async () => {
+    await signInAs(vendorEmail);
+    const r = await httpsCallable(fns, "createCatalogItem")({ name: "Second Safe Item", basePrice: 800, currency: "NGN", isAvailable: true });
+    assert(r.data.success);
+  });
+
+  await test("updateCatalogItem also rejects a prohibited-item rename", async () => {
+    await signInAs(vendorEmail);
+    const created = await httpsCallable(fns, "createCatalogItem")({ name: "Placeholder Name", basePrice: 100, currency: "NGN", isAvailable: true });
+    await assertFnError(
+      httpsCallable(fns, "updateCatalogItem")({ itemId: created.data.itemId, name: "Raw chicken, farm fresh" }),
+      "invalid-argument"
+    );
+  });
+
+  await test("A shared phone number is flagged (never blocked), and contributes to moderation score", async () => {
+    await signInAs(customerEmail);
+    const r = await httpsCallable(fns, "sendChatMessage")({ chatId: section12ChatId, type: "text", content: "You can reach me at +2348012345678" });
+    assert(r.data.success, "A phone number alone must never block a message");
+    const msgSnap = await getDoc(doc(db, "chatThreads", section12ChatId, "messages", r.data.messageId));
+    assertEqual(msgSnap.data().moderationStatus, "flagged");
+    assert(msgSnap.data().moderationScore > 0);
+  });
+
+  await test("A WhatsApp link is flagged (never blocked)", async () => {
+    await signInAs(customerEmail);
+    const r = await httpsCallable(fns, "sendChatMessage")({ chatId: section12ChatId, type: "text", content: "here is my number wa.me/2348012345678" });
+    assert(r.data.success, "A WhatsApp link alone must never block a message");
+    const msgSnap = await getDoc(doc(db, "chatThreads", section12ChatId, "messages", r.data.messageId));
+    assertEqual(msgSnap.data().moderationStatus, "flagged");
+  });
+
+  await test("Terrorism-related content BLOCKS the message", async () => {
+    await signInAs(customerEmail);
+    await assertFnError(
+      httpsCallable(fns, "sendChatMessage")({ chatId: section12ChatId, type: "text", content: "ask me about isis" }),
+      "invalid-argument"
+    );
+  });
+}
+
 async function main() {
   console.log("🚀 THE PLATFORM — Milestone 3 Acceptance Test Suite");
   console.log("=".repeat(60));
@@ -1308,6 +1414,7 @@ async function main() {
   await section9();
   await section10();
   await section11();
+  await section12();
 
   console.log("\n" + "=".repeat(60));
   console.log(`Results: ${passed}/${total} passed, ${failed} failed`);

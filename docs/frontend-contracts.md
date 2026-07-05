@@ -222,7 +222,7 @@ General notes specific to Milestone 2:
   }
   ```
 - **Response:** `{ success: true, itemId: string }`
-- **Errors:** `invalid-argument` (missing name or negative price), `not-found` (vendor doc missing), `resource-exhausted` (plan catalog limit reached — see table below)
+- **Errors:** `invalid-argument` (missing name or negative price; **or `name`/`description` blocked by moderation — message: `"This listing contains content that is not allowed on the platform."`, see Chat moderation below**), `not-found` (vendor doc missing), `resource-exhausted` (plan catalog limit reached — see table below)
 - **Plan limits (server-enforced, counted on visible items only):**
 
   | Plan | Max visible items |
@@ -238,7 +238,7 @@ General notes specific to Milestone 2:
 - **Auth required:** yes, role `vendor`, must own the item
 - **Request:** `{ itemId: string, ...anyEditableField }`
 - **Response:** `{ success: true }`
-- **Errors:** `not-found`, `permission-denied` (not the owner), `invalid-argument` (negative price)
+- **Errors:** `not-found`, `permission-denied` (not the owner), `invalid-argument` (negative price; or `name`/`description` blocked by moderation, same as `createCatalogItem` — only checked when one of those two fields is present in the update)
 - **Note:** the server silently strips `itemId`, `vendorId`, `reservedQuantity`, `orderCount`, `moderationStatus`, `createdAt` from the update payload even if present in the request. These fields are never client-writable.
 
 ### `deleteCatalogItem`
@@ -587,9 +587,14 @@ Support tickets use a dual-document model. Each ticket creates both a `chatThrea
 
 ## Chat moderation (P3-FB-021)
 
-A rule-based content moderation layer that runs inside `sendChatMessage`, `updateVendorChatSettings`, and `createQuickReply` / `updateQuickReply` before anything is saved. It is a **flagging system first**, not an aggressive hard-ban system — the platform does not process payments in-app, so ordinary commerce phrases (`bank transfer`, `proof of payment`, `call me`, `contact me`, etc.) are never flagged on their own. They only contribute to a flag when they co-occur in the same message with a genuine off-platform-avoidance phrase (`pay outside the platform`, `message me on WhatsApp to order`, `DM for price`, etc.).
+A rule-based content moderation layer that runs inside `sendChatMessage`, `updateVendorChatSettings`, `createQuickReply` / `updateQuickReply`, and `createCatalogItem` / `updateCatalogItem` before anything is saved. For chat it is a **flagging system first**, not an aggressive hard-ban system — the platform does not process payments in-app, so ordinary commerce phrases (`bank transfer`, `proof of payment`, `call me`, `contact me`, etc.) are never flagged on their own. They only contribute to a flag when they co-occur in the same message with a genuine off-platform-avoidance phrase (`pay outside the platform`, `message me on WhatsApp to order`, `DM for price`, etc.). Catalog listings are stricter: any prohibited-item match (weapons, drugs, counterfeit documents, etc.) in a listing's name or description blocks the write outright — there is no flag-only tier for a catalog listing the way there is for chat.
 
-**What the frontend actually needs to handle:** the `invalid-argument` / `"This message contains content that is not allowed on the platform."` error shape documented on `sendChatMessage` above. Everything else (rule config, moderation events, risk scoring) is backend-internal and has no client-facing surface in this milestone — there is no moderation queue UI in Phase 3; that is deferred to Phase 5 admin tooling.
+**What the frontend actually needs to handle:**
+- The `invalid-argument` / `"This message contains content that is not allowed on the platform."` error from `sendChatMessage`, and the equivalent `"This listing contains content that is not allowed on the platform."` from `createCatalogItem` / `updateCatalogItem`.
+- Two account-level errors that can now surface from `sendChatMessage` (and from `createCommerceConversation`'s existing `accountStatus` check) once a user's cumulative moderation score crosses an internal threshold:
+  - `permission-denied` / `"Your account has been suspended pending review."` — `accountStatus: "banned"`. The account cannot send anything until an admin reviews it via `reviewModerationRestriction`.
+  - `failed-precondition` / `"Your account has temporary messaging restrictions pending review."` — `accountStatus: "frozen"`, a lighter, still-admin-reviewed restriction.
+- Everything else (rule config, moderation events, per-thread risk scoring, the per-user trust score itself) is backend-internal and has no other client-facing surface in this milestone — there is no moderation queue UI in Phase 3; that is deferred to Phase 5 admin tooling.
 
 **Rules are backend-managed config, not hardcoded** — they live in the `moderationRules` Firestore collection (admin-readable only, never client-readable or writable) and are bootstrapped via `seedDefaultModerationRules`, documented below for completeness even though it is an admin/ops action, not something the customer or vendor apps call.
 
@@ -601,12 +606,21 @@ A rule-based content moderation layer that runs inside `sendChatMessage`, `updat
 - **Idempotent:** upserts a fixed default rule set by deterministic rule ID; calling it again does not create duplicates or change `ruleCount` if the defaults haven't changed.
 - **Not for frontend use.** This exists for initial environment bootstrap and is intended to be superseded by direct rule editing once Phase 5 admin tooling exists.
 
+### `reviewModerationRestriction`
+- **Auth required:** yes, role `admin` with `super_admin` or `safety_admin`
+- **Request:** `{ uid: string, decision: "clear" | "confirm_ban" }`
+- **Response:** `{ success: true }`
+- **Errors:** `permission-denied`, `not-found` (user doc missing), `invalid-argument` (bad `decision`)
+- **Not for frontend use in this milestone** — the customer/vendor apps never call this. It exists so a `frozen`/`banned` account (see below) has a real unblock path, even before Phase 5 builds an admin screen around it. `"clear"` resets the account to `active` and zeroes its moderation score; `"confirm_ban"` makes a ban permanent after human review.
+
 **Severity → behavior mapping (for reference, not something the frontend computes):**
 
 | Rule severity | Typical action | Message outcome |
 |---|---|---|
 | low / medium | `allow_flag` / `hold_for_review` | Sent normally; saved with `moderationStatus: "flagged"` or `"needs_review"` |
-| high / critical | `block_message` | Rejected with `invalid-argument`, never saved |
+| high / critical | `block_message` | Rejected with `invalid-argument`, never saved (chat); catalog listings always use this tier |
+
+**Account-level trust score (for reference — not client-computed or client-visible):** every moderation match, in chat or catalog, adds to a per-user cumulative score (PII/off-platform-link patterns like phone numbers and WhatsApp/Telegram links count too, even though they never block a single message on their own). At 50 points `accountStatus` becomes `frozen`; at 100, `banned`. Both are one-way until an admin calls `reviewModerationRestriction` — see the account-level errors listed above.
 
 **Firestore collections added for moderation:**
 
@@ -614,3 +628,5 @@ A rule-based content moderation layer that runs inside `sendChatMessage`, `updat
 |---|---|
 | `moderationRules/{ruleId}` | admin only — direct client writes always denied |
 | `moderationEvents/{eventId}` | admin only — direct client writes always denied; never contains raw message text, only a hash and a redacted snippet |
+
+**Fields added to the existing `users/{uid}` document:** `moderationScore`, `moderationStatusReason`, `moderationWarnedAt`, `moderationRestrictedAt`, `moderationBannedAt` — all server-only, never client-writable, and not intended for the frontend to read or display in this milestone.

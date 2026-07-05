@@ -8,7 +8,7 @@ import { canContinueExistingThread } from "../blocks/blockUtils";
 import { isCountryActive } from "../utils/countryAvailability";
 import { createNotificationInternal } from "../notifications/notificationFunctions";
 import { sendAwayMessageIfEligible } from "./awayMessage";
-import { recordModerationEvent, runModerationCheck } from "../moderation/moderationEngine";
+import { applyUserModerationScore, checkUserModerationRestriction, recordModerationEvent, runModerationCheck } from "../moderation/moderationEngine";
 
 const MAX_ATTACHMENTS = 5;
 const MAX_ATTACHMENT_BYTES = 15 * 1024 * 1024; // 15MB, matches Phase 1 verification doc limit
@@ -63,6 +63,19 @@ export const sendChatMessage = https.onCall(async (request) => {
 
   if (!thread.participants.includes(senderUid)) {
     throw new https.HttpsError("permission-denied", "You are not a participant in this conversation.");
+  }
+
+  // Account-level moderation restriction (P3-FB-021) — a cumulative trust
+  // score crossing 50/100 escalates accountStatus to "frozen"/"banned"
+  // (see moderationEngine.applyUserModerationScore). Checked before any
+  // per-message content check, since a suspended account shouldn't be able
+  // to send anything at all, clean or not.
+  const restriction = await checkUserModerationRestriction(senderUid);
+  if (restriction.blocked) {
+    throw new https.HttpsError("permission-denied", "Your account has been suspended pending review.");
+  }
+  if (restriction.restricted) {
+    throw new https.HttpsError("failed-precondition", "Your account has temporary messaging restrictions pending review.");
   }
 
   // Support and AI-help threads skip commerce-specific block/country/order checks
@@ -126,6 +139,7 @@ export const sendChatMessage = https.onCall(async (request) => {
       rawText: textToModerate,
       result: moderation,
     });
+    await applyUserModerationScore(senderUid, moderation.score);
     throw new https.HttpsError("invalid-argument", "This message contains content that is not allowed on the platform.");
   }
 
@@ -210,6 +224,7 @@ export const sendChatMessage = https.onCall(async (request) => {
       rawText: textToModerate,
       result: moderation,
     });
+    await applyUserModerationScore(senderUid, moderation.score);
   }
 
   // Notify all recipients (never the sender)

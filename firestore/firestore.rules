@@ -110,7 +110,9 @@ service cloud.firestore {
       ];
       let serverOnly = [
         'role', 'accountStatus', 'vendorId', 'claimsVersion',
-        'createdAt', 'lastLoginAt', 'uid', 'email', 'phoneNumber'
+        'createdAt', 'lastLoginAt', 'uid', 'email', 'phoneNumber',
+        'moderationScore', 'moderationStatusReason',
+        'moderationWarnedAt', 'moderationRestrictedAt', 'moderationBannedAt'
       ];
       return request.resource.data.keys().hasOnly(clientEditable.concat(serverOnly))
           && unchanged('role')
@@ -121,7 +123,12 @@ service cloud.firestore {
           && unchanged('lastLoginAt')
           && unchanged('uid')
           && unchanged('email')
-          && unchanged('phoneNumber');
+          && unchanged('phoneNumber')
+          && unchanged('moderationScore')
+          && unchanged('moderationStatusReason')
+          && unchanged('moderationWarnedAt')
+          && unchanged('moderationRestrictedAt')
+          && unchanged('moderationBannedAt');
     }
 
     // Vendor owner update allowlist — every server-only field must be

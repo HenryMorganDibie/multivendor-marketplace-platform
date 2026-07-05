@@ -22,11 +22,17 @@ import {
  */
 
 const SEVERITY_WEIGHT: Record<ModerationSeverity, number> = {
-  low: 1,
-  medium: 3,
-  high: 7,
-  critical: 12,
+  low: 2,
+  medium: 5,
+  high: 10,
+  critical: 100,
 };
+
+// Per-user cumulative trust-score thresholds. Escalation only — an admin
+// must review and reset via reviewModerationRestriction, never automatic.
+const SCORE_THRESHOLD_WARN = 20;
+const SCORE_THRESHOLD_RESTRICT = 50;
+const SCORE_THRESHOLD_SUSPEND = 100;
 
 const SEVERITY_RANK: Record<ModerationSeverity, number> = {
   low: 0,
@@ -39,14 +45,6 @@ const SEVERITY_RANK: Record<ModerationSeverity, number> = {
 // restrictive configured action wins, never an average or a guess.
 const ACTION_PRIORITY: ModerationAction[] = ["block_message", "hold_for_review", "admin_alert", "allow_flag"];
 
-let cachedRules: { rules: ModerationRuleDoc[]; appliesTo: ModerationAppliesTo; expiresAt: number } | null = null;
-const CACHE_TTL_MS = 60_000;
-
-/** Exposed for tests only, to force a fresh Firestore read after seeding/editing rules. */
-export function clearModerationRuleCache(): void {
-  cachedRules = null;
-}
-
 export function normalizeText(raw: string): string {
   return raw
     .normalize("NFKC")
@@ -55,17 +53,22 @@ export function normalizeText(raw: string): string {
     .trim();
 }
 
+/**
+ * Deliberately uncached. A module-level cache here would be a per-process,
+ * per-Cloud-Functions-instance snapshot — the emulator (and production,
+ * across multiple instances) does not guarantee the instance that just
+ * seeded/edited a rule is the same one serving the next request, so a
+ * "clear the cache" call after a rules edit only ever clears one
+ * instance's copy. Rules changes are rare (an admin action, not a hot
+ * path), so a plain Firestore read on every check is the correct
+ * trade — always-consistent over marginally faster.
+ */
 async function loadActiveRules(appliesTo: ModerationAppliesTo): Promise<ModerationRuleDoc[]> {
-  if (cachedRules && cachedRules.appliesTo === appliesTo && cachedRules.expiresAt > Date.now()) {
-    return cachedRules.rules;
-  }
   const snap = await db.collection("moderationRules")
     .where("appliesTo", "==", appliesTo)
     .where("isActive", "==", true)
     .get();
-  const rules = snap.docs.map((d) => d.data() as ModerationRuleDoc);
-  cachedRules = { rules, appliesTo, expiresAt: Date.now() + CACHE_TTL_MS };
-  return rules;
+  return snap.docs.map((d) => d.data() as ModerationRuleDoc);
 }
 
 function ruleMatches(normalizedText: string, rule: ModerationRuleDoc): boolean {
@@ -121,7 +124,7 @@ export async function runModerationCheck(
   // match, now that at least one standalone match justifies counting them.
   const qualifying = allMatches;
 
-  const score = qualifying.reduce((sum, r) => sum + SEVERITY_WEIGHT[r.severity], 0);
+  const score = qualifying.reduce((sum, r) => sum + (r.scoreOverride ?? SEVERITY_WEIGHT[r.severity]), 0);
   const topSeverity = qualifying.reduce<ModerationSeverity>(
     (worst, r) => (SEVERITY_RANK[r.severity] > SEVERITY_RANK[worst] ? r.severity : worst),
     "low"
@@ -198,4 +201,79 @@ export async function recordModerationEvent(params: RecordModerationEventParams)
     createdAt: FieldValue.serverTimestamp(),
   };
   await eventRef.set(event);
+}
+
+// ─── Per-user cumulative trust score ────────────────────────────────────────
+//
+// A single bad word should never suspend an account — but a pattern of
+// them should surface for review. This reuses the existing AccountStatus
+// enum (types.ts) rather than a parallel status field, so every access
+// check already keyed off accountStatus elsewhere in the codebase
+// automatically respects it too.
+
+export interface UserModerationCheck {
+  blocked: boolean; // accountStatus === "banned"
+  restricted: boolean; // accountStatus === "frozen"
+  reason: string | null;
+}
+
+/** Call before allowing a user to send a chat message, list a catalog item,
+ * etc. Read-only — does not itself change anything. */
+export async function checkUserModerationRestriction(uid: string): Promise<UserModerationCheck> {
+  const snap = await db.collection("users").doc(uid).get();
+  const status = snap.data()?.accountStatus as string | undefined;
+  const reason = (snap.data()?.moderationStatusReason as string | undefined) ?? null;
+  return {
+    blocked: status === "banned",
+    restricted: status === "frozen",
+    reason,
+  };
+}
+
+/**
+ * Increments a user's cumulative moderation score and escalates
+ * accountStatus at the 50 (frozen / temporary restriction) and 100
+ * (banned / auto-suspension pending review) thresholds. Escalation only —
+ * never downgrades a status here; that is an explicit admin action
+ * (reviewModerationRestriction). Runs in a transaction so concurrent
+ * flagged messages from the same user can't race past a threshold
+ * uncounted.
+ */
+export async function applyUserModerationScore(uid: string, scoreDelta: number): Promise<void> {
+  if (scoreDelta <= 0) return;
+
+  const userRef = db.collection("users").doc(uid);
+  await db.runTransaction(async (tx) => {
+    const snap = await tx.get(userRef);
+    if (!snap.exists) return; // system/admin actors, or a race with account deletion
+
+    const data = snap.data()!;
+    const currentStatus = data.accountStatus as string;
+    // Already the terminal state — still record the score for the audit
+    // trail, but there is no further status to escalate to.
+    if (currentStatus === "banned") {
+      tx.update(userRef, { moderationScore: FieldValue.increment(scoreDelta), updatedAt: FieldValue.serverTimestamp() });
+      return;
+    }
+
+    const newScore = (typeof data.moderationScore === "number" ? data.moderationScore : 0) + scoreDelta;
+    const updates: Record<string, unknown> = {
+      moderationScore: newScore,
+      updatedAt: FieldValue.serverTimestamp(),
+    };
+
+    if (newScore >= SCORE_THRESHOLD_SUSPEND) {
+      updates.accountStatus = "banned";
+      updates.moderationBannedAt = FieldValue.serverTimestamp();
+      updates.moderationStatusReason = `Cumulative moderation score reached ${newScore} (threshold ${SCORE_THRESHOLD_SUSPEND}).`;
+    } else if (newScore >= SCORE_THRESHOLD_RESTRICT && currentStatus !== "frozen") {
+      updates.accountStatus = "frozen";
+      updates.moderationRestrictedAt = FieldValue.serverTimestamp();
+      updates.moderationStatusReason = `Cumulative moderation score reached ${newScore} (threshold ${SCORE_THRESHOLD_RESTRICT}).`;
+    } else if (newScore >= SCORE_THRESHOLD_WARN && !data.moderationWarnedAt) {
+      updates.moderationWarnedAt = FieldValue.serverTimestamp();
+    }
+
+    tx.update(userRef, updates);
+  });
 }

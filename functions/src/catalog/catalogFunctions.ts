@@ -5,6 +5,24 @@ import { CatalogItemDoc, CatalogCategoryDoc, PLAN_CATALOG_LIMITS } from "../type
 import { checkAppCheck } from "../utils/appCheck";
 import { writeAuditLog } from "../utils/auditLog";
 import { newRequestId } from "../utils/requestContext";
+import { applyUserModerationScore, recordModerationEvent, runModerationCheck } from "../moderation/moderationEngine";
+
+/** Catalog-only prohibited-item check (P3-FB-021 point 7) — firearms, drugs,
+ * counterfeit documents, restricted raw food, etc. must never be listed
+ * regardless of wording, so unlike chat, any match here blocks outright
+ * (the seeded catalog-scoped rules are all severity critical / block). */
+async function rejectIfListingUnsafe(vendorId: string, actorUid: string, name: string, description?: string | null): Promise<void> {
+  const text = [name, description].filter(Boolean).join(" ");
+  if (!text.trim()) return;
+  const result = await runModerationCheck(text, "catalog");
+  if (result.status === "clean") return;
+  await recordModerationEvent({
+    actorUid, actorRole: "vendor", vendorId, chatId: null, messageId: null, rawText: text, result,
+  });
+  await applyUserModerationScore(actorUid, result.score);
+  if (!result.blocked) return;
+  throw new https.HttpsError("invalid-argument", "This listing contains content that is not allowed on the platform.");
+}
 
 export const createCatalogCategory = https.onCall(async (request) => {
   checkAppCheck(request, "createCatalogCategory");
@@ -28,6 +46,7 @@ export const createCatalogItem = https.onCall(async (request) => {
   const { name, description, basePrice, salePrice, currency, categoryId, photos, isAvailable, isHidden, trackInventory, inventoryQuantity, lowStockThreshold, addOnGroups } = request.data ?? {};
   if (!name || typeof name !== "string" || name.trim().length === 0) throw new https.HttpsError("invalid-argument", "name is required.");
   if (typeof basePrice !== "number" || basePrice < 0) throw new https.HttpsError("invalid-argument", "basePrice must be a non-negative number.");
+  await rejectIfListingUnsafe(vendorId, request.auth.uid, name, description);
   const vendorRef = db.collection("vendors").doc(vendorId);
   const itemsCollRef = vendorRef.collection("catalogItems");
   const newItemRef = itemsCollRef.doc();
@@ -64,6 +83,11 @@ export const updateCatalogItem = https.onCall(async (request) => {
   safeUpdates.updatedAt = FieldValue.serverTimestamp();
   if (typeof safeUpdates.basePrice === "number" && safeUpdates.basePrice < 0) throw new https.HttpsError("invalid-argument", "basePrice cannot be negative.");
   const before = itemSnap.data();
+  if ("name" in updates || "description" in updates) {
+    const effectiveName = typeof safeUpdates.name === "string" ? safeUpdates.name : before?.name;
+    const effectiveDescription = "description" in updates ? safeUpdates.description as string | null : before?.description;
+    await rejectIfListingUnsafe(vendorId, request.auth.uid, effectiveName, effectiveDescription);
+  }
   await itemRef.update(safeUpdates);
   await writeAuditLog({ requestId, functionName: "updateCatalogItem", actorUid: request.auth.uid, actorRole: "vendor", actorType: "vendor", targetType: "catalogItem", targetId: itemId, eventType: "catalog.item_updated", before: { name: before?.name, basePrice: before?.basePrice }, after: safeUpdates, appCheck });
   return { success: true };

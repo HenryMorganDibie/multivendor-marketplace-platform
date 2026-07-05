@@ -3,14 +3,16 @@ import { db, FieldValue } from "../admin";
 import { QuickReplyDoc, QUICK_REPLY_LIMITS } from "../types3";
 import { checkAppCheck } from "../utils/appCheck";
 import { newRequestId } from "../utils/requestContext";
-import { recordModerationEvent, runModerationCheck } from "../moderation/moderationEngine";
+import { applyUserModerationScore, recordModerationEvent, runModerationCheck } from "../moderation/moderationEngine";
 
 async function rejectIfUnsafe(vendorId: string, actorUid: string, label: string, text: string): Promise<void> {
   const result = await runModerationCheck(text, "chat");
-  if (!result.blocked) return;
+  if (result.status === "clean") return;
   await recordModerationEvent({
     actorUid, actorRole: "vendor", vendorId, chatId: null, messageId: null, rawText: text, result,
   });
+  await applyUserModerationScore(actorUid, result.score);
+  if (!result.blocked) return;
   throw new https.HttpsError("invalid-argument", `${label} contains content that is not allowed on the platform.`);
 }
 
