@@ -379,9 +379,12 @@ General notes specific to Milestone 3:
   }
   ```
 - **Response:** `{ success: true, messageId: string }`
-- **Errors:** `not-found`, `permission-denied` (not a participant), `invalid-argument` (attempting to create a server-only type such as `order_context`, `pickup-details`, `system`, `receipt`, `invoice`, or `change_request`; empty text; attachment limits exceeded), `failed-precondition` (vendor suspended, country unavailable, or blocked with no active order — see Blocks below)
+- **Errors:** `not-found`, `permission-denied` (not a participant), `invalid-argument` (attempting to create a server-only type such as `order_context`, `pickup-details`, `system`, `receipt`, `invoice`, or `change_request`; empty text; attachment limits exceeded; **or message content blocked by moderation — see below**), `failed-precondition` (vendor suspended, country unavailable, or blocked with no active order — see Blocks below)
 - **Message types the client will *receive* but can never send directly:** `system`, `payment-request`, `pickup-details`, `receipt`, `invoice`, `ai`, `order_context`, `new_inquiry`, `change_request`. These are always server-assembled from real data and appear in the thread as a side effect of other actions.
 - **Side effects:** updates the thread's `lastMessage` / `lastMessageAt` / `lastSenderUid` summary fields, creates a `new_message` notification for every other participant (never the sender), and — for customer-sent messages only — checks vendor away-message eligibility.
+- **Moderation (P3-FB-021):** every `text` / `contact-card` / `catalog_item` message is checked against the backend rule-based moderation engine before it is saved. Any field named `moderationStatus` or `moderationScore` in the request is silently ignored — these are always server-computed, never client-settable. Two outcomes are visible to the frontend:
+  - **Blocked (high/critical severity):** the callable throws `invalid-argument` with message `"This message contains content that is not allowed on the platform."` The message is never saved — do not optimistically render it in the composer's sent list.
+  - **Allowed but flagged (low/medium severity, or a configured hold-for-review):** the call succeeds normally and the message is saved and delivered exactly as any other message. The saved message document carries `moderationStatus: "clean" | "flagged" | "needs_review"` and a `moderationScore` number, but **the frontend is not expected to branch on these today** — they exist for a future admin moderation queue (Phase 5), not for client-side UI treatment.
 
 ### `markChatRead`
 - **Auth required:** yes, must be a participant
@@ -461,7 +464,7 @@ General notes specific to Milestone 3:
 - **Auth required:** yes, role `vendor`
 - **Request:** any subset of `{ greetingEnabled: boolean, greetingMessage: string, awayMessageEnabled: boolean, awayMessage: string, awaySchedule?: object, quietHours?: object, awayCooldownHours?: number }`
 - **Response:** `{ success: true }`
-- **Errors:** `invalid-argument` if `greetingMessage` or `awayMessage` exceeds 300 characters
+- **Errors:** `invalid-argument` if `greetingMessage` or `awayMessage` exceeds 300 characters, **or if either contains content blocked by moderation** (message: `"greetingMessage contains content that is not allowed on the platform."` / same for `awayMessage`) — these become automatically-sent system messages, so they are checked once at save time rather than on every send.
 - **Behavioral notes:** the greeting message sends exactly once, on the thread's true first creation — never on subsequent messages, and never at all if `greetingMessage` is empty even with `greetingEnabled: true`. The away message has a per-thread cooldown, default 12 hours, configurable via `awayCooldownHours`, and only fires in response to a customer-sent message.
 
 ### `createQuickReply` / `updateQuickReply` / `deleteQuickReply`
@@ -470,7 +473,7 @@ General notes specific to Milestone 3:
 - **Request (update):** `{ replyId: string, ...anyEditableField }`
 - **Request (delete):** `{ replyId: string }`
 - **Response:** `{ success: true, replyId?: string }`
-- **Errors:** `invalid-argument` (field length exceeded — see limits below), `already-exists` (shortcut collision), `resource-exhausted` (20-reply cap reached), `not-found`
+- **Errors:** `invalid-argument` (field length exceeded — see limits below; or `message` blocked by moderation, same wording as `sendChatMessage`), `already-exists` (shortcut collision), `resource-exhausted` (20-reply cap reached), `not-found`
 - **Limits:** title max 50 characters, shortcut max 30 characters, message max 1000 characters, maximum 20 quick replies per vendor.
 - **Shortcut normalization:** the server automatically prepends `/` if the client-supplied shortcut does not already start with one. Do not rely on the exact string you sent — read the value back from the response or a subsequent fetch.
 - **Important:** quick replies are a client-side composer convenience only. Selecting one should populate the message composer; there is no callable that sends a quick reply directly. The frontend must still call `sendChatMessage` with `type: "text"` to actually send it.
@@ -579,3 +582,35 @@ Support tickets use a dual-document model. Each ticket creates both a `chatThrea
 - **Thread ID is deterministic:** `ai_help_{uid}`. Each user has exactly one AI help thread for their lifetime, keyed to their uid. Calling this function repeatedly is idempotent and always returns the same `chatId` with `created: false` after the first call.
 - **Important:** this is a placeholder. No language model or AI backend is connected. The thread contains exactly one system message of `type: "ai"` and `senderRole: "ai"` with a canned response directing the user to Contact Support. The content of this message explicitly states that AI assistance is not yet available. The frontend must not present this as a functional AI assistant. The reserved collection namespaces `evaKnowledgeBases`, `evaConversations`, `evaEscalations`, and `aiAuditLogs` exist in the architecture document for the future real implementation and must not be written to by any current code path.
 - **Side effects:** on first creation only, writes the `chatThreads/{chatId}` document and one `messages/{messageId}` document atomically in a transaction, guarded against race conditions from concurrent calls.
+
+---
+
+## Chat moderation (P3-FB-021)
+
+A rule-based content moderation layer that runs inside `sendChatMessage`, `updateVendorChatSettings`, and `createQuickReply` / `updateQuickReply` before anything is saved. It is a **flagging system first**, not an aggressive hard-ban system — the platform does not process payments in-app, so ordinary commerce phrases (`bank transfer`, `proof of payment`, `call me`, `contact me`, etc.) are never flagged on their own. They only contribute to a flag when they co-occur in the same message with a genuine off-platform-avoidance phrase (`pay outside the platform`, `message me on WhatsApp to order`, `DM for price`, etc.).
+
+**What the frontend actually needs to handle:** the `invalid-argument` / `"This message contains content that is not allowed on the platform."` error shape documented on `sendChatMessage` above. Everything else (rule config, moderation events, risk scoring) is backend-internal and has no client-facing surface in this milestone — there is no moderation queue UI in Phase 3; that is deferred to Phase 5 admin tooling.
+
+**Rules are backend-managed config, not hardcoded** — they live in the `moderationRules` Firestore collection (admin-readable only, never client-readable or writable) and are bootstrapped via `seedDefaultModerationRules`, documented below for completeness even though it is an admin/ops action, not something the customer or vendor apps call.
+
+### `seedDefaultModerationRules`
+- **Auth required:** yes, role `admin` with `super_admin`
+- **Request:** `{}` (empty object)
+- **Response:** `{ success: true, ruleCount: number }`
+- **Errors:** `permission-denied` (not a `super_admin`)
+- **Idempotent:** upserts a fixed default rule set by deterministic rule ID; calling it again does not create duplicates or change `ruleCount` if the defaults haven't changed.
+- **Not for frontend use.** This exists for initial environment bootstrap and is intended to be superseded by direct rule editing once Phase 5 admin tooling exists.
+
+**Severity → behavior mapping (for reference, not something the frontend computes):**
+
+| Rule severity | Typical action | Message outcome |
+|---|---|---|
+| low / medium | `allow_flag` / `hold_for_review` | Sent normally; saved with `moderationStatus: "flagged"` or `"needs_review"` |
+| high / critical | `block_message` | Rejected with `invalid-argument`, never saved |
+
+**Firestore collections added for moderation:**
+
+| Collection | Client read access |
+|---|---|
+| `moderationRules/{ruleId}` | admin only — direct client writes always denied |
+| `moderationEvents/{eventId}` | admin only — direct client writes always denied; never contains raw message text, only a hash and a redacted snippet |

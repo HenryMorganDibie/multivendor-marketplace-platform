@@ -3,6 +3,7 @@ import { db, FieldValue } from "../admin";
 import { ChatThreadDoc, MessageDoc, VendorChatSettingsDoc, VENDOR_CHAT_SETTINGS_DEFAULTS } from "../types3";
 import { checkAppCheck } from "../utils/appCheck";
 import { newRequestId } from "../utils/requestContext";
+import { recordModerationEvent, runModerationCheck } from "../moderation/moderationEngine";
 
 /**
  * sendAwayMessageIfEligible — internal helper invoked from sendChatMessage
@@ -88,6 +89,31 @@ export const updateVendorChatSettings = https.onCall(async (request) => {
   }
   if (awayMessage && awayMessage.length > 300) {
     throw new https.HttpsError("invalid-argument", "Away message must be 300 characters or fewer.");
+  }
+
+  // Vendor-authored free text is validated here, at write time, rather than
+  // on every future send — these become system messages sent automatically
+  // (P3-FB-021 point 8), so only a hard block on genuinely unsafe content
+  // makes sense; ordinary flagged content should not stop a vendor from
+  // configuring their shop.
+  for (const [label, text] of [["greetingMessage", greetingMessage], ["awayMessage", awayMessage]] as const) {
+    if (!text?.trim()) continue;
+    const result = await runModerationCheck(text, "chat");
+    if (result.blocked) {
+      await recordModerationEvent({
+        actorUid: request.auth.uid,
+        actorRole: "vendor",
+        vendorId,
+        chatId: null,
+        messageId: null,
+        rawText: text,
+        result,
+      });
+      throw new https.HttpsError(
+        "invalid-argument",
+        `${label} contains content that is not allowed on the platform.`
+      );
+    }
   }
 
   const settingsRef = db.collection("vendors").doc(vendorId).collection("settings").doc("chat");

@@ -466,6 +466,26 @@ service cloud.firestore {
     }
 
     // -----------------------------------------------------------------------
+    // Phase 3: Moderation (P3-FB-021)
+    // Rules config and moderation events are admin-only, never client-
+    // readable by the customer/vendor who triggered them and never
+    // client-writable at all. All reads/writes go through the moderation
+    // engine and seedDefaultModerationRules inside Cloud Functions, which
+    // use the Admin SDK and bypass these rules entirely — this match block
+    // exists only to keep the collections locked down against any other
+    // caller, including a signed-in admin's own client SDK usage until
+    // Phase 5 admin tooling reads through here directly.
+    // -----------------------------------------------------------------------
+    match /moderationRules/{ruleId} {
+      allow read: if isAdmin();
+      allow create, update, delete: if false;
+    }
+    match /moderationEvents/{eventId} {
+      allow read: if isAdmin();
+      allow create, update, delete: if false;
+    }
+
+    // -----------------------------------------------------------------------
     // Phase 3: Blocks
     // Only the blocker can read their own blocked-list entries. The
     // blocked party cannot see themselves in anyone's list (no read rule

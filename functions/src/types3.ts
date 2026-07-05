@@ -46,6 +46,12 @@ export interface ChatThreadDoc {
   blockedState: BlockedState;
   isSupportEscalated: boolean;
 
+  // Cumulative sum of moderationScore across every message ever sent in
+  // this thread (P3-FB-021). A rising number signals a conversation worth
+  // an admin's attention even when no single message crossed the
+  // block/hold threshold on its own.
+  riskScore?: number;
+
   // Greeting message bookkeeping — sent exactly once per thread lifetime
   greetingSentAt?: firestore.Timestamp | firestore.FieldValue | null;
 
@@ -153,7 +159,8 @@ export interface MessageDoc {
 
   status: MessageStatus;
   visibleToUser: boolean;
-  moderationStatus?: "pending" | "approved" | "flagged" | "removed";
+  moderationStatus?: ModerationStatus;
+  moderationScore?: number;
   attachments: {
     storagePath: string;
     contentType: string;
@@ -468,4 +475,81 @@ export interface DeliveryContactSnapshot {
 export interface OrderPhase3Extension {
   conversationId?: string | null;
   deliveryContact?: DeliveryContactSnapshot | null;
+}
+
+// ─── Moderation (P3-FB-021) ─────────────────────────────────────────────────────
+//
+// A rule-based FLAGGING system, not an aggressive hard-ban system. Rules are
+// backend-managed config in Firestore (moderationRules), not hardcoded in a
+// function, so categories/patterns/severities can be tuned without a
+// redeploy once Phase 5 admin tooling exists to edit them directly. For now
+// they are bootstrapped via the idempotent seedDefaultModerationRules
+// callable (super_admin only) — see moderation/moderationSeedData.ts.
+
+export type ModerationCategory =
+  | "off_platform_ordering"
+  | "price_hiding"
+  | "scams_fraud"
+  | "illegal_items"
+  | "weapons"
+  | "drugs"
+  | "adult_content"
+  | "financial_scams"
+  | "phishing_hacking"
+  | "abusive_language"
+  | "dangerous_medical_claims"
+  | "gambling"
+  | "raw_restricted_food";
+
+export type ModerationSeverity = "low" | "medium" | "high" | "critical";
+
+export type ModerationAction =
+  | "allow_flag"
+  | "block_message"
+  | "hold_for_review"
+  | "admin_alert";
+
+export type ModerationAppliesTo = "chat" | "catalog" | "profile" | "order_note";
+
+export type ModerationStatus = "clean" | "flagged" | "blocked" | "needs_review";
+
+export interface ModerationRuleDoc {
+  ruleId: string;
+  category: ModerationCategory;
+  // Lowercase substring to match against normalized text, unless isRegex.
+  pattern: string;
+  isRegex?: boolean; // when true, `pattern` is compiled case-insensitively
+  // Default true. Some terms (e.g. "bank transfer", "call me") are only
+  // meaningful as evidence of off-platform steering when they co-occur with
+  // an actual avoidance phrase in the same message — on their own they are
+  // normal the platform commerce chatter and must never trigger anything.
+  // standalone: false marks exactly that kind of weak-signal-only term.
+  standalone?: boolean;
+  severity: ModerationSeverity;
+  action: ModerationAction;
+  appliesTo: ModerationAppliesTo;
+  isActive: boolean;
+  createdAt: firestore.Timestamp | firestore.FieldValue;
+  updatedAt: firestore.Timestamp | firestore.FieldValue;
+}
+
+export interface ModerationEventDoc {
+  eventId: string;
+  actorUid: string;
+  actorRole: "customer" | "vendor" | "admin" | "system";
+  vendorId?: string | null;
+  customerId?: string | null;
+  chatId?: string | null;
+  messageId?: string | null;
+  category: ModerationCategory;
+  matchedRuleIds: string[];
+  severity: ModerationSeverity;
+  actionTaken: ModerationAction;
+  // Never the raw message — a hash for correlation/dedup, plus a short
+  // redacted snippet (truncated, matched terms starred out) so an admin
+  // gets useful triage context without this doubling as a second, less
+  // access-controlled copy of the full message content.
+  originalTextHash: string;
+  textSnippetRedacted: string;
+  createdAt: firestore.Timestamp | firestore.FieldValue;
 }

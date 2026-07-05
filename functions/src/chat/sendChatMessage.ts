@@ -8,6 +8,7 @@ import { canContinueExistingThread } from "../blocks/blockUtils";
 import { isCountryActive } from "../utils/countryAvailability";
 import { createNotificationInternal } from "../notifications/notificationFunctions";
 import { sendAwayMessageIfEligible } from "./awayMessage";
+import { recordModerationEvent, runModerationCheck } from "../moderation/moderationEngine";
 
 const MAX_ATTACHMENTS = 5;
 const MAX_ATTACHMENT_BYTES = 15 * 1024 * 1024; // 15MB, matches Phase 1 verification doc limit
@@ -102,6 +103,32 @@ export const sendChatMessage = https.onCall(async (request) => {
     }
   }
 
+  // Rule-based moderation (P3-FB-021) — a flagging system first, not a hard
+  // ban: only rules configured with action "block_message" (via the
+  // Firestore-managed moderationRules set) stop the send outright. Runs on
+  // whatever the sender actually typed, never on server-generated fallback
+  // strings like "Contact details shared". Client-supplied moderationStatus
+  // is never read from request.data anywhere in this function — the value
+  // saved below is always computed here, so the client cannot set it.
+  const textToModerate = typeof content === "string" ? content.trim() : "";
+  const moderation = textToModerate
+    ? await runModerationCheck(textToModerate, "chat")
+    : { status: "clean" as const, score: 0, action: null, severity: null, category: null, matchedRuleIds: [], matchedRules: [], blocked: false };
+
+  if (moderation.blocked) {
+    await recordModerationEvent({
+      actorUid: senderUid,
+      actorRole: senderRole,
+      vendorId: thread.vendorId ?? null,
+      customerId: thread.customerId ?? null,
+      chatId,
+      messageId: null,
+      rawText: textToModerate,
+      result: moderation,
+    });
+    throw new https.HttpsError("invalid-argument", "This message contains content that is not allowed on the platform.");
+  }
+
   // Determine recipient(s) for notification purposes — everyone except sender
   const recipients = thread.participants.filter((uid) => uid !== senderUid);
 
@@ -117,6 +144,8 @@ export const sendChatMessage = https.onCall(async (request) => {
     content: content ?? "",
     status: "sent",
     visibleToUser: true,
+    moderationStatus: moderation.status,
+    moderationScore: moderation.score,
     attachments: Array.isArray(attachments) ? attachments : [],
     createdAt: now,
     updatedAt: now,
@@ -160,13 +189,28 @@ export const sendChatMessage = https.onCall(async (request) => {
 
   await msgRef.set(messageDoc);
 
-  await threadRef.update({
+  const threadUpdate: Record<string, unknown> = {
     lastMessage: messageDoc.content.slice(0, 200),
     lastMessageType: type,
     lastMessageAt: now,
     lastSenderUid: senderUid,
     updatedAt: now,
-  });
+  };
+  if (moderation.score > 0) threadUpdate.riskScore = FieldValue.increment(moderation.score);
+  await threadRef.update(threadUpdate);
+
+  if (moderation.status !== "clean") {
+    await recordModerationEvent({
+      actorUid: senderUid,
+      actorRole: senderRole,
+      vendorId: thread.vendorId ?? null,
+      customerId: thread.customerId ?? null,
+      chatId,
+      messageId: msgRef.id,
+      rawText: textToModerate,
+      result: moderation,
+    });
+  }
 
   // Notify all recipients (never the sender)
   for (const recipientUid of recipients) {

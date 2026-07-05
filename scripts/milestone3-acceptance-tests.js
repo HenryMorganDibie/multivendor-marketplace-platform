@@ -1140,6 +1140,158 @@ async function section10() {
   });
 }
 
+async function section11() {
+  console.log("\n📋 Section 11: Chat moderation — rule-based flagging system (P3-FB-021)");
+  let modChatId, modThreadRef;
+
+  await test("Non-super_admin cannot seed moderation rules", async () => {
+    await signInAs(customerEmail);
+    await assertFnError(httpsCallable(fns, "seedDefaultModerationRules")({}), "permission-denied");
+  });
+
+  await test("super_admin can seed default moderation rules, idempotently", async () => {
+    await signInAs(adminEmail);
+    const r1 = await httpsCallable(fns, "seedDefaultModerationRules")({});
+    assert(r1.data.success);
+    assert(r1.data.ruleCount > 30, "Expected a substantial default rule set");
+    const r2 = await httpsCallable(fns, "seedDefaultModerationRules")({});
+    assertEqual(r2.data.ruleCount, r1.data.ruleCount, "Re-seeding must upsert, not duplicate");
+  });
+
+  await test("Setup: fresh commerce thread for moderation tests", async () => {
+    await signInAs(customerEmail);
+    const r = await httpsCallable(fns, "createCommerceConversation")({ vendorId });
+    modChatId = r.data.chatId;
+    modThreadRef = doc(db, "chatThreads", modChatId);
+  });
+
+  await test("A normal commerce message is clean — not flagged, not blocked", async () => {
+    await signInAs(customerEmail);
+    const r = await httpsCallable(fns, "sendChatMessage")({ chatId: modChatId, type: "text", content: "Hi, do you have this in blue?" });
+    assert(r.data.success);
+    const msgSnap = await getDoc(doc(db, "chatThreads", modChatId, "messages", r.data.messageId));
+    assertEqual(msgSnap.data().moderationStatus, "clean");
+    assertEqual(msgSnap.data().moderationScore, 0);
+  });
+
+  await test("A neutral payment term ALONE (no off-platform phrase) is never flagged", async () => {
+    await signInAs(customerEmail);
+    const r = await httpsCallable(fns, "sendChatMessage")({ chatId: modChatId, type: "text", content: "Please share your bank transfer details" });
+    const msgSnap = await getDoc(doc(db, "chatThreads", modChatId, "messages", r.data.messageId));
+    assertEqual(msgSnap.data().moderationStatus, "clean", "bank transfer alone must not be flagged");
+  });
+
+  await test("Low-severity Nigerian-slang term is flagged but still sent (allow_flag)", async () => {
+    await signInAs(customerEmail);
+    const r = await httpsCallable(fns, "sendChatMessage")({ chatId: modChatId, type: "text", content: "mumu, why is this so expensive" });
+    assert(r.data.success, "Low severity must not block the send");
+    const msgSnap = await getDoc(doc(db, "chatThreads", modChatId, "messages", r.data.messageId));
+    assertEqual(msgSnap.data().moderationStatus, "flagged");
+    assert(msgSnap.data().moderationScore > 0);
+  });
+
+  await test("Medium-severity standalone phrase combined with a neutral term escalates to needs_review, still sent", async () => {
+    await signInAs(customerEmail);
+    const r = await httpsCallable(fns, "sendChatMessage")({ chatId: modChatId, type: "text", content: "ignore the app, call me instead" });
+    assert(r.data.success, "hold_for_review must not block the send");
+    const msgSnap = await getDoc(doc(db, "chatThreads", modChatId, "messages", r.data.messageId));
+    assertEqual(msgSnap.data().moderationStatus, "needs_review");
+  });
+
+  await test("High-severity off-platform phrase BLOCKS the message entirely", async () => {
+    await signInAs(customerEmail);
+    const before = await getDocs(collection(db, "chatThreads", modChatId, "messages"));
+    await assertFnError(
+      httpsCallable(fns, "sendChatMessage")({ chatId: modChatId, type: "text", content: "let's pay outside the platform" }),
+      "invalid-argument"
+    );
+    const after = await getDocs(collection(db, "chatThreads", modChatId, "messages"));
+    assertEqual(after.size, before.size, "A blocked message must never be persisted");
+  });
+
+  await test("Critical-severity content (weapons) BLOCKS the message", async () => {
+    await signInAs(customerEmail);
+    await assertFnError(
+      httpsCallable(fns, "sendChatMessage")({ chatId: modChatId, type: "text", content: "I want to buy a gun" }),
+      "invalid-argument"
+    );
+  });
+
+  await test("Critical-severity content (phishing) BLOCKS the message", async () => {
+    await signInAs(customerEmail);
+    await assertFnError(
+      httpsCallable(fns, "sendChatMessage")({ chatId: modChatId, type: "text", content: "please send your otp now" }),
+      "invalid-argument"
+    );
+  });
+
+  await test("Client cannot set moderationStatus manually — server-computed value always wins", async () => {
+    await signInAs(customerEmail);
+    const r = await httpsCallable(fns, "sendChatMessage")({
+      chatId: modChatId, type: "text", content: "Just a normal question about delivery",
+      moderationStatus: "blocked", moderationScore: 999,
+    });
+    const msgSnap = await getDoc(doc(db, "chatThreads", modChatId, "messages", r.data.messageId));
+    assertEqual(msgSnap.data().moderationStatus, "clean", "Client-supplied moderationStatus must be ignored");
+    assertEqual(msgSnap.data().moderationScore, 0);
+  });
+
+  await test("Thread riskScore accumulates across flagged messages", async () => {
+    const threadSnap = await getDoc(modThreadRef);
+    assert(threadSnap.data().riskScore > 0, "riskScore must have accumulated from the flagged/needs_review messages above");
+  });
+
+  await test("moderationEvents is not client-readable by the customer who triggered it", async () => {
+    await signInAs(customerEmail);
+    await assertDenied(getDocs(collection(db, "moderationEvents")));
+  });
+
+  await test("moderationEvents is not client-writable by anyone", async () => {
+    await signInAs(customerEmail);
+    await assertDenied(setDoc(doc(db, "moderationEvents", "fake"), { category: "weapons" }));
+  });
+
+  await test("Admin CAN read moderationEvents for review", async () => {
+    await signInAs(adminEmail);
+    const snap = await getDocs(collection(db, "moderationEvents"));
+    assert(snap.size > 0, "Expected moderation events from the blocked/flagged messages above");
+  });
+
+  await test("moderationRules is not client-readable or writable by non-admins", async () => {
+    await signInAs(customerEmail);
+    await assertDenied(getDocs(collection(db, "moderationRules")));
+    await assertDenied(setDoc(doc(db, "moderationRules", "fake"), { category: "weapons" }));
+  });
+
+  await test("Vendor greeting/away messages are validated — unsafe text is rejected", async () => {
+    await signInAs(vendorEmail);
+    await assertFnError(
+      httpsCallable(fns, "updateVendorChatSettings")({ awayMessageEnabled: true, awayMessage: "I want to buy a gun" }),
+      "invalid-argument"
+    );
+  });
+
+  await test("Vendor greeting/away messages with normal text are accepted", async () => {
+    await signInAs(vendorEmail);
+    const r = await httpsCallable(fns, "updateVendorChatSettings")({ awayMessageEnabled: true, awayMessage: "We are currently closed, back soon!" });
+    assert(r.data.success);
+  });
+
+  await test("Vendor quick reply with unsafe content is rejected", async () => {
+    await signInAs(vendorEmail);
+    await assertFnError(
+      httpsCallable(fns, "createQuickReply")({ title: "Bad", shortcut: "/bad", message: "cocaine for sale here" }),
+      "invalid-argument"
+    );
+  });
+
+  await test("Vendor quick reply with normal content is accepted", async () => {
+    await signInAs(vendorEmail);
+    const r = await httpsCallable(fns, "createQuickReply")({ title: "Thanks", shortcut: "/thanks", message: "Thank you for your order!" });
+    assert(r.data.success);
+  });
+}
+
 async function main() {
   console.log("🚀 THE PLATFORM — Milestone 3 Acceptance Test Suite");
   console.log("=".repeat(60));
@@ -1155,6 +1307,7 @@ async function main() {
   await section8();
   await section9();
   await section10();
+  await section11();
 
   console.log("\n" + "=".repeat(60));
   console.log(`Results: ${passed}/${total} passed, ${failed} failed`);

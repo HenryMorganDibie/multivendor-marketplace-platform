@@ -58,3 +58,6 @@ export { createSupportTicket, assignSupportTicket, resolveSupportTicket } from "
 
 // ── Phase 3: AI help placeholder ──────────────────────────────────────────────
 export { createAiHelpThread } from "./ai/aiHelpFunctions";
+
+// ── Phase 3: Moderation ────────────────────────────────────────────────────────
+export { seedDefaultModerationRules } from "./moderation/moderationAdmin";

@@ -3,6 +3,16 @@ import { db, FieldValue } from "../admin";
 import { QuickReplyDoc, QUICK_REPLY_LIMITS } from "../types3";
 import { checkAppCheck } from "../utils/appCheck";
 import { newRequestId } from "../utils/requestContext";
+import { recordModerationEvent, runModerationCheck } from "../moderation/moderationEngine";
+
+async function rejectIfUnsafe(vendorId: string, actorUid: string, label: string, text: string): Promise<void> {
+  const result = await runModerationCheck(text, "chat");
+  if (!result.blocked) return;
+  await recordModerationEvent({
+    actorUid, actorRole: "vendor", vendorId, chatId: null, messageId: null, rawText: text, result,
+  });
+  throw new https.HttpsError("invalid-argument", `${label} contains content that is not allowed on the platform.`);
+}
 
 function normalizeShortcut(raw: string): string {
   const trimmed = raw.trim();
@@ -26,6 +36,7 @@ export const createQuickReply = https.onCall(async (request) => {
   if (!message?.trim() || message.length > QUICK_REPLY_LIMITS.maxMessageLength) {
     throw new https.HttpsError("invalid-argument", `message is required, max ${QUICK_REPLY_LIMITS.maxMessageLength} characters.`);
   }
+  await rejectIfUnsafe(vendorId, request.auth.uid, "message", message);
 
   const normalizedShortcut = normalizeShortcut(shortcut);
   const repliesRef = db.collection("vendors").doc(vendorId).collection("quickReplies");
@@ -76,7 +87,10 @@ export const updateQuickReply = https.onCall(async (request) => {
 
   const updates: Record<string, unknown> = { updatedAt: FieldValue.serverTimestamp() };
   if (title !== undefined) updates.title = String(title).trim().slice(0, QUICK_REPLY_LIMITS.maxTitleLength);
-  if (message !== undefined) updates.message = String(message).trim().slice(0, QUICK_REPLY_LIMITS.maxMessageLength);
+  if (message !== undefined) {
+    await rejectIfUnsafe(vendorId, request.auth.uid, "message", String(message));
+    updates.message = String(message).trim().slice(0, QUICK_REPLY_LIMITS.maxMessageLength);
+  }
   if (isActive !== undefined) updates.isActive = isActive === true;
   if (sortOrder !== undefined) updates.sortOrder = Number(sortOrder);
 

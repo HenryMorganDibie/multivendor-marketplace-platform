@@ -1,6 +1,6 @@
 # the platform Backend
 
-Firebase backend for the the platform multi-vendor marketplace. This repository covers three completed milestones: Auth/Users/Vendors/Verification, Catalog/Orders/Inventory/Payments/Receipts, and Commerce Chat/Notifications/Blocks/Pickup Auto-Send/Support Tickets/AI Help Placeholder.
+Firebase backend for the the platform multi-vendor marketplace. This repository covers three completed milestones: Auth/Users/Vendors/Verification, Catalog/Orders/Inventory/Payments/Receipts, and Commerce Chat/Notifications/Blocks/Pickup Auto-Send/Support Tickets/AI Help Placeholder/Chat Moderation.
 
 ## Status
 
@@ -10,7 +10,7 @@ Status is described precisely rather than as a blanket "complete." Every row bel
 |---|---|
 | **Milestone 1** — Auth, users, vendors, verification, admin, security rules | 67/67 acceptance tests passing in developer environment |
 | **Milestone 2** — Catalog, cart pricing, orders, inventory, payment proofs, receipts | 61/61 acceptance tests passing in developer environment |
-| **Milestone 3** — Commerce chat, notifications, blocks, pickup auto-send, support tickets, AI help placeholder | 100/100 acceptance tests passing in developer environment |
+| **Milestone 3** — Commerce chat, notifications, blocks, pickup auto-send, support tickets, AI help placeholder, chat moderation | 120/120 acceptance tests passing in developer environment |
 | App Check | Implemented in **monitor mode only** (see App Check Rollout below). Not yet enforced. |
 | Frontend integration contracts | See `docs/frontend-contracts.md`, covering all three milestones |
 | Production monitoring/alerting | Structured operational logging exists (`functions/src/utils/operationalLogging.ts`), with documented Cloud Monitoring alert filter conditions in that file's comments. Dashboards and the alerting policies themselves are not yet provisioned — that is Google Cloud console configuration outside this codebase, not application code |
@@ -48,7 +48,7 @@ Each suite provisions its own test accounts and vendor with a timestamped, uniqu
 
 **Milestone 2** builds commerce on top of that identity layer: vendor catalog management with server-enforced plan limits, cart pricing that the backend computes authoritatively rather than trusting the client, the full order lifecycle from placement through completion, a 48-hour vendor acceptance SLA, payment proof submission with abuse limits, and receipt generation.
 
-**Milestone 3** adds real-time communication and customer support capabilities: a single persistent commerce thread per customer/vendor pair (not per order — new orders inject context into the existing thread), in-app and push notifications with quiethours and critical-notification handling, a block system with a documented active-order exception, fully automatic pickup-details delivery with no manual send path anywhere in the system, support ticket workflows, and an AI-help placeholder surface intended for future assistant integration.
+**Milestone 3** adds real-time communication and customer support capabilities: a single persistent commerce thread per customer/vendor pair (not per order — new orders inject context into the existing thread), in-app and push notifications with quiethours and critical-notification handling, a block system with a documented active-order exception, fully automatic pickup-details delivery with no manual send path anywhere in the system, support ticket workflows, an AI-help placeholder surface intended for future assistant integration, and a rule-based chat moderation layer (below) that flags rather than aggressively hard-bans.
 
 Full request/response contracts for every callable across all three milestones are in `docs/frontend-contracts.md`.
 
@@ -80,11 +80,17 @@ Customer contact cards are stored on-device only, not in Firestore. There is no 
 
 This was a deliberate minimal-data-collection decision: it removes an entire class of PII exposure risk from the backend at the cost of contact details not syncing across a customer's devices, a tradeoff considered acceptable for the current stage of the product.
 
+## Chat moderation (P3-FB-021)
+
+A rule-based moderation engine runs inside `sendChatMessage`, `updateVendorChatSettings`, and the quick-reply callables before anything is saved. It is deliberately a **flagging system first, not an aggressive hard-ban system**: the platform does not process in-app payments in MVP, so ordinary commerce phrases like "bank transfer" or "call me" are never flagged on their own — they only count as evidence when they co-occur with a genuine off-platform-avoidance phrase such as "pay outside the platform" or "DM for price" in the same message.
+
+Rules are backend-managed config in the `moderationRules` Firestore collection (admin-only read, never client-writable), not hardcoded pattern lists baked into a function, and are bootstrapped via the idempotent `seedDefaultModerationRules` callable (`super_admin` only). High/critical-severity matches block the send outright with a clear error message; low/medium matches allow the message through, saved with a `moderationStatus` and contributing to a per-thread `riskScore`, and every match writes a `moderationEvents` record (hash + redacted snippet only, never the raw message) for a future admin review queue. That review queue itself is Phase 5 scope — Phase 3 only guarantees the backend produces enough signal for it to be built later. See `docs/frontend-contracts.md` for the exact error shapes and severity/action table.
+
 ## Security posture
 
 No system should be described as fully secure without qualification, and this backend is not an exception. The following reflects an honest account of what has been verified against and what remains open.
 
-**What has been verified:** every Firestore collection carrying business-critical or sensitive data denies direct client writes and routes exclusively through Cloud Functions. Sensitive fields use narrow, allowlisted update rules rather than broad ownership checks — a user can mark their own notification read but cannot rewrite its title or body, for example. Authentication is delegated entirely to Firebase Auth rather than a custom credential store. Server-side business logic (block enforcement, country availability, order-state transitions) is re-validated on every relevant call rather than trusted from client state. All 228 acceptance tests across the three milestones include denial-path cases, not just success-path cases.
+**What has been verified:** every Firestore collection carrying business-critical or sensitive data denies direct client writes and routes exclusively through Cloud Functions. Sensitive fields use narrow, allowlisted update rules rather than broad ownership checks — a user can mark their own notification read but cannot rewrite its title or body, for example. Authentication is delegated entirely to Firebase Auth rather than a custom credential store. Server-side business logic (block enforcement, country availability, order-state transitions) is re-validated on every relevant call rather than trusted from client state. All 248 acceptance tests across the three milestones include denial-path cases, not just success-path cases.
 
 **What remains open:** App Check enforcement, as described above, is not yet active. No independent, adversarial security audit has been performed on the deployed rules and Cloud Functions — everything here has passed rigorous self-review and automated testing, which is not equivalent to a third party whose sole objective is finding a way through it. One historical bug (a Firestore rules wildcard that unintentionally granted broader write access than intended to a subset of Milestone 3 settings documents) was found and fixed during Milestone 3 development; this raises the possibility, not yet ruled out, that a similar latent rule collision exists elsewhere in `firestore.rules`. A full manual pass through every `match` block, specifically checking for cases where a general wildcard and a more specific match both apply to the same path, is recommended before production launch. Request-size and payload-complexity limits are not uniformly enforced across every callable, which is a resource-exhaustion consideration even where it is not a data-integrity risk.
 
@@ -97,3 +103,4 @@ The two highest-priority items before general availability are App Check enforce
 - Admin MFA enrollment UI is not part of this milestone (the `adminUsers` schema reserves fields for it; enrollment flow is a later phase).
 - Country availability management is currently manual (a single document seeded directly in Firestore for Nigeria). Full admin tooling for managing country rollout is deferred to a later phase.
 - Typing indicators and swipe-to-reply are not implemented in this milestone. Typing indicators would require provisioning Firebase Realtime Database alongside Firestore, since that is a better fit for high-frequency, ephemeral presence data than Firestore's per-document billing model. Swipe-to-reply is primarily a frontend gesture-handling concern; the backend would need a small, additive extension to the message schema to carry a reply reference.
+- A moderation admin review queue UI/tooling is not part of this milestone. The backend produces everything a queue would need (`moderationEvents`, per-thread `riskScore`), but building admin-facing screens to act on them is Phase 5 scope.
