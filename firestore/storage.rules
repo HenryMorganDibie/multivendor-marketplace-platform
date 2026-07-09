@@ -115,6 +115,26 @@ service firebase.storage {
     }
 
     // ==========================================================
+    // Invoice branding logos (Phase 4) — the vendor uploads here first,
+    // then references the path via updateInvoiceBranding, which validates
+    // the real object's content type/size server-side before accepting it
+    // (client-declared metadata is never trusted). Read is admin/vendor-
+    // owner only; the PDF renderer runs server-side with the Admin SDK,
+    // which bypasses these rules entirely, so no public read is needed.
+    // ==========================================================
+    match /invoiceBranding/{vendorId}/{fileId} {
+
+      allow read: if isVendorOwner(vendorId) || isAdmin();
+
+      allow create, update: if
+        isVendorOwner(vendorId)
+        && isImage()
+        && underMb(2);
+
+      allow delete: if isVendorOwner(vendorId);
+    }
+
+    // ==========================================================
     // Verification documents
     // ==========================================================
     match /verificationDocuments/{vendorId}/{docId} {

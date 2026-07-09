@@ -577,6 +577,190 @@ async function section11() {
   });
 }
 
+// ─────────────────────────────────────────────────────────────────────────
+// SECTION 12: Invoices, branding, and PDF generation
+// ─────────────────────────────────────────────────────────────────────────
+async function section12() {
+  console.log("\n📋 Section 12: Invoices, branding, and PDF generation");
+  let invoiceId, invoiceNumber, shareToken;
+
+  await test("Basic vendor creates an invoice (within 3/month quota)", async () => {
+    await setVendorPlan("basic");
+    await signInAs(vendorEmail);
+    const r = await httpsCallable(fns, "createInvoice")({
+      customerName: "Jane Doe", customerPhone: "+2348011112222",
+      lineItems: [{ description: "Catering tray", quantity: 2, unitPrice: 5000 }],
+    });
+    assert(r.data.success);
+    invoiceId = r.data.invoiceId;
+    invoiceNumber = r.data.invoiceNumber;
+    assert(invoiceNumber.startsWith("INV-"));
+  });
+
+  await test("Server computes subtotal — client cannot override line totals", async () => {
+    const snap = await admin.firestore().collection("invoices").doc(invoiceId).get();
+    assertEqual(snap.data().subtotal, 10000);
+  });
+
+  await test("Basic vendor hits the 3/month invoice quota on the 4th invoice", async () => {
+    await signInAs(vendorEmail);
+    for (let i = 0; i < 2; i++) {
+      await httpsCallable(fns, "createInvoice")({ customerName: `Cust ${i}`, lineItems: [{ description: "Item", quantity: 1, unitPrice: 100 }] });
+    }
+    await assertFnError(
+      httpsCallable(fns, "createInvoice")({ customerName: "One too many", lineItems: [{ description: "Item", quantity: 1, unitPrice: 100 }] }),
+      "resource-exhausted"
+    );
+  });
+
+  await test("listInvoices returns the vendor's own invoices", async () => {
+    await signInAs(vendorEmail);
+    const r = await httpsCallable(fns, "listInvoices")({});
+    assert(r.data.invoices.length >= 3);
+  });
+
+  await test("invoices collection is not client-writable, and only the owner can read", async () => {
+    await assertDenied(setDoc(doc(db, "invoices", invoiceId), { subtotal: 1 }, { merge: true }));
+    await signInAs(customerEmail);
+    await assertDenied(getDoc(doc(db, "invoices", invoiceId)));
+  });
+
+  await test("Basic vendor cannot download invoice PDF (Standard+ only)", async () => {
+    await signInAs(vendorEmail);
+    await assertFnError(httpsCallable(fns, "downloadInvoicePdf")({ invoiceId }), "permission-denied");
+  });
+
+  await test("Standard vendor CAN download invoice PDF", async () => {
+    await setVendorPlan("standard");
+    await signInAs(vendorEmail);
+    const r = await httpsCallable(fns, "downloadInvoicePdf")({ invoiceId });
+    assert(r.data.success);
+    assert(r.data.pdfBase64.length > 100, "expected a non-trivial PDF payload");
+    assert(r.data.fileName.endsWith(".pdf"));
+  });
+
+  await test("Standard vendor cannot duplicate an invoice (Pro+ only)", async () => {
+    await signInAs(vendorEmail);
+    await assertFnError(httpsCallable(fns, "duplicateInvoice")({ invoiceId }), "permission-denied");
+  });
+
+  await test("Pro vendor CAN duplicate an invoice", async () => {
+    await setVendorPlan("pro");
+    await signInAs(vendorEmail);
+    const r = await httpsCallable(fns, "duplicateInvoice")({ invoiceId });
+    assert(r.data.success);
+    assert(r.data.invoiceId !== invoiceId);
+  });
+
+  console.log("\n📋 Section 12b: Invoice branding gates + validation");
+  await test("Basic vendor cannot upload a logo or set brand color", async () => {
+    await setVendorPlan("basic");
+    await signInAs(vendorEmail);
+    await assertFnError(httpsCallable(fns, "updateInvoiceBranding")({ logoUrl: `invoiceBranding/${vendorId}/logo.png` }), "permission-denied");
+    await assertFnError(httpsCallable(fns, "updateInvoiceBranding")({ brandColor: "#123456" }), "permission-denied");
+  });
+
+  await test("Standard vendor can upload a logo (validated server-side against real Storage object)", async () => {
+    await setVendorPlan("standard");
+    await signInAs(vendorEmail);
+    const path = `invoiceBranding/${vendorId}/logo.png`;
+    // Minimal valid PNG signature bytes — enough for Storage to accept a real object.
+    await uploadBytes(ref(storage, path), new Uint8Array([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]), { contentType: "image/png" });
+    const r = await httpsCallable(fns, "updateInvoiceBranding")({ logoUrl: path });
+    assert(r.data.success);
+  });
+
+  await test("updateInvoiceBranding rejects a logoUrl with no matching uploaded object", async () => {
+    await signInAs(vendorEmail);
+    await assertFnError(httpsCallable(fns, "updateInvoiceBranding")({ logoUrl: `invoiceBranding/${vendorId}/does-not-exist.png` }), "failed-precondition");
+  });
+
+  await test("Standard vendor cannot set brand color (Pro+ only)", async () => {
+    await signInAs(vendorEmail);
+    await assertFnError(httpsCallable(fns, "updateInvoiceBranding")({ brandColor: "#123456" }), "permission-denied");
+  });
+
+  await test("Pro vendor can set brand color, but an invalid hex is rejected", async () => {
+    await setVendorPlan("pro");
+    await signInAs(vendorEmail);
+    await assertFnError(httpsCallable(fns, "updateInvoiceBranding")({ brandColor: "not-a-color" }), "invalid-argument");
+    const r = await httpsCallable(fns, "updateInvoiceBranding")({ brandColor: "#1A2B3C", thankYouMessage: "Thanks for your business!" });
+    assert(r.data.success);
+  });
+
+  await test("Pro Plus vendor can enable QR code and print layout; Pro cannot", async () => {
+    await signInAs(vendorEmail);
+    await assertFnError(httpsCallable(fns, "updateInvoiceBranding")({ qrCodeEnabled: true }), "permission-denied");
+    await setVendorPlan("pro_plus");
+    await signInAs(vendorEmail);
+    const r = await httpsCallable(fns, "updateInvoiceBranding")({ qrCodeEnabled: true, printLayoutEnabled: true });
+    assert(r.data.success);
+  });
+
+  await test("invoiceBranding is not client-writable directly", async () => {
+    await assertDenied(setDoc(doc(db, "invoiceBranding", vendorId), { brandColor: "#000000" }, { merge: true }));
+  });
+
+  console.log("\n📋 Section 12c: Paid/cancelled lifecycle, branding snapshot, public share link");
+  let paidInvoiceId, cancelledInvoiceId;
+
+  await test("Setup: two fresh invoices for paid/cancelled transitions", async () => {
+    await setVendorPlan("pro_plus");
+    await signInAs(vendorEmail);
+    const r1 = await httpsCallable(fns, "createInvoice")({ customerName: "Paid Customer", lineItems: [{ description: "Item", quantity: 1, unitPrice: 2000 }] });
+    paidInvoiceId = r1.data.invoiceId;
+    const r2 = await httpsCallable(fns, "createInvoice")({ customerName: "Cancelled Customer", lineItems: [{ description: "Item", quantity: 1, unitPrice: 2000 }] });
+    cancelledInvoiceId = r2.data.invoiceId;
+  });
+
+  await test("Marking an invoice paid captures a permanent branding snapshot", async () => {
+    await signInAs(vendorEmail);
+    const r = await httpsCallable(fns, "updateInvoiceStatus")({ invoiceId: paidInvoiceId, status: "paid" });
+    assert(r.data.success);
+    const snap = await admin.firestore().collection("invoices").doc(paidInvoiceId).get();
+    assertEqual(snap.data().status, "paid");
+    assert(snap.data().brandingSnapshot, "expected a brandingSnapshot to be captured at payment time");
+    assertEqual(snap.data().brandingSnapshot.brandColor, "#1A2B3C");
+  });
+
+  await test("A subsequent downgrade does not alter the paid invoice's branding snapshot", async () => {
+    await setVendorPlan("basic");
+    const snap = await admin.firestore().collection("invoices").doc(paidInvoiceId).get();
+    assertEqual(snap.data().brandingSnapshot.brandColor, "#1A2B3C", "paid snapshot must survive a plan downgrade unchanged");
+    await setVendorPlan("pro_plus"); // restore for remaining tests
+  });
+
+  await test("Cannot transition an already-paid invoice again", async () => {
+    await signInAs(vendorEmail);
+    await assertFnError(httpsCallable(fns, "updateInvoiceStatus")({ invoiceId: paidInvoiceId, status: "cancelled" }), "failed-precondition");
+  });
+
+  await test("Vendor can cancel an unpaid invoice", async () => {
+    await signInAs(vendorEmail);
+    const r = await httpsCallable(fns, "updateInvoiceStatus")({ invoiceId: cancelledInvoiceId, status: "cancelled" });
+    assert(r.data.success);
+    const snap = await admin.firestore().collection("invoices").doc(cancelledInvoiceId).get();
+    assertEqual(snap.data().status, "cancelled");
+    shareToken = snap.data().shareToken;
+  });
+
+  await test("getPublicInvoice denies access to a cancelled invoice's public link", async () => {
+    await assertFnError(httpsCallable(fns, "getPublicInvoice")({ shareToken }), "failed-precondition");
+  });
+
+  await test("getPublicInvoice serves a non-cancelled invoice without requiring auth, and omits the shareToken itself", async () => {
+    const paidSnap = await admin.firestore().collection("invoices").doc(paidInvoiceId).get();
+    const r = await httpsCallable(fns, "getPublicInvoice")({ shareToken: paidSnap.data().shareToken });
+    assert(r.data.success);
+    assertEqual(r.data.invoice.invoiceId, paidInvoiceId);
+    assertEqual(r.data.invoice.shareToken, undefined);
+  });
+
+  await test("getPublicInvoice returns not-found for an unknown token", async () => {
+    await assertFnError(httpsCallable(fns, "getPublicInvoice")({ shareToken: "not-a-real-token" }), "not-found");
+  });
+}
+
 async function main() {
   console.log("🚀 THE PLATFORM — Milestone 4 Acceptance Test Suite");
   console.log("=".repeat(60));
@@ -593,6 +777,7 @@ async function main() {
   await section9();
   await section10();
   await section11();
+  await section12();
 
   console.log("\n" + "=".repeat(60));
   console.log(`Results: ${passed}/${total} passed, ${failed} failed`);

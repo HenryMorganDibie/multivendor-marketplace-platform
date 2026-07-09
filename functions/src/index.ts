@@ -73,3 +73,9 @@ export { getVendorDashboard, getBusinessAnalytics } from "./vendors/dashboardAna
 // ── Phase 4: Ratings ────────────────────────────────────────────────────────────
 export { submitRating, getVendorRatings, moderateRating } from "./ratings/ratingFunctions";
 export { onRatingWrite } from "./ratings/onRatingWrite";
+
+// ── Phase 4: Invoices ────────────────────────────────────────────────────────────
+export { createInvoice, listInvoices, downloadInvoicePdf, duplicateInvoice,
+         updateInvoiceStatus, getPublicInvoice } from "./invoices/invoiceFunctions";
+export { updateInvoiceBranding } from "./invoices/invoiceBranding";
+export { cleanupExpiredInvoiceVisibility } from "./invoices/cleanupExpiredInvoiceVisibility";

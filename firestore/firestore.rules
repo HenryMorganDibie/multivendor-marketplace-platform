@@ -553,6 +553,21 @@ service cloud.firestore {
     }
 
     // -----------------------------------------------------------------------
+    // Phase 4: Invoices (PHASE_4_COLLECTION_MAPPING v10, Section 2.3/2.4)
+    // Owner vendor and admin can read directly. Public "Share Invoice"
+    // access goes through getPublicInvoice — a callable, not a direct
+    // Firestore read, since a raw client query by shareToken would let
+    // anyone enumerate the field name and brute-force tokens against an
+    // open collection; the callable is the only path that checks status
+    // (revoking a cancelled invoice's public visibility) before returning
+    // anything. All writes are Cloud-Function-only.
+    // -----------------------------------------------------------------------
+    match /invoices/{invoiceId} {
+      allow read: if isVendorOwner(resource.data.vendorId) || isAdmin();
+      allow create, update, delete: if false;
+    }
+
+    // -----------------------------------------------------------------------
     // Phase 3: Blocks
     // Only the blocker can read their own blocked-list entries. The
     // blocked party cannot see themselves in anyone's list (no read rule
@@ -600,6 +615,17 @@ service cloud.firestore {
     match /vendors/{vendorId}/quickReplies/{replyId} {
       allow read: if isVendorOwner(vendorId) || isAdmin();
       allow write: if false; // createQuickReply / updateQuickReply / deleteQuickReply only
+    }
+
+    // -----------------------------------------------------------------------
+    // Phase 4: Invoice monthly quota counters — internal bookkeeping only,
+    // never client-readable (a vendor could otherwise infer their own
+    // remaining quota by reading this directly instead of going through
+    // createInvoice's own resource-exhausted error, which is harmless but
+    // unnecessary surface area for a document with no other use).
+    // -----------------------------------------------------------------------
+    match /vendors/{vendorId}/invoiceCounters/{monthKey} {
+      allow read, write: if false;
     }
 
 
