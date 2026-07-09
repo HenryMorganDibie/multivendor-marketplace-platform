@@ -761,6 +761,160 @@ async function section12() {
   });
 }
 
+// ─────────────────────────────────────────────────────────────────────────
+// SECTION 13: Production hardening — locking, out-of-order webhooks, replay
+// ─────────────────────────────────────────────────────────────────────────
+async function section13() {
+  console.log("\n📋 Section 13: Production hardening — locking, out-of-order webhooks, replay");
+
+  // A dedicated fresh vendor, so precise event-sequence/priority assertions
+  // are never polluted by the subscription lifecycle churn in earlier
+  // sections (that vendor has been upgraded/downgraded/cancelled many
+  // times already, which would make "last event" state hard to reason
+  // about here).
+  let hVendorId;
+  await test("Setup: fresh vendor for hardening tests", async () => {
+    const email = `p4hard_${Date.now()}@test.com`;
+    const c = await createUserWithEmailAndPassword(auth, email, PASSWORD);
+    await waitFor(async () => { const s = await getDoc(doc(db, "users", c.user.uid)); return s.exists() ? s : null; });
+    await signInAs(email);
+    const rr = await httpsCallable(fns, "completeRegistration")({ role: "vendor", businessName: "P4 Hardening Vendor", username: `p4hardv_${Date.now()}`, fullName: "Vendor Owner", categoryId: "food_catering", categoryName: "Food & Catering", country: "Nigeria", state: "Lagos", area: "Lekki", plan: "basic" });
+    hVendorId = rr.data.vendorId;
+  });
+
+  await test("A live (non-expired) subscription lock causes a webhook call to return 409", async () => {
+    await admin.firestore().collection("subscriptionLocks").doc(hVendorId).set({
+      vendorId: hVendorId, lockedBy: "test:manual", lockedAt: admin.firestore.FieldValue.serverTimestamp(),
+      expiresAt: admin.firestore.Timestamp.fromMillis(Date.now() + 10_000),
+    });
+    const resp = await postWebhook({
+      event: "subscription.create",
+      data: { id: `evt_lockcontention_${RUN_ID}`, created_at: new Date().toISOString(), metadata: { vendorId: hVendorId } },
+    });
+    assertEqual(resp.status, 409);
+    await admin.firestore().collection("subscriptionLocks").doc(hVendorId).delete();
+  });
+
+  await test("A stale (expired) lock does not block processing — TTL recovery", async () => {
+    await admin.firestore().collection("subscriptionLocks").doc(hVendorId).set({
+      vendorId: hVendorId, lockedBy: "test:crashed-holder", lockedAt: admin.firestore.Timestamp.fromMillis(Date.now() - 60_000),
+      expiresAt: admin.firestore.Timestamp.fromMillis(Date.now() - 50_000), // expired 50s ago
+    });
+    const resp = await postWebhook({
+      event: "subscription.create",
+      data: {
+        id: `evt_ttlrecovery_${RUN_ID}`, created_at: new Date().toISOString(), metadata: { vendorId: hVendorId },
+        subscription_code: "SUB_hard_1", customer: { customer_code: "CUS_hard_1" },
+        plan: { plan_code: "PLN_pro_monthly_placeholder", plan_code_metadata: { planId: "pro" } },
+        amount: 1500000, currency: "NGN",
+      },
+    });
+    assertEqual(resp.status, 200);
+    const subSnap = await admin.firestore().collection("vendorSubscriptions").doc(hVendorId).get();
+    assertEqual(subSnap.data().status, "active", "processing must proceed despite the stale lock document");
+  });
+
+  await test("Stale webhook (event timestamp >24h old) is rejected before any mutation", async () => {
+    const oldTimestamp = new Date(Date.now() - 25 * 60 * 60 * 1000).toISOString();
+    const beforeSnap = await admin.firestore().collection("vendorSubscriptions").doc(hVendorId).get();
+    const resp = await postWebhook({
+      event: "subscription.not_renew",
+      data: { id: `evt_stale_${RUN_ID}`, created_at: oldTimestamp, metadata: { vendorId: hVendorId } },
+    });
+    assertEqual(resp.status, 200);
+    await signInAs(adminEmail);
+    const eventsSnap = await getDocs(collection(db, "subscriptionEvents"));
+    const found = eventsSnap.docs.map(d => d.data()).find(e => e.providerEventId === `evt_stale_${RUN_ID}`);
+    assert(found, "expected the stale webhook to be logged");
+    assertEqual(found.ignoreReason, "stale_webhook_rejected");
+    const afterSnap = await admin.firestore().collection("vendorSubscriptions").doc(hVendorId).get();
+    assertEqual(afterSnap.data().status, beforeSnap.data().status, "a stale webhook must never mutate subscription state");
+  });
+
+  await test("Out-of-order webhook (lower priority, arrives after a higher-priority event) is ignored", async () => {
+    // "cancelled" (priority 100) applied first, at a LATER timestamp than
+    // the "renewal" (priority 40) event that arrives second — simulating
+    // network reordering, not wall-clock arrival order.
+    const laterTs = new Date(Date.now() - 1000).toISOString();
+    const earlierTs = new Date(Date.now() - 5000).toISOString();
+
+    const cancelResp = await postWebhook({
+      event: "subscription.not_renew",
+      data: { id: `evt_ooo_cancel_${RUN_ID}`, created_at: laterTs, metadata: { vendorId: hVendorId } },
+    });
+    assertEqual(cancelResp.status, 200);
+    const afterCancelSnap = await admin.firestore().collection("vendorSubscriptions").doc(hVendorId).get();
+    assertEqual(afterCancelSnap.data().status, "cancelled");
+
+    const renewalResp = await postWebhook({
+      event: "invoice.payment_succeeded",
+      data: {
+        id: `evt_ooo_renewal_${RUN_ID}`, created_at: earlierTs, metadata: { vendorId: hVendorId },
+        plan: { plan_code_metadata: { planId: "pro" } },
+      },
+    });
+    assertEqual(renewalResp.status, 200);
+
+    await signInAs(adminEmail);
+    const eventsSnap = await getDocs(collection(db, "subscriptionEvents"));
+    const found = eventsSnap.docs.map(d => d.data()).find(e => e.providerEventId === `evt_ooo_renewal_${RUN_ID}`);
+    assert(found, "expected the out-of-order renewal event to be logged");
+    assertEqual(found.ignoreReason, "superseded_by_newer_or_higher_priority_event");
+
+    const finalSnap = await admin.firestore().collection("vendorSubscriptions").doc(hVendorId).get();
+    assertEqual(finalSnap.data().status, "cancelled", "the lower-priority out-of-order event must never overwrite cancelled");
+  });
+
+  await test("Equal-priority tie resolution — earlier-sequence duplicate-priority event is ignored", async () => {
+    // Two "renewal" events (priority 40) for the SAME underlying
+    // subscription_code — a duplicate delivery scenario, not a fresh
+    // resubscription (a different subscription_code intentionally resets
+    // priority tracking, tested separately). The second delivery has an
+    // EARLIER created_at than the first, so despite arriving later over
+    // the wire it must lose the tie and be ignored.
+    const firstTs = new Date(Date.now() - 2000).toISOString();
+    const secondTsEarlier = new Date(Date.now() - 3000).toISOString();
+
+    const r1 = await postWebhook({
+      event: "subscription.create",
+      data: {
+        id: `evt_tie_1_${RUN_ID}`, created_at: firstTs, metadata: { vendorId: hVendorId },
+        subscription_code: "SUB_hard_2", customer: { customer_code: "CUS_hard_2" },
+        plan: { plan_code: "PLN_standard_monthly_placeholder", plan_code_metadata: { planId: "standard" } },
+        amount: 800000, currency: "NGN",
+      },
+    });
+    assertEqual(r1.status, 200);
+
+    const r2 = await postWebhook({
+      event: "invoice.payment_succeeded",
+      data: {
+        id: `evt_tie_2_${RUN_ID}`, created_at: secondTsEarlier, metadata: { vendorId: hVendorId },
+        subscription_code: "SUB_hard_2", customer: { customer_code: "CUS_hard_2" },
+        plan: { plan_code: "PLN_basic_monthly_placeholder", plan_code_metadata: { planId: "basic" } },
+        amount: 0, currency: "NGN",
+      },
+    });
+    assertEqual(r2.status, 200);
+
+    await signInAs(adminEmail);
+    const eventsSnap = await getDocs(collection(db, "subscriptionEvents"));
+    const found = eventsSnap.docs.map(d => d.data()).find(e => e.providerEventId === `evt_tie_2_${RUN_ID}`);
+    assert(found, "expected the losing tie-break event to be logged");
+    assertEqual(found.ignoreReason, "superseded_by_newer_or_higher_priority_event");
+
+    const finalSnap = await admin.firestore().collection("vendorSubscriptions").doc(hVendorId).get();
+    assertEqual(finalSnap.data().plan, "standard", "the earlier-sequence tied-priority event must not overwrite the winner");
+  });
+
+  await test("version increments only on genuine mutations, never on ignored/duplicate events", async () => {
+    const snap = await admin.firestore().collection("vendorSubscriptions").doc(hVendorId).get();
+    // 3 genuine mutations applied above: activation(pro) -> cancelled -> activation(standard).
+    // The stale, out-of-order, and tied-loser events must not have incremented version.
+    assertEqual(snap.data().version, 3);
+  });
+}
+
 async function main() {
   console.log("🚀 THE PLATFORM — Milestone 4 Acceptance Test Suite");
   console.log("=".repeat(60));
@@ -778,6 +932,7 @@ async function main() {
   await section10();
   await section11();
   await section12();
+  await section13();
 
   console.log("\n" + "=".repeat(60));
   console.log(`Results: ${passed}/${total} passed, ${failed} failed`);

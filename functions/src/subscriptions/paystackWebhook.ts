@@ -149,12 +149,27 @@ export const handlePaystackWebhook = https.onRequest(async (req, res) => {
       const subSnap = await tx.get(subRef);
       const existing = subSnap.exists ? (subSnap.data() as VendorSubscriptionDoc) : null;
 
+      // A genuinely NEW subscription cycle (a different Paystack
+      // subscription_code than what's on file) always resets priority
+      // tracking rather than being compared against it. Without this, a
+      // vendor who cancelled (priority 100, the highest in the table)
+      // could never resubscribe: every future "activation" webhook
+      // (priority 40) would look like a lower-priority event trying to
+      // overwrite a higher-priority one and get permanently rejected. The
+      // guard exists to resolve REORDERING within one subscription's
+      // lifecycle, not to ratchet forever across separate subscriptions.
+      const incomingSubscriptionCode: string | undefined = body.data?.subscription_code;
+      const isNewSubscriptionCycle =
+        normalizedEventType === "activation" &&
+        !!incomingSubscriptionCode &&
+        incomingSubscriptionCode !== existing?.providerSubscriptionId;
+
       // Out-of-order protection: an event only applies if its priority is
       // higher than the last-applied event's priority, OR equal priority
       // with a later sequence number (tie broken by recency).
       const incomingPriority = NORMALIZED_EVENT_PRIORITY[normalizedEventType];
       const incomingSequence = eventTimestampMs;
-      if (existing) {
+      if (existing && !isNewSubscriptionCycle) {
         const lastPriority = existing.lastEventPriority ?? 0;
         const lastSequence = existing.lastEventSequence ?? 0;
         const supersededByHigherPriority = incomingPriority < lastPriority;
@@ -229,6 +244,16 @@ export const handlePaystackWebhook = https.onRequest(async (req, res) => {
           updates.gracePeriodSetAt = now;
         }
       } else if (normalizedEventType === "cancelled") {
+        // A PROVIDER-side cancellation (Paystack itself reports the
+        // subscription as not-renewing/disabled) is distinct from a
+        // vendor-initiated soft cancel via the cancelSubscription callable,
+        // which deliberately leaves status "active" until period end so
+        // resolveEffectivePlan's "active" branch keeps serving full plan
+        // limits. A webhook-driven cancellation sets status to "cancelled"
+        // outright, which is what makes resolveEffectivePlan's dedicated
+        // "cancelled && before currentPeriodEnd" priority branch reachable
+        // at all (Section 4.1, priority order item 5).
+        updates.status = "cancelled";
         updates.cancelAtPeriodEnd = true;
         updates.cancelledAt = now;
       }
