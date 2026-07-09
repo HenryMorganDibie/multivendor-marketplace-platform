@@ -1,6 +1,6 @@
-# the platform Backend — Frontend Integration Contracts (Milestones 1–3)
+# the platform Backend — Frontend Integration Contracts (Milestones 1–4)
 
-This document describes every callable Cloud Function exposed by the backend across Milestones 1–3: required auth state, request payload, response payload, error codes, and any Firestore/Storage side effects the frontend needs to know about.
+This document describes every callable Cloud Function exposed by the backend across Milestones 1–4: required auth state, request payload, response payload, error codes, and any Firestore/Storage side effects the frontend needs to know about.
 
 General notes that apply to all callables:
 
@@ -628,5 +628,176 @@ A rule-based content moderation layer that runs inside `sendChatMessage`, `updat
 |---|---|
 | `moderationRules/{ruleId}` | admin only — direct client writes always denied |
 | `moderationEvents/{eventId}` | admin only — direct client writes always denied; never contains raw message text, only a hash and a redacted snippet |
+
+---
+
+# Milestone 4 — Vendor Subscriptions, Plan Gating, Ratings, Invoices
+
+Core architectural constraint: the mobile app, admin dashboard, and vendor portal read subscription status **exclusively from Firestore**. No application layer ever reads from a payment provider's API directly. Every gated callable below reads its permission decision from `resolveEffectivePlan`, never a hardcoded constant.
+
+## Subscriptions
+
+### `getSubscriptionStatus`
+- **Auth required:** yes, vendor or admin
+- **Request:** `{}` (empty)
+- **Response:** `{ effectivePlan: "basic"|"standard"|"pro"|"pro_plus", planLimits: PlanLimits, subscription: VendorSubscriptionDoc | null, reason: string }`
+- **Note:** `reason` explains *why* the effective plan is what it is (`"vendor_suspended"`, `"admin_override"`, `"active"`, `"grace_period"`, `"cancelled_before_period_end"`, `"no_subscription"`, `"expired_or_other"`) — useful for showing the vendor an accurate status message, not just a plan name. A vendor with no `vendorSubscriptions` document at all is `basic` with `subscription: null`, not an error.
+
+### `createSubscriptionCheckout`
+- **Auth required:** yes, role `vendor`
+- **Request:** `{ plan: "standard"|"pro"|"pro_plus", billingInterval: "monthly"|"yearly" }`
+- **Response:** `{ success: true, authorizationUrl: string }`
+- **Errors:** `permission-denied`, `resource-exhausted` (rate limited, 5/60s)
+- **Note:** the returned URL is a Paystack-hosted checkout page. The subscription does **not** activate from this call — it activates asynchronously when Paystack's webhook confirms payment. The frontend should poll `getSubscriptionStatus` or listen for a push notification after redirecting the vendor back from checkout, not assume success immediately.
+
+### `cancelSubscription`
+- **Auth required:** yes, role `vendor`
+- **Request:** `{}` (empty)
+- **Response:** `{ success: true }`
+- **Errors:** `not-found` (no subscription), `resource-exhausted` (rate limited)
+- **Behavioral note:** cancel-at-period-end only — immediate cancellation is admin-only (`cancelSubscriptionAdmin`). The vendor's plan and limits are unchanged until `currentPeriodEnd`. Clears any pending downgrade, since cancellation always takes priority.
+
+### `reactivateSubscription`
+- **Auth required:** yes, role `vendor`
+- **Request:** `{}` (empty)
+- **Response:** `{ success: true }`
+- **Errors:** `failed-precondition` (not currently cancelled, or `currentPeriodEnd` has already passed — in the latter case the vendor must call `createSubscriptionCheckout` instead, not retry this), `resource-exhausted` (rate limited)
+
+### `seedSubscriptionPlans` (admin, not for frontend use)
+- **Auth required:** yes, role `admin` with `super_admin`
+- **Response:** `{ success: true, planCount: number }`
+- **Note:** idempotent bootstrap for the `subscriptionPlans` collection. Exists for initial environment setup.
+
+### `cancelSubscriptionAdmin`
+- **Auth required:** yes, role `admin` with `super_admin`
+- **Request:** `{ vendorId: string, immediate: boolean, reason: string }`
+- **Response:** `{ success: true }`
+- **Errors:** `invalid-argument` if `reason` is missing — every admin subscription action requires one, no exceptions
+
+### `applyManualSubscriptionOverride`
+- **Auth required:** yes, role `admin` with `super_admin`
+- **Request:** `{ vendorId: string, plan: "basic"|"standard"|"pro"|"pro_plus", reason: string, ticketId?: string, notes?: string }`
+- **Response:** `{ success: true }`
+- **Errors:** `invalid-argument` if `reason` is missing
+- **Behavioral note:** while an override is active, incoming Paystack webhook events for that vendor are logged to `subscriptionEvents` but do **not** change plan or status. Default override window matches the spec's 30-day default; this is a comp/VIP/support-resolution tool, not a permanent state.
+
+**Public-safe plan display** — `subscriptionPlans/{planId}` is publicly readable (`allow read: if true`, no auth required) and contains only display fields and the full `PlanLimits` shape. Provider plan codes are in a completely separate, fully private collection (`providerPlanCodes`) and are **never** present on this document or in any function response — safe to read directly from Firestore for a public pricing page.
+
+## Plan gating — existing callables with new behavior
+
+These callables existed before Milestone 4; they now additionally check `PlanLimits` via `resolveEffectivePlan` and can return `permission-denied` or `resource-exhausted` where they previously wouldn't have.
+
+| Callable | New gate | Plan limit field |
+|---|---|---|
+| `createCatalogItem` | Photo count on the request rejected if over the limit | `photosPerItemLimit` (2/5/10/15) |
+| `updateCatalogItem` | Same, only checked when `photos` is present in the update | `photosPerItemLimit` |
+| `createExternalOrder` | Basic plan cannot create external (non-platform) orders at all | `canAccessExternalOrders` |
+| `updateVendorPickupSettings` | Enabling `autoSendPickupDetailsEnabled` requires Pro or higher | `canAutoSendPickupDetails` |
+
+Catalog item **count** limits (10/30/100/250) were already enforced before Milestone 4 but now read from `resolveEffectivePlan` instead of the legacy `vendors/{vendorId}.plan` field — no frontend-visible change, but worth knowing if you're debugging a limit that looks stale after a plan change.
+
+### `updateVendorSettings` (new in Milestone 4)
+- **Auth required:** yes, role `vendor`
+- **Request:** any subset of `{ minimumOrderAmount: number, policy: string }`
+- **Response:** `{ success: true }`
+- **Errors:** `permission-denied` if the vendor's plan doesn't permit the field being set (`canSetMinimumOrderAmount` / `canSetBusinessPolicies` — both Standard+ only, no partial saves)
+
+### `getVendorDashboard` (new in Milestone 4)
+- **Auth required:** yes, role `vendor`
+- **Request:** `{ includeWidgets?: ("bestSeller"|"revenueCard")[] }`
+- **Response:** `{ success: true, planLimits: PlanLimits, dashboardFilterRange: string, ordersToday, pendingOrders, todaysRevenue, todaysSchedule, upcomingOrders, bestSeller?, revenueCard? }`
+- **Errors:** `permission-denied` if `includeWidgets` requests a widget the plan doesn't permit (`canViewBestSellerWidget` / `canViewRevenueCard`, both Standard+)
+- **Behavioral note:** the always-on widgets (orders today, pending, today's revenue, today's schedule, upcoming orders) are returned regardless of plan — only the best-seller and revenue-card widgets are gated. `dashboardFilterRange` in the response (`"today"|"week"|"month"|"year"`) tells the frontend the maximum date-range filter this vendor's plan permits; the backend clamps/rejects requests for a wider range than that independently of what the frontend sends.
+
+### `getBusinessAnalytics` (new in Milestone 4)
+- **Auth required:** yes, role `vendor`
+- **Request:** `{}` (empty)
+- **Response:** `{ success: true, revenueTrend: [...], conversionFunnel, storefrontPerformance, customerGrowth, repeatCustomerAnalytics, customerSourceBreakdown, ordersBySource, platformVsExternal }`
+- **Errors:** `permission-denied` for Basic/Standard plans — this entire function requires Pro or higher (`canViewAdvancedAnalytics`)
+- **Important:** `revenueTrend` and `ordersBySource`/`platformVsExternal` are computed from real order data. Several other fields (`conversionFunnel`, `storefrontPerformance`, `customerGrowth`, `repeatCustomerAnalytics`, `customerSourceBreakdown`) return `{ dataPending: true }` — the underlying data pipelines for those specific metrics are future-phase work per the source spec's own scope table, not a bug. The frontend should render a "coming soon" state for any field carrying `dataPending: true` rather than treating it as zero/empty data.
+
+## Ratings
+
+Star rating (1-5, required) plus an optional private written feedback field, submitted once per completed order. **Privacy is the core design constraint here**: a vendor never receives `orderId`, `customerId`, or any order reference in any response — the only identifier a vendor ever sees is a separately, randomly generated `displayId` (e.g. `"R-K8F2M7"`). This is enforced by denying vendors direct Firestore reads of `ratings` entirely, not just by the frontend choosing not to display those fields.
+
+### `submitRating`
+- **Auth required:** yes, role `customer`
+- **Request:** `{ orderId: string, stars: number, privateFeedback?: string }`
+- **Response:** `{ success: true, ratingId: string, displayId: string }`
+- **Errors:** `permission-denied` (not the order's customer), `failed-precondition` (order not completed, or has status `cancelled`/`rejected`/`expired`), `already-exists` (this order was already rated), `invalid-argument` (`stars` not an integer 1-5, or `privateFeedback` over 1000 characters), `resource-exhausted` (rate limited, 5/60s)
+- **Important:** ratings are **final upon submission**. There is no edit or delete path for the customer at any point afterward — do not build an edit UI expecting a corresponding callable to exist.
+
+### `getVendorRatings`
+- **Auth required:** yes, role `vendor`
+- **Request:** `{}` (empty)
+- **Response:** `{ success: true, ratings: [{ ratingId, displayId, stars, privateFeedback, hasPrivateFeedback, submittedAt, readByVendor }] }`
+- **Note:** this is the **only** sanctioned way for a vendor to read their own ratings. `orderId` and `customerId` are never present in this shape, under any request parameters — a direct Firestore read of `ratings/{ratingId}` by a vendor-role token is denied entirely by security rules. Ratings with `moderationStatus: "removed"` are excluded from this list.
+
+### `moderateRating` (admin only, not for frontend vendor/customer use)
+- **Auth required:** yes, role `admin` with `super_admin` or `safety_admin`
+- **Request:** `{ ratingId: string, moderationStatus: "flagged"|"removed", reason: string }`
+- **Response:** `{ success: true }`
+- **Note:** never deletes the underlying document — a "removed" rating is excluded from `vendorRatingStats` and from `getVendorRatings` results, but the record persists for audit purposes.
+
+**Public aggregate:** `vendorRatingStats/{vendorId}` is publicly readable (`average`, `total`, star `breakdown`, `lastRatingAt`) and contains no written feedback content or customer/order identifiers — safe to read directly for a storefront's ratings summary.
+
+## Invoices
+
+### `createInvoice`
+- **Auth required:** yes, role `vendor`
+- **Request:** `{ customerName: string, customerPhone?: string, customerEmail?: string, lineItems: { description: string, quantity: number, unitPrice: number }[], notes?: string, currency?: string }`
+- **Response:** `{ success: true, invoiceId: string, invoiceNumber: string }`
+- **Errors:** `invalid-argument` (missing customerName, empty lineItems, or a line item with a non-positive quantity/negative unitPrice), `resource-exhausted` (monthly invoice quota reached — 3/25/100/200 depending on plan)
+- **Important:** line item totals and the invoice subtotal are always computed server-side from `quantity × unitPrice`. Any `total`/`subtotal` field in the request is ignored.
+- **Note on the monthly quota:** resets on the UTC calendar month boundary (00:00 UTC on the 1st), not the vendor's local time zone.
+
+### `listInvoices`
+- **Auth required:** yes, role `vendor`
+- **Request:** `{ status?: "unpaid"|"paid"|"cancelled" }`
+- **Response:** `{ success: true, invoices: InvoiceDoc[] }`
+- **Note:** search/filtering by status is available on every plan. An invoice older than the vendor's `invoiceHistoryDays` (30/180/548/1095 days) stops appearing here (a daily job sets `hiddenFromHistory: true`) but the underlying document and its data are never deleted — this is a visibility window, not a retention policy.
+
+### `downloadInvoicePdf`
+- **Auth required:** yes, role `vendor`, must own the invoice
+- **Request:** `{ invoiceId: string }`
+- **Response:** `{ success: true, pdfBase64: string, fileName: string }`
+- **Errors:** `permission-denied` (Basic plan — `canDownloadInvoicePdf` is Standard+), `not-found`
+- **Note:** `pdfBase64` is the raw PDF file, base64-encoded, meant to be decoded and saved/shared client-side. A **paid** invoice always renders with the exact branding it had at the moment it was marked paid (a permanent snapshot), regardless of the vendor's current plan or subsequently changed branding settings. An unpaid invoice renders with the vendor's *current* branding, filtered through their *current* plan.
+
+### `duplicateInvoice`
+- **Auth required:** yes, role `vendor`, must own the source invoice
+- **Request:** `{ invoiceId: string }`
+- **Response:** `{ success: true, invoiceId: string, invoiceNumber: string }`
+- **Errors:** `permission-denied` (Basic/Standard — `canDuplicateInvoice` is Pro+), `not-found`, `resource-exhausted` (counts against the same monthly quota as `createInvoice`)
+
+### `updateInvoiceStatus`
+- **Auth required:** yes, role `vendor`, must own the invoice
+- **Request:** `{ invoiceId: string, status: "paid"|"cancelled" }`
+- **Response:** `{ success: true }`
+- **Errors:** `failed-precondition` (invoice is not currently `unpaid` — a paid or cancelled invoice cannot transition again)
+- **Note:** not an explicitly named function in the source spec document, but required for the paid/cancelled states the spec's own edge cases (branding snapshot, public link revocation) assume are reachable. Marking an invoice paid is what captures its permanent `brandingSnapshot`.
+
+### `getPublicInvoice`
+- **Auth required:** none — this is the public "Share Invoice" surface, available on every plan
+- **Request:** `{ shareToken: string }`
+- **Response:** `{ success: true, invoice: InvoiceDoc }` (the `shareToken` field itself is omitted from the response)
+- **Errors:** `not-found` (unknown token), `failed-precondition` (the invoice has been cancelled — its public link is revoked, not just its own status hidden)
+- **Note:** this is the *only* way to fetch an invoice by share link. There is no direct Firestore read path for `invoices` by a non-owner — a raw client query by `shareToken` would let anyone enumerate the field and brute-force tokens against an open collection.
+
+### `updateInvoiceBranding`
+- **Auth required:** yes, role `vendor`
+- **Request:** any subset of `{ logoUrl: string | null, brandColor: string | null, thankYouMessage: string | null, footerText: string | null, selectedTemplateId: string | null, selectedSeasonalThemeId: string | null, qrCodeEnabled: boolean, printLayoutEnabled: boolean }`
+- **Response:** `{ success: true }`
+- **Errors:** `permission-denied` (any field not permitted by the vendor's current plan — checked independently per field, no partial saves if one field is disallowed), `invalid-argument` (`brandColor` not a valid 6-digit hex color; `thankYouMessage` over 280 characters; `footerText` over 500 characters; `logoUrl` doesn't reference an actually-uploaded object), `failed-precondition` (`logoUrl` path has no matching uploaded file yet), `resource-exhausted` (rate limited, 5/60s)
+- **Upload flow for `logoUrl`:** upload the image directly to Cloud Storage at `invoiceBranding/{vendorId}/{fileName}` first (max 2MB, PNG/JPEG/WebP — enforced by both Storage rules and this callable's own server-side check against the real uploaded object, never the client's declared content-type), *then* call this callable with that storage path as `logoUrl`. Calling with a path that has no uploaded object yet returns `failed-precondition`.
+- **Downgrade behavior:** a plan downgrade never deletes or clears any saved branding field — the document is additive-only from the vendor's perspective. A downgrade only changes which fields are *applied* the next time an invoice PDF is generated. Re-upgrading later restores full branding with zero re-entry required.
+
+**Firestore collections added for invoices:**
+
+| Collection | Client read access |
+|---|---|
+| `invoices/{invoiceId}` | owner vendor + admin only — direct client writes always denied; public access is exclusively through `getPublicInvoice` |
+| `invoiceBranding/{vendorId}` | owner vendor + admin only — direct client writes always denied, use `updateInvoiceBranding` |
+| `vendors/{vendorId}/invoiceCounters/{monthKey}` | fully private, Cloud Functions only — internal quota bookkeeping, not meant to be read by any client |
 
 **Fields added to the existing `users/{uid}` document:** `moderationScore`, `moderationStatusReason`, `moderationWarnedAt`, `moderationRestrictedAt`, `moderationBannedAt` — all server-only, never client-writable, and not intended for the frontend to read or display in this milestone.
