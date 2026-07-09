@@ -4,6 +4,7 @@ import { PICKUP_LIMITS, VendorPickupSettingsDoc } from "../types3";
 import { checkAppCheck } from "../utils/appCheck";
 import { writeAuditLog } from "../utils/auditLog";
 import { newRequestId } from "../utils/requestContext";
+import { resolveEffectivePlan } from "../subscriptions/resolveEffectivePlan";
 
 export const updateVendorPickupSettings = https.onCall(async (request) => {
   const requestId = newRequestId();
@@ -41,6 +42,11 @@ export const updateVendorPickupSettings = https.onCall(async (request) => {
   // AND instructions AND an active vendor status. This is enforced
   // server-side even though the frontend also disables the toggle.
   if (autoSendPickupDetailsEnabled === true) {
+    const { limits: planLimits } = await resolveEffectivePlan(vendorId);
+    if (!planLimits.canAutoSendPickupDetails) {
+      throw new https.HttpsError("permission-denied", "Auto-send pickup details is not available on your current plan.");
+    }
+
     const resolvedAddress = pickupAddress ?? existing?.pickupAddress;
     const resolvedInstructions = (pickupInstructions ?? existing?.pickupInstructions)?.trim?.();
 

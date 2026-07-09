@@ -10,6 +10,7 @@ import { writeOrderEvent } from "./orderEvents";
 import { isCountryActive } from "../utils/countryAvailability";
 import { canStartNewCommerce } from "../blocks/blockUtils";
 import { injectOrderContext } from "../chat/injectOrderContext";
+import { resolveEffectivePlan } from "../subscriptions/resolveEffectivePlan";
 
 const SLA_HOURS = 48;
 
@@ -123,6 +124,13 @@ export const createExternalOrder = https.onCall(async (request) => {
   const { externalCustomerName, externalCustomerPhone, items: rawItems, fulfillmentType, orderNote } = request.data ?? {};
   if (!externalCustomerName?.trim()) throw new https.HttpsError("invalid-argument", "externalCustomerName is required.");
   if (!Array.isArray(rawItems) || rawItems.length === 0) throw new https.HttpsError("invalid-argument", "items is required.");
+
+  // Phase 4 gate: recording orders placed outside the app is a paid feature
+  // (Basic cannot). Platform orders via createOrderFromCart are unaffected.
+  const { limits: planLimits } = await resolveEffectivePlan(vendorId);
+  if (!planLimits.canAccessExternalOrders) {
+    throw new https.HttpsError("permission-denied", "External order recording is not available on your current plan.");
+  }
 
   const vendorSnap = await db.collection("vendors").doc(vendorId).get();
   if (!vendorSnap.exists) throw new https.HttpsError("not-found", "Vendor not found.");

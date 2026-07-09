@@ -61,3 +61,15 @@ export { createAiHelpThread } from "./ai/aiHelpFunctions";
 
 // ── Phase 3: Moderation ────────────────────────────────────────────────────────
 export { seedDefaultModerationRules, reviewModerationRestriction } from "./moderation/moderationAdmin";
+
+// ── Phase 4: Vendor subscriptions ───────────────────────────────────────────────
+export { seedSubscriptionPlans, cancelSubscriptionAdmin, applyManualSubscriptionOverride } from "./subscriptions/subscriptionAdmin";
+export { handlePaystackWebhook } from "./subscriptions/paystackWebhook";
+export { createSubscriptionCheckout, getSubscriptionStatus, cancelSubscription, reactivateSubscription } from "./subscriptions/subscriptionFunctions";
+export { expireStaleSubscriptions, gracePeriodReminder } from "./subscriptions/scheduledJobs";
+export { updateVendorSettings } from "./vendors/updateVendorSettings";
+export { getVendorDashboard, getBusinessAnalytics } from "./vendors/dashboardAnalytics";
+
+// ── Phase 4: Ratings ────────────────────────────────────────────────────────────
+export { submitRating, getVendorRatings, moderateRating } from "./ratings/ratingFunctions";
+export { onRatingWrite } from "./ratings/onRatingWrite";

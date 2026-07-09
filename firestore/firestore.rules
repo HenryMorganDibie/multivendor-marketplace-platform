@@ -493,6 +493,66 @@ service cloud.firestore {
     }
 
     // -----------------------------------------------------------------------
+    // Phase 4: Vendor subscriptions (PHASE_4_COLLECTION_MAPPING v10)
+    // vendorSubscriptions and subscriptionEvents are read-only reflections
+    // of state that only Cloud Functions (webhook handler, admin actions,
+    // scheduled jobs) may mutate — a client, including the vendor owner,
+    // can read but never write directly, since every transition carries
+    // business rules (locking, out-of-order protection, audit trail) that
+    // belong in code, not in a rule.
+    // -----------------------------------------------------------------------
+    match /vendorSubscriptions/{vendorId} {
+      allow read: if isVendorOwner(vendorId) || isAdmin();
+      allow create, update, delete: if false;
+    }
+    match /subscriptionEvents/{eventId} {
+      allow read: if isAdmin();
+      allow create, update, delete: if false;
+    }
+    match /subscriptionPlans/{planId} {
+      // Public safe: display fields and PlanLimits values only. Provider
+      // codes are never stored on this document — see providerPlanCodes.
+      allow read: if true;
+      allow create, update, delete: if false;
+    }
+    match /providerPlanCodes/{planId} {
+      // Private: readable only by Cloud Functions via the Admin SDK, which
+      // bypasses these rules entirely. No client, authenticated or not,
+      // reaches provider plan codes through any direct Firestore path.
+      allow read, write: if false;
+    }
+    match /invoiceBranding/{vendorId} {
+      allow read: if isVendorOwner(vendorId) || isAdmin();
+      allow create, update, delete: if false;
+    }
+    match /subscriptionLocks/{vendorId} {
+      allow read, write: if false;
+    }
+    match /rateLimits/{docId} {
+      allow read, write: if false;
+    }
+
+    // -----------------------------------------------------------------------
+    // Phase 4: Ratings (PHASE_4_COLLECTION_MAPPING v10, Section 4.9/4.10)
+    // The customer who submitted a rating can read it in full, including
+    // orderId, for their own reference. Vendors get NO direct read access
+    // here at all — every vendor-facing read goes through getVendorRatings,
+    // which projects out orderId/customerId server-side. This is the
+    // enforcement mechanism, not just a frontend choice: a vendor-role
+    // token querying this collection directly is denied outright.
+    // -----------------------------------------------------------------------
+    match /ratings/{ratingId} {
+      allow read: if (isCustomer() && uid() == resource.data.customerId) || isAdmin();
+      allow create: if false; // writes only via submitRating
+      allow update: if false; // final upon submission (v10) — moderateRating uses the Admin SDK, bypassing rules
+      allow delete: if false; // never deleted; admin moderation uses moderationStatus
+    }
+    match /vendorRatingStats/{vendorId} {
+      allow read: if true; // public aggregate, no feedback content or identifiers
+      allow write: if false; // written only by onRatingWrite
+    }
+
+    // -----------------------------------------------------------------------
     // Phase 3: Blocks
     // Only the blocker can read their own blocked-list entries. The
     // blocked party cannot see themselves in anyone's list (no read rule

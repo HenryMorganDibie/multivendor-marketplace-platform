@@ -1,11 +1,12 @@
 import { https, logger } from "firebase-functions/v2";
 import { firestore as functionsFirestore } from "firebase-functions/v1";
 import { db, FieldValue } from "../admin";
-import { CatalogItemDoc, CatalogCategoryDoc, PLAN_CATALOG_LIMITS } from "../types2";
+import { CatalogItemDoc, CatalogCategoryDoc } from "../types2";
 import { checkAppCheck } from "../utils/appCheck";
 import { writeAuditLog } from "../utils/auditLog";
 import { newRequestId } from "../utils/requestContext";
 import { applyUserModerationScore, recordModerationEvent, runModerationCheck } from "../moderation/moderationEngine";
+import { resolveEffectivePlan } from "../subscriptions/resolveEffectivePlan";
 
 /** Catalog-only prohibited-item check (P3-FB-021 point 7) — firearms, drugs,
  * counterfeit documents, restricted raw food, etc. must never be listed
@@ -47,16 +48,23 @@ export const createCatalogItem = https.onCall(async (request) => {
   if (!name || typeof name !== "string" || name.trim().length === 0) throw new https.HttpsError("invalid-argument", "name is required.");
   if (typeof basePrice !== "number" || basePrice < 0) throw new https.HttpsError("invalid-argument", "basePrice must be a non-negative number.");
   await rejectIfListingUnsafe(vendorId, request.auth.uid, name, description);
+
+  // Phase 4: catalog/photo limits come from resolveEffectivePlan, never a
+  // hardcoded constant or the legacy vendors/{vendorId}.plan field directly.
+  const { limits: planLimits, plan: effectivePlan } = await resolveEffectivePlan(vendorId);
+  if (Array.isArray(photos) && photos.length > planLimits.photosPerItemLimit) {
+    throw new https.HttpsError("resource-exhausted", `Your ${effectivePlan} plan allows up to ${planLimits.photosPerItemLimit} photos per item.`);
+  }
+
   const vendorRef = db.collection("vendors").doc(vendorId);
   const itemsCollRef = vendorRef.collection("catalogItems");
   const newItemRef = itemsCollRef.doc();
   await db.runTransaction(async (tx) => {
     const vendorSnap = await tx.get(vendorRef);
     if (!vendorSnap.exists) throw new https.HttpsError("not-found", "Vendor not found.");
-    const plan: string = vendorSnap.data()?.plan ?? "basic";
-    const limit = PLAN_CATALOG_LIMITS[plan] ?? 10;
+    const limit = planLimits.catalogItemLimit;
     const currentCountSnap = await tx.get(itemsCollRef.where("isHidden", "==", false));
-    if (currentCountSnap.size >= limit) throw new https.HttpsError("resource-exhausted", `Your ${plan} plan allows up to ${limit} visible catalog items.`);
+    if (currentCountSnap.size >= limit) throw new https.HttpsError("resource-exhausted", `Your ${effectivePlan} plan allows up to ${limit} visible catalog items.`);
     const now = FieldValue.serverTimestamp();
     const item: CatalogItemDoc = { itemId: newItemRef.id, vendorId, categoryId: categoryId ?? null, name: name.trim(), description: description?.trim() ?? null, basePrice, salePrice: salePrice ?? null, currency: currency ?? "NGN", photos: Array.isArray(photos) ? photos.slice(0, 10) : [], thumbnailUrl: Array.isArray(photos) && photos.length > 0 ? photos[0] : null, isAvailable: isAvailable !== false, isHidden: isHidden === true, isOutOfStock: false, inventoryQuantity: typeof inventoryQuantity === "number" ? inventoryQuantity : 0, reservedQuantity: 0, trackInventory: trackInventory === true, lowStockThreshold: typeof lowStockThreshold === "number" ? lowStockThreshold : null, addOnGroups: Array.isArray(addOnGroups) ? addOnGroups : [], orderCount: 0, moderationStatus: "pending", createdAt: now, updatedAt: now };
     tx.set(newItemRef, item);
@@ -87,6 +95,12 @@ export const updateCatalogItem = https.onCall(async (request) => {
     const effectiveName = typeof safeUpdates.name === "string" ? safeUpdates.name : before?.name;
     const effectiveDescription = "description" in updates ? safeUpdates.description as string | null : before?.description;
     await rejectIfListingUnsafe(vendorId, request.auth.uid, effectiveName, effectiveDescription);
+  }
+  if (Array.isArray(safeUpdates.photos)) {
+    const { limits: planLimits, plan: effectivePlan } = await resolveEffectivePlan(vendorId);
+    if (safeUpdates.photos.length > planLimits.photosPerItemLimit) {
+      throw new https.HttpsError("resource-exhausted", `Your ${effectivePlan} plan allows up to ${planLimits.photosPerItemLimit} photos per item.`);
+    }
   }
   await itemRef.update(safeUpdates);
   await writeAuditLog({ requestId, functionName: "updateCatalogItem", actorUid: request.auth.uid, actorRole: "vendor", actorType: "vendor", targetType: "catalogItem", targetId: itemId, eventType: "catalog.item_updated", before: { name: before?.name, basePrice: before?.basePrice }, after: safeUpdates, appCheck });
