@@ -641,7 +641,7 @@ Core architectural constraint: the mobile app, admin dashboard, and vendor porta
 - **Auth required:** yes, vendor or admin
 - **Request:** `{}` (empty)
 - **Response:** `{ effectivePlan: "basic"|"standard"|"pro"|"pro_plus", planLimits: PlanLimits, subscription: VendorSubscriptionDoc | null, reason: string }`
-- **Note:** `reason` explains *why* the effective plan is what it is (`"vendor_suspended"`, `"admin_override"`, `"active"`, `"grace_period"`, `"cancelled_before_period_end"`, `"no_subscription"`, `"expired_or_other"`) — useful for showing the vendor an accurate status message, not just a plan name. A vendor with no `vendorSubscriptions` document at all is `basic` with `subscription: null`, not an error.
+- **Note:** `reason` explains *why* the effective plan is what it is (`"vendor_suspended"`, `"admin_override"`, `"active"`, `"trialing"`, `"grace_period"`, `"cancelled_before_period_end"`, `"no_subscription"`, `"expired_or_other"`) — useful for showing the vendor an accurate status message, not just a plan name. A vendor with no `vendorSubscriptions` document at all is `basic` with `subscription: null`, `reason: "no_subscription"`.
 
 ### `createSubscriptionCheckout`
 - **Auth required:** yes, role `vendor`

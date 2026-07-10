@@ -106,6 +106,7 @@ export const getSubscriptionStatus = https.onCall(async (request) => {
     subscription: effective.subscription,
     effectivePlan: effective.plan,
     planLimits: effective.limits,
+    reason: effective.reason,
     pendingDowngrade: effective.subscription?.pendingDowngradePlan ?? null,
     recentEvents: eventsSnap.docs.map((d) => d.data()),
   };
