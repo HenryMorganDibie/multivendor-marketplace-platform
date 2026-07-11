@@ -643,12 +643,13 @@ Core architectural constraint: the mobile app, admin dashboard, and vendor porta
 - **Response:** `{ effectivePlan: "basic"|"standard"|"pro"|"pro_plus", planLimits: PlanLimits, subscription: VendorSubscriptionDoc | null, reason: string }`
 - **Note:** `reason` explains *why* the effective plan is what it is (`"vendor_suspended"`, `"admin_override"`, `"active"`, `"trialing"`, `"grace_period"`, `"cancelled_before_period_end"`, `"no_subscription"`, `"expired_or_other"`) — useful for showing the vendor an accurate status message, not just a plan name. A vendor with no `vendorSubscriptions` document at all is `basic` with `subscription: null`, `reason: "no_subscription"`.
 
-### `createSubscriptionCheckout`
+### `createSubscriptionCheckout` / `createFlutterwaveCheckout` / `createStripeCheckout`
+Three separate callables, one per provider, all with an identical request/response shape — pick based on which provider the frontend is offering for this vendor (Paystack and Flutterwave both serve Nigeria as redundant options; Stripe is for international vendors).
 - **Auth required:** yes, role `vendor`
 - **Request:** `{ plan: "standard"|"pro"|"pro_plus", billingInterval: "monthly"|"yearly" }`
-- **Response:** `{ success: true, authorizationUrl: string }`
-- **Errors:** `permission-denied`, `resource-exhausted` (rate limited, 5/60s)
-- **Note:** the returned URL is a Paystack-hosted checkout page. The subscription does **not** activate from this call — it activates asynchronously when Paystack's webhook confirms payment. The frontend should poll `getSubscriptionStatus` or listen for a push notification after redirecting the vendor back from checkout, not assume success immediately.
+- **Response:** `{ success: true, authorizationUrl: string, reference: string }`
+- **Errors:** `permission-denied`, `resource-exhausted` (rate limited, 5/60s — each provider's checkout callable has its own independent rate-limit counter), `failed-precondition` (that specific provider isn't configured yet for this plan — its `providerPlanCodes` entry is still a placeholder)
+- **Note:** the returned URL is that provider's hosted checkout page. The subscription does **not** activate from this call — it activates asynchronously when that provider's webhook confirms payment. The frontend should poll `getSubscriptionStatus` or listen for a push notification after redirecting the vendor back from checkout, not assume success immediately. Once activated, `getSubscriptionStatus`'s `subscription.provider` field tells you which of the three actually processed the payment — the frontend doesn't need to remember which checkout callable it called.
 
 ### `cancelSubscription`
 - **Auth required:** yes, role `vendor`

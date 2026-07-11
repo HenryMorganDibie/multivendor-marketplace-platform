@@ -38,7 +38,7 @@ export interface NormalizedEvent {
   targetStatus: "active" | "past_due" | "cancelled" | "trialing" | null;
 }
 
-const RAW_TO_NORMALIZED: Record<string, NormalizedEvent> = {
+const PAYSTACK_RAW_TO_NORMALIZED: Record<string, NormalizedEvent> = {
   "subscription.create": { normalizedEventType: "activation", targetStatus: "active" },
   "charge.success": { normalizedEventType: "activation", targetStatus: "active" },
   "invoice.payment_succeeded": { normalizedEventType: "renewal", targetStatus: "active" },
@@ -49,5 +49,48 @@ const RAW_TO_NORMALIZED: Record<string, NormalizedEvent> = {
 };
 
 export function normalizeRawEventType(rawEventType: string): NormalizedEvent {
-  return RAW_TO_NORMALIZED[rawEventType] ?? { normalizedEventType: "ignored", targetStatus: null };
+  return PAYSTACK_RAW_TO_NORMALIZED[rawEventType] ?? { normalizedEventType: "ignored", targetStatus: null };
+}
+
+/**
+ * Flutterwave raw event mapping. Flutterwave's webhook vocabulary is
+ * charge-centric rather than subscription-centric (its "Payment Plans"
+ * product recurs a charge on a schedule and fires charge.completed each
+ * time, rather than emitting distinct subscription lifecycle events the
+ * way Paystack/Stripe do) — this mapping is a best-effort normalization
+ * against Flutterwave's documented webhook shapes as of this writing and,
+ * like the Paystack table above, is the single seam to update if real
+ * production traffic uses different raw type strings or a charge status
+ * this table doesn't yet cover.
+ */
+const FLUTTERWAVE_RAW_TO_NORMALIZED: Record<string, (chargeStatus: string | undefined) => NormalizedEvent> = {
+  "charge.completed": (status) =>
+    status === "successful"
+      ? { normalizedEventType: "renewal", targetStatus: "active" }
+      : { normalizedEventType: "past_due", targetStatus: "past_due" },
+  "subscription.cancelled": () => ({ normalizedEventType: "cancelled", targetStatus: "cancelled" }),
+};
+
+export function normalizeFlutterwaveEventType(rawEventType: string, chargeStatus: string | undefined): NormalizedEvent {
+  const mapper = FLUTTERWAVE_RAW_TO_NORMALIZED[rawEventType];
+  return mapper ? mapper(chargeStatus) : { normalizedEventType: "ignored", targetStatus: null };
+}
+
+/**
+ * Stripe raw event mapping. Stripe's `customer.subscription.created` fires
+ * on the FIRST activation; subsequent renewals arrive as
+ * `invoice.payment_succeeded` against that subscription, matching the same
+ * activation/renewal split Paystack uses, which is why both providers
+ * converge on the same `NormalizedEventType` values here.
+ */
+const STRIPE_RAW_TO_NORMALIZED: Record<string, NormalizedEvent> = {
+  "customer.subscription.created": { normalizedEventType: "activation", targetStatus: "active" },
+  "invoice.payment_succeeded": { normalizedEventType: "renewal", targetStatus: "active" },
+  "invoice.payment_failed": { normalizedEventType: "past_due", targetStatus: "past_due" },
+  "customer.subscription.deleted": { normalizedEventType: "cancelled", targetStatus: "cancelled" },
+  "customer.subscription.trial_will_end": { normalizedEventType: "trial_ending", targetStatus: null },
+};
+
+export function normalizeStripeEventType(rawEventType: string): NormalizedEvent {
+  return STRIPE_RAW_TO_NORMALIZED[rawEventType] ?? { normalizedEventType: "ignored", targetStatus: null };
 }

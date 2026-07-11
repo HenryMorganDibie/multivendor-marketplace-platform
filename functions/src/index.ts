@@ -65,7 +65,10 @@ export { seedDefaultModerationRules, reviewModerationRestriction } from "./moder
 // ── Phase 4: Vendor subscriptions ───────────────────────────────────────────────
 export { seedSubscriptionPlans, cancelSubscriptionAdmin, applyManualSubscriptionOverride } from "./subscriptions/subscriptionAdmin";
 export { handlePaystackWebhook } from "./subscriptions/paystackWebhook";
+export { handleFlutterwaveWebhook } from "./subscriptions/flutterwaveWebhook";
+export { handleStripeWebhook } from "./subscriptions/stripeWebhook";
 export { createSubscriptionCheckout, getSubscriptionStatus, cancelSubscription, reactivateSubscription } from "./subscriptions/subscriptionFunctions";
+export { createFlutterwaveCheckout, createStripeCheckout } from "./subscriptions/internationalCheckout";
 export { expireStaleSubscriptions, gracePeriodReminder } from "./subscriptions/scheduledJobs";
 export { updateVendorSettings } from "./vendors/updateVendorSettings";
 export { getVendorDashboard, getBusinessAnalytics } from "./vendors/dashboardAnalytics";

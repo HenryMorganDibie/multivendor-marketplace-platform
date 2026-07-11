@@ -143,13 +143,38 @@ export const DEFAULT_PLAN_DISPLAY: Record<SubscriptionPlanId, { displayName: str
   pro_plus: { displayName: "Pro Plus", monthlyPriceNGN: 30000, yearlyPriceNGN: 300000, features: ["250 catalog items", "Auto-accept orders", "Premium invoice templates", "200 invoices/month"] },
 };
 
-/** Provider plan codes — PLACEHOLDER values. Real Paystack plan codes must
- * be created in the Paystack dashboard and substituted here (or edited
- * directly in providerPlanCodes/{planId} after seeding) before any live
- * checkout can succeed. */
-export const DEFAULT_PROVIDER_PLAN_CODES: Record<SubscriptionPlanId, { paystack: { monthlyPlanCode: string; yearlyPlanCode: string } }> = {
-  basic: { paystack: { monthlyPlanCode: "PLN_basic_monthly_placeholder", yearlyPlanCode: "PLN_basic_yearly_placeholder" } },
-  standard: { paystack: { monthlyPlanCode: "PLN_standard_monthly_placeholder", yearlyPlanCode: "PLN_standard_yearly_placeholder" } },
-  pro: { paystack: { monthlyPlanCode: "PLN_pro_monthly_placeholder", yearlyPlanCode: "PLN_pro_yearly_placeholder" } },
-  pro_plus: { paystack: { monthlyPlanCode: "PLN_pro_plus_monthly_placeholder", yearlyPlanCode: "PLN_pro_plus_yearly_placeholder" } },
+/** Provider plan codes — PLACEHOLDER values for all three providers. Real
+ * plan/price codes must be created in each provider's dashboard (Paystack,
+ * Flutterwave, Stripe) and substituted here — or edited directly in
+ * providerPlanCodes/{planId} after seeding — before any live checkout
+ * through that specific provider can succeed. Seeding with placeholders is
+ * intentional: it lets createFlutterwaveCheckout/createStripeCheckout
+ * exist and be wired up end-to-end (including in the emulator, which never
+ * calls a real provider anyway) before real merchant accounts are
+ * provisioned for either fallback provider. */
+export const DEFAULT_PROVIDER_PLAN_CODES: Record<SubscriptionPlanId, {
+  paystack: { monthlyPlanCode: string; yearlyPlanCode: string };
+  flutterwave: { monthlyPlanId: string; yearlyPlanId: string };
+  stripe: { monthlyPriceId: string; yearlyPriceId: string };
+}> = {
+  basic: {
+    paystack: { monthlyPlanCode: "PLN_basic_monthly_placeholder", yearlyPlanCode: "PLN_basic_yearly_placeholder" },
+    flutterwave: { monthlyPlanId: "FLW_basic_monthly_placeholder", yearlyPlanId: "FLW_basic_yearly_placeholder" },
+    stripe: { monthlyPriceId: "price_basic_monthly_placeholder", yearlyPriceId: "price_basic_yearly_placeholder" },
+  },
+  standard: {
+    paystack: { monthlyPlanCode: "PLN_standard_monthly_placeholder", yearlyPlanCode: "PLN_standard_yearly_placeholder" },
+    flutterwave: { monthlyPlanId: "FLW_standard_monthly_placeholder", yearlyPlanId: "FLW_standard_yearly_placeholder" },
+    stripe: { monthlyPriceId: "price_standard_monthly_placeholder", yearlyPriceId: "price_standard_yearly_placeholder" },
+  },
+  pro: {
+    paystack: { monthlyPlanCode: "PLN_pro_monthly_placeholder", yearlyPlanCode: "PLN_pro_yearly_placeholder" },
+    flutterwave: { monthlyPlanId: "FLW_pro_monthly_placeholder", yearlyPlanId: "FLW_pro_yearly_placeholder" },
+    stripe: { monthlyPriceId: "price_pro_monthly_placeholder", yearlyPriceId: "price_pro_yearly_placeholder" },
+  },
+  pro_plus: {
+    paystack: { monthlyPlanCode: "PLN_pro_plus_monthly_placeholder", yearlyPlanCode: "PLN_pro_plus_yearly_placeholder" },
+    flutterwave: { monthlyPlanId: "FLW_pro_plus_monthly_placeholder", yearlyPlanId: "FLW_pro_plus_yearly_placeholder" },
+    stripe: { monthlyPriceId: "price_pro_plus_monthly_placeholder", yearlyPriceId: "price_pro_plus_yearly_placeholder" },
+  },
 };

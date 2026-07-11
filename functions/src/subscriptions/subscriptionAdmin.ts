@@ -45,6 +45,8 @@ export const seedSubscriptionPlans = https.onCall(async (request) => {
     const codesDoc: ProviderPlanCodesDoc = {
       planId,
       paystack: DEFAULT_PROVIDER_PLAN_CODES[planId].paystack,
+      flutterwave: DEFAULT_PROVIDER_PLAN_CODES[planId].flutterwave,
+      stripe: DEFAULT_PROVIDER_PLAN_CODES[planId].stripe,
       updatedAt: now,
     };
     batch.set(db.collection("providerPlanCodes").doc(planId), codesDoc, { merge: true });

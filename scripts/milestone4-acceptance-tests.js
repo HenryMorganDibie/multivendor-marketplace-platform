@@ -132,6 +132,30 @@ async function postWebhook(bodyObj) {
   });
 }
 
+async function postFlutterwaveWebhook(bodyObj, verifHash = "emulator_test_secret") {
+  const raw = JSON.stringify(bodyObj);
+  return fetch(`http://127.0.0.1:5001/${PROJECT_ID}/us-central1/handleFlutterwaveWebhook`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "verif-hash": verifHash },
+    body: raw,
+  });
+}
+
+function stripeSignatureHeader(bodyObj, timestamp = Math.floor(Date.now() / 1000)) {
+  const raw = JSON.stringify(bodyObj);
+  const signedPayload = `${timestamp}.${raw}`;
+  const v1 = crypto.createHmac("sha256", "emulator_test_secret").update(signedPayload).digest("hex");
+  return `t=${timestamp},v1=${v1}`;
+}
+async function postStripeWebhook(bodyObj, signatureHeader) {
+  const raw = JSON.stringify(bodyObj);
+  return fetch(`http://127.0.0.1:5001/${PROJECT_ID}/us-central1/handleStripeWebhook`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "stripe-signature": signatureHeader ?? stripeSignatureHeader(bodyObj) },
+    body: raw,
+  });
+}
+
 // ─────────────────────────────────────────────────────────────────────────
 // SECTION 1: Seeding + public plan safety
 // ─────────────────────────────────────────────────────────────────────────
@@ -915,6 +939,154 @@ async function section13() {
   });
 }
 
+// ─────────────────────────────────────────────────────────────────────────
+// SECTION 14: Flutterwave + Stripe — second and third providers, so a
+// Paystack account issue is never a single point of failure
+// ─────────────────────────────────────────────────────────────────────────
+async function section14() {
+  console.log("\n📋 Section 14: Flutterwave + Stripe (provider abstraction)");
+
+  await test("seedSubscriptionPlans seeds provider codes for all three providers", async () => {
+    await signInAs(adminEmail);
+    const codesSnap = await admin.firestore().collection("providerPlanCodes").doc("pro").get();
+    assert(codesSnap.data().paystack, "expected paystack codes");
+    assert(codesSnap.data().flutterwave, "expected flutterwave codes");
+    assert(codesSnap.data().stripe, "expected stripe codes");
+  });
+
+  console.log("\n  --- Flutterwave ---");
+  let fwVendorId;
+  await test("Setup: fresh vendor for Flutterwave tests", async () => {
+    const email = `p4fw_${Date.now()}@test.com`;
+    const c = await createUserWithEmailAndPassword(auth, email, PASSWORD);
+    await waitFor(async () => { const s = await getDoc(doc(db, "users", c.user.uid)); return s.exists() ? s : null; });
+    await signInAs(email);
+    const rr = await httpsCallable(fns, "completeRegistration")({ role: "vendor", businessName: "P4 Flutterwave Vendor", username: `p4fwv_${Date.now()}`, fullName: "Vendor Owner", categoryId: "food_catering", categoryName: "Food & Catering", country: "Nigeria", state: "Lagos", area: "Lekki", plan: "basic" });
+    fwVendorId = rr.data.vendorId;
+    await auth.currentUser.getIdToken(true);
+  });
+
+  await test("createFlutterwaveCheckout returns an authorization URL (emulator fake)", async () => {
+    const r = await httpsCallable(fns, "createFlutterwaveCheckout")({ plan: "pro", billingInterval: "monthly" });
+    assert(r.data.authorizationUrl.startsWith("https://checkout.flutterwave.test/"));
+  });
+
+  await test("Flutterwave webhook rejects an incorrect verif-hash", async () => {
+    const resp = await postFlutterwaveWebhook({
+      event: "charge.completed",
+      data: { id: 1, status: "successful", created_at: new Date().toISOString(), meta: { vendorId: fwVendorId, planId: "pro" } },
+    }, "wrong-hash");
+    assertEqual(resp.status, 401);
+  });
+
+  await test("Flutterwave webhook activates the subscription on a successful charge", async () => {
+    const resp = await postFlutterwaveWebhook({
+      event: "charge.completed",
+      data: {
+        id: `fw_evt_${RUN_ID}`, status: "successful", created_at: new Date().toISOString(),
+        tx_ref: `flw_tx_${RUN_ID}`, amount: 15000, currency: "NGN",
+        customer: { id: 555 }, meta: { vendorId: fwVendorId, planId: "pro" },
+      },
+    });
+    assertEqual(resp.status, 200);
+    const subSnap = await admin.firestore().collection("vendorSubscriptions").doc(fwVendorId).get();
+    assertEqual(subSnap.data().status, "active");
+    assertEqual(subSnap.data().plan, "pro");
+    assertEqual(subSnap.data().provider, "flutterwave");
+    assertEqual(subSnap.data().amountPaid, 15000, "Flutterwave amounts are already in the major currency unit, no /100 conversion");
+  });
+
+  await test("Duplicate Flutterwave webhook event is idempotent", async () => {
+    const resp = await postFlutterwaveWebhook({
+      event: "charge.completed",
+      data: {
+        id: `fw_evt_${RUN_ID}`, status: "successful", created_at: new Date().toISOString(),
+        tx_ref: `flw_tx_${RUN_ID}`, amount: 15000, currency: "NGN",
+        customer: { id: 555 }, meta: { vendorId: fwVendorId, planId: "pro" },
+      },
+    });
+    assertEqual(resp.status, 200);
+    const subSnap = await admin.firestore().collection("vendorSubscriptions").doc(fwVendorId).get();
+    assertEqual(subSnap.data().version, 1, "duplicate event must not increment version again");
+  });
+
+  console.log("\n  --- Stripe ---");
+  let stripeVendorId;
+  await test("Setup: fresh vendor for Stripe tests", async () => {
+    const email = `p4stripe_${Date.now()}@test.com`;
+    const c = await createUserWithEmailAndPassword(auth, email, PASSWORD);
+    await waitFor(async () => { const s = await getDoc(doc(db, "users", c.user.uid)); return s.exists() ? s : null; });
+    await signInAs(email);
+    const rr = await httpsCallable(fns, "completeRegistration")({ role: "vendor", businessName: "P4 Stripe Vendor", username: `p4stripev_${Date.now()}`, fullName: "Vendor Owner", categoryId: "food_catering", categoryName: "Food & Catering", country: "United States", state: "CA", area: "SF", plan: "basic" });
+    stripeVendorId = rr.data.vendorId;
+    await auth.currentUser.getIdToken(true);
+  });
+
+  await test("createStripeCheckout returns an authorization URL (emulator fake)", async () => {
+    const r = await httpsCallable(fns, "createStripeCheckout")({ plan: "pro", billingInterval: "monthly" });
+    assert(r.data.authorizationUrl.startsWith("https://checkout.stripe.test/"));
+  });
+
+  await test("Stripe webhook rejects an incorrect signature", async () => {
+    const body = { id: "evt_bad", type: "customer.subscription.created", created: Math.floor(Date.now() / 1000), data: { object: { id: "sub_1", metadata: { vendorId: stripeVendorId } } } };
+    const resp = await postStripeWebhook(body, "t=1234567890,v1=deadbeef");
+    assertEqual(resp.status, 401);
+  });
+
+  await test("Stripe webhook rejects a signature outside the timestamp tolerance (replay protection)", async () => {
+    const body = { id: `evt_old_${RUN_ID}`, type: "customer.subscription.created", created: Math.floor(Date.now() / 1000), data: { object: { id: "sub_old", metadata: { vendorId: stripeVendorId } } } };
+    const oldTimestamp = Math.floor(Date.now() / 1000) - 600; // 10 minutes ago, outside the 5-minute tolerance
+    const resp = await postStripeWebhook(body, stripeSignatureHeader(body, oldTimestamp));
+    assertEqual(resp.status, 401);
+  });
+
+  await test("Stripe webhook activates the subscription on customer.subscription.created", async () => {
+    const body = {
+      id: `evt_stripe_${RUN_ID}`, type: "customer.subscription.created", created: Math.floor(Date.now() / 1000),
+      data: {
+        object: {
+          object: "subscription", id: `sub_${RUN_ID}`, customer: `cus_${RUN_ID}`,
+          items: { data: [{ price: { id: "price_pro_monthly_placeholder" } }] },
+          metadata: { vendorId: stripeVendorId, planId: "pro" },
+        },
+      },
+    };
+    const resp = await postStripeWebhook(body);
+    assertEqual(resp.status, 200);
+    const subSnap = await admin.firestore().collection("vendorSubscriptions").doc(stripeVendorId).get();
+    assertEqual(subSnap.data().status, "active");
+    assertEqual(subSnap.data().plan, "pro");
+    assertEqual(subSnap.data().provider, "stripe");
+    assertEqual(subSnap.data().providerSubscriptionId, `sub_${RUN_ID}`);
+  });
+
+  await test("Duplicate Stripe webhook event is idempotent", async () => {
+    const body = {
+      id: `evt_stripe_${RUN_ID}`, type: "customer.subscription.created", created: Math.floor(Date.now() / 1000),
+      data: {
+        object: {
+          object: "subscription", id: `sub_${RUN_ID}`, customer: `cus_${RUN_ID}`,
+          items: { data: [{ price: { id: "price_pro_monthly_placeholder" } }] },
+          metadata: { vendorId: stripeVendorId, planId: "pro" },
+        },
+      },
+    };
+    const resp = await postStripeWebhook(body);
+    assertEqual(resp.status, 200);
+    const subSnap = await admin.firestore().collection("vendorSubscriptions").doc(stripeVendorId).get();
+    assertEqual(subSnap.data().version, 1, "duplicate event must not increment version again");
+  });
+
+  await test("resolveEffectivePlan is identical regardless of provider (provider isolation)", async () => {
+    await signInAs(adminEmail);
+    const fwStatus = await httpsCallable(fns, "getSubscriptionStatus")({ vendorId: fwVendorId });
+    const stripeStatus = await httpsCallable(fns, "getSubscriptionStatus")({ vendorId: stripeVendorId });
+    assertEqual(fwStatus.data.effectivePlan, "pro");
+    assertEqual(stripeStatus.data.effectivePlan, "pro");
+    assertEqual(JSON.stringify(fwStatus.data.planLimits), JSON.stringify(stripeStatus.data.planLimits), "PlanLimits must be provider-agnostic");
+  });
+}
+
 async function main() {
   console.log("🚀 THE PLATFORM — Milestone 4 Acceptance Test Suite");
   console.log("=".repeat(60));
@@ -933,6 +1105,7 @@ async function main() {
   await section11();
   await section12();
   await section13();
+  await section14();
 
   console.log("\n" + "=".repeat(60));
   console.log(`Results: ${passed}/${total} passed, ${failed} failed`);
