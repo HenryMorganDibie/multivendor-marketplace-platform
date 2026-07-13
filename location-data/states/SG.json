@@ -1,0 +1,52 @@
+[
+  {
+    "stateId": "SG-01",
+    "countryCode": "SG",
+    "stateCode": "01",
+    "name": "Central Region",
+    "normalizedName": "central region",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "SG-02",
+    "countryCode": "SG",
+    "stateCode": "02",
+    "name": "East Region",
+    "normalizedName": "east region",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "SG-03",
+    "countryCode": "SG",
+    "stateCode": "03",
+    "name": "North Region",
+    "normalizedName": "north region",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "SG-04",
+    "countryCode": "SG",
+    "stateCode": "04",
+    "name": "North-East Region",
+    "normalizedName": "north-east region",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "SG-05",
+    "countryCode": "SG",
+    "stateCode": "05",
+    "name": "West Region",
+    "normalizedName": "west region",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 5
+  }
+]
