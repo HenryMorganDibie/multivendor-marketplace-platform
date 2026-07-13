@@ -1,0 +1,472 @@
+[
+  {
+    "stateId": "KE-01",
+    "countryCode": "KE",
+    "stateCode": "01",
+    "name": "Mombasa",
+    "normalizedName": "mombasa",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "KE-02",
+    "countryCode": "KE",
+    "stateCode": "02",
+    "name": "Kwale",
+    "normalizedName": "kwale",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "KE-03",
+    "countryCode": "KE",
+    "stateCode": "03",
+    "name": "Kilifi",
+    "normalizedName": "kilifi",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "KE-04",
+    "countryCode": "KE",
+    "stateCode": "04",
+    "name": "Tana River",
+    "normalizedName": "tana river",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "KE-05",
+    "countryCode": "KE",
+    "stateCode": "05",
+    "name": "Lamu",
+    "normalizedName": "lamu",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "KE-06",
+    "countryCode": "KE",
+    "stateCode": "06",
+    "name": "Taita-Taveta",
+    "normalizedName": "taita-taveta",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "KE-07",
+    "countryCode": "KE",
+    "stateCode": "07",
+    "name": "Garissa",
+    "normalizedName": "garissa",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "KE-08",
+    "countryCode": "KE",
+    "stateCode": "08",
+    "name": "Wajir",
+    "normalizedName": "wajir",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "KE-09",
+    "countryCode": "KE",
+    "stateCode": "09",
+    "name": "Mandera",
+    "normalizedName": "mandera",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "KE-10",
+    "countryCode": "KE",
+    "stateCode": "10",
+    "name": "Marsabit",
+    "normalizedName": "marsabit",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "KE-11",
+    "countryCode": "KE",
+    "stateCode": "11",
+    "name": "Isiolo",
+    "normalizedName": "isiolo",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "KE-12",
+    "countryCode": "KE",
+    "stateCode": "12",
+    "name": "Meru",
+    "normalizedName": "meru",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "KE-13",
+    "countryCode": "KE",
+    "stateCode": "13",
+    "name": "Tharaka-Nithi",
+    "normalizedName": "tharaka-nithi",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 13
+  },
+  {
+    "stateId": "KE-14",
+    "countryCode": "KE",
+    "stateCode": "14",
+    "name": "Embu",
+    "normalizedName": "embu",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 14
+  },
+  {
+    "stateId": "KE-15",
+    "countryCode": "KE",
+    "stateCode": "15",
+    "name": "Kitui",
+    "normalizedName": "kitui",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 15
+  },
+  {
+    "stateId": "KE-16",
+    "countryCode": "KE",
+    "stateCode": "16",
+    "name": "Machakos",
+    "normalizedName": "machakos",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 16
+  },
+  {
+    "stateId": "KE-17",
+    "countryCode": "KE",
+    "stateCode": "17",
+    "name": "Makueni",
+    "normalizedName": "makueni",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 17
+  },
+  {
+    "stateId": "KE-18",
+    "countryCode": "KE",
+    "stateCode": "18",
+    "name": "Nyandarua",
+    "normalizedName": "nyandarua",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 18
+  },
+  {
+    "stateId": "KE-19",
+    "countryCode": "KE",
+    "stateCode": "19",
+    "name": "Nyeri",
+    "normalizedName": "nyeri",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 19
+  },
+  {
+    "stateId": "KE-20",
+    "countryCode": "KE",
+    "stateCode": "20",
+    "name": "Kirinyaga",
+    "normalizedName": "kirinyaga",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 20
+  },
+  {
+    "stateId": "KE-21",
+    "countryCode": "KE",
+    "stateCode": "21",
+    "name": "Murang'a",
+    "normalizedName": "murang'a",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 21
+  },
+  {
+    "stateId": "KE-22",
+    "countryCode": "KE",
+    "stateCode": "22",
+    "name": "Kiambu",
+    "normalizedName": "kiambu",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 22
+  },
+  {
+    "stateId": "KE-23",
+    "countryCode": "KE",
+    "stateCode": "23",
+    "name": "Turkana",
+    "normalizedName": "turkana",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 23
+  },
+  {
+    "stateId": "KE-24",
+    "countryCode": "KE",
+    "stateCode": "24",
+    "name": "West Pokot",
+    "normalizedName": "west pokot",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 24
+  },
+  {
+    "stateId": "KE-25",
+    "countryCode": "KE",
+    "stateCode": "25",
+    "name": "Samburu",
+    "normalizedName": "samburu",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 25
+  },
+  {
+    "stateId": "KE-26",
+    "countryCode": "KE",
+    "stateCode": "26",
+    "name": "Trans Nzoia",
+    "normalizedName": "trans nzoia",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 26
+  },
+  {
+    "stateId": "KE-27",
+    "countryCode": "KE",
+    "stateCode": "27",
+    "name": "Uasin Gishu",
+    "normalizedName": "uasin gishu",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 27
+  },
+  {
+    "stateId": "KE-28",
+    "countryCode": "KE",
+    "stateCode": "28",
+    "name": "Elgeyo-Marakwet",
+    "normalizedName": "elgeyo-marakwet",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 28
+  },
+  {
+    "stateId": "KE-29",
+    "countryCode": "KE",
+    "stateCode": "29",
+    "name": "Nandi",
+    "normalizedName": "nandi",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 29
+  },
+  {
+    "stateId": "KE-30",
+    "countryCode": "KE",
+    "stateCode": "30",
+    "name": "Baringo",
+    "normalizedName": "baringo",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 30
+  },
+  {
+    "stateId": "KE-31",
+    "countryCode": "KE",
+    "stateCode": "31",
+    "name": "Laikipia",
+    "normalizedName": "laikipia",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 31
+  },
+  {
+    "stateId": "KE-32",
+    "countryCode": "KE",
+    "stateCode": "32",
+    "name": "Nakuru",
+    "normalizedName": "nakuru",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 32
+  },
+  {
+    "stateId": "KE-33",
+    "countryCode": "KE",
+    "stateCode": "33",
+    "name": "Narok",
+    "normalizedName": "narok",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 33
+  },
+  {
+    "stateId": "KE-34",
+    "countryCode": "KE",
+    "stateCode": "34",
+    "name": "Kajiado",
+    "normalizedName": "kajiado",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 34
+  },
+  {
+    "stateId": "KE-35",
+    "countryCode": "KE",
+    "stateCode": "35",
+    "name": "Kericho",
+    "normalizedName": "kericho",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 35
+  },
+  {
+    "stateId": "KE-36",
+    "countryCode": "KE",
+    "stateCode": "36",
+    "name": "Bomet",
+    "normalizedName": "bomet",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 36
+  },
+  {
+    "stateId": "KE-37",
+    "countryCode": "KE",
+    "stateCode": "37",
+    "name": "Kakamega",
+    "normalizedName": "kakamega",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 37
+  },
+  {
+    "stateId": "KE-38",
+    "countryCode": "KE",
+    "stateCode": "38",
+    "name": "Vihiga",
+    "normalizedName": "vihiga",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 38
+  },
+  {
+    "stateId": "KE-39",
+    "countryCode": "KE",
+    "stateCode": "39",
+    "name": "Bungoma",
+    "normalizedName": "bungoma",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 39
+  },
+  {
+    "stateId": "KE-40",
+    "countryCode": "KE",
+    "stateCode": "40",
+    "name": "Busia",
+    "normalizedName": "busia",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 40
+  },
+  {
+    "stateId": "KE-41",
+    "countryCode": "KE",
+    "stateCode": "41",
+    "name": "Siaya",
+    "normalizedName": "siaya",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 41
+  },
+  {
+    "stateId": "KE-42",
+    "countryCode": "KE",
+    "stateCode": "42",
+    "name": "Kisumu",
+    "normalizedName": "kisumu",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 42
+  },
+  {
+    "stateId": "KE-43",
+    "countryCode": "KE",
+    "stateCode": "43",
+    "name": "Homa Bay",
+    "normalizedName": "homa bay",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 43
+  },
+  {
+    "stateId": "KE-44",
+    "countryCode": "KE",
+    "stateCode": "44",
+    "name": "Migori",
+    "normalizedName": "migori",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 44
+  },
+  {
+    "stateId": "KE-45",
+    "countryCode": "KE",
+    "stateCode": "45",
+    "name": "Kisii",
+    "normalizedName": "kisii",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 45
+  },
+  {
+    "stateId": "KE-46",
+    "countryCode": "KE",
+    "stateCode": "46",
+    "name": "Nyamira",
+    "normalizedName": "nyamira",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 46
+  },
+  {
+    "stateId": "KE-47",
+    "countryCode": "KE",
+    "stateCode": "47",
+    "name": "Nairobi",
+    "normalizedName": "nairobi",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 47
+  }
+]
