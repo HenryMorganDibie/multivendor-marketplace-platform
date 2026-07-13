@@ -191,7 +191,7 @@
 
 ## Burundi
 - [x] Country
-- [ ] States
+- [x] States
 - [ ] Areas
 - [ ] Validated
 - [ ] Imported
@@ -408,7 +408,7 @@
 
 ## Fiji
 - [x] Country
-- [ ] States
+- [x] States
 - [ ] Areas
 - [ ] Validated
 - [ ] Imported
@@ -471,7 +471,7 @@
 
 ## Grenada
 - [x] Country
-- [ ] States
+- [x] States
 - [ ] Areas
 - [ ] Validated
 - [ ] Imported
