@@ -1,0 +1,362 @@
+[
+  {
+    "stateId": "IN-AP",
+    "countryCode": "IN",
+    "stateCode": "AP",
+    "name": "Andhra Pradesh",
+    "normalizedName": "andhra pradesh",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "IN-AR",
+    "countryCode": "IN",
+    "stateCode": "AR",
+    "name": "Arunachal Pradesh",
+    "normalizedName": "arunachal pradesh",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "IN-AS",
+    "countryCode": "IN",
+    "stateCode": "AS",
+    "name": "Assam",
+    "normalizedName": "assam",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "IN-BR",
+    "countryCode": "IN",
+    "stateCode": "BR",
+    "name": "Bihar",
+    "normalizedName": "bihar",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "IN-CG",
+    "countryCode": "IN",
+    "stateCode": "CG",
+    "name": "Chhattisgarh",
+    "normalizedName": "chhattisgarh",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "IN-GA",
+    "countryCode": "IN",
+    "stateCode": "GA",
+    "name": "Goa",
+    "normalizedName": "goa",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "IN-GJ",
+    "countryCode": "IN",
+    "stateCode": "GJ",
+    "name": "Gujarat",
+    "normalizedName": "gujarat",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "IN-HR",
+    "countryCode": "IN",
+    "stateCode": "HR",
+    "name": "Haryana",
+    "normalizedName": "haryana",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "IN-HP",
+    "countryCode": "IN",
+    "stateCode": "HP",
+    "name": "Himachal Pradesh",
+    "normalizedName": "himachal pradesh",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "IN-JH",
+    "countryCode": "IN",
+    "stateCode": "JH",
+    "name": "Jharkhand",
+    "normalizedName": "jharkhand",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "IN-KA",
+    "countryCode": "IN",
+    "stateCode": "KA",
+    "name": "Karnataka",
+    "normalizedName": "karnataka",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "IN-KL",
+    "countryCode": "IN",
+    "stateCode": "KL",
+    "name": "Kerala",
+    "normalizedName": "kerala",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "IN-MP",
+    "countryCode": "IN",
+    "stateCode": "MP",
+    "name": "Madhya Pradesh",
+    "normalizedName": "madhya pradesh",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 13
+  },
+  {
+    "stateId": "IN-MH",
+    "countryCode": "IN",
+    "stateCode": "MH",
+    "name": "Maharashtra",
+    "normalizedName": "maharashtra",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 14
+  },
+  {
+    "stateId": "IN-MN",
+    "countryCode": "IN",
+    "stateCode": "MN",
+    "name": "Manipur",
+    "normalizedName": "manipur",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 15
+  },
+  {
+    "stateId": "IN-ML",
+    "countryCode": "IN",
+    "stateCode": "ML",
+    "name": "Meghalaya",
+    "normalizedName": "meghalaya",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 16
+  },
+  {
+    "stateId": "IN-MZ",
+    "countryCode": "IN",
+    "stateCode": "MZ",
+    "name": "Mizoram",
+    "normalizedName": "mizoram",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 17
+  },
+  {
+    "stateId": "IN-NL",
+    "countryCode": "IN",
+    "stateCode": "NL",
+    "name": "Nagaland",
+    "normalizedName": "nagaland",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 18
+  },
+  {
+    "stateId": "IN-OD",
+    "countryCode": "IN",
+    "stateCode": "OD",
+    "name": "Odisha",
+    "normalizedName": "odisha",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 19
+  },
+  {
+    "stateId": "IN-PB",
+    "countryCode": "IN",
+    "stateCode": "PB",
+    "name": "Punjab",
+    "normalizedName": "punjab",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 20
+  },
+  {
+    "stateId": "IN-RJ",
+    "countryCode": "IN",
+    "stateCode": "RJ",
+    "name": "Rajasthan",
+    "normalizedName": "rajasthan",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 21
+  },
+  {
+    "stateId": "IN-SK",
+    "countryCode": "IN",
+    "stateCode": "SK",
+    "name": "Sikkim",
+    "normalizedName": "sikkim",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 22
+  },
+  {
+    "stateId": "IN-TN",
+    "countryCode": "IN",
+    "stateCode": "TN",
+    "name": "Tamil Nadu",
+    "normalizedName": "tamil nadu",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 23
+  },
+  {
+    "stateId": "IN-TG",
+    "countryCode": "IN",
+    "stateCode": "TG",
+    "name": "Telangana",
+    "normalizedName": "telangana",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 24
+  },
+  {
+    "stateId": "IN-TR",
+    "countryCode": "IN",
+    "stateCode": "TR",
+    "name": "Tripura",
+    "normalizedName": "tripura",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 25
+  },
+  {
+    "stateId": "IN-UP",
+    "countryCode": "IN",
+    "stateCode": "UP",
+    "name": "Uttar Pradesh",
+    "normalizedName": "uttar pradesh",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 26
+  },
+  {
+    "stateId": "IN-UK",
+    "countryCode": "IN",
+    "stateCode": "UK",
+    "name": "Uttarakhand",
+    "normalizedName": "uttarakhand",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 27
+  },
+  {
+    "stateId": "IN-WB",
+    "countryCode": "IN",
+    "stateCode": "WB",
+    "name": "West Bengal",
+    "normalizedName": "west bengal",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 28
+  },
+  {
+    "stateId": "IN-AN",
+    "countryCode": "IN",
+    "stateCode": "AN",
+    "name": "Andaman and Nicobar Islands",
+    "normalizedName": "andaman and nicobar islands",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 29
+  },
+  {
+    "stateId": "IN-CH",
+    "countryCode": "IN",
+    "stateCode": "CH",
+    "name": "Chandigarh",
+    "normalizedName": "chandigarh",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 30
+  },
+  {
+    "stateId": "IN-DH",
+    "countryCode": "IN",
+    "stateCode": "DH",
+    "name": "Dadra and Nagar Haveli and Daman and Diu",
+    "normalizedName": "dadra and nagar haveli and daman and diu",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 31
+  },
+  {
+    "stateId": "IN-DL",
+    "countryCode": "IN",
+    "stateCode": "DL",
+    "name": "Delhi",
+    "normalizedName": "delhi",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 32
+  },
+  {
+    "stateId": "IN-JK",
+    "countryCode": "IN",
+    "stateCode": "JK",
+    "name": "Jammu and Kashmir",
+    "normalizedName": "jammu and kashmir",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 33
+  },
+  {
+    "stateId": "IN-LA",
+    "countryCode": "IN",
+    "stateCode": "LA",
+    "name": "Ladakh",
+    "normalizedName": "ladakh",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 34
+  },
+  {
+    "stateId": "IN-LD",
+    "countryCode": "IN",
+    "stateCode": "LD",
+    "name": "Lakshadweep",
+    "normalizedName": "lakshadweep",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 35
+  },
+  {
+    "stateId": "IN-PY",
+    "countryCode": "IN",
+    "stateCode": "PY",
+    "name": "Puducherry",
+    "normalizedName": "puducherry",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 36
+  }
+]
