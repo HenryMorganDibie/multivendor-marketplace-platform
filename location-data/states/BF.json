@@ -1,0 +1,132 @@
+[
+  {
+    "stateId": "BF-01",
+    "countryCode": "BF",
+    "stateCode": "01",
+    "name": "Boucle du Mouhoun",
+    "normalizedName": "boucle du mouhoun",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "BF-02",
+    "countryCode": "BF",
+    "stateCode": "02",
+    "name": "Cascades",
+    "normalizedName": "cascades",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "BF-03",
+    "countryCode": "BF",
+    "stateCode": "03",
+    "name": "Centre",
+    "normalizedName": "centre",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "BF-04",
+    "countryCode": "BF",
+    "stateCode": "04",
+    "name": "Centre-Est",
+    "normalizedName": "centre-est",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "BF-05",
+    "countryCode": "BF",
+    "stateCode": "05",
+    "name": "Centre-Nord",
+    "normalizedName": "centre-nord",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "BF-06",
+    "countryCode": "BF",
+    "stateCode": "06",
+    "name": "Centre-Ouest",
+    "normalizedName": "centre-ouest",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "BF-07",
+    "countryCode": "BF",
+    "stateCode": "07",
+    "name": "Centre-Sud",
+    "normalizedName": "centre-sud",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "BF-08",
+    "countryCode": "BF",
+    "stateCode": "08",
+    "name": "Est",
+    "normalizedName": "est",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "BF-09",
+    "countryCode": "BF",
+    "stateCode": "09",
+    "name": "Hauts-Bassins",
+    "normalizedName": "hauts-bassins",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "BF-10",
+    "countryCode": "BF",
+    "stateCode": "10",
+    "name": "Nord",
+    "normalizedName": "nord",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "BF-11",
+    "countryCode": "BF",
+    "stateCode": "11",
+    "name": "Plateau-Central",
+    "normalizedName": "plateau-central",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "BF-12",
+    "countryCode": "BF",
+    "stateCode": "12",
+    "name": "Sahel",
+    "normalizedName": "sahel",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "BF-13",
+    "countryCode": "BF",
+    "stateCode": "13",
+    "name": "Sud-Ouest",
+    "normalizedName": "sud-ouest",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 13
+  }
+]
