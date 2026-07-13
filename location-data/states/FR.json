@@ -1,0 +1,182 @@
+[
+  {
+    "stateId": "FR-ARA",
+    "countryCode": "FR",
+    "stateCode": "ARA",
+    "name": "Auvergne-Rhône-Alpes",
+    "normalizedName": "auvergne-rhone-alpes",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "FR-BFC",
+    "countryCode": "FR",
+    "stateCode": "BFC",
+    "name": "Bourgogne-Franche-Comté",
+    "normalizedName": "bourgogne-franche-comte",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "FR-BRE",
+    "countryCode": "FR",
+    "stateCode": "BRE",
+    "name": "Brittany",
+    "normalizedName": "brittany",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "FR-CVL",
+    "countryCode": "FR",
+    "stateCode": "CVL",
+    "name": "Centre-Val de Loire",
+    "normalizedName": "centre-val de loire",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "FR-COR",
+    "countryCode": "FR",
+    "stateCode": "COR",
+    "name": "Corsica",
+    "normalizedName": "corsica",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "FR-GES",
+    "countryCode": "FR",
+    "stateCode": "GES",
+    "name": "Grand Est",
+    "normalizedName": "grand est",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "FR-HDF",
+    "countryCode": "FR",
+    "stateCode": "HDF",
+    "name": "Hauts-de-France",
+    "normalizedName": "hauts-de-france",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "FR-IDF",
+    "countryCode": "FR",
+    "stateCode": "IDF",
+    "name": "Île-de-France",
+    "normalizedName": "ile-de-france",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "FR-NOR",
+    "countryCode": "FR",
+    "stateCode": "NOR",
+    "name": "Normandy",
+    "normalizedName": "normandy",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "FR-NAQ",
+    "countryCode": "FR",
+    "stateCode": "NAQ",
+    "name": "Nouvelle-Aquitaine",
+    "normalizedName": "nouvelle-aquitaine",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "FR-OCC",
+    "countryCode": "FR",
+    "stateCode": "OCC",
+    "name": "Occitania",
+    "normalizedName": "occitania",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "FR-PDL",
+    "countryCode": "FR",
+    "stateCode": "PDL",
+    "name": "Pays de la Loire",
+    "normalizedName": "pays de la loire",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "FR-PAC",
+    "countryCode": "FR",
+    "stateCode": "PAC",
+    "name": "Provence-Alpes-Côte d'Azur",
+    "normalizedName": "provence-alpes-cote d'azur",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 13
+  },
+  {
+    "stateId": "FR-GP",
+    "countryCode": "FR",
+    "stateCode": "GP",
+    "name": "Guadeloupe",
+    "normalizedName": "guadeloupe",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 14
+  },
+  {
+    "stateId": "FR-GF",
+    "countryCode": "FR",
+    "stateCode": "GF",
+    "name": "French Guiana",
+    "normalizedName": "french guiana",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 15
+  },
+  {
+    "stateId": "FR-MQ",
+    "countryCode": "FR",
+    "stateCode": "MQ",
+    "name": "Martinique",
+    "normalizedName": "martinique",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 16
+  },
+  {
+    "stateId": "FR-RE",
+    "countryCode": "FR",
+    "stateCode": "RE",
+    "name": "Réunion",
+    "normalizedName": "reunion",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 17
+  },
+  {
+    "stateId": "FR-YT",
+    "countryCode": "FR",
+    "stateCode": "YT",
+    "name": "Mayotte",
+    "normalizedName": "mayotte",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 18
+  }
+]
