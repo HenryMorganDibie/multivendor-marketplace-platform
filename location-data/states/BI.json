@@ -1,0 +1,52 @@
+[
+  {
+    "stateId": "BI-BM",
+    "countryCode": "BI",
+    "stateCode": "BM",
+    "name": "Buhumuza",
+    "normalizedName": "buhumuza",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "BI-BJ",
+    "countryCode": "BI",
+    "stateCode": "BJ",
+    "name": "Bujumbura",
+    "normalizedName": "bujumbura",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "BI-BR",
+    "countryCode": "BI",
+    "stateCode": "BR",
+    "name": "Burunga",
+    "normalizedName": "burunga",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "BI-BY",
+    "countryCode": "BI",
+    "stateCode": "BY",
+    "name": "Butanyerera",
+    "normalizedName": "butanyerera",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "BI-GI",
+    "countryCode": "BI",
+    "stateCode": "GI",
+    "name": "Gitega",
+    "normalizedName": "gitega",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 5
+  }
+]
