@@ -1,0 +1,322 @@
+[
+  {
+    "stateId": "BS-AK",
+    "countryCode": "BS",
+    "stateCode": "AK",
+    "name": "Acklins",
+    "normalizedName": "acklins",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "BS-BY",
+    "countryCode": "BS",
+    "stateCode": "BY",
+    "name": "Berry Islands",
+    "normalizedName": "berry islands",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "BS-BI",
+    "countryCode": "BS",
+    "stateCode": "BI",
+    "name": "Bimini",
+    "normalizedName": "bimini",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "BS-BP",
+    "countryCode": "BS",
+    "stateCode": "BP",
+    "name": "Black Point",
+    "normalizedName": "black point",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "BS-CI",
+    "countryCode": "BS",
+    "stateCode": "CI",
+    "name": "Cat Island",
+    "normalizedName": "cat island",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "BS-CO",
+    "countryCode": "BS",
+    "stateCode": "CO",
+    "name": "Central Abaco",
+    "normalizedName": "central abaco",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "BS-CS",
+    "countryCode": "BS",
+    "stateCode": "CS",
+    "name": "Central Andros",
+    "normalizedName": "central andros",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "BS-CE",
+    "countryCode": "BS",
+    "stateCode": "CE",
+    "name": "Central Eleuthera",
+    "normalizedName": "central eleuthera",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "BS-FP",
+    "countryCode": "BS",
+    "stateCode": "FP",
+    "name": "City of Freeport",
+    "normalizedName": "city of freeport",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "BS-CK",
+    "countryCode": "BS",
+    "stateCode": "CK",
+    "name": "Crooked Island and Long Cay",
+    "normalizedName": "crooked island and long cay",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "BS-EG",
+    "countryCode": "BS",
+    "stateCode": "EG",
+    "name": "East Grand Bahama",
+    "normalizedName": "east grand bahama",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "BS-EX",
+    "countryCode": "BS",
+    "stateCode": "EX",
+    "name": "Exuma",
+    "normalizedName": "exuma",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "BS-GC",
+    "countryCode": "BS",
+    "stateCode": "GC",
+    "name": "Grand Cay",
+    "normalizedName": "grand cay",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 13
+  },
+  {
+    "stateId": "BS-HI",
+    "countryCode": "BS",
+    "stateCode": "HI",
+    "name": "Harbour Island",
+    "normalizedName": "harbour island",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 14
+  },
+  {
+    "stateId": "BS-HT",
+    "countryCode": "BS",
+    "stateCode": "HT",
+    "name": "Hope Town",
+    "normalizedName": "hope town",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 15
+  },
+  {
+    "stateId": "BS-IN",
+    "countryCode": "BS",
+    "stateCode": "IN",
+    "name": "Inagua",
+    "normalizedName": "inagua",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 16
+  },
+  {
+    "stateId": "BS-LI",
+    "countryCode": "BS",
+    "stateCode": "LI",
+    "name": "Long Island",
+    "normalizedName": "long island",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 17
+  },
+  {
+    "stateId": "BS-MC",
+    "countryCode": "BS",
+    "stateCode": "MC",
+    "name": "Mangrove Cay",
+    "normalizedName": "mangrove cay",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 18
+  },
+  {
+    "stateId": "BS-MG",
+    "countryCode": "BS",
+    "stateCode": "MG",
+    "name": "Mayaguana",
+    "normalizedName": "mayaguana",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 19
+  },
+  {
+    "stateId": "BS-MI",
+    "countryCode": "BS",
+    "stateCode": "MI",
+    "name": "Moore's Island",
+    "normalizedName": "moore's island",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 20
+  },
+  {
+    "stateId": "BS-NP",
+    "countryCode": "BS",
+    "stateCode": "NP",
+    "name": "New Providence",
+    "normalizedName": "new providence",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 21
+  },
+  {
+    "stateId": "BS-NO",
+    "countryCode": "BS",
+    "stateCode": "NO",
+    "name": "North Abaco",
+    "normalizedName": "north abaco",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 22
+  },
+  {
+    "stateId": "BS-NS",
+    "countryCode": "BS",
+    "stateCode": "NS",
+    "name": "North Andros",
+    "normalizedName": "north andros",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 23
+  },
+  {
+    "stateId": "BS-NE",
+    "countryCode": "BS",
+    "stateCode": "NE",
+    "name": "North Eleuthera",
+    "normalizedName": "north eleuthera",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 24
+  },
+  {
+    "stateId": "BS-RI",
+    "countryCode": "BS",
+    "stateCode": "RI",
+    "name": "Ragged Island",
+    "normalizedName": "ragged island",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 25
+  },
+  {
+    "stateId": "BS-RC",
+    "countryCode": "BS",
+    "stateCode": "RC",
+    "name": "Rum Cay",
+    "normalizedName": "rum cay",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 26
+  },
+  {
+    "stateId": "BS-SS",
+    "countryCode": "BS",
+    "stateCode": "SS",
+    "name": "San Salvador",
+    "normalizedName": "san salvador",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 27
+  },
+  {
+    "stateId": "BS-SO",
+    "countryCode": "BS",
+    "stateCode": "SO",
+    "name": "South Abaco",
+    "normalizedName": "south abaco",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 28
+  },
+  {
+    "stateId": "BS-SA",
+    "countryCode": "BS",
+    "stateCode": "SA",
+    "name": "South Andros",
+    "normalizedName": "south andros",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 29
+  },
+  {
+    "stateId": "BS-SE",
+    "countryCode": "BS",
+    "stateCode": "SE",
+    "name": "South Eleuthera",
+    "normalizedName": "south eleuthera",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 30
+  },
+  {
+    "stateId": "BS-SW",
+    "countryCode": "BS",
+    "stateCode": "SW",
+    "name": "Spanish Wells",
+    "normalizedName": "spanish wells",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 31
+  },
+  {
+    "stateId": "BS-WG",
+    "countryCode": "BS",
+    "stateCode": "WG",
+    "name": "West Grand Bahama",
+    "normalizedName": "west grand bahama",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 32
+  }
+]
