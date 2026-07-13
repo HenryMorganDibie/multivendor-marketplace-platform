@@ -1,0 +1,42 @@
+[
+  {
+    "stateId": "IE-C",
+    "countryCode": "IE",
+    "stateCode": "C",
+    "name": "Connacht",
+    "normalizedName": "connacht",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "IE-L",
+    "countryCode": "IE",
+    "stateCode": "L",
+    "name": "Leinster",
+    "normalizedName": "leinster",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "IE-M",
+    "countryCode": "IE",
+    "stateCode": "M",
+    "name": "Munster",
+    "normalizedName": "munster",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "IE-U",
+    "countryCode": "IE",
+    "stateCode": "U",
+    "name": "Ulster",
+    "normalizedName": "ulster",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 4
+  }
+]
