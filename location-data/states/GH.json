@@ -1,0 +1,162 @@
+[
+  {
+    "stateId": "GH-AF",
+    "countryCode": "GH",
+    "stateCode": "AF",
+    "name": "Ahafo",
+    "normalizedName": "ahafo",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "GH-AH",
+    "countryCode": "GH",
+    "stateCode": "AH",
+    "name": "Ashanti",
+    "normalizedName": "ashanti",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "GH-BO",
+    "countryCode": "GH",
+    "stateCode": "BO",
+    "name": "Bono",
+    "normalizedName": "bono",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "GH-BE",
+    "countryCode": "GH",
+    "stateCode": "BE",
+    "name": "Bono East",
+    "normalizedName": "bono east",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "GH-CP",
+    "countryCode": "GH",
+    "stateCode": "CP",
+    "name": "Central",
+    "normalizedName": "central",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "GH-EP",
+    "countryCode": "GH",
+    "stateCode": "EP",
+    "name": "Eastern",
+    "normalizedName": "eastern",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "GH-AA",
+    "countryCode": "GH",
+    "stateCode": "AA",
+    "name": "Greater Accra",
+    "normalizedName": "greater accra",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "GH-NE",
+    "countryCode": "GH",
+    "stateCode": "NE",
+    "name": "North East",
+    "normalizedName": "north east",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "GH-NP",
+    "countryCode": "GH",
+    "stateCode": "NP",
+    "name": "Northern",
+    "normalizedName": "northern",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "GH-OT",
+    "countryCode": "GH",
+    "stateCode": "OT",
+    "name": "Oti",
+    "normalizedName": "oti",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "GH-SV",
+    "countryCode": "GH",
+    "stateCode": "SV",
+    "name": "Savannah",
+    "normalizedName": "savannah",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "GH-UE",
+    "countryCode": "GH",
+    "stateCode": "UE",
+    "name": "Upper East",
+    "normalizedName": "upper east",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "GH-UW",
+    "countryCode": "GH",
+    "stateCode": "UW",
+    "name": "Upper West",
+    "normalizedName": "upper west",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 13
+  },
+  {
+    "stateId": "GH-TV",
+    "countryCode": "GH",
+    "stateCode": "TV",
+    "name": "Volta",
+    "normalizedName": "volta",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 14
+  },
+  {
+    "stateId": "GH-WP",
+    "countryCode": "GH",
+    "stateCode": "WP",
+    "name": "Western",
+    "normalizedName": "western",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 15
+  },
+  {
+    "stateId": "GH-WN",
+    "countryCode": "GH",
+    "stateCode": "WN",
+    "name": "Western North",
+    "normalizedName": "western north",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 16
+  }
+]
