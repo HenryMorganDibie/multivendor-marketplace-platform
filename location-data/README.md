@@ -161,9 +161,21 @@ Never include these in files in this folder. They're set automatically by the im
 
 ---
 
-## Validation, before you ask
+## Validating and importing
 
-`npm run validate:locations` and `npm run import:locations` aren't implemented yet — this folder is scaffolding only for now. Once they exist, validation will enforce (per the spec, Section 4): allowed `status` values, no duplicate IDs, no duplicate `normalizedName` within the same parent, valid parent references (state → country, location → state), code formats (`countryCode` 2 letters, `currencyCode` 3 letters, `dialCode` starts with `+`), and that every `timeZone` is a real IANA identifier.
+Both scripts live in `scripts/` (repo root, sibling to `location-data/`):
+
+```bash
+cd scripts
+npm run validate:locations   # read-only, checks every rule in the spec's Section 4, never touches Firestore
+npm run import:locations     # validates first, then upserts into Firestore (countries/states/locations collections)
+```
+
+`import:locations` defaults to the local Firestore emulator (127.0.0.1:8080) — the same one every other script in this repo uses. To write to a real project instead: `node import-locations.js --live --project <your-project-id>` (requires `GOOGLE_APPLICATION_CREDENTIALS` or `gcloud auth application-default login`).
+
+It's safe to rerun any time: existing records only get `updatedAt` touched if a field actually changed (`createdAt` is preserved), new records are created, and records that exist in Firestore but were removed from these seed files are never deleted — only flagged in the summary output for manual review.
+
+Validation enforces (per the spec, Section 4): allowed `status` values, no duplicate IDs, no duplicate `normalizedName` within the same parent, valid parent references (state → country, location → state), code formats (`countryCode` 2 letters, `currencyCode` 3 letters, `dialCode` starts with `+`), and that every `timeZone` is a real IANA identifier.
 
 ## One more thing worth knowing
 
