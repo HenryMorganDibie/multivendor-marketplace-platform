@@ -1,1 +1,372 @@
-
+[
+  {
+    "stateId": "NG-AB",
+    "countryCode": "NG",
+    "stateCode": "AB",
+    "name": "Abia",
+    "normalizedName": "abia",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "NG-AD",
+    "countryCode": "NG",
+    "stateCode": "AD",
+    "name": "Adamawa",
+    "normalizedName": "adamawa",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "NG-AK",
+    "countryCode": "NG",
+    "stateCode": "AK",
+    "name": "Akwa Ibom",
+    "normalizedName": "akwa ibom",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "NG-AN",
+    "countryCode": "NG",
+    "stateCode": "AN",
+    "name": "Anambra",
+    "normalizedName": "anambra",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "NG-BA",
+    "countryCode": "NG",
+    "stateCode": "BA",
+    "name": "Bauchi",
+    "normalizedName": "bauchi",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "NG-BY",
+    "countryCode": "NG",
+    "stateCode": "BY",
+    "name": "Bayelsa",
+    "normalizedName": "bayelsa",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "NG-BE",
+    "countryCode": "NG",
+    "stateCode": "BE",
+    "name": "Benue",
+    "normalizedName": "benue",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "NG-BO",
+    "countryCode": "NG",
+    "stateCode": "BO",
+    "name": "Borno",
+    "normalizedName": "borno",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "NG-CR",
+    "countryCode": "NG",
+    "stateCode": "CR",
+    "name": "Cross River",
+    "normalizedName": "cross river",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "NG-DE",
+    "countryCode": "NG",
+    "stateCode": "DE",
+    "name": "Delta",
+    "normalizedName": "delta",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "NG-EB",
+    "countryCode": "NG",
+    "stateCode": "EB",
+    "name": "Ebonyi",
+    "normalizedName": "ebonyi",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "NG-ED",
+    "countryCode": "NG",
+    "stateCode": "ED",
+    "name": "Edo",
+    "normalizedName": "edo",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "NG-EK",
+    "countryCode": "NG",
+    "stateCode": "EK",
+    "name": "Ekiti",
+    "normalizedName": "ekiti",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 13
+  },
+  {
+    "stateId": "NG-EN",
+    "countryCode": "NG",
+    "stateCode": "EN",
+    "name": "Enugu",
+    "normalizedName": "enugu",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 14
+  },
+  {
+    "stateId": "NG-FC",
+    "countryCode": "NG",
+    "stateCode": "FC",
+    "name": "Federal Capital Territory",
+    "normalizedName": "federal capital territory",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 15
+  },
+  {
+    "stateId": "NG-GO",
+    "countryCode": "NG",
+    "stateCode": "GO",
+    "name": "Gombe",
+    "normalizedName": "gombe",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 16
+  },
+  {
+    "stateId": "NG-IM",
+    "countryCode": "NG",
+    "stateCode": "IM",
+    "name": "Imo",
+    "normalizedName": "imo",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 17
+  },
+  {
+    "stateId": "NG-JI",
+    "countryCode": "NG",
+    "stateCode": "JI",
+    "name": "Jigawa",
+    "normalizedName": "jigawa",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 18
+  },
+  {
+    "stateId": "NG-KD",
+    "countryCode": "NG",
+    "stateCode": "KD",
+    "name": "Kaduna",
+    "normalizedName": "kaduna",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 19
+  },
+  {
+    "stateId": "NG-KN",
+    "countryCode": "NG",
+    "stateCode": "KN",
+    "name": "Kano",
+    "normalizedName": "kano",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 20
+  },
+  {
+    "stateId": "NG-KT",
+    "countryCode": "NG",
+    "stateCode": "KT",
+    "name": "Katsina",
+    "normalizedName": "katsina",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 21
+  },
+  {
+    "stateId": "NG-KE",
+    "countryCode": "NG",
+    "stateCode": "KE",
+    "name": "Kebbi",
+    "normalizedName": "kebbi",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 22
+  },
+  {
+    "stateId": "NG-KO",
+    "countryCode": "NG",
+    "stateCode": "KO",
+    "name": "Kogi",
+    "normalizedName": "kogi",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 23
+  },
+  {
+    "stateId": "NG-KW",
+    "countryCode": "NG",
+    "stateCode": "KW",
+    "name": "Kwara",
+    "normalizedName": "kwara",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 24
+  },
+  {
+    "stateId": "NG-LA",
+    "countryCode": "NG",
+    "stateCode": "LA",
+    "name": "Lagos",
+    "normalizedName": "lagos",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 25
+  },
+  {
+    "stateId": "NG-NA",
+    "countryCode": "NG",
+    "stateCode": "NA",
+    "name": "Nasarawa",
+    "normalizedName": "nasarawa",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 26
+  },
+  {
+    "stateId": "NG-NI",
+    "countryCode": "NG",
+    "stateCode": "NI",
+    "name": "Niger",
+    "normalizedName": "niger",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 27
+  },
+  {
+    "stateId": "NG-OG",
+    "countryCode": "NG",
+    "stateCode": "OG",
+    "name": "Ogun",
+    "normalizedName": "ogun",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 28
+  },
+  {
+    "stateId": "NG-ON",
+    "countryCode": "NG",
+    "stateCode": "ON",
+    "name": "Ondo",
+    "normalizedName": "ondo",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 29
+  },
+  {
+    "stateId": "NG-OS",
+    "countryCode": "NG",
+    "stateCode": "OS",
+    "name": "Osun",
+    "normalizedName": "osun",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 30
+  },
+  {
+    "stateId": "NG-OY",
+    "countryCode": "NG",
+    "stateCode": "OY",
+    "name": "Oyo",
+    "normalizedName": "oyo",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 31
+  },
+  {
+    "stateId": "NG-PL",
+    "countryCode": "NG",
+    "stateCode": "PL",
+    "name": "Plateau",
+    "normalizedName": "plateau",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 32
+  },
+  {
+    "stateId": "NG-RI",
+    "countryCode": "NG",
+    "stateCode": "RI",
+    "name": "Rivers",
+    "normalizedName": "rivers",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 33
+  },
+  {
+    "stateId": "NG-SO",
+    "countryCode": "NG",
+    "stateCode": "SO",
+    "name": "Sokoto",
+    "normalizedName": "sokoto",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 34
+  },
+  {
+    "stateId": "NG-TA",
+    "countryCode": "NG",
+    "stateCode": "TA",
+    "name": "Taraba",
+    "normalizedName": "taraba",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 35
+  },
+  {
+    "stateId": "NG-YO",
+    "countryCode": "NG",
+    "stateCode": "YO",
+    "name": "Yobe",
+    "normalizedName": "yobe",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 36
+  },
+  {
+    "stateId": "NG-ZA",
+    "countryCode": "NG",
+    "stateCode": "ZA",
+    "name": "Zamfara",
+    "normalizedName": "zamfara",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 37
+  }
+]
