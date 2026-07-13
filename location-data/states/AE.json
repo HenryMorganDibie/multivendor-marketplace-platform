@@ -1,0 +1,72 @@
+[
+  {
+    "stateId": "AE-AZ",
+    "countryCode": "AE",
+    "stateCode": "AZ",
+    "name": "Abu Dhabi",
+    "normalizedName": "abu dhabi",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "AE-AJ",
+    "countryCode": "AE",
+    "stateCode": "AJ",
+    "name": "Ajman",
+    "normalizedName": "ajman",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "AE-DU",
+    "countryCode": "AE",
+    "stateCode": "DU",
+    "name": "Dubai",
+    "normalizedName": "dubai",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "AE-FU",
+    "countryCode": "AE",
+    "stateCode": "FU",
+    "name": "Fujairah",
+    "normalizedName": "fujairah",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "AE-RK",
+    "countryCode": "AE",
+    "stateCode": "RK",
+    "name": "Ras Al Khaimah",
+    "normalizedName": "ras al khaimah",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "AE-SH",
+    "countryCode": "AE",
+    "stateCode": "SH",
+    "name": "Sharjah",
+    "normalizedName": "sharjah",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "AE-UQ",
+    "countryCode": "AE",
+    "stateCode": "UQ",
+    "name": "Umm Al Quwain",
+    "normalizedName": "umm al quwain",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 7
+  }
+]
