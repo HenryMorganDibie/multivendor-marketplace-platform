@@ -1,0 +1,122 @@
+[
+  {
+    "stateId": "NL-DR",
+    "countryCode": "NL",
+    "stateCode": "DR",
+    "name": "Drenthe",
+    "normalizedName": "drenthe",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "NL-FL",
+    "countryCode": "NL",
+    "stateCode": "FL",
+    "name": "Flevoland",
+    "normalizedName": "flevoland",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "NL-FR",
+    "countryCode": "NL",
+    "stateCode": "FR",
+    "name": "Friesland",
+    "normalizedName": "friesland",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "NL-GE",
+    "countryCode": "NL",
+    "stateCode": "GE",
+    "name": "Gelderland",
+    "normalizedName": "gelderland",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "NL-GR",
+    "countryCode": "NL",
+    "stateCode": "GR",
+    "name": "Groningen",
+    "normalizedName": "groningen",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "NL-LI",
+    "countryCode": "NL",
+    "stateCode": "LI",
+    "name": "Limburg",
+    "normalizedName": "limburg",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "NL-NB",
+    "countryCode": "NL",
+    "stateCode": "NB",
+    "name": "North Brabant",
+    "normalizedName": "north brabant",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "NL-NH",
+    "countryCode": "NL",
+    "stateCode": "NH",
+    "name": "North Holland",
+    "normalizedName": "north holland",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "NL-OV",
+    "countryCode": "NL",
+    "stateCode": "OV",
+    "name": "Overijssel",
+    "normalizedName": "overijssel",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "NL-UT",
+    "countryCode": "NL",
+    "stateCode": "UT",
+    "name": "Utrecht",
+    "normalizedName": "utrecht",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "NL-ZE",
+    "countryCode": "NL",
+    "stateCode": "ZE",
+    "name": "Zeeland",
+    "normalizedName": "zeeland",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "NL-ZH",
+    "countryCode": "NL",
+    "stateCode": "ZH",
+    "name": "South Holland",
+    "normalizedName": "south holland",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 12
+  }
+]
