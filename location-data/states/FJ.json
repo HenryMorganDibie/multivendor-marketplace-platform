@@ -1,0 +1,152 @@
+[
+  {
+    "stateId": "FJ-01",
+    "countryCode": "FJ",
+    "stateCode": "01",
+    "name": "Ba",
+    "normalizedName": "ba",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "FJ-02",
+    "countryCode": "FJ",
+    "stateCode": "02",
+    "name": "Bua",
+    "normalizedName": "bua",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "FJ-03",
+    "countryCode": "FJ",
+    "stateCode": "03",
+    "name": "Cakaudrove",
+    "normalizedName": "cakaudrove",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "FJ-04",
+    "countryCode": "FJ",
+    "stateCode": "04",
+    "name": "Kadavu",
+    "normalizedName": "kadavu",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "FJ-05",
+    "countryCode": "FJ",
+    "stateCode": "05",
+    "name": "Lau",
+    "normalizedName": "lau",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "FJ-06",
+    "countryCode": "FJ",
+    "stateCode": "06",
+    "name": "Lomaiviti",
+    "normalizedName": "lomaiviti",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "FJ-07",
+    "countryCode": "FJ",
+    "stateCode": "07",
+    "name": "Macuata",
+    "normalizedName": "macuata",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "FJ-08",
+    "countryCode": "FJ",
+    "stateCode": "08",
+    "name": "Nadroga-Navosa",
+    "normalizedName": "nadroga-navosa",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "FJ-09",
+    "countryCode": "FJ",
+    "stateCode": "09",
+    "name": "Naitasiri",
+    "normalizedName": "naitasiri",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "FJ-10",
+    "countryCode": "FJ",
+    "stateCode": "10",
+    "name": "Namosi",
+    "normalizedName": "namosi",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "FJ-11",
+    "countryCode": "FJ",
+    "stateCode": "11",
+    "name": "Ra",
+    "normalizedName": "ra",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "FJ-12",
+    "countryCode": "FJ",
+    "stateCode": "12",
+    "name": "Rewa",
+    "normalizedName": "rewa",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "FJ-13",
+    "countryCode": "FJ",
+    "stateCode": "13",
+    "name": "Serua",
+    "normalizedName": "serua",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 13
+  },
+  {
+    "stateId": "FJ-14",
+    "countryCode": "FJ",
+    "stateCode": "14",
+    "name": "Tailevu",
+    "normalizedName": "tailevu",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 14
+  },
+  {
+    "stateId": "FJ-R",
+    "countryCode": "FJ",
+    "stateCode": "R",
+    "name": "Rotuma",
+    "normalizedName": "rotuma",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 15
+  }
+]
