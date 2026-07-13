@@ -1,0 +1,72 @@
+[
+  {
+    "stateId": "PK-BA",
+    "countryCode": "PK",
+    "stateCode": "BA",
+    "name": "Balochistan",
+    "normalizedName": "balochistan",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "PK-KP",
+    "countryCode": "PK",
+    "stateCode": "KP",
+    "name": "Khyber Pakhtunkhwa",
+    "normalizedName": "khyber pakhtunkhwa",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "PK-PB",
+    "countryCode": "PK",
+    "stateCode": "PB",
+    "name": "Punjab",
+    "normalizedName": "punjab",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "PK-SD",
+    "countryCode": "PK",
+    "stateCode": "SD",
+    "name": "Sindh",
+    "normalizedName": "sindh",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "PK-IS",
+    "countryCode": "PK",
+    "stateCode": "IS",
+    "name": "Islamabad Capital Territory",
+    "normalizedName": "islamabad capital territory",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "PK-JK",
+    "countryCode": "PK",
+    "stateCode": "JK",
+    "name": "Azad Jammu and Kashmir",
+    "normalizedName": "azad jammu and kashmir",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "PK-GB",
+    "countryCode": "PK",
+    "stateCode": "GB",
+    "name": "Gilgit-Baltistan",
+    "normalizedName": "gilgit-baltistan",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 7
+  }
+]
