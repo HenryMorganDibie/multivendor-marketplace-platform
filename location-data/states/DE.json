@@ -1,0 +1,162 @@
+[
+  {
+    "stateId": "DE-BW",
+    "countryCode": "DE",
+    "stateCode": "BW",
+    "name": "Baden-Württemberg",
+    "normalizedName": "baden-wurttemberg",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "DE-BY",
+    "countryCode": "DE",
+    "stateCode": "BY",
+    "name": "Bavaria",
+    "normalizedName": "bavaria",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "DE-BE",
+    "countryCode": "DE",
+    "stateCode": "BE",
+    "name": "Berlin",
+    "normalizedName": "berlin",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "DE-BB",
+    "countryCode": "DE",
+    "stateCode": "BB",
+    "name": "Brandenburg",
+    "normalizedName": "brandenburg",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "DE-HB",
+    "countryCode": "DE",
+    "stateCode": "HB",
+    "name": "Bremen",
+    "normalizedName": "bremen",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "DE-HH",
+    "countryCode": "DE",
+    "stateCode": "HH",
+    "name": "Hamburg",
+    "normalizedName": "hamburg",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "DE-HE",
+    "countryCode": "DE",
+    "stateCode": "HE",
+    "name": "Hesse",
+    "normalizedName": "hesse",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "DE-NI",
+    "countryCode": "DE",
+    "stateCode": "NI",
+    "name": "Lower Saxony",
+    "normalizedName": "lower saxony",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "DE-MV",
+    "countryCode": "DE",
+    "stateCode": "MV",
+    "name": "Mecklenburg-Vorpommern",
+    "normalizedName": "mecklenburg-vorpommern",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "DE-NW",
+    "countryCode": "DE",
+    "stateCode": "NW",
+    "name": "North Rhine-Westphalia",
+    "normalizedName": "north rhine-westphalia",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "DE-RP",
+    "countryCode": "DE",
+    "stateCode": "RP",
+    "name": "Rhineland-Palatinate",
+    "normalizedName": "rhineland-palatinate",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "DE-SL",
+    "countryCode": "DE",
+    "stateCode": "SL",
+    "name": "Saarland",
+    "normalizedName": "saarland",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "DE-SN",
+    "countryCode": "DE",
+    "stateCode": "SN",
+    "name": "Saxony",
+    "normalizedName": "saxony",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 13
+  },
+  {
+    "stateId": "DE-ST",
+    "countryCode": "DE",
+    "stateCode": "ST",
+    "name": "Saxony-Anhalt",
+    "normalizedName": "saxony-anhalt",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 14
+  },
+  {
+    "stateId": "DE-SH",
+    "countryCode": "DE",
+    "stateCode": "SH",
+    "name": "Schleswig-Holstein",
+    "normalizedName": "schleswig-holstein",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 15
+  },
+  {
+    "stateId": "DE-TH",
+    "countryCode": "DE",
+    "stateCode": "TH",
+    "name": "Thuringia",
+    "normalizedName": "thuringia",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 16
+  }
+]
