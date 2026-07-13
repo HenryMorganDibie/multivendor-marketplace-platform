@@ -1,0 +1,102 @@
+[
+  {
+    "stateId": "CM-AD",
+    "countryCode": "CM",
+    "stateCode": "AD",
+    "name": "Adamawa",
+    "normalizedName": "adamawa",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "CM-CE",
+    "countryCode": "CM",
+    "stateCode": "CE",
+    "name": "Centre",
+    "normalizedName": "centre",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "CM-ES",
+    "countryCode": "CM",
+    "stateCode": "ES",
+    "name": "East",
+    "normalizedName": "east",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "CM-EN",
+    "countryCode": "CM",
+    "stateCode": "EN",
+    "name": "Far North",
+    "normalizedName": "far north",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "CM-LT",
+    "countryCode": "CM",
+    "stateCode": "LT",
+    "name": "Littoral",
+    "normalizedName": "littoral",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "CM-NO",
+    "countryCode": "CM",
+    "stateCode": "NO",
+    "name": "North",
+    "normalizedName": "north",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "CM-NW",
+    "countryCode": "CM",
+    "stateCode": "NW",
+    "name": "Northwest",
+    "normalizedName": "northwest",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "CM-SU",
+    "countryCode": "CM",
+    "stateCode": "SU",
+    "name": "South",
+    "normalizedName": "south",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "CM-SW",
+    "countryCode": "CM",
+    "stateCode": "SW",
+    "name": "Southwest",
+    "normalizedName": "southwest",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "CM-OU",
+    "countryCode": "CM",
+    "stateCode": "OU",
+    "name": "West",
+    "normalizedName": "west",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 10
+  }
+]
