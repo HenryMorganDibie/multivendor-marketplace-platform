@@ -1,0 +1,92 @@
+[
+  {
+    "stateId": "AU-NSW",
+    "countryCode": "AU",
+    "stateCode": "NSW",
+    "name": "New South Wales",
+    "normalizedName": "new south wales",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "AU-QLD",
+    "countryCode": "AU",
+    "stateCode": "QLD",
+    "name": "Queensland",
+    "normalizedName": "queensland",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "AU-SA",
+    "countryCode": "AU",
+    "stateCode": "SA",
+    "name": "South Australia",
+    "normalizedName": "south australia",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "AU-TAS",
+    "countryCode": "AU",
+    "stateCode": "TAS",
+    "name": "Tasmania",
+    "normalizedName": "tasmania",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "AU-VIC",
+    "countryCode": "AU",
+    "stateCode": "VIC",
+    "name": "Victoria",
+    "normalizedName": "victoria",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "AU-WA",
+    "countryCode": "AU",
+    "stateCode": "WA",
+    "name": "Western Australia",
+    "normalizedName": "western australia",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "AU-ACT",
+    "countryCode": "AU",
+    "stateCode": "ACT",
+    "name": "Australian Capital Territory",
+    "normalizedName": "australian capital territory",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "AU-NT",
+    "countryCode": "AU",
+    "stateCode": "NT",
+    "name": "Northern Territory",
+    "normalizedName": "northern territory",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "AU-JBT",
+    "countryCode": "AU",
+    "stateCode": "JBT",
+    "name": "Jervis Bay Territory",
+    "normalizedName": "jervis bay territory",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 9
+  }
+]
