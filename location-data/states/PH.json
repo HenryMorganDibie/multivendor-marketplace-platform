@@ -320,7 +320,7 @@
     "sortOrder": 32
   },
   {
-    "stateId": "PH-eas",
+    "stateId": "PH-EAS",
     "countryCode": "PH",
     "stateCode": "EAS",
     "name": "Eastern Samar",
@@ -540,7 +540,7 @@
     "sortOrder": 54
   },
   {
-    "stateId": "PH-Nis",
+    "stateId": "PH-NIS",
     "countryCode": "PH",
     "stateCode": "NIS",
     "name": "Negros Island",
