@@ -15,23 +15,28 @@ Afghanistan
 - [ ] Areas
 - [ ] Validated
 - [ ] Imported
+      
 Albania
 - [ ] Country
 - [ ] States
 - [ ] Areas
 - [ ] Validated
 - [ ] Imported
+      
 Algeria
 - [ ] Country
 - [ ] States
 - [ ] Areas
 - [ ] Validated
 - [ ] Imported
+
+
 Andorra
 Angola
 Antigua and Barbuda
 Argentina
 Armenia
+
 ## Australia
 - [ ] Country
 - [ ] States
@@ -117,6 +122,7 @@ Iceland
 - [ ] Areas
 - [ ] Validated
 - [ ] Imported
+
 Indonesia
 Iran
 Iraq
@@ -166,12 +172,14 @@ Netherlands
 New Zealand
 Nicaragua
 Niger
+
 Nigeria
 - [ ] Country
 - [ ] States
 - [ ] Areas
 - [ ] Validated
 - [ ] Imported
+
 North Korea
 North Macedonia
 Norway
@@ -201,22 +209,26 @@ Senegal
 Serbia
 Seychelles
 Sierra Leone
+
 # Singapore
 - [ ] Country
 - [ ] States
 - [ ] Areas
 - [ ] Validated
 - [ ] Imported
+
 Slovakia
 Slovenia
 Solomon Islands
 Somalia
+
 # South Africa
 - [ ] Country
 - [ ] States
 - [ ] Areas
 - [ ] Validated
 - [ ] Imported
+
 South Korea
 South Sudan
 Spain
@@ -241,18 +253,21 @@ Turkmenistan
 Tuvalu
 Uganda
 Ukraine
+
 # United Arab Emirates
 - [ ] Country
 - [ ] States
 - [ ] Areas
 - [ ] Validated
 - [ ] Imported
+
 # United Kingdom
 - [ ] Country
 - [ ] States
 - [ ] Areas
 - [ ] Validated
 - [ ] Imported
+
 ## United States
 - [ ] Country
 - [ ] States
