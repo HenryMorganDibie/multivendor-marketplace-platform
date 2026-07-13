@@ -1,0 +1,842 @@
+[
+  {
+    "stateId": "PH-ABR",
+    "countryCode": "PH",
+    "stateCode": "ABR",
+    "name": "Abra",
+    "normalizedName": "abra",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "PH-AGN",
+    "countryCode": "PH",
+    "stateCode": "AGN",
+    "name": "Agusan del Norte",
+    "normalizedName": "agusan del norte",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "PH-AGS",
+    "countryCode": "PH",
+    "stateCode": "AGS",
+    "name": "Agusan del Sur",
+    "normalizedName": "agusan del sur",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "PH-AKL",
+    "countryCode": "PH",
+    "stateCode": "AKL",
+    "name": "Aklan",
+    "normalizedName": "aklan",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "PH-ALB",
+    "countryCode": "PH",
+    "stateCode": "ALB",
+    "name": "Albay",
+    "normalizedName": "albay",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "PH-ANT",
+    "countryCode": "PH",
+    "stateCode": "ANT",
+    "name": "Antique",
+    "normalizedName": "antique",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "PH-APY",
+    "countryCode": "PH",
+    "stateCode": "APY",
+    "name": "Apayao",
+    "normalizedName": "apayao",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "PH-AUR",
+    "countryCode": "PH",
+    "stateCode": "AUR",
+    "name": "Aurora",
+    "normalizedName": "aurora",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "PH-BAS",
+    "countryCode": "PH",
+    "stateCode": "BAS",
+    "name": "Basilan",
+    "normalizedName": "basilan",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "PH-BAN",
+    "countryCode": "PH",
+    "stateCode": "BAN",
+    "name": "Bataan",
+    "normalizedName": "bataan",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "PH-BTN",
+    "countryCode": "PH",
+    "stateCode": "BTN",
+    "name": "Batanes",
+    "normalizedName": "batanes",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "PH-BTG",
+    "countryCode": "PH",
+    "stateCode": "BTG",
+    "name": "Batangas",
+    "normalizedName": "batangas",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "PH-BEN",
+    "countryCode": "PH",
+    "stateCode": "BEN",
+    "name": "Benguet",
+    "normalizedName": "benguet",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 13
+  },
+  {
+    "stateId": "PH-BIL",
+    "countryCode": "PH",
+    "stateCode": "BIL",
+    "name": "Biliran",
+    "normalizedName": "biliran",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 14
+  },
+  {
+    "stateId": "PH-BOH",
+    "countryCode": "PH",
+    "stateCode": "BOH",
+    "name": "Bohol",
+    "normalizedName": "bohol",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 15
+  },
+  {
+    "stateId": "PH-BUK",
+    "countryCode": "PH",
+    "stateCode": "BUK",
+    "name": "Bukidnon",
+    "normalizedName": "bukidnon",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 16
+  },
+  {
+    "stateId": "PH-BUL",
+    "countryCode": "PH",
+    "stateCode": "BUL",
+    "name": "Bulacan",
+    "normalizedName": "bulacan",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 17
+  },
+  {
+    "stateId": "PH-CAG",
+    "countryCode": "PH",
+    "stateCode": "CAG",
+    "name": "Cagayan",
+    "normalizedName": "cagayan",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 18
+  },
+  {
+    "stateId": "PH-CAN",
+    "countryCode": "PH",
+    "stateCode": "CAN",
+    "name": "Camarines Norte",
+    "normalizedName": "camarines norte",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 19
+  },
+  {
+    "stateId": "PH-CAS",
+    "countryCode": "PH",
+    "stateCode": "CAS",
+    "name": "Camarines Sur",
+    "normalizedName": "camarines sur",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 20
+  },
+  {
+    "stateId": "PH-CAM",
+    "countryCode": "PH",
+    "stateCode": "CAM",
+    "name": "Camiguin",
+    "normalizedName": "camiguin",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 21
+  },
+  {
+    "stateId": "PH-CAP",
+    "countryCode": "PH",
+    "stateCode": "CAP",
+    "name": "Capiz",
+    "normalizedName": "capiz",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 22
+  },
+  {
+    "stateId": "PH-CAT",
+    "countryCode": "PH",
+    "stateCode": "CAT",
+    "name": "Catanduanes",
+    "normalizedName": "catanduanes",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 23
+  },
+  {
+    "stateId": "PH-CAV",
+    "countryCode": "PH",
+    "stateCode": "CAV",
+    "name": "Cavite",
+    "normalizedName": "cavite",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 24
+  },
+  {
+    "stateId": "PH-CEB",
+    "countryCode": "PH",
+    "stateCode": "CEB",
+    "name": "Cebu",
+    "normalizedName": "cebu",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 25
+  },
+  {
+    "stateId": "PH-COT",
+    "countryCode": "PH",
+    "stateCode": "COT",
+    "name": "Cotabato",
+    "normalizedName": "cotabato",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 26
+  },
+  {
+    "stateId": "PH-DAV",
+    "countryCode": "PH",
+    "stateCode": "DAV",
+    "name": "Davao de Oro",
+    "normalizedName": "davao de oro",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 27
+  },
+  {
+    "stateId": "PH-DVN",
+    "countryCode": "PH",
+    "stateCode": "DVN",
+    "name": "Davao del Norte",
+    "normalizedName": "davao del norte",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 28
+  },
+  {
+    "stateId": "PH-DVS",
+    "countryCode": "PH",
+    "stateCode": "DVS",
+    "name": "Davao del Sur",
+    "normalizedName": "davao del sur",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 29
+  },
+  {
+    "stateId": "PH-DVO",
+    "countryCode": "PH",
+    "stateCode": "DVO",
+    "name": "Davao Oriental",
+    "normalizedName": "davao oriental",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 30
+  },
+  {
+    "stateId": "PH-DAS",
+    "countryCode": "PH",
+    "stateCode": "DAS",
+    "name": "Davao Occidental",
+    "normalizedName": "davao occidental",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 31
+  },
+  {
+    "stateId": "PH-DIN",
+    "countryCode": "PH",
+    "stateCode": "DIN",
+    "name": "Dinagat Islands",
+    "normalizedName": "dinagat islands",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 32
+  },
+  {
+    "stateId": "PH-eas",
+    "countryCode": "PH",
+    "stateCode": "EAS",
+    "name": "Eastern Samar",
+    "normalizedName": "eastern samar",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 33
+  },
+  {
+    "stateId": "PH-GUI",
+    "countryCode": "PH",
+    "stateCode": "GUI",
+    "name": "Guimaras",
+    "normalizedName": "guimaras",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 34
+  },
+  {
+    "stateId": "PH-IFU",
+    "countryCode": "PH",
+    "stateCode": "IFU",
+    "name": "Ifugao",
+    "normalizedName": "ifugao",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 35
+  },
+  {
+    "stateId": "PH-ILN",
+    "countryCode": "PH",
+    "stateCode": "ILN",
+    "name": "Ilocos Norte",
+    "normalizedName": "ilocos norte",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 36
+  },
+  {
+    "stateId": "PH-ILS",
+    "countryCode": "PH",
+    "stateCode": "ILS",
+    "name": "Ilocos Sur",
+    "normalizedName": "ilocos sur",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 37
+  },
+  {
+    "stateId": "PH-ILI",
+    "countryCode": "PH",
+    "stateCode": "ILI",
+    "name": "Iloilo",
+    "normalizedName": "iloilo",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 38
+  },
+  {
+    "stateId": "PH-ISA",
+    "countryCode": "PH",
+    "stateCode": "ISA",
+    "name": "Isabela",
+    "normalizedName": "isabela",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 39
+  },
+  {
+    "stateId": "PH-KAL",
+    "countryCode": "PH",
+    "stateCode": "KAL",
+    "name": "Kalinga",
+    "normalizedName": "kalinga",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 40
+  },
+  {
+    "stateId": "PH-LUN",
+    "countryCode": "PH",
+    "stateCode": "LUN",
+    "name": "La Union",
+    "normalizedName": "la union",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 41
+  },
+  {
+    "stateId": "PH-LAG",
+    "countryCode": "PH",
+    "stateCode": "LAG",
+    "name": "Laguna",
+    "normalizedName": "laguna",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 42
+  },
+  {
+    "stateId": "PH-LAN",
+    "countryCode": "PH",
+    "stateCode": "LAN",
+    "name": "Lanao del Norte",
+    "normalizedName": "lanao del norte",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 43
+  },
+  {
+    "stateId": "PH-LAS",
+    "countryCode": "PH",
+    "stateCode": "LAS",
+    "name": "Lanao del Sur",
+    "normalizedName": "lanao del sur",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 44
+  },
+  {
+    "stateId": "PH-LEY",
+    "countryCode": "PH",
+    "stateCode": "LEY",
+    "name": "Leyte",
+    "normalizedName": "leyte",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 45
+  },
+  {
+    "stateId": "PH-MAG",
+    "countryCode": "PH",
+    "stateCode": "MAG",
+    "name": "Maguindanao del Norte",
+    "normalizedName": "maguindanao del norte",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 46
+  },
+  {
+    "stateId": "PH-MGS",
+    "countryCode": "PH",
+    "stateCode": "MGS",
+    "name": "Maguindanao del Sur",
+    "normalizedName": "maguindanao del sur",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 47
+  },
+  {
+    "stateId": "PH-MAD",
+    "countryCode": "PH",
+    "stateCode": "MAD",
+    "name": "Marinduque",
+    "normalizedName": "marinduque",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 48
+  },
+  {
+    "stateId": "PH-MAS",
+    "countryCode": "PH",
+    "stateCode": "MAS",
+    "name": "Masbate",
+    "normalizedName": "masbate",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 49
+  },
+  {
+    "stateId": "PH-MSC",
+    "countryCode": "PH",
+    "stateCode": "MSC",
+    "name": "Misamis Occidental",
+    "normalizedName": "misamis occidental",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 50
+  },
+  {
+    "stateId": "PH-MSR",
+    "countryCode": "PH",
+    "stateCode": "MSR",
+    "name": "Misamis Oriental",
+    "normalizedName": "misamis oriental",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 51
+  },
+  {
+    "stateId": "PH-MOU",
+    "countryCode": "PH",
+    "stateCode": "MOU",
+    "name": "Mountain Province",
+    "normalizedName": "mountain province",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 52
+  },
+  {
+    "stateId": "PH-NEC",
+    "countryCode": "PH",
+    "stateCode": "NEC",
+    "name": "Negros Occidental",
+    "normalizedName": "negros occidental",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 53
+  },
+  {
+    "stateId": "PH-NER",
+    "countryCode": "PH",
+    "stateCode": "NER",
+    "name": "Negros Oriental",
+    "normalizedName": "negros oriental",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 54
+  },
+  {
+    "stateId": "PH-Nis",
+    "countryCode": "PH",
+    "stateCode": "NIS",
+    "name": "Negros Island",
+    "normalizedName": "negros island",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 55
+  },
+  {
+    "stateId": "PH-NSA",
+    "countryCode": "PH",
+    "stateCode": "NSA",
+    "name": "Northern Samar",
+    "normalizedName": "northern samar",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 56
+  },
+  {
+    "stateId": "PH-NUE",
+    "countryCode": "PH",
+    "stateCode": "NUE",
+    "name": "Nueva Ecija",
+    "normalizedName": "nueva ecija",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 57
+  },
+  {
+    "stateId": "PH-NUV",
+    "countryCode": "PH",
+    "stateCode": "NUV",
+    "name": "Nueva Vizcaya",
+    "normalizedName": "nueva vizcaya",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 58
+  },
+  {
+    "stateId": "PH-MDC",
+    "countryCode": "PH",
+    "stateCode": "MDC",
+    "name": "Occidental Mindoro",
+    "normalizedName": "occidental mindoro",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 59
+  },
+  {
+    "stateId": "PH-MDR",
+    "countryCode": "PH",
+    "stateCode": "MDR",
+    "name": "Oriental Mindoro",
+    "normalizedName": "oriental mindoro",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 60
+  },
+  {
+    "stateId": "PH-PLW",
+    "countryCode": "PH",
+    "stateCode": "PLW",
+    "name": "Palawan",
+    "normalizedName": "palawan",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 61
+  },
+  {
+    "stateId": "PH-PAM",
+    "countryCode": "PH",
+    "stateCode": "PAM",
+    "name": "Pampanga",
+    "normalizedName": "pampanga",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 62
+  },
+  {
+    "stateId": "PH-PAN",
+    "countryCode": "PH",
+    "stateCode": "PAN",
+    "name": "Pangasinan",
+    "normalizedName": "pangasinan",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 63
+  },
+  {
+    "stateId": "PH-QUE",
+    "countryCode": "PH",
+    "stateCode": "QUE",
+    "name": "Quezon",
+    "normalizedName": "quezon",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 64
+  },
+  {
+    "stateId": "PH-QUI",
+    "countryCode": "PH",
+    "stateCode": "QUI",
+    "name": "Quirino",
+    "normalizedName": "quirino",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 65
+  },
+  {
+    "stateId": "PH-RIZ",
+    "countryCode": "PH",
+    "stateCode": "RIZ",
+    "name": "Rizal",
+    "normalizedName": "rizal",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 66
+  },
+  {
+    "stateId": "PH-ROM",
+    "countryCode": "PH",
+    "stateCode": "ROM",
+    "name": "Romblon",
+    "normalizedName": "romblon",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 67
+  },
+  {
+    "stateId": "PH-SAM",
+    "countryCode": "PH",
+    "stateCode": "SAM",
+    "name": "Samar",
+    "normalizedName": "samar",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 68
+  },
+  {
+    "stateId": "PH-SAR",
+    "countryCode": "PH",
+    "stateCode": "SAR",
+    "name": "Sarangani",
+    "normalizedName": "sarangani",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 69
+  },
+  {
+    "stateId": "PH-SIQ",
+    "countryCode": "PH",
+    "stateCode": "SIQ",
+    "name": "Siquijor",
+    "normalizedName": "siquijor",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 70
+  },
+  {
+    "stateId": "PH-SOR",
+    "countryCode": "PH",
+    "stateCode": "SOR",
+    "name": "Sorsogon",
+    "normalizedName": "sorsogon",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 71
+  },
+  {
+    "stateId": "PH-SCO",
+    "countryCode": "PH",
+    "stateCode": "SCO",
+    "name": "South Cotabato",
+    "normalizedName": "south cotabato",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 72
+  },
+  {
+    "stateId": "PH-SLE",
+    "countryCode": "PH",
+    "stateCode": "SLE",
+    "name": "Southern Leyte",
+    "normalizedName": "southern leyte",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 73
+  },
+  {
+    "stateId": "PH-SUK",
+    "countryCode": "PH",
+    "stateCode": "SUK",
+    "name": "Sultan Kudarat",
+    "normalizedName": "sultan kudarat",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 74
+  },
+  {
+    "stateId": "PH-SLU",
+    "countryCode": "PH",
+    "stateCode": "SLU",
+    "name": "Sulu",
+    "normalizedName": "sulu",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 75
+  },
+  {
+    "stateId": "PH-SUN",
+    "countryCode": "PH",
+    "stateCode": "SUN",
+    "name": "Surigao del Norte",
+    "normalizedName": "surigao del norte",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 76
+  },
+  {
+    "stateId": "PH-SUR",
+    "countryCode": "PH",
+    "stateCode": "SUR",
+    "name": "Surigao del Sur",
+    "normalizedName": "surigao del sur",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 77
+  },
+  {
+    "stateId": "PH-TAR",
+    "countryCode": "PH",
+    "stateCode": "TAR",
+    "name": "Tarlac",
+    "normalizedName": "tarlac",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 78
+  },
+  {
+    "stateId": "PH-TAW",
+    "countryCode": "PH",
+    "stateCode": "TAW",
+    "name": "Tawi-Tawi",
+    "normalizedName": "tawi-tawi",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 79
+  },
+  {
+    "stateId": "PH-ZMB",
+    "countryCode": "PH",
+    "stateCode": "ZMB",
+    "name": "Zambales",
+    "normalizedName": "zambales",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 80
+  },
+  {
+    "stateId": "PH-ZAN",
+    "countryCode": "PH",
+    "stateCode": "ZAN",
+    "name": "Zamboanga del Norte",
+    "normalizedName": "zamboanga del norte",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 81
+  },
+  {
+    "stateId": "PH-ZAS",
+    "countryCode": "PH",
+    "stateCode": "ZAS",
+    "name": "Zamboanga del Sur",
+    "normalizedName": "zamboanga del sur",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 82
+  },
+  {
+    "stateId": "PH-ZSI",
+    "countryCode": "PH",
+    "stateCode": "ZSI",
+    "name": "Zamboanga Sibugay",
+    "normalizedName": "zamboanga sibugay",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 83
+  },
+  {
+    "stateId": "PH-NCR",
+    "countryCode": "PH",
+    "stateCode": "NCR",
+    "name": "National Capital Region",
+    "normalizedName": "national capital region",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 84
+  }
+]
