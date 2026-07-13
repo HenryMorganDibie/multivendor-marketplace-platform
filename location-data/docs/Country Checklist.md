@@ -1,41 +1,60 @@
 # the platform Location Data — Country Progress Checklist
 
-## Nigeria
-- [ ] Country
-- [ ] States
-- [ ] Areas
-- [ ] Validated
-- [ ] Imported
-
-
-
-Afghanistan
+# Afghanistan
 - [ ] Country
 - [ ] States
 - [ ] Areas
 - [ ] Validated
 - [ ] Imported
       
-Albania
+# Albania
 - [ ] Country
 - [ ] States
 - [ ] Areas
 - [ ] Validated
 - [ ] Imported
       
-Algeria
+# Algeria
 - [ ] Country
 - [ ] States
 - [ ] Areas
 - [ ] Validated
 - [ ] Imported
 
+# Andorra
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Angola
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Antigua and Barbuda
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
 
-Andorra
-Angola
-Antigua and Barbuda
-Argentina
-Armenia
+# Argentina
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Armenia
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
 
 ## Australia
 - [ ] Country
@@ -44,33 +63,188 @@ Armenia
 - [ ] Validated
 - [ ] Imported
       
-Austria
-Azerbaijan
-Bahamas
-Bahrain
-Bangladesh
-Barbados
-Belarus
-Belgium
-Belize
-Benin
-Bhutan
-Bolivia
-Bosnia and Herzegovina
-Botswana
-Brazil
-Brunei
-Bulgaria
-Burkina Faso
-Burundi 
-C–D
-Cabo Verde
-Cambodia
-Cameroon
-Canada
-Central African Republic
-Chad
-Chile
+# Austria
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Azerbaijan
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Bahamas
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Bahrain
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Bangladesh
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Barbados
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Belarus 
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Belgium
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Belize
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Benin
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Bhutan
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Bolivia
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Bosnia and Herzegovina
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Botswana
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Brazil
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Brunei
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Bulgaria
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Burkina Faso
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+  
+# Burundi 
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Cabo Verde
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Cambodia
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Cameroon
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Canada
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Central African Republic
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Chad
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Chile
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
 China
 Colombia
 Comoros
@@ -85,21 +259,104 @@ Czechia (Czech Republic)
 Denmark
 Djibouti
 Dominica
-Dominican Republic 
+# Dominican Republic 
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Ecuador
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Egypt
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# El Salvador
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Equatorial Guinea
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
 
-Ecuador
-Egypt
-El Salvador
-Equatorial Guinea
-Eritrea
-Estonia
-Eswatini
-Ethiopia
-Fiji
-Finland
-France
-Gabon
-Gambia
+# Eritrea
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Estonia
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Eswatini
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Ethiopia
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Fiji
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Finland
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# France
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Gabon
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Gambia
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
 Georgia
 Germany
 Ghana
@@ -180,35 +437,208 @@ Nigeria
 - [ ] Validated
 - [ ] Imported
 
-North Korea
-North Macedonia
-Norway
-Oman
-Pakistan
-Palau
-Palestine
-Panama
-Papua New Guinea
-Paraguay
-Peru
-Philippines
-Poland
-Portugal 
-Qatar
-Romania
-Russia
-Rwanda
-Saint Kitts and Nevis
-Saint Lucia
-Saint Vincent and the Grenadines
-Samoa
-San Marino
-Sao Tome and Principe
-Saudi Arabia
-Senegal
-Serbia
-Seychelles
-Sierra Leone
+# North Korea
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# North Macedonia
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Norway
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Oman
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Pakistan
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Palau
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Palestine
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Panama
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Papua New Guinea
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Paraguay
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Peru
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Philippines
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Poland
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Portugal 
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Qatar
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Romania
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Russia
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Rwanda
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Saint Kitts and Nevis
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Saint Lucia
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Saint Vincent and the Grenadines
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Samoa
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# San Marino
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Sao Tome and Principe
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Saudi Arabia
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Senegal
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Serbia
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Seychelles
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Sierra Leone
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
 
 # Singapore
 - [ ] Country
@@ -217,11 +647,34 @@ Sierra Leone
 - [ ] Validated
 - [ ] Imported
 
-Slovakia
-Slovenia
-Solomon Islands
-Somalia
+# Slovakia
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
 
+# Slovenia
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Solomon Islands
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Somalia
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
 # South Africa
 - [ ] Country
 - [ ] States
@@ -229,30 +682,162 @@ Somalia
 - [ ] Validated
 - [ ] Imported
 
-South Korea
-South Sudan
-Spain
-Sri Lanka
-Sudan
-Suriname
-Sweden
-Switzerland
-Syria
+# South Korea
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
 
-Taiwan
-Tajikistan
-Tanzania
-Thailand
-Timor-Leste
-Togo
-Tonga
-Trinidad and Tobago
-Tunisia
-Turkey
-Turkmenistan
-Tuvalu
-Uganda
-Ukraine
+# South Sudan
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Spain
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Sri Lanka
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Sudan
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Suriname
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Sweden
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Switzerland
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Syria
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Taiwan
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Tajikistan
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Tanzania
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Thailand
+
+
+# Timor-Leste
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Togo
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Tonga
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Trinidad and Tobago
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Tunisia
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Turkey
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Turkmenistan
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Tuvalu
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Uganda
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Ukraine
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
 
 # United Arab Emirates
 - [ ] Country
@@ -274,11 +859,58 @@ Ukraine
 - [ ] Areas
 - [ ] Validated
 - [ ] Imported
-Uruguay
-Uzbekistan
-Vanuatu
-Venezuela
-Vietnam
-Yemen
-Zambia
-Zimbabwe
+# Uruguay
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Uzbekistan
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+
+# Vanuatu
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Venezuela
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Vietnam
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Yemen
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Zambia
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
+      
+# Zimbabwe
+- [ ] Country
+- [ ] States
+- [ ] Areas
+- [ ] Validated
+- [ ] Imported
