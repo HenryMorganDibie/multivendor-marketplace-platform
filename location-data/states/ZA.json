@@ -1,0 +1,92 @@
+[
+  {
+    "stateId": "ZA-EC",
+    "countryCode": "ZA",
+    "stateCode": "EC",
+    "name": "Eastern Cape",
+    "normalizedName": "eastern cape",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "ZA-FS",
+    "countryCode": "ZA",
+    "stateCode": "FS",
+    "name": "Free State",
+    "normalizedName": "free state",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "ZA-GP",
+    "countryCode": "ZA",
+    "stateCode": "GP",
+    "name": "Gauteng",
+    "normalizedName": "gauteng",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "ZA-KZN",
+    "countryCode": "ZA",
+    "stateCode": "KZN",
+    "name": "KwaZulu-Natal",
+    "normalizedName": "kwalu-natal",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "ZA-LP",
+    "countryCode": "ZA",
+    "stateCode": "LP",
+    "name": "Limpopo",
+    "normalizedName": "limpopo",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "ZA-MP",
+    "countryCode": "ZA",
+    "stateCode": "MP",
+    "name": "Mpumalanga",
+    "normalizedName": "mpumalanga",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "ZA-NW",
+    "countryCode": "ZA",
+    "stateCode": "NW",
+    "name": "North West",
+    "normalizedName": "north west",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "ZA-NC",
+    "countryCode": "ZA",
+    "stateCode": "NC",
+    "name": "Northern Cape",
+    "normalizedName": "northern cape",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "ZA-WC",
+    "countryCode": "ZA",
+    "stateCode": "WC",
+    "name": "Western Cape",
+    "normalizedName": "western cape",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 9
+  }
+]
