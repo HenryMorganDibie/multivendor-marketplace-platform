@@ -1,0 +1,132 @@
+[
+  {
+    "stateId": "CA-AB",
+    "countryCode": "CA",
+    "stateCode": "AB",
+    "name": "Alberta",
+    "normalizedName": "alberta",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "CA-BC",
+    "countryCode": "CA",
+    "stateCode": "BC",
+    "name": "British Columbia",
+    "normalizedName": "british columbia",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "CA-MB",
+    "countryCode": "CA",
+    "stateCode": "MB",
+    "name": "Manitoba",
+    "normalizedName": "manitoba",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "CA-NB",
+    "countryCode": "CA",
+    "stateCode": "NB",
+    "name": "New Brunswick",
+    "normalizedName": "new brunswick",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "CA-NL",
+    "countryCode": "CA",
+    "stateCode": "NL",
+    "name": "Newfoundland and Labrador",
+    "normalizedName": "newfoundland and labrador",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "CA-NS",
+    "countryCode": "CA",
+    "stateCode": "NS",
+    "name": "Nova Scotia",
+    "normalizedName": "nova scotia",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "CA-ON",
+    "countryCode": "CA",
+    "stateCode": "ON",
+    "name": "Ontario",
+    "normalizedName": "ontario",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "CA-PE",
+    "countryCode": "CA",
+    "stateCode": "PE",
+    "name": "Prince Edward Island",
+    "normalizedName": "prince edward island",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "CA-QC",
+    "countryCode": "CA",
+    "stateCode": "QC",
+    "name": "Quebec",
+    "normalizedName": "quebec",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "CA-SK",
+    "countryCode": "CA",
+    "stateCode": "SK",
+    "name": "Saskatchewan",
+    "normalizedName": "saskatchewan",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "CA-NT",
+    "countryCode": "CA",
+    "stateCode": "NT",
+    "name": "Northwest Territories",
+    "normalizedName": "northwest territories",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "CA-NU",
+    "countryCode": "CA",
+    "stateCode": "NU",
+    "name": "Nunavut",
+    "normalizedName": "nunavut",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "CA-YT",
+    "countryCode": "CA",
+    "stateCode": "YT",
+    "name": "Yukon",
+    "normalizedName": "yukon",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 13
+  }
+]
