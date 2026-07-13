@@ -1,0 +1,112 @@
+[
+  {
+    "stateId": "BB-01",
+    "countryCode": "BB",
+    "stateCode": "01",
+    "name": "Christ Church",
+    "normalizedName": "christ church",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "BB-02",
+    "countryCode": "BB",
+    "stateCode": "02",
+    "name": "Saint Andrew",
+    "normalizedName": "saint andrew",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "BB-03",
+    "countryCode": "BB",
+    "stateCode": "03",
+    "name": "Saint George",
+    "normalizedName": "saint george",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "BB-04",
+    "countryCode": "BB",
+    "stateCode": "04",
+    "name": "Saint James",
+    "normalizedName": "saint james",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "BB-05",
+    "countryCode": "BB",
+    "stateCode": "05",
+    "name": "Saint John",
+    "normalizedName": "saint john",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "BB-06",
+    "countryCode": "BB",
+    "stateCode": "06",
+    "name": "Saint Joseph",
+    "normalizedName": "saint joseph",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "BB-07",
+    "countryCode": "BB",
+    "stateCode": "07",
+    "name": "Saint Lucy",
+    "normalizedName": "saint lucy",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "BB-08",
+    "countryCode": "BB",
+    "stateCode": "08",
+    "name": "Saint Michael",
+    "normalizedName": "saint michael",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "BB-09",
+    "countryCode": "BB",
+    "stateCode": "09",
+    "name": "Saint Peter",
+    "normalizedName": "saint peter",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "BB-10",
+    "countryCode": "BB",
+    "stateCode": "10",
+    "name": "Saint Philip",
+    "normalizedName": "saint philip",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "BB-11",
+    "countryCode": "BB",
+    "stateCode": "11",
+    "name": "Saint Thomas",
+    "normalizedName": "saint thomas",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 11
+  }
+]
