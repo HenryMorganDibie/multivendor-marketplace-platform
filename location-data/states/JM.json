@@ -1,0 +1,142 @@
+[
+  {
+    "stateId": "JM-01",
+    "countryCode": "JM",
+    "stateCode": "01",
+    "name": "Clarendon",
+    "normalizedName": "clarendon",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "JM-02",
+    "countryCode": "JM",
+    "stateCode": "02",
+    "name": "Hanover",
+    "normalizedName": "hanover",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "JM-03",
+    "countryCode": "JM",
+    "stateCode": "03",
+    "name": "Kingston",
+    "normalizedName": "kingston",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "JM-04",
+    "countryCode": "JM",
+    "stateCode": "04",
+    "name": "Manchester",
+    "normalizedName": "manchester",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "JM-05",
+    "countryCode": "JM",
+    "stateCode": "05",
+    "name": "Portland",
+    "normalizedName": "portland",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "JM-06",
+    "countryCode": "JM",
+    "stateCode": "06",
+    "name": "Saint Andrew",
+    "normalizedName": "saint andrew",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "JM-07",
+    "countryCode": "JM",
+    "stateCode": "07",
+    "name": "Saint Ann",
+    "normalizedName": "saint ann",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "JM-08",
+    "countryCode": "JM",
+    "stateCode": "08",
+    "name": "Saint Catherine",
+    "normalizedName": "saint catherine",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "JM-09",
+    "countryCode": "JM",
+    "stateCode": "09",
+    "name": "Saint Elizabeth",
+    "normalizedName": "saint elizabeth",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "JM-10",
+    "countryCode": "JM",
+    "stateCode": "10",
+    "name": "Saint James",
+    "normalizedName": "saint james",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "JM-11",
+    "countryCode": "JM",
+    "stateCode": "11",
+    "name": "Saint Mary",
+    "normalizedName": "saint mary",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "JM-12",
+    "countryCode": "JM",
+    "stateCode": "12",
+    "name": "Saint Thomas",
+    "normalizedName": "saint thomas",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "JM-13",
+    "countryCode": "JM",
+    "stateCode": "13",
+    "name": "Trelawny",
+    "normalizedName": "trelawny",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 13
+  },
+  {
+    "stateId": "JM-14",
+    "countryCode": "JM",
+    "stateCode": "14",
+    "name": "Westmoreland",
+    "normalizedName": "westmoreland",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 14
+  }
+]
