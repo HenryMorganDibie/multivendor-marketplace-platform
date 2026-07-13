@@ -1,0 +1,62 @@
+[
+  {
+    "stateId": "BZ-BZ",
+    "countryCode": "BZ",
+    "stateCode": "BZ",
+    "name": "Belize",
+    "normalizedName": "belize",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "BZ-CY",
+    "countryCode": "BZ",
+    "stateCode": "CY",
+    "name": "Cayo",
+    "normalizedName": "cayo",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "BZ-CZL",
+    "countryCode": "BZ",
+    "stateCode": "CZL",
+    "name": "Corozal",
+    "normalizedName": "corozal",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "BZ-OW",
+    "countryCode": "BZ",
+    "stateCode": "OW",
+    "name": "Orange Walk",
+    "normalizedName": "orange walk",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "BZ-SC",
+    "countryCode": "BZ",
+    "stateCode": "SC",
+    "name": "Stann Creek",
+    "normalizedName": "stann creek",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "BZ-TOL",
+    "countryCode": "BZ",
+    "stateCode": "TOL",
+    "name": "Toledo",
+    "normalizedName": "toledo",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 6
+  }
+]
