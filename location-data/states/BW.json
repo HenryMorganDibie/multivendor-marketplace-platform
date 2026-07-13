@@ -1,0 +1,162 @@
+[
+  {
+    "stateId": "BW-CE",
+    "countryCode": "BW",
+    "stateCode": "CE",
+    "name": "Central",
+    "normalizedName": "central",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "BW-CH",
+    "countryCode": "BW",
+    "stateCode": "CH",
+    "name": "Chobe",
+    "normalizedName": "chobe",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "BW-FR",
+    "countryCode": "BW",
+    "stateCode": "FR",
+    "name": "Francistown",
+    "normalizedName": "francistown",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "BW-GA",
+    "countryCode": "BW",
+    "stateCode": "GA",
+    "name": "Gaborone",
+    "normalizedName": "gaborone",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "BW-GH",
+    "countryCode": "BW",
+    "stateCode": "GH",
+    "name": "Ghanzi",
+    "normalizedName": "ghanzi",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "BW-JW",
+    "countryCode": "BW",
+    "stateCode": "JW",
+    "name": "Jwaneng",
+    "normalizedName": "jwaneng",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "BW-KG",
+    "countryCode": "BW",
+    "stateCode": "KG",
+    "name": "Kgalagadi",
+    "normalizedName": "kgalagadi",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "BW-KL",
+    "countryCode": "BW",
+    "stateCode": "KL",
+    "name": "Kgatleng",
+    "normalizedName": "kgatleng",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "BW-KW",
+    "countryCode": "BW",
+    "stateCode": "KW",
+    "name": "Kweneng",
+    "normalizedName": "kweneng",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "BW-LO",
+    "countryCode": "BW",
+    "stateCode": "LO",
+    "name": "Lobatse",
+    "normalizedName": "lobatse",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "BW-NE",
+    "countryCode": "BW",
+    "stateCode": "NE",
+    "name": "North East",
+    "normalizedName": "north east",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "BW-NW",
+    "countryCode": "BW",
+    "stateCode": "NW",
+    "name": "North West",
+    "normalizedName": "north west",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "BW-SP",
+    "countryCode": "BW",
+    "stateCode": "SP",
+    "name": "Selibe Phikwe",
+    "normalizedName": "selibe phikwe",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 13
+  },
+  {
+    "stateId": "BW-SE",
+    "countryCode": "BW",
+    "stateCode": "SE",
+    "name": "South East",
+    "normalizedName": "south east",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 14
+  },
+  {
+    "stateId": "BW-SO",
+    "countryCode": "BW",
+    "stateCode": "SO",
+    "name": "Southern",
+    "normalizedName": "southern",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 15
+  },
+  {
+    "stateId": "BW-ST",
+    "countryCode": "BW",
+    "stateCode": "ST",
+    "name": "Sowa Town",
+    "normalizedName": "sowa town",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 16
+  }
+]
