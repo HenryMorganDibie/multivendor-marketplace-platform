@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-NS-NORTH-ANDROS",
+    "countryCode": "BS",
+    "stateId": "BS-NS",
+    "stateCode": "NS",
+    "name": "North Andros",
+    "normalizedName": "north andros",
+    "slug": "NORTH-ANDROS",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

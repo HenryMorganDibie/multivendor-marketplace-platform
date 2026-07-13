@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "CM-CE-YAOUNDE",
+    "countryCode": "CM",
+    "stateId": "CM-CE",
+    "stateCode": "CE",
+    "name": "Yaounde",
+    "normalizedName": "yaounde",
+    "slug": "YAOUNDE",
+    "locationType": "city",
+    "timeZone": "Africa/Douala",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

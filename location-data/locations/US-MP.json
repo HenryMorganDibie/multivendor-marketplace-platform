@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-MP-SAIPAN",
+    "countryCode": "US",
+    "stateId": "US-MP",
+    "stateCode": "MP",
+    "name": "Saipan",
+    "normalizedName": "saipan",
+    "slug": "SAIPAN",
+    "locationType": "city",
+    "timeZone": "Pacific/Saipan",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-22-KIAMBU",
+    "countryCode": "KE",
+    "stateId": "KE-22",
+    "stateCode": "22",
+    "name": "Kiambu",
+    "normalizedName": "kiambu",
+    "slug": "KIAMBU",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

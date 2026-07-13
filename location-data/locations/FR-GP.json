@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FR-GP-POINTE-A-PITRE",
+    "countryCode": "FR",
+    "stateId": "FR-GP",
+    "stateCode": "GP",
+    "name": "Pointe-a-Pitre",
+    "normalizedName": "pointe-a-pitre",
+    "slug": "POINTE-A-PITRE",
+    "locationType": "city",
+    "timeZone": "America/Guadeloupe",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DE-BY-MUNICH",
+    "countryCode": "DE",
+    "stateId": "DE-BY",
+    "stateCode": "BY",
+    "name": "Munich",
+    "normalizedName": "munich",
+    "slug": "MUNICH",
+    "locationType": "city",
+    "timeZone": "Europe/Berlin",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

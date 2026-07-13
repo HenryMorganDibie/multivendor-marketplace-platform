@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-RI-RAGGED-ISLAND",
+    "countryCode": "BS",
+    "stateId": "BS-RI",
+    "stateCode": "RI",
+    "name": "Ragged Island",
+    "normalizedName": "ragged island",
+    "slug": "RAGGED-ISLAND",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

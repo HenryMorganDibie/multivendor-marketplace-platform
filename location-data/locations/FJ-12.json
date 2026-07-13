@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FJ-12-SUVA",
+    "countryCode": "FJ",
+    "stateId": "FJ-12",
+    "stateCode": "12",
+    "name": "Suva",
+    "normalizedName": "suva",
+    "slug": "SUVA",
+    "locationType": "city",
+    "timeZone": "Pacific/Fiji",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

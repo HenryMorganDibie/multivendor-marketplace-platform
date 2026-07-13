@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-YO-DAMATURU",
+    "countryCode": "NG",
+    "stateId": "NG-YO",
+    "stateCode": "YO",
+    "name": "Damaturu",
+    "normalizedName": "damaturu",
+    "slug": "DAMATURU",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

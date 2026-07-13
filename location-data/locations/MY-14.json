@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MY-14-KUALA-LUMPUR",
+    "countryCode": "MY",
+    "stateId": "MY-14",
+    "stateCode": "14",
+    "name": "Kuala Lumpur",
+    "normalizedName": "kuala lumpur",
+    "slug": "KUALA-LUMPUR",
+    "locationType": "city",
+    "timeZone": "Asia/Kuala_Lumpur",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

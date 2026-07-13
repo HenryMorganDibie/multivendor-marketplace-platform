@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ZA-FS-BLOEMFONTEIN",
+    "countryCode": "ZA",
+    "stateId": "ZA-FS",
+    "stateCode": "FS",
+    "name": "Bloemfontein",
+    "normalizedName": "bloemfontein",
+    "slug": "BLOEMFONTEIN",
+    "locationType": "city",
+    "timeZone": "Africa/Johannesburg",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

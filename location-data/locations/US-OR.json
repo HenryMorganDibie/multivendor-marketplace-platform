@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-OR-SALEM",
+    "countryCode": "US",
+    "stateId": "US-OR",
+    "stateCode": "OR",
+    "name": "Salem",
+    "normalizedName": "salem",
+    "slug": "SALEM",
+    "locationType": "city",
+    "timeZone": "America/Los_Angeles",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

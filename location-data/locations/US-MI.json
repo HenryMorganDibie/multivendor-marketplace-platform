@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-MI-LANSING",
+    "countryCode": "US",
+    "stateId": "US-MI",
+    "stateCode": "MI",
+    "name": "Lansing",
+    "normalizedName": "lansing",
+    "slug": "LANSING",
+    "locationType": "city",
+    "timeZone": "America/Detroit",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

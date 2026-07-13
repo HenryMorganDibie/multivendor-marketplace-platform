@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-LA-LEH",
+    "countryCode": "IN",
+    "stateId": "IN-LA",
+    "stateCode": "LA",
+    "name": "Leh",
+    "normalizedName": "leh",
+    "slug": "LEH",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

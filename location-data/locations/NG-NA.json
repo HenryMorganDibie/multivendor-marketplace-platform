@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-NA-LAFIA",
+    "countryCode": "NG",
+    "stateId": "NG-NA",
+    "stateCode": "NA",
+    "name": "Lafia",
+    "normalizedName": "lafia",
+    "slug": "LAFIA",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

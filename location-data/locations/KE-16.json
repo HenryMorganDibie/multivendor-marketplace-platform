@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-16-MACHAKOS",
+    "countryCode": "KE",
+    "stateId": "KE-16",
+    "stateCode": "16",
+    "name": "Machakos",
+    "normalizedName": "machakos",
+    "slug": "MACHAKOS",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

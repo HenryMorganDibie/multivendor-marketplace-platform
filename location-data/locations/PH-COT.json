@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-COT-KIDAPAWAN",
+    "countryCode": "PH",
+    "stateId": "PH-COT",
+    "stateCode": "COT",
+    "name": "Kidapawan",
+    "normalizedName": "kidapawan",
+    "slug": "KIDAPAWAN",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

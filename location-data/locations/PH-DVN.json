@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-DVN-TAGUM",
+    "countryCode": "PH",
+    "stateId": "PH-DVN",
+    "stateCode": "DVN",
+    "name": "Tagum",
+    "normalizedName": "tagum",
+    "slug": "TAGUM",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

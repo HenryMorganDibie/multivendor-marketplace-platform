@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-AKL-KALIBO",
+    "countryCode": "PH",
+    "stateId": "PH-AKL",
+    "stateCode": "AKL",
+    "name": "Kalibo",
+    "normalizedName": "kalibo",
+    "slug": "KALIBO",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

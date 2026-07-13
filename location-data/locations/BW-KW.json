@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BW-KW-KWENENG",
+    "countryCode": "BW",
+    "stateId": "BW-KW",
+    "stateCode": "KW",
+    "name": "Kweneng",
+    "normalizedName": "kweneng",
+    "slug": "KWENENG",
+    "locationType": "city",
+    "timeZone": "Africa/Gaborone",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

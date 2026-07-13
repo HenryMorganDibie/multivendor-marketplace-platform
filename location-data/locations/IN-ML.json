@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-ML-SHILLONG",
+    "countryCode": "IN",
+    "stateId": "IN-ML",
+    "stateCode": "ML",
+    "name": "Shillong",
+    "normalizedName": "shillong",
+    "slug": "SHILLONG",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

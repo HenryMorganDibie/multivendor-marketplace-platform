@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-AK-UYO",
+    "countryCode": "NG",
+    "stateId": "NG-AK",
+    "stateCode": "AK",
+    "name": "Uyo",
+    "normalizedName": "uyo",
+    "slug": "UYO",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

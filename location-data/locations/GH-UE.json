@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "GH-UE-BOLGATANGA",
+    "countryCode": "GH",
+    "stateId": "GH-UE",
+    "stateCode": "UE",
+    "name": "Bolgatanga",
+    "normalizedName": "bolgatanga",
+    "slug": "BOLGATANGA",
+    "locationType": "city",
+    "timeZone": "Africa/Accra",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

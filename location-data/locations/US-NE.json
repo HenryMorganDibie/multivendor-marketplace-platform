@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-NE-LINCOLN",
+    "countryCode": "US",
+    "stateId": "US-NE",
+    "stateCode": "NE",
+    "name": "Lincoln",
+    "normalizedName": "lincoln",
+    "slug": "LINCOLN",
+    "locationType": "city",
+    "timeZone": "America/Chicago",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

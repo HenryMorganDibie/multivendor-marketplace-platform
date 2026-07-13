@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-25-MARALAL",
+    "countryCode": "KE",
+    "stateId": "KE-25",
+    "stateCode": "25",
+    "name": "Maralal",
+    "normalizedName": "maralal",
+    "slug": "MARALAL",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

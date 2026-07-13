@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-MDR-CALAPAN",
+    "countryCode": "PH",
+    "stateId": "PH-MDR",
+    "stateCode": "MDR",
+    "name": "Calapan",
+    "normalizedName": "calapan",
+    "slug": "CALAPAN",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

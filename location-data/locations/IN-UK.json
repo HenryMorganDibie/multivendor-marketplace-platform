@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-UK-DEHRADUN",
+    "countryCode": "IN",
+    "stateId": "IN-UK",
+    "stateCode": "UK",
+    "name": "Dehradun",
+    "normalizedName": "dehradun",
+    "slug": "DEHRADUN",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

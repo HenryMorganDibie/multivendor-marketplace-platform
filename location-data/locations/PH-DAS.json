@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-DAS-MALITA",
+    "countryCode": "PH",
+    "stateId": "PH-DAS",
+    "stateCode": "DAS",
+    "name": "Malita",
+    "normalizedName": "malita",
+    "slug": "MALITA",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

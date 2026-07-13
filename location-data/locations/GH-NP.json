@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "GH-NP-TAMALE",
+    "countryCode": "GH",
+    "stateId": "GH-NP",
+    "stateCode": "NP",
+    "name": "Tamale",
+    "normalizedName": "tamale",
+    "slug": "TAMALE",
+    "locationType": "city",
+    "timeZone": "Africa/Accra",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

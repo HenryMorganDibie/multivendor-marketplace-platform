@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "GH-BO-SUNYANI",
+    "countryCode": "GH",
+    "stateId": "GH-BO",
+    "stateCode": "BO",
+    "name": "Sunyani",
+    "normalizedName": "sunyani",
+    "slug": "SUNYANI",
+    "locationType": "city",
+    "timeZone": "Africa/Accra",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

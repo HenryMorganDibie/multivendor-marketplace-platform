@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-BUK-MALAYBALAY",
+    "countryCode": "PH",
+    "stateId": "PH-BUK",
+    "stateCode": "BUK",
+    "name": "Malaybalay",
+    "normalizedName": "malaybalay",
+    "slug": "MALAYBALAY",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

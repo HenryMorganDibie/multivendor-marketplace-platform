@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "CA-QC-MONTREAL",
+    "countryCode": "CA",
+    "stateId": "CA-QC",
+    "stateCode": "QC",
+    "name": "Montreal",
+    "normalizedName": "montreal",
+    "slug": "MONTREAL",
+    "locationType": "city",
+    "timeZone": "America/Toronto",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AU-SA-ADELAIDE",
+    "countryCode": "AU",
+    "stateId": "AU-SA",
+    "stateCode": "SA",
+    "name": "Adelaide",
+    "normalizedName": "adelaide",
+    "slug": "ADELAIDE",
+    "locationType": "city",
+    "timeZone": "Australia/Adelaide",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

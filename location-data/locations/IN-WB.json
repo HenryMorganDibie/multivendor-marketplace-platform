@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-WB-KOLKATA",
+    "countryCode": "IN",
+    "stateId": "IN-WB",
+    "stateCode": "WB",
+    "name": "Kolkata",
+    "normalizedName": "kolkata",
+    "slug": "KOLKATA",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BW-FR-FRANCISTOWN",
+    "countryCode": "BW",
+    "stateId": "BW-FR",
+    "stateCode": "FR",
+    "name": "Francistown",
+    "normalizedName": "francistown",
+    "slug": "FRANCISTOWN",
+    "locationType": "city",
+    "timeZone": "Africa/Gaborone",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BW-SO-SOUTHERN",
+    "countryCode": "BW",
+    "stateId": "BW-SO",
+    "stateCode": "SO",
+    "name": "Southern",
+    "normalizedName": "southern",
+    "slug": "SOUTHERN",
+    "locationType": "city",
+    "timeZone": "Africa/Gaborone",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

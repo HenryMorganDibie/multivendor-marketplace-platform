@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MY-11-KUALA-TERENGGANU",
+    "countryCode": "MY",
+    "stateId": "MY-11",
+    "stateCode": "11",
+    "name": "Kuala Terengganu",
+    "normalizedName": "kuala terengganu",
+    "slug": "KUALA-TERENGGANU",
+    "locationType": "city",
+    "timeZone": "Asia/Kuala_Lumpur",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -59,7 +59,7 @@
 ## Australia
 - [x] Country
 - [x] States
-- [ ] Areas
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
@@ -80,7 +80,7 @@
 ## Bahamas
 - [x] Country
 - [x] States
-- [ ] Areas
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
@@ -101,7 +101,7 @@
 ## Barbados
 - [x] Country
 - [x] States
-- [ ] Areas
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
@@ -122,7 +122,7 @@
 ## Belize
 - [x] Country
 - [x] States
-- [ ] Areas
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
@@ -157,7 +157,7 @@
 ## Botswana
 - [x] Country
 - [x] States
-- [ ] Areas
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
@@ -192,7 +192,7 @@
 ## Burundi
 - [x] Country
 - [x] States
-- [ ] Areas
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
@@ -213,14 +213,14 @@
 ## Cameroon
 - [x] Country
 - [x] States
-- [ ] Areas
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
 ## Canada
 - [x] Country
 - [x] States
-- [ ] Areas
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
@@ -409,7 +409,7 @@
 ## Fiji
 - [x] Country
 - [x] States
-- [ ] Areas
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
@@ -423,7 +423,7 @@
 ## France
 - [x] Country
 - [x] States
-- [ ] Areas
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
@@ -451,14 +451,14 @@
 ## Germany
 - [x] Country
 - [x] States
-- [ ] Areas
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
 ## Ghana
 - [x] Country
 - [x] States
-- [ ] Areas
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
@@ -472,7 +472,7 @@
 ## Grenada
 - [x] Country
 - [x] States
-- [ ] Areas
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
@@ -542,7 +542,7 @@
 ## India
 - [x] Country
 - [x] States
-- [ ] Areas
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
@@ -570,7 +570,7 @@
 ## Ireland
 - [x] Country
 - [x] States
-- [ ] Areas
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
@@ -619,7 +619,7 @@
 ## Kenya
 - [x] Country
 - [x] States
-- [ ] Areas
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
@@ -724,7 +724,7 @@
 ## Malaysia
 - [x] Country
 - [x] States
-- [ ] Areas
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
@@ -857,14 +857,14 @@
 ## Netherlands
 - [x] Country
 - [x] States
-- [ ] Areas
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
 ## New Zealand
 - [x] Country
 - [x] States
-- [ ] Areas
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
@@ -885,7 +885,7 @@
 ## Nigeria
 - [x] Country
 - [x] States
-- [ ] Areas
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
@@ -920,7 +920,7 @@
 ## Pakistan
 - [x] Country
 - [x] States
-- [ ] Areas
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
@@ -969,7 +969,7 @@
 ## Philippines
 - [x] Country
 - [x] States
-- [ ] Areas
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
@@ -1095,7 +1095,7 @@
 ## Singapore
 - [x] Country
 - [x] States
-- [ ] Areas
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
@@ -1130,7 +1130,7 @@
 ## South Africa
 - [x] Country
 - [x] States
-- [ ] Areas
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
@@ -1298,21 +1298,21 @@
 ## United Arab Emirates
 - [x] Country
 - [x] States
-- [ ] Areas
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
 ## United Kingdom
 - [x] Country
 - [x] States
-- [ ] Areas
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
 ## United States
 - [x] Country
 - [x] States
-- [ ] Areas
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "CA-NL-ST-JOHNS",
+    "countryCode": "CA",
+    "stateId": "CA-NL",
+    "stateCode": "NL",
+    "name": "St. John's",
+    "normalizedName": "st. johns",
+    "slug": "ST-JOHNS",
+    "locationType": "city",
+    "timeZone": "America/St_Johns",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

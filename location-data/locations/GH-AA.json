@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "GH-AA-ACCRA",
+    "countryCode": "GH",
+    "stateId": "GH-AA",
+    "stateCode": "AA",
+    "name": "Accra",
+    "normalizedName": "accra",
+    "slug": "ACCRA",
+    "locationType": "city",
+    "timeZone": "Africa/Accra",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

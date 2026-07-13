@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-AGS-PROSPERIDAD",
+    "countryCode": "PH",
+    "stateId": "PH-AGS",
+    "stateCode": "AGS",
+    "name": "Prosperidad",
+    "normalizedName": "prosperidad",
+    "slug": "PROSPERIDAD",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

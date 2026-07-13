@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-06-VOI",
+    "countryCode": "KE",
+    "stateId": "KE-06",
+    "stateCode": "06",
+    "name": "Voi",
+    "normalizedName": "voi",
+    "slug": "VOI",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

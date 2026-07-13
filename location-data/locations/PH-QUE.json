@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-QUE-LUCENA",
+    "countryCode": "PH",
+    "stateId": "PH-QUE",
+    "stateCode": "QUE",
+    "name": "Lucena",
+    "normalizedName": "lucena",
+    "slug": "LUCENA",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

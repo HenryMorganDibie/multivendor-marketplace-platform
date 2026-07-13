@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-31-NANYUKI",
+    "countryCode": "KE",
+    "stateId": "KE-31",
+    "stateCode": "31",
+    "name": "Nanyuki",
+    "normalizedName": "nanyuki",
+    "slug": "NANYUKI",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

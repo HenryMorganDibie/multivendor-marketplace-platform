@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-EB-ABAKALIKI",
+    "countryCode": "NG",
+    "stateId": "NG-EB",
+    "stateCode": "EB",
+    "name": "Abakaliki",
+    "normalizedName": "abakaliki",
+    "slug": "ABAKALIKI",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

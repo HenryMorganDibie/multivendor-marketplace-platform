@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FR-RE-SAINT-DENIS",
+    "countryCode": "FR",
+    "stateId": "FR-RE",
+    "stateCode": "RE",
+    "name": "Saint-Denis",
+    "normalizedName": "saint-denis",
+    "slug": "SAINT-DENIS",
+    "locationType": "city",
+    "timeZone": "Indian/Reunion",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

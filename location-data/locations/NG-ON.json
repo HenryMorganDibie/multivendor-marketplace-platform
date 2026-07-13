@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-ON-AKURE",
+    "countryCode": "NG",
+    "stateId": "NG-ON",
+    "stateCode": "ON",
+    "name": "Akure",
+    "normalizedName": "akure",
+    "slug": "AKURE",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

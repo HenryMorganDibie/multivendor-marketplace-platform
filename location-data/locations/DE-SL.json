@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DE-SL-SAARBRUCKEN",
+    "countryCode": "DE",
+    "stateId": "DE-SL",
+    "stateCode": "SL",
+    "name": "Saarbrucken",
+    "normalizedName": "saarbrucken",
+    "slug": "SAARBRUCKEN",
+    "locationType": "city",
+    "timeZone": "Europe/Berlin",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

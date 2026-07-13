@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-NC-RALEIGH",
+    "countryCode": "US",
+    "stateId": "US-NC",
+    "stateCode": "NC",
+    "name": "Raleigh",
+    "normalizedName": "raleigh",
+    "slug": "RALEIGH",
+    "locationType": "city",
+    "timeZone": "America/New_York",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

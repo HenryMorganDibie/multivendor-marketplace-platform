@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-KL-THIRUVANANTHAPURAM",
+    "countryCode": "IN",
+    "stateId": "IN-KL",
+    "stateCode": "KL",
+    "name": "Thiruvananthapuram",
+    "normalizedName": "thiruvananthapuram",
+    "slug": "THIRUVANANTHAPURAM",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

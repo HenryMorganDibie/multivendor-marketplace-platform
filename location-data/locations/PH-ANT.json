@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-ANT-SAN-JOSE-DE-BUENAVISTA",
+    "countryCode": "PH",
+    "stateId": "PH-ANT",
+    "stateCode": "ANT",
+    "name": "San Jose de Buenavista",
+    "normalizedName": "san jose de buenavista",
+    "slug": "SAN-JOSE-DE-BUENAVISTA",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

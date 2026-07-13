@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-HR-CHANDIGARH",
+    "countryCode": "IN",
+    "stateId": "IN-HR",
+    "stateCode": "HR",
+    "name": "Chandigarh",
+    "normalizedName": "chandigarh",
+    "slug": "CHANDIGARH",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-TA-JALINGO",
+    "countryCode": "NG",
+    "stateId": "NG-TA",
+    "stateCode": "TA",
+    "name": "Jalingo",
+    "normalizedName": "jalingo",
+    "slug": "JALINGO",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

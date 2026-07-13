@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FR-ARA-LYON",
+    "countryCode": "FR",
+    "stateId": "FR-ARA",
+    "stateCode": "ARA",
+    "name": "Lyon",
+    "normalizedName": "lyon",
+    "slug": "LYON",
+    "locationType": "city",
+    "timeZone": "Europe/Paris",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

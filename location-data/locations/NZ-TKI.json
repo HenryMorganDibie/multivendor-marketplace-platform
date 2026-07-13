@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NZ-TKI-NEW-PLYMOUTH",
+    "countryCode": "NZ",
+    "stateId": "NZ-TKI",
+    "stateCode": "TKI",
+    "name": "New Plymouth",
+    "normalizedName": "new plymouth",
+    "slug": "NEW-PLYMOUTH",
+    "locationType": "city",
+    "timeZone": "Pacific/Auckland",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

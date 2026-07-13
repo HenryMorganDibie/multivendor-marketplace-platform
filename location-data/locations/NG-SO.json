@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-SO-SOKOTO",
+    "countryCode": "NG",
+    "stateId": "NG-SO",
+    "stateCode": "SO",
+    "name": "Sokoto",
+    "normalizedName": "sokoto",
+    "slug": "SOKOTO",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-46-NYAMIRA",
+    "countryCode": "KE",
+    "stateId": "KE-46",
+    "stateCode": "46",
+    "name": "Nyamira",
+    "normalizedName": "nyamira",
+    "slug": "NYAMIRA",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

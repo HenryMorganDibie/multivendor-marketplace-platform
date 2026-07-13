@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-LAG-SANTA-CRUZ",
+    "countryCode": "PH",
+    "stateId": "PH-LAG",
+    "stateCode": "LAG",
+    "name": "Santa Cruz",
+    "normalizedName": "santa cruz",
+    "slug": "SANTA-CRUZ",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

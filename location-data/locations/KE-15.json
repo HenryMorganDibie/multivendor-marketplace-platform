@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-15-KITUI",
+    "countryCode": "KE",
+    "stateId": "KE-15",
+    "stateCode": "15",
+    "name": "Kitui",
+    "normalizedName": "kitui",
+    "slug": "KITUI",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

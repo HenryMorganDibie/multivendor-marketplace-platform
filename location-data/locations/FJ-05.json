@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FJ-05-LAU",
+    "countryCode": "FJ",
+    "stateId": "FJ-05",
+    "stateCode": "05",
+    "name": "Lau",
+    "normalizedName": "lau",
+    "slug": "LAU",
+    "locationType": "city",
+    "timeZone": "Pacific/Fiji",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-14-EMBU",
+    "countryCode": "KE",
+    "stateId": "KE-14",
+    "stateCode": "14",
+    "name": "Embu",
+    "normalizedName": "embu",
+    "slug": "EMBU",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

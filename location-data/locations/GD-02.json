@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "GD-02-SAINT-DAVID",
+    "countryCode": "GD",
+    "stateId": "GD-02",
+    "stateCode": "02",
+    "name": "Saint David",
+    "normalizedName": "saint david",
+    "slug": "SAINT-DAVID",
+    "locationType": "city",
+    "timeZone": "America/Grenada",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

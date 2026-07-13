@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NZ-MBH-BLENHEIM",
+    "countryCode": "NZ",
+    "stateId": "NZ-MBH",
+    "stateCode": "MBH",
+    "name": "Blenheim",
+    "normalizedName": "blenheim",
+    "slug": "BLENHEIM",
+    "locationType": "city",
+    "timeZone": "Pacific/Auckland",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

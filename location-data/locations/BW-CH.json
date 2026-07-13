@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BW-CH-CHOBE",
+    "countryCode": "BW",
+    "stateId": "BW-CH",
+    "stateCode": "CH",
+    "name": "Chobe",
+    "normalizedName": "chobe",
+    "slug": "CHOBE",
+    "locationType": "city",
+    "timeZone": "Africa/Gaborone",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

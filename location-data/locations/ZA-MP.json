@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ZA-MP-MBOMBELA",
+    "countryCode": "ZA",
+    "stateId": "ZA-MP",
+    "stateCode": "MP",
+    "name": "Mbombela",
+    "normalizedName": "mbombela",
+    "slug": "MBOMBELA",
+    "locationType": "city",
+    "timeZone": "Africa/Johannesburg",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

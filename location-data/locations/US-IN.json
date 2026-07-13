@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-IN-INDIANAPOLIS",
+    "countryCode": "US",
+    "stateId": "US-IN",
+    "stateCode": "IN",
+    "name": "Indianapolis",
+    "normalizedName": "indianapolis",
+    "slug": "INDIANAPOLIS",
+    "locationType": "city",
+    "timeZone": "America/Indiana/Indianapolis",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

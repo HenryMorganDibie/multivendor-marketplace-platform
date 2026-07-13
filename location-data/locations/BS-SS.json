@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-SS-SAN-SALVADOR",
+    "countryCode": "BS",
+    "stateId": "BS-SS",
+    "stateCode": "SS",
+    "name": "San Salvador",
+    "normalizedName": "san salvador",
+    "slug": "SAN-SALVADOR",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

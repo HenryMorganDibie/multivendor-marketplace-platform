@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FR-OCC-TOULOUSE",
+    "countryCode": "FR",
+    "stateId": "FR-OCC",
+    "stateCode": "OCC",
+    "name": "Toulouse",
+    "normalizedName": "toulouse",
+    "slug": "TOULOUSE",
+    "locationType": "city",
+    "timeZone": "Europe/Paris",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

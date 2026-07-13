@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-BEN-LA-TRINIDAD",
+    "countryCode": "PH",
+    "stateId": "PH-BEN",
+    "stateCode": "BEN",
+    "name": "La Trinidad",
+    "normalizedName": "la trinidad",
+    "slug": "LA-TRINIDAD",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

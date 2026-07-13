@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-MH-MUMBAI",
+    "countryCode": "IN",
+    "stateId": "IN-MH",
+    "stateCode": "MH",
+    "name": "Mumbai",
+    "normalizedName": "mumbai",
+    "slug": "MUMBAI",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

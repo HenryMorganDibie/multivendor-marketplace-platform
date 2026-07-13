@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-AK-ACKLINS",
+    "countryCode": "BS",
+    "stateId": "BS-AK",
+    "stateCode": "AK",
+    "name": "Acklins",
+    "normalizedName": "acklins",
+    "slug": "ACKLINS",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

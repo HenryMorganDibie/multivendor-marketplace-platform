@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FJ-R-ROTUMA",
+    "countryCode": "FJ",
+    "stateId": "FJ-R",
+    "stateCode": "R",
+    "name": "Rotuma",
+    "normalizedName": "rotuma",
+    "slug": "ROTUMA",
+    "locationType": "city",
+    "timeZone": "Pacific/Fiji",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

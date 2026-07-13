@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-MSR-CAGAYAN-DE-ORO",
+    "countryCode": "PH",
+    "stateId": "PH-MSR",
+    "stateCode": "MSR",
+    "name": "Cagayan de Oro",
+    "normalizedName": "cagayan de oro",
+    "slug": "CAGAYAN-DE-ORO",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

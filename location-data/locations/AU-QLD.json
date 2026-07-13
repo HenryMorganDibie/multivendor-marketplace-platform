@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AU-QLD-BRISBANE",
+    "countryCode": "AU",
+    "stateId": "AU-QLD",
+    "stateCode": "QLD",
+    "name": "Brisbane",
+    "normalizedName": "brisbane",
+    "slug": "BRISBANE",
+    "locationType": "city",
+    "timeZone": "Australia/Brisbane",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

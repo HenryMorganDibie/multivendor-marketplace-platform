@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NL-GR-GRONINGEN",
+    "countryCode": "NL",
+    "stateId": "NL-GR",
+    "stateCode": "GR",
+    "name": "Groningen",
+    "normalizedName": "groningen",
+    "slug": "GRONINGEN",
+    "locationType": "city",
+    "timeZone": "Europe/Amsterdam",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

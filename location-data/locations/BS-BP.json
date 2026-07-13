@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-BP-BLACK-POINT",
+    "countryCode": "BS",
+    "stateId": "BS-BP",
+    "stateCode": "BP",
+    "name": "Black Point",
+    "normalizedName": "black point",
+    "slug": "BLACK-POINT",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

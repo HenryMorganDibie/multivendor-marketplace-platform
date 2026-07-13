@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-WI-MADISON",
+    "countryCode": "US",
+    "stateId": "US-WI",
+    "stateCode": "WI",
+    "name": "Madison",
+    "normalizedName": "madison",
+    "slug": "MADISON",
+    "locationType": "city",
+    "timeZone": "America/Chicago",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

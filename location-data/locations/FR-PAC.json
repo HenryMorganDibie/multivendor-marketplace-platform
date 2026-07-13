@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FR-PAC-MARSEILLE",
+    "countryCode": "FR",
+    "stateId": "FR-PAC",
+    "stateCode": "PAC",
+    "name": "Marseille",
+    "normalizedName": "marseille",
+    "slug": "MARSEILLE",
+    "locationType": "city",
+    "timeZone": "Europe/Paris",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

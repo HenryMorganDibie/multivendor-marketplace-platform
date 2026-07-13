@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-45-KISII",
+    "countryCode": "KE",
+    "stateId": "KE-45",
+    "stateCode": "45",
+    "name": "Kisii",
+    "normalizedName": "kisii",
+    "slug": "KISII",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "CA-AB-EDMONTON",
+    "countryCode": "CA",
+    "stateId": "CA-AB",
+    "stateCode": "AB",
+    "name": "Edmonton",
+    "normalizedName": "edmonton",
+    "slug": "EDMONTON",
+    "locationType": "city",
+    "timeZone": "America/Edmonton",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

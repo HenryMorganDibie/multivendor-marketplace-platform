@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NZ-STL-INVERCARGILL",
+    "countryCode": "NZ",
+    "stateId": "NZ-STL",
+    "stateCode": "STL",
+    "name": "Invercargill",
+    "normalizedName": "invercargill",
+    "slug": "INVERCARGILL",
+    "locationType": "city",
+    "timeZone": "Pacific/Auckland",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

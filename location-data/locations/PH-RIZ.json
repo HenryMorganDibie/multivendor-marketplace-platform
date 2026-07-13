@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-RIZ-ANTIPOLO",
+    "countryCode": "PH",
+    "stateId": "PH-RIZ",
+    "stateCode": "RIZ",
+    "name": "Antipolo",
+    "normalizedName": "antipolo",
+    "slug": "ANTIPOLO",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

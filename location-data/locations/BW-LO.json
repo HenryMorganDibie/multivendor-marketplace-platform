@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BW-LO-LOBATSE",
+    "countryCode": "BW",
+    "stateId": "BW-LO",
+    "stateCode": "LO",
+    "name": "Lobatse",
+    "normalizedName": "lobatse",
+    "slug": "LOBATSE",
+    "locationType": "city",
+    "timeZone": "Africa/Gaborone",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

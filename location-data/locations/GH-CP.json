@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "GH-CP-CAPE-COAST",
+    "countryCode": "GH",
+    "stateId": "GH-CP",
+    "stateCode": "CP",
+    "name": "Cape Coast",
+    "normalizedName": "cape coast",
+    "slug": "CAPE-COAST",
+    "locationType": "city",
+    "timeZone": "Africa/Accra",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

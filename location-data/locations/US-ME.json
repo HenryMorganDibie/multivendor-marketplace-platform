@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-ME-AUGUSTA",
+    "countryCode": "US",
+    "stateId": "US-ME",
+    "stateCode": "ME",
+    "name": "Augusta",
+    "normalizedName": "augusta",
+    "slug": "AUGUSTA",
+    "locationType": "city",
+    "timeZone": "America/New_York",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

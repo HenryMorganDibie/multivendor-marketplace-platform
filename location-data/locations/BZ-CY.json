@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BZ-CY-SAN-IGNACIO",
+    "countryCode": "BZ",
+    "stateId": "BZ-CY",
+    "stateCode": "CY",
+    "name": "San Ignacio",
+    "normalizedName": "san ignacio",
+    "slug": "SAN-IGNACIO",
+    "locationType": "city",
+    "timeZone": "America/Belize",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

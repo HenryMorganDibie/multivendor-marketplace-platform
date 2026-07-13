@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DE-BE-BERLIN",
+    "countryCode": "DE",
+    "stateId": "DE-BE",
+    "stateCode": "BE",
+    "name": "Berlin",
+    "normalizedName": "berlin",
+    "slug": "BERLIN",
+    "locationType": "city",
+    "timeZone": "Europe/Berlin",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

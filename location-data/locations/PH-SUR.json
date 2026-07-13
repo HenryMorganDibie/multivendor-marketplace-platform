@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-SUR-TANDAG",
+    "countryCode": "PH",
+    "stateId": "PH-SUR",
+    "stateCode": "SUR",
+    "name": "Tandag",
+    "normalizedName": "tandag",
+    "slug": "TANDAG",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

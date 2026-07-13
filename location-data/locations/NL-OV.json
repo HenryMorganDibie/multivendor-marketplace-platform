@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NL-OV-ZWOLLE",
+    "countryCode": "NL",
+    "stateId": "NL-OV",
+    "stateCode": "OV",
+    "name": "Zwolle",
+    "normalizedName": "zwolle",
+    "slug": "ZWOLLE",
+    "locationType": "city",
+    "timeZone": "Europe/Amsterdam",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

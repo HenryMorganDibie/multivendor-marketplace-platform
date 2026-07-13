@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-SC-COLUMBIA",
+    "countryCode": "US",
+    "stateId": "US-SC",
+    "stateCode": "SC",
+    "name": "Columbia",
+    "normalizedName": "columbia",
+    "slug": "COLUMBIA",
+    "locationType": "city",
+    "timeZone": "America/New_York",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-LD-KAVARATTI",
+    "countryCode": "IN",
+    "stateId": "IN-LD",
+    "stateCode": "LD",
+    "name": "Kavaratti",
+    "normalizedName": "kavaratti",
+    "slug": "KAVARATTI",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

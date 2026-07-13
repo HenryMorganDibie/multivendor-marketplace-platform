@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-MSC-OROQUIETA",
+    "countryCode": "PH",
+    "stateId": "PH-MSC",
+    "stateCode": "MSC",
+    "name": "Oroquieta",
+    "normalizedName": "oroquieta",
+    "slug": "OROQUIETA",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

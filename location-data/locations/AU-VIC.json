@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AU-VIC-MELBOURNE",
+    "countryCode": "AU",
+    "stateId": "AU-VIC",
+    "stateCode": "VIC",
+    "name": "Melbourne",
+    "normalizedName": "melbourne",
+    "slug": "MELBOURNE",
+    "locationType": "city",
+    "timeZone": "Australia/Melbourne",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

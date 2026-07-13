@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FJ-10-NAMOSI",
+    "countryCode": "FJ",
+    "stateId": "FJ-10",
+    "stateCode": "10",
+    "name": "Namosi",
+    "normalizedName": "namosi",
+    "slug": "NAMOSI",
+    "locationType": "city",
+    "timeZone": "Pacific/Fiji",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

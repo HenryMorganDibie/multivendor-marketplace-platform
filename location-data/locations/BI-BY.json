@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BI-BY-BUTANYERERA",
+    "countryCode": "BI",
+    "stateId": "BI-BY",
+    "stateCode": "BY",
+    "name": "Butanyerera",
+    "normalizedName": "butanyerera",
+    "slug": "BUTANYERERA",
+    "locationType": "city",
+    "timeZone": "Africa/Bujumbura",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

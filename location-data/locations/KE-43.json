@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-43-HOMA-BAY",
+    "countryCode": "KE",
+    "stateId": "KE-43",
+    "stateCode": "43",
+    "name": "Homa Bay",
+    "normalizedName": "homa bay",
+    "slug": "HOMA-BAY",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

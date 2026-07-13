@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-17-MAKUENI",
+    "countryCode": "KE",
+    "stateId": "KE-17",
+    "stateCode": "17",
+    "name": "Makueni",
+    "normalizedName": "makueni",
+    "slug": "MAKUENI",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "SG-02-EAST-REGION",
+    "countryCode": "SG",
+    "stateId": "SG-02",
+    "stateCode": "02",
+    "name": "East Region",
+    "normalizedName": "east region",
+    "slug": "EAST-REGION",
+    "locationType": "city",
+    "timeZone": "Asia/Singapore",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

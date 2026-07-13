@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-PB-CHANDIGARH",
+    "countryCode": "IN",
+    "stateId": "IN-PB",
+    "stateCode": "PB",
+    "name": "Chandigarh",
+    "normalizedName": "chandigarh",
+    "slug": "CHANDIGARH",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

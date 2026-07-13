@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-AGN-CABADBARAN",
+    "countryCode": "PH",
+    "stateId": "PH-AGN",
+    "stateCode": "AGN",
+    "name": "Cabadbaran",
+    "normalizedName": "cabadbaran",
+    "slug": "CABADBARAN",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

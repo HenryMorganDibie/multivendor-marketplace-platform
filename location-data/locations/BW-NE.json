@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BW-NE-NORTH-EAST",
+    "countryCode": "BW",
+    "stateId": "BW-NE",
+    "stateCode": "NE",
+    "name": "North East",
+    "normalizedName": "north east",
+    "slug": "NORTH-EAST",
+    "locationType": "city",
+    "timeZone": "Africa/Gaborone",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

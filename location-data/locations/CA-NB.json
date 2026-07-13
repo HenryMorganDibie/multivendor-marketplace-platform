@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "CA-NB-FREDERICTON",
+    "countryCode": "CA",
+    "stateId": "CA-NB",
+    "stateCode": "NB",
+    "name": "Fredericton",
+    "normalizedName": "fredericton",
+    "slug": "FREDERICTON",
+    "locationType": "city",
+    "timeZone": "America/Moncton",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

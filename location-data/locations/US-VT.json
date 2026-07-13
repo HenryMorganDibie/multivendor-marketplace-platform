@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-VT-MONTPELIER",
+    "countryCode": "US",
+    "stateId": "US-VT",
+    "stateCode": "VT",
+    "name": "Montpelier",
+    "normalizedName": "montpelier",
+    "slug": "MONTPELIER",
+    "locationType": "city",
+    "timeZone": "America/New_York",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-ZAS-PAGADIAN",
+    "countryCode": "PH",
+    "stateId": "PH-ZAS",
+    "stateCode": "ZAS",
+    "name": "Pagadian",
+    "normalizedName": "pagadian",
+    "slug": "PAGADIAN",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

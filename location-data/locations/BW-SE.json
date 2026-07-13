@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BW-SE-SOUTH-EAST",
+    "countryCode": "BW",
+    "stateId": "BW-SE",
+    "stateCode": "SE",
+    "name": "South East",
+    "normalizedName": "south east",
+    "slug": "SOUTH-EAST",
+    "locationType": "city",
+    "timeZone": "Africa/Gaborone",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

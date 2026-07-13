@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-KS-TOPEKA",
+    "countryCode": "US",
+    "stateId": "US-KS",
+    "stateCode": "KS",
+    "name": "Topeka",
+    "normalizedName": "topeka",
+    "slug": "TOPEKA",
+    "locationType": "city",
+    "timeZone": "America/Chicago",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

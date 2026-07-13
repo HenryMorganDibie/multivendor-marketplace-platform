@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-ABR-BANGUED",
+    "countryCode": "PH",
+    "stateId": "PH-ABR",
+    "stateCode": "ABR",
+    "name": "Bangued",
+    "normalizedName": "bangued",
+    "slug": "BANGUED",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

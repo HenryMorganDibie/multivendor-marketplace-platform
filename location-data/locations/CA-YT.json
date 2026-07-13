@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "CA-YT-WHITEHORSE",
+    "countryCode": "CA",
+    "stateId": "CA-YT",
+    "stateCode": "YT",
+    "name": "Whitehorse",
+    "normalizedName": "whitehorse",
+    "slug": "WHITEHORSE",
+    "locationType": "city",
+    "timeZone": "America/Whitehorse",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

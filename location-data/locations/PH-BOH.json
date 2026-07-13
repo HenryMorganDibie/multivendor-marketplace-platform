@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-BOH-TAGBILARAN",
+    "countryCode": "PH",
+    "stateId": "PH-BOH",
+    "stateCode": "BOH",
+    "name": "Tagbilaran",
+    "normalizedName": "tagbilaran",
+    "slug": "TAGBILARAN",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

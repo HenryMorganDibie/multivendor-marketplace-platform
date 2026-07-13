@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-CO-CENTRAL-ABACO",
+    "countryCode": "BS",
+    "stateId": "BS-CO",
+    "stateCode": "CO",
+    "name": "Central Abaco",
+    "normalizedName": "central abaco",
+    "slug": "CENTRAL-ABACO",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

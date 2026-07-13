@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-SAR-ALABEL",
+    "countryCode": "PH",
+    "stateId": "PH-SAR",
+    "stateCode": "SAR",
+    "name": "Alabel",
+    "normalizedName": "alabel",
+    "slug": "ALABEL",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

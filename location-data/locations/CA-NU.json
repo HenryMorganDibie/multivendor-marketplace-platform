@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "CA-NU-IQALUIT",
+    "countryCode": "CA",
+    "stateId": "CA-NU",
+    "stateCode": "NU",
+    "name": "Iqaluit",
+    "normalizedName": "iqaluit",
+    "slug": "IQALUIT",
+    "locationType": "city",
+    "timeZone": "America/Iqaluit",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

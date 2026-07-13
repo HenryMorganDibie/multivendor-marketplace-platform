@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-KAL-TABUK",
+    "countryCode": "PH",
+    "stateId": "PH-KAL",
+    "stateCode": "KAL",
+    "name": "Tabuk",
+    "normalizedName": "tabuk",
+    "slug": "TABUK",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

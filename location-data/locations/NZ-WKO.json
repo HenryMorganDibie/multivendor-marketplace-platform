@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NZ-WKO-HAMILTON",
+    "countryCode": "NZ",
+    "stateId": "NZ-WKO",
+    "stateCode": "WKO",
+    "name": "Hamilton",
+    "normalizedName": "hamilton",
+    "slug": "HAMILTON",
+    "locationType": "city",
+    "timeZone": "Pacific/Auckland",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

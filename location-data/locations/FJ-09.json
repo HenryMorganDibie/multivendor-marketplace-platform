@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FJ-09-NAUSORI",
+    "countryCode": "FJ",
+    "stateId": "FJ-09",
+    "stateCode": "09",
+    "name": "Nausori",
+    "normalizedName": "nausori",
+    "slug": "NAUSORI",
+    "locationType": "city",
+    "timeZone": "Pacific/Fiji",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-OS-OSOGBO",
+    "countryCode": "NG",
+    "stateId": "NG-OS",
+    "stateCode": "OS",
+    "name": "Osogbo",
+    "normalizedName": "osogbo",
+    "slug": "OSOGBO",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FR-IDF-PARIS",
+    "countryCode": "FR",
+    "stateId": "FR-IDF",
+    "stateCode": "IDF",
+    "name": "Paris",
+    "normalizedName": "paris",
+    "slug": "PARIS",
+    "locationType": "city",
+    "timeZone": "Europe/Paris",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

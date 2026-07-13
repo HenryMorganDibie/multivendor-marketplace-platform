@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-RI-PORT-HARCOURT",
+    "countryCode": "NG",
+    "stateId": "NG-RI",
+    "stateCode": "RI",
+    "name": "Port Harcourt",
+    "normalizedName": "port harcourt",
+    "slug": "PORT-HARCOURT",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-32-NAKURU",
+    "countryCode": "KE",
+    "stateId": "KE-32",
+    "stateCode": "32",
+    "name": "Nakuru",
+    "normalizedName": "nakuru",
+    "slug": "NAKURU",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-26-KITALE",
+    "countryCode": "KE",
+    "stateId": "KE-26",
+    "stateCode": "26",
+    "name": "Kitale",
+    "normalizedName": "kitale",
+    "slug": "KITALE",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

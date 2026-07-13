@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BW-GA-GABORONE",
+    "countryCode": "BW",
+    "stateId": "BW-GA",
+    "stateCode": "GA",
+    "name": "Gaborone",
+    "normalizedName": "gaborone",
+    "slug": "GABORONE",
+    "locationType": "city",
+    "timeZone": "Africa/Gaborone",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

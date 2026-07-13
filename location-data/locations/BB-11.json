@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BB-11-SAINT-THOMAS",
+    "countryCode": "BB",
+    "stateId": "BB-11",
+    "stateCode": "11",
+    "name": "Saint Thomas",
+    "normalizedName": "saint thomas",
+    "slug": "SAINT-THOMAS",
+    "locationType": "city",
+    "timeZone": "America/Barbados",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NZ-BOP-TAURANGA",
+    "countryCode": "NZ",
+    "stateId": "NZ-BOP",
+    "stateCode": "BOP",
+    "name": "Tauranga",
+    "normalizedName": "tauranga",
+    "slug": "TAURANGA",
+    "locationType": "city",
+    "timeZone": "Pacific/Auckland",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

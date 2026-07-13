@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-34-KAJIADO",
+    "countryCode": "KE",
+    "stateId": "KE-34",
+    "stateCode": "34",
+    "name": "Kajiado",
+    "normalizedName": "kajiado",
+    "slug": "KAJIADO",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

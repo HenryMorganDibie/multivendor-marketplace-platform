@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-UT-SALT-LAKE-CITY",
+    "countryCode": "US",
+    "stateId": "US-UT",
+    "stateCode": "UT",
+    "name": "Salt Lake City",
+    "normalizedName": "salt lake city",
+    "slug": "SALT-LAKE-CITY",
+    "locationType": "city",
+    "timeZone": "America/Denver",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

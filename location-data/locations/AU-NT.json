@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AU-NT-DARWIN",
+    "countryCode": "AU",
+    "stateId": "AU-NT",
+    "stateCode": "NT",
+    "name": "Darwin",
+    "normalizedName": "darwin",
+    "slug": "DARWIN",
+    "locationType": "city",
+    "timeZone": "Australia/Darwin",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-BIL-NAVAL",
+    "countryCode": "PH",
+    "stateId": "PH-BIL",
+    "stateCode": "BIL",
+    "name": "Naval",
+    "normalizedName": "naval",
+    "slug": "NAVAL",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

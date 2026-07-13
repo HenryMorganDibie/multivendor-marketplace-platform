@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ZA-EC-BHISHO",
+    "countryCode": "ZA",
+    "stateId": "ZA-EC",
+    "stateCode": "EC",
+    "name": "Bhisho",
+    "normalizedName": "bhisho",
+    "slug": "BHISHO",
+    "locationType": "city",
+    "timeZone": "Africa/Johannesburg",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

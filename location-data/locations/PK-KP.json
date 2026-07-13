@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PK-KP-PESHAWAR",
+    "countryCode": "PK",
+    "stateId": "PK-KP",
+    "stateCode": "KP",
+    "name": "Peshawar",
+    "normalizedName": "peshawar",
+    "slug": "PESHAWAR",
+    "locationType": "city",
+    "timeZone": "Asia/Karachi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

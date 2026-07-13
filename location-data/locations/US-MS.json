@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-MS-JACKSON",
+    "countryCode": "US",
+    "stateId": "US-MS",
+    "stateCode": "MS",
+    "name": "Jackson",
+    "normalizedName": "jackson",
+    "slug": "JACKSON",
+    "locationType": "city",
+    "timeZone": "America/Chicago",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

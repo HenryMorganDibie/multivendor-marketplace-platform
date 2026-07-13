@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-20-KERUGOYA",
+    "countryCode": "KE",
+    "stateId": "KE-20",
+    "stateCode": "20",
+    "name": "Kerugoya",
+    "normalizedName": "kerugoya",
+    "slug": "KERUGOYA",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

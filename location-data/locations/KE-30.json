@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-30-KABARNET",
+    "countryCode": "KE",
+    "stateId": "KE-30",
+    "stateCode": "30",
+    "name": "Kabarnet",
+    "normalizedName": "kabarnet",
+    "slug": "KABARNET",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

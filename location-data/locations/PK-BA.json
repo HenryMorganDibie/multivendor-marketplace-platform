@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PK-BA-QUETTA",
+    "countryCode": "PK",
+    "stateId": "PK-BA",
+    "stateCode": "BA",
+    "name": "Quetta",
+    "normalizedName": "quetta",
+    "slug": "QUETTA",
+    "locationType": "city",
+    "timeZone": "Asia/Karachi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

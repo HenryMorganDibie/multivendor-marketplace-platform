@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "CA-SK-REGINA",
+    "countryCode": "CA",
+    "stateId": "CA-SK",
+    "stateCode": "SK",
+    "name": "Regina",
+    "normalizedName": "regina",
+    "slug": "REGINA",
+    "locationType": "city",
+    "timeZone": "America/Regina",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

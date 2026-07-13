@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BW-ST-SOWA-TOWN",
+    "countryCode": "BW",
+    "stateId": "BW-ST",
+    "stateCode": "ST",
+    "name": "Sowa Town",
+    "normalizedName": "sowa town",
+    "slug": "SOWA-TOWN",
+    "locationType": "city",
+    "timeZone": "Africa/Gaborone",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

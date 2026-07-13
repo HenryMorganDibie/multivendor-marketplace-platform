@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NL-UT-UTRECHT",
+    "countryCode": "NL",
+    "stateId": "NL-UT",
+    "stateCode": "UT",
+    "name": "Utrecht",
+    "normalizedName": "utrecht",
+    "slug": "UTRECHT",
+    "locationType": "city",
+    "timeZone": "Europe/Amsterdam",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

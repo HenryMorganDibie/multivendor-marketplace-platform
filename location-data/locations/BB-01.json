@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BB-01-CHRIST-CHURCH",
+    "countryCode": "BB",
+    "stateId": "BB-01",
+    "stateCode": "01",
+    "name": "Christ Church",
+    "normalizedName": "christ church",
+    "slug": "CHRIST-CHURCH",
+    "locationType": "city",
+    "timeZone": "America/Barbados",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

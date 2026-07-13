@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BZ-SC-DANGRIGA",
+    "countryCode": "BZ",
+    "stateId": "BZ-SC",
+    "stateCode": "SC",
+    "name": "Dangriga",
+    "normalizedName": "dangriga",
+    "slug": "DANGRIGA",
+    "locationType": "city",
+    "timeZone": "America/Belize",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

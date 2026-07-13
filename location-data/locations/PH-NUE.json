@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-NUE-PALAYAN",
+    "countryCode": "PH",
+    "stateId": "PH-NUE",
+    "stateCode": "NUE",
+    "name": "Palayan",
+    "normalizedName": "palayan",
+    "slug": "PALAYAN",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

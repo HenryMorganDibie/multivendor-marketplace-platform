@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-NER-DUMAGUETE",
+    "countryCode": "PH",
+    "stateId": "PH-NER",
+    "stateCode": "NER",
+    "name": "Dumaguete",
+    "normalizedName": "dumaguete",
+    "slug": "DUMAGUETE",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

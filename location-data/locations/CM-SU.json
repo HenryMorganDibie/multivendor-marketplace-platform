@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "CM-SU-EBOLOWA",
+    "countryCode": "CM",
+    "stateId": "CM-SU",
+    "stateCode": "SU",
+    "name": "Ebolowa",
+    "normalizedName": "ebolowa",
+    "slug": "EBOLOWA",
+    "locationType": "city",
+    "timeZone": "Africa/Douala",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

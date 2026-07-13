@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-SAM-CATBALOGAN",
+    "countryCode": "PH",
+    "stateId": "PH-SAM",
+    "stateCode": "SAM",
+    "name": "Catbalogan",
+    "normalizedName": "catbalogan",
+    "slug": "CATBALOGAN",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-IFU-LAGAWE",
+    "countryCode": "PH",
+    "stateId": "PH-IFU",
+    "stateCode": "IFU",
+    "name": "Lagawe",
+    "normalizedName": "lagawe",
+    "slug": "LAGAWE",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

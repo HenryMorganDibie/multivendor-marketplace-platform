@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "GH-WN-SEFWI-WIAWSO",
+    "countryCode": "GH",
+    "stateId": "GH-WN",
+    "stateCode": "WN",
+    "name": "Sefwi Wiawso",
+    "normalizedName": "sefwi wiawso",
+    "slug": "SEFWI-WIAWSO",
+    "locationType": "city",
+    "timeZone": "Africa/Accra",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

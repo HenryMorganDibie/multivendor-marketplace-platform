@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-TG-HYDERABAD",
+    "countryCode": "IN",
+    "stateId": "IN-TG",
+    "stateCode": "TG",
+    "name": "Hyderabad",
+    "normalizedName": "hyderabad",
+    "slug": "HYDERABAD",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

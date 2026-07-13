@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "SG-04-NORTH-EAST-REGION",
+    "countryCode": "SG",
+    "stateId": "SG-04",
+    "stateCode": "04",
+    "name": "North-East Region",
+    "normalizedName": "north-east region",
+    "slug": "NORTH-EAST-REGION",
+    "locationType": "city",
+    "timeZone": "Asia/Singapore",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

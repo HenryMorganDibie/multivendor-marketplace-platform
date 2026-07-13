@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-WV-CHARLESTON",
+    "countryCode": "US",
+    "stateId": "US-WV",
+    "stateCode": "WV",
+    "name": "Charleston",
+    "normalizedName": "charleston",
+    "slug": "CHARLESTON",
+    "locationType": "city",
+    "timeZone": "America/New_York",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-23-LODWAR",
+    "countryCode": "KE",
+    "stateId": "KE-23",
+    "stateCode": "23",
+    "name": "Lodwar",
+    "normalizedName": "lodwar",
+    "slug": "LODWAR",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BI-BR-BURUNGA",
+    "countryCode": "BI",
+    "stateId": "BI-BR",
+    "stateCode": "BR",
+    "name": "Burunga",
+    "normalizedName": "burunga",
+    "slug": "BURUNGA",
+    "locationType": "city",
+    "timeZone": "Africa/Bujumbura",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

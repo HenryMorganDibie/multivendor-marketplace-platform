@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NL-LI-MAASTRICHT",
+    "countryCode": "NL",
+    "stateId": "NL-LI",
+    "stateCode": "LI",
+    "name": "Maastricht",
+    "normalizedName": "maastricht",
+    "slug": "MAASTRICHT",
+    "locationType": "city",
+    "timeZone": "Europe/Amsterdam",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

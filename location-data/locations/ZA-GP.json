@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ZA-GP-JOHANNESBURG",
+    "countryCode": "ZA",
+    "stateId": "ZA-GP",
+    "stateCode": "GP",
+    "name": "Johannesburg",
+    "normalizedName": "johannesburg",
+    "slug": "JOHANNESBURG",
+    "locationType": "city",
+    "timeZone": "Africa/Johannesburg",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

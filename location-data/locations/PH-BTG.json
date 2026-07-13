@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-BTG-BATANGAS",
+    "countryCode": "PH",
+    "stateId": "PH-BTG",
+    "stateCode": "BTG",
+    "name": "Batangas",
+    "normalizedName": "batangas",
+    "slug": "BATANGAS",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

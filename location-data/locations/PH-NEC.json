@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-NEC-BACOLOD",
+    "countryCode": "PH",
+    "stateId": "PH-NEC",
+    "stateCode": "NEC",
+    "name": "Bacolod",
+    "normalizedName": "bacolod",
+    "slug": "BACOLOD",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

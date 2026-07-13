@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-DH-DAMAN",
+    "countryCode": "IN",
+    "stateId": "IN-DH",
+    "stateCode": "DH",
+    "name": "Daman",
+    "normalizedName": "daman",
+    "slug": "DAMAN",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

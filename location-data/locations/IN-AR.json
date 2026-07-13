@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-AR-ITANAGAR",
+    "countryCode": "IN",
+    "stateId": "IN-AR",
+    "stateCode": "AR",
+    "name": "Itanagar",
+    "normalizedName": "itanagar",
+    "slug": "ITANAGAR",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

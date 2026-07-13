@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "GD-10-HILLSBOROUGH",
+    "countryCode": "GD",
+    "stateId": "GD-10",
+    "stateCode": "10",
+    "name": "Hillsborough",
+    "normalizedName": "hillsborough",
+    "slug": "HILLSBOROUGH",
+    "locationType": "city",
+    "timeZone": "America/Grenada",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

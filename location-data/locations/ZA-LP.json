@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ZA-LP-POLOKWANE",
+    "countryCode": "ZA",
+    "stateId": "ZA-LP",
+    "stateCode": "LP",
+    "name": "Polokwane",
+    "normalizedName": "polokwane",
+    "slug": "POLOKWANE",
+    "locationType": "city",
+    "timeZone": "Africa/Johannesburg",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-BAS-ISABELA",
+    "countryCode": "PH",
+    "stateId": "PH-BAS",
+    "stateCode": "BAS",
+    "name": "Isabela",
+    "normalizedName": "isabela",
+    "slug": "ISABELA",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

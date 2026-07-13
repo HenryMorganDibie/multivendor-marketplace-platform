@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NZ-NSN-NELSON",
+    "countryCode": "NZ",
+    "stateId": "NZ-NSN",
+    "stateCode": "NSN",
+    "name": "Nelson",
+    "normalizedName": "nelson",
+    "slug": "NELSON",
+    "locationType": "city",
+    "timeZone": "Pacific/Auckland",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AE-DU-DUBAI",
+    "countryCode": "AE",
+    "stateId": "AE-DU",
+    "stateCode": "DU",
+    "name": "Dubai",
+    "normalizedName": "dubai",
+    "slug": "DUBAI",
+    "locationType": "city",
+    "timeZone": "Asia/Dubai",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

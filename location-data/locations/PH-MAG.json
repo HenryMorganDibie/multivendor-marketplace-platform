@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-MAG-DATU-ODIN-SINSUAT",
+    "countryCode": "PH",
+    "stateId": "PH-MAG",
+    "stateCode": "MAG",
+    "name": "Datu Odin Sinsuat",
+    "normalizedName": "datu odin sinsuat",
+    "slug": "DATU-ODIN-SINSUAT",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

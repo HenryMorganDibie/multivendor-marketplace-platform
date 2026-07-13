@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-WA-OLYMPIA",
+    "countryCode": "US",
+    "stateId": "US-WA",
+    "stateCode": "WA",
+    "name": "Olympia",
+    "normalizedName": "olympia",
+    "slug": "OLYMPIA",
+    "locationType": "city",
+    "timeZone": "America/Los_Angeles",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-MP-BHOPAL",
+    "countryCode": "IN",
+    "stateId": "IN-MP",
+    "stateCode": "MP",
+    "name": "Bhopal",
+    "normalizedName": "bhopal",
+    "slug": "BHOPAL",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

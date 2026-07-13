@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BI-BJ-BUJUMBURA",
+    "countryCode": "BI",
+    "stateId": "BI-BJ",
+    "stateCode": "BJ",
+    "name": "Bujumbura",
+    "normalizedName": "bujumbura",
+    "slug": "BUJUMBURA",
+    "locationType": "city",
+    "timeZone": "Africa/Bujumbura",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

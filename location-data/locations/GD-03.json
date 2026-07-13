@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "GD-03-SAINT-GEORGES",
+    "countryCode": "GD",
+    "stateId": "GD-03",
+    "stateCode": "03",
+    "name": "Saint George's",
+    "normalizedName": "saint georges",
+    "slug": "SAINT-GEORGES",
+    "locationType": "city",
+    "timeZone": "America/Grenada",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

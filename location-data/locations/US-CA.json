@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-CA-SACRAMENTO",
+    "countryCode": "US",
+    "stateId": "US-CA",
+    "stateCode": "CA",
+    "name": "Sacramento",
+    "normalizedName": "sacramento",
+    "slug": "SACRAMENTO",
+    "locationType": "city",
+    "timeZone": "America/Los_Angeles",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

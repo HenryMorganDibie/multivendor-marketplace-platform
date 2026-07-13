@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "GH-OT-DAMBAI",
+    "countryCode": "GH",
+    "stateId": "GH-OT",
+    "stateCode": "OT",
+    "name": "Dambai",
+    "normalizedName": "dambai",
+    "slug": "DAMBAI",
+    "locationType": "city",
+    "timeZone": "Africa/Accra",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

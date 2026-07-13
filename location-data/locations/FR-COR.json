@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FR-COR-AJACCIO",
+    "countryCode": "FR",
+    "stateId": "FR-COR",
+    "stateCode": "COR",
+    "name": "Ajaccio",
+    "normalizedName": "ajaccio",
+    "slug": "AJACCIO",
+    "locationType": "city",
+    "timeZone": "Europe/Paris",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

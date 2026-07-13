@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-IN-INAGUA",
+    "countryCode": "BS",
+    "stateId": "BS-IN",
+    "stateCode": "IN",
+    "name": "Inagua",
+    "normalizedName": "inagua",
+    "slug": "INAGUA",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

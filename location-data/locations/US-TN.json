@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-TN-NASHVILLE",
+    "countryCode": "US",
+    "stateId": "US-TN",
+    "stateCode": "TN",
+    "name": "Nashville",
+    "normalizedName": "nashville",
+    "slug": "NASHVILLE",
+    "locationType": "city",
+    "timeZone": "America/Chicago",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-CAN-DAET",
+    "countryCode": "PH",
+    "stateId": "PH-CAN",
+    "stateCode": "CAN",
+    "name": "Daet",
+    "normalizedName": "daet",
+    "slug": "DAET",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-13-CHUKA",
+    "countryCode": "KE",
+    "stateId": "KE-13",
+    "stateCode": "13",
+    "name": "Chuka",
+    "normalizedName": "chuka",
+    "slug": "CHUKA",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

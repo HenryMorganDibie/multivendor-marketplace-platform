@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NZ-GIS-GISBORNE",
+    "countryCode": "NZ",
+    "stateId": "NZ-GIS",
+    "stateCode": "GIS",
+    "name": "Gisborne",
+    "normalizedName": "gisborne",
+    "slug": "GISBORNE",
+    "locationType": "city",
+    "timeZone": "Pacific/Auckland",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

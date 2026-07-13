@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-NM-SANTA-FE",
+    "countryCode": "US",
+    "stateId": "US-NM",
+    "stateCode": "NM",
+    "name": "Santa Fe",
+    "normalizedName": "santa fe",
+    "slug": "SANTA-FE",
+    "locationType": "city",
+    "timeZone": "America/Denver",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

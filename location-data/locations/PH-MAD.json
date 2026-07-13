@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-MAD-BOAC",
+    "countryCode": "PH",
+    "stateId": "PH-MAD",
+    "stateCode": "MAD",
+    "name": "Boac",
+    "normalizedName": "boac",
+    "slug": "BOAC",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

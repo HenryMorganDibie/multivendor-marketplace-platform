@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AU-NSW-SYDNEY",
+    "countryCode": "AU",
+    "stateId": "AU-NSW",
+    "stateCode": "NSW",
+    "name": "Sydney",
+    "normalizedName": "sydney",
+    "slug": "SYDNEY",
+    "locationType": "city",
+    "timeZone": "Australia/Sydney",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

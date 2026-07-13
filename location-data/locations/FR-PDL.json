@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FR-PDL-NANTES",
+    "countryCode": "FR",
+    "stateId": "FR-PDL",
+    "stateCode": "PDL",
+    "name": "Nantes",
+    "normalizedName": "nantes",
+    "slug": "NANTES",
+    "locationType": "city",
+    "timeZone": "Europe/Paris",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

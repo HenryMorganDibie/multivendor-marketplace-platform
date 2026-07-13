@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-07-GARISSA",
+    "countryCode": "KE",
+    "stateId": "KE-07",
+    "stateCode": "07",
+    "name": "Garissa",
+    "normalizedName": "garissa",
+    "slug": "GARISSA",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

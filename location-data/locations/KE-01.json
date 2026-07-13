@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-01-MOMBASA",
+    "countryCode": "KE",
+    "stateId": "KE-01",
+    "stateCode": "01",
+    "name": "Mombasa",
+    "normalizedName": "mombasa",
+    "slug": "MOMBASA",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

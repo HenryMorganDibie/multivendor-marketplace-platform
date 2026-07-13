@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-FL-TALLAHASSEE",
+    "countryCode": "US",
+    "stateId": "US-FL",
+    "stateCode": "FL",
+    "name": "Tallahassee",
+    "normalizedName": "tallahassee",
+    "slug": "TALLAHASSEE",
+    "locationType": "city",
+    "timeZone": "America/New_York",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

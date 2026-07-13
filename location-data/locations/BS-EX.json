@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-EX-EXUMA",
+    "countryCode": "BS",
+    "stateId": "BS-EX",
+    "stateCode": "EX",
+    "name": "Exuma",
+    "normalizedName": "exuma",
+    "slug": "EXUMA",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

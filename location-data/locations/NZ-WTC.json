@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NZ-WTC-GREYMOUTH",
+    "countryCode": "NZ",
+    "stateId": "NZ-WTC",
+    "stateCode": "WTC",
+    "name": "Greymouth",
+    "normalizedName": "greymouth",
+    "slug": "GREYMOUTH",
+    "locationType": "city",
+    "timeZone": "Pacific/Auckland",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

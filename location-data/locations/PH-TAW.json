@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-TAW-BONGAO",
+    "countryCode": "PH",
+    "stateId": "PH-TAW",
+    "stateCode": "TAW",
+    "name": "Bongao",
+    "normalizedName": "bongao",
+    "slug": "BONGAO",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-VI-CHARLOTTE-AMALIE",
+    "countryCode": "US",
+    "stateId": "US-VI",
+    "stateCode": "VI",
+    "name": "Charlotte Amalie",
+    "normalizedName": "charlotte amalie",
+    "slug": "CHARLOTTE-AMALIE",
+    "locationType": "city",
+    "timeZone": "America/St_Thomas",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

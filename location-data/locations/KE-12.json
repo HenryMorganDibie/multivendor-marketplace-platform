@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-12-MERU",
+    "countryCode": "KE",
+    "stateId": "KE-12",
+    "stateCode": "12",
+    "name": "Meru",
+    "normalizedName": "meru",
+    "slug": "MERU",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

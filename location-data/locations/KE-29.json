@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-29-KAPSABET",
+    "countryCode": "KE",
+    "stateId": "KE-29",
+    "stateCode": "29",
+    "name": "Kapsabet",
+    "normalizedName": "kapsabet",
+    "slug": "KAPSABET",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

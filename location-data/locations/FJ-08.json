@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FJ-08-SIGATOKA",
+    "countryCode": "FJ",
+    "stateId": "FJ-08",
+    "stateCode": "08",
+    "name": "Sigatoka",
+    "normalizedName": "sigatoka",
+    "slug": "SIGATOKA",
+    "locationType": "city",
+    "timeZone": "Pacific/Fiji",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

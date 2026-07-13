@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-WG-WEST-GRAND-BAHAMA",
+    "countryCode": "BS",
+    "stateId": "BS-WG",
+    "stateCode": "WG",
+    "name": "West Grand Bahama",
+    "normalizedName": "west grand bahama",
+    "slug": "WEST-GRAND-BAHAMA",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-KY-FRANKFORT",
+    "countryCode": "US",
+    "stateId": "US-KY",
+    "stateCode": "KY",
+    "name": "Frankfort",
+    "normalizedName": "frankfort",
+    "slug": "FRANKFORT",
+    "locationType": "city",
+    "timeZone": "America/New_York",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

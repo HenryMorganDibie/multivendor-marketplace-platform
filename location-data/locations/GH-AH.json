@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "GH-AH-KUMASI",
+    "countryCode": "GH",
+    "stateId": "GH-AH",
+    "stateCode": "AH",
+    "name": "Kumasi",
+    "normalizedName": "kumasi",
+    "slug": "KUMASI",
+    "locationType": "city",
+    "timeZone": "Africa/Accra",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

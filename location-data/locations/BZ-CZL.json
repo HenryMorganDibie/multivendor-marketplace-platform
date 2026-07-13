@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BZ-CZL-COROZAL",
+    "countryCode": "BZ",
+    "stateId": "BZ-CZL",
+    "stateCode": "CZL",
+    "name": "Corozal",
+    "normalizedName": "corozal",
+    "slug": "COROZAL",
+    "locationType": "city",
+    "timeZone": "America/Belize",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FR-BFC-DIJON",
+    "countryCode": "FR",
+    "stateId": "FR-BFC",
+    "stateCode": "BFC",
+    "name": "Dijon",
+    "normalizedName": "dijon",
+    "slug": "DIJON",
+    "locationType": "city",
+    "timeZone": "Europe/Paris",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

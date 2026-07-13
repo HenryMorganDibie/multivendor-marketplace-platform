@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "CM-SW-BUEA",
+    "countryCode": "CM",
+    "stateId": "CM-SW",
+    "stateCode": "SW",
+    "name": "Buea",
+    "normalizedName": "buea",
+    "slug": "BUEA",
+    "locationType": "city",
+    "timeZone": "Africa/Douala",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

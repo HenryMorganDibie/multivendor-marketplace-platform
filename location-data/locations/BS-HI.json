@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-HI-HARBOUR-ISLAND",
+    "countryCode": "BS",
+    "stateId": "BS-HI",
+    "stateCode": "HI",
+    "name": "Harbour Island",
+    "normalizedName": "harbour island",
+    "slug": "HARBOUR-ISLAND",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

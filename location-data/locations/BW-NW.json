@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BW-NW-NORTH-WEST",
+    "countryCode": "BW",
+    "stateId": "BW-NW",
+    "stateCode": "NW",
+    "name": "North West",
+    "normalizedName": "north west",
+    "slug": "NORTH-WEST",
+    "locationType": "city",
+    "timeZone": "Africa/Gaborone",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-21-MURANGA",
+    "countryCode": "KE",
+    "stateId": "KE-21",
+    "stateCode": "21",
+    "name": "Murang'a",
+    "normalizedName": "muranga",
+    "slug": "MURANGA",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

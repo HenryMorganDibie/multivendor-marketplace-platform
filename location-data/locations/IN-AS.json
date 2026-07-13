@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-AS-GUWAHATI",
+    "countryCode": "IN",
+    "stateId": "IN-AS",
+    "stateCode": "AS",
+    "name": "Guwahati",
+    "normalizedName": "guwahati",
+    "slug": "GUWAHATI",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

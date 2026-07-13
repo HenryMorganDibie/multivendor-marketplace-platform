@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-CAS-PILI",
+    "countryCode": "PH",
+    "stateId": "PH-CAS",
+    "stateCode": "CAS",
+    "name": "Pili",
+    "normalizedName": "pili",
+    "slug": "PILI",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

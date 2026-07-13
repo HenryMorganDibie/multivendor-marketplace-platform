@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AU-ACT-CANBERRA",
+    "countryCode": "AU",
+    "stateId": "AU-ACT",
+    "stateCode": "ACT",
+    "name": "Canberra",
+    "normalizedName": "canberra",
+    "slug": "CANBERRA",
+    "locationType": "city",
+    "timeZone": "Australia/Sydney",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

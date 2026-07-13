@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-CAM-MAMBAJAO",
+    "countryCode": "PH",
+    "stateId": "PH-CAM",
+    "stateCode": "CAM",
+    "name": "Mambajao",
+    "normalizedName": "mambajao",
+    "slug": "MAMBAJAO",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

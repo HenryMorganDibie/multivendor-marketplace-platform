@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-BA-BAUCHI",
+    "countryCode": "NG",
+    "stateId": "NG-BA",
+    "stateCode": "BA",
+    "name": "Bauchi",
+    "normalizedName": "bauchi",
+    "slug": "BAUCHI",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MY-01-JOHOR-BAHRU",
+    "countryCode": "MY",
+    "stateId": "MY-01",
+    "stateCode": "01",
+    "name": "Johor Bahru",
+    "normalizedName": "johor bahru",
+    "slug": "JOHOR-BAHRU",
+    "locationType": "city",
+    "timeZone": "Asia/Kuala_Lumpur",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

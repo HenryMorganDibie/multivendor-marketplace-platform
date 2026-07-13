@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-KD-KADUNA",
+    "countryCode": "NG",
+    "stateId": "NG-KD",
+    "stateCode": "KD",
+    "name": "Kaduna",
+    "normalizedName": "kaduna",
+    "slug": "KADUNA",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

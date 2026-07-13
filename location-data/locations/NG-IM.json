@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-IM-OWERRI",
+    "countryCode": "NG",
+    "stateId": "NG-IM",
+    "stateCode": "IM",
+    "name": "Owerri",
+    "normalizedName": "owerri",
+    "slug": "OWERRI",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

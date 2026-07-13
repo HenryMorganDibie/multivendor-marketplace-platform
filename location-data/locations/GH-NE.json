@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "GH-NE-NALERIGU",
+    "countryCode": "GH",
+    "stateId": "GH-NE",
+    "stateCode": "NE",
+    "name": "Nalerigu",
+    "normalizedName": "nalerigu",
+    "slug": "NALERIGU",
+    "locationType": "city",
+    "timeZone": "Africa/Accra",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-GA-PANAJI",
+    "countryCode": "IN",
+    "stateId": "IN-GA",
+    "stateCode": "GA",
+    "name": "Panaji",
+    "normalizedName": "panaji",
+    "slug": "PANAJI",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-ZMB-IBA",
+    "countryCode": "PH",
+    "stateId": "PH-ZMB",
+    "stateCode": "ZMB",
+    "name": "Iba",
+    "normalizedName": "iba",
+    "slug": "IBA",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

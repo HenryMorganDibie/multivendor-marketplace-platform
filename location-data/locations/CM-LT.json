@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "CM-LT-DOUALA",
+    "countryCode": "CM",
+    "stateId": "CM-LT",
+    "stateCode": "LT",
+    "name": "Douala",
+    "normalizedName": "douala",
+    "slug": "DOUALA",
+    "locationType": "city",
+    "timeZone": "Africa/Douala",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

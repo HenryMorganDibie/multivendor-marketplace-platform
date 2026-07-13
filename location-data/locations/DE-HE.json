@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DE-HE-WIESBADEN",
+    "countryCode": "DE",
+    "stateId": "DE-HE",
+    "stateCode": "HE",
+    "name": "Wiesbaden",
+    "normalizedName": "wiesbaden",
+    "slug": "WIESBADEN",
+    "locationType": "city",
+    "timeZone": "Europe/Berlin",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

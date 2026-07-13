@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-ED-BENIN-CITY",
+    "countryCode": "NG",
+    "stateId": "NG-ED",
+    "stateCode": "ED",
+    "name": "Benin City",
+    "normalizedName": "benin city",
+    "slug": "BENIN-CITY",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-SUK-ISULAN",
+    "countryCode": "PH",
+    "stateId": "PH-SUK",
+    "stateCode": "SUK",
+    "name": "Isulan",
+    "normalizedName": "isulan",
+    "slug": "ISULAN",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

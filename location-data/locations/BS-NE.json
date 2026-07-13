@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-NE-NORTH-ELEUTHERA",
+    "countryCode": "BS",
+    "stateId": "BS-NE",
+    "stateCode": "NE",
+    "name": "North Eleuthera",
+    "normalizedName": "north eleuthera",
+    "slug": "NORTH-ELEUTHERA",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

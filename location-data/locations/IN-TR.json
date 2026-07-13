@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-TR-AGARTALA",
+    "countryCode": "IN",
+    "stateId": "IN-TR",
+    "stateCode": "TR",
+    "name": "Agartala",
+    "normalizedName": "agartala",
+    "slug": "AGARTALA",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

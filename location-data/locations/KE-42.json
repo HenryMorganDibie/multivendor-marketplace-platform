@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-42-KISUMU",
+    "countryCode": "KE",
+    "stateId": "KE-42",
+    "stateCode": "42",
+    "name": "Kisumu",
+    "normalizedName": "kisumu",
+    "slug": "KISUMU",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

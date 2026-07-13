@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-03-KILIFI",
+    "countryCode": "KE",
+    "stateId": "KE-03",
+    "stateCode": "03",
+    "name": "Kilifi",
+    "normalizedName": "kilifi",
+    "slug": "KILIFI",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

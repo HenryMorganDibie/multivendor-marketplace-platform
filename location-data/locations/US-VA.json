@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-VA-RICHMOND",
+    "countryCode": "US",
+    "stateId": "US-VA",
+    "stateCode": "VA",
+    "name": "Richmond",
+    "normalizedName": "richmond",
+    "slug": "RICHMOND",
+    "locationType": "city",
+    "timeZone": "America/New_York",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

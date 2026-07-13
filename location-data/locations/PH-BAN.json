@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-BAN-BALANGA",
+    "countryCode": "PH",
+    "stateId": "PH-BAN",
+    "stateCode": "BAN",
+    "name": "Balanga",
+    "normalizedName": "balanga",
+    "slug": "BALANGA",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

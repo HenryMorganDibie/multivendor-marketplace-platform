@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DE-MV-SCHWERIN",
+    "countryCode": "DE",
+    "stateId": "DE-MV",
+    "stateCode": "MV",
+    "name": "Schwerin",
+    "normalizedName": "schwerin",
+    "slug": "SCHWERIN",
+    "locationType": "city",
+    "timeZone": "Europe/Berlin",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

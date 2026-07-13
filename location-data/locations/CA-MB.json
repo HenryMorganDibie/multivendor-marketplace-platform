@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "CA-MB-WINNIPEG",
+    "countryCode": "CA",
+    "stateId": "CA-MB",
+    "stateCode": "MB",
+    "name": "Winnipeg",
+    "normalizedName": "winnipeg",
+    "slug": "WINNIPEG",
+    "locationType": "city",
+    "timeZone": "America/Winnipeg",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

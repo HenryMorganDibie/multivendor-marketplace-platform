@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-IL-SPRINGFIELD",
+    "countryCode": "US",
+    "stateId": "US-IL",
+    "stateCode": "IL",
+    "name": "Springfield",
+    "normalizedName": "springfield",
+    "slug": "SPRINGFIELD",
+    "locationType": "city",
+    "timeZone": "America/Chicago",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

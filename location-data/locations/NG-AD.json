@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-AD-YOLA",
+    "countryCode": "NG",
+    "stateId": "NG-AD",
+    "stateCode": "AD",
+    "name": "Yola",
+    "normalizedName": "yola",
+    "slug": "YOLA",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

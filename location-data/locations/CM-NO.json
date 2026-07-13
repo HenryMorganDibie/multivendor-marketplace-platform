@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "CM-NO-GAROUA",
+    "countryCode": "CM",
+    "stateId": "CM-NO",
+    "stateCode": "NO",
+    "name": "Garoua",
+    "normalizedName": "garoua",
+    "slug": "GAROUA",
+    "locationType": "city",
+    "timeZone": "Africa/Douala",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

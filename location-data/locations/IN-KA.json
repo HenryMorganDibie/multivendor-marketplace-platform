@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-KA-BENGALURU",
+    "countryCode": "IN",
+    "stateId": "IN-KA",
+    "stateCode": "KA",
+    "name": "Bengaluru",
+    "normalizedName": "bengaluru",
+    "slug": "BENGALURU",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

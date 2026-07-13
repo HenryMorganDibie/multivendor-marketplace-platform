@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-CAG-TUGUEGARAO",
+    "countryCode": "PH",
+    "stateId": "PH-CAG",
+    "stateCode": "CAG",
+    "name": "Tuguegarao",
+    "normalizedName": "tuguegarao",
+    "slug": "TUGUEGARAO",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "CA-PE-CHARLOTTETOWN",
+    "countryCode": "CA",
+    "stateId": "CA-PE",
+    "stateCode": "PE",
+    "name": "Charlottetown",
+    "normalizedName": "charlottetown",
+    "slug": "CHARLOTTETOWN",
+    "locationType": "city",
+    "timeZone": "America/Halifax",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

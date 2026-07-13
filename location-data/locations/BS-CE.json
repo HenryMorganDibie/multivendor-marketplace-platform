@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-CE-CENTRAL-ELEUTHERA",
+    "countryCode": "BS",
+    "stateId": "BS-CE",
+    "stateCode": "CE",
+    "name": "Central Eleuthera",
+    "normalizedName": "central eleuthera",
+    "slug": "CENTRAL-ELEUTHERA",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

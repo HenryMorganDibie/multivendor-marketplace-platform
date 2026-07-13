@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NL-DR-ASSEN",
+    "countryCode": "NL",
+    "stateId": "NL-DR",
+    "stateCode": "DR",
+    "name": "Assen",
+    "normalizedName": "assen",
+    "slug": "ASSEN",
+    "locationType": "city",
+    "timeZone": "Europe/Amsterdam",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

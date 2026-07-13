@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-33-NAROK",
+    "countryCode": "KE",
+    "stateId": "KE-33",
+    "stateCode": "33",
+    "name": "Narok",
+    "normalizedName": "narok",
+    "slug": "NAROK",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

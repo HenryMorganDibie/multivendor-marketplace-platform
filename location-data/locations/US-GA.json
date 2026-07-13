@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-GA-ATLANTA",
+    "countryCode": "US",
+    "stateId": "US-GA",
+    "stateCode": "GA",
+    "name": "Atlanta",
+    "normalizedName": "atlanta",
+    "slug": "ATLANTA",
+    "locationType": "city",
+    "timeZone": "America/New_York",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

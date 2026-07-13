@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-TN-CHENNAI",
+    "countryCode": "IN",
+    "stateId": "IN-TN",
+    "stateCode": "TN",
+    "name": "Chennai",
+    "normalizedName": "chennai",
+    "slug": "CHENNAI",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

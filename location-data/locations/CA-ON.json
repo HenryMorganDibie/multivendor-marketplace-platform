@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "CA-ON-TORONTO",
+    "countryCode": "CA",
+    "stateId": "CA-ON",
+    "stateCode": "ON",
+    "name": "Toronto",
+    "normalizedName": "toronto",
+    "slug": "TORONTO",
+    "locationType": "city",
+    "timeZone": "America/Toronto",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-NIS-BACOLOD",
+    "countryCode": "PH",
+    "stateId": "PH-NIS",
+    "stateCode": "NIS",
+    "name": "Bacolod",
+    "normalizedName": "bacolod",
+    "slug": "BACOLOD",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-PLW-PUERTO-PRINCESA",
+    "countryCode": "PH",
+    "stateId": "PH-PLW",
+    "stateCode": "PLW",
+    "name": "Puerto Princesa",
+    "normalizedName": "puerto princesa",
+    "slug": "PUERTO-PRINCESA",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

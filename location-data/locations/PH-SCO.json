@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-SCO-KORONADAL",
+    "countryCode": "PH",
+    "stateId": "PH-SCO",
+    "stateCode": "SCO",
+    "name": "Koronadal",
+    "normalizedName": "koronadal",
+    "slug": "KORONADAL",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

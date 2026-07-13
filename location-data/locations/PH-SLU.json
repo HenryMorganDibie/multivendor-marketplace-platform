@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-SLU-JOLO",
+    "countryCode": "PH",
+    "stateId": "PH-SLU",
+    "stateCode": "SLU",
+    "name": "Jolo",
+    "normalizedName": "jolo",
+    "slug": "JOLO",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

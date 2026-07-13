@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FJ-14-TAILEVU",
+    "countryCode": "FJ",
+    "stateId": "FJ-14",
+    "stateCode": "14",
+    "name": "Tailevu",
+    "normalizedName": "tailevu",
+    "slug": "TAILEVU",
+    "locationType": "city",
+    "timeZone": "Pacific/Fiji",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

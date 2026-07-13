@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-40-BUSIA",
+    "countryCode": "KE",
+    "stateId": "KE-40",
+    "stateCode": "40",
+    "name": "Busia",
+    "normalizedName": "busia",
+    "slug": "BUSIA",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

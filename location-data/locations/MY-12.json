@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MY-12-KOTA-KINABALU",
+    "countryCode": "MY",
+    "stateId": "MY-12",
+    "stateCode": "12",
+    "name": "Kota Kinabalu",
+    "normalizedName": "kota kinabalu",
+    "slug": "KOTA-KINABALU",
+    "locationType": "city",
+    "timeZone": "Asia/Kuala_Lumpur",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

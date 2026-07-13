@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-CK-CROOKED-ISLAND",
+    "countryCode": "BS",
+    "stateId": "BS-CK",
+    "stateCode": "CK",
+    "name": "Crooked Island",
+    "normalizedName": "crooked island",
+    "slug": "CROOKED-ISLAND",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

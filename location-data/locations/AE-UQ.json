@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AE-UQ-UMM-AL-QUWAIN",
+    "countryCode": "AE",
+    "stateId": "AE-UQ",
+    "stateCode": "UQ",
+    "name": "Umm Al Quwain",
+    "normalizedName": "umm al quwain",
+    "slug": "UMM-AL-QUWAIN",
+    "locationType": "city",
+    "timeZone": "Asia/Dubai",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

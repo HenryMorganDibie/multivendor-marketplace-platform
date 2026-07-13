@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-38-VIHIGA",
+    "countryCode": "KE",
+    "stateId": "KE-38",
+    "stateCode": "38",
+    "name": "Vihiga",
+    "normalizedName": "vihiga",
+    "slug": "VIHIGA",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

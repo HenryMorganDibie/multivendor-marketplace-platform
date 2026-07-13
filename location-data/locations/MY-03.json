@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MY-03-KOTA-BHARU",
+    "countryCode": "MY",
+    "stateId": "MY-03",
+    "stateCode": "03",
+    "name": "Kota Bharu",
+    "normalizedName": "kota bharu",
+    "slug": "KOTA-BHARU",
+    "locationType": "city",
+    "timeZone": "Asia/Kuala_Lumpur",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

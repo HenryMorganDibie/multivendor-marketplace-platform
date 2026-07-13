@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BB-09-SAINT-PETER",
+    "countryCode": "BB",
+    "stateId": "BB-09",
+    "stateCode": "09",
+    "name": "Saint Peter",
+    "normalizedName": "saint peter",
+    "slug": "SAINT-PETER",
+    "locationType": "city",
+    "timeZone": "America/Barbados",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

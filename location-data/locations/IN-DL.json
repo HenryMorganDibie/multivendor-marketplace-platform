@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-DL-NEW-DELHI",
+    "countryCode": "IN",
+    "stateId": "IN-DL",
+    "stateCode": "DL",
+    "name": "New Delhi",
+    "normalizedName": "new delhi",
+    "slug": "NEW-DELHI",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

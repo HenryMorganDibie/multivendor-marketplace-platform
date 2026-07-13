@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-BI-BIMINI",
+    "countryCode": "BS",
+    "stateId": "BS-BI",
+    "stateCode": "BI",
+    "name": "Bimini",
+    "normalizedName": "bimini",
+    "slug": "BIMINI",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

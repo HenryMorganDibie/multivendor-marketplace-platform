@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NZ-TAS-RICHMOND",
+    "countryCode": "NZ",
+    "stateId": "NZ-TAS",
+    "stateCode": "TAS",
+    "name": "Richmond",
+    "normalizedName": "richmond",
+    "slug": "RICHMOND",
+    "locationType": "city",
+    "timeZone": "Pacific/Auckland",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

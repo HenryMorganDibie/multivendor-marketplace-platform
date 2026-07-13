@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-NUV-BAYOMBONG",
+    "countryCode": "PH",
+    "stateId": "PH-NUV",
+    "stateCode": "NUV",
+    "name": "Bayombong",
+    "normalizedName": "bayombong",
+    "slug": "BAYOMBONG",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

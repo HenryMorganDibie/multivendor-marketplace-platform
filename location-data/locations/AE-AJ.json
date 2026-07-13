@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AE-AJ-AJMAN",
+    "countryCode": "AE",
+    "stateId": "AE-AJ",
+    "stateCode": "AJ",
+    "name": "Ajman",
+    "normalizedName": "ajman",
+    "slug": "AJMAN",
+    "locationType": "city",
+    "timeZone": "Asia/Dubai",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

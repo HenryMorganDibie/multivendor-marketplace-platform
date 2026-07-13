@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FR-NOR-ROUEN",
+    "countryCode": "FR",
+    "stateId": "FR-NOR",
+    "stateCode": "NOR",
+    "name": "Rouen",
+    "normalizedName": "rouen",
+    "slug": "ROUEN",
+    "locationType": "city",
+    "timeZone": "Europe/Paris",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

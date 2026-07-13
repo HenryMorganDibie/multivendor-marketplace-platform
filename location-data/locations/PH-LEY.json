@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-LEY-TACLOBAN",
+    "countryCode": "PH",
+    "stateId": "PH-LEY",
+    "stateCode": "LEY",
+    "name": "Tacloban",
+    "normalizedName": "tacloban",
+    "slug": "TACLOBAN",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

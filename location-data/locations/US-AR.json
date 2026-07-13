@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-AR-LITTLE-ROCK",
+    "countryCode": "US",
+    "stateId": "US-AR",
+    "stateCode": "AR",
+    "name": "Little Rock",
+    "normalizedName": "little rock",
+    "slug": "LITTLE-ROCK",
+    "locationType": "city",
+    "timeZone": "America/Chicago",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-AB-UMUAHIA",
+    "countryCode": "NG",
+    "stateId": "NG-AB",
+    "stateCode": "AB",
+    "name": "Umuahia",
+    "normalizedName": "umuahia",
+    "slug": "UMUAHIA",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

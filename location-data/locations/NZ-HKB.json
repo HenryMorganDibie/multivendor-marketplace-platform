@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NZ-HKB-NAPIER",
+    "countryCode": "NZ",
+    "stateId": "NZ-HKB",
+    "stateCode": "HKB",
+    "name": "Napier",
+    "normalizedName": "napier",
+    "slug": "NAPIER",
+    "locationType": "city",
+    "timeZone": "Pacific/Auckland",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-MGS-BULUAN",
+    "countryCode": "PH",
+    "stateId": "PH-MGS",
+    "stateCode": "MGS",
+    "name": "Buluan",
+    "normalizedName": "buluan",
+    "slug": "BULUAN",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

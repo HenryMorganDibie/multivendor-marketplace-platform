@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-LI-LONG-ISLAND",
+    "countryCode": "BS",
+    "stateId": "BS-LI",
+    "stateCode": "LI",
+    "name": "Long Island",
+    "normalizedName": "long island",
+    "slug": "LONG-ISLAND",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

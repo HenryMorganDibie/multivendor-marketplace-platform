@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "GB-ENG-LONDON",
+    "countryCode": "GB",
+    "stateId": "GB-ENG",
+    "stateCode": "ENG",
+    "name": "London",
+    "normalizedName": "london",
+    "slug": "LONDON",
+    "locationType": "city",
+    "timeZone": "Europe/London",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

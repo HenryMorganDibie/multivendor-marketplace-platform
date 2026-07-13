@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FJ-06-LEVUKA",
+    "countryCode": "FJ",
+    "stateId": "FJ-06",
+    "stateCode": "06",
+    "name": "Levuka",
+    "normalizedName": "levuka",
+    "slug": "LEVUKA",
+    "locationType": "city",
+    "timeZone": "Pacific/Fiji",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

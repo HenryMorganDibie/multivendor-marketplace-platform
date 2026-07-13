@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DE-HH-HAMBURG",
+    "countryCode": "DE",
+    "stateId": "DE-HH",
+    "stateCode": "HH",
+    "name": "Hamburg",
+    "normalizedName": "hamburg",
+    "slug": "HAMBURG",
+    "locationType": "city",
+    "timeZone": "Europe/Berlin",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

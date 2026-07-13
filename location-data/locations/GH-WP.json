@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "GH-WP-SEKONDI-TAKORADI",
+    "countryCode": "GH",
+    "stateId": "GH-WP",
+    "stateCode": "WP",
+    "name": "Sekondi-Takoradi",
+    "normalizedName": "sekondi-takoradi",
+    "slug": "SEKONDI-TAKORADI",
+    "locationType": "city",
+    "timeZone": "Africa/Accra",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

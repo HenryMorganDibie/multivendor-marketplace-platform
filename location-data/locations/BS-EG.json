@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-EG-EAST-GRAND-BAHAMA",
+    "countryCode": "BS",
+    "stateId": "BS-EG",
+    "stateCode": "EG",
+    "name": "East Grand Bahama",
+    "normalizedName": "east grand bahama",
+    "slug": "EAST-GRAND-BAHAMA",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

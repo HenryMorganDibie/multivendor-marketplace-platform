@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-AN-AWKA",
+    "countryCode": "NG",
+    "stateId": "NG-AN",
+    "stateCode": "AN",
+    "name": "Awka",
+    "normalizedName": "awka",
+    "slug": "AWKA",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

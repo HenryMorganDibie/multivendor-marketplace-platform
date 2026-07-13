@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ZA-WC-CAPE-TOWN",
+    "countryCode": "ZA",
+    "stateId": "ZA-WC",
+    "stateCode": "WC",
+    "name": "Cape Town",
+    "normalizedName": "cape town",
+    "slug": "CAPE-TOWN",
+    "locationType": "city",
+    "timeZone": "Africa/Johannesburg",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

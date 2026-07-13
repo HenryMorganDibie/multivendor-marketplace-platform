@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-37-KAKAMEGA",
+    "countryCode": "KE",
+    "stateId": "KE-37",
+    "stateCode": "37",
+    "name": "Kakamega",
+    "normalizedName": "kakamega",
+    "slug": "KAKAMEGA",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

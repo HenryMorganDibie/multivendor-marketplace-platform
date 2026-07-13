@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "GD-01-SAINT-ANDREW",
+    "countryCode": "GD",
+    "stateId": "GD-01",
+    "stateCode": "01",
+    "name": "Saint Andrew",
+    "normalizedName": "saint andrew",
+    "slug": "SAINT-ANDREW",
+    "locationType": "city",
+    "timeZone": "America/Grenada",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

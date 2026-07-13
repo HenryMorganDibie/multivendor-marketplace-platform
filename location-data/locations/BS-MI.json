@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-MI-MOORES-ISLAND",
+    "countryCode": "BS",
+    "stateId": "BS-MI",
+    "stateCode": "MI",
+    "name": "Moore's Island",
+    "normalizedName": "moores island",
+    "slug": "MOORES-ISLAND",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

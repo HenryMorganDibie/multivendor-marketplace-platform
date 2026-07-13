@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-SK-GANGTOK",
+    "countryCode": "IN",
+    "stateId": "IN-SK",
+    "stateCode": "SK",
+    "name": "Gangtok",
+    "normalizedName": "gangtok",
+    "slug": "GANGTOK",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

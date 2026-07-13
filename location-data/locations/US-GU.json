@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-GU-HAGATNA",
+    "countryCode": "US",
+    "stateId": "US-GU",
+    "stateCode": "GU",
+    "name": "Hagatna",
+    "normalizedName": "hagatna",
+    "slug": "HAGATNA",
+    "locationType": "city",
+    "timeZone": "Pacific/Guam",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-WY-CHEYENNE",
+    "countryCode": "US",
+    "stateId": "US-WY",
+    "stateCode": "WY",
+    "name": "Cheyenne",
+    "normalizedName": "cheyenne",
+    "slug": "CHEYENNE",
+    "locationType": "city",
+    "timeZone": "America/Denver",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

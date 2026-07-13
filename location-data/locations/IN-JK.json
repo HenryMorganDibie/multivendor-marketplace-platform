@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-JK-SRINAGAR",
+    "countryCode": "IN",
+    "stateId": "IN-JK",
+    "stateCode": "JK",
+    "name": "Srinagar",
+    "normalizedName": "srinagar",
+    "slug": "SRINAGAR",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

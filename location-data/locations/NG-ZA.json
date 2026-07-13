@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-ZA-GUSAU",
+    "countryCode": "NG",
+    "stateId": "NG-ZA",
+    "stateCode": "ZA",
+    "name": "Gusau",
+    "normalizedName": "gusau",
+    "slug": "GUSAU",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

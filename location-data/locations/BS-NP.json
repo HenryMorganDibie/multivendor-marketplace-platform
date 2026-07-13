@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-NP-NASSAU",
+    "countryCode": "BS",
+    "stateId": "BS-NP",
+    "stateCode": "NP",
+    "name": "Nassau",
+    "normalizedName": "nassau",
+    "slug": "NASSAU",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-AP-AMARAVATI",
+    "countryCode": "IN",
+    "stateId": "IN-AP",
+    "stateCode": "AP",
+    "name": "Amaravati",
+    "normalizedName": "amaravati",
+    "slug": "AMARAVATI",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-SIQ-SIQUIJOR",
+    "countryCode": "PH",
+    "stateId": "PH-SIQ",
+    "stateCode": "SIQ",
+    "name": "Siquijor",
+    "normalizedName": "siquijor",
+    "slug": "SIQUIJOR",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

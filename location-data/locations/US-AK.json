@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-AK-JUNEAU",
+    "countryCode": "US",
+    "stateId": "US-AK",
+    "stateCode": "AK",
+    "name": "Juneau",
+    "normalizedName": "juneau",
+    "slug": "JUNEAU",
+    "locationType": "city",
+    "timeZone": "America/Anchorage",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

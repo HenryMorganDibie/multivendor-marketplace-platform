@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-MAS-MASBATE",
+    "countryCode": "PH",
+    "stateId": "PH-MAS",
+    "stateCode": "MAS",
+    "name": "Masbate",
+    "normalizedName": "masbate",
+    "slug": "MASBATE",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

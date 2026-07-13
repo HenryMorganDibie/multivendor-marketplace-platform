@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BZ-TOL-PUNTA-GORDA",
+    "countryCode": "BZ",
+    "stateId": "BZ-TOL",
+    "stateCode": "TOL",
+    "name": "Punta Gorda",
+    "normalizedName": "punta gorda",
+    "slug": "PUNTA-GORDA",
+    "locationType": "city",
+    "timeZone": "America/Belize",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

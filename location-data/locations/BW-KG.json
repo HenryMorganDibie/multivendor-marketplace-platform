@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BW-KG-KGALAGADI",
+    "countryCode": "BW",
+    "stateId": "BW-KG",
+    "stateCode": "KG",
+    "name": "Kgalagadi",
+    "normalizedName": "kgalagadi",
+    "slug": "KGALAGADI",
+    "locationType": "city",
+    "timeZone": "Africa/Gaborone",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

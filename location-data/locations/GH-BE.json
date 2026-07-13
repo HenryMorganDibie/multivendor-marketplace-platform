@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "GH-BE-TECHIMAN",
+    "countryCode": "GH",
+    "stateId": "GH-BE",
+    "stateCode": "BE",
+    "name": "Techiman",
+    "normalizedName": "techiman",
+    "slug": "TECHIMAN",
+    "locationType": "city",
+    "timeZone": "Africa/Accra",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-OH-COLUMBUS",
+    "countryCode": "US",
+    "stateId": "US-OH",
+    "stateCode": "OH",
+    "name": "Columbus",
+    "normalizedName": "columbus",
+    "slug": "COLUMBUS",
+    "locationType": "city",
+    "timeZone": "America/New_York",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

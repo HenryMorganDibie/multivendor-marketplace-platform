@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-NJ-TRENTON",
+    "countryCode": "US",
+    "stateId": "US-NJ",
+    "stateCode": "NJ",
+    "name": "Trenton",
+    "normalizedName": "trenton",
+    "slug": "TRENTON",
+    "locationType": "city",
+    "timeZone": "America/New_York",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

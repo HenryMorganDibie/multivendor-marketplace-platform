@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-OG-ABEOKUTA",
+    "countryCode": "NG",
+    "stateId": "NG-OG",
+    "stateCode": "OG",
+    "name": "Abeokuta",
+    "normalizedName": "abeokuta",
+    "slug": "ABEOKUTA",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

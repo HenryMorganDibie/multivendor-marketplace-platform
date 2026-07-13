@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IE-U-DONEGAL",
+    "countryCode": "IE",
+    "stateId": "IE-U",
+    "stateCode": "U",
+    "name": "Donegal",
+    "normalizedName": "donegal",
+    "slug": "DONEGAL",
+    "locationType": "city",
+    "timeZone": "Europe/Dublin",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

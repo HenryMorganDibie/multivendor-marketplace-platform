@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-BR-PATNA",
+    "countryCode": "IN",
+    "stateId": "IN-BR",
+    "stateCode": "BR",
+    "name": "Patna",
+    "normalizedName": "patna",
+    "slug": "PATNA",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

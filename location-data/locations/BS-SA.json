@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-SA-SOUTH-ANDROS",
+    "countryCode": "BS",
+    "stateId": "BS-SA",
+    "stateCode": "SA",
+    "name": "South Andros",
+    "normalizedName": "south andros",
+    "slug": "SOUTH-ANDROS",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

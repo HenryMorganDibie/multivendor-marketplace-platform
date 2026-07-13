@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-MDC-MAMBURAO",
+    "countryCode": "PH",
+    "stateId": "PH-MDC",
+    "stateCode": "MDC",
+    "name": "Mamburao",
+    "normalizedName": "mamburao",
+    "slug": "MAMBURAO",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

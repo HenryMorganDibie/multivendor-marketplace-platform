@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-HT-HOPE-TOWN",
+    "countryCode": "BS",
+    "stateId": "BS-HT",
+    "stateCode": "HT",
+    "name": "Hope Town",
+    "normalizedName": "hope town",
+    "slug": "HOPE-TOWN",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

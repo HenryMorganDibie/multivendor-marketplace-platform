@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-SUN-SURIGAO",
+    "countryCode": "PH",
+    "stateId": "PH-SUN",
+    "stateCode": "SUN",
+    "name": "Surigao",
+    "normalizedName": "surigao",
+    "slug": "SURIGAO",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

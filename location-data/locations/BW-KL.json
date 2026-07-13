@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BW-KL-KGATLENG",
+    "countryCode": "BW",
+    "stateId": "BW-KL",
+    "stateCode": "KL",
+    "name": "Kgatleng",
+    "normalizedName": "kgatleng",
+    "slug": "KGATLENG",
+    "locationType": "city",
+    "timeZone": "Africa/Gaborone",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

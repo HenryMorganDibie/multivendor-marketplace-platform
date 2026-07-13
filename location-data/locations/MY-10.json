@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MY-10-SHAH-ALAM",
+    "countryCode": "MY",
+    "stateId": "MY-10",
+    "stateCode": "10",
+    "name": "Shah Alam",
+    "normalizedName": "shah alam",
+    "slug": "SHAH-ALAM",
+    "locationType": "city",
+    "timeZone": "Asia/Kuala_Lumpur",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

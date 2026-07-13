@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-ROM-ROMBLON",
+    "countryCode": "PH",
+    "stateId": "PH-ROM",
+    "stateCode": "ROM",
+    "name": "Romblon",
+    "normalizedName": "romblon",
+    "slug": "ROMBLON",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

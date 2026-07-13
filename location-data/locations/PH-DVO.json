@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-DVO-MATI",
+    "countryCode": "PH",
+    "stateId": "PH-DVO",
+    "stateCode": "DVO",
+    "name": "Mati",
+    "normalizedName": "mati",
+    "slug": "MATI",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-05-LAMU",
+    "countryCode": "KE",
+    "stateId": "KE-05",
+    "stateCode": "05",
+    "name": "Lamu",
+    "normalizedName": "lamu",
+    "slug": "LAMU",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

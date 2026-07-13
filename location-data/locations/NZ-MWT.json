@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NZ-MWT-PALMERSTON-NORTH",
+    "countryCode": "NZ",
+    "stateId": "NZ-MWT",
+    "stateCode": "MWT",
+    "name": "Palmerston North",
+    "normalizedName": "palmerston north",
+    "slug": "PALMERSTON-NORTH",
+    "locationType": "city",
+    "timeZone": "Pacific/Auckland",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

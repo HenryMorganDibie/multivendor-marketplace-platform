@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-JH-RANCHI",
+    "countryCode": "IN",
+    "stateId": "IN-JH",
+    "stateCode": "JH",
+    "name": "Ranchi",
+    "normalizedName": "ranchi",
+    "slug": "RANCHI",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

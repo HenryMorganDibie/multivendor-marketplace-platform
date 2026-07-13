@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-RJ-JAIPUR",
+    "countryCode": "IN",
+    "stateId": "IN-RJ",
+    "stateCode": "RJ",
+    "name": "Jaipur",
+    "normalizedName": "jaipur",
+    "slug": "JAIPUR",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

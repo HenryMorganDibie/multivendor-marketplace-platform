@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PK-SD-KARACHI",
+    "countryCode": "PK",
+    "stateId": "PK-SD",
+    "stateCode": "SD",
+    "name": "Karachi",
+    "normalizedName": "karachi",
+    "slug": "KARACHI",
+    "locationType": "city",
+    "timeZone": "Asia/Karachi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

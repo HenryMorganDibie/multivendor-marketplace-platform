@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-08-WAJIR",
+    "countryCode": "KE",
+    "stateId": "KE-08",
+    "stateCode": "08",
+    "name": "Wajir",
+    "normalizedName": "wajir",
+    "slug": "WAJIR",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

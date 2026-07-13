@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "GH-AF-GOASO",
+    "countryCode": "GH",
+    "stateId": "GH-AF",
+    "stateCode": "AF",
+    "name": "Goaso",
+    "normalizedName": "goaso",
+    "slug": "GOASO",
+    "locationType": "city",
+    "timeZone": "Africa/Accra",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

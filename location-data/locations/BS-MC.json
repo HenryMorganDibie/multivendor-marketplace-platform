@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-MC-MANGROVE-CAY",
+    "countryCode": "BS",
+    "stateId": "BS-MC",
+    "stateCode": "MC",
+    "name": "Mangrove Cay",
+    "normalizedName": "mangrove cay",
+    "slug": "MANGROVE-CAY",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

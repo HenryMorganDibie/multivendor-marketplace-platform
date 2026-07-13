@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BB-07-SAINT-LUCY",
+    "countryCode": "BB",
+    "stateId": "BB-07",
+    "stateCode": "07",
+    "name": "Saint Lucy",
+    "normalizedName": "saint lucy",
+    "slug": "SAINT-LUCY",
+    "locationType": "city",
+    "timeZone": "America/Barbados",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

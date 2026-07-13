@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NL-FL-LELYSTAD",
+    "countryCode": "NL",
+    "stateId": "NL-FL",
+    "stateCode": "FL",
+    "name": "Lelystad",
+    "normalizedName": "lelystad",
+    "slug": "LELYSTAD",
+    "locationType": "city",
+    "timeZone": "Europe/Amsterdam",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

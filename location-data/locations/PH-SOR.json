@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-SOR-SORSOGON",
+    "countryCode": "PH",
+    "stateId": "PH-SOR",
+    "stateCode": "SOR",
+    "name": "Sorsogon",
+    "normalizedName": "sorsogon",
+    "slug": "SORSOGON",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

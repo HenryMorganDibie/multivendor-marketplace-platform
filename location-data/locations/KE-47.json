@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-47-NAIROBI",
+    "countryCode": "KE",
+    "stateId": "KE-47",
+    "stateCode": "47",
+    "name": "Nairobi",
+    "normalizedName": "nairobi",
+    "slug": "NAIROBI",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

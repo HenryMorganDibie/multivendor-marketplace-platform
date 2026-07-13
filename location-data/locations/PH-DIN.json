@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-DIN-SAN-JOSE",
+    "countryCode": "PH",
+    "stateId": "PH-DIN",
+    "stateCode": "DIN",
+    "name": "San Jose",
+    "normalizedName": "san jose",
+    "slug": "SAN-JOSE",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

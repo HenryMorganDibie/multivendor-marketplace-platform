@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NL-NH-HAARLEM",
+    "countryCode": "NL",
+    "stateId": "NL-NH",
+    "stateCode": "NH",
+    "name": "Haarlem",
+    "normalizedName": "haarlem",
+    "slug": "HAARLEM",
+    "locationType": "city",
+    "timeZone": "Europe/Amsterdam",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

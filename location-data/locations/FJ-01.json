@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FJ-01-BA",
+    "countryCode": "FJ",
+    "stateId": "FJ-01",
+    "stateCode": "01",
+    "name": "Ba",
+    "normalizedName": "ba",
+    "slug": "BA",
+    "locationType": "city",
+    "timeZone": "Pacific/Fiji",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

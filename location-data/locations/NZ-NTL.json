@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NZ-NTL-WHANGAREI",
+    "countryCode": "NZ",
+    "stateId": "NZ-NTL",
+    "stateCode": "NTL",
+    "name": "Whangarei",
+    "normalizedName": "whangarei",
+    "slug": "WHANGAREI",
+    "locationType": "city",
+    "timeZone": "Pacific/Auckland",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

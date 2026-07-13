@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-EAS-BORONGAN",
+    "countryCode": "PH",
+    "stateId": "PH-EAS",
+    "stateCode": "EAS",
+    "name": "Borongan",
+    "normalizedName": "borongan",
+    "slug": "BORONGAN",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

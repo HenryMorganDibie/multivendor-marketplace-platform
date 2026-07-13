@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-OY-IBADAN",
+    "countryCode": "NG",
+    "stateId": "NG-OY",
+    "stateCode": "OY",
+    "name": "Ibadan",
+    "normalizedName": "ibadan",
+    "slug": "IBADAN",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

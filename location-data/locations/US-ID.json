@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-ID-BOISE",
+    "countryCode": "US",
+    "stateId": "US-ID",
+    "stateCode": "ID",
+    "name": "Boise",
+    "normalizedName": "boise",
+    "slug": "BOISE",
+    "locationType": "city",
+    "timeZone": "America/Boise",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

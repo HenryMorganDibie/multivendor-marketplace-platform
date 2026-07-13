@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PK-PB-LAHORE",
+    "countryCode": "PK",
+    "stateId": "PK-PB",
+    "stateCode": "PB",
+    "name": "Lahore",
+    "normalizedName": "lahore",
+    "slug": "LAHORE",
+    "locationType": "city",
+    "timeZone": "Asia/Karachi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

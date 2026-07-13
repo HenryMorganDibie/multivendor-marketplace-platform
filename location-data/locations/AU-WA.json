@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AU-WA-PERTH",
+    "countryCode": "AU",
+    "stateId": "AU-WA",
+    "stateCode": "WA",
+    "name": "Perth",
+    "normalizedName": "perth",
+    "slug": "PERTH",
+    "locationType": "city",
+    "timeZone": "Australia/Perth",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

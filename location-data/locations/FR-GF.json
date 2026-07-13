@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FR-GF-CAYENNE",
+    "countryCode": "FR",
+    "stateId": "FR-GF",
+    "stateCode": "GF",
+    "name": "Cayenne",
+    "normalizedName": "cayenne",
+    "slug": "CAYENNE",
+    "locationType": "city",
+    "timeZone": "America/Cayenne",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

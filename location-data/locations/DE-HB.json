@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DE-HB-BREMEN",
+    "countryCode": "DE",
+    "stateId": "DE-HB",
+    "stateCode": "HB",
+    "name": "Bremen",
+    "normalizedName": "bremen",
+    "slug": "BREMEN",
+    "locationType": "city",
+    "timeZone": "Europe/Berlin",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

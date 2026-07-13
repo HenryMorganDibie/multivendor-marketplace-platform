@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-SE-SOUTH-ELEUTHERA",
+    "countryCode": "BS",
+    "stateId": "BS-SE",
+    "stateCode": "SE",
+    "name": "South Eleuthera",
+    "normalizedName": "south eleuthera",
+    "slug": "SOUTH-ELEUTHERA",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

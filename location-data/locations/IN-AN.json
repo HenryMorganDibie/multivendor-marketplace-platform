@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-AN-PORT-BLAIR",
+    "countryCode": "IN",
+    "stateId": "IN-AN",
+    "stateCode": "AN",
+    "name": "Port Blair",
+    "normalizedName": "port blair",
+    "slug": "PORT-BLAIR",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

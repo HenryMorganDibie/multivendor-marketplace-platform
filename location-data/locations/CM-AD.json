@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "CM-AD-NGAOUNDERE",
+    "countryCode": "CM",
+    "stateId": "CM-AD",
+    "stateCode": "AD",
+    "name": "Ngaoundere",
+    "normalizedName": "ngaoundere",
+    "slug": "NGAOUNDERE",
+    "locationType": "city",
+    "timeZone": "Africa/Douala",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

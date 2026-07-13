@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-ISA-ILAGAN",
+    "countryCode": "PH",
+    "stateId": "PH-ISA",
+    "stateCode": "ISA",
+    "name": "Ilagan",
+    "normalizedName": "ilagan",
+    "slug": "ILAGAN",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

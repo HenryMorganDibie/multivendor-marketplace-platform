@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "GH-EP-KOFORIDUA",
+    "countryCode": "GH",
+    "stateId": "GH-EP",
+    "stateCode": "EP",
+    "name": "Koforidua",
+    "normalizedName": "koforidua",
+    "slug": "KOFORIDUA",
+    "locationType": "city",
+    "timeZone": "Africa/Accra",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

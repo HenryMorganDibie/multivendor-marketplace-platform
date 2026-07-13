@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "CA-BC-VANCOUVER",
+    "countryCode": "CA",
+    "stateId": "CA-BC",
+    "stateCode": "BC",
+    "name": "Vancouver",
+    "normalizedName": "vancouver",
+    "slug": "VANCOUVER",
+    "locationType": "city",
+    "timeZone": "America/Vancouver",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

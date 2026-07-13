@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-MO-JEFFERSON-CITY",
+    "countryCode": "US",
+    "stateId": "US-MO",
+    "stateCode": "MO",
+    "name": "Jefferson City",
+    "normalizedName": "jefferson city",
+    "slug": "JEFFERSON-CITY",
+    "locationType": "city",
+    "timeZone": "America/Chicago",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

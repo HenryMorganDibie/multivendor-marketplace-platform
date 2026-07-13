@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-35-KERICHO",
+    "countryCode": "KE",
+    "stateId": "KE-35",
+    "stateCode": "35",
+    "name": "Kericho",
+    "normalizedName": "kericho",
+    "slug": "KERICHO",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

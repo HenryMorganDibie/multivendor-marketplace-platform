@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PK-GB-GILGIT",
+    "countryCode": "PK",
+    "stateId": "PK-GB",
+    "stateCode": "GB",
+    "name": "Gilgit",
+    "normalizedName": "gilgit",
+    "slug": "GILGIT",
+    "locationType": "city",
+    "timeZone": "Asia/Karachi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

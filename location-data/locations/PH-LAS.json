@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-LAS-MARAWI",
+    "countryCode": "PH",
+    "stateId": "PH-LAS",
+    "stateCode": "LAS",
+    "name": "Marawi",
+    "normalizedName": "marawi",
+    "slug": "MARAWI",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

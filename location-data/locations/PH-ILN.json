@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-ILN-LAOAG",
+    "countryCode": "PH",
+    "stateId": "PH-ILN",
+    "stateCode": "ILN",
+    "name": "Laoag",
+    "normalizedName": "laoag",
+    "slug": "LAOAG",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-TX-AUSTIN",
+    "countryCode": "US",
+    "stateId": "US-TX",
+    "stateCode": "TX",
+    "name": "Austin",
+    "normalizedName": "austin",
+    "slug": "AUSTIN",
+    "locationType": "city",
+    "timeZone": "America/Chicago",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

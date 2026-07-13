@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FR-HDF-LILLE",
+    "countryCode": "FR",
+    "stateId": "FR-HDF",
+    "stateCode": "HDF",
+    "name": "Lille",
+    "normalizedName": "lille",
+    "slug": "LILLE",
+    "locationType": "city",
+    "timeZone": "Europe/Paris",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

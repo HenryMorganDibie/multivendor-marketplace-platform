@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DE-RP-MAINZ",
+    "countryCode": "DE",
+    "stateId": "DE-RP",
+    "stateCode": "RP",
+    "name": "Mainz",
+    "normalizedName": "mainz",
+    "slug": "MAINZ",
+    "locationType": "city",
+    "timeZone": "Europe/Berlin",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

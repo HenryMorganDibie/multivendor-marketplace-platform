@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-KE-BIRNIN-KEBBI",
+    "countryCode": "NG",
+    "stateId": "NG-KE",
+    "stateCode": "KE",
+    "name": "Birnin Kebbi",
+    "normalizedName": "birnin kebbi",
+    "slug": "BIRNIN-KEBBI",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

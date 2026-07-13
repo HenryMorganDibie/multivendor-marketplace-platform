@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-BUL-MALOLOS",
+    "countryCode": "PH",
+    "stateId": "PH-BUL",
+    "stateCode": "BUL",
+    "name": "Malolos",
+    "normalizedName": "malolos",
+    "slug": "MALOLOS",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

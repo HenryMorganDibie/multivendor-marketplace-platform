@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MY-02-ALOR-SETAR",
+    "countryCode": "MY",
+    "stateId": "MY-02",
+    "stateCode": "02",
+    "name": "Alor Setar",
+    "normalizedName": "alor setar",
+    "slug": "ALOR-SETAR",
+    "locationType": "city",
+    "timeZone": "Asia/Kuala_Lumpur",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

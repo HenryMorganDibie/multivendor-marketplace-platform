@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-09-MANDERA",
+    "countryCode": "KE",
+    "stateId": "KE-09",
+    "stateCode": "09",
+    "name": "Mandera",
+    "normalizedName": "mandera",
+    "slug": "MANDERA",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

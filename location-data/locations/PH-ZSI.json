@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-ZSI-IPIL",
+    "countryCode": "PH",
+    "stateId": "PH-ZSI",
+    "stateCode": "ZSI",
+    "name": "Ipil",
+    "normalizedName": "ipil",
+    "slug": "IPIL",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

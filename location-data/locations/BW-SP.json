@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BW-SP-SELIBE-PHIKWE",
+    "countryCode": "BW",
+    "stateId": "BW-SP",
+    "stateCode": "SP",
+    "name": "Selibe Phikwe",
+    "normalizedName": "selibe phikwe",
+    "slug": "SELIBE-PHIKWE",
+    "locationType": "city",
+    "timeZone": "Africa/Gaborone",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

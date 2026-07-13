@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-DC-WASHINGTON",
+    "countryCode": "US",
+    "stateId": "US-DC",
+    "stateCode": "DC",
+    "name": "Washington",
+    "normalizedName": "washington",
+    "slug": "WASHINGTON",
+    "locationType": "city",
+    "timeZone": "America/New_York",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

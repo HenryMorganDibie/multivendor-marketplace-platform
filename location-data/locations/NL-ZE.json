@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NL-ZE-MIDDELBURG",
+    "countryCode": "NL",
+    "stateId": "NL-ZE",
+    "stateCode": "ZE",
+    "name": "Middelburg",
+    "normalizedName": "middelburg",
+    "slug": "MIDDELBURG",
+    "locationType": "city",
+    "timeZone": "Europe/Amsterdam",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

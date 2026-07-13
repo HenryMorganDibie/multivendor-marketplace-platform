@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-MN-SAINT-PAUL",
+    "countryCode": "US",
+    "stateId": "US-MN",
+    "stateCode": "MN",
+    "name": "Saint Paul",
+    "normalizedName": "saint paul",
+    "slug": "SAINT-PAUL",
+    "locationType": "city",
+    "timeZone": "America/Chicago",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-19-NYERI",
+    "countryCode": "KE",
+    "stateId": "KE-19",
+    "stateCode": "19",
+    "name": "Nyeri",
+    "normalizedName": "nyeri",
+    "slug": "NYERI",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

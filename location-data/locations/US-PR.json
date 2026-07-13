@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-PR-SAN-JUAN",
+    "countryCode": "US",
+    "stateId": "US-PR",
+    "stateCode": "PR",
+    "name": "San Juan",
+    "normalizedName": "san juan",
+    "slug": "SAN-JUAN",
+    "locationType": "city",
+    "timeZone": "America/Puerto_Rico",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

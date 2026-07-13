@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "GH-UW-WA",
+    "countryCode": "GH",
+    "stateId": "GH-UW",
+    "stateCode": "UW",
+    "name": "Wa",
+    "normalizedName": "wa",
+    "slug": "WA",
+    "locationType": "city",
+    "timeZone": "Africa/Accra",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

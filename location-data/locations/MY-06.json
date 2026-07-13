@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MY-06-KUANTAN",
+    "countryCode": "MY",
+    "stateId": "MY-06",
+    "stateCode": "06",
+    "name": "Kuantan",
+    "normalizedName": "kuantan",
+    "slug": "KUANTAN",
+    "locationType": "city",
+    "timeZone": "Asia/Kuala_Lumpur",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

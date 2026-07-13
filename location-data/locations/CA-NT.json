@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "CA-NT-YELLOWKNIFE",
+    "countryCode": "CA",
+    "stateId": "CA-NT",
+    "stateCode": "NT",
+    "name": "Yellowknife",
+    "normalizedName": "yellowknife",
+    "slug": "YELLOWKNIFE",
+    "locationType": "city",
+    "timeZone": "America/Yellowknife",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MY-05-SEREMBAN",
+    "countryCode": "MY",
+    "stateId": "MY-05",
+    "stateCode": "05",
+    "name": "Seremban",
+    "normalizedName": "seremban",
+    "slug": "SEREMBAN",
+    "locationType": "city",
+    "timeZone": "Asia/Kuala_Lumpur",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

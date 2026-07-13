@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-EN-ENUGU",
+    "countryCode": "NG",
+    "stateId": "NG-EN",
+    "stateCode": "EN",
+    "name": "Enugu",
+    "normalizedName": "enugu",
+    "slug": "ENUGU",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

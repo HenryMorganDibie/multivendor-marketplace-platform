@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-KW-ILORIN",
+    "countryCode": "NG",
+    "stateId": "NG-KW",
+    "stateCode": "KW",
+    "name": "Ilorin",
+    "normalizedName": "ilorin",
+    "slug": "ILORIN",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

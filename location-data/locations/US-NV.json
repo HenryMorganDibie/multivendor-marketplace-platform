@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-NV-CARSON-CITY",
+    "countryCode": "US",
+    "stateId": "US-NV",
+    "stateCode": "NV",
+    "name": "Carson City",
+    "normalizedName": "carson city",
+    "slug": "CARSON-CITY",
+    "locationType": "city",
+    "timeZone": "America/Los_Angeles",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

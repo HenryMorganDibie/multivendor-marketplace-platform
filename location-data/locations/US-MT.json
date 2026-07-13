@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-MT-HELENA",
+    "countryCode": "US",
+    "stateId": "US-MT",
+    "stateCode": "MT",
+    "name": "Helena",
+    "normalizedName": "helena",
+    "slug": "HELENA",
+    "locationType": "city",
+    "timeZone": "America/Denver",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

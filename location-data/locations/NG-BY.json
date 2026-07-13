@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-BY-YENAGOA",
+    "countryCode": "NG",
+    "stateId": "NG-BY",
+    "stateCode": "BY",
+    "name": "Yenagoa",
+    "normalizedName": "yenagoa",
+    "slug": "YENAGOA",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-AS-PAGO-PAGO",
+    "countryCode": "US",
+    "stateId": "US-AS",
+    "stateCode": "AS",
+    "name": "Pago Pago",
+    "normalizedName": "pago pago",
+    "slug": "PAGO-PAGO",
+    "locationType": "city",
+    "timeZone": "Pacific/Pago_Pago",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

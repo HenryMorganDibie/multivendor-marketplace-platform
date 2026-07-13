@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-AUR-BALER",
+    "countryCode": "PH",
+    "stateId": "PH-AUR",
+    "stateCode": "AUR",
+    "name": "Baler",
+    "normalizedName": "baler",
+    "slug": "BALER",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

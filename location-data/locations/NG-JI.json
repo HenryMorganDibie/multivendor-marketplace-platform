@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-JI-DUTSE",
+    "countryCode": "NG",
+    "stateId": "NG-JI",
+    "stateCode": "JI",
+    "name": "Dutse",
+    "normalizedName": "dutse",
+    "slug": "DUTSE",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

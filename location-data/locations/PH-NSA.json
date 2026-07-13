@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-NSA-CATARMAN",
+    "countryCode": "PH",
+    "stateId": "PH-NSA",
+    "stateCode": "NSA",
+    "name": "Catarman",
+    "normalizedName": "catarman",
+    "slug": "CATARMAN",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

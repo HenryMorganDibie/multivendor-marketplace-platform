@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-HI-HONOLULU",
+    "countryCode": "US",
+    "stateId": "US-HI",
+    "stateCode": "HI",
+    "name": "Honolulu",
+    "normalizedName": "honolulu",
+    "slug": "HONOLULU",
+    "locationType": "city",
+    "timeZone": "Pacific/Honolulu",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

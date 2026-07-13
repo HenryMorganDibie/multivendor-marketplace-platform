@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MY-04-MALACCA-CITY",
+    "countryCode": "MY",
+    "stateId": "MY-04",
+    "stateCode": "04",
+    "name": "Malacca City",
+    "normalizedName": "malacca city",
+    "slug": "MALACCA-CITY",
+    "locationType": "city",
+    "timeZone": "Asia/Kuala_Lumpur",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AE-RK-RAS-AL-KHAIMAH",
+    "countryCode": "AE",
+    "stateId": "AE-RK",
+    "stateCode": "RK",
+    "name": "Ras Al Khaimah",
+    "normalizedName": "ras al khaimah",
+    "slug": "RAS-AL-KHAIMAH",
+    "locationType": "city",
+    "timeZone": "Asia/Dubai",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

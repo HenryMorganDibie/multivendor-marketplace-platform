@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-UP-LUCKNOW",
+    "countryCode": "IN",
+    "stateId": "IN-UP",
+    "stateCode": "UP",
+    "name": "Lucknow",
+    "normalizedName": "lucknow",
+    "slug": "LUCKNOW",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

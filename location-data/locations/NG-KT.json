@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-KT-KATSINA",
+    "countryCode": "NG",
+    "stateId": "NG-KT",
+    "stateCode": "KT",
+    "name": "Katsina",
+    "normalizedName": "katsina",
+    "slug": "KATSINA",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

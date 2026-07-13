@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-MN-IMPHAL",
+    "countryCode": "IN",
+    "stateId": "IN-MN",
+    "stateCode": "MN",
+    "name": "Imphal",
+    "normalizedName": "imphal",
+    "slug": "IMPHAL",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

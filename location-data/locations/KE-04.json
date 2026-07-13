@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-04-HOLA",
+    "countryCode": "KE",
+    "stateId": "KE-04",
+    "stateCode": "04",
+    "name": "Hola",
+    "normalizedName": "hola",
+    "slug": "HOLA",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

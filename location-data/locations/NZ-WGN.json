@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NZ-WGN-WELLINGTON",
+    "countryCode": "NZ",
+    "stateId": "NZ-WGN",
+    "stateCode": "WGN",
+    "name": "Wellington",
+    "normalizedName": "wellington",
+    "slug": "WELLINGTON",
+    "locationType": "city",
+    "timeZone": "Pacific/Auckland",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

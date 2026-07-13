@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BZ-BZ-BELIZE-CITY",
+    "countryCode": "BZ",
+    "stateId": "BZ-BZ",
+    "stateCode": "BZ",
+    "name": "Belize City",
+    "normalizedName": "belize city",
+    "slug": "BELIZE-CITY",
+    "locationType": "city",
+    "timeZone": "America/Belize",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

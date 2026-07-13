@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-MG-MAYAGUANA",
+    "countryCode": "BS",
+    "stateId": "BS-MG",
+    "stateCode": "MG",
+    "name": "Mayaguana",
+    "normalizedName": "mayaguana",
+    "slug": "MAYAGUANA",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

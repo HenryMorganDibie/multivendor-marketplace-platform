@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-RI-PROVIDENCE",
+    "countryCode": "US",
+    "stateId": "US-RI",
+    "stateCode": "RI",
+    "name": "Providence",
+    "normalizedName": "providence",
+    "slug": "PROVIDENCE",
+    "locationType": "city",
+    "timeZone": "America/New_York",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

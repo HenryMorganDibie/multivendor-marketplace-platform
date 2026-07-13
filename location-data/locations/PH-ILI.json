@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-ILI-ILOILO",
+    "countryCode": "PH",
+    "stateId": "PH-ILI",
+    "stateCode": "ILI",
+    "name": "Iloilo",
+    "normalizedName": "iloilo",
+    "slug": "ILOILO",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

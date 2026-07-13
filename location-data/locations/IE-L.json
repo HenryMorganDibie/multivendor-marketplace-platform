@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IE-L-DUBLIN",
+    "countryCode": "IE",
+    "stateId": "IE-L",
+    "stateCode": "L",
+    "name": "Dublin",
+    "normalizedName": "dublin",
+    "slug": "DUBLIN",
+    "locationType": "city",
+    "timeZone": "Europe/Dublin",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

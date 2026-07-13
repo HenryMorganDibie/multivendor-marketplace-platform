@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-LAN-TUBOD",
+    "countryCode": "PH",
+    "stateId": "PH-LAN",
+    "stateCode": "LAN",
+    "name": "Tubod",
+    "normalizedName": "tubod",
+    "slug": "TUBOD",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

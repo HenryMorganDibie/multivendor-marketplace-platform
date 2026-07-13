@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BB-03-SAINT-GEORGE",
+    "countryCode": "BB",
+    "stateId": "BB-03",
+    "stateCode": "03",
+    "name": "Saint George",
+    "normalizedName": "saint george",
+    "slug": "SAINT-GEORGE",
+    "locationType": "city",
+    "timeZone": "America/Barbados",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

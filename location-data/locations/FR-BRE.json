@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FR-BRE-RENNES",
+    "countryCode": "FR",
+    "stateId": "FR-BRE",
+    "stateCode": "BRE",
+    "name": "Rennes",
+    "normalizedName": "rennes",
+    "slug": "RENNES",
+    "locationType": "city",
+    "timeZone": "Europe/Paris",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

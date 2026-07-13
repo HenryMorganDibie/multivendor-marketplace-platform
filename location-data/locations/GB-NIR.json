@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "GB-NIR-BELFAST",
+    "countryCode": "GB",
+    "stateId": "GB-NIR",
+    "stateCode": "NIR",
+    "name": "Belfast",
+    "normalizedName": "belfast",
+    "slug": "BELFAST",
+    "locationType": "city",
+    "timeZone": "Europe/London",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

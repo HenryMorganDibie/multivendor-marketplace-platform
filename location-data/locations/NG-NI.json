@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-NI-MINNA",
+    "countryCode": "NG",
+    "stateId": "NG-NI",
+    "stateCode": "NI",
+    "name": "Minna",
+    "normalizedName": "minna",
+    "slug": "MINNA",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

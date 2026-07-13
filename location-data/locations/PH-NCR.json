@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-NCR-MANILA",
+    "countryCode": "PH",
+    "stateId": "PH-NCR",
+    "stateCode": "NCR",
+    "name": "Manila",
+    "normalizedName": "manila",
+    "slug": "MANILA",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

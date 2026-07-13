@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-GO-GOMBE",
+    "countryCode": "NG",
+    "stateId": "NG-GO",
+    "stateCode": "GO",
+    "name": "Gombe",
+    "normalizedName": "gombe",
+    "slug": "GOMBE",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-PA-HARRISBURG",
+    "countryCode": "US",
+    "stateId": "US-PA",
+    "stateCode": "PA",
+    "name": "Harrisburg",
+    "normalizedName": "harrisburg",
+    "slug": "HARRISBURG",
+    "locationType": "city",
+    "timeZone": "America/New_York",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

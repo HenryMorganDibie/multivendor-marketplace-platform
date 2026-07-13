@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FJ-11-RAKIRAKI",
+    "countryCode": "FJ",
+    "stateId": "FJ-11",
+    "stateCode": "11",
+    "name": "Rakiraki",
+    "normalizedName": "rakiraki",
+    "slug": "RAKIRAKI",
+    "locationType": "city",
+    "timeZone": "Pacific/Fiji",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PK-IS-ISLAMABAD",
+    "countryCode": "PK",
+    "stateId": "PK-IS",
+    "stateCode": "IS",
+    "name": "Islamabad",
+    "normalizedName": "islamabad",
+    "slug": "ISLAMABAD",
+    "locationType": "city",
+    "timeZone": "Asia/Karachi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

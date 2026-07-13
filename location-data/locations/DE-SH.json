@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DE-SH-KIEL",
+    "countryCode": "DE",
+    "stateId": "DE-SH",
+    "stateCode": "SH",
+    "name": "Kiel",
+    "normalizedName": "kiel",
+    "slug": "KIEL",
+    "locationType": "city",
+    "timeZone": "Europe/Berlin",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

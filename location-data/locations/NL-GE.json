@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NL-GE-ARNHEM",
+    "countryCode": "NL",
+    "stateId": "NL-GE",
+    "stateCode": "GE",
+    "name": "Arnhem",
+    "normalizedName": "arnhem",
+    "slug": "ARNHEM",
+    "locationType": "city",
+    "timeZone": "Europe/Amsterdam",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-PAM-SAN-FERNANDO",
+    "countryCode": "PH",
+    "stateId": "PH-PAM",
+    "stateCode": "PAM",
+    "name": "San Fernando",
+    "normalizedName": "san fernando",
+    "slug": "SAN-FERNANDO",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

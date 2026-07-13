@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "SG-03-NORTH-REGION",
+    "countryCode": "SG",
+    "stateId": "SG-03",
+    "stateCode": "03",
+    "name": "North Region",
+    "normalizedName": "north region",
+    "slug": "NORTH-REGION",
+    "locationType": "city",
+    "timeZone": "Asia/Singapore",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

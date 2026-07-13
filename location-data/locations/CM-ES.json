@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "CM-ES-BERTOUA",
+    "countryCode": "CM",
+    "stateId": "CM-ES",
+    "stateCode": "ES",
+    "name": "Bertoua",
+    "normalizedName": "bertoua",
+    "slug": "BERTOUA",
+    "locationType": "city",
+    "timeZone": "Africa/Douala",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

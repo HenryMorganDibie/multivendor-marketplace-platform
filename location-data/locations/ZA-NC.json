@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ZA-NC-KIMBERLEY",
+    "countryCode": "ZA",
+    "stateId": "ZA-NC",
+    "stateCode": "NC",
+    "name": "Kimberley",
+    "normalizedName": "kimberley",
+    "slug": "KIMBERLEY",
+    "locationType": "city",
+    "timeZone": "Africa/Johannesburg",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

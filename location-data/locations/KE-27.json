@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-27-ELDORET",
+    "countryCode": "KE",
+    "stateId": "KE-27",
+    "stateCode": "27",
+    "name": "Eldoret",
+    "normalizedName": "eldoret",
+    "slug": "ELDORET",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

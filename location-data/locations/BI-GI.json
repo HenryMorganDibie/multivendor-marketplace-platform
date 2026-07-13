@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BI-GI-GITEGA",
+    "countryCode": "BI",
+    "stateId": "BI-GI",
+    "stateCode": "GI",
+    "name": "Gitega",
+    "normalizedName": "gitega",
+    "slug": "GITEGA",
+    "locationType": "city",
+    "timeZone": "Africa/Bujumbura",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

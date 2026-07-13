@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-DE-ASABA",
+    "countryCode": "NG",
+    "stateId": "NG-DE",
+    "stateCode": "DE",
+    "name": "Asaba",
+    "normalizedName": "asaba",
+    "slug": "ASABA",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

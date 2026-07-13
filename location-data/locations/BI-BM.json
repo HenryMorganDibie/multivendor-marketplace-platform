@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BI-BM-BUHUMUZA",
+    "countryCode": "BI",
+    "stateId": "BI-BM",
+    "stateCode": "BM",
+    "name": "Buhumuza",
+    "normalizedName": "buhumuza",
+    "slug": "BUHUMUZA",
+    "locationType": "city",
+    "timeZone": "Africa/Bujumbura",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

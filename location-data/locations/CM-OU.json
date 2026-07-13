@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "CM-OU-BAFOUSSAM",
+    "countryCode": "CM",
+    "stateId": "CM-OU",
+    "stateCode": "OU",
+    "name": "Bafoussam",
+    "normalizedName": "bafoussam",
+    "slug": "BAFOUSSAM",
+    "locationType": "city",
+    "timeZone": "Africa/Douala",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-MD-ANNAPOLIS",
+    "countryCode": "US",
+    "stateId": "US-MD",
+    "stateCode": "MD",
+    "name": "Annapolis",
+    "normalizedName": "annapolis",
+    "slug": "ANNAPOLIS",
+    "locationType": "city",
+    "timeZone": "America/New_York",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

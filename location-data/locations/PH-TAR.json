@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-TAR-TARLAC",
+    "countryCode": "PH",
+    "stateId": "PH-TAR",
+    "stateCode": "TAR",
+    "name": "Tarlac",
+    "normalizedName": "tarlac",
+    "slug": "TARLAC",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-FC-ABUJA",
+    "countryCode": "NG",
+    "stateId": "NG-FC",
+    "stateCode": "FC",
+    "name": "Abuja",
+    "normalizedName": "abuja",
+    "slug": "ABUJA",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AE-AZ-ABU-DHABI",
+    "countryCode": "AE",
+    "stateId": "AE-AZ",
+    "stateCode": "AZ",
+    "name": "Abu Dhabi",
+    "normalizedName": "abu dhabi",
+    "slug": "ABU-DHABI",
+    "locationType": "city",
+    "timeZone": "Asia/Dubai",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

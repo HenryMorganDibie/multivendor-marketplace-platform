@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MY-13-KUCHING",
+    "countryCode": "MY",
+    "stateId": "MY-13",
+    "stateCode": "13",
+    "name": "Kuching",
+    "normalizedName": "kuching",
+    "slug": "KUCHING",
+    "locationType": "city",
+    "timeZone": "Asia/Kuala_Lumpur",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

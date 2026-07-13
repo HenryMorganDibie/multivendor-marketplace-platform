@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-GUI-JORDAN",
+    "countryCode": "PH",
+    "stateId": "PH-GUI",
+    "stateCode": "GUI",
+    "name": "Jordan",
+    "normalizedName": "jordan",
+    "slug": "JORDAN",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

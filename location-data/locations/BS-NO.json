@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-NO-NORTH-ABACO",
+    "countryCode": "BS",
+    "stateId": "BS-NO",
+    "stateCode": "NO",
+    "name": "North Abaco",
+    "normalizedName": "north abaco",
+    "slug": "NORTH-ABACO",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

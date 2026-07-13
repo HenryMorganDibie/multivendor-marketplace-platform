@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-LA-BATON-ROUGE",
+    "countryCode": "US",
+    "stateId": "US-LA",
+    "stateCode": "LA",
+    "name": "Baton Rouge",
+    "normalizedName": "baton rouge",
+    "slug": "BATON-ROUGE",
+    "locationType": "city",
+    "timeZone": "America/Chicago",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

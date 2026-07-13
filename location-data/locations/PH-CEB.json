@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-CEB-CEBU",
+    "countryCode": "PH",
+    "stateId": "PH-CEB",
+    "stateCode": "CEB",
+    "name": "Cebu",
+    "normalizedName": "cebu",
+    "slug": "CEBU",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

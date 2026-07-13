@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-LA-LAGOS",
+    "countryCode": "NG",
+    "stateId": "NG-LA",
+    "stateCode": "LA",
+    "name": "Lagos",
+    "normalizedName": "lagos",
+    "slug": "LAGOS",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

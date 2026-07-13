@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "GB-WLS-CARDIFF",
+    "countryCode": "GB",
+    "stateId": "GB-WLS",
+    "stateCode": "WLS",
+    "name": "Cardiff",
+    "normalizedName": "cardiff",
+    "slug": "CARDIFF",
+    "locationType": "city",
+    "timeZone": "Europe/London",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

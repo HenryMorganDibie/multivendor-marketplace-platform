@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-KN-KANO",
+    "countryCode": "NG",
+    "stateId": "NG-KN",
+    "stateCode": "KN",
+    "name": "Kano",
+    "normalizedName": "kano",
+    "slug": "KANO",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

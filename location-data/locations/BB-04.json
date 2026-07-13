@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BB-04-SAINT-JAMES",
+    "countryCode": "BB",
+    "stateId": "BB-04",
+    "stateCode": "04",
+    "name": "Saint James",
+    "normalizedName": "saint james",
+    "slug": "SAINT-JAMES",
+    "locationType": "city",
+    "timeZone": "America/Barbados",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

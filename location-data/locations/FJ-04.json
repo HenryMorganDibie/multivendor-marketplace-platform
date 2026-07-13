@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FJ-04-KADAVU",
+    "countryCode": "FJ",
+    "stateId": "FJ-04",
+    "stateCode": "04",
+    "name": "Kadavu",
+    "normalizedName": "kadavu",
+    "slug": "KADAVU",
+    "locationType": "city",
+    "timeZone": "Pacific/Fiji",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

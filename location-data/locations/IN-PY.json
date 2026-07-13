@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-PY-PUDUCHERRY",
+    "countryCode": "IN",
+    "stateId": "IN-PY",
+    "stateCode": "PY",
+    "name": "Puducherry",
+    "normalizedName": "puducherry",
+    "slug": "PUDUCHERRY",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

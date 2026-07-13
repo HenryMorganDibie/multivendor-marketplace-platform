@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FR-YT-MAMOUDZOU",
+    "countryCode": "FR",
+    "stateId": "FR-YT",
+    "stateCode": "YT",
+    "name": "Mamoudzou",
+    "normalizedName": "mamoudzou",
+    "slug": "MAMOUDZOU",
+    "locationType": "city",
+    "timeZone": "Indian/Mayotte",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

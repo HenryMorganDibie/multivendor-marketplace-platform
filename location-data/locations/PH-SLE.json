@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-SLE-MAASIN",
+    "countryCode": "PH",
+    "stateId": "PH-SLE",
+    "stateCode": "SLE",
+    "name": "Maasin",
+    "normalizedName": "maasin",
+    "slug": "MAASIN",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

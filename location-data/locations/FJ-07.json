@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FJ-07-LABASA",
+    "countryCode": "FJ",
+    "stateId": "FJ-07",
+    "stateCode": "07",
+    "name": "Labasa",
+    "normalizedName": "labasa",
+    "slug": "LABASA",
+    "locationType": "city",
+    "timeZone": "Pacific/Fiji",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

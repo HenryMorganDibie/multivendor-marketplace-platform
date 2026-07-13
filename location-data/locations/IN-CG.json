@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-CG-RAIPUR",
+    "countryCode": "IN",
+    "stateId": "IN-CG",
+    "stateCode": "CG",
+    "name": "Raipur",
+    "normalizedName": "raipur",
+    "slug": "RAIPUR",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

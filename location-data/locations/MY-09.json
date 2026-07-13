@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MY-09-KANGAR",
+    "countryCode": "MY",
+    "stateId": "MY-09",
+    "stateCode": "09",
+    "name": "Kangar",
+    "normalizedName": "kangar",
+    "slug": "KANGAR",
+    "locationType": "city",
+    "timeZone": "Asia/Kuala_Lumpur",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

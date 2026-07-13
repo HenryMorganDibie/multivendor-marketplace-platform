@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BB-06-SAINT-JOSEPH",
+    "countryCode": "BB",
+    "stateId": "BB-06",
+    "stateCode": "06",
+    "name": "Saint Joseph",
+    "normalizedName": "saint joseph",
+    "slug": "SAINT-JOSEPH",
+    "locationType": "city",
+    "timeZone": "America/Barbados",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

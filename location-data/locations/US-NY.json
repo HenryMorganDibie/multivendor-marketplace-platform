@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-NY-ALBANY",
+    "countryCode": "US",
+    "stateId": "US-NY",
+    "stateCode": "NY",
+    "name": "Albany",
+    "normalizedName": "albany",
+    "slug": "ALBANY",
+    "locationType": "city",
+    "timeZone": "America/New_York",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

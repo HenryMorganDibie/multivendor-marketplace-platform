@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-OK-OKLAHOMA-CITY",
+    "countryCode": "US",
+    "stateId": "US-OK",
+    "stateCode": "OK",
+    "name": "Oklahoma City",
+    "normalizedName": "oklahoma city",
+    "slug": "OKLAHOMA-CITY",
+    "locationType": "city",
+    "timeZone": "America/Chicago",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

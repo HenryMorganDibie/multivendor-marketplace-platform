@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BB-02-SAINT-ANDREW",
+    "countryCode": "BB",
+    "stateId": "BB-02",
+    "stateCode": "02",
+    "name": "Saint Andrew",
+    "normalizedName": "saint andrew",
+    "slug": "SAINT-ANDREW",
+    "locationType": "city",
+    "timeZone": "America/Barbados",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

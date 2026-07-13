@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-MZ-AIZAWL",
+    "countryCode": "IN",
+    "stateId": "IN-MZ",
+    "stateCode": "MZ",
+    "name": "Aizawl",
+    "normalizedName": "aizawl",
+    "slug": "AIZAWL",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

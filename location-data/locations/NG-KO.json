@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-KO-LOKOJA",
+    "countryCode": "NG",
+    "stateId": "NG-KO",
+    "stateCode": "KO",
+    "name": "Lokoja",
+    "normalizedName": "lokoja",
+    "slug": "LOKOJA",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

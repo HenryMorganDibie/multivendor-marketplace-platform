@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-AZ-PHOENIX",
+    "countryCode": "US",
+    "stateId": "US-AZ",
+    "stateCode": "AZ",
+    "name": "Phoenix",
+    "normalizedName": "phoenix",
+    "slug": "PHOENIX",
+    "locationType": "city",
+    "timeZone": "America/Phoenix",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

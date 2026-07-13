@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NZ-CAN-CHRISTCHURCH",
+    "countryCode": "NZ",
+    "stateId": "NZ-CAN",
+    "stateCode": "CAN",
+    "name": "Christchurch",
+    "normalizedName": "christchurch",
+    "slug": "CHRISTCHURCH",
+    "locationType": "city",
+    "timeZone": "Pacific/Auckland",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

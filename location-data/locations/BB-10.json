@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BB-10-SAINT-PHILIP",
+    "countryCode": "BB",
+    "stateId": "BB-10",
+    "stateCode": "10",
+    "name": "Saint Philip",
+    "normalizedName": "saint philip",
+    "slug": "SAINT-PHILIP",
+    "locationType": "city",
+    "timeZone": "America/Barbados",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

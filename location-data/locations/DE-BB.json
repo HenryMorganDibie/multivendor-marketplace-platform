@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DE-BB-POTSDAM",
+    "countryCode": "DE",
+    "stateId": "DE-BB",
+    "stateCode": "BB",
+    "name": "Potsdam",
+    "normalizedName": "potsdam",
+    "slug": "POTSDAM",
+    "locationType": "city",
+    "timeZone": "Europe/Berlin",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

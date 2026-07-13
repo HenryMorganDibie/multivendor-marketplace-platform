@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-CAT-VIRAC",
+    "countryCode": "PH",
+    "stateId": "PH-CAT",
+    "stateCode": "CAT",
+    "name": "Virac",
+    "normalizedName": "virac",
+    "slug": "VIRAC",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

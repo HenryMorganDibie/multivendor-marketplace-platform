@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DE-NW-DUSSELDORF",
+    "countryCode": "DE",
+    "stateId": "DE-NW",
+    "stateCode": "NW",
+    "name": "Dusseldorf",
+    "normalizedName": "dusseldorf",
+    "slug": "DUSSELDORF",
+    "locationType": "city",
+    "timeZone": "Europe/Berlin",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

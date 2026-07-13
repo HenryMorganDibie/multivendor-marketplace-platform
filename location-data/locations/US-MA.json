@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-MA-BOSTON",
+    "countryCode": "US",
+    "stateId": "US-MA",
+    "stateCode": "MA",
+    "name": "Boston",
+    "normalizedName": "boston",
+    "slug": "BOSTON",
+    "locationType": "city",
+    "timeZone": "America/New_York",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

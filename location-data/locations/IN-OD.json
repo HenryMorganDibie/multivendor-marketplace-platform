@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-OD-BHUBANESWAR",
+    "countryCode": "IN",
+    "stateId": "IN-OD",
+    "stateCode": "OD",
+    "name": "Bhubaneswar",
+    "normalizedName": "bhubaneswar",
+    "slug": "BHUBANESWAR",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

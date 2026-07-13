@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DE-SN-DRESDEN",
+    "countryCode": "DE",
+    "stateId": "DE-SN",
+    "stateCode": "SN",
+    "name": "Dresden",
+    "normalizedName": "dresden",
+    "slug": "DRESDEN",
+    "locationType": "city",
+    "timeZone": "Europe/Berlin",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

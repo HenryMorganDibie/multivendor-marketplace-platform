@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-CAP-ROXAS",
+    "countryCode": "PH",
+    "stateId": "PH-CAP",
+    "stateCode": "CAP",
+    "name": "Roxas",
+    "normalizedName": "roxas",
+    "slug": "ROXAS",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

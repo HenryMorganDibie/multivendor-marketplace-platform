@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-02-KWALE",
+    "countryCode": "KE",
+    "stateId": "KE-02",
+    "stateCode": "02",
+    "name": "Kwale",
+    "normalizedName": "kwale",
+    "slug": "KWALE",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

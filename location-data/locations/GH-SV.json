@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "GH-SV-DAMONGO",
+    "countryCode": "GH",
+    "stateId": "GH-SV",
+    "stateCode": "SV",
+    "name": "Damongo",
+    "normalizedName": "damongo",
+    "slug": "DAMONGO",
+    "locationType": "city",
+    "timeZone": "Africa/Accra",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

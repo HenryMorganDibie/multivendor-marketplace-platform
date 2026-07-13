@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-CS-CENTRAL-ANDROS",
+    "countryCode": "BS",
+    "stateId": "BS-CS",
+    "stateCode": "CS",
+    "name": "Central Andros",
+    "normalizedName": "central andros",
+    "slug": "CENTRAL-ANDROS",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

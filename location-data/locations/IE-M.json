@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IE-M-CORK",
+    "countryCode": "IE",
+    "stateId": "IE-M",
+    "stateCode": "M",
+    "name": "Cork",
+    "normalizedName": "cork",
+    "slug": "CORK",
+    "locationType": "city",
+    "timeZone": "Europe/Dublin",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

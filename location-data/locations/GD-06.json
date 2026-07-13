@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "GD-06-SAINT-PATRICK",
+    "countryCode": "GD",
+    "stateId": "GD-06",
+    "stateCode": "06",
+    "name": "Saint Patrick",
+    "normalizedName": "saint patrick",
+    "slug": "SAINT-PATRICK",
+    "locationType": "city",
+    "timeZone": "America/Grenada",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

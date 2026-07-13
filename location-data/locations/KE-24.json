@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-24-KAPENGURIA",
+    "countryCode": "KE",
+    "stateId": "KE-24",
+    "stateCode": "24",
+    "name": "Kapenguria",
+    "normalizedName": "kapenguria",
+    "slug": "KAPENGURIA",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

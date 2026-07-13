@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-RC-RUM-CAY",
+    "countryCode": "BS",
+    "stateId": "BS-RC",
+    "stateCode": "RC",
+    "name": "Rum Cay",
+    "normalizedName": "rum cay",
+    "slug": "RUM-CAY",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AU-JBT-JERVIS-BAY",
+    "countryCode": "AU",
+    "stateId": "AU-JBT",
+    "stateCode": "JBT",
+    "name": "Jervis Bay",
+    "normalizedName": "jervis bay",
+    "slug": "JERVIS-BAY",
+    "locationType": "city",
+    "timeZone": "Australia/Sydney",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

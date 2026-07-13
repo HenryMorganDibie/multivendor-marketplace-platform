@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-44-MIGORI",
+    "countryCode": "KE",
+    "stateId": "KE-44",
+    "stateCode": "44",
+    "name": "Migori",
+    "normalizedName": "migori",
+    "slug": "MIGORI",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-39-BUNGOMA",
+    "countryCode": "KE",
+    "stateId": "KE-39",
+    "stateCode": "39",
+    "name": "Bungoma",
+    "normalizedName": "bungoma",
+    "slug": "BUNGOMA",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

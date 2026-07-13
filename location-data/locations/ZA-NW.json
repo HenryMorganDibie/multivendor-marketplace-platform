@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ZA-NW-MAHIKENG",
+    "countryCode": "ZA",
+    "stateId": "ZA-NW",
+    "stateCode": "NW",
+    "name": "Mahikeng",
+    "normalizedName": "mahikeng",
+    "slug": "MAHIKENG",
+    "locationType": "city",
+    "timeZone": "Africa/Johannesburg",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DE-NI-HANOVER",
+    "countryCode": "DE",
+    "stateId": "DE-NI",
+    "stateCode": "NI",
+    "name": "Hanover",
+    "normalizedName": "hanover",
+    "slug": "HANOVER",
+    "locationType": "city",
+    "timeZone": "Europe/Berlin",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

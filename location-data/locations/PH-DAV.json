@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-DAV-NABUNTURAN",
+    "countryCode": "PH",
+    "stateId": "PH-DAV",
+    "stateCode": "DAV",
+    "name": "Nabunturan",
+    "normalizedName": "nabunturan",
+    "slug": "NABUNTURAN",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

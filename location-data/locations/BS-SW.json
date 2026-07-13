@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-SW-SPANISH-WELLS",
+    "countryCode": "BS",
+    "stateId": "BS-SW",
+    "stateCode": "SW",
+    "name": "Spanish Wells",
+    "normalizedName": "spanish wells",
+    "slug": "SPANISH-WELLS",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

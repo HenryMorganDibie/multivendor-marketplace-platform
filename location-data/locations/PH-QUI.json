@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-QUI-CABARROGUIS",
+    "countryCode": "PH",
+    "stateId": "PH-QUI",
+    "stateCode": "QUI",
+    "name": "Cabarroguis",
+    "normalizedName": "cabarroguis",
+    "slug": "CABARROGUIS",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

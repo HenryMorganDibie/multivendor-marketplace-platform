@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "GD-05-SAINT-MARK",
+    "countryCode": "GD",
+    "stateId": "GD-05",
+    "stateCode": "05",
+    "name": "Saint Mark",
+    "normalizedName": "saint mark",
+    "slug": "SAINT-MARK",
+    "locationType": "city",
+    "timeZone": "America/Grenada",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

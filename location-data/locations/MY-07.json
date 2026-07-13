@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MY-07-GEORGE-TOWN",
+    "countryCode": "MY",
+    "stateId": "MY-07",
+    "stateCode": "07",
+    "name": "George Town",
+    "normalizedName": "george town",
+    "slug": "GEORGE-TOWN",
+    "locationType": "city",
+    "timeZone": "Asia/Kuala_Lumpur",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

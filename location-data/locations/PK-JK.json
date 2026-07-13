@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PK-JK-MUZAFFARABAD",
+    "countryCode": "PK",
+    "stateId": "PK-JK",
+    "stateCode": "JK",
+    "name": "Muzaffarabad",
+    "normalizedName": "muzaffarabad",
+    "slug": "MUZAFFARABAD",
+    "locationType": "city",
+    "timeZone": "Asia/Karachi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

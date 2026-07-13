@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-GJ-GANDHINAGAR",
+    "countryCode": "IN",
+    "stateId": "IN-GJ",
+    "stateCode": "GJ",
+    "name": "Gandhinagar",
+    "normalizedName": "gandhinagar",
+    "slug": "GANDHINAGAR",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

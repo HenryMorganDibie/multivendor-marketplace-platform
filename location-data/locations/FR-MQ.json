@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FR-MQ-FORT-DE-FRANCE",
+    "countryCode": "FR",
+    "stateId": "FR-MQ",
+    "stateCode": "MQ",
+    "name": "Fort-de-France",
+    "normalizedName": "fort-de-france",
+    "slug": "FORT-DE-FRANCE",
+    "locationType": "city",
+    "timeZone": "America/Martinique",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

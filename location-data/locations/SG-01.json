@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "SG-01-CENTRAL-REGION",
+    "countryCode": "SG",
+    "stateId": "SG-01",
+    "stateCode": "01",
+    "name": "Central Region",
+    "normalizedName": "central region",
+    "slug": "CENTRAL-REGION",
+    "locationType": "city",
+    "timeZone": "Asia/Singapore",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

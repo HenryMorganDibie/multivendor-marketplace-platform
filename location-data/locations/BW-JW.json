@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BW-JW-JWANENG",
+    "countryCode": "BW",
+    "stateId": "BW-JW",
+    "stateCode": "JW",
+    "name": "Jwaneng",
+    "normalizedName": "jwaneng",
+    "slug": "JWANENG",
+    "locationType": "city",
+    "timeZone": "Africa/Gaborone",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

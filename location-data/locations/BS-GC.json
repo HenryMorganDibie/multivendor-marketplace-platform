@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-GC-GRAND-CAY",
+    "countryCode": "BS",
+    "stateId": "BS-GC",
+    "stateCode": "GC",
+    "name": "Grand Cay",
+    "normalizedName": "grand cay",
+    "slug": "GRAND-CAY",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

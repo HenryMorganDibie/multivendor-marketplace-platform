@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "GD-04-SAINT-JOHN",
+    "countryCode": "GD",
+    "stateId": "GD-04",
+    "stateCode": "04",
+    "name": "Saint John",
+    "normalizedName": "saint john",
+    "slug": "SAINT-JOHN",
+    "locationType": "city",
+    "timeZone": "America/Grenada",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

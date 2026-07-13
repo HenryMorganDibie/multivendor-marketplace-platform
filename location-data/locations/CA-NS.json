@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "CA-NS-HALIFAX",
+    "countryCode": "CA",
+    "stateId": "CA-NS",
+    "stateCode": "NS",
+    "name": "Halifax",
+    "normalizedName": "halifax",
+    "slug": "HALIFAX",
+    "locationType": "city",
+    "timeZone": "America/Halifax",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

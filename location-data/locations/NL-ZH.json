@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NL-ZH-THE-HAGUE",
+    "countryCode": "NL",
+    "stateId": "NL-ZH",
+    "stateCode": "ZH",
+    "name": "The Hague",
+    "normalizedName": "the hague",
+    "slug": "THE-HAGUE",
+    "locationType": "city",
+    "timeZone": "Europe/Amsterdam",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

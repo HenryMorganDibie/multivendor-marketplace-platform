@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-CT-HARTFORD",
+    "countryCode": "US",
+    "stateId": "US-CT",
+    "stateCode": "CT",
+    "name": "Hartford",
+    "normalizedName": "hartford",
+    "slug": "HARTFORD",
+    "locationType": "city",
+    "timeZone": "America/New_York",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-SD-PIERRE",
+    "countryCode": "US",
+    "stateId": "US-SD",
+    "stateCode": "SD",
+    "name": "Pierre",
+    "normalizedName": "pierre",
+    "slug": "PIERRE",
+    "locationType": "city",
+    "timeZone": "America/Chicago",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

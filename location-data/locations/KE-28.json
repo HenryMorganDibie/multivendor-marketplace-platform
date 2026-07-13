@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-28-ITEN",
+    "countryCode": "KE",
+    "stateId": "KE-28",
+    "stateCode": "28",
+    "name": "Iten",
+    "normalizedName": "iten",
+    "slug": "ITEN",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

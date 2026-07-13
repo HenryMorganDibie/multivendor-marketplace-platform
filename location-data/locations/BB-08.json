@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BB-08-BRIDGETOWN",
+    "countryCode": "BB",
+    "stateId": "BB-08",
+    "stateCode": "08",
+    "name": "Bridgetown",
+    "normalizedName": "bridgetown",
+    "slug": "BRIDGETOWN",
+    "locationType": "city",
+    "timeZone": "America/Barbados",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

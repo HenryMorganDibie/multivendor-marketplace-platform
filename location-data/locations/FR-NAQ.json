@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FR-NAQ-BORDEAUX",
+    "countryCode": "FR",
+    "stateId": "FR-NAQ",
+    "stateCode": "NAQ",
+    "name": "Bordeaux",
+    "normalizedName": "bordeaux",
+    "slug": "BORDEAUX",
+    "locationType": "city",
+    "timeZone": "Europe/Paris",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DE-TH-ERFURT",
+    "countryCode": "DE",
+    "stateId": "DE-TH",
+    "stateCode": "TH",
+    "name": "Erfurt",
+    "normalizedName": "erfurt",
+    "slug": "ERFURT",
+    "locationType": "city",
+    "timeZone": "Europe/Berlin",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NZ-OTA-DUNEDIN",
+    "countryCode": "NZ",
+    "stateId": "NZ-OTA",
+    "stateCode": "OTA",
+    "name": "Dunedin",
+    "normalizedName": "dunedin",
+    "slug": "DUNEDIN",
+    "locationType": "city",
+    "timeZone": "Pacific/Auckland",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

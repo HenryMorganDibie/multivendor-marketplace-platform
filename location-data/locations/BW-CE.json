@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BW-CE-CENTRAL",
+    "countryCode": "BW",
+    "stateId": "BW-CE",
+    "stateCode": "CE",
+    "name": "Central",
+    "normalizedName": "central",
+    "slug": "CENTRAL",
+    "locationType": "city",
+    "timeZone": "Africa/Gaborone",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

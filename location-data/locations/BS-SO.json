@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-SO-SOUTH-ABACO",
+    "countryCode": "BS",
+    "stateId": "BS-SO",
+    "stateCode": "SO",
+    "name": "South Abaco",
+    "normalizedName": "south abaco",
+    "slug": "SOUTH-ABACO",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

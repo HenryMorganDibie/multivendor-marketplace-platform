@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MY-16-PUTRAJAYA",
+    "countryCode": "MY",
+    "stateId": "MY-16",
+    "stateCode": "16",
+    "name": "Putrajaya",
+    "normalizedName": "putrajaya",
+    "slug": "PUTRAJAYA",
+    "locationType": "city",
+    "timeZone": "Asia/Kuala_Lumpur",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

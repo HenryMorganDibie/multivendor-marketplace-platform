@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ZA-KZN-PIETERMARITZBURG",
+    "countryCode": "ZA",
+    "stateId": "ZA-KZN",
+    "stateCode": "KZN",
+    "name": "Pietermaritzburg",
+    "normalizedName": "pietermaritzburg",
+    "slug": "PIETERMARITZBURG",
+    "locationType": "city",
+    "timeZone": "Africa/Johannesburg",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

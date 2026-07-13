@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "GB-SCT-EDINBURGH",
+    "countryCode": "GB",
+    "stateId": "GB-SCT",
+    "stateCode": "SCT",
+    "name": "Edinburgh",
+    "normalizedName": "edinburgh",
+    "slug": "EDINBURGH",
+    "locationType": "city",
+    "timeZone": "Europe/London",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

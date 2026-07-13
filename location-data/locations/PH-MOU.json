@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-MOU-BONTOC",
+    "countryCode": "PH",
+    "stateId": "PH-MOU",
+    "stateCode": "MOU",
+    "name": "Bontoc",
+    "normalizedName": "bontoc",
+    "slug": "BONTOC",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

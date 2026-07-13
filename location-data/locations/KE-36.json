@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-36-BOMET",
+    "countryCode": "KE",
+    "stateId": "KE-36",
+    "stateCode": "36",
+    "name": "Bomet",
+    "normalizedName": "bomet",
+    "slug": "BOMET",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

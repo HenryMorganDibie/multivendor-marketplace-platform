@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DE-BW-STUTTGART",
+    "countryCode": "DE",
+    "stateId": "DE-BW",
+    "stateCode": "BW",
+    "name": "Stuttgart",
+    "normalizedName": "stuttgart",
+    "slug": "STUTTGART",
+    "locationType": "city",
+    "timeZone": "Europe/Berlin",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

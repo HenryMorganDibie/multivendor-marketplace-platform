@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BW-GH-GHANZI",
+    "countryCode": "BW",
+    "stateId": "BW-GH",
+    "stateCode": "GH",
+    "name": "Ghanzi",
+    "normalizedName": "ghanzi",
+    "slug": "GHANZI",
+    "locationType": "city",
+    "timeZone": "Africa/Gaborone",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

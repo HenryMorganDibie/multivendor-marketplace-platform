@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-PAN-LINGAYEN",
+    "countryCode": "PH",
+    "stateId": "PH-PAN",
+    "stateCode": "PAN",
+    "name": "Lingayen",
+    "normalizedName": "lingayen",
+    "slug": "LINGAYEN",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

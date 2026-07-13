@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-PL-JOS",
+    "countryCode": "NG",
+    "stateId": "NG-PL",
+    "stateCode": "PL",
+    "name": "Jos",
+    "normalizedName": "jos",
+    "slug": "JOS",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

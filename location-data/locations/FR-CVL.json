@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FR-CVL-ORLEANS",
+    "countryCode": "FR",
+    "stateId": "FR-CVL",
+    "stateCode": "CVL",
+    "name": "Orleans",
+    "normalizedName": "orleans",
+    "slug": "ORLEANS",
+    "locationType": "city",
+    "timeZone": "Europe/Paris",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

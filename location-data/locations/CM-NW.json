@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "CM-NW-BAMENDA",
+    "countryCode": "CM",
+    "stateId": "CM-NW",
+    "stateCode": "NW",
+    "name": "Bamenda",
+    "normalizedName": "bamenda",
+    "slug": "BAMENDA",
+    "locationType": "city",
+    "timeZone": "Africa/Douala",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

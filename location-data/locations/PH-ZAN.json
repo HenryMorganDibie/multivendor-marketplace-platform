@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-ZAN-DIPOLOG",
+    "countryCode": "PH",
+    "stateId": "PH-ZAN",
+    "stateCode": "ZAN",
+    "name": "Dipolog",
+    "normalizedName": "dipolog",
+    "slug": "DIPOLOG",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

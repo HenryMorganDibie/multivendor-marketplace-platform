@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FR-GES-STRASBOURG",
+    "countryCode": "FR",
+    "stateId": "FR-GES",
+    "stateCode": "GES",
+    "name": "Strasbourg",
+    "normalizedName": "strasbourg",
+    "slug": "STRASBOURG",
+    "locationType": "city",
+    "timeZone": "Europe/Paris",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

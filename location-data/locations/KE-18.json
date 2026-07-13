@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-18-OL-KALOU",
+    "countryCode": "KE",
+    "stateId": "KE-18",
+    "stateCode": "18",
+    "name": "Ol Kalou",
+    "normalizedName": "ol kalou",
+    "slug": "OL-KALOU",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

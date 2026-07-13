@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-CAV-TRECE-MARTIRES",
+    "countryCode": "PH",
+    "stateId": "PH-CAV",
+    "stateCode": "CAV",
+    "name": "Trece Martires",
+    "normalizedName": "trece martires",
+    "slug": "TRECE-MARTIRES",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-ILS-VIGAN",
+    "countryCode": "PH",
+    "stateId": "PH-ILS",
+    "stateCode": "ILS",
+    "name": "Vigan",
+    "normalizedName": "vigan",
+    "slug": "VIGAN",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

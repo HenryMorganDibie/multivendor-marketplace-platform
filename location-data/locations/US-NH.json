@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-NH-CONCORD",
+    "countryCode": "US",
+    "stateId": "US-NH",
+    "stateCode": "NH",
+    "name": "Concord",
+    "normalizedName": "concord",
+    "slug": "CONCORD",
+    "locationType": "city",
+    "timeZone": "America/New_York",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

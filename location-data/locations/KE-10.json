@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-10-MARSABIT",
+    "countryCode": "KE",
+    "stateId": "KE-10",
+    "stateCode": "10",
+    "name": "Marsabit",
+    "normalizedName": "marsabit",
+    "slug": "MARSABIT",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

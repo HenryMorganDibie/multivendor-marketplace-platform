@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-HP-SHIMLA",
+    "countryCode": "IN",
+    "stateId": "IN-HP",
+    "stateCode": "HP",
+    "name": "Shimla",
+    "normalizedName": "shimla",
+    "slug": "SHIMLA",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

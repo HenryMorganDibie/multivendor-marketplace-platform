@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AE-FU-FUJAIRAH",
+    "countryCode": "AE",
+    "stateId": "AE-FU",
+    "stateCode": "FU",
+    "name": "Fujairah",
+    "normalizedName": "fujairah",
+    "slug": "FUJAIRAH",
+    "locationType": "city",
+    "timeZone": "Asia/Dubai",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

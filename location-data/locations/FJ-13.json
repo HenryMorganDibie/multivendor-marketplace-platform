@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FJ-13-NAVUA",
+    "countryCode": "FJ",
+    "stateId": "FJ-13",
+    "stateCode": "13",
+    "name": "Navua",
+    "normalizedName": "navua",
+    "slug": "NAVUA",
+    "locationType": "city",
+    "timeZone": "Pacific/Fiji",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

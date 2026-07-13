@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-FP-FREEPORT",
+    "countryCode": "BS",
+    "stateId": "BS-FP",
+    "stateCode": "FP",
+    "name": "Freeport",
+    "normalizedName": "freeport",
+    "slug": "FREEPORT",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

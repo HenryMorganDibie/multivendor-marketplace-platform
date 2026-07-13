@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-BE-MAKURDI",
+    "countryCode": "NG",
+    "stateId": "NG-BE",
+    "stateCode": "BE",
+    "name": "Makurdi",
+    "normalizedName": "makurdi",
+    "slug": "MAKURDI",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

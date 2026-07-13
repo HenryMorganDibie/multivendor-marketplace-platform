@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-DE-DOVER",
+    "countryCode": "US",
+    "stateId": "US-DE",
+    "stateCode": "DE",
+    "name": "Dover",
+    "normalizedName": "dover",
+    "slug": "DOVER",
+    "locationType": "city",
+    "timeZone": "America/New_York",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

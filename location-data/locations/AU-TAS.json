@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AU-TAS-HOBART",
+    "countryCode": "AU",
+    "stateId": "AU-TAS",
+    "stateCode": "TAS",
+    "name": "Hobart",
+    "normalizedName": "hobart",
+    "slug": "HOBART",
+    "locationType": "city",
+    "timeZone": "Australia/Hobart",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

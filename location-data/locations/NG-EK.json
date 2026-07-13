@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-EK-ADO-EKITI",
+    "countryCode": "NG",
+    "stateId": "NG-EK",
+    "stateCode": "EK",
+    "name": "Ado-Ekiti",
+    "normalizedName": "ado-ekiti",
+    "slug": "ADO-EKITI",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

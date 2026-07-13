@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IN-NL-KOHIMA",
+    "countryCode": "IN",
+    "stateId": "IN-NL",
+    "stateCode": "NL",
+    "name": "Kohima",
+    "normalizedName": "kohima",
+    "slug": "KOHIMA",
+    "locationType": "city",
+    "timeZone": "Asia/Kolkata",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

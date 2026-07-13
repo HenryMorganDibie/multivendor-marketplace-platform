@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-BTN-BASCO",
+    "countryCode": "PH",
+    "stateId": "PH-BTN",
+    "stateCode": "BTN",
+    "name": "Basco",
+    "normalizedName": "basco",
+    "slug": "BASCO",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

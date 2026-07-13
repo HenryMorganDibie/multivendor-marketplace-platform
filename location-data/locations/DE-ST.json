@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DE-ST-MAGDEBURG",
+    "countryCode": "DE",
+    "stateId": "DE-ST",
+    "stateCode": "ST",
+    "name": "Magdeburg",
+    "normalizedName": "magdeburg",
+    "slug": "MAGDEBURG",
+    "locationType": "city",
+    "timeZone": "Europe/Berlin",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

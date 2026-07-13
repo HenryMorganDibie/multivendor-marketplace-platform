@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AE-SH-SHARJAH",
+    "countryCode": "AE",
+    "stateId": "AE-SH",
+    "stateCode": "SH",
+    "name": "Sharjah",
+    "normalizedName": "sharjah",
+    "slug": "SHARJAH",
+    "locationType": "city",
+    "timeZone": "Asia/Dubai",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

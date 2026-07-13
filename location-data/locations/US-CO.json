@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-CO-DENVER",
+    "countryCode": "US",
+    "stateId": "US-CO",
+    "stateCode": "CO",
+    "name": "Denver",
+    "normalizedName": "denver",
+    "slug": "DENVER",
+    "locationType": "city",
+    "timeZone": "America/Denver",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

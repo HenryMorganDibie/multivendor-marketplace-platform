@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-ND-BISMARCK",
+    "countryCode": "US",
+    "stateId": "US-ND",
+    "stateCode": "ND",
+    "name": "Bismarck",
+    "normalizedName": "bismarck",
+    "slug": "BISMARCK",
+    "locationType": "city",
+    "timeZone": "America/North_Dakota/Center",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

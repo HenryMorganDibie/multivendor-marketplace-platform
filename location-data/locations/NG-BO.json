@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-BO-MAIDUGURI",
+    "countryCode": "NG",
+    "stateId": "NG-BO",
+    "stateCode": "BO",
+    "name": "Maiduguri",
+    "normalizedName": "maiduguri",
+    "slug": "MAIDUGURI",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

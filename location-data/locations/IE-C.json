@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "IE-C-GALWAY",
+    "countryCode": "IE",
+    "stateId": "IE-C",
+    "stateCode": "C",
+    "name": "Galway",
+    "normalizedName": "galway",
+    "slug": "GALWAY",
+    "locationType": "city",
+    "timeZone": "Europe/Dublin",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

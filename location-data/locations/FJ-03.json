@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FJ-03-SAVUSAVU",
+    "countryCode": "FJ",
+    "stateId": "FJ-03",
+    "stateCode": "03",
+    "name": "Savusavu",
+    "normalizedName": "savusavu",
+    "slug": "SAVUSAVU",
+    "locationType": "city",
+    "timeZone": "Pacific/Fiji",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "CM-EN-MAROUA",
+    "countryCode": "CM",
+    "stateId": "CM-EN",
+    "stateCode": "EN",
+    "name": "Maroua",
+    "normalizedName": "maroua",
+    "slug": "MAROUA",
+    "locationType": "city",
+    "timeZone": "Africa/Douala",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

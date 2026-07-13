@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-BY-BERRY-ISLANDS",
+    "countryCode": "BS",
+    "stateId": "BS-BY",
+    "stateCode": "BY",
+    "name": "Berry Islands",
+    "normalizedName": "berry islands",
+    "slug": "BERRY-ISLANDS",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

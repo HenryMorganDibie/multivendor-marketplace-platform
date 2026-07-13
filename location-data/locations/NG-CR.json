@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NG-CR-CALABAR",
+    "countryCode": "NG",
+    "stateId": "NG-CR",
+    "stateCode": "CR",
+    "name": "Calabar",
+    "normalizedName": "calabar",
+    "slug": "CALABAR",
+    "locationType": "city",
+    "timeZone": "Africa/Lagos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

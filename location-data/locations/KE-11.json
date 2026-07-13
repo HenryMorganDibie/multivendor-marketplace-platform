@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-11-ISIOLO",
+    "countryCode": "KE",
+    "stateId": "KE-11",
+    "stateCode": "11",
+    "name": "Isiolo",
+    "normalizedName": "isiolo",
+    "slug": "ISIOLO",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

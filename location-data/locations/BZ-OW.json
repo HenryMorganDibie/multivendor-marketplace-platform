@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BZ-OW-ORANGE-WALK",
+    "countryCode": "BZ",
+    "stateId": "BZ-OW",
+    "stateCode": "OW",
+    "name": "Orange Walk",
+    "normalizedName": "orange walk",
+    "slug": "ORANGE-WALK",
+    "locationType": "city",
+    "timeZone": "America/Belize",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

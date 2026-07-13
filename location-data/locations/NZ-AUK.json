@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "NZ-AUK-AUCKLAND",
+    "countryCode": "NZ",
+    "stateId": "NZ-AUK",
+    "stateCode": "AUK",
+    "name": "Auckland",
+    "normalizedName": "auckland",
+    "slug": "AUCKLAND",
+    "locationType": "city",
+    "timeZone": "Pacific/Auckland",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

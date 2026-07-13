@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "KE-41-SIAYA",
+    "countryCode": "KE",
+    "stateId": "KE-41",
+    "stateCode": "41",
+    "name": "Siaya",
+    "normalizedName": "siaya",
+    "slug": "SIAYA",
+    "locationType": "city",
+    "timeZone": "Africa/Nairobi",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

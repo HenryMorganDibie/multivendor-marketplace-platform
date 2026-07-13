@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BB-05-SAINT-JOHN",
+    "countryCode": "BB",
+    "stateId": "BB-05",
+    "stateCode": "05",
+    "name": "Saint John",
+    "normalizedName": "saint john",
+    "slug": "SAINT-JOHN",
+    "locationType": "city",
+    "timeZone": "America/Barbados",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

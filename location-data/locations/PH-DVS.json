@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-DVS-DIGOS",
+    "countryCode": "PH",
+    "stateId": "PH-DVS",
+    "stateCode": "DVS",
+    "name": "Digos",
+    "normalizedName": "digos",
+    "slug": "DIGOS",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

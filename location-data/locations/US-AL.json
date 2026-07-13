@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-AL-MONTGOMERY",
+    "countryCode": "US",
+    "stateId": "US-AL",
+    "stateCode": "AL",
+    "name": "Montgomery",
+    "normalizedName": "montgomery",
+    "slug": "MONTGOMERY",
+    "locationType": "city",
+    "timeZone": "America/Chicago",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

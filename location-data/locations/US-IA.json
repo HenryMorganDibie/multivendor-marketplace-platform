@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "US-IA-DES-MOINES",
+    "countryCode": "US",
+    "stateId": "US-IA",
+    "stateCode": "IA",
+    "name": "Des Moines",
+    "normalizedName": "des moines",
+    "slug": "DES-MOINES",
+    "locationType": "city",
+    "timeZone": "America/Chicago",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BS-CI-CAT-ISLAND",
+    "countryCode": "BS",
+    "stateId": "BS-CI",
+    "stateCode": "CI",
+    "name": "Cat Island",
+    "normalizedName": "cat island",
+    "slug": "CAT-ISLAND",
+    "locationType": "city",
+    "timeZone": "America/Nassau",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

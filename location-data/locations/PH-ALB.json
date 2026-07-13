@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-ALB-LEGAZPI",
+    "countryCode": "PH",
+    "stateId": "PH-ALB",
+    "stateCode": "ALB",
+    "name": "Legazpi",
+    "normalizedName": "legazpi",
+    "slug": "LEGAZPI",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

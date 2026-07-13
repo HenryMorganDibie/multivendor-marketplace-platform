@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "PH-APY-KABUGAO",
+    "countryCode": "PH",
+    "stateId": "PH-APY",
+    "stateCode": "APY",
+    "name": "Kabugao",
+    "normalizedName": "kabugao",
+    "slug": "KABUGAO",
+    "locationType": "city",
+    "timeZone": "Asia/Manila",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

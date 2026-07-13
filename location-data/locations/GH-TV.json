@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "GH-TV-HO",
+    "countryCode": "GH",
+    "stateId": "GH-TV",
+    "stateCode": "TV",
+    "name": "Ho",
+    "normalizedName": "ho",
+    "slug": "HO",
+    "locationType": "city",
+    "timeZone": "Africa/Accra",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

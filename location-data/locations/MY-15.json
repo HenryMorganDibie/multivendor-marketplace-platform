@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MY-15-LABUAN",
+    "countryCode": "MY",
+    "stateId": "MY-15",
+    "stateCode": "15",
+    "name": "Labuan",
+    "normalizedName": "labuan",
+    "slug": "LABUAN",
+    "locationType": "city",
+    "timeZone": "Asia/Kuala_Lumpur",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "FJ-02-BUA",
+    "countryCode": "FJ",
+    "stateId": "FJ-02",
+    "stateCode": "02",
+    "name": "Bua",
+    "normalizedName": "bua",
+    "slug": "BUA",
+    "locationType": "city",
+    "timeZone": "Pacific/Fiji",
+    "status": "active",
+    "sortOrder": 1
+  }
+]
