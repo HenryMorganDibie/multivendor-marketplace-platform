@@ -1,0 +1,42 @@
+[
+  {
+    "stateId": "GB-ENG",
+    "countryCode": "GB",
+    "stateCode": "ENG",
+    "name": "England",
+    "normalizedName": "england",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "GB-NIR",
+    "countryCode": "GB",
+    "stateCode": "NIR",
+    "name": "Northern Ireland",
+    "normalizedName": "northern ireland",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "GB-SCT",
+    "countryCode": "GB",
+    "stateCode": "SCT",
+    "name": "Scotland",
+    "normalizedName": "scotland",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "GB-WLS",
+    "countryCode": "GB",
+    "stateCode": "WLS",
+    "name": "Wales",
+    "normalizedName": "wales",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 4
+  }
+]
