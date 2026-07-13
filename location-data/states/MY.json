@@ -1,0 +1,162 @@
+[
+  {
+    "stateId": "MY-01",
+    "countryCode": "MY",
+    "stateCode": "01",
+    "name": "Johor",
+    "normalizedName": "johor",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "MY-02",
+    "countryCode": "MY",
+    "stateCode": "02",
+    "name": "Kedah",
+    "normalizedName": "kedah",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "MY-03",
+    "countryCode": "MY",
+    "stateCode": "03",
+    "name": "Kelantan",
+    "normalizedName": "kelantan",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "MY-04",
+    "countryCode": "MY",
+    "stateCode": "04",
+    "name": "Melaka",
+    "normalizedName": "melaka",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "MY-05",
+    "countryCode": "MY",
+    "stateCode": "05",
+    "name": "Negeri Sembilan",
+    "normalizedName": "negeri sembilan",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "MY-06",
+    "countryCode": "MY",
+    "stateCode": "06",
+    "name": "Pahang",
+    "normalizedName": "pahang",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "MY-07",
+    "countryCode": "MY",
+    "stateCode": "07",
+    "name": "Penang",
+    "normalizedName": "penang",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "MY-08",
+    "countryCode": "MY",
+    "stateCode": "08",
+    "name": "Perak",
+    "normalizedName": "perak",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "MY-09",
+    "countryCode": "MY",
+    "stateCode": "09",
+    "name": "Perlis",
+    "normalizedName": "perlis",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "MY-10",
+    "countryCode": "MY",
+    "stateCode": "10",
+    "name": "Selangor",
+    "normalizedName": "selangor",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "MY-11",
+    "countryCode": "MY",
+    "stateCode": "11",
+    "name": "Terengganu",
+    "normalizedName": "terengganu",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "MY-12",
+    "countryCode": "MY",
+    "stateCode": "12",
+    "name": "Sabah",
+    "normalizedName": "sabah",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "MY-13",
+    "countryCode": "MY",
+    "stateCode": "13",
+    "name": "Sarawak",
+    "normalizedName": "sarawak",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 13
+  },
+  {
+    "stateId": "MY-14",
+    "countryCode": "MY",
+    "stateCode": "14",
+    "name": "Kuala Lumpur",
+    "normalizedName": "kuala lumpur",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 14
+  },
+  {
+    "stateId": "MY-15",
+    "countryCode": "MY",
+    "stateCode": "15",
+    "name": "Labuan",
+    "normalizedName": "labuan",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 15
+  },
+  {
+    "stateId": "MY-16",
+    "countryCode": "MY",
+    "stateCode": "16",
+    "name": "Putrajaya",
+    "normalizedName": "putrajaya",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 16
+  }
+]
