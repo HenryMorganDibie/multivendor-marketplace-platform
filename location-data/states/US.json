@@ -1,0 +1,562 @@
+[
+  {
+    "stateId": "US-AL",
+    "countryCode": "US",
+    "stateCode": "AL",
+    "name": "Alabama",
+    "normalizedName": "alabama",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "US-AK",
+    "countryCode": "US",
+    "stateCode": "AK",
+    "name": "Alaska",
+    "normalizedName": "alaska",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "US-AZ",
+    "countryCode": "US",
+    "stateCode": "AZ",
+    "name": "Arizona",
+    "normalizedName": "arizona",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "US-AR",
+    "countryCode": "US",
+    "stateCode": "AR",
+    "name": "Arkansas",
+    "normalizedName": "arkansas",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "US-CA",
+    "countryCode": "US",
+    "stateCode": "CA",
+    "name": "California",
+    "normalizedName": "california",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "US-CO",
+    "countryCode": "US",
+    "stateCode": "CO",
+    "name": "Colorado",
+    "normalizedName": "colorado",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "US-CT",
+    "countryCode": "US",
+    "stateCode": "CT",
+    "name": "Connecticut",
+    "normalizedName": "connecticut",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "US-DE",
+    "countryCode": "US",
+    "stateCode": "DE",
+    "name": "Delaware",
+    "normalizedName": "delaware",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "US-FL",
+    "countryCode": "US",
+    "stateCode": "FL",
+    "name": "Florida",
+    "normalizedName": "florida",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "US-GA",
+    "countryCode": "US",
+    "stateCode": "GA",
+    "name": "Georgia",
+    "normalizedName": "georgia",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "US-HI",
+    "countryCode": "US",
+    "stateCode": "HI",
+    "name": "Hawaii",
+    "normalizedName": "hawaii",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "US-ID",
+    "countryCode": "US",
+    "stateCode": "ID",
+    "name": "Idaho",
+    "normalizedName": "idaho",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "US-IL",
+    "countryCode": "US",
+    "stateCode": "IL",
+    "name": "Illinois",
+    "normalizedName": "illinois",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 13
+  },
+  {
+    "stateId": "US-IN",
+    "countryCode": "US",
+    "stateCode": "IN",
+    "name": "Indiana",
+    "normalizedName": "indiana",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 14
+  },
+  {
+    "stateId": "US-IA",
+    "countryCode": "US",
+    "stateCode": "IA",
+    "name": "Iowa",
+    "normalizedName": "iowa",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 15
+  },
+  {
+    "stateId": "US-KS",
+    "countryCode": "US",
+    "stateCode": "KS",
+    "name": "Kansas",
+    "normalizedName": "kansas",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 16
+  },
+  {
+    "stateId": "US-KY",
+    "countryCode": "US",
+    "stateCode": "KY",
+    "name": "Kentucky",
+    "normalizedName": "kentucky",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 17
+  },
+  {
+    "stateId": "US-LA",
+    "countryCode": "US",
+    "stateCode": "LA",
+    "name": "Louisiana",
+    "normalizedName": "louisiana",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 18
+  },
+  {
+    "stateId": "US-ME",
+    "countryCode": "US",
+    "stateCode": "ME",
+    "name": "Maine",
+    "normalizedName": "maine",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 19
+  },
+  {
+    "stateId": "US-MD",
+    "countryCode": "US",
+    "stateCode": "MD",
+    "name": "Maryland",
+    "normalizedName": "maryland",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 20
+  },
+  {
+    "stateId": "US-MA",
+    "countryCode": "US",
+    "stateCode": "MA",
+    "name": "Massachusetts",
+    "normalizedName": "massachusetts",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 21
+  },
+  {
+    "stateId": "US-MI",
+    "countryCode": "US",
+    "stateCode": "MI",
+    "name": "Michigan",
+    "normalizedName": "michigan",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 22
+  },
+  {
+    "stateId": "US-MN",
+    "countryCode": "US",
+    "stateCode": "MN",
+    "name": "Minnesota",
+    "normalizedName": "minnesota",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 23
+  },
+  {
+    "stateId": "US-MS",
+    "countryCode": "US",
+    "stateCode": "MS",
+    "name": "Mississippi",
+    "normalizedName": "mississippi",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 24
+  },
+  {
+    "stateId": "US-MO",
+    "countryCode": "US",
+    "stateCode": "MO",
+    "name": "Missouri",
+    "normalizedName": "missouri",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 25
+  },
+  {
+    "stateId": "US-MT",
+    "countryCode": "US",
+    "stateCode": "MT",
+    "name": "Montana",
+    "normalizedName": "montana",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 26
+  },
+  {
+    "stateId": "US-NE",
+    "countryCode": "US",
+    "stateCode": "NE",
+    "name": "Nebraska",
+    "normalizedName": "nebraska",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 27
+  },
+  {
+    "stateId": "US-NV",
+    "countryCode": "US",
+    "stateCode": "NV",
+    "name": "Nevada",
+    "normalizedName": "nevada",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 28
+  },
+  {
+    "stateId": "US-NH",
+    "countryCode": "US",
+    "stateCode": "NH",
+    "name": "New Hampshire",
+    "normalizedName": "new hampshire",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 29
+  },
+  {
+    "stateId": "US-NJ",
+    "countryCode": "US",
+    "stateCode": "NJ",
+    "name": "New Jersey",
+    "normalizedName": "new jersey",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 30
+  },
+  {
+    "stateId": "US-NM",
+    "countryCode": "US",
+    "stateCode": "NM",
+    "name": "New Mexico",
+    "normalizedName": "new mexico",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 31
+  },
+  {
+    "stateId": "US-NY",
+    "countryCode": "US",
+    "stateCode": "NY",
+    "name": "New York",
+    "normalizedName": "new york",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 32
+  },
+  {
+    "stateId": "US-NC",
+    "countryCode": "US",
+    "stateCode": "NC",
+    "name": "North Carolina",
+    "normalizedName": "north carolina",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 33
+  },
+  {
+    "stateId": "US-ND",
+    "countryCode": "US",
+    "stateCode": "ND",
+    "name": "North Dakota",
+    "normalizedName": "north dakota",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 34
+  },
+  {
+    "stateId": "US-OH",
+    "countryCode": "US",
+    "stateCode": "OH",
+    "name": "Ohio",
+    "normalizedName": "ohio",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 35
+  },
+  {
+    "stateId": "US-OK",
+    "countryCode": "US",
+    "stateCode": "OK",
+    "name": "Oklahoma",
+    "normalizedName": "oklahoma",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 36
+  },
+  {
+    "stateId": "US-OR",
+    "countryCode": "US",
+    "stateCode": "OR",
+    "name": "Oregon",
+    "normalizedName": "oregon",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 37
+  },
+  {
+    "stateId": "US-PA",
+    "countryCode": "US",
+    "stateCode": "PA",
+    "name": "Pennsylvania",
+    "normalizedName": "pennsylvania",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 38
+  },
+  {
+    "stateId": "US-RI",
+    "countryCode": "US",
+    "stateCode": "RI",
+    "name": "Rhode Island",
+    "normalizedName": "rhode island",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 39
+  },
+  {
+    "stateId": "US-SC",
+    "countryCode": "US",
+    "stateCode": "SC",
+    "name": "South Carolina",
+    "normalizedName": "south carolina",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 40
+  },
+  {
+    "stateId": "US-SD",
+    "countryCode": "US",
+    "stateCode": "SD",
+    "name": "South Dakota",
+    "normalizedName": "south dakota",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 41
+  },
+  {
+    "stateId": "US-TN",
+    "countryCode": "US",
+    "stateCode": "TN",
+    "name": "Tennessee",
+    "normalizedName": "tennessee",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 42
+  },
+  {
+    "stateId": "US-TX",
+    "countryCode": "US",
+    "stateCode": "TX",
+    "name": "Texas",
+    "normalizedName": "texas",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 43
+  },
+  {
+    "stateId": "US-UT",
+    "countryCode": "US",
+    "stateCode": "UT",
+    "name": "Utah",
+    "normalizedName": "utah",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 44
+  },
+  {
+    "stateId": "US-VT",
+    "countryCode": "US",
+    "stateCode": "VT",
+    "name": "Vermont",
+    "normalizedName": "vermont",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 45
+  },
+  {
+    "stateId": "US-VA",
+    "countryCode": "US",
+    "stateCode": "VA",
+    "name": "Virginia",
+    "normalizedName": "virginia",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 46
+  },
+  {
+    "stateId": "US-WA",
+    "countryCode": "US",
+    "stateCode": "WA",
+    "name": "Washington",
+    "normalizedName": "washington",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 47
+  },
+  {
+    "stateId": "US-WV",
+    "countryCode": "US",
+    "stateCode": "WV",
+    "name": "West Virginia",
+    "normalizedName": "west virginia",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 48
+  },
+  {
+    "stateId": "US-WI",
+    "countryCode": "US",
+    "stateCode": "WI",
+    "name": "Wisconsin",
+    "normalizedName": "wisconsin",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 49
+  },
+  {
+    "stateId": "US-WY",
+    "countryCode": "US",
+    "stateCode": "WY",
+    "name": "Wyoming",
+    "normalizedName": "wyoming",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 50
+  },
+  {
+    "stateId": "US-DC",
+    "countryCode": "US",
+    "stateCode": "DC",
+    "name": "District of Columbia",
+    "normalizedName": "district of columbia",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 51
+  },
+  {
+    "stateId": "US-AS",
+    "countryCode": "US",
+    "stateCode": "AS",
+    "name": "American Samoa",
+    "normalizedName": "american samoa",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 52
+  },
+  {
+    "stateId": "US-GU",
+    "countryCode": "US",
+    "stateCode": "GU",
+    "name": "Guam",
+    "normalizedName": "guam",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 53
+  },
+  {
+    "stateId": "US-MP",
+    "countryCode": "US",
+    "stateCode": "MP",
+    "name": "Northern Mariana Islands",
+    "normalizedName": "northern mariana islands",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 54
+  },
+  {
+    "stateId": "US-PR",
+    "countryCode": "US",
+    "stateCode": "PR",
+    "name": "Puerto Rico",
+    "normalizedName": "puerto rico",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 55
+  },
+  {
+    "stateId": "US-VI",
+    "countryCode": "US",
+    "stateCode": "VI",
+    "name": "U.S. Virgin Islands",
+    "normalizedName": "u.s. virgin islands",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 56
+  }
+]
