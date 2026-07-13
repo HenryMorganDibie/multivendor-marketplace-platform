@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BF-13-GAOUA",
+    "countryCode": "BF",
+    "stateId": "BF-13",
+    "stateCode": "13",
+    "name": "Gaoua",
+    "normalizedName": "gaoua",
+    "slug": "GAOUA",
+    "locationType": "city",
+    "timeZone": "Africa/Ouagadougou",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

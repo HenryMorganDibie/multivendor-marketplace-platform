@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "JM-06-HALF-WAY-TREE",
+    "countryCode": "JM",
+    "stateId": "JM-06",
+    "stateCode": "06",
+    "name": "Half Way Tree",
+    "normalizedName": "half way tree",
+    "slug": "HALF-WAY-TREE",
+    "locationType": "city",
+    "timeZone": "America/Jamaica",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

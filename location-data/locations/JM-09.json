@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "JM-09-BLACK-RIVER",
+    "countryCode": "JM",
+    "stateId": "JM-09",
+    "stateCode": "09",
+    "name": "Black River",
+    "normalizedName": "black river",
+    "slug": "BLACK-RIVER",
+    "locationType": "city",
+    "timeZone": "America/Jamaica",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

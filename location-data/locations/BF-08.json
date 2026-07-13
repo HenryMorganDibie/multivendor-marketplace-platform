@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BF-08-FADA-NGOURMA",
+    "countryCode": "BF",
+    "stateId": "BF-08",
+    "stateCode": "08",
+    "name": "Fada N'Gourma",
+    "normalizedName": "fada ngourma",
+    "slug": "FADA-NGOURMA",
+    "locationType": "city",
+    "timeZone": "Africa/Ouagadougou",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

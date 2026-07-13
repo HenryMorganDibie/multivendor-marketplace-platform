@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "JM-13-FALMOUTH",
+    "countryCode": "JM",
+    "stateId": "JM-13",
+    "stateCode": "13",
+    "name": "Falmouth",
+    "normalizedName": "falmouth",
+    "slug": "FALMOUTH",
+    "locationType": "city",
+    "timeZone": "America/Jamaica",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

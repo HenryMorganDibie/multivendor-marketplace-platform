@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "JM-08-SPANISH-TOWN",
+    "countryCode": "JM",
+    "stateId": "JM-08",
+    "stateCode": "08",
+    "name": "Spanish Town",
+    "normalizedName": "spanish town",
+    "slug": "SPANISH-TOWN",
+    "locationType": "city",
+    "timeZone": "America/Jamaica",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

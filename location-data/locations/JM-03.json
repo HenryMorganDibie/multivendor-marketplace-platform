@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "JM-03-KINGSTON",
+    "countryCode": "JM",
+    "stateId": "JM-03",
+    "stateCode": "03",
+    "name": "Kingston",
+    "normalizedName": "kingston",
+    "slug": "KINGSTON",
+    "locationType": "city",
+    "timeZone": "America/Jamaica",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

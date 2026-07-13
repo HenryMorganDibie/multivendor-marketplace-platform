@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "JM-07-SAINT-ANNS-BAY",
+    "countryCode": "JM",
+    "stateId": "JM-07",
+    "stateCode": "07",
+    "name": "Saint Ann's Bay",
+    "normalizedName": "saint anns bay",
+    "slug": "SAINT-ANNS-BAY",
+    "locationType": "city",
+    "timeZone": "America/Jamaica",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

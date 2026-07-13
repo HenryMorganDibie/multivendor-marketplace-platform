@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BF-06-KOUDOUGOU",
+    "countryCode": "BF",
+    "stateId": "BF-06",
+    "stateCode": "06",
+    "name": "Koudougou",
+    "normalizedName": "koudougou",
+    "slug": "KOUDOUGOU",
+    "locationType": "city",
+    "timeZone": "Africa/Ouagadougou",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

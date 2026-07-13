@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BF-02-BANFORA",
+    "countryCode": "BF",
+    "stateId": "BF-02",
+    "stateCode": "02",
+    "name": "Banfora",
+    "normalizedName": "banfora",
+    "slug": "BANFORA",
+    "locationType": "city",
+    "timeZone": "Africa/Ouagadougou",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

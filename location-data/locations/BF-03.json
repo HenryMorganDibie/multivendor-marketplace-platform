@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BF-03-OUAGADOUGOU",
+    "countryCode": "BF",
+    "stateId": "BF-03",
+    "stateCode": "03",
+    "name": "Ouagadougou",
+    "normalizedName": "ouagadougou",
+    "slug": "OUAGADOUGOU",
+    "locationType": "city",
+    "timeZone": "Africa/Ouagadougou",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

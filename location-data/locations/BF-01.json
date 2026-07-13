@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BF-01-DEDOUGOU",
+    "countryCode": "BF",
+    "stateId": "BF-01",
+    "stateCode": "01",
+    "name": "Dedougou",
+    "normalizedName": "dedougou",
+    "slug": "DEDOUGOU",
+    "locationType": "city",
+    "timeZone": "Africa/Ouagadougou",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

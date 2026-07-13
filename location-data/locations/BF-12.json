@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BF-12-DORI",
+    "countryCode": "BF",
+    "stateId": "BF-12",
+    "stateCode": "12",
+    "name": "Dori",
+    "normalizedName": "dori",
+    "slug": "DORI",
+    "locationType": "city",
+    "timeZone": "Africa/Ouagadougou",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

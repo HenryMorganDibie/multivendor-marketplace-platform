@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BF-04-TENKODOGO",
+    "countryCode": "BF",
+    "stateId": "BF-04",
+    "stateCode": "04",
+    "name": "Tenkodogo",
+    "normalizedName": "tenkodogo",
+    "slug": "TENKODOGO",
+    "locationType": "city",
+    "timeZone": "Africa/Ouagadougou",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

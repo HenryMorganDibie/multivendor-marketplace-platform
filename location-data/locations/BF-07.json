@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BF-07-MANGA",
+    "countryCode": "BF",
+    "stateId": "BF-07",
+    "stateCode": "07",
+    "name": "Manga",
+    "normalizedName": "manga",
+    "slug": "MANGA",
+    "locationType": "city",
+    "timeZone": "Africa/Ouagadougou",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

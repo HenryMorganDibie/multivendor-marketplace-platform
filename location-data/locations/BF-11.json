@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BF-11-ZINIARE",
+    "countryCode": "BF",
+    "stateId": "BF-11",
+    "stateCode": "11",
+    "name": "Ziniare",
+    "normalizedName": "ziniare",
+    "slug": "ZINIARE",
+    "locationType": "city",
+    "timeZone": "Africa/Ouagadougou",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

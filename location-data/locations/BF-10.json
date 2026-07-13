@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BF-10-OUAHIGOUYA",
+    "countryCode": "BF",
+    "stateId": "BF-10",
+    "stateCode": "10",
+    "name": "Ouahigouya",
+    "normalizedName": "ouahigouya",
+    "slug": "OUAHIGOUYA",
+    "locationType": "city",
+    "timeZone": "Africa/Ouagadougou",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

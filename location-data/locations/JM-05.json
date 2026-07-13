@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "JM-05-PORT-ANTONIO",
+    "countryCode": "JM",
+    "stateId": "JM-05",
+    "stateCode": "05",
+    "name": "Port Antonio",
+    "normalizedName": "port antonio",
+    "slug": "PORT-ANTONIO",
+    "locationType": "city",
+    "timeZone": "America/Jamaica",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

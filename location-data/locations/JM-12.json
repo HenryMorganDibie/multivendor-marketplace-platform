@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "JM-12-MORANT-BAY",
+    "countryCode": "JM",
+    "stateId": "JM-12",
+    "stateCode": "12",
+    "name": "Morant Bay",
+    "normalizedName": "morant bay",
+    "slug": "MORANT-BAY",
+    "locationType": "city",
+    "timeZone": "America/Jamaica",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

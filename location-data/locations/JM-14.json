@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "JM-14-SAVANNA-LA-MAR",
+    "countryCode": "JM",
+    "stateId": "JM-14",
+    "stateCode": "14",
+    "name": "Savanna-la-Mar",
+    "normalizedName": "savanna-la-mar",
+    "slug": "SAVANNA-LA-MAR",
+    "locationType": "city",
+    "timeZone": "America/Jamaica",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

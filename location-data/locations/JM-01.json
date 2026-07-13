@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "JM-01-MAY-PEN",
+    "countryCode": "JM",
+    "stateId": "JM-01",
+    "stateCode": "01",
+    "name": "May Pen",
+    "normalizedName": "may pen",
+    "slug": "MAY-PEN",
+    "locationType": "city",
+    "timeZone": "America/Jamaica",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "JM-10-MONTEGO-BAY",
+    "countryCode": "JM",
+    "stateId": "JM-10",
+    "stateCode": "10",
+    "name": "Montego Bay",
+    "normalizedName": "montego bay",
+    "slug": "MONTEGO-BAY",
+    "locationType": "city",
+    "timeZone": "America/Jamaica",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

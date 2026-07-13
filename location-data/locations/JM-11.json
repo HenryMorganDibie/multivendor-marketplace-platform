@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "JM-11-PORT-MARIA",
+    "countryCode": "JM",
+    "stateId": "JM-11",
+    "stateCode": "11",
+    "name": "Port Maria",
+    "normalizedName": "port maria",
+    "slug": "PORT-MARIA",
+    "locationType": "city",
+    "timeZone": "America/Jamaica",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

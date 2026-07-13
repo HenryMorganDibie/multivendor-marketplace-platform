@@ -184,8 +184,8 @@
 
 ## Burkina Faso
 - [x] Country
-- [ ] States
-- [ ] Areas
+- [x] States
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
@@ -590,8 +590,8 @@
 
 ## Jamaica
 - [x] Country
-- [ ] States
-- [ ] Areas
+- [x] States
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 

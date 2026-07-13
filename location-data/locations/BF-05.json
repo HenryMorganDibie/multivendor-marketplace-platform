@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BF-05-KAYA",
+    "countryCode": "BF",
+    "stateId": "BF-05",
+    "stateCode": "05",
+    "name": "Kaya",
+    "normalizedName": "kaya",
+    "slug": "KAYA",
+    "locationType": "city",
+    "timeZone": "Africa/Ouagadougou",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

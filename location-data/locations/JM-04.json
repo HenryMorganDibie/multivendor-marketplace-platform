@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "JM-04-MANDEVILLE",
+    "countryCode": "JM",
+    "stateId": "JM-04",
+    "stateCode": "04",
+    "name": "Mandeville",
+    "normalizedName": "mandeville",
+    "slug": "MANDEVILLE",
+    "locationType": "city",
+    "timeZone": "America/Jamaica",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

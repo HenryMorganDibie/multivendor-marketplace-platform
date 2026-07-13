@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "JM-02-LUCEA",
+    "countryCode": "JM",
+    "stateId": "JM-02",
+    "stateCode": "02",
+    "name": "Lucea",
+    "normalizedName": "lucea",
+    "slug": "LUCEA",
+    "locationType": "city",
+    "timeZone": "America/Jamaica",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

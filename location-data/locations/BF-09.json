@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BF-09-BOBO-DIOULASSO",
+    "countryCode": "BF",
+    "stateId": "BF-09",
+    "stateCode": "09",
+    "name": "Bobo-Dioulasso",
+    "normalizedName": "bobo-dioulasso",
+    "slug": "BOBO-DIOULASSO",
+    "locationType": "city",
+    "timeZone": "Africa/Ouagadougou",
+    "status": "active",
+    "sortOrder": 1
+  }
+]
