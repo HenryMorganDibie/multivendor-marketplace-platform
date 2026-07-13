@@ -1,0 +1,162 @@
+[
+  {
+    "stateId": "NZ-AUK",
+    "countryCode": "NZ",
+    "stateCode": "AUK",
+    "name": "Auckland",
+    "normalizedName": "auckland",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "NZ-BOP",
+    "countryCode": "NZ",
+    "stateCode": "BOP",
+    "name": "Bay of Plenty",
+    "normalizedName": "bay of plenty",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "NZ-CAN",
+    "countryCode": "NZ",
+    "stateCode": "CAN",
+    "name": "Canterbury",
+    "normalizedName": "canterbury",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "NZ-GIS",
+    "countryCode": "NZ",
+    "stateCode": "GIS",
+    "name": "Gisborne",
+    "normalizedName": "gisborne",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "NZ-HKB",
+    "countryCode": "NZ",
+    "stateCode": "HKB",
+    "name": "Hawke's Bay",
+    "normalizedName": "hawke's bay",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "NZ-MWT",
+    "countryCode": "NZ",
+    "stateCode": "MWT",
+    "name": "Manawatū-Whanganui",
+    "normalizedName": "manawatu-whanganui",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "NZ-MBH",
+    "countryCode": "NZ",
+    "stateCode": "MBH",
+    "name": "Marlborough",
+    "normalizedName": "marlborough",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "NZ-NSN",
+    "countryCode": "NZ",
+    "stateCode": "NSN",
+    "name": "Nelson",
+    "normalizedName": "nelson",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "NZ-NTL",
+    "countryCode": "NZ",
+    "stateCode": "NTL",
+    "name": "Northland",
+    "normalizedName": "northland",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "NZ-OTA",
+    "countryCode": "NZ",
+    "stateCode": "OTA",
+    "name": "Otago",
+    "normalizedName": "otago",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "NZ-STL",
+    "countryCode": "NZ",
+    "stateCode": "STL",
+    "name": "Southland",
+    "normalizedName": "southland",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "NZ-TKI",
+    "countryCode": "NZ",
+    "stateCode": "TKI",
+    "name": "Taranaki",
+    "normalizedName": "taranaki",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "NZ-TAS",
+    "countryCode": "NZ",
+    "stateCode": "TAS",
+    "name": "Tasman",
+    "normalizedName": "tasman",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 13
+  },
+  {
+    "stateId": "NZ-WKO",
+    "countryCode": "NZ",
+    "stateCode": "WKO",
+    "name": "Waikato",
+    "normalizedName": "waikato",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 14
+  },
+  {
+    "stateId": "NZ-WGN",
+    "countryCode": "NZ",
+    "stateCode": "WGN",
+    "name": "Wellington",
+    "normalizedName": "wellington",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 15
+  },
+  {
+    "stateId": "NZ-WTC",
+    "countryCode": "NZ",
+    "stateCode": "WTC",
+    "name": "West Coast",
+    "normalizedName": "west coast",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 16
+  }
+]
