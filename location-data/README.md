@@ -2,7 +2,7 @@
 
 This folder is the platform's canonical, self-authored location catalogue — every **Country**, **State/Province**, and **Area/City** the app knows about. Nothing here comes from a third-party API or dataset; every record is written by hand (or generated from public reference sources) and reviewed before import.
 
-This is a quick reference. **`THE PLATFORM_LOCATION_SPEC_v1.md` (currently v1.5) is the full canonical spec** — schema, ID rules, validation rules, and the complete import workflow all live there. If anything here and the spec ever disagree, the spec wins.
+This is a quick reference. **`THE PLATFORM LOCATION SPEC v1.5.md` is the full canonical spec** — schema, ID rules, validation rules, and the complete import workflow all live there. If anything here and the spec ever disagree, the spec wins.
 
 This folder does **not** cover vendor Store Status / business hours (Section 8 of the spec) — that's a separate, per-vendor schema populated through the app itself, not through seed files. It's mentioned here only because it depends on the `timeZone` field defined below.
 
