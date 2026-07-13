@@ -1,6 +1,15 @@
-# the platform Canonical Location Specification (v1.4)
+# the platform Canonical Location Specification (v1.5)
+
+Version: 1.5
+Owner: the platform
+Status: Approved
+Last Updated:
+Next Review:
 
 **Status:** Canonical — this is the single source of truth for Country, State/Province, and Area/City data across the the platform backend and frontend. All future countries must be added following this specification.
+
+**v1.5 update:**
+1. Added a "Country Status" section documenting the concrete behavioral meaning of each `status` value (`active`/`inactive`/`archived`) as it applies to the Country level specifically — signup visibility, existing-account access, and onboarding availability. See the "Country Status" section at the end of this document.
 
 **v1.4 update (corrections from the client's second review):**
 1. Removed the pricing/scope conclusion from the Section 8 closing note — the spec now stays purely technical and doesn't determine chargeability.
@@ -460,3 +469,27 @@ Unlike the location catalogue (Sections 1–7), this schema is not authored via 
 ---
 
 This specification uses standard, publicly published identifier systems where they exist: ISO 3166-1 (country codes), BCP 47 (locale tags), and the IANA Time Zone Database (timezone identifiers). Using these standards is intentional and correct — they are the accepted, stable references for this kind of data, and reinventing them would only introduce inconsistency. What this specification does not do is depend on any third-party API, dataset, or runtime service to operate. the platform owns and maintains its own runtime location catalogue — every `countries`, `states`, and `locations` document is authored by the platform and stored in the platform's own Firestore instance. The application never calls an external service to resolve a country, state, city, or timezone at runtime; it reads only from data the platform has already authored and imported. This is intentional and should remain true for all future countries added to the system.
+
+---
+
+## Country Status
+
+`status` on a Country record (Section 1.1) is not just a display flag — it has concrete behavioral meaning:
+
+**`active`**
+- Appears in signup
+- Vendors and customers may register
+- Marketplace operates normally
+
+**`inactive`**
+- Hidden from new registration
+- Existing vendors/customers continue to access their accounts
+- New onboarding disabled
+
+**`archived`**
+- Country has been retired
+- Hidden from all dropdowns
+- Retained only for historical references
+- Never physically deleted
+
+This same three-value model (`active` | `inactive` | `archived`) is reused as-is on State and Location records (Sections 1.2, 1.3) for consistency, but this section documents the Country level specifically since it's the level that gates signup and onboarding.

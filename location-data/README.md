@@ -2,7 +2,7 @@
 
 This folder is the platform's canonical, self-authored location catalogue — every **Country**, **State/Province**, and **Area/City** the app knows about. Nothing here comes from a third-party API or dataset; every record is written by hand (or generated from public reference sources) and reviewed before import.
 
-This is a quick reference. **`THE PLATFORM_LOCATION_SPEC_v1.md` (currently v1.4) is the full canonical spec** — schema, ID rules, validation rules, and the complete import workflow all live there. If anything here and the spec ever disagree, the spec wins.
+This is a quick reference. **`THE PLATFORM_LOCATION_SPEC_v1.md` (currently v1.5) is the full canonical spec** — schema, ID rules, validation rules, and the complete import workflow all live there. If anything here and the spec ever disagree, the spec wins.
 
 This folder does **not** cover vendor Store Status / business hours (Section 8 of the spec) — that's a separate, per-vendor schema populated through the app itself, not through seed files. It's mentioned here only because it depends on the `timeZone` field defined below.
 
@@ -24,10 +24,13 @@ interface CountryDocument {
   currencySymbol: string;      // e.g. "₦"
   flagEmoji: string;           // Unicode flag emoji, e.g. "🇳🇬"
   defaultLocale: string;       // BCP 47 tag, e.g. "en-NG"
-  status: "active" | "inactive" | "archived";
+  status: "active" | "inactive" | "archived";  // gates signup/onboarding at the country level —
+                                                // see "Country Status" in the spec for exact behavior per value
   sortOrder: number;           // integer, controls display order in dropdowns
 }
 ```
+
+**Country `status` has real behavioral meaning, not just display:** `active` = open for signup/onboarding, `inactive` = existing accounts keep working but no new registration, `archived` = fully retired, hidden everywhere, never deleted. Full detail in the spec's "Country Status" section.
 
 ### State / Province
 
