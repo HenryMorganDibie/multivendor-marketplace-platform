@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AD-07-ANDORRA-LA-VELLA",
+    "countryCode": "AD",
+    "stateId": "AD-07",
+    "stateCode": "07",
+    "name": "Andorra la Vella",
+    "normalizedName": "andorra la vella",
+    "slug": "ANDORRA-LA-VELLA",
+    "locationType": "city",
+    "timeZone": "Europe/Andorra",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

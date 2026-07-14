@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-18-JIJEL",
+    "countryCode": "DZ",
+    "stateId": "DZ-18",
+    "stateCode": "18",
+    "name": "Jijel",
+    "normalizedName": "jijel",
+    "slug": "JIJEL",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

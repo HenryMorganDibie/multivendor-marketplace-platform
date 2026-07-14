@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AO-CAB-CABINDA",
+    "countryCode": "AO",
+    "stateId": "AO-CAB",
+    "stateCode": "CAB",
+    "name": "Cabinda",
+    "normalizedName": "cabinda",
+    "slug": "CABINDA",
+    "locationType": "city",
+    "timeZone": "Africa/Luanda",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

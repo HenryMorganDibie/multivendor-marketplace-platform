@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-39-EL-OUED",
+    "countryCode": "DZ",
+    "stateId": "DZ-39",
+    "stateCode": "39",
+    "name": "El Oued",
+    "normalizedName": "el oued",
+    "slug": "EL-OUED",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

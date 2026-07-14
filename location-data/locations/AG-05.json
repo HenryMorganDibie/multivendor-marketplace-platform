@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AG-05-SAINT-MARY",
+    "countryCode": "AG",
+    "stateId": "AG-05",
+    "stateCode": "05",
+    "name": "Saint Mary",
+    "normalizedName": "saint mary",
+    "slug": "SAINT-MARY",
+    "locationType": "city",
+    "timeZone": "America/Antigua",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

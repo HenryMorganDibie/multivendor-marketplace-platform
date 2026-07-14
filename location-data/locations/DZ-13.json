@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-13-TLEMCEN",
+    "countryCode": "DZ",
+    "stateId": "DZ-13",
+    "stateCode": "13",
+    "name": "Tlemcen",
+    "normalizedName": "tlemcen",
+    "slug": "TLEMCEN",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

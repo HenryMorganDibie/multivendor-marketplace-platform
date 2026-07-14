@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AD-03-ENCAMP",
+    "countryCode": "AD",
+    "stateId": "AD-03",
+    "stateCode": "03",
+    "name": "Encamp",
+    "normalizedName": "encamp",
+    "slug": "ENCAMP",
+    "locationType": "city",
+    "timeZone": "Europe/Andorra",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

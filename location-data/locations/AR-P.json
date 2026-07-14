@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AR-P-FORMOSA",
+    "countryCode": "AR",
+    "stateId": "AR-P",
+    "stateCode": "P",
+    "name": "Formosa",
+    "normalizedName": "formosa",
+    "slug": "FORMOSA",
+    "locationType": "city",
+    "timeZone": "America/Argentina/Buenos_Aires",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

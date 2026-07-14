@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AR-F-LA-RIOJA",
+    "countryCode": "AR",
+    "stateId": "AR-F",
+    "stateCode": "F",
+    "name": "La Rioja",
+    "normalizedName": "la rioja",
+    "slug": "LA-RIOJA",
+    "locationType": "city",
+    "timeZone": "America/Argentina/La_Rioja",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AR-R-VIEDMA",
+    "countryCode": "AR",
+    "stateId": "AR-R",
+    "stateCode": "R",
+    "name": "Viedma",
+    "normalizedName": "viedma",
+    "slug": "VIEDMA",
+    "locationType": "city",
+    "timeZone": "America/Argentina/Buenos_Aires",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

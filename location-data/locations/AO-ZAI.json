@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AO-ZAI-MBANZA-KONGO",
+    "countryCode": "AO",
+    "stateId": "AO-ZAI",
+    "stateCode": "ZAI",
+    "name": "M'banza-Kongo",
+    "normalizedName": "mbanza-kongo",
+    "slug": "MBANZA-KONGO",
+    "locationType": "city",
+    "timeZone": "Africa/Luanda",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

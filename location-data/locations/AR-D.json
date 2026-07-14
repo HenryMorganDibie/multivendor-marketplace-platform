@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AR-D-SAN-LUIS",
+    "countryCode": "AR",
+    "stateId": "AR-D",
+    "stateCode": "D",
+    "name": "San Luis",
+    "normalizedName": "san luis",
+    "slug": "SAN-LUIS",
+    "locationType": "city",
+    "timeZone": "America/Argentina/San_Luis",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

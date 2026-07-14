@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-08-BECHAR",
+    "countryCode": "DZ",
+    "stateId": "DZ-08",
+    "stateCode": "08",
+    "name": "Bechar",
+    "normalizedName": "bechar",
+    "slug": "BECHAR",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

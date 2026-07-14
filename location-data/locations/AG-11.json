@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AG-11-REDONDA",
+    "countryCode": "AG",
+    "stateId": "AG-11",
+    "stateCode": "11",
+    "name": "Redonda",
+    "normalizedName": "redonda",
+    "slug": "REDONDA",
+    "locationType": "city",
+    "timeZone": "America/Antigua",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

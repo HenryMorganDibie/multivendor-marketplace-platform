@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AO-UIG-UIGE",
+    "countryCode": "AO",
+    "stateId": "AO-UIG",
+    "stateCode": "UIG",
+    "name": "Uige",
+    "normalizedName": "uige",
+    "slug": "UIGE",
+    "locationType": "city",
+    "timeZone": "Africa/Luanda",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

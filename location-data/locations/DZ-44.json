@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-44-AIN-DEFLA",
+    "countryCode": "DZ",
+    "stateId": "DZ-44",
+    "stateCode": "44",
+    "name": "Ain Defla",
+    "normalizedName": "ain defla",
+    "slug": "AIN-DEFLA",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

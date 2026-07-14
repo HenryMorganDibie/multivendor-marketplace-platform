@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AD-05-ORDINO",
+    "countryCode": "AD",
+    "stateId": "AD-05",
+    "stateCode": "05",
+    "name": "Ordino",
+    "normalizedName": "ordino",
+    "slug": "ORDINO",
+    "locationType": "city",
+    "timeZone": "Europe/Andorra",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

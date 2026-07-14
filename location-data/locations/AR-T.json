@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AR-T-SAN-MIGUEL-DE-TUCUMAN",
+    "countryCode": "AR",
+    "stateId": "AR-T",
+    "stateCode": "T",
+    "name": "San Miguel de Tucuman",
+    "normalizedName": "san miguel de tucuman",
+    "slug": "SAN-MIGUEL-DE-TUCUMAN",
+    "locationType": "city",
+    "timeZone": "America/Argentina/Tucuman",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AO-CNO-NDALATANDO",
+    "countryCode": "AO",
+    "stateId": "AO-CNO",
+    "stateCode": "CNO",
+    "name": "Ndalatando",
+    "normalizedName": "ndalatando",
+    "slug": "NDALATANDO",
+    "locationType": "city",
+    "timeZone": "Africa/Luanda",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

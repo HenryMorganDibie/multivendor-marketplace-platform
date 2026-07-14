@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-03-LAGHOUAT",
+    "countryCode": "DZ",
+    "stateId": "DZ-03",
+    "stateCode": "03",
+    "name": "Laghouat",
+    "normalizedName": "laghouat",
+    "slug": "LAGHOUAT",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

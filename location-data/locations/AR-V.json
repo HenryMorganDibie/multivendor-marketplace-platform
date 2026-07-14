@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AR-V-USHUAIA",
+    "countryCode": "AR",
+    "stateId": "AR-V",
+    "stateCode": "V",
+    "name": "Ushuaia",
+    "normalizedName": "ushuaia",
+    "slug": "USHUAIA",
+    "locationType": "city",
+    "timeZone": "America/Argentina/Ushuaia",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

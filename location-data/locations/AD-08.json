@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AD-08-SANT-JULIA-DE-LORIA",
+    "countryCode": "AD",
+    "stateId": "AD-08",
+    "stateCode": "08",
+    "name": "Sant Julia de Loria",
+    "normalizedName": "sant julia de loria",
+    "slug": "SANT-JULIA-DE-LORIA",
+    "locationType": "city",
+    "timeZone": "Europe/Andorra",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

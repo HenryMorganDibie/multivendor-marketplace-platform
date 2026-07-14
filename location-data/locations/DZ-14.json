@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-14-TIARET",
+    "countryCode": "DZ",
+    "stateId": "DZ-14",
+    "stateCode": "14",
+    "name": "Tiaret",
+    "normalizedName": "tiaret",
+    "slug": "TIARET",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

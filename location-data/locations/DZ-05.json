@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-05-BATNA",
+    "countryCode": "DZ",
+    "stateId": "DZ-05",
+    "stateCode": "05",
+    "name": "Batna",
+    "normalizedName": "batna",
+    "slug": "BATNA",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

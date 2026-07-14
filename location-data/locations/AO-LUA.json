@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AO-LUA-LUANDA",
+    "countryCode": "AO",
+    "stateId": "AO-LUA",
+    "stateCode": "LUA",
+    "name": "Luanda",
+    "normalizedName": "luanda",
+    "slug": "LUANDA",
+    "locationType": "city",
+    "timeZone": "Africa/Luanda",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

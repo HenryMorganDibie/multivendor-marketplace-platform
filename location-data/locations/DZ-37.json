@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-37-TINDOUF",
+    "countryCode": "DZ",
+    "stateId": "DZ-37",
+    "stateCode": "37",
+    "name": "Tindouf",
+    "normalizedName": "tindouf",
+    "slug": "TINDOUF",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

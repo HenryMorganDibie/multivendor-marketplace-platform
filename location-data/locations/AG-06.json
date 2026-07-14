@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AG-06-SAINT-PAUL",
+    "countryCode": "AG",
+    "stateId": "AG-06",
+    "stateCode": "06",
+    "name": "Saint Paul",
+    "normalizedName": "saint paul",
+    "slug": "SAINT-PAUL",
+    "locationType": "city",
+    "timeZone": "America/Antigua",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-06-BEJAIA",
+    "countryCode": "DZ",
+    "stateId": "DZ-06",
+    "stateCode": "06",
+    "name": "Bejaia",
+    "normalizedName": "bejaia",
+    "slug": "BEJAIA",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

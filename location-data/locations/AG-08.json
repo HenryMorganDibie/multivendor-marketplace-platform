@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AG-08-SAINT-PHILIP",
+    "countryCode": "AG",
+    "stateId": "AG-08",
+    "stateCode": "08",
+    "name": "Saint Philip",
+    "normalizedName": "saint philip",
+    "slug": "SAINT-PHILIP",
+    "locationType": "city",
+    "timeZone": "America/Antigua",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-27-MOSTAGANEM",
+    "countryCode": "DZ",
+    "stateId": "DZ-27",
+    "stateCode": "27",
+    "name": "Mostaganem",
+    "normalizedName": "mostaganem",
+    "slug": "MOSTAGANEM",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

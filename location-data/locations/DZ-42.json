@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-42-TIPAZA",
+    "countryCode": "DZ",
+    "stateId": "DZ-42",
+    "stateCode": "42",
+    "name": "Tipaza",
+    "normalizedName": "tipaza",
+    "slug": "TIPAZA",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

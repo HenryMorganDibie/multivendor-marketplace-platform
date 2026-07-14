@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-51-OULED-DJELLAL",
+    "countryCode": "DZ",
+    "stateId": "DZ-51",
+    "stateCode": "51",
+    "name": "Ouled Djellal",
+    "normalizedName": "ouled djellal",
+    "slug": "OULED-DJELLAL",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

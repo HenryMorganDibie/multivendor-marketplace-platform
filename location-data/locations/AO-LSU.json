@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AO-LSU-SAURIMO",
+    "countryCode": "AO",
+    "stateId": "AO-LSU",
+    "stateCode": "LSU",
+    "name": "Saurimo",
+    "normalizedName": "saurimo",
+    "slug": "SAURIMO",
+    "locationType": "city",
+    "timeZone": "Africa/Luanda",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

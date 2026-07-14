@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-29-MASCARA",
+    "countryCode": "DZ",
+    "stateId": "DZ-29",
+    "stateCode": "29",
+    "name": "Mascara",
+    "normalizedName": "mascara",
+    "slug": "MASCARA",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

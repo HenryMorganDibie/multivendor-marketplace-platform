@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AG-03-SAINT-GEORGE",
+    "countryCode": "AG",
+    "stateId": "AG-03",
+    "stateCode": "03",
+    "name": "Saint George",
+    "normalizedName": "saint george",
+    "slug": "SAINT-GEORGE",
+    "locationType": "city",
+    "timeZone": "America/Antigua",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AO-MAL-MALANJE",
+    "countryCode": "AO",
+    "stateId": "AO-MAL",
+    "stateCode": "MAL",
+    "name": "Malanje",
+    "normalizedName": "malanje",
+    "slug": "MALANJE",
+    "locationType": "city",
+    "timeZone": "Africa/Luanda",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

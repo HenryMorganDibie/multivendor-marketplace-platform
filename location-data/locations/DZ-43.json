@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-43-MILA",
+    "countryCode": "DZ",
+    "stateId": "DZ-43",
+    "stateCode": "43",
+    "name": "Mila",
+    "normalizedName": "mila",
+    "slug": "MILA",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

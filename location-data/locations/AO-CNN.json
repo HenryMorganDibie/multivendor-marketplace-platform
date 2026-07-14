@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AO-CNN-ONDJIVA",
+    "countryCode": "AO",
+    "stateId": "AO-CNN",
+    "stateCode": "CNN",
+    "name": "Ondjiva",
+    "normalizedName": "ondjiva",
+    "slug": "ONDJIVA",
+    "locationType": "city",
+    "timeZone": "Africa/Luanda",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

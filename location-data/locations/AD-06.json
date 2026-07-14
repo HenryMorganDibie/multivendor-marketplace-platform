@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AD-06-ESCALDES-ENGORDANY",
+    "countryCode": "AD",
+    "stateId": "AD-06",
+    "stateCode": "06",
+    "name": "Escaldes-Engordany",
+    "normalizedName": "escaldes-engordany",
+    "slug": "ESCALDES-ENGORDANY",
+    "locationType": "city",
+    "timeZone": "Europe/Andorra",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

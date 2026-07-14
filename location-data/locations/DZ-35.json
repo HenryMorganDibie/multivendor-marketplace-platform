@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-35-BOUMERDES",
+    "countryCode": "DZ",
+    "stateId": "DZ-35",
+    "stateCode": "35",
+    "name": "Boumerdes",
+    "normalizedName": "boumerdes",
+    "slug": "BOUMERDES",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

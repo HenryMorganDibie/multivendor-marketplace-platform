@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AR-G-SANTIAGO-DEL-ESTERO",
+    "countryCode": "AR",
+    "stateId": "AR-G",
+    "stateCode": "G",
+    "name": "Santiago del Estero",
+    "normalizedName": "santiago del estero",
+    "slug": "SANTIAGO-DEL-ESTERO",
+    "locationType": "city",
+    "timeZone": "America/Argentina/Buenos_Aires",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

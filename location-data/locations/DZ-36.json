@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-36-EL-TARF",
+    "countryCode": "DZ",
+    "stateId": "DZ-36",
+    "stateCode": "36",
+    "name": "El Tarf",
+    "normalizedName": "el tarf",
+    "slug": "EL-TARF",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

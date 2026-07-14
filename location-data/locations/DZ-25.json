@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-25-CONSTANTINE",
+    "countryCode": "DZ",
+    "stateId": "DZ-25",
+    "stateCode": "25",
+    "name": "Constantine",
+    "normalizedName": "constantine",
+    "slug": "CONSTANTINE",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

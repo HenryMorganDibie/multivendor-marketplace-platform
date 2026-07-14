@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-33-ILLIZI",
+    "countryCode": "DZ",
+    "stateId": "DZ-33",
+    "stateCode": "33",
+    "name": "Illizi",
+    "normalizedName": "illizi",
+    "slug": "ILLIZI",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

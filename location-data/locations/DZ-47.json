@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-47-GHARDAIA",
+    "countryCode": "DZ",
+    "stateId": "DZ-47",
+    "stateCode": "47",
+    "name": "Ghardaia",
+    "normalizedName": "ghardaia",
+    "slug": "GHARDAIA",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

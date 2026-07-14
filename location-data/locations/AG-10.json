@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AG-10-CODRINGTON",
+    "countryCode": "AG",
+    "stateId": "AG-10",
+    "stateCode": "10",
+    "name": "Codrington",
+    "normalizedName": "codrington",
+    "slug": "CODRINGTON",
+    "locationType": "city",
+    "timeZone": "America/Antigua",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

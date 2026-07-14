@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-23-ANNABA",
+    "countryCode": "DZ",
+    "stateId": "DZ-23",
+    "stateCode": "23",
+    "name": "Annaba",
+    "normalizedName": "annaba",
+    "slug": "ANNABA",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

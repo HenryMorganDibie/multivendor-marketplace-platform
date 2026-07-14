@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-28-MSILA",
+    "countryCode": "DZ",
+    "stateId": "DZ-28",
+    "stateCode": "28",
+    "name": "M'Sila",
+    "normalizedName": "msila",
+    "slug": "MSILA",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

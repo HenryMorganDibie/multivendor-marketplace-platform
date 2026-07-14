@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-48-RELIZANE",
+    "countryCode": "DZ",
+    "stateId": "DZ-48",
+    "stateCode": "48",
+    "name": "Relizane",
+    "normalizedName": "relizane",
+    "slug": "RELIZANE",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

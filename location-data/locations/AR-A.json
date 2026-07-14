@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AR-A-SALTA",
+    "countryCode": "AR",
+    "stateId": "AR-A",
+    "stateCode": "A",
+    "name": "Salta",
+    "normalizedName": "salta",
+    "slug": "SALTA",
+    "locationType": "city",
+    "timeZone": "America/Argentina/Salta",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AR-X-CORDOBA",
+    "countryCode": "AR",
+    "stateId": "AR-X",
+    "stateCode": "X",
+    "name": "Cordoba",
+    "normalizedName": "cordoba",
+    "slug": "CORDOBA",
+    "locationType": "city",
+    "timeZone": "America/Argentina/Cordoba",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

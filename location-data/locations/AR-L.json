@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AR-L-SANTA-ROSA",
+    "countryCode": "AR",
+    "stateId": "AR-L",
+    "stateCode": "L",
+    "name": "Santa Rosa",
+    "normalizedName": "santa rosa",
+    "slug": "SANTA-ROSA",
+    "locationType": "city",
+    "timeZone": "America/Argentina/Buenos_Aires",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

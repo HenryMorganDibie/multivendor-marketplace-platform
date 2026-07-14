@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AO-HUI-LUBANGO",
+    "countryCode": "AO",
+    "stateId": "AO-HUI",
+    "stateCode": "HUI",
+    "name": "Lubango",
+    "normalizedName": "lubango",
+    "slug": "LUBANGO",
+    "locationType": "city",
+    "timeZone": "Africa/Luanda",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

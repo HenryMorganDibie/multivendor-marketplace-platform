@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-10-BOUIRA",
+    "countryCode": "DZ",
+    "stateId": "DZ-10",
+    "stateCode": "10",
+    "name": "Bouira",
+    "normalizedName": "bouira",
+    "slug": "BOUIRA",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

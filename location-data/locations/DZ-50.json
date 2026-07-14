@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-50-EL-MENIA",
+    "countryCode": "DZ",
+    "stateId": "DZ-50",
+    "stateCode": "50",
+    "name": "El Menia",
+    "normalizedName": "el menia",
+    "slug": "EL-MENIA",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

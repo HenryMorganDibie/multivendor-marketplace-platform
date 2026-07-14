@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-31-ORAN",
+    "countryCode": "DZ",
+    "stateId": "DZ-31",
+    "stateCode": "31",
+    "name": "Oran",
+    "normalizedName": "oran",
+    "slug": "ORAN",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-32-EL-BAYADH",
+    "countryCode": "DZ",
+    "stateId": "DZ-32",
+    "stateCode": "32",
+    "name": "El Bayadh",
+    "normalizedName": "el bayadh",
+    "slug": "EL-BAYADH",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-16-ALGIERS",
+    "countryCode": "DZ",
+    "stateId": "DZ-16",
+    "stateCode": "16",
+    "name": "Algiers",
+    "normalizedName": "algiers",
+    "slug": "ALGIERS",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

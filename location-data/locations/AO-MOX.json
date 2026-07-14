@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AO-MOX-LUENA",
+    "countryCode": "AO",
+    "stateId": "AO-MOX",
+    "stateCode": "MOX",
+    "name": "Luena",
+    "normalizedName": "luena",
+    "slug": "LUENA",
+    "locationType": "city",
+    "timeZone": "Africa/Luanda",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

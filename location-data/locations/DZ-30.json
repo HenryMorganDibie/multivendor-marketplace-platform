@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-30-OUARGLA",
+    "countryCode": "DZ",
+    "stateId": "DZ-30",
+    "stateCode": "30",
+    "name": "Ouargla",
+    "normalizedName": "ouargla",
+    "slug": "OUARGLA",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

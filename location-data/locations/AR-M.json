@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AR-M-MENDOZA",
+    "countryCode": "AR",
+    "stateId": "AR-M",
+    "stateCode": "M",
+    "name": "Mendoza",
+    "normalizedName": "mendoza",
+    "slug": "MENDOZA",
+    "locationType": "city",
+    "timeZone": "America/Argentina/Mendoza",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

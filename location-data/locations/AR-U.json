@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AR-U-RAWSON",
+    "countryCode": "AR",
+    "stateId": "AR-U",
+    "stateCode": "U",
+    "name": "Rawson",
+    "normalizedName": "rawson",
+    "slug": "RAWSON",
+    "locationType": "city",
+    "timeZone": "America/Argentina/Buenos_Aires",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

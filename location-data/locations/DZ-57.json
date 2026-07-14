@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-57-IN-SALAH",
+    "countryCode": "DZ",
+    "stateId": "DZ-57",
+    "stateCode": "57",
+    "name": "In Salah",
+    "normalizedName": "in salah",
+    "slug": "IN-SALAH",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

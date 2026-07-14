@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-04-OUM-EL-BOUAGHI",
+    "countryCode": "DZ",
+    "stateId": "DZ-04",
+    "stateCode": "04",
+    "name": "Oum El Bouaghi",
+    "normalizedName": "oum el bouaghi",
+    "slug": "OUM-EL-BOUAGHI",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

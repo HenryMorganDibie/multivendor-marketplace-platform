@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AR-Z-RIO-GALLEGOS",
+    "countryCode": "AR",
+    "stateId": "AR-Z",
+    "stateCode": "Z",
+    "name": "Rio Gallegos",
+    "normalizedName": "rio gallegos",
+    "slug": "RIO-GALLEGOS",
+    "locationType": "city",
+    "timeZone": "America/Argentina/Rio_Gallegos",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AO-BIE-KUITO",
+    "countryCode": "AO",
+    "stateId": "AO-BIE",
+    "stateCode": "BIE",
+    "name": "Kuito",
+    "normalizedName": "kuito",
+    "slug": "KUITO",
+    "locationType": "city",
+    "timeZone": "Africa/Luanda",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

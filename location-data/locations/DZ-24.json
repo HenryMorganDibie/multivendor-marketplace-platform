@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-24-GUELMA",
+    "countryCode": "DZ",
+    "stateId": "DZ-24",
+    "stateCode": "24",
+    "name": "Guelma",
+    "normalizedName": "guelma",
+    "slug": "GUELMA",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

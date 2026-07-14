@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AO-CUS-SUMBE",
+    "countryCode": "AO",
+    "stateId": "AO-CUS",
+    "stateCode": "CUS",
+    "name": "Sumbe",
+    "normalizedName": "sumbe",
+    "slug": "SUMBE",
+    "locationType": "city",
+    "timeZone": "Africa/Luanda",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

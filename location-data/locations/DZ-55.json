@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-55-TOUGGOURT",
+    "countryCode": "DZ",
+    "stateId": "DZ-55",
+    "stateCode": "55",
+    "name": "Touggourt",
+    "normalizedName": "touggourt",
+    "slug": "TOUGGOURT",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

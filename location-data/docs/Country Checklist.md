@@ -16,36 +16,36 @@
 
 ## Algeria
 - [x] Country
-- [ ] States
-- [ ] Areas
+- [x] States
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
 ## Andorra
 - [x] Country
-- [ ] States
-- [ ] Areas
+- [x] States
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
 ## Angola
 - [x] Country
-- [ ] States
-- [ ] Areas
+- [x] States
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
 ## Antigua and Barbuda
 - [x] Country
-- [ ] States
-- [ ] Areas
+- [x] States
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
 ## Argentina
 - [x] Country
-- [ ] States
-- [ ] Areas
+- [x] States
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 

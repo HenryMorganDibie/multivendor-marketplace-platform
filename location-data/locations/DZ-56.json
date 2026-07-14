@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-56-DJANET",
+    "countryCode": "DZ",
+    "stateId": "DZ-56",
+    "stateCode": "56",
+    "name": "Djanet",
+    "normalizedName": "djanet",
+    "slug": "DJANET",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

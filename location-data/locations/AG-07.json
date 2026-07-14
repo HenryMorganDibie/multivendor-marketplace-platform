@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AG-07-SAINT-PETER",
+    "countryCode": "AG",
+    "stateId": "AG-07",
+    "stateCode": "07",
+    "name": "Saint Peter",
+    "normalizedName": "saint peter",
+    "slug": "SAINT-PETER",
+    "locationType": "city",
+    "timeZone": "America/Antigua",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

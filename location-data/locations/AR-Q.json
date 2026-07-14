@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AR-Q-NEUQUEN",
+    "countryCode": "AR",
+    "stateId": "AR-Q",
+    "stateCode": "Q",
+    "name": "Neuquen",
+    "normalizedName": "neuquen",
+    "slug": "NEUQUEN",
+    "locationType": "city",
+    "timeZone": "America/Argentina/Buenos_Aires",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

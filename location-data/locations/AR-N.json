@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AR-N-POSADAS",
+    "countryCode": "AR",
+    "stateId": "AR-N",
+    "stateCode": "N",
+    "name": "Posadas",
+    "normalizedName": "posadas",
+    "slug": "POSADAS",
+    "locationType": "city",
+    "timeZone": "America/Argentina/Buenos_Aires",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

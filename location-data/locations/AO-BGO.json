@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AO-BGO-CAXITO",
+    "countryCode": "AO",
+    "stateId": "AO-BGO",
+    "stateCode": "BGO",
+    "name": "Caxito",
+    "normalizedName": "caxito",
+    "slug": "CAXITO",
+    "locationType": "city",
+    "timeZone": "Africa/Luanda",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

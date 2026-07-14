@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-53-BENI-ABBES",
+    "countryCode": "DZ",
+    "stateId": "DZ-53",
+    "stateCode": "53",
+    "name": "Beni Abbes",
+    "normalizedName": "beni abbes",
+    "slug": "BENI-ABBES",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

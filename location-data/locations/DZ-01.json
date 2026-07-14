@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-01-ADRAR",
+    "countryCode": "DZ",
+    "stateId": "DZ-01",
+    "stateCode": "01",
+    "name": "Adrar",
+    "normalizedName": "adrar",
+    "slug": "ADRAR",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

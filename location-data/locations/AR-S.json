@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AR-S-SANTA-FE",
+    "countryCode": "AR",
+    "stateId": "AR-S",
+    "stateCode": "S",
+    "name": "Santa Fe",
+    "normalizedName": "santa fe",
+    "slug": "SANTA-FE",
+    "locationType": "city",
+    "timeZone": "America/Argentina/Buenos_Aires",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

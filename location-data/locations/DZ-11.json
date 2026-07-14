@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-11-TAMANRASSET",
+    "countryCode": "DZ",
+    "stateId": "DZ-11",
+    "stateCode": "11",
+    "name": "Tamanrasset",
+    "normalizedName": "tamanrasset",
+    "slug": "TAMANRASSET",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

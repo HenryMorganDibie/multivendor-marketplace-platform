@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AO-HUA-HUAMBO",
+    "countryCode": "AO",
+    "stateId": "AO-HUA",
+    "stateCode": "HUA",
+    "name": "Huambo",
+    "normalizedName": "huambo",
+    "slug": "HUAMBO",
+    "locationType": "city",
+    "timeZone": "Africa/Luanda",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

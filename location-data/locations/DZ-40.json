@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-40-KHENCHELA",
+    "countryCode": "DZ",
+    "stateId": "DZ-40",
+    "stateCode": "40",
+    "name": "Khenchela",
+    "normalizedName": "khenchela",
+    "slug": "KHENCHELA",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

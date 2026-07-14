@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-07-BISKRA",
+    "countryCode": "DZ",
+    "stateId": "DZ-07",
+    "stateCode": "07",
+    "name": "Biskra",
+    "normalizedName": "biskra",
+    "slug": "BISKRA",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

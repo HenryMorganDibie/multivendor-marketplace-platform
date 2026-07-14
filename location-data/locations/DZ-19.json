@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-19-SETIF",
+    "countryCode": "DZ",
+    "stateId": "DZ-19",
+    "stateCode": "19",
+    "name": "Setif",
+    "normalizedName": "setif",
+    "slug": "SETIF",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-52-BORDJ-BADJI-MOKHTAR",
+    "countryCode": "DZ",
+    "stateId": "DZ-52",
+    "stateCode": "52",
+    "name": "Bordj Badji Mokhtar",
+    "normalizedName": "bordj badji mokhtar",
+    "slug": "BORDJ-BADJI-MOKHTAR",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

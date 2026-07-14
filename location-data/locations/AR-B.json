@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AR-B-LA-PLATA",
+    "countryCode": "AR",
+    "stateId": "AR-B",
+    "stateCode": "B",
+    "name": "La Plata",
+    "normalizedName": "la plata",
+    "slug": "LA-PLATA",
+    "locationType": "city",
+    "timeZone": "America/Argentina/Buenos_Aires",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

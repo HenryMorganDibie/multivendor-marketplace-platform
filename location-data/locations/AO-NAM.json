@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AO-NAM-MOCAMEDES",
+    "countryCode": "AO",
+    "stateId": "AO-NAM",
+    "stateCode": "NAM",
+    "name": "Mocamedes",
+    "normalizedName": "mocamedes",
+    "slug": "MOCAMEDES",
+    "locationType": "city",
+    "timeZone": "Africa/Luanda",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-12-TEBESSA",
+    "countryCode": "DZ",
+    "stateId": "DZ-12",
+    "stateCode": "12",
+    "name": "Tebessa",
+    "normalizedName": "tebessa",
+    "slug": "TEBESSA",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

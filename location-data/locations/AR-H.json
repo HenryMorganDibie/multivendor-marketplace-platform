@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AR-H-RESISTENCIA",
+    "countryCode": "AR",
+    "stateId": "AR-H",
+    "stateCode": "H",
+    "name": "Resistencia",
+    "normalizedName": "resistencia",
+    "slug": "RESISTENCIA",
+    "locationType": "city",
+    "timeZone": "America/Argentina/Buenos_Aires",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

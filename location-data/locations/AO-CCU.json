@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AO-CCU-MENONGUE",
+    "countryCode": "AO",
+    "stateId": "AO-CCU",
+    "stateCode": "CCU",
+    "name": "Menongue",
+    "normalizedName": "menongue",
+    "slug": "MENONGUE",
+    "locationType": "city",
+    "timeZone": "Africa/Luanda",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

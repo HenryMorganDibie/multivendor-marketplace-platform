@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-22-SIDI-BEL-ABBES",
+    "countryCode": "DZ",
+    "stateId": "DZ-22",
+    "stateCode": "22",
+    "name": "Sidi Bel Abbes",
+    "normalizedName": "sidi bel abbes",
+    "slug": "SIDI-BEL-ABBES",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

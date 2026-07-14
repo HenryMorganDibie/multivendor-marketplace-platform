@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-15-TIZI-OUZOU",
+    "countryCode": "DZ",
+    "stateId": "DZ-15",
+    "stateCode": "15",
+    "name": "Tizi Ouzou",
+    "normalizedName": "tizi ouzou",
+    "slug": "TIZI-OUZOU",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

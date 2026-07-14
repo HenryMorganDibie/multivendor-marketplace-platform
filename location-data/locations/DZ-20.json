@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-20-SAIDA",
+    "countryCode": "DZ",
+    "stateId": "DZ-20",
+    "stateCode": "20",
+    "name": "Saida",
+    "normalizedName": "saida",
+    "slug": "SAIDA",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

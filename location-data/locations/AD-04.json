@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AD-04-LA-MASSANA",
+    "countryCode": "AD",
+    "stateId": "AD-04",
+    "stateCode": "04",
+    "name": "La Massana",
+    "normalizedName": "la massana",
+    "slug": "LA-MASSANA",
+    "locationType": "city",
+    "timeZone": "Europe/Andorra",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

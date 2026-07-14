@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-02-CHLEF",
+    "countryCode": "DZ",
+    "stateId": "DZ-02",
+    "stateCode": "02",
+    "name": "Chlef",
+    "normalizedName": "chlef",
+    "slug": "CHLEF",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

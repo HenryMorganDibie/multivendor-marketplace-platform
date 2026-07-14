@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AG-04-SAINT-JOHNS",
+    "countryCode": "AG",
+    "stateId": "AG-04",
+    "stateCode": "04",
+    "name": "Saint John's",
+    "normalizedName": "saint johns",
+    "slug": "SAINT-JOHNS",
+    "locationType": "city",
+    "timeZone": "America/Antigua",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

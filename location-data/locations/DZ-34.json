@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-34-BORDJ-BOU-ARRERIDJ",
+    "countryCode": "DZ",
+    "stateId": "DZ-34",
+    "stateCode": "34",
+    "name": "Bordj Bou Arreridj",
+    "normalizedName": "bordj bou arreridj",
+    "slug": "BORDJ-BOU-ARRERIDJ",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-26-MEDEA",
+    "countryCode": "DZ",
+    "stateId": "DZ-26",
+    "stateCode": "26",
+    "name": "Medea",
+    "normalizedName": "medea",
+    "slug": "MEDEA",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

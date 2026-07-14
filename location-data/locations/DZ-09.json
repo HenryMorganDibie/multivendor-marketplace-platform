@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-09-BLIDA",
+    "countryCode": "DZ",
+    "stateId": "DZ-09",
+    "stateCode": "09",
+    "name": "Blida",
+    "normalizedName": "blida",
+    "slug": "BLIDA",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

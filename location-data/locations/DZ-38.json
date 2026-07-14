@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-38-TISSEMSILT",
+    "countryCode": "DZ",
+    "stateId": "DZ-38",
+    "stateCode": "38",
+    "name": "Tissemsilt",
+    "normalizedName": "tissemsilt",
+    "slug": "TISSEMSILT",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

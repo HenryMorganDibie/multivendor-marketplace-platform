@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AO-LNO-DUNDO",
+    "countryCode": "AO",
+    "stateId": "AO-LNO",
+    "stateCode": "LNO",
+    "name": "Dundo",
+    "normalizedName": "dundo",
+    "slug": "DUNDO",
+    "locationType": "city",
+    "timeZone": "Africa/Luanda",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

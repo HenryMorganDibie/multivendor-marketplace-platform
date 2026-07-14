@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AO-BGU-BENGUELA",
+    "countryCode": "AO",
+    "stateId": "AO-BGU",
+    "stateCode": "BGU",
+    "name": "Benguela",
+    "normalizedName": "benguela",
+    "slug": "BENGUELA",
+    "locationType": "city",
+    "timeZone": "Africa/Luanda",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

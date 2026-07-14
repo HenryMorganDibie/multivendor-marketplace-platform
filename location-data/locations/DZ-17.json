@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-17-DJELFA",
+    "countryCode": "DZ",
+    "stateId": "DZ-17",
+    "stateCode": "17",
+    "name": "Djelfa",
+    "normalizedName": "djelfa",
+    "slug": "DJELFA",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

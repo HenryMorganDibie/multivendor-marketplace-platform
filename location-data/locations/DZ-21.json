@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-21-SKIKDA",
+    "countryCode": "DZ",
+    "stateId": "DZ-21",
+    "stateCode": "21",
+    "name": "Skikda",
+    "normalizedName": "skikda",
+    "slug": "SKIKDA",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

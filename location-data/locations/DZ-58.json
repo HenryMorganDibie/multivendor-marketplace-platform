@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-58-IN-GUEZZAM",
+    "countryCode": "DZ",
+    "stateId": "DZ-58",
+    "stateCode": "58",
+    "name": "In Guezzam",
+    "normalizedName": "in guezzam",
+    "slug": "IN-GUEZZAM",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

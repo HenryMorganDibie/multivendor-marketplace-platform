@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-49-EL-MGHAIR",
+    "countryCode": "DZ",
+    "stateId": "DZ-49",
+    "stateCode": "49",
+    "name": "El M'Ghair",
+    "normalizedName": "el mghair",
+    "slug": "EL-MGHAIR",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-54-TIMIMOUN",
+    "countryCode": "DZ",
+    "stateId": "DZ-54",
+    "stateCode": "54",
+    "name": "Timimoun",
+    "normalizedName": "timimoun",
+    "slug": "TIMIMOUN",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AR-Y-SAN-SALVADOR-DE-JUJUY",
+    "countryCode": "AR",
+    "stateId": "AR-Y",
+    "stateCode": "Y",
+    "name": "San Salvador de Jujuy",
+    "normalizedName": "san salvador de jujuy",
+    "slug": "SAN-SALVADOR-DE-JUJUY",
+    "locationType": "city",
+    "timeZone": "America/Argentina/Jujuy",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-41-SOUK-AHRAS",
+    "countryCode": "DZ",
+    "stateId": "DZ-41",
+    "stateCode": "41",
+    "name": "Souk Ahras",
+    "normalizedName": "souk ahras",
+    "slug": "SOUK-AHRAS",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

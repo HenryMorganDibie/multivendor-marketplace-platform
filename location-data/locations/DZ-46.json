@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "DZ-46-AIN-TEMOUCHENT",
+    "countryCode": "DZ",
+    "stateId": "DZ-46",
+    "stateCode": "46",
+    "name": "Ain Temouchent",
+    "normalizedName": "ain temouchent",
+    "slug": "AIN-TEMOUCHENT",
+    "locationType": "city",
+    "timeZone": "Africa/Algiers",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

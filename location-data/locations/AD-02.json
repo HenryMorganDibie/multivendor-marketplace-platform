@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AD-02-CANILLO",
+    "countryCode": "AD",
+    "stateId": "AD-02",
+    "stateCode": "02",
+    "name": "Canillo",
+    "normalizedName": "canillo",
+    "slug": "CANILLO",
+    "locationType": "city",
+    "timeZone": "Europe/Andorra",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

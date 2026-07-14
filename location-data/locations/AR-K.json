@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AR-K-SAN-FERNANDO-DEL-VALLE-DE-CATAMARCA",
+    "countryCode": "AR",
+    "stateId": "AR-K",
+    "stateCode": "K",
+    "name": "San Fernando del Valle de Catamarca",
+    "normalizedName": "san fernando del valle de catamarca",
+    "slug": "SAN-FERNANDO-DEL-VALLE-DE-CATAMARCA",
+    "locationType": "city",
+    "timeZone": "America/Argentina/Catamarca",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

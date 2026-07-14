@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AR-W-CORRIENTES",
+    "countryCode": "AR",
+    "stateId": "AR-W",
+    "stateCode": "W",
+    "name": "Corrientes",
+    "normalizedName": "corrientes",
+    "slug": "CORRIENTES",
+    "locationType": "city",
+    "timeZone": "America/Argentina/Buenos_Aires",
+    "status": "active",
+    "sortOrder": 1
+  }
+]
