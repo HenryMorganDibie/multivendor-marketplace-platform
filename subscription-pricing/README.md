@@ -1,6 +1,6 @@
 # the platform Subscription Pricing Data
 
-**Status: scaffolding, not yet a canonical spec.** Unlike `location-data/` (governed by `THE PLATFORM LOCATION SPEC v1.5.md`), there is currently no approved pricing spec anywhere in either repo. This file was reverse-engineered from the frontend's existing pricing table (`rork-the platform/expo/constants/vendorPricing.ts`) so the client has a place to start adding/correcting prices — but the schema below should be treated as a draft until someone signs off on it the way the location spec was signed off on.
+**Status: scaffolding, not yet a canonical spec — and there are now competing draft numbers, not just a missing spec.** Unlike `location-data/` (governed by `THE PLATFORM LOCATION SPEC v1.5.md`), there is currently no approved pricing spec anywhere in either repo. This file was reverse-engineered from the frontend's existing pricing table (`rork-the platform/expo/constants/vendorPricing.ts`) so the client has a place to start adding/correcting prices. Since then, a second, differently-shaped pricing proposal has also been floated (see "Open questions" below) with yet another set of numbers. **Nothing in this folder should be treated as final until someone explicitly picks one schema and one set of numbers as canonical.**
 
 ## What this is
 
@@ -31,11 +31,21 @@ All 11 countries currently in the file were copied directly from the frontend's 
 
 ## Open questions — not resolved by this scaffold
 
-1. **These numbers don't match the backend's existing placeholder prices.** `functions/src/subscriptions/planLimitsSeedData.ts` → `DEFAULT_PLAN_DISPLAY` has its own flat, NGN-only, non-founder prices (e.g. Standard = ₦5,000/month) that don't agree with this file's Nigeria entry (Standard regular = ₦9,000). That file is explicitly commented as "PLACEHOLDER figures... must be confirmed" — so this isn't a new problem, but it means **two different sources of Nigeria pricing exist in the codebase right now**, and one of them needs to become the source of truth before either is wired up for real.
-2. **No monthly/yearly split.** The frontend's numbers appear to be a single price per tier with no indication of billing interval, while the backend already supports monthly/yearly billing (`monthlyPriceNGN`/`yearlyPriceNGN`, `billingInterval` on checkout). This file doesn't yet have that dimension — needs a decision on whether every country needs monthly+yearly figures or whether yearly is a discount formula applied uniformly.
-3. **No founder-pricing cap/expiry data.** The frontend has `FOUNDER_PRICING_CAP_PER_COUNTRY = 300` (a flat number of founder slots per country) but nothing about when founder pricing starts/ends or how remaining slots are tracked. Not represented here yet.
-4. **No `validate:pricing` / `import:pricing` scripts exist.** Same situation `location-data/` was in before those scripts were built — this is data-entry scaffolding only. Don't build automation against this shape until the open questions above are actually answered; the schema may still change.
+1. **There are now THREE disagreeing sources for Nigeria Standard pricing, not two:**
+
+   | Source | Nigeria Standard/month |
+   |---|---|
+   | `functions/src/subscriptions/planLimitsSeedData.ts` → `DEFAULT_PLAN_DISPLAY` (backend, explicitly commented "PLACEHOLDER... must be confirmed") | ₦5,000 |
+   | `subscription-pricing/subscriptionPricing.json` (this file, current schema below, copied from the frontend's `vendorPricing.ts`) | ₦9,000 |
+   | A separate proposal shared 2026-07-14 (flat `monthlyPrice` per tier, no founder split, `proPlus` camelCase key, Nigeria Standard = ₦9,900) — **not yet applied to this file** | ₦9,900 |
+
+   None of these has been declared canonical. **Do not wire real checkout/billing logic to any of them until one is picked and the other two are deleted.**
+
+2. **The 2026-07-14 proposal uses a different shape than what's currently in `subscriptionPricing.json`** — flat `plans.{tier}.monthlyPrice` instead of `{tier}: { regular, founder }`, no `band`, no `currencySymbol`, no `basic` entry, and `proPlus` (frontend camelCase) instead of `pro_plus` (the backend's actual `SubscriptionPlanId` value — see the naming note in the Schema section above). It also drops founder pricing entirely, which may be intentional (feature cut) or just an early draft — unconfirmed either way. **The file has not been changed to match this proposal** pending a decision on which schema and which numbers are correct.
+3. **No monthly/yearly split** in the current file — the frontend's numbers are a single price per tier with no billing-interval dimension, while the backend already supports monthly/yearly billing (`monthlyPriceNGN`/`yearlyPriceNGN`, `billingInterval` on checkout). The 2026-07-14 proposal calls its field `monthlyPrice` explicitly, which at least answers "is this monthly" for that draft, but yearly pricing is still undefined everywhere.
+4. **No founder-pricing cap/expiry data.** The frontend has `FOUNDER_PRICING_CAP_PER_COUNTRY = 300` (a flat number of founder slots per country) but nothing about when founder pricing starts/ends or how remaining slots are tracked. Not represented here, and the 2026-07-14 proposal drops founder pricing as a concept entirely — needs a decision.
+5. **No `validate:pricing` / `import:pricing` scripts exist.** Same situation `location-data/` was in before those scripts were built — this is data-entry scaffolding only. Don't build automation against this shape until the open questions above are actually answered; the schema may still change.
 
 ## Adding a country
 
-Add a new object to the array in `subscriptionPricing.json` following the schema above. `countryCode` should reference a country that already exists in `location-data/countries.json` (there's no automated check for this yet, but it's the intent).
+Add a new object to the array in `subscriptionPricing.json` following the schema above. `countryCode` should reference a country that already exists in `location-data/countries.json` (there's no automated check for this yet, but it's the intent). Currently 11 countries: NG, GH, KE, EG, ZA, MA, TR, GB, CA, AU, US.
