@@ -2,10 +2,11 @@ import { https } from "firebase-functions/v2";
 import { db, FieldValue, Timestamp } from "../admin";
 import { checkAppCheck } from "../utils/appCheck";
 import { newRequestId } from "../utils/requestContext";
-import { ProviderPlanCodesDoc, SubscriptionPlanId, VendorSubscriptionDoc } from "../types4";
+import { SubscriptionPlanId, VendorSubscriptionDoc } from "../types4";
 import { resolveEffectivePlan } from "./resolveEffectivePlan";
 import { enforceRateLimit } from "./rateLimit";
 import { withSubscriptionLock, LockContentionError } from "./subscriptionLock";
+import { requireActiveCountryPricing, requireProviderPlanMapping, PaidPlanId } from "./countryPricing";
 
 const VALID_PLAN_IDS: SubscriptionPlanId[] = ["basic", "standard", "pro", "pro_plus"];
 
@@ -36,16 +37,24 @@ export const createSubscriptionCheckout = https.onCall(async (request) => {
   const vendorId = await requireVendorId(request);
   await enforceRateLimit(vendorId, "createSubscriptionCheckout");
 
-  const { plan, billingInterval } = request.data ?? {};
+  // billingInterval is still accepted on the request (for backward
+  // compatibility with existing callers) but ignored — monthly only for
+  // MVP, per the per-country pricing rollout decision. Yearly pricing
+  // isn't represented anywhere in subscriptionPricing yet.
+  const { plan } = request.data ?? {};
   if (!VALID_PLAN_IDS.includes(plan)) {
     throw new https.HttpsError("invalid-argument", `plan must be one of: ${VALID_PLAN_IDS.join(", ")}.`);
   }
-  const interval = billingInterval === "yearly" ? "yearly" : "monthly";
+  if (plan === "basic") {
+    throw new https.HttpsError("invalid-argument", "Basic is free in every market — there is nothing to check out.");
+  }
+  const planId = plan as PaidPlanId;
 
-  const codesSnap = await db.collection("providerPlanCodes").doc(plan).get();
-  if (!codesSnap.exists) throw new https.HttpsError("not-found", "Plan is not configured for checkout.");
-  const codes = codesSnap.data() as ProviderPlanCodesDoc;
-  const planCode = interval === "yearly" ? codes.paystack.yearlyPlanCode : codes.paystack.monthlyPlanCode;
+  const vendorSnap = await db.collection("vendors").doc(vendorId).get();
+  const countryCode = (vendorSnap.data()?.countryCode as string | undefined) ?? "";
+  await requireActiveCountryPricing(countryCode);
+  const mapping = await requireProviderPlanMapping(countryCode, planId, "paystack");
+  const planCode = mapping.paystack!.monthlyPlanCode;
 
   const userSnap = await db.collection("users").doc(request.auth!.uid).get();
   const email = userSnap.data()?.email as string | undefined;
@@ -68,7 +77,7 @@ export const createSubscriptionCheckout = https.onCall(async (request) => {
   const resp = await fetch("https://api.paystack.co/transaction/initialize", {
     method: "POST",
     headers: { Authorization: `Bearer ${secret}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ email, plan: planCode, metadata: { vendorId, plan, billingInterval: interval } }),
+    body: JSON.stringify({ email, plan: planCode, metadata: { vendorId, plan, billingInterval: "monthly" } }),
   });
   const json = await resp.json() as { status: boolean; data?: { authorization_url: string; reference: string }; message?: string };
   if (!resp.ok || !json.status || !json.data) {

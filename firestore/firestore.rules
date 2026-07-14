@@ -521,6 +521,18 @@ service cloud.firestore {
       // reaches provider plan codes through any direct Firestore path.
       allow read, write: if false;
     }
+    match /subscriptionPricing/{countryCode} {
+      // Public safe, same pattern as subscriptionPlans: per-country plan
+      // prices in minor currency units. No provider identifiers live here
+      // — see providerPlanMapping. Seed-script/Admin SDK write only.
+      allow read: if true;
+      allow create, update, delete: if false;
+    }
+    match /providerPlanMapping/{countryPlanId} {
+      // Private, same pattern as providerPlanCodes: country-aware provider
+      // plan/price identifiers. Never client-readable.
+      allow read, write: if false;
+    }
     match /invoiceBranding/{vendorId} {
       allow read: if isVendorOwner(vendorId) || isAdmin();
       allow create, update, delete: if false;

@@ -32,8 +32,6 @@ export const seedSubscriptionPlans = https.onCall(async (request) => {
     const planDoc: SubscriptionPlanDoc = {
       planId,
       displayName: display.displayName,
-      monthlyPriceNGN: display.monthlyPriceNGN,
-      yearlyPriceNGN: display.yearlyPriceNGN,
       features: display.features,
       isActive: true,
       createdAt: now,

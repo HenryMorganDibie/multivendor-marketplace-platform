@@ -8,10 +8,9 @@ import { PlanLimits, SubscriptionPlanId } from "../types4";
  * reads resolveEffectivePlan()'s output, which comes from Firestore, so a
  * limit change is a document update, not a redeploy (Section 11 guarantee).
  *
- * monthlyPriceNGN / yearlyPriceNGN are PLACEHOLDER figures — the source
- * document does not specify final pricing. These must be confirmed with
- * the business before this seed is run against production and can be
- * edited directly in Firestore afterward without any code change.
+ * Pricing does NOT live here (or anywhere in this file) — see
+ * DEFAULT_PLAN_DISPLAY below and subscription-pricing/README.md for why
+ * global per-plan pricing was replaced with per-country pricing.
  */
 export const DEFAULT_PLAN_LIMITS: Record<SubscriptionPlanId, PlanLimits> = {
   basic: {
@@ -136,11 +135,20 @@ export const DEFAULT_PLAN_LIMITS: Record<SubscriptionPlanId, PlanLimits> = {
   },
 };
 
-export const DEFAULT_PLAN_DISPLAY: Record<SubscriptionPlanId, { displayName: string; monthlyPriceNGN: number; yearlyPriceNGN: number; features: string[] }> = {
-  basic: { displayName: "Basic", monthlyPriceNGN: 0, yearlyPriceNGN: 0, features: ["10 catalog items", "2 photos per item", "3 invoices/month"] },
-  standard: { displayName: "Standard", monthlyPriceNGN: 5000, yearlyPriceNGN: 50000, features: ["30 catalog items", "External orders", "Best seller & revenue widgets", "25 invoices/month"] },
-  pro: { displayName: "Pro", monthlyPriceNGN: 15000, yearlyPriceNGN: 150000, features: ["100 catalog items", "Auto-send pickup details", "Advanced analytics", "Invoice branding", "100 invoices/month"] },
-  pro_plus: { displayName: "Pro Plus", monthlyPriceNGN: 30000, yearlyPriceNGN: 300000, features: ["250 catalog items", "Auto-accept orders", "Premium invoice templates", "200 invoices/month"] },
+/**
+ * Deliberately NO pricing fields here (no monthlyPriceNGN/yearlyPriceNGN).
+ * Global, single-currency pricing was the root problem this data model is
+ * fixing — see subscription-pricing/README.md. Real, per-country pricing
+ * lives in Firestore's subscriptionPricing/{countryCode}, seeded from
+ * subscription-pricing/pricing.json via `npm run import:pricing`.
+ * `pro_plus` stays the backend key everywhere; "Pro+" below is display
+ * text only, never a code identifier.
+ */
+export const DEFAULT_PLAN_DISPLAY: Record<SubscriptionPlanId, { displayName: string; features: string[] }> = {
+  basic: { displayName: "Basic", features: ["10 catalog items", "2 photos per item", "3 invoices/month"] },
+  standard: { displayName: "Standard", features: ["30 catalog items", "External orders", "Best seller & revenue widgets", "25 invoices/month"] },
+  pro: { displayName: "Pro", features: ["100 catalog items", "Auto-send pickup details", "Advanced analytics", "Invoice branding", "100 invoices/month"] },
+  pro_plus: { displayName: "Pro+", features: ["250 catalog items", "Auto-accept orders", "Premium invoice templates", "200 invoices/month"] },
 };
 
 /** Provider plan codes — PLACEHOLDER values for all three providers. Real

@@ -13,6 +13,12 @@
 const COUNTRY_NAME_TO_CODE: Record<string, string> = {
   nigeria: "NG",
   ng: "NG",
+  // Added for per-country subscription pricing (checkout now looks up
+  // subscriptionPricing/{countryCode} by real ISO code) — without this,
+  // "United States" fell through to .toUpperCase() and produced
+  // "UNITED STATES", which would never match a seeded "US" pricing record.
+  "united states": "US",
+  us: "US",
 };
 
 export function resolveCountryCode(rawCountry: string | undefined | null): string {

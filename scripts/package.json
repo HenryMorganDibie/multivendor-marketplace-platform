@@ -5,7 +5,9 @@
     "test:m1": "node milestone1-acceptance-tests.js",
     "test:m2": "node milestone2-acceptance-tests.js",
     "validate:locations": "node validate-locations.js",
-    "import:locations": "node import-locations.js"
+    "import:locations": "node import-locations.js",
+    "validate:pricing": "node validate-pricing.js",
+    "import:pricing": "node import-pricing.js"
   },
   "dependencies": {
     "firebase": "^10.12.0",

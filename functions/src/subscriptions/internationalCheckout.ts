@@ -2,8 +2,9 @@ import { https } from "firebase-functions/v2";
 import { db } from "../admin";
 import { checkAppCheck } from "../utils/appCheck";
 import { newRequestId } from "../utils/requestContext";
-import { ProviderPlanCodesDoc, SubscriptionPlanId } from "../types4";
+import { SubscriptionPlanId } from "../types4";
 import { enforceRateLimit } from "./rateLimit";
+import { requireActiveCountryPricing, requireProviderPlanMapping, PaidPlanId } from "./countryPricing";
 
 const VALID_PLAN_IDS: SubscriptionPlanId[] = ["basic", "standard", "pro", "pro_plus"];
 
@@ -39,17 +40,22 @@ export const createFlutterwaveCheckout = https.onCall(async (request) => {
   const vendorId = await requireVendorId(request);
   await enforceRateLimit(vendorId, "createFlutterwaveCheckout");
 
-  const { plan, billingInterval } = request.data ?? {};
+  // billingInterval is still accepted on the request (backward compat) but
+  // ignored — monthly only for MVP, per the per-country pricing rollout.
+  const { plan } = request.data ?? {};
   if (!VALID_PLAN_IDS.includes(plan)) {
     throw new https.HttpsError("invalid-argument", `plan must be one of: ${VALID_PLAN_IDS.join(", ")}.`);
   }
-  const interval = billingInterval === "yearly" ? "yearly" : "monthly";
+  if (plan === "basic") {
+    throw new https.HttpsError("invalid-argument", "Basic is free in every market — there is nothing to check out.");
+  }
+  const planId = plan as PaidPlanId;
 
-  const codesSnap = await db.collection("providerPlanCodes").doc(plan).get();
-  if (!codesSnap.exists) throw new https.HttpsError("not-found", "Plan is not configured for checkout.");
-  const codes = codesSnap.data() as ProviderPlanCodesDoc;
-  if (!codes.flutterwave) throw new https.HttpsError("failed-precondition", "Flutterwave is not configured for this plan yet.");
-  const planCode = interval === "yearly" ? codes.flutterwave.yearlyPlanId : codes.flutterwave.monthlyPlanId;
+  const vendorSnap = await db.collection("vendors").doc(vendorId).get();
+  const countryCode = (vendorSnap.data()?.countryCode as string | undefined) ?? "";
+  await requireActiveCountryPricing(countryCode);
+  const mapping = await requireProviderPlanMapping(countryCode, planId, "flutterwave");
+  const planCode = mapping.flutterwave!.monthlyPlanId;
 
   const userSnap = await db.collection("users").doc(request.auth!.uid).get();
   const email = userSnap.data()?.email as string | undefined;
@@ -80,7 +86,7 @@ export const createFlutterwaveCheckout = https.onCall(async (request) => {
       currency: "NGN",
       payment_plan: planCode,
       customer: { email },
-      meta: { vendorId, planId: plan, billingInterval: interval },
+      meta: { vendorId, planId: plan, billingInterval: "monthly" },
     }),
   });
   const json = await resp.json() as { status: string; data?: { link: string }; message?: string };
@@ -104,17 +110,22 @@ export const createStripeCheckout = https.onCall(async (request) => {
   const vendorId = await requireVendorId(request);
   await enforceRateLimit(vendorId, "createStripeCheckout");
 
-  const { plan, billingInterval } = request.data ?? {};
+  // billingInterval is still accepted on the request (backward compat) but
+  // ignored — monthly only for MVP, per the per-country pricing rollout.
+  const { plan } = request.data ?? {};
   if (!VALID_PLAN_IDS.includes(plan)) {
     throw new https.HttpsError("invalid-argument", `plan must be one of: ${VALID_PLAN_IDS.join(", ")}.`);
   }
-  const interval = billingInterval === "yearly" ? "yearly" : "monthly";
+  if (plan === "basic") {
+    throw new https.HttpsError("invalid-argument", "Basic is free in every market — there is nothing to check out.");
+  }
+  const planId = plan as PaidPlanId;
 
-  const codesSnap = await db.collection("providerPlanCodes").doc(plan).get();
-  if (!codesSnap.exists) throw new https.HttpsError("not-found", "Plan is not configured for checkout.");
-  const codes = codesSnap.data() as ProviderPlanCodesDoc;
-  if (!codes.stripe) throw new https.HttpsError("failed-precondition", "Stripe is not configured for this plan yet.");
-  const priceId = interval === "yearly" ? codes.stripe.yearlyPriceId : codes.stripe.monthlyPriceId;
+  const vendorSnap = await db.collection("vendors").doc(vendorId).get();
+  const countryCode = (vendorSnap.data()?.countryCode as string | undefined) ?? "";
+  await requireActiveCountryPricing(countryCode);
+  const mapping = await requireProviderPlanMapping(countryCode, planId, "stripe");
+  const priceId = mapping.stripe!.monthlyPriceId;
 
   const userSnap = await db.collection("users").doc(request.auth!.uid).get();
   const email = userSnap.data()?.email as string | undefined;

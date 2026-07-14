@@ -167,12 +167,15 @@ export interface SubscriptionEventDoc {
 }
 
 // ─── subscriptionPlans/{planId} — PUBLIC SAFE ──────────────────────────────
+//
+// Deliberately carries NO pricing. Pricing moved to subscriptionPricing/
+// {countryCode} (per-country, per the client's architecture decision) precisely
+// because a single global price per plan was never correct — see
+// subscriptionPricing/README.md for the full history of why.
 
 export interface SubscriptionPlanDoc extends PlanLimits {
   planId: SubscriptionPlanId;
   displayName: string;
-  monthlyPriceNGN: number;
-  yearlyPriceNGN: number;
   features: string[];
   isActive: boolean;
   createdAt: firestore.Timestamp | firestore.FieldValue;
@@ -180,6 +183,14 @@ export interface SubscriptionPlanDoc extends PlanLimits {
 }
 
 // ─── providerPlanCodes/{planId} — PRIVATE, Admin SDK only ─────────────────
+//
+// Legacy, plan-only (not country-specific) provider codes. Kept as-is —
+// still seeded by seedSubscriptionPlans and still asserted not-client-
+// readable by the acceptance tests — but no longer read by any checkout
+// callable, which now read providerPlanMapping/{countryCode}-{planId}
+// instead (see below). Left in place rather than removed since nothing
+// in this pass audited every consumer of this collection; removing it
+// is a separate, deliberate cleanup decision for later.
 
 export interface ProviderPlanCodesDoc {
   planId: SubscriptionPlanId;
@@ -196,6 +207,38 @@ export interface ProviderPlanCodesDoc {
     yearlyPlanId: string;
   };
   updatedAt: firestore.Timestamp | firestore.FieldValue;
+}
+
+// ─── subscriptionPricing/{countryCode} — PUBLIC read, seed-script write only
+
+export interface SubscriptionPricingRecord {
+  countryCode: string;
+  currencyCode: string;
+  plans: {
+    standard: { monthlyPriceMinorUnits: number };
+    pro: { monthlyPriceMinorUnits: number };
+    pro_plus: { monthlyPriceMinorUnits: number };
+  };
+  status: "active" | "inactive" | "archived";
+  createdAt: firestore.Timestamp | firestore.FieldValue;
+  updatedAt: firestore.Timestamp | firestore.FieldValue;
+}
+
+// ─── providerPlanMapping/{countryCode}-{planId} — PRIVATE, Admin SDK only ──
+//
+// Country-aware successor to providerPlanCodes above: the same provider
+// plan/price identifier concept, but a given plan can have a different
+// provider-side identifier per country (e.g. Nigeria's Pro plan sells
+// through a different Paystack plan code than it did before country
+// pricing existed). All three provider fields are optional — a country
+// only needs an entry for whichever provider(s) actually serve it.
+
+export interface ProviderPlanMapping {
+  countryCode: string;
+  planId: "standard" | "pro" | "pro_plus";
+  paystack?: { monthlyPlanCode: string };
+  flutterwave?: { monthlyPlanId: string };
+  stripe?: { monthlyPriceId: string };
 }
 
 // ─── invoiceBranding/{vendorId} ────────────────────────────────────────────

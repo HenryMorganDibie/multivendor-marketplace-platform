@@ -111,6 +111,38 @@ async function setup() {
   console.log(`  -> Vendor ${vendorId} ready (basic plan)`);
 }
 
+/**
+ * Test-only fixtures for the two countries these acceptance tests exercise
+ * checkout against (NG for Paystack/Flutterwave, US for Stripe). Numbers
+ * here are arbitrary placeholders for exercising the checkout code path —
+ * NOT real business pricing. Real per-country pricing is a separate,
+ * deliberately-not-fabricated decision — see subscription-pricing/README.md.
+ */
+async function seedTestCountryPricing() {
+  const now = admin.firestore.FieldValue.serverTimestamp();
+  for (const { countryCode, currencyCode } of [{ countryCode: "NG", currencyCode: "NGN" }, { countryCode: "US", currencyCode: "USD" }]) {
+    await admin.firestore().collection("subscriptionPricing").doc(countryCode).set({
+      countryCode, currencyCode,
+      plans: {
+        standard: { monthlyPriceMinorUnits: 100000 },
+        pro: { monthlyPriceMinorUnits: 250000 },
+        pro_plus: { monthlyPriceMinorUnits: 500000 },
+      },
+      status: "active", createdAt: now, updatedAt: now,
+    });
+  }
+  await admin.firestore().collection("providerPlanMapping").doc("NG-pro").set({
+    countryCode: "NG", planId: "pro",
+    paystack: { monthlyPlanCode: "PLN_pro_monthly_placeholder" },
+    flutterwave: { monthlyPlanId: "FLW_pro_monthly_placeholder" },
+  });
+  await admin.firestore().collection("providerPlanMapping").doc("US-pro").set({
+    countryCode: "US", planId: "pro",
+    stripe: { monthlyPriceId: "price_pro_monthly_placeholder" },
+  });
+  console.log("  -> Test-only subscriptionPricing/providerPlanMapping fixtures seeded for NG, US");
+}
+
 async function setVendorPlan(plan) {
   await signInAs(adminEmail);
   await httpsCallable(fns, "applyManualSubscriptionOverride")({ vendorId, plan, reason: `acceptance test set to ${plan}` });
@@ -201,6 +233,33 @@ async function section2() {
     await signInAs(vendorEmail);
     const r = await httpsCallable(fns, "createSubscriptionCheckout")({ plan: "pro", billingInterval: "monthly" });
     assert(r.data.authorizationUrl.startsWith("https://checkout.paystack.test/"));
+  });
+
+  await test("createSubscriptionCheckout rejects with failed-precondition when the vendor's country has no active pricing (never falls back to NGN)", async () => {
+    const email = `p4_nopricing_${Date.now()}@test.com`;
+    const c = await createUserWithEmailAndPassword(auth, email, PASSWORD);
+    await waitFor(async () => { const s = await getDoc(doc(db, "users", c.user.uid)); return s.exists() ? s : null; });
+    await signInAs(email);
+    await httpsCallable(fns, "completeRegistration")({ role: "vendor", businessName: "P4 No-Pricing Vendor", username: `p4np_${Date.now()}`, fullName: "Vendor Owner", categoryId: "food_catering", categoryName: "Food & Catering", country: "Ghana", state: "Greater Accra", area: "Accra", plan: "basic" });
+    await auth.currentUser.getIdToken(true); // refresh to pick up the vendor role custom claim
+    // Ghana intentionally has no subscriptionPricing/providerPlanMapping
+    // fixtures seeded — this must hard-fail, not silently default to NGN.
+    try {
+      await httpsCallable(fns, "createSubscriptionCheckout")({ plan: "pro", billingInterval: "monthly" });
+      assert(false, "expected createSubscriptionCheckout to reject, but it succeeded");
+    } catch (err) {
+      assertEqual(err.code, "functions/failed-precondition");
+    }
+  });
+
+  await test("createSubscriptionCheckout rejects checkout for the Basic plan (nothing to check out)", async () => {
+    await signInAs(vendorEmail);
+    try {
+      await httpsCallable(fns, "createSubscriptionCheckout")({ plan: "basic", billingInterval: "monthly" });
+      assert(false, "expected createSubscriptionCheckout to reject Basic, but it succeeded");
+    } catch (err) {
+      assertEqual(err.code, "functions/invalid-argument");
+    }
   });
 
   await test("Webhook rejects invalid signature", async () => {
@@ -1092,6 +1151,7 @@ async function main() {
   console.log("=".repeat(60));
 
   await setup();
+  await seedTestCountryPricing();
   await section1();
   await section2();
   await section3();
