@@ -1,0 +1,72 @@
+[
+  {
+    "stateId": "AD-07",
+    "countryCode": "AD",
+    "stateCode": "07",
+    "name": "Andorra la Vella",
+    "normalizedName": "andorra la vella",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "AD-02",
+    "countryCode": "AD",
+    "stateCode": "02",
+    "name": "Canillo",
+    "normalizedName": "canillo",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "AD-03",
+    "countryCode": "AD",
+    "stateCode": "03",
+    "name": "Encamp",
+    "normalizedName": "encamp",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "AD-06",
+    "countryCode": "AD",
+    "stateCode": "06",
+    "name": "Escaldes-Engordany",
+    "normalizedName": "escaldes-engordany",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "AD-04",
+    "countryCode": "AD",
+    "stateCode": "04",
+    "name": "La Massana",
+    "normalizedName": "la massana",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "AD-05",
+    "countryCode": "AD",
+    "stateCode": "05",
+    "name": "Ordino",
+    "normalizedName": "ordino",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "AD-08",
+    "countryCode": "AD",
+    "stateCode": "08",
+    "name": "Sant Julià de Lòria",
+    "normalizedName": "sant julia de loria",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 7
+  }
+]
