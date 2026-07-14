@@ -1,0 +1,42 @@
+[
+  {
+    "stateId": "BH-13",
+    "countryCode": "BH",
+    "stateCode": "13",
+    "name": "Capital",
+    "normalizedName": "capital",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "BH-14",
+    "countryCode": "BH",
+    "stateCode": "14",
+    "name": "Southern",
+    "normalizedName": "southern",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "BH-15",
+    "countryCode": "BH",
+    "stateCode": "15",
+    "name": "Muharraq",
+    "normalizedName": "muharraq",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "BH-17",
+    "countryCode": "BH",
+    "stateCode": "17",
+    "name": "Northern",
+    "normalizedName": "northern",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 4
+  }
+]
