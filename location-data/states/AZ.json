@@ -1,0 +1,722 @@
+[
+  {
+    "stateId": "AZ-ABS",
+    "countryCode": "AZ",
+    "stateCode": "ABS",
+    "name": "Absheron",
+    "normalizedName": "absheron",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "AZ-AGC",
+    "countryCode": "AZ",
+    "stateCode": "AGC",
+    "name": "Aghjabadi",
+    "normalizedName": "aghjabadi",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "AZ-AGM",
+    "countryCode": "AZ",
+    "stateCode": "AGM",
+    "name": "Aghdam",
+    "normalizedName": "aghdam",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "AZ-AGS",
+    "countryCode": "AZ",
+    "stateCode": "AGS",
+    "name": "Agndash",
+    "normalizedName": "agndash",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "AZ-AGU",
+    "countryCode": "AZ",
+    "stateCode": "AGU",
+    "name": "Aghsu",
+    "normalizedName": "aghsu",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "AZ-AST",
+    "countryCode": "AZ",
+    "stateCode": "AST",
+    "name": "Astara",
+    "normalizedName": "astara",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "AZ-BA",
+    "countryCode": "AZ",
+    "stateCode": "BA",
+    "name": "Baku",
+    "normalizedName": "baku",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "AZ-BAB",
+    "countryCode": "AZ",
+    "stateCode": "BAB",
+    "name": "Babek",
+    "normalizedName": "babek",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "AZ-BAL",
+    "countryCode": "AZ",
+    "stateCode": "BAL",
+    "name": "Balakan",
+    "normalizedName": "balakan",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "AZ-BAR",
+    "countryCode": "AZ",
+    "stateCode": "BAR",
+    "name": "Barda",
+    "normalizedName": "barda",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "AZ-BEY",
+    "countryCode": "AZ",
+    "stateCode": "BEY",
+    "name": "Beylagan",
+    "normalizedName": "beylagan",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "AZ-BIL",
+    "countryCode": "AZ",
+    "stateCode": "BIL",
+    "name": "Bilasuvar",
+    "normalizedName": "bilasuvar",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "AZ-CAL",
+    "countryCode": "AZ",
+    "stateCode": "CAL",
+    "name": "Jalilabad",
+    "normalizedName": "jalilabad",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 13
+  },
+  {
+    "stateId": "AZ-CAB",
+    "countryCode": "AZ",
+    "stateCode": "CAB",
+    "name": "Jabrayil",
+    "normalizedName": "jabrayil",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 14
+  },
+  {
+    "stateId": "AZ-CUL",
+    "countryCode": "AZ",
+    "stateCode": "CUL",
+    "name": "Julfa",
+    "normalizedName": "julfa",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 15
+  },
+  {
+    "stateId": "AZ-DAS",
+    "countryCode": "AZ",
+    "stateCode": "DAS",
+    "name": "Dashkasan",
+    "normalizedName": "dashkasan",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 16
+  },
+  {
+    "stateId": "AZ-FUZ",
+    "countryCode": "AZ",
+    "stateCode": "FUZ",
+    "name": "Fuzuli",
+    "normalizedName": "fuzuli",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 17
+  },
+  {
+    "stateId": "AZ-GA",
+    "countryCode": "AZ",
+    "stateCode": "GA",
+    "name": "Ganja",
+    "normalizedName": "ganja",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 18
+  },
+  {
+    "stateId": "AZ-GAD",
+    "countryCode": "AZ",
+    "stateCode": "GAD",
+    "name": "Gadabay",
+    "normalizedName": "gadabay",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 19
+  },
+  {
+    "stateId": "AZ-GOR",
+    "countryCode": "AZ",
+    "stateCode": "GOR",
+    "name": "Goranboy",
+    "normalizedName": "goranboy",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 20
+  },
+  {
+    "stateId": "AZ-GOY",
+    "countryCode": "AZ",
+    "stateCode": "GOY",
+    "name": "Goychay",
+    "normalizedName": "goychay",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 21
+  },
+  {
+    "stateId": "AZ-GYG",
+    "countryCode": "AZ",
+    "stateCode": "GYG",
+    "name": "Goygol",
+    "normalizedName": "goygol",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 22
+  },
+  {
+    "stateId": "AZ-HAC",
+    "countryCode": "AZ",
+    "stateCode": "HAC",
+    "name": "Hajigabul",
+    "normalizedName": "hajigabul",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 23
+  },
+  {
+    "stateId": "AZ-IMI",
+    "countryCode": "AZ",
+    "stateCode": "IMI",
+    "name": "Imishli",
+    "normalizedName": "imishli",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 24
+  },
+  {
+    "stateId": "AZ-ISM",
+    "countryCode": "AZ",
+    "stateCode": "ISM",
+    "name": "Ismayilli",
+    "normalizedName": "ismayilli",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 25
+  },
+  {
+    "stateId": "AZ-KAL",
+    "countryCode": "AZ",
+    "stateCode": "KAL",
+    "name": "Kalbajar",
+    "normalizedName": "kalbajar",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 26
+  },
+  {
+    "stateId": "AZ-KAN",
+    "countryCode": "AZ",
+    "stateCode": "KAN",
+    "name": "Kangarli",
+    "normalizedName": "kangarli",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 27
+  },
+  {
+    "stateId": "AZ-KUR",
+    "countryCode": "AZ",
+    "stateCode": "KUR",
+    "name": "Kurdamir",
+    "normalizedName": "kurdamir",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 28
+  },
+  {
+    "stateId": "AZ-LA",
+    "countryCode": "AZ",
+    "stateCode": "LA",
+    "name": "Lankaran City",
+    "normalizedName": "lankaran city",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 29
+  },
+  {
+    "stateId": "AZ-LAC",
+    "countryCode": "AZ",
+    "stateCode": "LAC",
+    "name": "Lachin",
+    "normalizedName": "lachin",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 30
+  },
+  {
+    "stateId": "AZ-LAN",
+    "countryCode": "AZ",
+    "stateCode": "LAN",
+    "name": "Lankaran",
+    "normalizedName": "lankaran",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 31
+  },
+  {
+    "stateId": "AZ-LER",
+    "countryCode": "AZ",
+    "stateCode": "LER",
+    "name": "Lerik",
+    "normalizedName": "lerik",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 32
+  },
+  {
+    "stateId": "AZ-MAS",
+    "countryCode": "AZ",
+    "stateCode": "MAS",
+    "name": "Masally",
+    "normalizedName": "masally",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 33
+  },
+  {
+    "stateId": "AZ-MI",
+    "countryCode": "AZ",
+    "stateCode": "MI",
+    "name": "Mingachevir",
+    "normalizedName": "mingachevir",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 34
+  },
+  {
+    "stateId": "AZ-NA",
+    "countryCode": "AZ",
+    "stateCode": "NA",
+    "name": "Naftalan",
+    "normalizedName": "naftalan",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 35
+  },
+  {
+    "stateId": "AZ-NX",
+    "countryCode": "AZ",
+    "stateCode": "NX",
+    "name": "Nakhchivan City",
+    "normalizedName": "nakhchivan city",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 36
+  },
+  {
+    "stateId": "AZ-NEF",
+    "countryCode": "AZ",
+    "stateCode": "NEF",
+    "name": "Neftchala",
+    "normalizedName": "neftchala",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 37
+  },
+  {
+    "stateId": "AZ-OGU",
+    "countryCode": "AZ",
+    "stateCode": "OGU",
+    "name": "Oghuz",
+    "normalizedName": "oghuz",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 38
+  },
+  {
+    "stateId": "AZ-ORD",
+    "countryCode": "AZ",
+    "stateCode": "ORD",
+    "name": "Ordubad",
+    "normalizedName": "ordubad",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 39
+  },
+  {
+    "stateId": "AZ-QAB",
+    "countryCode": "AZ",
+    "stateCode": "QAB",
+    "name": "Gabala",
+    "normalizedName": "gabala",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 40
+  },
+  {
+    "stateId": "AZ-QAX",
+    "countryCode": "AZ",
+    "stateCode": "QAX",
+    "name": "Qakh",
+    "normalizedName": "qakh",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 41
+  },
+  {
+    "stateId": "AZ-QAZ",
+    "countryCode": "AZ",
+    "stateCode": "QAZ",
+    "name": "Qazakh",
+    "normalizedName": "qazakh",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 42
+  },
+  {
+    "stateId": "AZ-QOB",
+    "countryCode": "AZ",
+    "stateCode": "QOB",
+    "name": "Gobustan",
+    "normalizedName": "gobustan",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 43
+  },
+  {
+    "stateId": "AZ-QUB",
+    "countryCode": "AZ",
+    "stateCode": "QUB",
+    "name": "Guba",
+    "normalizedName": "guba",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 44
+  },
+  {
+    "stateId": "AZ-QUR",
+    "countryCode": "AZ",
+    "stateCode": "QUR",
+    "name": "Gusar",
+    "normalizedName": "gusar",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 45
+  },
+  {
+    "stateId": "AZ-SAH",
+    "countryCode": "AZ",
+    "stateCode": "SAH",
+    "name": "Shahbuz",
+    "normalizedName": "shahbuz",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 46
+  },
+  {
+    "stateId": "AZ-SAB",
+    "countryCode": "AZ",
+    "stateCode": "SAB",
+    "name": "Sabirabad",
+    "normalizedName": "sabirabad",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 47
+  },
+  {
+    "stateId": "AZ-SAD",
+    "countryCode": "AZ",
+    "stateCode": "SAD",
+    "name": "Sadarak",
+    "normalizedName": "sadarak",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 48
+  },
+  {
+    "stateId": "AZ-SAK",
+    "countryCode": "AZ",
+    "stateCode": "SAK",
+    "name": "Sheki",
+    "normalizedName": "sheki",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 49
+  },
+  {
+    "stateId": "AZ-SAL",
+    "countryCode": "AZ",
+    "stateCode": "SAL",
+    "name": "Salyan",
+    "normalizedName": "salyan",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 50
+  },
+  {
+    "stateId": "AZ-SAM",
+    "countryCode": "AZ",
+    "stateCode": "SAM",
+    "name": "Samukh",
+    "normalizedName": "samukh",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 51
+  },
+  {
+    "stateId": "AZ-SIY",
+    "countryCode": "AZ",
+    "stateCode": "SIY",
+    "name": "Siyazan",
+    "normalizedName": "siyazan",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 52
+  },
+  {
+    "stateId": "AZ-SI",
+    "countryCode": "AZ",
+    "stateCode": "SI",
+    "name": "Shirvan",
+    "normalizedName": "shirvan",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 53
+  },
+  {
+    "stateId": "AZ-SM",
+    "countryCode": "AZ",
+    "stateCode": "SM",
+    "name": "Sumqayit",
+    "normalizedName": "sumqayit",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 54
+  },
+  {
+    "stateId": "AZ-SMI",
+    "countryCode": "AZ",
+    "stateCode": "SMI",
+    "name": "Shamakhi",
+    "normalizedName": "shamakhi",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 55
+  },
+  {
+    "stateId": "AZ-SMX",
+    "countryCode": "AZ",
+    "stateCode": "SMX",
+    "name": "Shakhbuz",
+    "normalizedName": "shakhbuz",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 56
+  },
+  {
+    "stateId": "AZ-SR",
+    "countryCode": "AZ",
+    "stateCode": "SR",
+    "name": "Shusha City",
+    "normalizedName": "shusha city",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 57
+  },
+  {
+    "stateId": "AZ-SUS",
+    "countryCode": "AZ",
+    "stateCode": "SUS",
+    "name": "Shusha",
+    "normalizedName": "shusha",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 58
+  },
+  {
+    "stateId": "AZ-TAR",
+    "countryCode": "AZ",
+    "stateCode": "TAR",
+    "name": "Tartar",
+    "normalizedName": "tartar",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 59
+  },
+  {
+    "stateId": "AZ-TOV",
+    "countryCode": "AZ",
+    "stateCode": "TOV",
+    "name": "Tovuz",
+    "normalizedName": "tovuz",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 60
+  },
+  {
+    "stateId": "AZ-UCA",
+    "countryCode": "AZ",
+    "stateCode": "UCA",
+    "name": "Ujar",
+    "normalizedName": "ujar",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 61
+  },
+  {
+    "stateId": "AZ-XAC",
+    "countryCode": "AZ",
+    "stateCode": "XAC",
+    "name": "Khachmaz",
+    "normalizedName": "khachmaz",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 62
+  },
+  {
+    "stateId": "AZ-XAN",
+    "countryCode": "AZ",
+    "stateCode": "XAN",
+    "name": "Khanlar",
+    "normalizedName": "khanlar",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 63
+  },
+  {
+    "stateId": "AZ-XIZ",
+    "countryCode": "AZ",
+    "stateCode": "XIZ",
+    "name": "Khizi",
+    "normalizedName": "khizi",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 64
+  },
+  {
+    "stateId": "AZ-XOC",
+    "countryCode": "AZ",
+    "stateCode": "XOC",
+    "name": "Khojali",
+    "normalizedName": "khojali",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 65
+  },
+  {
+    "stateId": "AZ-XVD",
+    "countryCode": "AZ",
+    "stateCode": "XVD",
+    "name": "Khojavand",
+    "normalizedName": "khojavand",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 66
+  },
+  {
+    "stateId": "AZ-YAR",
+    "countryCode": "AZ",
+    "stateCode": "YAR",
+    "name": "Yardymli",
+    "normalizedName": "yardymli",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 67
+  },
+  {
+    "stateId": "AZ-YE",
+    "countryCode": "AZ",
+    "stateCode": "YE",
+    "name": "Yevlakh City",
+    "normalizedName": "yevlakh city",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 68
+  },
+  {
+    "stateId": "AZ-YEV",
+    "countryCode": "AZ",
+    "stateCode": "YEV",
+    "name": "Yevlakh",
+    "normalizedName": "yevlakh",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 69
+  },
+  {
+    "stateId": "AZ-ZAN",
+    "countryCode": "AZ",
+    "stateCode": "ZAN",
+    "name": "Zangilan",
+    "normalizedName": "zangilan",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 70
+  },
+  {
+    "stateId": "AZ-ZAQ",
+    "countryCode": "AZ",
+    "stateCode": "ZAQ",
+    "name": "Zaqatala",
+    "normalizedName": "zaqatala",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 71
+  },
+  {
+    "stateId": "AZ-ZAR",
+    "countryCode": "AZ",
+    "stateCode": "ZAR",
+    "name": "Zardab",
+    "normalizedName": "zardab",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 72
+  }
+]

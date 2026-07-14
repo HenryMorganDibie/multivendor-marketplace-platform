@@ -1,0 +1,112 @@
+[
+  {
+    "stateId": "BE-BRU",
+    "countryCode": "BE",
+    "stateCode": "BRU",
+    "name": "Brussels-Capital Region",
+    "normalizedName": "brussels-capital region",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "BE-VAN",
+    "countryCode": "BE",
+    "stateCode": "VAN",
+    "name": "Antwerp",
+    "normalizedName": "antwerp",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "BE-VLI",
+    "countryCode": "BE",
+    "stateCode": "VLI",
+    "name": "Limburg",
+    "normalizedName": "limburg",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "BE-VOV",
+    "countryCode": "BE",
+    "stateCode": "VOV",
+    "name": "East Flanders",
+    "normalizedName": "east flanders",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "BE-VBR",
+    "countryCode": "BE",
+    "stateCode": "VBR",
+    "name": "Flemish Brabant",
+    "normalizedName": "flemish brabant",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "BE-VWV",
+    "countryCode": "BE",
+    "stateCode": "VWV",
+    "name": "West Flanders",
+    "normalizedName": "west flanders",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "BE-WBR",
+    "countryCode": "BE",
+    "stateCode": "WBR",
+    "name": "Walloon Brabant",
+    "normalizedName": "walloon brabant",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "BE-WHT",
+    "countryCode": "BE",
+    "stateCode": "WHT",
+    "name": "Hainaut",
+    "normalizedName": "hainaut",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "BE-WLG",
+    "countryCode": "BE",
+    "stateCode": "WLG",
+    "name": "Liège",
+    "normalizedName": "liege",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "BE-WLX",
+    "countryCode": "BE",
+    "stateCode": "WLX",
+    "name": "Luxembourg",
+    "normalizedName": "luxembourg",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "BE-WNA",
+    "countryCode": "BE",
+    "stateCode": "WNA",
+    "name": "Namur",
+    "normalizedName": "namur",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 11
+  }
+]
