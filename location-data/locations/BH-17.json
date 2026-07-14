@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BH-17-NORTHERN",
+    "countryCode": "BH",
+    "stateId": "BH-17",
+    "stateCode": "17",
+    "name": "Northern",
+    "normalizedName": "northern",
+    "slug": "NORTHERN",
+    "locationType": "city",
+    "timeZone": "Asia/Bahrain",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

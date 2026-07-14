@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AT-9-VIENNA",
+    "countryCode": "AT",
+    "stateId": "AT-9",
+    "stateCode": "9",
+    "name": "Vienna",
+    "normalizedName": "vienna",
+    "slug": "VIENNA",
+    "locationType": "city",
+    "timeZone": "Europe/Vienna",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

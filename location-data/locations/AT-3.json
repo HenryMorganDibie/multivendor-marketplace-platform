@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AT-3-ST-POELTEN",
+    "countryCode": "AT",
+    "stateId": "AT-3",
+    "stateCode": "3",
+    "name": "St. Poelten",
+    "normalizedName": "st. poelten",
+    "slug": "ST-POELTEN",
+    "locationType": "city",
+    "timeZone": "Europe/Vienna",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

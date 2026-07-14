@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BH-15-MUHARRAQ",
+    "countryCode": "BH",
+    "stateId": "BH-15",
+    "stateCode": "15",
+    "name": "Muharraq",
+    "normalizedName": "muharraq",
+    "slug": "MUHARRAQ",
+    "locationType": "city",
+    "timeZone": "Asia/Bahrain",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

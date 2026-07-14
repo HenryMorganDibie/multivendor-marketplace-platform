@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AT-4-LINZ",
+    "countryCode": "AT",
+    "stateId": "AT-4",
+    "stateCode": "4",
+    "name": "Linz",
+    "normalizedName": "linz",
+    "slug": "LINZ",
+    "locationType": "city",
+    "timeZone": "Europe/Vienna",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AM-AG-ASHTARAK",
+    "countryCode": "AM",
+    "stateId": "AM-AG",
+    "stateCode": "AG",
+    "name": "Ashtarak",
+    "normalizedName": "ashtarak",
+    "slug": "ASHTARAK",
+    "locationType": "city",
+    "timeZone": "Asia/Yerevan",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

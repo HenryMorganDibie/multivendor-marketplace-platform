@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AM-SH-GYUMRI",
+    "countryCode": "AM",
+    "stateId": "AM-SH",
+    "stateCode": "SH",
+    "name": "Gyumri",
+    "normalizedName": "gyumri",
+    "slug": "GYUMRI",
+    "locationType": "city",
+    "timeZone": "Asia/Yerevan",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

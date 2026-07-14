@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AM-TV-IJEVAN",
+    "countryCode": "AM",
+    "stateId": "AM-TV",
+    "stateCode": "TV",
+    "name": "Ijevan",
+    "normalizedName": "ijevan",
+    "slug": "IJEVAN",
+    "locationType": "city",
+    "timeZone": "Asia/Yerevan",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

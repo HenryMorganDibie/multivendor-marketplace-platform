@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AM-KT-HRAZDAN",
+    "countryCode": "AM",
+    "stateId": "AM-KT",
+    "stateCode": "KT",
+    "name": "Hrazdan",
+    "normalizedName": "hrazdan",
+    "slug": "HRAZDAN",
+    "locationType": "city",
+    "timeZone": "Asia/Yerevan",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

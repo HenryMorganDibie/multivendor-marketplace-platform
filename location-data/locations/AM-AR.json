@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AM-AR-ARTASHAT",
+    "countryCode": "AM",
+    "stateId": "AM-AR",
+    "stateCode": "AR",
+    "name": "Artashat",
+    "normalizedName": "artashat",
+    "slug": "ARTASHAT",
+    "locationType": "city",
+    "timeZone": "Asia/Yerevan",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

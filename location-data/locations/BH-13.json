@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BH-13-MANAMA",
+    "countryCode": "BH",
+    "stateId": "BH-13",
+    "stateCode": "13",
+    "name": "Manama",
+    "normalizedName": "manama",
+    "slug": "MANAMA",
+    "locationType": "city",
+    "timeZone": "Asia/Bahrain",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AM-SU-KAPAN",
+    "countryCode": "AM",
+    "stateId": "AM-SU",
+    "stateCode": "SU",
+    "name": "Kapan",
+    "normalizedName": "kapan",
+    "slug": "KAPAN",
+    "locationType": "city",
+    "timeZone": "Asia/Yerevan",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

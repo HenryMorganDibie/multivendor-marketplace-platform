@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AT-2-KLAGENFURT",
+    "countryCode": "AT",
+    "stateId": "AT-2",
+    "stateCode": "2",
+    "name": "Klagenfurt",
+    "normalizedName": "klagenfurt",
+    "slug": "KLAGENFURT",
+    "locationType": "city",
+    "timeZone": "Europe/Vienna",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BH-14-SOUTHERN",
+    "countryCode": "BH",
+    "stateId": "BH-14",
+    "stateCode": "14",
+    "name": "Southern",
+    "normalizedName": "southern",
+    "slug": "SOUTHERN",
+    "locationType": "city",
+    "timeZone": "Asia/Bahrain",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

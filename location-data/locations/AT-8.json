@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AT-8-BREGENZ",
+    "countryCode": "AT",
+    "stateId": "AT-8",
+    "stateCode": "8",
+    "name": "Bregenz",
+    "normalizedName": "bregenz",
+    "slug": "BREGENZ",
+    "locationType": "city",
+    "timeZone": "Europe/Vienna",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AM-VD-YEGHEGNADZOR",
+    "countryCode": "AM",
+    "stateId": "AM-VD",
+    "stateCode": "VD",
+    "name": "Yeghegnadzor",
+    "normalizedName": "yeghegnadzor",
+    "slug": "YEGHEGNADZOR",
+    "locationType": "city",
+    "timeZone": "Asia/Yerevan",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

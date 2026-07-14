@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AM-AV-ARMAVIR",
+    "countryCode": "AM",
+    "stateId": "AM-AV",
+    "stateCode": "AV",
+    "name": "Armavir",
+    "normalizedName": "armavir",
+    "slug": "ARMAVIR",
+    "locationType": "city",
+    "timeZone": "Asia/Yerevan",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

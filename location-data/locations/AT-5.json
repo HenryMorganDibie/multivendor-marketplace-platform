@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AT-5-SALZBURG",
+    "countryCode": "AT",
+    "stateId": "AT-5",
+    "stateCode": "5",
+    "name": "Salzburg",
+    "normalizedName": "salzburg",
+    "slug": "SALZBURG",
+    "locationType": "city",
+    "timeZone": "Europe/Vienna",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

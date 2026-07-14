@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AM-LO-VANADZOR",
+    "countryCode": "AM",
+    "stateId": "AM-LO",
+    "stateCode": "LO",
+    "name": "Vanadzor",
+    "normalizedName": "vanadzor",
+    "slug": "VANADZOR",
+    "locationType": "city",
+    "timeZone": "Asia/Yerevan",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AT-7-INNSBRUCK",
+    "countryCode": "AT",
+    "stateId": "AT-7",
+    "stateCode": "7",
+    "name": "Innsbruck",
+    "normalizedName": "innsbruck",
+    "slug": "INNSBRUCK",
+    "locationType": "city",
+    "timeZone": "Europe/Vienna",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

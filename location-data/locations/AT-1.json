@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AT-1-EISENSTADT",
+    "countryCode": "AT",
+    "stateId": "AT-1",
+    "stateCode": "1",
+    "name": "Eisenstadt",
+    "normalizedName": "eisenstadt",
+    "slug": "EISENSTADT",
+    "locationType": "city",
+    "timeZone": "Europe/Vienna",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

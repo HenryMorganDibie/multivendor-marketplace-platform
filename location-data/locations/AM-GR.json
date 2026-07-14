@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AM-GR-GAVAR",
+    "countryCode": "AM",
+    "stateId": "AM-GR",
+    "stateCode": "GR",
+    "name": "Gavar",
+    "normalizedName": "gavar",
+    "slug": "GAVAR",
+    "locationType": "city",
+    "timeZone": "Asia/Yerevan",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

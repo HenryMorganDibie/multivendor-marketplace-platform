@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AM-ER-YEREVAN",
+    "countryCode": "AM",
+    "stateId": "AM-ER",
+    "stateCode": "ER",
+    "name": "Yerevan",
+    "normalizedName": "yerevan",
+    "slug": "YEREVAN",
+    "locationType": "city",
+    "timeZone": "Asia/Yerevan",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

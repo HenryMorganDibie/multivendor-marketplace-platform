@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AT-6-GRAZ",
+    "countryCode": "AT",
+    "stateId": "AT-6",
+    "stateCode": "6",
+    "name": "Graz",
+    "normalizedName": "graz",
+    "slug": "GRAZ",
+    "locationType": "city",
+    "timeZone": "Europe/Vienna",
+    "status": "active",
+    "sortOrder": 1
+  }
+]
