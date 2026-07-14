@@ -1,0 +1,92 @@
+[
+  {
+    "stateId": "AT-1",
+    "countryCode": "AT",
+    "stateCode": "1",
+    "name": "Burgenland",
+    "normalizedName": "burgenland",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "AT-2",
+    "countryCode": "AT",
+    "stateCode": "2",
+    "name": "Carinthia",
+    "normalizedName": "carinthia",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "AT-3",
+    "countryCode": "AT",
+    "stateCode": "3",
+    "name": "Lower Austria",
+    "normalizedName": "lower austria",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "AT-4",
+    "countryCode": "AT",
+    "stateCode": "4",
+    "name": "Upper Austria",
+    "normalizedName": "upper austria",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "AT-5",
+    "countryCode": "AT",
+    "stateCode": "5",
+    "name": "Salzburg",
+    "normalizedName": "salzburg",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "AT-6",
+    "countryCode": "AT",
+    "stateCode": "6",
+    "name": "Styria",
+    "normalizedName": "styria",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "AT-7",
+    "countryCode": "AT",
+    "stateCode": "7",
+    "name": "Tyrol",
+    "normalizedName": "tyrol",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "AT-8",
+    "countryCode": "AT",
+    "stateCode": "8",
+    "name": "Vorarlberg",
+    "normalizedName": "vorarlberg",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "AT-9",
+    "countryCode": "AT",
+    "stateCode": "9",
+    "name": "Vienna",
+    "normalizedName": "vienna",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 9
+  }
+]
