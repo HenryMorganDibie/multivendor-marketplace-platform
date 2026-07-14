@@ -1,0 +1,242 @@
+[
+  {
+    "stateId": "AR-B",
+    "countryCode": "AR",
+    "stateCode": "B",
+    "name": "Buenos Aires Province",
+    "normalizedName": "buenos aires province",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "AR-C",
+    "countryCode": "AR",
+    "stateCode": "C",
+    "name": "Buenos Aires",
+    "normalizedName": "buenos aires",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "AR-K",
+    "countryCode": "AR",
+    "stateCode": "K",
+    "name": "Catamarca",
+    "normalizedName": "catamarca",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "AR-H",
+    "countryCode": "AR",
+    "stateCode": "H",
+    "name": "Chaco",
+    "normalizedName": "chaco",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "AR-U",
+    "countryCode": "AR",
+    "stateCode": "U",
+    "name": "Chubut",
+    "normalizedName": "chubut",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "AR-X",
+    "countryCode": "AR",
+    "stateCode": "X",
+    "name": "Córdoba",
+    "normalizedName": "cordoba",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "AR-W",
+    "countryCode": "AR",
+    "stateCode": "W",
+    "name": "Corrientes",
+    "normalizedName": "corrientes",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "AR-E",
+    "countryCode": "AR",
+    "stateCode": "E",
+    "name": "Entre Ríos",
+    "normalizedName": "entre rios",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "AR-P",
+    "countryCode": "AR",
+    "stateCode": "P",
+    "name": "Formosa",
+    "normalizedName": "formosa",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "AR-Y",
+    "countryCode": "AR",
+    "stateCode": "Y",
+    "name": "Jujuy",
+    "normalizedName": "jujuy",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "AR-L",
+    "countryCode": "AR",
+    "stateCode": "L",
+    "name": "La Pampa",
+    "normalizedName": "la pampa",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "AR-F",
+    "countryCode": "AR",
+    "stateCode": "F",
+    "name": "La Rioja",
+    "normalizedName": "la rioja",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "AR-M",
+    "countryCode": "AR",
+    "stateCode": "M",
+    "name": "Mendoza",
+    "normalizedName": "mendoza",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 13
+  },
+  {
+    "stateId": "AR-N",
+    "countryCode": "AR",
+    "stateCode": "N",
+    "name": "Misiones",
+    "normalizedName": "misiones",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 14
+  },
+  {
+    "stateId": "AR-Q",
+    "countryCode": "AR",
+    "stateCode": "Q",
+    "name": "Neuquén",
+    "normalizedName": "neuquen",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 15
+  },
+  {
+    "stateId": "AR-R",
+    "countryCode": "AR",
+    "stateCode": "R",
+    "name": "Río Negro",
+    "normalizedName": "rio negro",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 16
+  },
+  {
+    "stateId": "AR-A",
+    "countryCode": "AR",
+    "stateCode": "A",
+    "name": "Salta",
+    "normalizedName": "salta",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 17
+  },
+  {
+    "stateId": "AR-J",
+    "countryCode": "AR",
+    "stateCode": "J",
+    "name": "San Juan",
+    "normalizedName": "san juan",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 18
+  },
+  {
+    "stateId": "AR-D",
+    "countryCode": "AR",
+    "stateCode": "D",
+    "name": "San Luis",
+    "normalizedName": "san luis",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 19
+  },
+  {
+    "stateId": "AR-Z",
+    "countryCode": "AR",
+    "stateCode": "Z",
+    "name": "Santa Cruz",
+    "normalizedName": "santa cruz",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 20
+  },
+  {
+    "stateId": "AR-S",
+    "countryCode": "AR",
+    "stateCode": "S",
+    "name": "Santa Fe",
+    "normalizedName": "santa fe",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 21
+  },
+  {
+    "stateId": "AR-G",
+    "countryCode": "AR",
+    "stateCode": "G",
+    "name": "Santiago del Estero",
+    "normalizedName": "santiago del estero",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 22
+  },
+  {
+    "stateId": "AR-V",
+    "countryCode": "AR",
+    "stateCode": "V",
+    "name": "Tierra del Fuego",
+    "normalizedName": "tierra del fuego",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 23
+  },
+  {
+    "stateId": "AR-T",
+    "countryCode": "AR",
+    "stateCode": "T",
+    "name": "Tucumán",
+    "normalizedName": "tucuman",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 24
+  }
+]
