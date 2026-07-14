@@ -1,0 +1,632 @@
+[
+  {
+    "stateId": "VN-HN",
+    "countryCode": "VN",
+    "stateCode": "HN",
+    "name": "Hanoi",
+    "normalizedName": "hanoi",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "VN-SG",
+    "countryCode": "VN",
+    "stateCode": "SG",
+    "name": "Ho Chi Minh City",
+    "normalizedName": "ho chi minh city",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "VN-HP",
+    "countryCode": "VN",
+    "stateCode": "HP",
+    "name": "Haiphong",
+    "normalizedName": "haiphong",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "VN-DN",
+    "countryCode": "VN",
+    "stateCode": "DN",
+    "name": "Da Nang",
+    "normalizedName": "da nang",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "VN-CT",
+    "countryCode": "VN",
+    "stateCode": "CT",
+    "name": "Can Tho",
+    "normalizedName": "can tho",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "VN-44",
+    "countryCode": "VN",
+    "stateCode": "44",
+    "name": "An Giang",
+    "normalizedName": "an giang",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "VN-43",
+    "countryCode": "VN",
+    "stateCode": "43",
+    "name": "Ba Ria-Vung Tau",
+    "normalizedName": "ba ria-vung tau",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "VN-53",
+    "countryCode": "VN",
+    "stateCode": "53",
+    "name": "Bac Giang",
+    "normalizedName": "bac giang",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "VN-54",
+    "countryCode": "VN",
+    "stateCode": "54",
+    "name": "Bac Kan",
+    "normalizedName": "bac kan",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "VN-55",
+    "countryCode": "VN",
+    "stateCode": "55",
+    "name": "Bac Lieu",
+    "normalizedName": "bac lieu",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "VN-56",
+    "countryCode": "VN",
+    "stateCode": "56",
+    "name": "Bac Ninh",
+    "normalizedName": "bac ninh",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "VN-50",
+    "countryCode": "VN",
+    "stateCode": "50",
+    "name": "Ben Tre",
+    "normalizedName": "ben tre",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "VN-31",
+    "countryCode": "VN",
+    "stateCode": "31",
+    "name": "Binh Dinh",
+    "normalizedName": "binh dinh",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 13
+  },
+  {
+    "stateId": "VN-57",
+    "countryCode": "VN",
+    "stateCode": "57",
+    "name": "Binh Duong",
+    "normalizedName": "binh duong",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 14
+  },
+  {
+    "stateId": "VN-58",
+    "countryCode": "VN",
+    "stateCode": "58",
+    "name": "Binh Phuoc",
+    "normalizedName": "binh phuoc",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 15
+  },
+  {
+    "stateId": "VN-40",
+    "countryCode": "VN",
+    "stateCode": "40",
+    "name": "Binh Thuan",
+    "normalizedName": "binh thuan",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 16
+  },
+  {
+    "stateId": "VN-59",
+    "countryCode": "VN",
+    "stateCode": "59",
+    "name": "Ca Mau",
+    "normalizedName": "ca mau",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 17
+  },
+  {
+    "stateId": "VN-04",
+    "countryCode": "VN",
+    "stateCode": "04",
+    "name": "Cao Bang",
+    "normalizedName": "cao bang",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 18
+  },
+  {
+    "stateId": "VN-33",
+    "countryCode": "VN",
+    "stateCode": "33",
+    "name": "Dak Lak",
+    "normalizedName": "dak lak",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 19
+  },
+  {
+    "stateId": "VN-72",
+    "countryCode": "VN",
+    "stateCode": "72",
+    "name": "Dak Nong",
+    "normalizedName": "dak nong",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 20
+  },
+  {
+    "stateId": "VN-71",
+    "countryCode": "VN",
+    "stateCode": "71",
+    "name": "Dien Bien",
+    "normalizedName": "dien bien",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 21
+  },
+  {
+    "stateId": "VN-39",
+    "countryCode": "VN",
+    "stateCode": "39",
+    "name": "Dong Nai",
+    "normalizedName": "dong nai",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 22
+  },
+  {
+    "stateId": "VN-45",
+    "countryCode": "VN",
+    "stateCode": "45",
+    "name": "Dong Thap",
+    "normalizedName": "dong thap",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 23
+  },
+  {
+    "stateId": "VN-30",
+    "countryCode": "VN",
+    "stateCode": "30",
+    "name": "Gia Lai",
+    "normalizedName": "gia lai",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 24
+  },
+  {
+    "stateId": "VN-03",
+    "countryCode": "VN",
+    "stateCode": "03",
+    "name": "Ha Giang",
+    "normalizedName": "ha giang",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 25
+  },
+  {
+    "stateId": "VN-63",
+    "countryCode": "VN",
+    "stateCode": "63",
+    "name": "Ha Nam",
+    "normalizedName": "ha nam",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 26
+  },
+  {
+    "stateId": "VN-23",
+    "countryCode": "VN",
+    "stateCode": "23",
+    "name": "Ha Tinh",
+    "normalizedName": "ha tinh",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 27
+  },
+  {
+    "stateId": "VN-61",
+    "countryCode": "VN",
+    "stateCode": "61",
+    "name": "Hai Duong",
+    "normalizedName": "hai duong",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 28
+  },
+  {
+    "stateId": "VN-73",
+    "countryCode": "VN",
+    "stateCode": "73",
+    "name": "Hau Giang",
+    "normalizedName": "hau giang",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 29
+  },
+  {
+    "stateId": "VN-14",
+    "countryCode": "VN",
+    "stateCode": "14",
+    "name": "Hoa Binh",
+    "normalizedName": "hoa binh",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 30
+  },
+  {
+    "stateId": "VN-66",
+    "countryCode": "VN",
+    "stateCode": "66",
+    "name": "Hung Yen",
+    "normalizedName": "hung yen",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 31
+  },
+  {
+    "stateId": "VN-34",
+    "countryCode": "VN",
+    "stateCode": "34",
+    "name": "Khanh Hoa",
+    "normalizedName": "khanh hoa",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 32
+  },
+  {
+    "stateId": "VN-47",
+    "countryCode": "VN",
+    "stateCode": "47",
+    "name": "Kien Giang",
+    "normalizedName": "kien giang",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 33
+  },
+  {
+    "stateId": "VN-28",
+    "countryCode": "VN",
+    "stateCode": "28",
+    "name": "Kon Tum",
+    "normalizedName": "kon tum",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 34
+  },
+  {
+    "stateId": "VN-01",
+    "countryCode": "VN",
+    "stateCode": "01",
+    "name": "Lai Chau",
+    "normalizedName": "lai chau",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 35
+  },
+  {
+    "stateId": "VN-35",
+    "countryCode": "VN",
+    "stateCode": "35",
+    "name": "Lam Dong",
+    "normalizedName": "lam dong",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 36
+  },
+  {
+    "stateId": "VN-09",
+    "countryCode": "VN",
+    "stateCode": "09",
+    "name": "Lang Son",
+    "normalizedName": "lang son",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 37
+  },
+  {
+    "stateId": "VN-02",
+    "countryCode": "VN",
+    "stateCode": "02",
+    "name": "Lao Cai",
+    "normalizedName": "lao cai",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 38
+  },
+  {
+    "stateId": "VN-41",
+    "countryCode": "VN",
+    "stateCode": "41",
+    "name": "Long An",
+    "normalizedName": "long an",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 39
+  },
+  {
+    "stateId": "VN-67",
+    "countryCode": "VN",
+    "stateCode": "67",
+    "name": "Nam Dinh",
+    "normalizedName": "nam dinh",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 40
+  },
+  {
+    "stateId": "VN-22",
+    "countryCode": "VN",
+    "stateCode": "22",
+    "name": "Nghe An",
+    "normalizedName": "nghe an",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 41
+  },
+  {
+    "stateId": "VN-18",
+    "countryCode": "VN",
+    "stateCode": "18",
+    "name": "Ninh Binh",
+    "normalizedName": "ninh binh",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 42
+  },
+  {
+    "stateId": "VN-36",
+    "countryCode": "VN",
+    "stateCode": "36",
+    "name": "Ninh Thuan",
+    "normalizedName": "ninh thuan",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 43
+  },
+  {
+    "stateId": "VN-68",
+    "countryCode": "VN",
+    "stateCode": "68",
+    "name": "Phu Tho",
+    "normalizedName": "phu tho",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 44
+  },
+  {
+    "stateId": "VN-32",
+    "countryCode": "VN",
+    "stateCode": "32",
+    "name": "Phu Yen",
+    "normalizedName": "phu yen",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 45
+  },
+  {
+    "stateId": "VN-24",
+    "countryCode": "VN",
+    "stateCode": "24",
+    "name": "Quang Binh",
+    "normalizedName": "quang binh",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 46
+  },
+  {
+    "stateId": "VN-27",
+    "countryCode": "VN",
+    "stateCode": "27",
+    "name": "Quang Nam",
+    "normalizedName": "quang nam",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 47
+  },
+  {
+    "stateId": "VN-29",
+    "countryCode": "VN",
+    "stateCode": "29",
+    "name": "Quang Ngai",
+    "normalizedName": "quang ngai",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 48
+  },
+  {
+    "stateId": "VN-13",
+    "countryCode": "VN",
+    "stateCode": "13",
+    "name": "Quang Ninh",
+    "normalizedName": "quang ninh",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 49
+  },
+  {
+    "stateId": "VN-25",
+    "countryCode": "VN",
+    "stateCode": "25",
+    "name": "Quang Tri",
+    "normalizedName": "quang tri",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 50
+  },
+  {
+    "stateId": "VN-52",
+    "countryCode": "VN",
+    "stateCode": "52",
+    "name": "Soc Trang",
+    "normalizedName": "soc trang",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 51
+  },
+  {
+    "stateId": "VN-05",
+    "countryCode": "VN",
+    "stateCode": "05",
+    "name": "Son La",
+    "normalizedName": "son la",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 52
+  },
+  {
+    "stateId": "VN-37",
+    "countryCode": "VN",
+    "stateCode": "37",
+    "name": "Tay Ninh",
+    "normalizedName": "tay ninh",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 53
+  },
+  {
+    "stateId": "VN-20",
+    "countryCode": "VN",
+    "stateCode": "20",
+    "name": "Thai Binh",
+    "normalizedName": "thai binh",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 54
+  },
+  {
+    "stateId": "VN-69",
+    "countryCode": "VN",
+    "stateCode": "69",
+    "name": "Thai Nguyen",
+    "normalizedName": "thai nguyen",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 55
+  },
+  {
+    "stateId": "VN-21",
+    "countryCode": "VN",
+    "stateCode": "21",
+    "name": "Thanh Hoa",
+    "normalizedName": "thanh hoa",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 56
+  },
+  {
+    "stateId": "VN-26",
+    "countryCode": "VN",
+    "stateCode": "26",
+    "name": "Thua Thien Hue",
+    "normalizedName": "thua thien hue",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 57
+  },
+  {
+    "stateId": "VN-46",
+    "countryCode": "VN",
+    "stateCode": "46",
+    "name": "Tien Giang",
+    "normalizedName": "tien giang",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 58
+  },
+  {
+    "stateId": "VN-51",
+    "countryCode": "VN",
+    "stateCode": "51",
+    "name": "Tra Vinh",
+    "normalizedName": "tra vinh",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 59
+  },
+  {
+    "stateId": "VN-07",
+    "countryCode": "VN",
+    "stateCode": "07",
+    "name": "Tuyen Quang",
+    "normalizedName": "tuyen quang",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 60
+  },
+  {
+    "stateId": "VN-49",
+    "countryCode": "VN",
+    "stateCode": "49",
+    "name": "Vinh Long",
+    "normalizedName": "vinh long",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 61
+  },
+  {
+    "stateId": "VN-70",
+    "countryCode": "VN",
+    "stateCode": "70",
+    "name": "Vinh Phuc",
+    "normalizedName": "vinh phuc",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 62
+  },
+  {
+    "stateId": "VN-06",
+    "countryCode": "VN",
+    "stateCode": "06",
+    "name": "Yen Bai",
+    "normalizedName": "yen bai",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 63
+  }
+]
