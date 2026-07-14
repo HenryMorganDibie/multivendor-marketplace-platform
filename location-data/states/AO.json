@@ -1,0 +1,182 @@
+[
+  {
+    "stateId": "AO-BGO",
+    "countryCode": "AO",
+    "stateCode": "BGO",
+    "name": "Bengo",
+    "normalizedName": "bengo",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "AO-BGU",
+    "countryCode": "AO",
+    "stateCode": "BGU",
+    "name": "Benguela",
+    "normalizedName": "benguela",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "AO-BIE",
+    "countryCode": "AO",
+    "stateCode": "BIE",
+    "name": "Bié",
+    "normalizedName": "bie",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "AO-CAB",
+    "countryCode": "AO",
+    "stateCode": "CAB",
+    "name": "Cabinda",
+    "normalizedName": "cabinda",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "AO-CCU",
+    "countryCode": "AO",
+    "stateCode": "CCU",
+    "name": "Cuando Cubango",
+    "normalizedName": "cuando cubango",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "AO-CNO",
+    "countryCode": "AO",
+    "stateCode": "CNO",
+    "name": "Cuanza Norte",
+    "normalizedName": "cuanza norte",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "AO-CUS",
+    "countryCode": "AO",
+    "stateCode": "CUS",
+    "name": "Cuanza Sul",
+    "normalizedName": "cuanza sul",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "AO-CNN",
+    "countryCode": "AO",
+    "stateCode": "CNN",
+    "name": "Cunene",
+    "normalizedName": "cunene",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "AO-HUA",
+    "countryCode": "AO",
+    "stateCode": "HUA",
+    "name": "Huambo",
+    "normalizedName": "huambo",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "AO-HUI",
+    "countryCode": "AO",
+    "stateCode": "HUI",
+    "name": "Huíla",
+    "normalizedName": "huila",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "AO-LUA",
+    "countryCode": "AO",
+    "stateCode": "LUA",
+    "name": "Luanda",
+    "normalizedName": "luanda",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "AO-LNO",
+    "countryCode": "AO",
+    "stateCode": "LNO",
+    "name": "Lunda Norte",
+    "normalizedName": "lunda norte",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "AO-LSU",
+    "countryCode": "AO",
+    "stateCode": "LSU",
+    "name": "Lunda Sul",
+    "normalizedName": "lunda sul",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 13
+  },
+  {
+    "stateId": "AO-MAL",
+    "countryCode": "AO",
+    "stateCode": "MAL",
+    "name": "Malanje",
+    "normalizedName": "malanje",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 14
+  },
+  {
+    "stateId": "AO-MOX",
+    "countryCode": "AO",
+    "stateCode": "MOX",
+    "name": "Moxico",
+    "normalizedName": "moxico",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 15
+  },
+  {
+    "stateId": "AO-NAM",
+    "countryCode": "AO",
+    "stateCode": "NAM",
+    "name": "Namibe",
+    "normalizedName": "namibe",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 16
+  },
+  {
+    "stateId": "AO-UIG",
+    "countryCode": "AO",
+    "stateCode": "UIG",
+    "name": "Uíge",
+    "normalizedName": "uige",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 17
+  },
+  {
+    "stateId": "AO-ZAI",
+    "countryCode": "AO",
+    "stateCode": "ZAI",
+    "name": "Zaire",
+    "normalizedName": "zaire",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 18
+  }
+]
