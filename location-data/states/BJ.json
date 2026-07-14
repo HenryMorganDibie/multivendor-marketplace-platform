@@ -1,0 +1,122 @@
+[
+  {
+    "stateId": "BJ-AL",
+    "countryCode": "BJ",
+    "stateCode": "AL",
+    "name": "Alibori",
+    "normalizedName": "alibori",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "BJ-AK",
+    "countryCode": "BJ",
+    "stateCode": "AK",
+    "name": "Atakora",
+    "normalizedName": "atakora",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "BJ-AQ",
+    "countryCode": "BJ",
+    "stateCode": "AQ",
+    "name": "Atlantique",
+    "normalizedName": "atlantique",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "BJ-BO",
+    "countryCode": "BJ",
+    "stateCode": "BO",
+    "name": "Borgou",
+    "normalizedName": "borgou",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "BJ-CO",
+    "countryCode": "BJ",
+    "stateCode": "CO",
+    "name": "Collines",
+    "normalizedName": "collines",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "BJ-KO",
+    "countryCode": "BJ",
+    "stateCode": "KO",
+    "name": "Kouffo",
+    "normalizedName": "kouffo",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "BJ-DO",
+    "countryCode": "BJ",
+    "stateCode": "DO",
+    "name": "Donga",
+    "normalizedName": "donga",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "BJ-LI",
+    "countryCode": "BJ",
+    "stateCode": "LI",
+    "name": "Littoral",
+    "normalizedName": "littoral",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "BJ-MO",
+    "countryCode": "BJ",
+    "stateCode": "MO",
+    "name": "Mono",
+    "normalizedName": "mono",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "BJ-OU",
+    "countryCode": "BJ",
+    "stateCode": "OU",
+    "name": "Ouémé",
+    "normalizedName": "oueme",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "BJ-PL",
+    "countryCode": "BJ",
+    "stateCode": "PL",
+    "name": "Plateau",
+    "normalizedName": "plateau",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "BJ-ZO",
+    "countryCode": "BJ",
+    "stateCode": "ZO",
+    "name": "Zou",
+    "normalizedName": "zou",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 12
+  }
+]
