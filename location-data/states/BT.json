@@ -1,0 +1,202 @@
+[
+  {
+    "stateId": "BT-11",
+    "countryCode": "BT",
+    "stateCode": "11",
+    "name": "Paro",
+    "normalizedName": "paro",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "BT-12",
+    "countryCode": "BT",
+    "stateCode": "12",
+    "name": "Chukha",
+    "normalizedName": "chukha",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "BT-13",
+    "countryCode": "BT",
+    "stateCode": "13",
+    "name": "Haa",
+    "normalizedName": "haa",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "BT-14",
+    "countryCode": "BT",
+    "stateCode": "14",
+    "name": "Samtse",
+    "normalizedName": "samtse",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "BT-15",
+    "countryCode": "BT",
+    "stateCode": "15",
+    "name": "Thimphu",
+    "normalizedName": "thimphu",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "BT-21",
+    "countryCode": "BT",
+    "stateCode": "21",
+    "name": "Tsirang",
+    "normalizedName": "tsirang",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "BT-22",
+    "countryCode": "BT",
+    "stateCode": "22",
+    "name": "Dagana",
+    "normalizedName": "dagana",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "BT-23",
+    "countryCode": "BT",
+    "stateCode": "23",
+    "name": "Punakha",
+    "normalizedName": "punakha",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "BT-24",
+    "countryCode": "BT",
+    "stateCode": "24",
+    "name": "Wangdue Phodrang",
+    "normalizedName": "wangdue phodrang",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "BT-31",
+    "countryCode": "BT",
+    "stateCode": "31",
+    "name": "Sarpang",
+    "normalizedName": "sarpang",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "BT-32",
+    "countryCode": "BT",
+    "stateCode": "32",
+    "name": "Trongsa",
+    "normalizedName": "trongsa",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "BT-33",
+    "countryCode": "BT",
+    "stateCode": "33",
+    "name": "Bumthang",
+    "normalizedName": "bumthang",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "BT-34",
+    "countryCode": "BT",
+    "stateCode": "34",
+    "name": "Zhemgang",
+    "normalizedName": "zhemgang",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 13
+  },
+  {
+    "stateId": "BT-41",
+    "countryCode": "BT",
+    "stateCode": "41",
+    "name": "Trashigang",
+    "normalizedName": "trashigang",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 14
+  },
+  {
+    "stateId": "BT-42",
+    "countryCode": "BT",
+    "stateCode": "42",
+    "name": "Mongar",
+    "normalizedName": "mongar",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 15
+  },
+  {
+    "stateId": "BT-43",
+    "countryCode": "BT",
+    "stateCode": "43",
+    "name": "Pema Gatshel",
+    "normalizedName": "pema gatshel",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 16
+  },
+  {
+    "stateId": "BT-44",
+    "countryCode": "BT",
+    "stateCode": "44",
+    "name": "Lhuentse",
+    "normalizedName": "lhuentse",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 17
+  },
+  {
+    "stateId": "BT-45",
+    "countryCode": "BT",
+    "stateCode": "45",
+    "name": "Samdrup Jongkhar",
+    "normalizedName": "samdrup jongkhar",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 18
+  },
+  {
+    "stateId": "BT-GA",
+    "countryCode": "BT",
+    "stateCode": "GA",
+    "name": "Gasa",
+    "normalizedName": "gasa",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 19
+  },
+  {
+    "stateId": "BT-TY",
+    "countryCode": "BT",
+    "stateCode": "TY",
+    "name": "Trashiyangtse",
+    "normalizedName": "trashiyangtse",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 20
+  }
+]
