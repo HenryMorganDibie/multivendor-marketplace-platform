@@ -16,6 +16,24 @@ import { SubscriptionPricingRecord, ProviderPlanMapping } from "../types4";
 export type PaidPlanId = "standard" | "pro" | "pro_plus";
 
 /**
+ * Monthly billing only for MVP — a deliberate decision, not a temporary
+ * gap. `billingInterval` is kept on the request shape for forward
+ * compatibility (so a future yearly rollout doesn't need a breaking
+ * request-shape change), but any value other than "monthly" (or omitting
+ * it, which defaults to "monthly") is rejected outright rather than
+ * silently ignored — the API should fail clearly on an unsupported value,
+ * not accept it and quietly do something else.
+ */
+export function requireMonthlyBillingInterval(billingInterval: unknown): void {
+  if (billingInterval !== undefined && billingInterval !== null && billingInterval !== "monthly") {
+    throw new https.HttpsError(
+      "invalid-argument",
+      `billingInterval must be "monthly" — yearly billing is not supported yet.`
+    );
+  }
+}
+
+/**
  * ISO 4217 minor-unit exponent, per currency. Looked up per currency code,
  * never assumed to be 2 for everything — most currencies use 2 decimal
  * places, but zero-decimal and three-decimal currencies are common enough

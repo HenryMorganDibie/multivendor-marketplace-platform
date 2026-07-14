@@ -4,7 +4,7 @@ import { checkAppCheck } from "../utils/appCheck";
 import { newRequestId } from "../utils/requestContext";
 import { SubscriptionPlanId } from "../types4";
 import { enforceRateLimit } from "./rateLimit";
-import { requireActiveCountryPricing, requireProviderPlanMapping, PaidPlanId } from "./countryPricing";
+import { requireActiveCountryPricing, requireProviderPlanMapping, requireMonthlyBillingInterval, PaidPlanId } from "./countryPricing";
 
 const VALID_PLAN_IDS: SubscriptionPlanId[] = ["basic", "standard", "pro", "pro_plus"];
 
@@ -40,9 +40,8 @@ export const createFlutterwaveCheckout = https.onCall(async (request) => {
   const vendorId = await requireVendorId(request);
   await enforceRateLimit(vendorId, "createFlutterwaveCheckout");
 
-  // billingInterval is still accepted on the request (backward compat) but
-  // ignored — monthly only for MVP, per the per-country pricing rollout.
-  const { plan } = request.data ?? {};
+  const { plan, billingInterval } = request.data ?? {};
+  requireMonthlyBillingInterval(billingInterval);
   if (!VALID_PLAN_IDS.includes(plan)) {
     throw new https.HttpsError("invalid-argument", `plan must be one of: ${VALID_PLAN_IDS.join(", ")}.`);
   }
@@ -110,9 +109,8 @@ export const createStripeCheckout = https.onCall(async (request) => {
   const vendorId = await requireVendorId(request);
   await enforceRateLimit(vendorId, "createStripeCheckout");
 
-  // billingInterval is still accepted on the request (backward compat) but
-  // ignored — monthly only for MVP, per the per-country pricing rollout.
-  const { plan } = request.data ?? {};
+  const { plan, billingInterval } = request.data ?? {};
+  requireMonthlyBillingInterval(billingInterval);
   if (!VALID_PLAN_IDS.includes(plan)) {
     throw new https.HttpsError("invalid-argument", `plan must be one of: ${VALID_PLAN_IDS.join(", ")}.`);
   }

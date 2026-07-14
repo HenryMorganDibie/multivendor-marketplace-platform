@@ -290,6 +290,22 @@ async function section2() {
     }
   });
 
+  await test("createSubscriptionCheckout rejects a non-monthly billingInterval with invalid-argument (fails clearly, never silently ignored)", async () => {
+    await signInAs(vendorEmail);
+    try {
+      await httpsCallable(fns, "createSubscriptionCheckout")({ plan: "pro", billingInterval: "yearly" });
+      assert(false, "expected createSubscriptionCheckout to reject billingInterval: 'yearly', but it succeeded");
+    } catch (err) {
+      assertEqual(err.code, "functions/invalid-argument");
+    }
+  });
+
+  await test("createSubscriptionCheckout accepts an omitted billingInterval (defaults to monthly, still allowed)", async () => {
+    await signInAs(vendorEmail);
+    const r = await httpsCallable(fns, "createSubscriptionCheckout")({ plan: "pro" });
+    assert(r.data.authorizationUrl.startsWith("https://checkout.paystack.test/"));
+  });
+
   await test("Webhook rejects invalid signature", async () => {
     const raw = JSON.stringify({ event: "subscription.create", data: { id: "evt_bad", metadata: { vendorId } } });
     const resp = await fetch(`http://127.0.0.1:5001/${PROJECT_ID}/us-central1/handlePaystackWebhook`, {

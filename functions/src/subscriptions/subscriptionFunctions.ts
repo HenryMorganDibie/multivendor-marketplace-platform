@@ -6,7 +6,7 @@ import { SubscriptionPlanId, VendorSubscriptionDoc } from "../types4";
 import { resolveEffectivePlan } from "./resolveEffectivePlan";
 import { enforceRateLimit } from "./rateLimit";
 import { withSubscriptionLock, LockContentionError } from "./subscriptionLock";
-import { requireActiveCountryPricing, requireProviderPlanMapping, checkCheckoutAvailability, PaidPlanId } from "./countryPricing";
+import { requireActiveCountryPricing, requireProviderPlanMapping, checkCheckoutAvailability, requireMonthlyBillingInterval, PaidPlanId } from "./countryPricing";
 
 const VALID_PLAN_IDS: SubscriptionPlanId[] = ["basic", "standard", "pro", "pro_plus"];
 
@@ -37,11 +37,8 @@ export const createSubscriptionCheckout = https.onCall(async (request) => {
   const vendorId = await requireVendorId(request);
   await enforceRateLimit(vendorId, "createSubscriptionCheckout");
 
-  // billingInterval is still accepted on the request (for backward
-  // compatibility with existing callers) but ignored — monthly only for
-  // MVP, per the per-country pricing rollout decision. Yearly pricing
-  // isn't represented anywhere in subscriptionPricing yet.
-  const { plan } = request.data ?? {};
+  const { plan, billingInterval } = request.data ?? {};
+  requireMonthlyBillingInterval(billingInterval);
   if (!VALID_PLAN_IDS.includes(plan)) {
     throw new https.HttpsError("invalid-argument", `plan must be one of: ${VALID_PLAN_IDS.join(", ")}.`);
   }
