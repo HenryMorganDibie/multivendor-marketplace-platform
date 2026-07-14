@@ -1,0 +1,582 @@
+[
+  {
+    "stateId": "DZ-01",
+    "countryCode": "DZ",
+    "stateCode": "01",
+    "name": "Adrar",
+    "normalizedName": "adrar",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "DZ-02",
+    "countryCode": "DZ",
+    "stateCode": "02",
+    "name": "Chlef",
+    "normalizedName": "chlef",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "DZ-03",
+    "countryCode": "DZ",
+    "stateCode": "03",
+    "name": "Laghouat",
+    "normalizedName": "laghouat",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "DZ-04",
+    "countryCode": "DZ",
+    "stateCode": "04",
+    "name": "Oum El Bouaghi",
+    "normalizedName": "oum el bouaghi",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "DZ-05",
+    "countryCode": "DZ",
+    "stateCode": "05",
+    "name": "Batna",
+    "normalizedName": "batna",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "DZ-06",
+    "countryCode": "DZ",
+    "stateCode": "06",
+    "name": "Béjaïa",
+    "normalizedName": "bejaia",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "DZ-07",
+    "countryCode": "DZ",
+    "stateCode": "07",
+    "name": "Biskra",
+    "normalizedName": "biskra",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "DZ-08",
+    "countryCode": "DZ",
+    "stateCode": "08",
+    "name": "Béchar",
+    "normalizedName": "bechar",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "DZ-09",
+    "countryCode": "DZ",
+    "stateCode": "09",
+    "name": "Blida",
+    "normalizedName": "blida",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "DZ-10",
+    "countryCode": "DZ",
+    "stateCode": "10",
+    "name": "Bouira",
+    "normalizedName": "bouira",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "DZ-11",
+    "countryCode": "DZ",
+    "stateCode": "11",
+    "name": "Tamanrasset",
+    "normalizedName": "tamanrasset",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "DZ-12",
+    "countryCode": "DZ",
+    "stateCode": "12",
+    "name": "Tébessa",
+    "normalizedName": "tebessa",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "DZ-13",
+    "countryCode": "DZ",
+    "stateCode": "13",
+    "name": "Tlemcen",
+    "normalizedName": "tlemcen",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 13
+  },
+  {
+    "stateId": "DZ-14",
+    "countryCode": "DZ",
+    "stateCode": "14",
+    "name": "Tiaret",
+    "normalizedName": "tiaret",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 14
+  },
+  {
+    "stateId": "DZ-15",
+    "countryCode": "DZ",
+    "stateCode": "15",
+    "name": "Tizi Ouzou",
+    "normalizedName": "tizi ouzou",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 15
+  },
+  {
+    "stateId": "DZ-16",
+    "countryCode": "DZ",
+    "stateCode": "16",
+    "name": "Algiers",
+    "normalizedName": "algiers",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 16
+  },
+  {
+    "stateId": "DZ-17",
+    "countryCode": "DZ",
+    "stateCode": "17",
+    "name": "Djelfa",
+    "normalizedName": "djelfa",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 17
+  },
+  {
+    "stateId": "DZ-18",
+    "countryCode": "DZ",
+    "stateCode": "18",
+    "name": "Jijel",
+    "normalizedName": "jijel",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 18
+  },
+  {
+    "stateId": "DZ-19",
+    "countryCode": "DZ",
+    "stateCode": "19",
+    "name": "Sétif",
+    "normalizedName": "setif",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 19
+  },
+  {
+    "stateId": "DZ-20",
+    "countryCode": "DZ",
+    "stateCode": "20",
+    "name": "Saïda",
+    "normalizedName": "saida",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 20
+  },
+  {
+    "stateId": "DZ-21",
+    "countryCode": "DZ",
+    "stateCode": "21",
+    "name": "Skikda",
+    "normalizedName": "skikda",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 21
+  },
+  {
+    "stateId": "DZ-22",
+    "countryCode": "DZ",
+    "stateCode": "22",
+    "name": "Sidi Bel Abbès",
+    "normalizedName": "sidi bel abbes",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 22
+  },
+  {
+    "stateId": "DZ-23",
+    "countryCode": "DZ",
+    "stateCode": "23",
+    "name": "Annaba",
+    "normalizedName": "annaba",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 23
+  },
+  {
+    "stateId": "DZ-24",
+    "countryCode": "DZ",
+    "stateCode": "24",
+    "name": "Guelma",
+    "normalizedName": "guelma",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 24
+  },
+  {
+    "stateId": "DZ-25",
+    "countryCode": "DZ",
+    "stateCode": "25",
+    "name": "Constantine",
+    "normalizedName": "constantine",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 25
+  },
+  {
+    "stateId": "DZ-26",
+    "countryCode": "DZ",
+    "stateCode": "26",
+    "name": "Medea",
+    "normalizedName": "medea",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 26
+  },
+  {
+    "stateId": "DZ-27",
+    "countryCode": "DZ",
+    "stateCode": "27",
+    "name": "Mostaganem",
+    "normalizedName": "mostaganem",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 27
+  },
+  {
+    "stateId": "DZ-28",
+    "countryCode": "DZ",
+    "stateCode": "28",
+    "name": "M'Sila",
+    "normalizedName": "m'sila",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 28
+  },
+  {
+    "stateId": "DZ-29",
+    "countryCode": "DZ",
+    "stateCode": "29",
+    "name": "Mascara",
+    "normalizedName": "mascara",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 29
+  },
+  {
+    "stateId": "DZ-30",
+    "countryCode": "DZ",
+    "stateCode": "30",
+    "name": "Ouargla",
+    "normalizedName": "ouargla",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 30
+  },
+  {
+    "stateId": "DZ-31",
+    "countryCode": "DZ",
+    "stateCode": "31",
+    "name": "Oran",
+    "normalizedName": "oran",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 31
+  },
+  {
+    "stateId": "DZ-32",
+    "countryCode": "DZ",
+    "stateCode": "32",
+    "name": "El Bayadh",
+    "normalizedName": "el bayadh",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 32
+  },
+  {
+    "stateId": "DZ-33",
+    "countryCode": "DZ",
+    "stateCode": "33",
+    "name": "Illizi",
+    "normalizedName": "illizi",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 33
+  },
+  {
+    "stateId": "DZ-34",
+    "countryCode": "DZ",
+    "stateCode": "34",
+    "name": "Bordj Bou Arréridj",
+    "normalizedName": "bordj bou arreridj",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 34
+  },
+  {
+    "stateId": "DZ-35",
+    "countryCode": "DZ",
+    "stateCode": "35",
+    "name": "Boumerdès",
+    "normalizedName": "boumerdes",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 35
+  },
+  {
+    "stateId": "DZ-36",
+    "countryCode": "DZ",
+    "stateCode": "36",
+    "name": "El Tarf",
+    "normalizedName": "el tarf",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 36
+  },
+  {
+    "stateId": "DZ-37",
+    "countryCode": "DZ",
+    "stateCode": "37",
+    "name": "Tindouf",
+    "normalizedName": "tindouf",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 37
+  },
+  {
+    "stateId": "DZ-38",
+    "countryCode": "DZ",
+    "stateCode": "38",
+    "name": "Tissemsilt",
+    "normalizedName": "tissemsilt",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 38
+  },
+  {
+    "stateId": "DZ-39",
+    "countryCode": "DZ",
+    "stateCode": "39",
+    "name": "El Oued",
+    "normalizedName": "el oued",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 39
+  },
+  {
+    "stateId": "DZ-40",
+    "countryCode": "DZ",
+    "stateCode": "40",
+    "name": "Khenchela",
+    "normalizedName": "khenchela",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 40
+  },
+  {
+    "stateId": "DZ-41",
+    "countryCode": "DZ",
+    "stateCode": "41",
+    "name": "Souk Ahras",
+    "normalizedName": "souk ahras",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 41
+  },
+  {
+    "stateId": "DZ-42",
+    "countryCode": "DZ",
+    "stateCode": "42",
+    "name": "Tipaza",
+    "normalizedName": "tipaza",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 42
+  },
+  {
+    "stateId": "DZ-43",
+    "countryCode": "DZ",
+    "stateCode": "43",
+    "name": "Mila",
+    "normalizedName": "mila",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 43
+  },
+  {
+    "stateId": "DZ-44",
+    "countryCode": "DZ",
+    "stateCode": "44",
+    "name": "Aïn Defla",
+    "normalizedName": "ain defla",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 44
+  },
+  {
+    "stateId": "DZ-45",
+    "countryCode": "DZ",
+    "stateCode": "45",
+    "name": "Naama",
+    "normalizedName": "naama",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 45
+  },
+  {
+    "stateId": "DZ-46",
+    "countryCode": "DZ",
+    "stateCode": "46",
+    "name": "Aïn Témouchent",
+    "normalizedName": "ain temouchent",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 46
+  },
+  {
+    "stateId": "DZ-47",
+    "countryCode": "DZ",
+    "stateCode": "47",
+    "name": "Ghardaïa",
+    "normalizedName": "ghardaia",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 47
+  },
+  {
+    "stateId": "DZ-48",
+    "countryCode": "DZ",
+    "stateCode": "48",
+    "name": "Relizane",
+    "normalizedName": "relizane",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 48
+  },
+  {
+    "stateId": "DZ-49",
+    "countryCode": "DZ",
+    "stateCode": "49",
+    "name": "El M'Ghair",
+    "normalizedName": "el m'ghair",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 49
+  },
+  {
+    "stateId": "DZ-50",
+    "countryCode": "DZ",
+    "stateCode": "50",
+    "name": "El Menia",
+    "normalizedName": "el menia",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 50
+  },
+  {
+    "stateId": "DZ-51",
+    "countryCode": "DZ",
+    "stateCode": "51",
+    "name": "Ouled Djellal",
+    "normalizedName": "ouled djellal",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 51
+  },
+  {
+    "stateId": "DZ-52",
+    "countryCode": "DZ",
+    "stateCode": "52",
+    "name": "Bordj Badji Mokhtar",
+    "normalizedName": "bordj badji mokhtar",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 52
+  },
+  {
+    "stateId": "DZ-53",
+    "countryCode": "DZ",
+    "stateCode": "53",
+    "name": "Béni Abbès",
+    "normalizedName": "beni abbes",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 53
+  },
+  {
+    "stateId": "DZ-54",
+    "countryCode": "DZ",
+    "stateCode": "54",
+    "name": "Timimoun",
+    "normalizedName": "timimoun",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 54
+  },
+  {
+    "stateId": "DZ-55",
+    "countryCode": "DZ",
+    "stateCode": "55",
+    "name": "Touggourt",
+    "normalizedName": "touggourt",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 55
+  },
+  {
+    "stateId": "DZ-56",
+    "countryCode": "DZ",
+    "stateCode": "56",
+    "name": "Djanet",
+    "normalizedName": "djanet",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 56
+  },
+  {
+    "stateId": "DZ-57",
+    "countryCode": "DZ",
+    "stateCode": "57",
+    "name": "In Salah",
+    "normalizedName": "in salah",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 57
+  },
+  {
+    "stateId": "DZ-58",
+    "countryCode": "DZ",
+    "stateCode": "58",
+    "name": "In Guezzam",
+    "normalizedName": "in guezzam",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 58
+  }
+]
