@@ -1,0 +1,92 @@
+[
+  {
+    "stateId": "BO-B",
+    "countryCode": "BO",
+    "stateCode": "B",
+    "name": "Beni",
+    "normalizedName": "beni",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "BO-H",
+    "countryCode": "BO",
+    "stateCode": "H",
+    "name": "Chuquisaca",
+    "normalizedName": "chuquisaca",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "BO-C",
+    "countryCode": "BO",
+    "stateCode": "C",
+    "name": "Cochabamba",
+    "normalizedName": "cochabamba",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "BO-L",
+    "countryCode": "BO",
+    "stateCode": "L",
+    "name": "La Paz",
+    "normalizedName": "la paz",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "BO-O",
+    "countryCode": "BO",
+    "stateCode": "O",
+    "name": "Oruro",
+    "normalizedName": "oruro",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "BO-N",
+    "countryCode": "BO",
+    "stateCode": "N",
+    "name": "Pando",
+    "normalizedName": "pando",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "BO-P",
+    "countryCode": "BO",
+    "stateCode": "P",
+    "name": "Potosí",
+    "normalizedName": "potosi",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "BO-S",
+    "countryCode": "BO",
+    "stateCode": "S",
+    "name": "Santa Cruz",
+    "normalizedName": "santa cruz",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "BO-T",
+    "countryCode": "BO",
+    "stateCode": "T",
+    "name": "Tarija",
+    "normalizedName": "tarija",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 9
+  }
+]
