@@ -4,6 +4,12 @@
  * workflow end to end, printing real request/response payloads, so the
  * output can be read as a narrative demo rather than a pass/fail list.
  *
+ * Covers all three payment providers (Paystack, Flutterwave, Stripe) on
+ * separate vendors, each activated via its own real webhook signature
+ * scheme, converging on the identical subscription/planLimits shape —
+ * then continues the single-vendor invoice/cancel/reactivate/admin-override
+ * walkthrough on the original Paystack vendor.
+ *
  * Run: node milestone4-workflow-demo.js
  * Requires: firebase emulators:start --only auth,firestore,functions,storage --project demo-the platform
  */
@@ -51,6 +57,46 @@ async function postWebhook(bodyObj) {
     headers: { "Content-Type": "application/json", "x-paystack-signature": paystackSignature(bodyObj) },
     body: raw,
   });
+}
+
+// Flutterwave verifies with a static secret-hash string comparison, not a
+// computed HMAC — the header just has to match the FLUTTERWAVE_SECRET_HASH
+// env var, which the emulator sets to "emulator_test_secret".
+async function postFlutterwaveWebhook(bodyObj) {
+  const raw = JSON.stringify(bodyObj);
+  return fetch(`http://127.0.0.1:5001/${PROJECT_ID}/us-central1/handleFlutterwaveWebhook`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "verif-hash": "emulator_test_secret" },
+    body: raw,
+  });
+}
+
+// Stripe signs `${timestamp}.${rawBody}` with HMAC-SHA256, sent as
+// `t=<ts>,v1=<hex>` — with a 5-minute replay tolerance window server-side.
+function stripeSignatureHeader(bodyObj, timestamp = Math.floor(Date.now() / 1000)) {
+  const raw = JSON.stringify(bodyObj);
+  const signedPayload = `${timestamp}.${raw}`;
+  const v1 = crypto.createHmac("sha256", "emulator_test_secret").update(signedPayload).digest("hex");
+  return `t=${timestamp},v1=${v1}`;
+}
+async function postStripeWebhook(bodyObj) {
+  const raw = JSON.stringify(bodyObj);
+  return fetch(`http://127.0.0.1:5001/${PROJECT_ID}/us-central1/handleStripeWebhook`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "stripe-signature": stripeSignatureHeader(bodyObj) },
+    body: raw,
+  });
+}
+
+async function makeVendor(businessName, country, state, area) {
+  const email = `demo_${businessName.toLowerCase().replace(/\s+/g, "_")}_${Date.now()}@test.com`;
+  const c = await createUserWithEmailAndPassword(auth, email, PASSWORD);
+  const uid = c.user.uid;
+  await waitFor(async () => { const s = await getDoc(doc(db, "users", uid)); return s.exists() ? s : null; });
+  await signInAs(email);
+  const rr = await httpsCallable(fns, "completeRegistration")({ role: "vendor", businessName, username: `demo_${Date.now()}`, fullName: "Vendor Owner", categoryId: "food_catering", categoryName: "Food & Catering", country, state, area, plan: "basic" });
+  await auth.currentUser.getIdToken(true);
+  return { email, vendorId: rr.data.vendorId };
 }
 
 async function main() {
@@ -103,6 +149,59 @@ async function main() {
   const status1 = await httpsCallable(fns, "getSubscriptionStatus")({});
   show("getSubscriptionStatus (after webhook activation)", { effectivePlan: status1.data.effectivePlan, reason: status1.data.reason, catalogItemLimit: status1.data.planLimits.catalogItemLimit, canAccessExternalOrders: status1.data.planLimits.canAccessExternalOrders, canDownloadInvoicePdf: status1.data.planLimits.canDownloadInvoicePdf });
 
+  log("STEP 2b — Same upgrade, but through Flutterwave instead of Paystack");
+  console.log("A fresh vendor, so the fallback path is demonstrated independently of the Paystack vendor above.");
+  const fwVendor = await makeVendor("Demo Vendor FW", "Nigeria", "Lagos", "Lekki");
+  console.log(`Vendor created: ${fwVendor.vendorId} (${fwVendor.email})`);
+
+  const fwCheckout = await httpsCallable(fns, "createFlutterwaveCheckout")({ plan: "pro", billingInterval: "monthly" });
+  show("createFlutterwaveCheckout response", fwCheckout.data);
+
+  const fwWebhookResp = await postFlutterwaveWebhook({
+    event: "charge.completed",
+    data: {
+      id: `fw_evt_demo_${Date.now()}`, status: "successful", created_at: new Date().toISOString(),
+      tx_ref: `flw_tx_demo_${Date.now()}`, amount: 15000, currency: "NGN",
+      customer: { id: 555 }, meta: { vendorId: fwVendor.vendorId, planId: "pro" },
+    },
+  });
+  console.log(`\nWebhook HTTP status: ${fwWebhookResp.status} (this is what Flutterwave would receive back)`);
+  await sleep(500);
+
+  await signInAs(fwVendor.email);
+  const fwStatus = await httpsCallable(fns, "getSubscriptionStatus")({});
+  show("getSubscriptionStatus (Flutterwave vendor, after webhook activation)", { effectivePlan: fwStatus.data.effectivePlan, reason: fwStatus.data.reason, provider: fwStatus.data.subscription?.provider, amountPaid: fwStatus.data.subscription?.amountPaid });
+  console.log("\nNote: Flutterwave sends amounts in the major currency unit already (15000 = ₦15,000) — no /100 conversion, unlike Paystack.");
+
+  log("STEP 2c — Same upgrade again, but through Stripe (international vendor)");
+  const stripeVendor = await makeVendor("Demo Vendor Stripe", "United States", "CA", "SF");
+  console.log(`Vendor created: ${stripeVendor.vendorId} (${stripeVendor.email})`);
+
+  const stripeCheckout = await httpsCallable(fns, "createStripeCheckout")({ plan: "pro", billingInterval: "monthly" });
+  show("createStripeCheckout response", stripeCheckout.data);
+
+  const stripeSubId = `sub_demo_${Date.now()}`;
+  const stripeWebhookResp = await postStripeWebhook({
+    id: `evt_stripe_demo_${Date.now()}`, type: "customer.subscription.created", created: Math.floor(Date.now() / 1000),
+    data: {
+      object: {
+        object: "subscription", id: stripeSubId, customer: `cus_demo_${Date.now()}`,
+        items: { data: [{ price: { id: "price_pro_monthly_placeholder" } }] },
+        metadata: { vendorId: stripeVendor.vendorId, planId: "pro" },
+      },
+    },
+  });
+  console.log(`\nWebhook HTTP status: ${stripeWebhookResp.status} (this is what Stripe would receive back)`);
+  console.log("Signature format: Stripe-Signature: t=<timestamp>,v1=<HMAC-SHA256 of '${timestamp}.${rawBody}'>, with a 5-minute replay-tolerance window.");
+  await sleep(500);
+
+  await signInAs(stripeVendor.email);
+  const stripeStatus = await httpsCallable(fns, "getSubscriptionStatus")({});
+  show("getSubscriptionStatus (Stripe vendor, after webhook activation)", { effectivePlan: stripeStatus.data.effectivePlan, reason: stripeStatus.data.reason, provider: stripeStatus.data.subscription?.provider, providerSubscriptionId: stripeStatus.data.subscription?.providerSubscriptionId });
+
+  console.log("\nAll three providers converge on the exact same resolveEffectivePlan()/planLimits shape — provider is an implementation detail the rest of the app never has to special-case.");
+
+  await signInAs(vendorEmail);
   log("STEP 3 — Create an invoice (Pro plan, 100/month quota)");
   const invoiceResult = await httpsCallable(fns, "createInvoice")({
     customerName: "Jane Doe", customerPhone: "+2348011112222",
@@ -146,7 +245,7 @@ async function main() {
   show("getSubscriptionStatus (after admin override)", { effectivePlan: statusAfterOverride.data.effectivePlan, reason: statusAfterOverride.data.reason, canUsePremiumTemplates: statusAfterOverride.data.planLimits.canUsePremiumTemplates, canAddQrCode: statusAfterOverride.data.planLimits.canAddQrCode });
 
   log("DEMO COMPLETE");
-  console.log("Every step above ran against the real Cloud Functions emulator, real Firestore, and a real simulated Paystack webhook — no mocked responses.");
+  console.log("Every step above ran against the real Cloud Functions emulator, real Firestore, and real simulated Paystack, Flutterwave, and Stripe webhooks — no mocked responses.");
   process.exit(0);
 }
 main().catch(err => { console.error("Fatal:", err); process.exit(1); });
