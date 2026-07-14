@@ -118,6 +118,14 @@ No system should be described as fully secure without qualification, and this ba
 
 The two highest-priority items before general availability are App Check enforcement and an independent review of the Firestore rules file.
 
+## Location data & subscription pricing (scaffolding, not a milestone)
+
+Two data-only folders live at the repo root, separate from `functions/src/` because neither is application code — both are static seed data meant for one-time (or occasional) import into Firestore, not something bundled into the Cloud Functions deploy.
+
+**`location-data/`** — the canonical Country/State/Area catalogue, governed by `location-data/THE PLATFORM LOCATION SPEC v1.5.md`. Current state: all 196 countries have a `countries.json` entry; **59 of those 196** additionally have complete, validated state and area data (1,304 states, 1,304 locations) — the rest are still being populated. `npm run validate:locations` and `npm run import:locations` (in `scripts/`) are implemented and tested against the local emulator; nothing has been imported into a real Firestore project yet. See `location-data/README.md` and `location-data/docs/Country Checklist.md` for per-country progress.
+
+**`subscription-pricing/`** — per-country subscription pricing, **scaffolding only, not a canonical spec**. Unlike the location catalogue, no approved pricing spec exists yet, and there are currently **three disagreeing sets of numbers for the same plan** (e.g. Nigeria Standard/month is ₦5,000 in `functions/src/subscriptions/planLimitsSeedData.ts`'s explicitly-placeholder `DEFAULT_PLAN_DISPLAY`, ₦9,000 in `subscription-pricing/subscriptionPricing.json`, and a separate ₦9,900 proposal with a different, incompatible schema that hasn't been applied to the file). None of these should be treated as live pricing until one is picked as canonical and the others are removed. See `subscription-pricing/README.md` for the full breakdown. No validate/import scripts exist for this folder yet — deliberately, since the schema itself is still unsettled.
+
 ## Known gaps / explicitly deferred
 
 - Production monitoring dashboards and alerting are not part of this code delivery.
