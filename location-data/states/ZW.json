@@ -1,0 +1,102 @@
+[
+  {
+    "stateId": "ZW-BU",
+    "countryCode": "ZW",
+    "stateCode": "BU",
+    "name": "Bulawayo",
+    "normalizedName": "bulawayo",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "ZW-HA",
+    "countryCode": "ZW",
+    "stateCode": "HA",
+    "name": "Harare",
+    "normalizedName": "harare",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "ZW-MA",
+    "countryCode": "ZW",
+    "stateCode": "MA",
+    "name": "Manicaland",
+    "normalizedName": "manicaland",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "ZW-MC",
+    "countryCode": "ZW",
+    "stateCode": "MC",
+    "name": "Mashonaland Central",
+    "normalizedName": "mashonaland central",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "ZW-ME",
+    "countryCode": "ZW",
+    "stateCode": "ME",
+    "name": "Mashonaland East",
+    "normalizedName": "mashonaland east",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "ZW-MW",
+    "countryCode": "ZW",
+    "stateCode": "MW",
+    "name": "Mashonaland West",
+    "normalizedName": "mashonaland west",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "ZW-MV",
+    "countryCode": "ZW",
+    "stateCode": "MV",
+    "name": "Masvingo",
+    "normalizedName": "masvingo",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "ZW-MN",
+    "countryCode": "ZW",
+    "stateCode": "MN",
+    "name": "Matabeleland North",
+    "normalizedName": "matabeleland north",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "ZW-MS",
+    "countryCode": "ZW",
+    "stateCode": "MS",
+    "name": "Matabeleland South",
+    "normalizedName": "matabeleland south",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "ZW-MI",
+    "countryCode": "ZW",
+    "stateCode": "MI",
+    "name": "Midlands",
+    "normalizedName": "midlands",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 10
+  }
+]
