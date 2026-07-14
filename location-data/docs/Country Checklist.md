@@ -4,168 +4,168 @@
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Albania
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Algeria
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Andorra
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Angola
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Antigua and Barbuda
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Argentina
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Armenia
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Australia
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Austria
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Azerbaijan
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Bahamas
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Bahrain
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Bangladesh
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Barbados
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Belarus
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Belgium
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Belize
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Benin
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Bhutan
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Bolivia
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Bosnia and Herzegovina
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Botswana
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Brazil
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Brunei
@@ -186,14 +186,14 @@
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Burundi
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Cabo Verde
@@ -214,14 +214,14 @@
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Canada
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Central African Republic
@@ -361,7 +361,7 @@
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## El Salvador
@@ -410,7 +410,7 @@
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Finland
@@ -424,7 +424,7 @@
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Gabon
@@ -452,14 +452,14 @@
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Ghana
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Greece
@@ -473,7 +473,7 @@
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Guatemala
@@ -543,14 +543,14 @@
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Indonesia
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Iran
@@ -571,7 +571,7 @@
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Israel
@@ -592,7 +592,7 @@
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Japan
@@ -620,7 +620,7 @@
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Kiribati
@@ -725,7 +725,7 @@
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Maldives
@@ -774,7 +774,7 @@
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Micronesia
@@ -858,14 +858,14 @@
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## New Zealand
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Nicaragua
@@ -886,7 +886,7 @@
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## North Korea
@@ -921,7 +921,7 @@
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Palau
@@ -970,7 +970,7 @@
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Poland
@@ -1005,7 +1005,7 @@
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Rwanda
@@ -1096,7 +1096,7 @@
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Slovakia
@@ -1131,7 +1131,7 @@
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## South Korea
@@ -1152,7 +1152,7 @@
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Sri Lanka
@@ -1264,7 +1264,7 @@
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Turkmenistan
@@ -1299,21 +1299,21 @@
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## United Kingdom
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## United States
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Uruguay
@@ -1341,33 +1341,33 @@
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Vietnam
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Yemen
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Zambia
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
 
 ## Zimbabwe
 - [x] Country
 - [x] States
 - [x] Areas
-- [ ] Validated
+- [x] Validated
 - [ ] Imported
