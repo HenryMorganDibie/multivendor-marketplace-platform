@@ -1,0 +1,82 @@
+[
+  {
+    "stateId": "AG-03",
+    "countryCode": "AG",
+    "stateCode": "03",
+    "name": "Saint George",
+    "normalizedName": "saint george",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "AG-04",
+    "countryCode": "AG",
+    "stateCode": "04",
+    "name": "Saint John",
+    "normalizedName": "saint john",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "AG-05",
+    "countryCode": "AG",
+    "stateCode": "05",
+    "name": "Saint Mary",
+    "normalizedName": "saint mary",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "AG-06",
+    "countryCode": "AG",
+    "stateCode": "06",
+    "name": "Saint Paul",
+    "normalizedName": "saint paul",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "AG-07",
+    "countryCode": "AG",
+    "stateCode": "07",
+    "name": "Saint Peter",
+    "normalizedName": "saint peter",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "AG-08",
+    "countryCode": "AG",
+    "stateCode": "08",
+    "name": "Saint Philip",
+    "normalizedName": "saint philip",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "AG-10",
+    "countryCode": "AG",
+    "stateCode": "10",
+    "name": "Barbuda",
+    "normalizedName": "barbuda",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "AG-11",
+    "countryCode": "AG",
+    "stateCode": "11",
+    "name": "Redonda",
+    "normalizedName": "redonda",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 8
+  }
+]
