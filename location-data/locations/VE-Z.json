@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VE-Z-PUERTO-AYACUCHO",
+    "countryCode": "VE",
+    "stateId": "VE-Z",
+    "stateCode": "Z",
+    "name": "Puerto Ayacucho",
+    "normalizedName": "puerto ayacucho",
+    "slug": "PUERTO-AYACUCHO",
+    "locationType": "city",
+    "timeZone": "America/Caracas",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

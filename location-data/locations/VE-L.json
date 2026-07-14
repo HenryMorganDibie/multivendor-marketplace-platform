@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VE-L-MERIDA",
+    "countryCode": "VE",
+    "stateId": "VE-L",
+    "stateCode": "L",
+    "name": "Merida",
+    "normalizedName": "merida",
+    "slug": "MERIDA",
+    "locationType": "city",
+    "timeZone": "America/Caracas",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

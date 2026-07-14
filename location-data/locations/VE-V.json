@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VE-V-MARACAIBO",
+    "countryCode": "VE",
+    "stateId": "VE-V",
+    "stateCode": "V",
+    "name": "Maracaibo",
+    "normalizedName": "maracaibo",
+    "slug": "MARACAIBO",
+    "locationType": "city",
+    "timeZone": "America/Caracas",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

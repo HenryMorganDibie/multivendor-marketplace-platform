@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VE-A-CARACAS",
+    "countryCode": "VE",
+    "stateId": "VE-A",
+    "stateCode": "A",
+    "name": "Caracas",
+    "normalizedName": "caracas",
+    "slug": "CARACAS",
+    "locationType": "city",
+    "timeZone": "America/Caracas",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,8 +1,8 @@
 [
   {
-    "stateId": "VE-A",
+    "stateId": "VE-Z",
     "countryCode": "VE",
-    "stateCode": "A",
+    "stateCode": "Z",
     "name": "Amazonas",
     "normalizedName": "amazonas",
     "type": "state",
@@ -240,9 +240,9 @@
     "sortOrder": 24
   },
   {
-    "stateId": "VE-Z",
+    "stateId": "VE-W",
     "countryCode": "VE",
-    "stateCode": "Z",
+    "stateCode": "W",
     "name": "Federal Dependencies",
     "normalizedName": "federal dependencies",
     "type": "territory",

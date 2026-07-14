@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VE-H-SAN-CARLOS",
+    "countryCode": "VE",
+    "stateId": "VE-H",
+    "stateCode": "H",
+    "name": "San Carlos",
+    "normalizedName": "san carlos",
+    "slug": "SAN-CARLOS",
+    "locationType": "city",
+    "timeZone": "America/Caracas",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VE-I-CORO",
+    "countryCode": "VE",
+    "stateId": "VE-I",
+    "stateCode": "I",
+    "name": "Coro",
+    "normalizedName": "coro",
+    "slug": "CORO",
+    "locationType": "city",
+    "timeZone": "America/Caracas",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VE-R-CUMANA",
+    "countryCode": "VE",
+    "stateId": "VE-R",
+    "stateCode": "R",
+    "name": "Cumana",
+    "normalizedName": "cumana",
+    "slug": "CUMANA",
+    "locationType": "city",
+    "timeZone": "America/Caracas",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

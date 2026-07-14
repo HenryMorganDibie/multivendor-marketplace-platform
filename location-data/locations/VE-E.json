@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VE-E-BARINAS",
+    "countryCode": "VE",
+    "stateId": "VE-E",
+    "stateCode": "E",
+    "name": "Barinas",
+    "normalizedName": "barinas",
+    "slug": "BARINAS",
+    "locationType": "city",
+    "timeZone": "America/Caracas",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

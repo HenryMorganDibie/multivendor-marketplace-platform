@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VE-G-VALENCIA",
+    "countryCode": "VE",
+    "stateId": "VE-G",
+    "stateCode": "G",
+    "name": "Valencia",
+    "normalizedName": "valencia",
+    "slug": "VALENCIA",
+    "locationType": "city",
+    "timeZone": "America/Caracas",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VE-D-MARACAY",
+    "countryCode": "VE",
+    "stateId": "VE-D",
+    "stateCode": "D",
+    "name": "Maracay",
+    "normalizedName": "maracay",
+    "slug": "MARACAY",
+    "locationType": "city",
+    "timeZone": "America/Caracas",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

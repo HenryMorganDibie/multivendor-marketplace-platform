@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VE-F-CIUDAD-BOLIVAR",
+    "countryCode": "VE",
+    "stateId": "VE-F",
+    "stateCode": "F",
+    "name": "Ciudad Bolivar",
+    "normalizedName": "ciudad bolivar",
+    "slug": "CIUDAD-BOLIVAR",
+    "locationType": "city",
+    "timeZone": "America/Caracas",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

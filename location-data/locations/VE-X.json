@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VE-X-LA-GUAIRA",
+    "countryCode": "VE",
+    "stateId": "VE-X",
+    "stateCode": "X",
+    "name": "La Guaira",
+    "normalizedName": "la guaira",
+    "slug": "LA-GUAIRA",
+    "locationType": "city",
+    "timeZone": "America/Caracas",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

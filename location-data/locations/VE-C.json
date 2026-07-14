@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VE-C-SAN-FERNANDO-DE-APURE",
+    "countryCode": "VE",
+    "stateId": "VE-C",
+    "stateCode": "C",
+    "name": "San Fernando de Apure",
+    "normalizedName": "san fernando de apure",
+    "slug": "SAN-FERNANDO-DE-APURE",
+    "locationType": "city",
+    "timeZone": "America/Caracas",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

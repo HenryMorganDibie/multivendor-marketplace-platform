@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VE-S-SAN-CRISTOBAL",
+    "countryCode": "VE",
+    "stateId": "VE-S",
+    "stateCode": "S",
+    "name": "San Cristobal",
+    "normalizedName": "san cristobal",
+    "slug": "SAN-CRISTOBAL",
+    "locationType": "city",
+    "timeZone": "America/Caracas",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

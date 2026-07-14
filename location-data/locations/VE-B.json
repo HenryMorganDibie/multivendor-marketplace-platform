@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VE-B-BARCELONA",
+    "countryCode": "VE",
+    "stateId": "VE-B",
+    "stateCode": "B",
+    "name": "Barcelona",
+    "normalizedName": "barcelona",
+    "slug": "BARCELONA",
+    "locationType": "city",
+    "timeZone": "America/Caracas",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

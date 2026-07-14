@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VE-W-FEDERAL-DEPENDENCIES",
+    "countryCode": "VE",
+    "stateId": "VE-W",
+    "stateCode": "W",
+    "name": "Federal Dependencies",
+    "normalizedName": "federal dependencies",
+    "slug": "FEDERAL-DEPENDENCIES",
+    "locationType": "city",
+    "timeZone": "America/Caracas",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

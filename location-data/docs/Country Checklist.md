@@ -1339,8 +1339,8 @@
 
 ## Venezuela
 - [x] Country
-- [ ] States
-- [ ] Areas
+- [x] States
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 

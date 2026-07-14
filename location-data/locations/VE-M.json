@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VE-M-LOS-TEQUES",
+    "countryCode": "VE",
+    "stateId": "VE-M",
+    "stateCode": "M",
+    "name": "Los Teques",
+    "normalizedName": "los teques",
+    "slug": "LOS-TEQUES",
+    "locationType": "city",
+    "timeZone": "America/Caracas",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

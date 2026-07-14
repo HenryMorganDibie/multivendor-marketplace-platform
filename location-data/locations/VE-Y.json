@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VE-Y-TUCUPITA",
+    "countryCode": "VE",
+    "stateId": "VE-Y",
+    "stateCode": "Y",
+    "name": "Tucupita",
+    "normalizedName": "tucupita",
+    "slug": "TUCUPITA",
+    "locationType": "city",
+    "timeZone": "America/Caracas",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

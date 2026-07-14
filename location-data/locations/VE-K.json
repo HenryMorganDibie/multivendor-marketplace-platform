@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VE-K-BARQUISIMETO",
+    "countryCode": "VE",
+    "stateId": "VE-K",
+    "stateCode": "K",
+    "name": "Barquisimeto",
+    "normalizedName": "barquisimeto",
+    "slug": "BARQUISIMETO",
+    "locationType": "city",
+    "timeZone": "America/Caracas",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

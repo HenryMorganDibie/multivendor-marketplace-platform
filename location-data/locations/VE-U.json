@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VE-U-SAN-FELIPE",
+    "countryCode": "VE",
+    "stateId": "VE-U",
+    "stateCode": "U",
+    "name": "San Felipe",
+    "normalizedName": "san felipe",
+    "slug": "SAN-FELIPE",
+    "locationType": "city",
+    "timeZone": "America/Caracas",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

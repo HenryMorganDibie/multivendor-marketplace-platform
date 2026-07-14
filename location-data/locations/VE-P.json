@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VE-P-GUANARE",
+    "countryCode": "VE",
+    "stateId": "VE-P",
+    "stateCode": "P",
+    "name": "Guanare",
+    "normalizedName": "guanare",
+    "slug": "GUANARE",
+    "locationType": "city",
+    "timeZone": "America/Caracas",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

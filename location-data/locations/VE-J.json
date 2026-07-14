@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VE-J-SAN-JUAN-DE-LOS-MORROS",
+    "countryCode": "VE",
+    "stateId": "VE-J",
+    "stateCode": "J",
+    "name": "San Juan de los Morros",
+    "normalizedName": "san juan de los morros",
+    "slug": "SAN-JUAN-DE-LOS-MORROS",
+    "locationType": "city",
+    "timeZone": "America/Caracas",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

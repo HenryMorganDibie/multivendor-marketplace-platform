@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VE-O-LA-ASUNCION",
+    "countryCode": "VE",
+    "stateId": "VE-O",
+    "stateCode": "O",
+    "name": "La Asuncion",
+    "normalizedName": "la asuncion",
+    "slug": "LA-ASUNCION",
+    "locationType": "city",
+    "timeZone": "America/Caracas",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

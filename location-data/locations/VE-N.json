@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VE-N-MATURIN",
+    "countryCode": "VE",
+    "stateId": "VE-N",
+    "stateCode": "N",
+    "name": "Maturin",
+    "normalizedName": "maturin",
+    "slug": "MATURIN",
+    "locationType": "city",
+    "timeZone": "America/Caracas",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

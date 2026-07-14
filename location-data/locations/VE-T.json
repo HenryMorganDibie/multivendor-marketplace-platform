@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VE-T-TRUJILLO",
+    "countryCode": "VE",
+    "stateId": "VE-T",
+    "stateCode": "T",
+    "name": "Trujillo",
+    "normalizedName": "trujillo",
+    "slug": "TRUJILLO",
+    "locationType": "city",
+    "timeZone": "America/Caracas",
+    "status": "active",
+    "sortOrder": 1
+  }
+]
