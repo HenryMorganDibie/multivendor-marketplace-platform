@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "YE-BA-AL-BAYDA",
+    "countryCode": "YE",
+    "stateId": "YE-BA",
+    "stateCode": "BA",
+    "name": "Al Bayda",
+    "normalizedName": "al bayda",
+    "slug": "AL-BAYDA",
+    "locationType": "city",
+    "timeZone": "Asia/Aden",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

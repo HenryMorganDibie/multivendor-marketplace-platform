@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "YE-SD-SAADA",
+    "countryCode": "YE",
+    "stateId": "YE-SD",
+    "stateCode": "SD",
+    "name": "Saada",
+    "normalizedName": "saada",
+    "slug": "SAADA",
+    "locationType": "city",
+    "timeZone": "Asia/Aden",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

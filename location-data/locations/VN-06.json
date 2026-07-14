@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-06-YEN-BAI",
+    "countryCode": "VN",
+    "stateId": "VN-06",
+    "stateCode": "06",
+    "name": "Yen Bai",
+    "normalizedName": "yen bai",
+    "slug": "YEN-BAI",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-44-AN-GIANG",
+    "countryCode": "VN",
+    "stateId": "VN-44",
+    "stateCode": "44",
+    "name": "An Giang",
+    "normalizedName": "an giang",
+    "slug": "AN-GIANG",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

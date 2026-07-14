@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-51-TRA-VINH",
+    "countryCode": "VN",
+    "stateId": "VN-51",
+    "stateCode": "51",
+    "name": "Tra Vinh",
+    "normalizedName": "tra vinh",
+    "slug": "TRA-VINH",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

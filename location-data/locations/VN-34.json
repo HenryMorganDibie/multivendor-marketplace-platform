@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-34-KHANH-HOA",
+    "countryCode": "VN",
+    "stateId": "VN-34",
+    "stateCode": "34",
+    "name": "Khanh Hoa",
+    "normalizedName": "khanh hoa",
+    "slug": "KHANH-HOA",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

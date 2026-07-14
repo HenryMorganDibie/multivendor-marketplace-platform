@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "YE-HU-AL-HUDAYDAH",
+    "countryCode": "YE",
+    "stateId": "YE-HU",
+    "stateCode": "HU",
+    "name": "Al Hudaydah",
+    "normalizedName": "al hudaydah",
+    "slug": "AL-HUDAYDAH",
+    "locationType": "city",
+    "timeZone": "Asia/Aden",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

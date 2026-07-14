@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "YE-DH-DHAMAR",
+    "countryCode": "YE",
+    "stateId": "YE-DH",
+    "stateCode": "DH",
+    "name": "Dhamar",
+    "normalizedName": "dhamar",
+    "slug": "DHAMAR",
+    "locationType": "city",
+    "timeZone": "Asia/Aden",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

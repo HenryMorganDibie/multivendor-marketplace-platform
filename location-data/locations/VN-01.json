@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-01-LAI-CHAU",
+    "countryCode": "VN",
+    "stateId": "VN-01",
+    "stateCode": "01",
+    "name": "Lai Chau",
+    "normalizedName": "lai chau",
+    "slug": "LAI-CHAU",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

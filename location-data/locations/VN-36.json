@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-36-NINH-THUAN",
+    "countryCode": "VN",
+    "stateId": "VN-36",
+    "stateCode": "36",
+    "name": "Ninh Thuan",
+    "normalizedName": "ninh thuan",
+    "slug": "NINH-THUAN",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

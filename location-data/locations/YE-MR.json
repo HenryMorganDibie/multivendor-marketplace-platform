@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "YE-MR-AL-GHAYDAH",
+    "countryCode": "YE",
+    "stateId": "YE-MR",
+    "stateCode": "MR",
+    "name": "Al Ghaydah",
+    "normalizedName": "al ghaydah",
+    "slug": "AL-GHAYDAH",
+    "locationType": "city",
+    "timeZone": "Asia/Aden",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-40-BINH-THUAN",
+    "countryCode": "VN",
+    "stateId": "VN-40",
+    "stateCode": "40",
+    "name": "Binh Thuan",
+    "normalizedName": "binh thuan",
+    "slug": "BINH-THUAN",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

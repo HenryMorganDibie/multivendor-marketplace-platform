@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ZW-MA-MUTARE",
+    "countryCode": "ZW",
+    "stateId": "ZW-MA",
+    "stateCode": "MA",
+    "name": "Mutare",
+    "normalizedName": "mutare",
+    "slug": "MUTARE",
+    "locationType": "city",
+    "timeZone": "Africa/Harare",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

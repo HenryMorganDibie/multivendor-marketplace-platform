@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-CT-CAN-THO",
+    "countryCode": "VN",
+    "stateId": "VN-CT",
+    "stateCode": "CT",
+    "name": "Can Tho",
+    "normalizedName": "can tho",
+    "slug": "CAN-THO",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

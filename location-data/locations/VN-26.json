@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-26-THUA-THIEN-HUE",
+    "countryCode": "VN",
+    "stateId": "VN-26",
+    "stateCode": "26",
+    "name": "Thua Thien Hue",
+    "normalizedName": "thua thien hue",
+    "slug": "THUA-THIEN-HUE",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

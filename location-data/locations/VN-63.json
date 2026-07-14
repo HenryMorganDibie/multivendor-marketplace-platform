@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-63-HA-NAM",
+    "countryCode": "VN",
+    "stateId": "VN-63",
+    "stateCode": "63",
+    "name": "Ha Nam",
+    "normalizedName": "ha nam",
+    "slug": "HA-NAM",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-46-TIEN-GIANG",
+    "countryCode": "VN",
+    "stateId": "VN-46",
+    "stateCode": "46",
+    "name": "Tien Giang",
+    "normalizedName": "tien giang",
+    "slug": "TIEN-GIANG",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

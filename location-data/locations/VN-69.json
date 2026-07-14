@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-69-THAI-NGUYEN",
+    "countryCode": "VN",
+    "stateId": "VN-69",
+    "stateCode": "69",
+    "name": "Thai Nguyen",
+    "normalizedName": "thai nguyen",
+    "slug": "THAI-NGUYEN",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

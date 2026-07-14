@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ZW-MS-GWANDA",
+    "countryCode": "ZW",
+    "stateId": "ZW-MS",
+    "stateCode": "MS",
+    "name": "Gwanda",
+    "normalizedName": "gwanda",
+    "slug": "GWANDA",
+    "locationType": "city",
+    "timeZone": "Africa/Harare",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

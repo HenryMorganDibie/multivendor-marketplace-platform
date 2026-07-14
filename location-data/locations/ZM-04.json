@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ZM-04-CHIPATA",
+    "countryCode": "ZM",
+    "stateId": "ZM-04",
+    "stateCode": "04",
+    "name": "Chipata",
+    "normalizedName": "chipata",
+    "slug": "CHIPATA",
+    "locationType": "city",
+    "timeZone": "Africa/Lusaka",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

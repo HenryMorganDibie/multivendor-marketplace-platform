@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "YE-IB-IBB",
+    "countryCode": "YE",
+    "stateId": "YE-IB",
+    "stateCode": "IB",
+    "name": "Ibb",
+    "normalizedName": "ibb",
+    "slug": "IBB",
+    "locationType": "city",
+    "timeZone": "Asia/Aden",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

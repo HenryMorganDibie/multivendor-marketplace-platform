@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-18-NINH-BINH",
+    "countryCode": "VN",
+    "stateId": "VN-18",
+    "stateCode": "18",
+    "name": "Ninh Binh",
+    "normalizedName": "ninh binh",
+    "slug": "NINH-BINH",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

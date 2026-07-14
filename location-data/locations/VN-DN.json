@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-DN-DA-NANG",
+    "countryCode": "VN",
+    "stateId": "VN-DN",
+    "stateCode": "DN",
+    "name": "Da Nang",
+    "normalizedName": "da nang",
+    "slug": "DA-NANG",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

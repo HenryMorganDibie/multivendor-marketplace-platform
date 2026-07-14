@@ -1346,28 +1346,28 @@
 
 ## Vietnam
 - [x] Country
-- [ ] States
-- [ ] Areas
+- [x] States
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
 ## Yemen
 - [x] Country
-- [ ] States
-- [ ] Areas
+- [x] States
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
 ## Zambia
 - [x] Country
-- [ ] States
-- [ ] Areas
+- [x] States
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
 ## Zimbabwe
 - [x] Country
-- [ ] States
-- [ ] Areas
+- [x] States
+- [x] Areas
 - [ ] Validated
 - [ ] Imported

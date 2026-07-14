@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "YE-JA-AL-HAZM",
+    "countryCode": "YE",
+    "stateId": "YE-JA",
+    "stateCode": "JA",
+    "name": "Al Hazm",
+    "normalizedName": "al hazm",
+    "slug": "AL-HAZM",
+    "locationType": "city",
+    "timeZone": "Asia/Aden",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

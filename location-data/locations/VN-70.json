@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-70-VINH-PHUC",
+    "countryCode": "VN",
+    "stateId": "VN-70",
+    "stateCode": "70",
+    "name": "Vinh Phuc",
+    "normalizedName": "vinh phuc",
+    "slug": "VINH-PHUC",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

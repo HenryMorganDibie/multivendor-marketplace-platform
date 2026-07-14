@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ZW-BU-BULAWAYO",
+    "countryCode": "ZW",
+    "stateId": "ZW-BU",
+    "stateCode": "BU",
+    "name": "Bulawayo",
+    "normalizedName": "bulawayo",
+    "slug": "BULAWAYO",
+    "locationType": "city",
+    "timeZone": "Africa/Harare",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

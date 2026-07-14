@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-30-GIA-LAI",
+    "countryCode": "VN",
+    "stateId": "VN-30",
+    "stateCode": "30",
+    "name": "Gia Lai",
+    "normalizedName": "gia lai",
+    "slug": "GIA-LAI",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-35-LAM-DONG",
+    "countryCode": "VN",
+    "stateId": "VN-35",
+    "stateCode": "35",
+    "name": "Lam Dong",
+    "normalizedName": "lam dong",
+    "slug": "LAM-DONG",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-24-QUANG-BINH",
+    "countryCode": "VN",
+    "stateId": "VN-24",
+    "stateCode": "24",
+    "name": "Quang Binh",
+    "normalizedName": "quang binh",
+    "slug": "QUANG-BINH",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

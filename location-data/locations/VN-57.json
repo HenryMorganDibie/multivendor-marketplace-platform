@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-57-BINH-DUONG",
+    "countryCode": "VN",
+    "stateId": "VN-57",
+    "stateCode": "57",
+    "name": "Binh Duong",
+    "normalizedName": "binh duong",
+    "slug": "BINH-DUONG",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

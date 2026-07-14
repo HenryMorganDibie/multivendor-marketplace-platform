@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ZM-06-LUSAKA",
+    "countryCode": "ZM",
+    "stateId": "ZM-06",
+    "stateCode": "06",
+    "name": "Lusaka",
+    "normalizedName": "lusaka",
+    "slug": "LUSAKA",
+    "locationType": "city",
+    "timeZone": "Africa/Lusaka",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

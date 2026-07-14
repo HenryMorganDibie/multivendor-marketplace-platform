@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-50-BEN-TRE",
+    "countryCode": "VN",
+    "stateId": "VN-50",
+    "stateCode": "50",
+    "name": "Ben Tre",
+    "normalizedName": "ben tre",
+    "slug": "BEN-TRE",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-47-KIEN-GIANG",
+    "countryCode": "VN",
+    "stateId": "VN-47",
+    "stateCode": "47",
+    "name": "Kien Giang",
+    "normalizedName": "kien giang",
+    "slug": "KIEN-GIANG",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

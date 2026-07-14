@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "YE-HJ-HAJJAH",
+    "countryCode": "YE",
+    "stateId": "YE-HJ",
+    "stateCode": "HJ",
+    "name": "Hajjah",
+    "normalizedName": "hajjah",
+    "slug": "HAJJAH",
+    "locationType": "city",
+    "timeZone": "Asia/Aden",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-05-SON-LA",
+    "countryCode": "VN",
+    "stateId": "VN-05",
+    "stateCode": "05",
+    "name": "Son La",
+    "normalizedName": "son la",
+    "slug": "SON-LA",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

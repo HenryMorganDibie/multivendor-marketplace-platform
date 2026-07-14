@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "YE-AD-ADEN",
+    "countryCode": "YE",
+    "stateId": "YE-AD",
+    "stateCode": "AD",
+    "name": "Aden",
+    "normalizedName": "aden",
+    "slug": "ADEN",
+    "locationType": "city",
+    "timeZone": "Asia/Aden",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

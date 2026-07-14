@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "YE-LA-LAHIJ",
+    "countryCode": "YE",
+    "stateId": "YE-LA",
+    "stateCode": "LA",
+    "name": "Lahij",
+    "normalizedName": "lahij",
+    "slug": "LAHIJ",
+    "locationType": "city",
+    "timeZone": "Asia/Aden",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

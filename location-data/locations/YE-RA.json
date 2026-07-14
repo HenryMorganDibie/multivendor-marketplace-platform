@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "YE-RA-AL-JABIN",
+    "countryCode": "YE",
+    "stateId": "YE-RA",
+    "stateCode": "RA",
+    "name": "Al Jabin",
+    "normalizedName": "al jabin",
+    "slug": "AL-JABIN",
+    "locationType": "city",
+    "timeZone": "Asia/Aden",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

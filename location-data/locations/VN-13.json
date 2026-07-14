@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-13-QUANG-NINH",
+    "countryCode": "VN",
+    "stateId": "VN-13",
+    "stateCode": "13",
+    "name": "Quang Ninh",
+    "normalizedName": "quang ninh",
+    "slug": "QUANG-NINH",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

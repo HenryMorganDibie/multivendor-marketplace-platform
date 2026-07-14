@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "YE-TA-TAIZ",
+    "countryCode": "YE",
+    "stateId": "YE-TA",
+    "stateCode": "TA",
+    "name": "Taiz",
+    "normalizedName": "taiz",
+    "slug": "TAIZ",
+    "locationType": "city",
+    "timeZone": "Asia/Aden",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-27-QUANG-NAM",
+    "countryCode": "VN",
+    "stateId": "VN-27",
+    "stateCode": "27",
+    "name": "Quang Nam",
+    "normalizedName": "quang nam",
+    "slug": "QUANG-NAM",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

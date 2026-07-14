@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-58-BINH-PHUOC",
+    "countryCode": "VN",
+    "stateId": "VN-58",
+    "stateCode": "58",
+    "name": "Binh Phuoc",
+    "normalizedName": "binh phuoc",
+    "slug": "BINH-PHUOC",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

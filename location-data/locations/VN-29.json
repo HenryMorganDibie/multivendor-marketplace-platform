@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-29-QUANG-NGAI",
+    "countryCode": "VN",
+    "stateId": "VN-29",
+    "stateCode": "29",
+    "name": "Quang Ngai",
+    "normalizedName": "quang ngai",
+    "slug": "QUANG-NGAI",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

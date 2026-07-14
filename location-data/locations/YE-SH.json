@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "YE-SH-ATAQ",
+    "countryCode": "YE",
+    "stateId": "YE-SH",
+    "stateCode": "SH",
+    "name": "Ataq",
+    "normalizedName": "ataq",
+    "slug": "ATAQ",
+    "locationType": "city",
+    "timeZone": "Asia/Aden",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

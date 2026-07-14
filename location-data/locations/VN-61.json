@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-61-HAI-DUONG",
+    "countryCode": "VN",
+    "stateId": "VN-61",
+    "stateCode": "61",
+    "name": "Hai Duong",
+    "normalizedName": "hai duong",
+    "slug": "HAI-DUONG",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-72-DAK-NONG",
+    "countryCode": "VN",
+    "stateId": "VN-72",
+    "stateCode": "72",
+    "name": "Dak Nong",
+    "normalizedName": "dak nong",
+    "slug": "DAK-NONG",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

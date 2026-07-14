@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ZW-MN-LUPANE",
+    "countryCode": "ZW",
+    "stateId": "ZW-MN",
+    "stateCode": "MN",
+    "name": "Lupane",
+    "normalizedName": "lupane",
+    "slug": "LUPANE",
+    "locationType": "city",
+    "timeZone": "Africa/Harare",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

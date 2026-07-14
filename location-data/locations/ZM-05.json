@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ZM-05-MANSA",
+    "countryCode": "ZM",
+    "stateId": "ZM-05",
+    "stateCode": "05",
+    "name": "Mansa",
+    "normalizedName": "mansa",
+    "slug": "MANSA",
+    "locationType": "city",
+    "timeZone": "Africa/Lusaka",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

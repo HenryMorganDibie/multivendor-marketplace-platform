@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-55-BAC-LIEU",
+    "countryCode": "VN",
+    "stateId": "VN-55",
+    "stateCode": "55",
+    "name": "Bac Lieu",
+    "normalizedName": "bac lieu",
+    "slug": "BAC-LIEU",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

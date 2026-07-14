@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-71-DIEN-BIEN",
+    "countryCode": "VN",
+    "stateId": "VN-71",
+    "stateCode": "71",
+    "name": "Dien Bien",
+    "normalizedName": "dien bien",
+    "slug": "DIEN-BIEN",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

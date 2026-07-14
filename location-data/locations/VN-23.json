@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-23-HA-TINH",
+    "countryCode": "VN",
+    "stateId": "VN-23",
+    "stateCode": "23",
+    "name": "Ha Tinh",
+    "normalizedName": "ha tinh",
+    "slug": "HA-TINH",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

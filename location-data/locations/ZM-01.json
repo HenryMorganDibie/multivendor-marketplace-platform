@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ZM-01-KASAMA",
+    "countryCode": "ZM",
+    "stateId": "ZM-01",
+    "stateCode": "01",
+    "name": "Kasama",
+    "normalizedName": "kasama",
+    "slug": "KASAMA",
+    "locationType": "city",
+    "timeZone": "Africa/Lusaka",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

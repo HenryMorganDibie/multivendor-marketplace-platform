@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ZM-03-NDOLA",
+    "countryCode": "ZM",
+    "stateId": "ZM-03",
+    "stateCode": "03",
+    "name": "Ndola",
+    "normalizedName": "ndola",
+    "slug": "NDOLA",
+    "locationType": "city",
+    "timeZone": "Africa/Lusaka",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

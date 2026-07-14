@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-22-NGHE-AN",
+    "countryCode": "VN",
+    "stateId": "VN-22",
+    "stateCode": "22",
+    "name": "Nghe An",
+    "normalizedName": "nghe an",
+    "slug": "NGHE-AN",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

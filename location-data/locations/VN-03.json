@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-03-HA-GIANG",
+    "countryCode": "VN",
+    "stateId": "VN-03",
+    "stateCode": "03",
+    "name": "Ha Giang",
+    "normalizedName": "ha giang",
+    "slug": "HA-GIANG",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

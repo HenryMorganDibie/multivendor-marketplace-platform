@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-HP-HAIPHONG",
+    "countryCode": "VN",
+    "stateId": "VN-HP",
+    "stateCode": "HP",
+    "name": "Haiphong",
+    "normalizedName": "haiphong",
+    "slug": "HAIPHONG",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

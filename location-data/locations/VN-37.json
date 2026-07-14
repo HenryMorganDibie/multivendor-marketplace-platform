@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-37-TAY-NINH",
+    "countryCode": "VN",
+    "stateId": "VN-37",
+    "stateCode": "37",
+    "name": "Tay Ninh",
+    "normalizedName": "tay ninh",
+    "slug": "TAY-NINH",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

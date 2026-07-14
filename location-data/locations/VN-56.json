@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-56-BAC-NINH",
+    "countryCode": "VN",
+    "stateId": "VN-56",
+    "stateCode": "56",
+    "name": "Bac Ninh",
+    "normalizedName": "bac ninh",
+    "slug": "BAC-NINH",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

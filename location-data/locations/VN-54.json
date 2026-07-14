@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-54-BAC-KAN",
+    "countryCode": "VN",
+    "stateId": "VN-54",
+    "stateCode": "54",
+    "name": "Bac Kan",
+    "normalizedName": "bac kan",
+    "slug": "BAC-KAN",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

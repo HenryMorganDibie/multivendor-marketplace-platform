@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-59-CA-MAU",
+    "countryCode": "VN",
+    "stateId": "VN-59",
+    "stateCode": "59",
+    "name": "Ca Mau",
+    "normalizedName": "ca mau",
+    "slug": "CA-MAU",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "YE-DA-AL-DHALE",
+    "countryCode": "YE",
+    "stateId": "YE-DA",
+    "stateCode": "DA",
+    "name": "Al Dhale",
+    "normalizedName": "al dhale",
+    "slug": "AL-DHALE",
+    "locationType": "city",
+    "timeZone": "Asia/Aden",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

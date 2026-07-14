@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-25-QUANG-TRI",
+    "countryCode": "VN",
+    "stateId": "VN-25",
+    "stateCode": "25",
+    "name": "Quang Tri",
+    "normalizedName": "quang tri",
+    "slug": "QUANG-TRI",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

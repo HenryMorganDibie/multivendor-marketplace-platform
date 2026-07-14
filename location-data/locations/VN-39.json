@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-39-DONG-NAI",
+    "countryCode": "VN",
+    "stateId": "VN-39",
+    "stateCode": "39",
+    "name": "Dong Nai",
+    "normalizedName": "dong nai",
+    "slug": "DONG-NAI",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

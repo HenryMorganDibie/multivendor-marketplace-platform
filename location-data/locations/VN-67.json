@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-67-NAM-DINH",
+    "countryCode": "VN",
+    "stateId": "VN-67",
+    "stateCode": "67",
+    "name": "Nam Dinh",
+    "normalizedName": "nam dinh",
+    "slug": "NAM-DINH",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

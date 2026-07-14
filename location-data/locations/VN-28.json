@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-28-KON-TUM",
+    "countryCode": "VN",
+    "stateId": "VN-28",
+    "stateCode": "28",
+    "name": "Kon Tum",
+    "normalizedName": "kon tum",
+    "slug": "KON-TUM",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

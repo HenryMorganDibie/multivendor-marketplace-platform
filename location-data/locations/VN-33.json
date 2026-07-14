@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-33-DAK-LAK",
+    "countryCode": "VN",
+    "stateId": "VN-33",
+    "stateCode": "33",
+    "name": "Dak Lak",
+    "normalizedName": "dak lak",
+    "slug": "DAK-LAK",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

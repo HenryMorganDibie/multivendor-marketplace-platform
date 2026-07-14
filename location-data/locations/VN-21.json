@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-21-THANH-HOA",
+    "countryCode": "VN",
+    "stateId": "VN-21",
+    "stateCode": "21",
+    "name": "Thanh Hoa",
+    "normalizedName": "thanh hoa",
+    "slug": "THANH-HOA",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

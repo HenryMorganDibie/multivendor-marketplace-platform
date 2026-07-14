@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ZW-MI-GWERU",
+    "countryCode": "ZW",
+    "stateId": "ZW-MI",
+    "stateCode": "MI",
+    "name": "Gweru",
+    "normalizedName": "gweru",
+    "slug": "GWERU",
+    "locationType": "city",
+    "timeZone": "Africa/Harare",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

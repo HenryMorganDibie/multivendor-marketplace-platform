@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-31-BINH-DINH",
+    "countryCode": "VN",
+    "stateId": "VN-31",
+    "stateCode": "31",
+    "name": "Binh Dinh",
+    "normalizedName": "binh dinh",
+    "slug": "BINH-DINH",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

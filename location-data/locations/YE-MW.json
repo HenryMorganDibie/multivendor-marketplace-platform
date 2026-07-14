@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "YE-MW-AL-MAHWIT",
+    "countryCode": "YE",
+    "stateId": "YE-MW",
+    "stateCode": "MW",
+    "name": "Al Mahwit",
+    "normalizedName": "al mahwit",
+    "slug": "AL-MAHWIT",
+    "locationType": "city",
+    "timeZone": "Asia/Aden",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

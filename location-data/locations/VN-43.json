@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-43-BA-RIA-VUNG-TAU",
+    "countryCode": "VN",
+    "stateId": "VN-43",
+    "stateCode": "43",
+    "name": "Ba Ria-Vung Tau",
+    "normalizedName": "ba ria-vung tau",
+    "slug": "BA-RIA-VUNG-TAU",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

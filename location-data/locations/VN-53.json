@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-53-BAC-GIANG",
+    "countryCode": "VN",
+    "stateId": "VN-53",
+    "stateCode": "53",
+    "name": "Bac Giang",
+    "normalizedName": "bac giang",
+    "slug": "BAC-GIANG",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

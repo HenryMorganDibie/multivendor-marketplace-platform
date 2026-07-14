@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ZM-02-KABWE",
+    "countryCode": "ZM",
+    "stateId": "ZM-02",
+    "stateCode": "02",
+    "name": "Kabwe",
+    "normalizedName": "kabwe",
+    "slug": "KABWE",
+    "locationType": "city",
+    "timeZone": "Africa/Lusaka",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

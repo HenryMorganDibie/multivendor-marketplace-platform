@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "YE-MA-MARIB",
+    "countryCode": "YE",
+    "stateId": "YE-MA",
+    "stateCode": "MA",
+    "name": "Marib",
+    "normalizedName": "marib",
+    "slug": "MARIB",
+    "locationType": "city",
+    "timeZone": "Asia/Aden",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

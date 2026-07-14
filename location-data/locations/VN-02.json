@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-02-LAO-CAI",
+    "countryCode": "VN",
+    "stateId": "VN-02",
+    "stateCode": "02",
+    "name": "Lao Cai",
+    "normalizedName": "lao cai",
+    "slug": "LAO-CAI",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

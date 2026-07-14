@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-68-PHU-THO",
+    "countryCode": "VN",
+    "stateId": "VN-68",
+    "stateCode": "68",
+    "name": "Phu Tho",
+    "normalizedName": "phu tho",
+    "slug": "PHU-THO",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

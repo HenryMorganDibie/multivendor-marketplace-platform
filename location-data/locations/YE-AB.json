@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "YE-AB-ZINJIBAR",
+    "countryCode": "YE",
+    "stateId": "YE-AB",
+    "stateCode": "AB",
+    "name": "Zinjibar",
+    "normalizedName": "zinjibar",
+    "slug": "ZINJIBAR",
+    "locationType": "city",
+    "timeZone": "Asia/Aden",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

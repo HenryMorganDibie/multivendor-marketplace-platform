@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-14-HOA-BINH",
+    "countryCode": "VN",
+    "stateId": "VN-14",
+    "stateCode": "14",
+    "name": "Hoa Binh",
+    "normalizedName": "hoa binh",
+    "slug": "HOA-BINH",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

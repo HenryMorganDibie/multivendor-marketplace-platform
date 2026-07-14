@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-52-SOC-TRANG",
+    "countryCode": "VN",
+    "stateId": "VN-52",
+    "stateCode": "52",
+    "name": "Soc Trang",
+    "normalizedName": "soc trang",
+    "slug": "SOC-TRANG",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ZM-08-SOLWEZI",
+    "countryCode": "ZM",
+    "stateId": "ZM-08",
+    "stateCode": "08",
+    "name": "Solwezi",
+    "normalizedName": "solwezi",
+    "slug": "SOLWEZI",
+    "locationType": "city",
+    "timeZone": "Africa/Lusaka",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

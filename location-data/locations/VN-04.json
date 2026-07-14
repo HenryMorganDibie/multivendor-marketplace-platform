@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-04-CAO-BANG",
+    "countryCode": "VN",
+    "stateId": "VN-04",
+    "stateCode": "04",
+    "name": "Cao Bang",
+    "normalizedName": "cao bang",
+    "slug": "CAO-BANG",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

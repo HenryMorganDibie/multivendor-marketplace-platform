@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ZW-ME-MARONDERA",
+    "countryCode": "ZW",
+    "stateId": "ZW-ME",
+    "stateCode": "ME",
+    "name": "Marondera",
+    "normalizedName": "marondera",
+    "slug": "MARONDERA",
+    "locationType": "city",
+    "timeZone": "Africa/Harare",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

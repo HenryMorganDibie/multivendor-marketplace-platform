@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ZM-10-MONGU",
+    "countryCode": "ZM",
+    "stateId": "ZM-10",
+    "stateCode": "10",
+    "name": "Mongu",
+    "normalizedName": "mongu",
+    "slug": "MONGU",
+    "locationType": "city",
+    "timeZone": "Africa/Lusaka",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

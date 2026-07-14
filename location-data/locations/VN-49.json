@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-49-VINH-LONG",
+    "countryCode": "VN",
+    "stateId": "VN-49",
+    "stateCode": "49",
+    "name": "Vinh Long",
+    "normalizedName": "vinh long",
+    "slug": "VINH-LONG",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

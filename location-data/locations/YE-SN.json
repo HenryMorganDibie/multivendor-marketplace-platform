@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "YE-SN-SANAA",
+    "countryCode": "YE",
+    "stateId": "YE-SN",
+    "stateCode": "SN",
+    "name": "Sanaa",
+    "normalizedName": "sanaa",
+    "slug": "SANAA",
+    "locationType": "city",
+    "timeZone": "Asia/Aden",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

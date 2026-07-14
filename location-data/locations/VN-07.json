@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-07-TUYEN-QUANG",
+    "countryCode": "VN",
+    "stateId": "VN-07",
+    "stateCode": "07",
+    "name": "Tuyen Quang",
+    "normalizedName": "tuyen quang",
+    "slug": "TUYEN-QUANG",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

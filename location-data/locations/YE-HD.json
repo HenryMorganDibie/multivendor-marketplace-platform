@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "YE-HD-MUKALLA",
+    "countryCode": "YE",
+    "stateId": "YE-HD",
+    "stateCode": "HD",
+    "name": "Mukalla",
+    "normalizedName": "mukalla",
+    "slug": "MUKALLA",
+    "locationType": "city",
+    "timeZone": "Asia/Aden",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

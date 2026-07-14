@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "YE-AM-AMRAN",
+    "countryCode": "YE",
+    "stateId": "YE-AM",
+    "stateCode": "AM",
+    "name": "Amran",
+    "normalizedName": "amran",
+    "slug": "AMRAN",
+    "locationType": "city",
+    "timeZone": "Asia/Aden",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "YE-SU-HADIBU",
+    "countryCode": "YE",
+    "stateId": "YE-SU",
+    "stateCode": "SU",
+    "name": "Hadibu",
+    "normalizedName": "hadibu",
+    "slug": "HADIBU",
+    "locationType": "city",
+    "timeZone": "Asia/Aden",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

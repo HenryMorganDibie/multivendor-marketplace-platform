@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-HN-HANOI",
+    "countryCode": "VN",
+    "stateId": "VN-HN",
+    "stateCode": "HN",
+    "name": "Hanoi",
+    "normalizedName": "hanoi",
+    "slug": "HANOI",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

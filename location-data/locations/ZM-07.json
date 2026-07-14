@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ZM-07-CHINSALI",
+    "countryCode": "ZM",
+    "stateId": "ZM-07",
+    "stateCode": "07",
+    "name": "Chinsali",
+    "normalizedName": "chinsali",
+    "slug": "CHINSALI",
+    "locationType": "city",
+    "timeZone": "Africa/Lusaka",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

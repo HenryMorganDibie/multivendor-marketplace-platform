@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-41-LONG-AN",
+    "countryCode": "VN",
+    "stateId": "VN-41",
+    "stateCode": "41",
+    "name": "Long An",
+    "normalizedName": "long an",
+    "slug": "LONG-AN",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

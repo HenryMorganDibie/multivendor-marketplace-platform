@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-SG-HO-CHI-MINH-CITY",
+    "countryCode": "VN",
+    "stateId": "VN-SG",
+    "stateCode": "SG",
+    "name": "Ho Chi Minh City",
+    "normalizedName": "ho chi minh city",
+    "slug": "HO-CHI-MINH-CITY",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

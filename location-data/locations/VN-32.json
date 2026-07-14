@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-32-PHU-YEN",
+    "countryCode": "VN",
+    "stateId": "VN-32",
+    "stateCode": "32",
+    "name": "Phu Yen",
+    "normalizedName": "phu yen",
+    "slug": "PHU-YEN",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

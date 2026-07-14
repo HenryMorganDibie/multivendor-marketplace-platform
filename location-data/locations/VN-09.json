@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "VN-09-LANG-SON",
+    "countryCode": "VN",
+    "stateId": "VN-09",
+    "stateCode": "09",
+    "name": "Lang Son",
+    "normalizedName": "lang son",
+    "slug": "LANG-SON",
+    "locationType": "city",
+    "timeZone": "Asia/Ho_Chi_Minh",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

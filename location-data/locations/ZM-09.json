@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ZM-09-CHOMA",
+    "countryCode": "ZM",
+    "stateId": "ZM-09",
+    "stateCode": "09",
+    "name": "Choma",
+    "normalizedName": "choma",
+    "slug": "CHOMA",
+    "locationType": "city",
+    "timeZone": "Africa/Lusaka",
+    "status": "active",
+    "sortOrder": 1
+  }
+]
