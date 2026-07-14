@@ -1,0 +1,32 @@
+[
+  {
+    "stateId": "BA-BIH",
+    "countryCode": "BA",
+    "stateCode": "BIH",
+    "name": "Federation of Bosnia and Herzegovina",
+    "normalizedName": "federation of bosnia and herzegovina",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "BA-SRP",
+    "countryCode": "BA",
+    "stateCode": "SRP",
+    "name": "Republika Srpska",
+    "normalizedName": "republika srpska",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "BA-BRC",
+    "countryCode": "BA",
+    "stateCode": "BRC",
+    "name": "Brčko District",
+    "normalizedName": "brcko district",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 3
+  }
+]
