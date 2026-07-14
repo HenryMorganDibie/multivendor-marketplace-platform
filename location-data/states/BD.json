@@ -1,0 +1,82 @@
+[
+  {
+    "stateId": "BD-A",
+    "countryCode": "BD",
+    "stateCode": "A",
+    "name": "Barisal",
+    "normalizedName": "barisal",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "BD-B",
+    "countryCode": "BD",
+    "stateCode": "B",
+    "name": "Chittagong",
+    "normalizedName": "chittagong",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "BD-C",
+    "countryCode": "BD",
+    "stateCode": "C",
+    "name": "Dhaka",
+    "normalizedName": "dhaka",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "BD-D",
+    "countryCode": "BD",
+    "stateCode": "D",
+    "name": "Khulna",
+    "normalizedName": "khulna",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "BD-E",
+    "countryCode": "BD",
+    "stateCode": "E",
+    "name": "Rajshahi",
+    "normalizedName": "rajshahi",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "BD-F",
+    "countryCode": "BD",
+    "stateCode": "F",
+    "name": "Rangpur",
+    "normalizedName": "rangpur",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "BD-G",
+    "countryCode": "BD",
+    "stateCode": "G",
+    "name": "Sylhet",
+    "normalizedName": "sylhet",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "BD-H",
+    "countryCode": "BD",
+    "stateCode": "H",
+    "name": "Mymensingh",
+    "normalizedName": "mymensingh",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 8
+  }
+]
