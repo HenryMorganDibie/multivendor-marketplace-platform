@@ -1,0 +1,822 @@
+[
+  {
+    "stateId": "RU-AD",
+    "countryCode": "RU",
+    "stateCode": "AD",
+    "name": "Adygea",
+    "normalizedName": "adygea",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "RU-AL",
+    "countryCode": "RU",
+    "stateCode": "AL",
+    "name": "Altai Republic",
+    "normalizedName": "altai republic",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "RU-ALT",
+    "countryCode": "RU",
+    "stateCode": "ALT",
+    "name": "Altai Krai",
+    "normalizedName": "altai krai",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "RU-AMU",
+    "countryCode": "RU",
+    "stateCode": "AMU",
+    "name": "Amur Oblast",
+    "normalizedName": "amur oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "RU-ARK",
+    "countryCode": "RU",
+    "stateCode": "ARK",
+    "name": "Arkhangelsk Oblast",
+    "normalizedName": "arkhangelsk oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "RU-AST",
+    "countryCode": "RU",
+    "stateCode": "AST",
+    "name": "Astrakhan Oblast",
+    "normalizedName": "astrakhan oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "RU-BA",
+    "countryCode": "RU",
+    "stateCode": "BA",
+    "name": "Bashkortostan",
+    "normalizedName": "bashkortostan",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "RU-BEL",
+    "countryCode": "RU",
+    "stateCode": "BEL",
+    "name": "Belgorod Oblast",
+    "normalizedName": "belgorod oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "RU-BRY",
+    "countryCode": "RU",
+    "stateCode": "BRY",
+    "name": "Bryansk Oblast",
+    "normalizedName": "bryansk oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "RU-BU",
+    "countryCode": "RU",
+    "stateCode": "BU",
+    "name": "Buryatia",
+    "normalizedName": "buryatia",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "RU-CE",
+    "countryCode": "RU",
+    "stateCode": "CE",
+    "name": "Chechnya",
+    "normalizedName": "chechnya",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "RU-CHE",
+    "countryCode": "RU",
+    "stateCode": "CHE",
+    "name": "Chelyabinsk Oblast",
+    "normalizedName": "chelyabinsk oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "RU-CHU",
+    "countryCode": "RU",
+    "stateCode": "CHU",
+    "name": "Chukotka Autonomous Okrug",
+    "normalizedName": "chukotka autonomous okrug",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 13
+  },
+  {
+    "stateId": "RU-CU",
+    "countryCode": "RU",
+    "stateCode": "CU",
+    "name": "Chuvashia",
+    "normalizedName": "chuvashia",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 14
+  },
+  {
+    "stateId": "RU-DA",
+    "countryCode": "RU",
+    "stateCode": "DA",
+    "name": "Dagestan",
+    "normalizedName": "dagestan",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 15
+  },
+  {
+    "stateId": "RU-IN",
+    "countryCode": "RU",
+    "stateCode": "IN",
+    "name": "Ingushetia",
+    "normalizedName": "ingushetia",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 16
+  },
+  {
+    "stateId": "RU-IRK",
+    "countryCode": "RU",
+    "stateCode": "IRK",
+    "name": "Irkutsk Oblast",
+    "normalizedName": "irkutsk oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 17
+  },
+  {
+    "stateId": "RU-IVA",
+    "countryCode": "RU",
+    "stateCode": "IVA",
+    "name": "Ivanovo Oblast",
+    "normalizedName": "ivanovo oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 18
+  },
+  {
+    "stateId": "RU-YEV",
+    "countryCode": "RU",
+    "stateCode": "YEV",
+    "name": "Jewish Autonomous Oblast",
+    "normalizedName": "jewish autonomous oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 19
+  },
+  {
+    "stateId": "RU-KB",
+    "countryCode": "RU",
+    "stateCode": "KB",
+    "name": "Kabardino-Balkaria",
+    "normalizedName": "kabardino-balkaria",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 20
+  },
+  {
+    "stateId": "RU-KGD",
+    "countryCode": "RU",
+    "stateCode": "KGD",
+    "name": "Kaliningrad Oblast",
+    "normalizedName": "kaliningrad oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 21
+  },
+  {
+    "stateId": "RU-KL",
+    "countryCode": "RU",
+    "stateCode": "KL",
+    "name": "Kalmykia",
+    "normalizedName": "kalmykia",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 22
+  },
+  {
+    "stateId": "RU-KLU",
+    "countryCode": "RU",
+    "stateCode": "KLU",
+    "name": "Kaluga Oblast",
+    "normalizedName": "kaluga oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 23
+  },
+  {
+    "stateId": "RU-KAM",
+    "countryCode": "RU",
+    "stateCode": "KAM",
+    "name": "Kamchatka Krai",
+    "normalizedName": "kamchatka krai",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 24
+  },
+  {
+    "stateId": "RU-KC",
+    "countryCode": "RU",
+    "stateCode": "KC",
+    "name": "Karachay-Cherkessia",
+    "normalizedName": "karachay-cherkessia",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 25
+  },
+  {
+    "stateId": "RU-KR",
+    "countryCode": "RU",
+    "stateCode": "KR",
+    "name": "Karelia",
+    "normalizedName": "karelia",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 26
+  },
+  {
+    "stateId": "RU-KEM",
+    "countryCode": "RU",
+    "stateCode": "KEM",
+    "name": "Kemerovo Oblast",
+    "normalizedName": "kemerovo oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 27
+  },
+  {
+    "stateId": "RU-KHA",
+    "countryCode": "RU",
+    "stateCode": "KHA",
+    "name": "Khabarovsk Krai",
+    "normalizedName": "khabarovsk krai",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 28
+  },
+  {
+    "stateId": "RU-KK",
+    "countryCode": "RU",
+    "stateCode": "KK",
+    "name": "Khakassia",
+    "normalizedName": "khakassia",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 29
+  },
+  {
+    "stateId": "RU-KHM",
+    "countryCode": "RU",
+    "stateCode": "KHM",
+    "name": "Khanty-Mansi Autonomous Okrug",
+    "normalizedName": "khanty-mansi autonomous okrug",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 30
+  },
+  {
+    "stateId": "RU-KIR",
+    "countryCode": "RU",
+    "stateCode": "KIR",
+    "name": "Kirov Oblast",
+    "normalizedName": "kirov oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 31
+  },
+  {
+    "stateId": "RU-KO",
+    "countryCode": "RU",
+    "stateCode": "KO",
+    "name": "Komi Republic",
+    "normalizedName": "komi republic",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 32
+  },
+  {
+    "stateId": "RU-KOS",
+    "countryCode": "RU",
+    "stateCode": "KOS",
+    "name": "Kostroma Oblast",
+    "normalizedName": "kostroma oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 33
+  },
+  {
+    "stateId": "RU-KDA",
+    "countryCode": "RU",
+    "stateCode": "KDA",
+    "name": "Krasnodar Krai",
+    "normalizedName": "krasnodar krai",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 34
+  },
+  {
+    "stateId": "RU-KYA",
+    "countryCode": "RU",
+    "stateCode": "KYA",
+    "name": "Krasnoyarsk Krai",
+    "normalizedName": "krasnoyarsk krai",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 35
+  },
+  {
+    "stateId": "RU-KUG",
+    "countryCode": "RU",
+    "stateCode": "KUG",
+    "name": "Kurgan Oblast",
+    "normalizedName": "kurgan oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 36
+  },
+  {
+    "stateId": "RU-KRS",
+    "countryCode": "RU",
+    "stateCode": "KRS",
+    "name": "Kursk Oblast",
+    "normalizedName": "kursk oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 37
+  },
+  {
+    "stateId": "RU-LEN",
+    "countryCode": "RU",
+    "stateCode": "LEN",
+    "name": "Leningrad Oblast",
+    "normalizedName": "leningrad oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 38
+  },
+  {
+    "stateId": "RU-LIP",
+    "countryCode": "RU",
+    "stateCode": "LIP",
+    "name": "Lipetsk Oblast",
+    "normalizedName": "lipetsk oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 39
+  },
+  {
+    "stateId": "RU-MAG",
+    "countryCode": "RU",
+    "stateCode": "MAG",
+    "name": "Magadan Oblast",
+    "normalizedName": "magadan oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 40
+  },
+  {
+    "stateId": "RU-ME",
+    "countryCode": "RU",
+    "stateCode": "ME",
+    "name": "Mari El",
+    "normalizedName": "mari el",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 41
+  },
+  {
+    "stateId": "RU-MO",
+    "countryCode": "RU",
+    "stateCode": "MO",
+    "name": "Mordovia",
+    "normalizedName": "mordovia",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 42
+  },
+  {
+    "stateId": "RU-MOW",
+    "countryCode": "RU",
+    "stateCode": "MOW",
+    "name": "Moscow",
+    "normalizedName": "moscow",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 43
+  },
+  {
+    "stateId": "RU-MOS",
+    "countryCode": "RU",
+    "stateCode": "MOS",
+    "name": "Moscow Oblast",
+    "normalizedName": "moscow oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 44
+  },
+  {
+    "stateId": "RU-MUR",
+    "countryCode": "RU",
+    "stateCode": "MUR",
+    "name": "Murmansk Oblast",
+    "normalizedName": "murmansk oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 45
+  },
+  {
+    "stateId": "RU-NEN",
+    "countryCode": "RU",
+    "stateCode": "NEN",
+    "name": "Nenets Autonomous Okrug",
+    "normalizedName": "nenets autonomous okrug",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 46
+  },
+  {
+    "stateId": "RU-NIZ",
+    "countryCode": "RU",
+    "stateCode": "NIZ",
+    "name": "Nizhny Novgorod Oblast",
+    "normalizedName": "nizhny novgorod oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 47
+  },
+  {
+    "stateId": "RU-NGR",
+    "countryCode": "RU",
+    "stateCode": "NGR",
+    "name": "Novgorod Oblast",
+    "normalizedName": "novgorod oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 48
+  },
+  {
+    "stateId": "RU-NVS",
+    "countryCode": "RU",
+    "stateCode": "NVS",
+    "name": "Novosibirsk Oblast",
+    "normalizedName": "novosibirsk oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 49
+  },
+  {
+    "stateId": "RU-OMS",
+    "countryCode": "RU",
+    "stateCode": "OMS",
+    "name": "Omsk Oblast",
+    "normalizedName": "omsk oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 50
+  },
+  {
+    "stateId": "RU-ORE",
+    "countryCode": "RU",
+    "stateCode": "ORE",
+    "name": "Orenburg Oblast",
+    "normalizedName": "orenburg oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 51
+  },
+  {
+    "stateId": "RU-ORL",
+    "countryCode": "RU",
+    "stateCode": "ORL",
+    "name": "Oryol Oblast",
+    "normalizedName": "oryol oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 52
+  },
+  {
+    "stateId": "RU-PNZ",
+    "countryCode": "RU",
+    "stateCode": "PNZ",
+    "name": "Penza Oblast",
+    "normalizedName": "penza oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 53
+  },
+  {
+    "stateId": "RU-PER",
+    "countryCode": "RU",
+    "stateCode": "PER",
+    "name": "Perm Krai",
+    "normalizedName": "perm krai",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 54
+  },
+  {
+    "stateId": "RU-PRI",
+    "countryCode": "RU",
+    "stateCode": "PRI",
+    "name": "Primorsky Krai",
+    "normalizedName": "primorsky krai",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 55
+  },
+  {
+    "stateId": "RU-PSK",
+    "countryCode": "RU",
+    "stateCode": "PSK",
+    "name": "Pskov Oblast",
+    "normalizedName": "pskov oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 56
+  },
+  {
+    "stateId": "RU-ROS",
+    "countryCode": "RU",
+    "stateCode": "ROS",
+    "name": "Rostov Oblast",
+    "normalizedName": "rostov oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 57
+  },
+  {
+    "stateId": "RU-RYA",
+    "countryCode": "RU",
+    "stateCode": "RYA",
+    "name": "Ryazan Oblast",
+    "normalizedName": "ryazan oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 58
+  },
+  {
+    "stateId": "RU-SPE",
+    "countryCode": "RU",
+    "stateCode": "SPE",
+    "name": "Saint Petersburg",
+    "normalizedName": "saint petersburg",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 59
+  },
+  {
+    "stateId": "RU-SA",
+    "countryCode": "RU",
+    "stateCode": "SA",
+    "name": "Sakha Republic",
+    "normalizedName": "sakha republic",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 60
+  },
+  {
+    "stateId": "RU-SAK",
+    "countryCode": "RU",
+    "stateCode": "SAK",
+    "name": "Sakhalin Oblast",
+    "normalizedName": "sakhalin oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 61
+  },
+  {
+    "stateId": "RU-SAM",
+    "countryCode": "RU",
+    "stateCode": "SAM",
+    "name": "Samara Oblast",
+    "normalizedName": "samara oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 62
+  },
+  {
+    "stateId": "RU-SAR",
+    "countryCode": "RU",
+    "stateCode": "SAR",
+    "name": "Saratov Oblast",
+    "normalizedName": "saratov oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 63
+  },
+  {
+    "stateId": "RU-SME",
+    "countryCode": "RU",
+    "stateCode": "SME",
+    "name": "Smolensk Oblast",
+    "normalizedName": "smolensk oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 64
+  },
+  {
+    "stateId": "RU-STA",
+    "countryCode": "RU",
+    "stateCode": "STA",
+    "name": "Stavropol Krai",
+    "normalizedName": "stavropol krai",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 65
+  },
+  {
+    "stateId": "RU-SVR",
+    "countryCode": "RU",
+    "stateCode": "SVR",
+    "name": "Sverdlovsk Oblast",
+    "normalizedName": "sverdlovsk oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 66
+  },
+  {
+    "stateId": "RU-TAM",
+    "countryCode": "RU",
+    "stateCode": "TAM",
+    "name": "Tambov Oblast",
+    "normalizedName": "tambov oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 67
+  },
+  {
+    "stateId": "RU-TA",
+    "countryCode": "RU",
+    "stateCode": "TA",
+    "name": "Tatarstan",
+    "normalizedName": "tatarstan",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 68
+  },
+  {
+    "stateId": "RU-TOM",
+    "countryCode": "RU",
+    "stateCode": "TOM",
+    "name": "Tomsk Oblast",
+    "normalizedName": "tomsk oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 69
+  },
+  {
+    "stateId": "RU-TUL",
+    "countryCode": "RU",
+    "stateCode": "TUL",
+    "name": "Tula Oblast",
+    "normalizedName": "tula oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 70
+  },
+  {
+    "stateId": "RU-TVE",
+    "countryCode": "RU",
+    "stateCode": "TVE",
+    "name": "Tver Oblast",
+    "normalizedName": "tver oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 71
+  },
+  {
+    "stateId": "RU-TYU",
+    "countryCode": "RU",
+    "stateCode": "TYU",
+    "name": "Tyumen Oblast",
+    "normalizedName": "tyumen oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 72
+  },
+  {
+    "stateId": "RU-TY",
+    "countryCode": "RU",
+    "stateCode": "TY",
+    "name": "Tuva",
+    "normalizedName": "tuva",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 73
+  },
+  {
+    "stateId": "RU-UD",
+    "countryCode": "RU",
+    "stateCode": "UD",
+    "name": "Udmurtia",
+    "normalizedName": "udmurtia",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 74
+  },
+  {
+    "stateId": "RU-ULY",
+    "countryCode": "RU",
+    "stateCode": "ULY",
+    "name": "Ulyanovsk Oblast",
+    "normalizedName": "ulyanovsk oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 75
+  },
+  {
+    "stateId": "RU-VLA",
+    "countryCode": "RU",
+    "stateCode": "VLA",
+    "name": "Vladimir Oblast",
+    "normalizedName": "vladimir oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 76
+  },
+  {
+    "stateId": "RU-VGG",
+    "countryCode": "RU",
+    "stateCode": "VGG",
+    "name": "Volgograd Oblast",
+    "normalizedName": "volgograd oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 77
+  },
+  {
+    "stateId": "RU-VLG",
+    "countryCode": "RU",
+    "stateCode": "VLG",
+    "name": "Vologda Oblast",
+    "normalizedName": "vologda oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 78
+  },
+  {
+    "stateId": "RU-VOR",
+    "countryCode": "RU",
+    "stateCode": "VOR",
+    "name": "Voronezh Oblast",
+    "normalizedName": "voronezh oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 79
+  },
+  {
+    "stateId": "RU-YAN",
+    "countryCode": "RU",
+    "stateCode": "YAN",
+    "name": "Yamalo-Nenets Autonomous Okrug",
+    "normalizedName": "yamalo-nenets autonomous okrug",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 80
+  },
+  {
+    "stateId": "RU-YAR",
+    "countryCode": "RU",
+    "stateCode": "YAR",
+    "name": "Yaroslavl Oblast",
+    "normalizedName": "yaroslavl oblast",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 81
+  },
+  {
+    "stateId": "RU-ZAB",
+    "countryCode": "RU",
+    "stateCode": "ZAB",
+    "name": "Zabaykalsky Krai",
+    "normalizedName": "zabaykalsky krai",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 82
+  }
+]

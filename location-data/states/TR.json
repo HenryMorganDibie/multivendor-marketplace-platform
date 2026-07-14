@@ -1,0 +1,812 @@
+[
+  {
+    "stateId": "TR-01",
+    "countryCode": "TR",
+    "stateCode": "01",
+    "name": "Adana",
+    "normalizedName": "adana",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "TR-02",
+    "countryCode": "TR",
+    "stateCode": "02",
+    "name": "Adıyaman",
+    "normalizedName": "adiyaman",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "TR-03",
+    "countryCode": "TR",
+    "stateCode": "03",
+    "name": "Afyonkarahisar",
+    "normalizedName": "afyonkarahisar",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "TR-04",
+    "countryCode": "TR",
+    "stateCode": "04",
+    "name": "Ağrı",
+    "normalizedName": "agri",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "TR-05",
+    "countryCode": "TR",
+    "stateCode": "05",
+    "name": "Amasya",
+    "normalizedName": "amasya",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "TR-06",
+    "countryCode": "TR",
+    "stateCode": "06",
+    "name": "Ankara",
+    "normalizedName": "ankara",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "TR-07",
+    "countryCode": "TR",
+    "stateCode": "07",
+    "name": "Antalya",
+    "normalizedName": "antalya",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "TR-08",
+    "countryCode": "TR",
+    "stateCode": "08",
+    "name": "Artvin",
+    "normalizedName": "artvin",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "TR-09",
+    "countryCode": "TR",
+    "stateCode": "09",
+    "name": "Aydın",
+    "normalizedName": "aydin",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "TR-10",
+    "countryCode": "TR",
+    "stateCode": "10",
+    "name": "Balıkesir",
+    "normalizedName": "balikesir",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "TR-11",
+    "countryCode": "TR",
+    "stateCode": "11",
+    "name": "Bilecik",
+    "normalizedName": "bilecik",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "TR-12",
+    "countryCode": "TR",
+    "stateCode": "12",
+    "name": "Bingöl",
+    "normalizedName": "bingol",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "TR-13",
+    "countryCode": "TR",
+    "stateCode": "13",
+    "name": "Bitlis",
+    "normalizedName": "bitlis",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 13
+  },
+  {
+    "stateId": "TR-14",
+    "countryCode": "TR",
+    "stateCode": "14",
+    "name": "Bolu",
+    "normalizedName": "bolu",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 14
+  },
+  {
+    "stateId": "TR-15",
+    "countryCode": "TR",
+    "stateCode": "15",
+    "name": "Burdur",
+    "normalizedName": "burdur",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 15
+  },
+  {
+    "stateId": "TR-16",
+    "countryCode": "TR",
+    "stateCode": "16",
+    "name": "Bursa",
+    "normalizedName": "bursa",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 16
+  },
+  {
+    "stateId": "TR-17",
+    "countryCode": "TR",
+    "stateCode": "17",
+    "name": "Çanakkale",
+    "normalizedName": "canakkale",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 17
+  },
+  {
+    "stateId": "TR-18",
+    "countryCode": "TR",
+    "stateCode": "18",
+    "name": "Çankırı",
+    "normalizedName": "cankiri",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 18
+  },
+  {
+    "stateId": "TR-19",
+    "countryCode": "TR",
+    "stateCode": "19",
+    "name": "Çorum",
+    "normalizedName": "corum",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 19
+  },
+  {
+    "stateId": "TR-20",
+    "countryCode": "TR",
+    "stateCode": "20",
+    "name": "Denizli",
+    "normalizedName": "denizli",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 20
+  },
+  {
+    "stateId": "TR-21",
+    "countryCode": "TR",
+    "stateCode": "21",
+    "name": "Diyarbakır",
+    "normalizedName": "diyarbakir",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 21
+  },
+  {
+    "stateId": "TR-22",
+    "countryCode": "TR",
+    "stateCode": "22",
+    "name": "Edirne",
+    "normalizedName": "edirne",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 22
+  },
+  {
+    "stateId": "TR-23",
+    "countryCode": "TR",
+    "stateCode": "23",
+    "name": "Elazığ",
+    "normalizedName": "elazig",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 23
+  },
+  {
+    "stateId": "TR-24",
+    "countryCode": "TR",
+    "stateCode": "24",
+    "name": "Erzincan",
+    "normalizedName": "erzincan",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 24
+  },
+  {
+    "stateId": "TR-25",
+    "countryCode": "TR",
+    "stateCode": "25",
+    "name": "Erzurum",
+    "normalizedName": "erzurum",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 25
+  },
+  {
+    "stateId": "TR-26",
+    "countryCode": "TR",
+    "stateCode": "26",
+    "name": "Eskişehir",
+    "normalizedName": "eskisehir",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 26
+  },
+  {
+    "stateId": "TR-27",
+    "countryCode": "TR",
+    "stateCode": "27",
+    "name": "Gaziantep",
+    "normalizedName": "gaziantep",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 27
+  },
+  {
+    "stateId": "TR-28",
+    "countryCode": "TR",
+    "stateCode": "28",
+    "name": "Giresun",
+    "normalizedName": "giresun",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 28
+  },
+  {
+    "stateId": "TR-29",
+    "countryCode": "TR",
+    "stateCode": "29",
+    "name": "Gümüşhane",
+    "normalizedName": "gumushane",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 29
+  },
+  {
+    "stateId": "TR-30",
+    "countryCode": "TR",
+    "stateCode": "30",
+    "name": "Hakkâri",
+    "normalizedName": "hakkari",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 30
+  },
+  {
+    "stateId": "TR-31",
+    "countryCode": "TR",
+    "stateCode": "31",
+    "name": "Hatay",
+    "normalizedName": "hatay",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 31
+  },
+  {
+    "stateId": "TR-32",
+    "countryCode": "TR",
+    "stateCode": "32",
+    "name": "Isparta",
+    "normalizedName": "isparta",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 32
+  },
+  {
+    "stateId": "TR-33",
+    "countryCode": "TR",
+    "stateCode": "33",
+    "name": "Mersin",
+    "normalizedName": "mersin",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 33
+  },
+  {
+    "stateId": "TR-34",
+    "countryCode": "TR",
+    "stateCode": "34",
+    "name": "İstanbul",
+    "normalizedName": "istanbul",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 34
+  },
+  {
+    "stateId": "TR-35",
+    "countryCode": "TR",
+    "stateCode": "35",
+    "name": "İzmir",
+    "normalizedName": "izmir",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 35
+  },
+  {
+    "stateId": "TR-36",
+    "countryCode": "TR",
+    "stateCode": "36",
+    "name": "Kars",
+    "normalizedName": "kars",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 36
+  },
+  {
+    "stateId": "TR-37",
+    "countryCode": "TR",
+    "stateCode": "37",
+    "name": "Kastamonu",
+    "normalizedName": "kastamonu",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 37
+  },
+  {
+    "stateId": "TR-38",
+    "countryCode": "TR",
+    "stateCode": "38",
+    "name": "Kayseri",
+    "normalizedName": "kayseri",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 38
+  },
+  {
+    "stateId": "TR-39",
+    "countryCode": "TR",
+    "stateCode": "39",
+    "name": "Kırklareli",
+    "normalizedName": "kirklareli",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 39
+  },
+  {
+    "stateId": "TR-40",
+    "countryCode": "TR",
+    "stateCode": "40",
+    "name": "Kırşehir",
+    "normalizedName": "kirsehir",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 40
+  },
+  {
+    "stateId": "TR-41",
+    "countryCode": "TR",
+    "stateCode": "41",
+    "name": "Kocaeli",
+    "normalizedName": "kocaeli",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 41
+  },
+  {
+    "stateId": "TR-42",
+    "countryCode": "TR",
+    "stateCode": "42",
+    "name": "Konya",
+    "normalizedName": "konya",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 42
+  },
+  {
+    "stateId": "TR-43",
+    "countryCode": "TR",
+    "stateCode": "43",
+    "name": "Kütahya",
+    "normalizedName": "kutahya",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 43
+  },
+  {
+    "stateId": "TR-44",
+    "countryCode": "TR",
+    "stateCode": "44",
+    "name": "Malatya",
+    "normalizedName": "malatya",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 44
+  },
+  {
+    "stateId": "TR-45",
+    "countryCode": "TR",
+    "stateCode": "45",
+    "name": "Manisa",
+    "normalizedName": "manisa",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 45
+  },
+  {
+    "stateId": "TR-46",
+    "countryCode": "TR",
+    "stateCode": "46",
+    "name": "Kahramanmaraş",
+    "normalizedName": "kahramanmaras",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 46
+  },
+  {
+    "stateId": "TR-47",
+    "countryCode": "TR",
+    "stateCode": "47",
+    "name": "Mardin",
+    "normalizedName": "mardin",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 47
+  },
+  {
+    "stateId": "TR-48",
+    "countryCode": "TR",
+    "stateCode": "48",
+    "name": "Muğla",
+    "normalizedName": "mugla",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 48
+  },
+  {
+    "stateId": "TR-49",
+    "countryCode": "TR",
+    "stateCode": "49",
+    "name": "Muş",
+    "normalizedName": "mus",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 49
+  },
+  {
+    "stateId": "TR-50",
+    "countryCode": "TR",
+    "stateCode": "50",
+    "name": "Nevşehir",
+    "normalizedName": "nevsehir",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 50
+  },
+  {
+    "stateId": "TR-51",
+    "countryCode": "TR",
+    "stateCode": "51",
+    "name": "Niğde",
+    "normalizedName": "nigde",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 51
+  },
+  {
+    "stateId": "TR-52",
+    "countryCode": "TR",
+    "stateCode": "52",
+    "name": "Ordu",
+    "normalizedName": "ordu",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 52
+  },
+  {
+    "stateId": "TR-53",
+    "countryCode": "TR",
+    "stateCode": "53",
+    "name": "Rize",
+    "normalizedName": "rize",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 53
+  },
+  {
+    "stateId": "TR-54",
+    "countryCode": "TR",
+    "stateCode": "54",
+    "name": "Sakarya",
+    "normalizedName": "sakarya",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 54
+  },
+  {
+    "stateId": "TR-55",
+    "countryCode": "TR",
+    "stateCode": "55",
+    "name": "Samsun",
+    "normalizedName": "samsun",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 55
+  },
+  {
+    "stateId": "TR-56",
+    "countryCode": "TR",
+    "stateCode": "56",
+    "name": "Siirt",
+    "normalizedName": "siirt",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 56
+  },
+  {
+    "stateId": "TR-57",
+    "countryCode": "TR",
+    "stateCode": "57",
+    "name": "Sinop",
+    "normalizedName": "sinop",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 57
+  },
+  {
+    "stateId": "TR-58",
+    "countryCode": "TR",
+    "stateCode": "58",
+    "name": "Sivas",
+    "normalizedName": "sivas",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 58
+  },
+  {
+    "stateId": "TR-59",
+    "countryCode": "TR",
+    "stateCode": "59",
+    "name": "Tekirdağ",
+    "normalizedName": "tekirdag",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 59
+  },
+  {
+    "stateId": "TR-60",
+    "countryCode": "TR",
+    "stateCode": "60",
+    "name": "Tokat",
+    "normalizedName": "tokat",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 60
+  },
+  {
+    "stateId": "TR-61",
+    "countryCode": "TR",
+    "stateCode": "61",
+    "name": "Trabzon",
+    "normalizedName": "trabzon",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 61
+  },
+  {
+    "stateId": "TR-62",
+    "countryCode": "TR",
+    "stateCode": "62",
+    "name": "Tunceli",
+    "normalizedName": "tunceli",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 62
+  },
+  {
+    "stateId": "TR-63",
+    "countryCode": "TR",
+    "stateCode": "63",
+    "name": "Şanlıurfa",
+    "normalizedName": "sanliurfa",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 63
+  },
+  {
+    "stateId": "TR-64",
+    "countryCode": "TR",
+    "stateCode": "64",
+    "name": "Uşak",
+    "normalizedName": "usak",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 64
+  },
+  {
+    "stateId": "TR-65",
+    "countryCode": "TR",
+    "stateCode": "65",
+    "name": "Van",
+    "normalizedName": "van",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 65
+  },
+  {
+    "stateId": "TR-66",
+    "countryCode": "TR",
+    "stateCode": "66",
+    "name": "Yozgat",
+    "normalizedName": "yozgat",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 66
+  },
+  {
+    "stateId": "TR-67",
+    "countryCode": "TR",
+    "stateCode": "67",
+    "name": "Zonguldak",
+    "normalizedName": "zonguldak",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 67
+  },
+  {
+    "stateId": "TR-68",
+    "countryCode": "TR",
+    "stateCode": "68",
+    "name": "Aksaray",
+    "normalizedName": "aksaray",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 68
+  },
+  {
+    "stateId": "TR-69",
+    "countryCode": "TR",
+    "stateCode": "69",
+    "name": "Bayburt",
+    "normalizedName": "bayburt",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 69
+  },
+  {
+    "stateId": "TR-70",
+    "countryCode": "TR",
+    "stateCode": "70",
+    "name": "Karaman",
+    "normalizedName": "karaman",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 70
+  },
+  {
+    "stateId": "TR-71",
+    "countryCode": "TR",
+    "stateCode": "71",
+    "name": "Kırıkkale",
+    "normalizedName": "kirikkale",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 71
+  },
+  {
+    "stateId": "TR-72",
+    "countryCode": "TR",
+    "stateCode": "72",
+    "name": "Batman",
+    "normalizedName": "batman",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 72
+  },
+  {
+    "stateId": "TR-73",
+    "countryCode": "TR",
+    "stateCode": "73",
+    "name": "Şırnak",
+    "normalizedName": "sirnak",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 73
+  },
+  {
+    "stateId": "TR-74",
+    "countryCode": "TR",
+    "stateCode": "74",
+    "name": "Bartın",
+    "normalizedName": "bartin",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 74
+  },
+  {
+    "stateId": "TR-75",
+    "countryCode": "TR",
+    "stateCode": "75",
+    "name": "Ardahan",
+    "normalizedName": "ardahan",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 75
+  },
+  {
+    "stateId": "TR-76",
+    "countryCode": "TR",
+    "stateCode": "76",
+    "name": "Iğdır",
+    "normalizedName": "igdir",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 76
+  },
+  {
+    "stateId": "TR-77",
+    "countryCode": "TR",
+    "stateCode": "77",
+    "name": "Yalova",
+    "normalizedName": "yalova",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 77
+  },
+  {
+    "stateId": "TR-78",
+    "countryCode": "TR",
+    "stateCode": "78",
+    "name": "Karabük",
+    "normalizedName": "karabuk",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 78
+  },
+  {
+    "stateId": "TR-79",
+    "countryCode": "TR",
+    "stateCode": "79",
+    "name": "Kilis",
+    "normalizedName": "kilis",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 79
+  },
+  {
+    "stateId": "TR-80",
+    "countryCode": "TR",
+    "stateCode": "80",
+    "name": "Osmaniye",
+    "normalizedName": "osmaniye",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 80
+  },
+  {
+    "stateId": "TR-81",
+    "countryCode": "TR",
+    "stateCode": "81",
+    "name": "Düzce",
+    "normalizedName": "duzce",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 81
+  }
+]

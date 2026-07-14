@@ -1,0 +1,342 @@
+[
+  {
+    "stateId": "AF-BDS",
+    "countryCode": "AF",
+    "stateCode": "BDS",
+    "name": "Badakhshan",
+    "normalizedName": "badakhshan",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "AF-BDG",
+    "countryCode": "AF",
+    "stateCode": "BDG",
+    "name": "Badghis",
+    "normalizedName": "badghis",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "AF-BGL",
+    "countryCode": "AF",
+    "stateCode": "BGL",
+    "name": "Baghlan",
+    "normalizedName": "baghlan",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "AF-BAL",
+    "countryCode": "AF",
+    "stateCode": "BAL",
+    "name": "Balkh",
+    "normalizedName": "balkh",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "AF-BAM",
+    "countryCode": "AF",
+    "stateCode": "BAM",
+    "name": "Bamyan",
+    "normalizedName": "bamyan",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "AF-DAY",
+    "countryCode": "AF",
+    "stateCode": "DAY",
+    "name": "Daykundi",
+    "normalizedName": "daykundi",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "AF-FRA",
+    "countryCode": "AF",
+    "stateCode": "FRA",
+    "name": "Farah",
+    "normalizedName": "farah",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "AF-FYB",
+    "countryCode": "AF",
+    "stateCode": "FYB",
+    "name": "Faryab",
+    "normalizedName": "faryab",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "AF-GHA",
+    "countryCode": "AF",
+    "stateCode": "GHA",
+    "name": "Ghazni",
+    "normalizedName": "ghazni",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "AF-GHO",
+    "countryCode": "AF",
+    "stateCode": "GHO",
+    "name": "Ghor",
+    "normalizedName": "ghor",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "AF-HEL",
+    "countryCode": "AF",
+    "stateCode": "HEL",
+    "name": "Helmand",
+    "normalizedName": "helmand",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "AF-HER",
+    "countryCode": "AF",
+    "stateCode": "HER",
+    "name": "Herat",
+    "normalizedName": "herat",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "AF-JOW",
+    "countryCode": "AF",
+    "stateCode": "JOW",
+    "name": "Jowzjan",
+    "normalizedName": "jowzjan",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 13
+  },
+  {
+    "stateId": "AF-KAB",
+    "countryCode": "AF",
+    "stateCode": "KAB",
+    "name": "Kabul",
+    "normalizedName": "kabul",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 14
+  },
+  {
+    "stateId": "AF-KAN",
+    "countryCode": "AF",
+    "stateCode": "KAN",
+    "name": "Kandahar",
+    "normalizedName": "kandahar",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 15
+  },
+  {
+    "stateId": "AF-KAP",
+    "countryCode": "AF",
+    "stateCode": "KAP",
+    "name": "Kapisa",
+    "normalizedName": "kapisa",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 16
+  },
+  {
+    "stateId": "AF-KHO",
+    "countryCode": "AF",
+    "stateCode": "KHO",
+    "name": "Khost",
+    "normalizedName": "khost",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 17
+  },
+  {
+    "stateId": "AF-KNR",
+    "countryCode": "AF",
+    "stateCode": "KNR",
+    "name": "Kunar",
+    "normalizedName": "kunar",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 18
+  },
+  {
+    "stateId": "AF-KDZ",
+    "countryCode": "AF",
+    "stateCode": "KDZ",
+    "name": "Kunduz",
+    "normalizedName": "kunduz",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 19
+  },
+  {
+    "stateId": "AF-LAG",
+    "countryCode": "AF",
+    "stateCode": "LAG",
+    "name": "Laghman",
+    "normalizedName": "laghman",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 20
+  },
+  {
+    "stateId": "AF-LOG",
+    "countryCode": "AF",
+    "stateCode": "LOG",
+    "name": "Logar",
+    "normalizedName": "logar",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 21
+  },
+  {
+    "stateId": "AF-NAN",
+    "countryCode": "AF",
+    "stateCode": "NAN",
+    "name": "Nangarhar",
+    "normalizedName": "nangarhar",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 22
+  },
+  {
+    "stateId": "AF-NIM",
+    "countryCode": "AF",
+    "stateCode": "NIM",
+    "name": "Nimruz",
+    "normalizedName": "nimruz",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 23
+  },
+  {
+    "stateId": "AF-NUR",
+    "countryCode": "AF",
+    "stateCode": "NUR",
+    "name": "Nuristan",
+    "normalizedName": "nuristan",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 24
+  },
+  {
+    "stateId": "AF-PKA",
+    "countryCode": "AF",
+    "stateCode": "PKA",
+    "name": "Paktika",
+    "normalizedName": "paktika",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 25
+  },
+  {
+    "stateId": "AF-PIA",
+    "countryCode": "AF",
+    "stateCode": "PIA",
+    "name": "Paktiya",
+    "normalizedName": "paktiya",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 26
+  },
+  {
+    "stateId": "AF-PAN",
+    "countryCode": "AF",
+    "stateCode": "PAN",
+    "name": "Panjshir",
+    "normalizedName": "panjshir",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 27
+  },
+  {
+    "stateId": "AF-PAR",
+    "countryCode": "AF",
+    "stateCode": "PAR",
+    "name": "Parwan",
+    "normalizedName": "parwan",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 28
+  },
+  {
+    "stateId": "AF-SAM",
+    "countryCode": "AF",
+    "stateCode": "SAM",
+    "name": "Samangan",
+    "normalizedName": "samangan",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 29
+  },
+  {
+    "stateId": "AF-SAR",
+    "countryCode": "AF",
+    "stateCode": "SAR",
+    "name": "Sar-e Pol",
+    "normalizedName": "sar-e pol",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 30
+  },
+  {
+    "stateId": "AF-TAK",
+    "countryCode": "AF",
+    "stateCode": "TAK",
+    "name": "Takhar",
+    "normalizedName": "takhar",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 31
+  },
+  {
+    "stateId": "AF-URU",
+    "countryCode": "AF",
+    "stateCode": "URU",
+    "name": "Uruzgan",
+    "normalizedName": "uruzgan",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 32
+  },
+  {
+    "stateId": "AF-WAR",
+    "countryCode": "AF",
+    "stateCode": "WAR",
+    "name": "Wardak",
+    "normalizedName": "wardak",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 33
+  },
+  {
+    "stateId": "AF-ZAB",
+    "countryCode": "AF",
+    "stateCode": "ZAB",
+    "name": "Zabul",
+    "normalizedName": "zabul",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 34
+  }
+]

@@ -1,0 +1,322 @@
+[
+  {
+    "stateId": "MX-AGU",
+    "countryCode": "MX",
+    "stateCode": "AGU",
+    "name": "Aguascalientes",
+    "normalizedName": "aguascalientes",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "MX-BCN",
+    "countryCode": "MX",
+    "stateCode": "BCN",
+    "name": "Baja California",
+    "normalizedName": "baja california",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "MX-BCS",
+    "countryCode": "MX",
+    "stateCode": "BCS",
+    "name": "Baja California Sur",
+    "normalizedName": "baja california sur",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "MX-CAM",
+    "countryCode": "MX",
+    "stateCode": "CAM",
+    "name": "Campeche",
+    "normalizedName": "campeche",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "MX-CHP",
+    "countryCode": "MX",
+    "stateCode": "CHP",
+    "name": "Chiapas",
+    "normalizedName": "chiapas",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "MX-CHH",
+    "countryCode": "MX",
+    "stateCode": "CHH",
+    "name": "Chihuahua",
+    "normalizedName": "chihuahua",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "MX-COA",
+    "countryCode": "MX",
+    "stateCode": "COA",
+    "name": "Coahuila",
+    "normalizedName": "coahuila",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "MX-COL",
+    "countryCode": "MX",
+    "stateCode": "COL",
+    "name": "Colima",
+    "normalizedName": "colima",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "MX-CMX",
+    "countryCode": "MX",
+    "stateCode": "CMX",
+    "name": "Mexico City",
+    "normalizedName": "mexico city",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "MX-DUR",
+    "countryCode": "MX",
+    "stateCode": "DUR",
+    "name": "Durango",
+    "normalizedName": "durango",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "MX-GUA",
+    "countryCode": "MX",
+    "stateCode": "GUA",
+    "name": "Guanajuato",
+    "normalizedName": "guanajuato",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "MX-GRO",
+    "countryCode": "MX",
+    "stateCode": "GRO",
+    "name": "Guerrero",
+    "normalizedName": "guerrero",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "MX-HID",
+    "countryCode": "MX",
+    "stateCode": "HID",
+    "name": "Hidalgo",
+    "normalizedName": "hidalgo",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 13
+  },
+  {
+    "stateId": "MX-JAL",
+    "countryCode": "MX",
+    "stateCode": "JAL",
+    "name": "Jalisco",
+    "normalizedName": "jalisco",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 14
+  },
+  {
+    "stateId": "MX-MEX",
+    "countryCode": "MX",
+    "stateCode": "MEX",
+    "name": "State of Mexico",
+    "normalizedName": "state of mexico",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 15
+  },
+  {
+    "stateId": "MX-MIC",
+    "countryCode": "MX",
+    "stateCode": "MIC",
+    "name": "Michoacán",
+    "normalizedName": "michoacan",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 16
+  },
+  {
+    "stateId": "MX-MOR",
+    "countryCode": "MX",
+    "stateCode": "MOR",
+    "name": "Morelos",
+    "normalizedName": "morelos",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 17
+  },
+  {
+    "stateId": "MX-NAY",
+    "countryCode": "MX",
+    "stateCode": "NAY",
+    "name": "Nayarit",
+    "normalizedName": "nayarit",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 18
+  },
+  {
+    "stateId": "MX-NLE",
+    "countryCode": "MX",
+    "stateCode": "NLE",
+    "name": "Nuevo León",
+    "normalizedName": "nuevo leon",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 19
+  },
+  {
+    "stateId": "MX-OAX",
+    "countryCode": "MX",
+    "stateCode": "OAX",
+    "name": "Oaxaca",
+    "normalizedName": "oaxaca",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 20
+  },
+  {
+    "stateId": "MX-PUE",
+    "countryCode": "MX",
+    "stateCode": "PUE",
+    "name": "Puebla",
+    "normalizedName": "puebla",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 21
+  },
+  {
+    "stateId": "MX-QUE",
+    "countryCode": "MX",
+    "stateCode": "QUE",
+    "name": "Querétaro",
+    "normalizedName": "queretaro",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 22
+  },
+  {
+    "stateId": "MX-ROO",
+    "countryCode": "MX",
+    "stateCode": "ROO",
+    "name": "Quintana Roo",
+    "normalizedName": "quintana roo",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 23
+  },
+  {
+    "stateId": "MX-SLP",
+    "countryCode": "MX",
+    "stateCode": "SLP",
+    "name": "San Luis Potosí",
+    "normalizedName": "san luis potosi",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 24
+  },
+  {
+    "stateId": "MX-SIN",
+    "countryCode": "MX",
+    "stateCode": "SIN",
+    "name": "Sinaloa",
+    "normalizedName": "sinaloa",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 25
+  },
+  {
+    "stateId": "MX-SON",
+    "countryCode": "MX",
+    "stateCode": "SON",
+    "name": "Sonora",
+    "normalizedName": "sonora",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 26
+  },
+  {
+    "stateId": "MX-TAB",
+    "countryCode": "MX",
+    "stateCode": "TAB",
+    "name": "Tabasco",
+    "normalizedName": "tabasco",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 27
+  },
+  {
+    "stateId": "MX-TAM",
+    "countryCode": "MX",
+    "stateCode": "TAM",
+    "name": "Tamaulipas",
+    "normalizedName": "tamaulipas",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 28
+  },
+  {
+    "stateId": "MX-TLA",
+    "countryCode": "MX",
+    "stateCode": "TLA",
+    "name": "Tlaxcala",
+    "normalizedName": "tlaxcala",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 29
+  },
+  {
+    "stateId": "MX-VER",
+    "countryCode": "MX",
+    "stateCode": "VER",
+    "name": "Veracruz",
+    "normalizedName": "veracruz",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 30
+  },
+  {
+    "stateId": "MX-YUC",
+    "countryCode": "MX",
+    "stateCode": "YUC",
+    "name": "Yucatán",
+    "normalizedName": "yucatan",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 31
+  },
+  {
+    "stateId": "MX-ZAC",
+    "countryCode": "MX",
+    "stateCode": "ZAC",
+    "name": "Zacatecas",
+    "normalizedName": "zacatecas",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 32
+  }
+]

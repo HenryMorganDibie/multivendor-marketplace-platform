@@ -1,0 +1,122 @@
+[
+  {
+    "stateId": "AL-01",
+    "countryCode": "AL",
+    "stateCode": "01",
+    "name": "Berat",
+    "normalizedName": "berat",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "AL-02",
+    "countryCode": "AL",
+    "stateCode": "02",
+    "name": "Dibër",
+    "normalizedName": "diber",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "AL-03",
+    "countryCode": "AL",
+    "stateCode": "03",
+    "name": "Durrës",
+    "normalizedName": "durres",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "AL-04",
+    "countryCode": "AL",
+    "stateCode": "04",
+    "name": "Elbasan",
+    "normalizedName": "elbasan",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "AL-05",
+    "countryCode": "AL",
+    "stateCode": "05",
+    "name": "Fier",
+    "normalizedName": "fier",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "AL-06",
+    "countryCode": "AL",
+    "stateCode": "06",
+    "name": "Gjirokastër",
+    "normalizedName": "gjirokaster",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "AL-07",
+    "countryCode": "AL",
+    "stateCode": "07",
+    "name": "Korçë",
+    "normalizedName": "korce",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "AL-08",
+    "countryCode": "AL",
+    "stateCode": "08",
+    "name": "Kukës",
+    "normalizedName": "kukes",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "AL-09",
+    "countryCode": "AL",
+    "stateCode": "09",
+    "name": "Lezhë",
+    "normalizedName": "lezhe",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "AL-10",
+    "countryCode": "AL",
+    "stateCode": "10",
+    "name": "Shkodër",
+    "normalizedName": "shkoder",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "AL-11",
+    "countryCode": "AL",
+    "stateCode": "11",
+    "name": "Tirana",
+    "normalizedName": "tirana",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "AL-12",
+    "countryCode": "AL",
+    "stateCode": "12",
+    "name": "Vlorë",
+    "normalizedName": "vlore",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 12
+  }
+]

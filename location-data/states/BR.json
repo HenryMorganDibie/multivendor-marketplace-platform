@@ -1,0 +1,272 @@
+[
+  {
+    "stateId": "BR-AC",
+    "countryCode": "BR",
+    "stateCode": "AC",
+    "name": "Acre",
+    "normalizedName": "acre",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "BR-AL",
+    "countryCode": "BR",
+    "stateCode": "AL",
+    "name": "Alagoas",
+    "normalizedName": "alagoas",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "BR-AP",
+    "countryCode": "BR",
+    "stateCode": "AP",
+    "name": "Amapá",
+    "normalizedName": "amapa",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "BR-AM",
+    "countryCode": "BR",
+    "stateCode": "AM",
+    "name": "Amazonas",
+    "normalizedName": "amazonas",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "BR-BA",
+    "countryCode": "BR",
+    "stateCode": "BA",
+    "name": "Bahia",
+    "normalizedName": "bahia",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "BR-CE",
+    "countryCode": "BR",
+    "stateCode": "CE",
+    "name": "Ceará",
+    "normalizedName": "ceara",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "BR-DF",
+    "countryCode": "BR",
+    "stateCode": "DF",
+    "name": "Distrito Federal",
+    "normalizedName": "distrito federal",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "BR-ES",
+    "countryCode": "BR",
+    "stateCode": "ES",
+    "name": "Espírito Santo",
+    "normalizedName": "espirito santo",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "BR-GO",
+    "countryCode": "BR",
+    "stateCode": "GO",
+    "name": "Goiás",
+    "normalizedName": "goias",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "BR-MA",
+    "countryCode": "BR",
+    "stateCode": "MA",
+    "name": "Maranhão",
+    "normalizedName": "maranhao",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "BR-MT",
+    "countryCode": "BR",
+    "stateCode": "MT",
+    "name": "Mato Grosso",
+    "normalizedName": "mato grosso",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "BR-MS",
+    "countryCode": "BR",
+    "stateCode": "MS",
+    "name": "Mato Grosso do Sul",
+    "normalizedName": "mato grosso do sul",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "BR-MG",
+    "countryCode": "BR",
+    "stateCode": "MG",
+    "name": "Minas Gerais",
+    "normalizedName": "minas gerais",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 13
+  },
+  {
+    "stateId": "BR-PA",
+    "countryCode": "BR",
+    "stateCode": "PA",
+    "name": "Pará",
+    "normalizedName": "para",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 14
+  },
+  {
+    "stateId": "BR-PB",
+    "countryCode": "BR",
+    "stateCode": "PB",
+    "name": "Paraíba",
+    "normalizedName": "paraiba",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 15
+  },
+  {
+    "stateId": "BR-PR",
+    "countryCode": "BR",
+    "stateCode": "PR",
+    "name": "Paraná",
+    "normalizedName": "parana",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 16
+  },
+  {
+    "stateId": "BR-PE",
+    "countryCode": "BR",
+    "stateCode": "PE",
+    "name": "Pernambuco",
+    "normalizedName": "pernambuco",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 17
+  },
+  {
+    "stateId": "BR-PI",
+    "countryCode": "BR",
+    "stateCode": "PI",
+    "name": "Piauí",
+    "normalizedName": "piaui",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 18
+  },
+  {
+    "stateId": "BR-RJ",
+    "countryCode": "BR",
+    "stateCode": "RJ",
+    "name": "Rio de Janeiro",
+    "normalizedName": "rio de janeiro",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 19
+  },
+  {
+    "stateId": "BR-RN",
+    "countryCode": "BR",
+    "stateCode": "RN",
+    "name": "Rio Grande do Norte",
+    "normalizedName": "rio grande do norte",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 20
+  },
+  {
+    "stateId": "BR-RS",
+    "countryCode": "BR",
+    "stateCode": "RS",
+    "name": "Rio Grande do Sul",
+    "normalizedName": "rio grande do sul",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 21
+  },
+  {
+    "stateId": "BR-RO",
+    "countryCode": "BR",
+    "stateCode": "RO",
+    "name": "Rondônia",
+    "normalizedName": "rondonia",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 22
+  },
+  {
+    "stateId": "BR-RR",
+    "countryCode": "BR",
+    "stateCode": "RR",
+    "name": "Roraima",
+    "normalizedName": "roraima",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 23
+  },
+  {
+    "stateId": "BR-SC",
+    "countryCode": "BR",
+    "stateCode": "SC",
+    "name": "Santa Catarina",
+    "normalizedName": "santa catarina",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 24
+  },
+  {
+    "stateId": "BR-SP",
+    "countryCode": "BR",
+    "stateCode": "SP",
+    "name": "São Paulo",
+    "normalizedName": "sao paulo",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 25
+  },
+  {
+    "stateId": "BR-SE",
+    "countryCode": "BR",
+    "stateCode": "SE",
+    "name": "Sergipe",
+    "normalizedName": "sergipe",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 26
+  },
+  {
+    "stateId": "BR-TO",
+    "countryCode": "BR",
+    "stateCode": "TO",
+    "name": "Tocantins",
+    "normalizedName": "tocantins",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 27
+  }
+]

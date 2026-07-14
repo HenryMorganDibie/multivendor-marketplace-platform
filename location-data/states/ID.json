@@ -1,0 +1,382 @@
+[
+  {
+    "stateId": "ID-AC",
+    "countryCode": "ID",
+    "stateCode": "AC",
+    "name": "Aceh",
+    "normalizedName": "aceh",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "ID-BA",
+    "countryCode": "ID",
+    "stateCode": "BA",
+    "name": "Bali",
+    "normalizedName": "bali",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "ID-BB",
+    "countryCode": "ID",
+    "stateCode": "BB",
+    "name": "Bangka Belitung Islands",
+    "normalizedName": "bangka belitung islands",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "ID-BT",
+    "countryCode": "ID",
+    "stateCode": "BT",
+    "name": "Banten",
+    "normalizedName": "banten",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "ID-BE",
+    "countryCode": "ID",
+    "stateCode": "BE",
+    "name": "Bengkulu",
+    "normalizedName": "bengkulu",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "ID-JT",
+    "countryCode": "ID",
+    "stateCode": "JT",
+    "name": "Central Java",
+    "normalizedName": "central java",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "ID-KB",
+    "countryCode": "ID",
+    "stateCode": "KB",
+    "name": "West Kalimantan",
+    "normalizedName": "west kalimantan",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "ID-KT",
+    "countryCode": "ID",
+    "stateCode": "KT",
+    "name": "Central Kalimantan",
+    "normalizedName": "central kalimantan",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "ID-KS",
+    "countryCode": "ID",
+    "stateCode": "KS",
+    "name": "South Kalimantan",
+    "normalizedName": "south kalimantan",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "ID-KI",
+    "countryCode": "ID",
+    "stateCode": "KI",
+    "name": "East Kalimantan",
+    "normalizedName": "east kalimantan",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "ID-KU",
+    "countryCode": "ID",
+    "stateCode": "KU",
+    "name": "North Kalimantan",
+    "normalizedName": "north kalimantan",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "ID-ST",
+    "countryCode": "ID",
+    "stateCode": "ST",
+    "name": "Central Sulawesi",
+    "normalizedName": "central sulawesi",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "ID-PA",
+    "countryCode": "ID",
+    "stateCode": "PA",
+    "name": "Papua",
+    "normalizedName": "papua",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 13
+  },
+  {
+    "stateId": "ID-PE",
+    "countryCode": "ID",
+    "stateCode": "PE",
+    "name": "Central Papua",
+    "normalizedName": "central papua",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 14
+  },
+  {
+    "stateId": "ID-PH",
+    "countryCode": "ID",
+    "stateCode": "PH",
+    "name": "Highland Papua",
+    "normalizedName": "highland papua",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 15
+  },
+  {
+    "stateId": "ID-PP",
+    "countryCode": "ID",
+    "stateCode": "PP",
+    "name": "South Papua",
+    "normalizedName": "south papua",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 16
+  },
+  {
+    "stateId": "ID-PD",
+    "countryCode": "ID",
+    "stateCode": "PD",
+    "name": "Southwest Papua",
+    "normalizedName": "southwest papua",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 17
+  },
+  {
+    "stateId": "ID-PB",
+    "countryCode": "ID",
+    "stateCode": "PB",
+    "name": "West Papua",
+    "normalizedName": "west papua",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 18
+  },
+  {
+    "stateId": "ID-JI",
+    "countryCode": "ID",
+    "stateCode": "JI",
+    "name": "East Java",
+    "normalizedName": "east java",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 19
+  },
+  {
+    "stateId": "ID-NT",
+    "countryCode": "ID",
+    "stateCode": "NT",
+    "name": "East Nusa Tenggara",
+    "normalizedName": "east nusa tenggara",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 20
+  },
+  {
+    "stateId": "ID-GO",
+    "countryCode": "ID",
+    "stateCode": "GO",
+    "name": "Gorontalo",
+    "normalizedName": "gorontalo",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 21
+  },
+  {
+    "stateId": "ID-JK",
+    "countryCode": "ID",
+    "stateCode": "JK",
+    "name": "Jakarta",
+    "normalizedName": "jakarta",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 22
+  },
+  {
+    "stateId": "ID-JA",
+    "countryCode": "ID",
+    "stateCode": "JA",
+    "name": "Jambi",
+    "normalizedName": "jambi",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 23
+  },
+  {
+    "stateId": "ID-LA",
+    "countryCode": "ID",
+    "stateCode": "LA",
+    "name": "Lampung",
+    "normalizedName": "lampung",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 24
+  },
+  {
+    "stateId": "ID-MA",
+    "countryCode": "ID",
+    "stateCode": "MA",
+    "name": "Maluku",
+    "normalizedName": "maluku",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 25
+  },
+  {
+    "stateId": "ID-MU",
+    "countryCode": "ID",
+    "stateCode": "MU",
+    "name": "North Maluku",
+    "normalizedName": "north maluku",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 26
+  },
+  {
+    "stateId": "ID-SU",
+    "countryCode": "ID",
+    "stateCode": "SU",
+    "name": "North Sumatra",
+    "normalizedName": "north sumatra",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 27
+  },
+  {
+    "stateId": "ID-SA",
+    "countryCode": "ID",
+    "stateCode": "SA",
+    "name": "North Sulawesi",
+    "normalizedName": "north sulawesi",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 28
+  },
+  {
+    "stateId": "ID-RI",
+    "countryCode": "ID",
+    "stateCode": "RI",
+    "name": "Riau",
+    "normalizedName": "riau",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 29
+  },
+  {
+    "stateId": "ID-KR",
+    "countryCode": "ID",
+    "stateCode": "KR",
+    "name": "Riau Islands",
+    "normalizedName": "riau islands",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 30
+  },
+  {
+    "stateId": "ID-SN",
+    "countryCode": "ID",
+    "stateCode": "SN",
+    "name": "South Sulawesi",
+    "normalizedName": "south sulawesi",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 31
+  },
+  {
+    "stateId": "ID-SS",
+    "countryCode": "ID",
+    "stateCode": "SS",
+    "name": "South Sumatra",
+    "normalizedName": "south sumatra",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 32
+  },
+  {
+    "stateId": "ID-SG",
+    "countryCode": "ID",
+    "stateCode": "SG",
+    "name": "Southeast Sulawesi",
+    "normalizedName": "southeast sulawesi",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 33
+  },
+  {
+    "stateId": "ID-JB",
+    "countryCode": "ID",
+    "stateCode": "JB",
+    "name": "West Java",
+    "normalizedName": "west java",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 34
+  },
+  {
+    "stateId": "ID-NB",
+    "countryCode": "ID",
+    "stateCode": "NB",
+    "name": "West Nusa Tenggara",
+    "normalizedName": "west nusa tenggara",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 35
+  },
+  {
+    "stateId": "ID-SR",
+    "countryCode": "ID",
+    "stateCode": "SR",
+    "name": "West Sulawesi",
+    "normalizedName": "west sulawesi",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 36
+  },
+  {
+    "stateId": "ID-SB",
+    "countryCode": "ID",
+    "stateCode": "SB",
+    "name": "West Sumatra",
+    "normalizedName": "west sumatra",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 37
+  },
+  {
+    "stateId": "ID-YO",
+    "countryCode": "ID",
+    "stateCode": "YO",
+    "name": "Yogyakarta",
+    "normalizedName": "yogyakarta",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 38
+  }
+]
