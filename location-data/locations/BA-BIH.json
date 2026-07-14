@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BA-BIH-SARAJEVO",
+    "countryCode": "BA",
+    "stateId": "BA-BIH",
+    "stateCode": "BIH",
+    "name": "Sarajevo",
+    "normalizedName": "sarajevo",
+    "slug": "SARAJEVO",
+    "locationType": "city",
+    "timeZone": "Europe/Sarajevo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BT-13-HAA",
+    "countryCode": "BT",
+    "stateId": "BT-13",
+    "stateCode": "13",
+    "name": "Haa",
+    "normalizedName": "haa",
+    "slug": "HAA",
+    "locationType": "city",
+    "timeZone": "Asia/Thimphu",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BA-BRC-BRCKO",
+    "countryCode": "BA",
+    "stateId": "BA-BRC",
+    "stateCode": "BRC",
+    "name": "Brcko",
+    "normalizedName": "brcko",
+    "slug": "BRCKO",
+    "locationType": "city",
+    "timeZone": "Europe/Sarajevo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BT-24-WANGDUE-PHODRANG",
+    "countryCode": "BT",
+    "stateId": "BT-24",
+    "stateCode": "24",
+    "name": "Wangdue Phodrang",
+    "normalizedName": "wangdue phodrang",
+    "slug": "WANGDUE-PHODRANG",
+    "locationType": "city",
+    "timeZone": "Asia/Thimphu",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

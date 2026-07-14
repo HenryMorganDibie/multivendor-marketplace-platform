@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BT-42-MONGAR",
+    "countryCode": "BT",
+    "stateId": "BT-42",
+    "stateCode": "42",
+    "name": "Mongar",
+    "normalizedName": "mongar",
+    "slug": "MONGAR",
+    "locationType": "city",
+    "timeZone": "Asia/Thimphu",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BJ-ZO-ABOMEY",
+    "countryCode": "BJ",
+    "stateId": "BJ-ZO",
+    "stateCode": "ZO",
+    "name": "Abomey",
+    "normalizedName": "abomey",
+    "slug": "ABOMEY",
+    "locationType": "city",
+    "timeZone": "Africa/Porto-Novo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

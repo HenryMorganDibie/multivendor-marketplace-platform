@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BA-SRP-BANJA-LUKA",
+    "countryCode": "BA",
+    "stateId": "BA-SRP",
+    "stateCode": "SRP",
+    "name": "Banja Luka",
+    "normalizedName": "banja luka",
+    "slug": "BANJA-LUKA",
+    "locationType": "city",
+    "timeZone": "Europe/Sarajevo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

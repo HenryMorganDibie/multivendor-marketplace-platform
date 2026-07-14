@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BT-TY-TRASHIYANGTSE",
+    "countryCode": "BT",
+    "stateId": "BT-TY",
+    "stateCode": "TY",
+    "name": "Trashiyangtse",
+    "normalizedName": "trashiyangtse",
+    "slug": "TRASHIYANGTSE",
+    "locationType": "city",
+    "timeZone": "Asia/Thimphu",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

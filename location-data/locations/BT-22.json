@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BT-22-DAGANA",
+    "countryCode": "BT",
+    "stateId": "BT-22",
+    "stateCode": "22",
+    "name": "Dagana",
+    "normalizedName": "dagana",
+    "slug": "DAGANA",
+    "locationType": "city",
+    "timeZone": "Asia/Thimphu",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

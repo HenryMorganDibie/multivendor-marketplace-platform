@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BT-14-SAMTSE",
+    "countryCode": "BT",
+    "stateId": "BT-14",
+    "stateCode": "14",
+    "name": "Samtse",
+    "normalizedName": "samtse",
+    "slug": "SAMTSE",
+    "locationType": "city",
+    "timeZone": "Asia/Thimphu",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

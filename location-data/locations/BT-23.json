@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BT-23-PUNAKHA",
+    "countryCode": "BT",
+    "stateId": "BT-23",
+    "stateCode": "23",
+    "name": "Punakha",
+    "normalizedName": "punakha",
+    "slug": "PUNAKHA",
+    "locationType": "city",
+    "timeZone": "Asia/Thimphu",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

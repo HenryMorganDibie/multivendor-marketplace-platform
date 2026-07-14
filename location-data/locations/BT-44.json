@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BT-44-LHUENTSE",
+    "countryCode": "BT",
+    "stateId": "BT-44",
+    "stateCode": "44",
+    "name": "Lhuentse",
+    "normalizedName": "lhuentse",
+    "slug": "LHUENTSE",
+    "locationType": "city",
+    "timeZone": "Asia/Thimphu",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

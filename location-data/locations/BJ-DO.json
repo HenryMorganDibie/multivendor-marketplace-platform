@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BJ-DO-DJOUGOU",
+    "countryCode": "BJ",
+    "stateId": "BJ-DO",
+    "stateCode": "DO",
+    "name": "Djougou",
+    "normalizedName": "djougou",
+    "slug": "DJOUGOU",
+    "locationType": "city",
+    "timeZone": "Africa/Porto-Novo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

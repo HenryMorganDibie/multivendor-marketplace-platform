@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BO-H-SUCRE",
+    "countryCode": "BO",
+    "stateId": "BO-H",
+    "stateCode": "H",
+    "name": "Sucre",
+    "normalizedName": "sucre",
+    "slug": "SUCRE",
+    "locationType": "city",
+    "timeZone": "America/La_Paz",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

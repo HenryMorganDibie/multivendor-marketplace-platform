@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BJ-AQ-OUIDAH",
+    "countryCode": "BJ",
+    "stateId": "BJ-AQ",
+    "stateCode": "AQ",
+    "name": "Ouidah",
+    "normalizedName": "ouidah",
+    "slug": "OUIDAH",
+    "locationType": "city",
+    "timeZone": "Africa/Porto-Novo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

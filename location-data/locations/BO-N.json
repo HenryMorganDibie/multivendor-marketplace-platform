@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BO-N-COBIJA",
+    "countryCode": "BO",
+    "stateId": "BO-N",
+    "stateCode": "N",
+    "name": "Cobija",
+    "normalizedName": "cobija",
+    "slug": "COBIJA",
+    "locationType": "city",
+    "timeZone": "America/La_Paz",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

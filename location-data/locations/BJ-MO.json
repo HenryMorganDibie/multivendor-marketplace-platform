@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BJ-MO-LOKOSSA",
+    "countryCode": "BJ",
+    "stateId": "BJ-MO",
+    "stateCode": "MO",
+    "name": "Lokossa",
+    "normalizedName": "lokossa",
+    "slug": "LOKOSSA",
+    "locationType": "city",
+    "timeZone": "Africa/Porto-Novo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

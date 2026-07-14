@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BT-34-ZHEMGANG",
+    "countryCode": "BT",
+    "stateId": "BT-34",
+    "stateCode": "34",
+    "name": "Zhemgang",
+    "normalizedName": "zhemgang",
+    "slug": "ZHEMGANG",
+    "locationType": "city",
+    "timeZone": "Asia/Thimphu",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

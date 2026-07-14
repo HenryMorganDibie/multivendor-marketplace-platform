@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BT-GA-GASA",
+    "countryCode": "BT",
+    "stateId": "BT-GA",
+    "stateCode": "GA",
+    "name": "Gasa",
+    "normalizedName": "gasa",
+    "slug": "GASA",
+    "locationType": "city",
+    "timeZone": "Asia/Thimphu",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

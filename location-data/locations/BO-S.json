@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BO-S-SANTA-CRUZ-DE-LA-SIERRA",
+    "countryCode": "BO",
+    "stateId": "BO-S",
+    "stateCode": "S",
+    "name": "Santa Cruz de la Sierra",
+    "normalizedName": "santa cruz de la sierra",
+    "slug": "SANTA-CRUZ-DE-LA-SIERRA",
+    "locationType": "city",
+    "timeZone": "America/La_Paz",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

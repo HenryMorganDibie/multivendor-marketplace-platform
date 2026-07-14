@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BJ-OU-PORTO-NOVO",
+    "countryCode": "BJ",
+    "stateId": "BJ-OU",
+    "stateCode": "OU",
+    "name": "Porto-Novo",
+    "normalizedName": "porto-novo",
+    "slug": "PORTO-NOVO",
+    "locationType": "city",
+    "timeZone": "Africa/Porto-Novo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

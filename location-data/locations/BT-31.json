@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BT-31-SARPANG",
+    "countryCode": "BT",
+    "stateId": "BT-31",
+    "stateCode": "31",
+    "name": "Sarpang",
+    "normalizedName": "sarpang",
+    "slug": "SARPANG",
+    "locationType": "city",
+    "timeZone": "Asia/Thimphu",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

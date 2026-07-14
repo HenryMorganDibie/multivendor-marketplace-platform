@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BJ-LI-COTONOU",
+    "countryCode": "BJ",
+    "stateId": "BJ-LI",
+    "stateCode": "LI",
+    "name": "Cotonou",
+    "normalizedName": "cotonou",
+    "slug": "COTONOU",
+    "locationType": "city",
+    "timeZone": "Africa/Porto-Novo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

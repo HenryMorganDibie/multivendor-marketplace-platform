@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BT-32-TRONGSA",
+    "countryCode": "BT",
+    "stateId": "BT-32",
+    "stateCode": "32",
+    "name": "Trongsa",
+    "normalizedName": "trongsa",
+    "slug": "TRONGSA",
+    "locationType": "city",
+    "timeZone": "Asia/Thimphu",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

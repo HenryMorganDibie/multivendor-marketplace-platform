@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BJ-AK-NATITINGOU",
+    "countryCode": "BJ",
+    "stateId": "BJ-AK",
+    "stateCode": "AK",
+    "name": "Natitingou",
+    "normalizedName": "natitingou",
+    "slug": "NATITINGOU",
+    "locationType": "city",
+    "timeZone": "Africa/Porto-Novo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

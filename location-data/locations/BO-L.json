@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BO-L-LA-PAZ",
+    "countryCode": "BO",
+    "stateId": "BO-L",
+    "stateCode": "L",
+    "name": "La Paz",
+    "normalizedName": "la paz",
+    "slug": "LA-PAZ",
+    "locationType": "city",
+    "timeZone": "America/La_Paz",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

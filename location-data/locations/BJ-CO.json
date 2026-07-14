@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BJ-CO-SAVALOU",
+    "countryCode": "BJ",
+    "stateId": "BJ-CO",
+    "stateCode": "CO",
+    "name": "Savalou",
+    "normalizedName": "savalou",
+    "slug": "SAVALOU",
+    "locationType": "city",
+    "timeZone": "Africa/Porto-Novo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

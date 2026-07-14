@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BJ-KO-APLAHOUE",
+    "countryCode": "BJ",
+    "stateId": "BJ-KO",
+    "stateCode": "KO",
+    "name": "Aplahoue",
+    "normalizedName": "aplahoue",
+    "slug": "APLAHOUE",
+    "locationType": "city",
+    "timeZone": "Africa/Porto-Novo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

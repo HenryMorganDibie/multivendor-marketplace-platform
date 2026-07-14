@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BT-33-BUMTHANG",
+    "countryCode": "BT",
+    "stateId": "BT-33",
+    "stateCode": "33",
+    "name": "Bumthang",
+    "normalizedName": "bumthang",
+    "slug": "BUMTHANG",
+    "locationType": "city",
+    "timeZone": "Asia/Thimphu",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

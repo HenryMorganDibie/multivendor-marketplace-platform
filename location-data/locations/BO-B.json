@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BO-B-TRINIDAD",
+    "countryCode": "BO",
+    "stateId": "BO-B",
+    "stateCode": "B",
+    "name": "Trinidad",
+    "normalizedName": "trinidad",
+    "slug": "TRINIDAD",
+    "locationType": "city",
+    "timeZone": "America/La_Paz",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

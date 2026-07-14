@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BJ-PL-POBE",
+    "countryCode": "BJ",
+    "stateId": "BJ-PL",
+    "stateCode": "PL",
+    "name": "Pobe",
+    "normalizedName": "pobe",
+    "slug": "POBE",
+    "locationType": "city",
+    "timeZone": "Africa/Porto-Novo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

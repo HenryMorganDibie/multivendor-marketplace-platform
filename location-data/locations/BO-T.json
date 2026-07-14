@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BO-T-TARIJA",
+    "countryCode": "BO",
+    "stateId": "BO-T",
+    "stateCode": "T",
+    "name": "Tarija",
+    "normalizedName": "tarija",
+    "slug": "TARIJA",
+    "locationType": "city",
+    "timeZone": "America/La_Paz",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

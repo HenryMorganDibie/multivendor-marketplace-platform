@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BT-12-CHUKHA",
+    "countryCode": "BT",
+    "stateId": "BT-12",
+    "stateCode": "12",
+    "name": "Chukha",
+    "normalizedName": "chukha",
+    "slug": "CHUKHA",
+    "locationType": "city",
+    "timeZone": "Asia/Thimphu",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

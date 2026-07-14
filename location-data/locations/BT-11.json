@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BT-11-PARO",
+    "countryCode": "BT",
+    "stateId": "BT-11",
+    "stateCode": "11",
+    "name": "Paro",
+    "normalizedName": "paro",
+    "slug": "PARO",
+    "locationType": "city",
+    "timeZone": "Asia/Thimphu",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

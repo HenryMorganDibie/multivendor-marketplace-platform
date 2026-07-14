@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BT-21-TSIRANG",
+    "countryCode": "BT",
+    "stateId": "BT-21",
+    "stateCode": "21",
+    "name": "Tsirang",
+    "normalizedName": "tsirang",
+    "slug": "TSIRANG",
+    "locationType": "city",
+    "timeZone": "Asia/Thimphu",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

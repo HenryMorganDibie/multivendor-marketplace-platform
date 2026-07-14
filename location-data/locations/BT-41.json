@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BT-41-TRASHIGANG",
+    "countryCode": "BT",
+    "stateId": "BT-41",
+    "stateCode": "41",
+    "name": "Trashigang",
+    "normalizedName": "trashigang",
+    "slug": "TRASHIGANG",
+    "locationType": "city",
+    "timeZone": "Asia/Thimphu",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

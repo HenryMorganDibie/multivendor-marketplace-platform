@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BO-P-POTOSI",
+    "countryCode": "BO",
+    "stateId": "BO-P",
+    "stateCode": "P",
+    "name": "Potosi",
+    "normalizedName": "potosi",
+    "slug": "POTOSI",
+    "locationType": "city",
+    "timeZone": "America/La_Paz",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

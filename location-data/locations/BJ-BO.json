@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BJ-BO-PARAKOU",
+    "countryCode": "BJ",
+    "stateId": "BJ-BO",
+    "stateCode": "BO",
+    "name": "Parakou",
+    "normalizedName": "parakou",
+    "slug": "PARAKOU",
+    "locationType": "city",
+    "timeZone": "Africa/Porto-Novo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

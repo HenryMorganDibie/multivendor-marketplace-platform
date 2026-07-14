@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BO-O-ORURO",
+    "countryCode": "BO",
+    "stateId": "BO-O",
+    "stateCode": "O",
+    "name": "Oruro",
+    "normalizedName": "oruro",
+    "slug": "ORURO",
+    "locationType": "city",
+    "timeZone": "America/La_Paz",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

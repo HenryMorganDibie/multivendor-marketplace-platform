@@ -128,29 +128,29 @@
 
 ## Benin
 - [x] Country
-- [ ] States
-- [ ] Areas
+- [x] States
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
 ## Bhutan
 - [x] Country
-- [ ] States
-- [ ] Areas
+- [x] States
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
 ## Bolivia
 - [x] Country
-- [ ] States
-- [ ] Areas
+- [x] States
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
 ## Bosnia and Herzegovina
 - [x] Country
-- [ ] States
-- [ ] Areas
+- [x] States
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 

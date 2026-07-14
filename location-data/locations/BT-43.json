@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BT-43-PEMA-GATSHEL",
+    "countryCode": "BT",
+    "stateId": "BT-43",
+    "stateCode": "43",
+    "name": "Pema Gatshel",
+    "normalizedName": "pema gatshel",
+    "slug": "PEMA-GATSHEL",
+    "locationType": "city",
+    "timeZone": "Asia/Thimphu",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

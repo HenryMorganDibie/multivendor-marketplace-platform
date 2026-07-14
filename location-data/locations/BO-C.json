@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BO-C-COCHABAMBA",
+    "countryCode": "BO",
+    "stateId": "BO-C",
+    "stateCode": "C",
+    "name": "Cochabamba",
+    "normalizedName": "cochabamba",
+    "slug": "COCHABAMBA",
+    "locationType": "city",
+    "timeZone": "America/La_Paz",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

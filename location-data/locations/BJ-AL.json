@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BJ-AL-KANDI",
+    "countryCode": "BJ",
+    "stateId": "BJ-AL",
+    "stateCode": "AL",
+    "name": "Kandi",
+    "normalizedName": "kandi",
+    "slug": "KANDI",
+    "locationType": "city",
+    "timeZone": "Africa/Porto-Novo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

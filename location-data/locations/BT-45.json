@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BT-45-SAMDRUP-JONGKHAR",
+    "countryCode": "BT",
+    "stateId": "BT-45",
+    "stateCode": "45",
+    "name": "Samdrup Jongkhar",
+    "normalizedName": "samdrup jongkhar",
+    "slug": "SAMDRUP-JONGKHAR",
+    "locationType": "city",
+    "timeZone": "Asia/Thimphu",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

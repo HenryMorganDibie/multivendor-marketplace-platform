@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BT-15-THIMPHU",
+    "countryCode": "BT",
+    "stateId": "BT-15",
+    "stateCode": "15",
+    "name": "Thimphu",
+    "normalizedName": "thimphu",
+    "slug": "THIMPHU",
+    "locationType": "city",
+    "timeZone": "Asia/Thimphu",
+    "status": "active",
+    "sortOrder": 1
+  }
+]
