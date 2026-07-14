@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-SM-SUMQAYIT",
+    "countryCode": "AZ",
+    "stateId": "AZ-SM",
+    "stateCode": "SM",
+    "name": "Sumqayit",
+    "normalizedName": "sumqayit",
+    "slug": "SUMQAYIT",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

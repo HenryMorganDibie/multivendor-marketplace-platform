@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-ZAR-ZARDAB",
+    "countryCode": "AZ",
+    "stateId": "AZ-ZAR",
+    "stateCode": "ZAR",
+    "name": "Zardab",
+    "normalizedName": "zardab",
+    "slug": "ZARDAB",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

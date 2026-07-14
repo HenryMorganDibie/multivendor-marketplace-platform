@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-SMI-SHAMAKHI",
+    "countryCode": "AZ",
+    "stateId": "AZ-SMI",
+    "stateCode": "SMI",
+    "name": "Shamakhi",
+    "normalizedName": "shamakhi",
+    "slug": "SHAMAKHI",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

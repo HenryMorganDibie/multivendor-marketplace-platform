@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BY-HR-GRODNO",
+    "countryCode": "BY",
+    "stateId": "BY-HR",
+    "stateCode": "HR",
+    "name": "Grodno",
+    "normalizedName": "grodno",
+    "slug": "GRODNO",
+    "locationType": "city",
+    "timeZone": "Europe/Minsk",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

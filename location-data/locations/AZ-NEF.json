@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-NEF-NEFTCHALA",
+    "countryCode": "AZ",
+    "stateId": "AZ-NEF",
+    "stateCode": "NEF",
+    "name": "Neftchala",
+    "normalizedName": "neftchala",
+    "slug": "NEFTCHALA",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

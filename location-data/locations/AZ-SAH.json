@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-SAH-SHAHBUZ",
+    "countryCode": "AZ",
+    "stateId": "AZ-SAH",
+    "stateCode": "SAH",
+    "name": "Shahbuz",
+    "normalizedName": "shahbuz",
+    "slug": "SHAHBUZ",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

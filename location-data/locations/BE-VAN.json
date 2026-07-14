@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BE-VAN-ANTWERP",
+    "countryCode": "BE",
+    "stateId": "BE-VAN",
+    "stateCode": "VAN",
+    "name": "Antwerp",
+    "normalizedName": "antwerp",
+    "slug": "ANTWERP",
+    "locationType": "city",
+    "timeZone": "Europe/Brussels",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

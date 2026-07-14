@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-NX-NAKHCHIVAN",
+    "countryCode": "AZ",
+    "stateId": "AZ-NX",
+    "stateCode": "NX",
+    "name": "Nakhchivan",
+    "normalizedName": "nakhchivan",
+    "slug": "NAKHCHIVAN",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

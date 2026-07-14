@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-ABS-ABSHERON",
+    "countryCode": "AZ",
+    "stateId": "AZ-ABS",
+    "stateCode": "ABS",
+    "name": "Absheron",
+    "normalizedName": "absheron",
+    "slug": "ABSHERON",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

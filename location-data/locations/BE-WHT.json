@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BE-WHT-MONS",
+    "countryCode": "BE",
+    "stateId": "BE-WHT",
+    "stateCode": "WHT",
+    "name": "Mons",
+    "normalizedName": "mons",
+    "slug": "MONS",
+    "locationType": "city",
+    "timeZone": "Europe/Brussels",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BY-VI-VITEBSK",
+    "countryCode": "BY",
+    "stateId": "BY-VI",
+    "stateCode": "VI",
+    "name": "Vitebsk",
+    "normalizedName": "vitebsk",
+    "slug": "VITEBSK",
+    "locationType": "city",
+    "timeZone": "Europe/Minsk",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

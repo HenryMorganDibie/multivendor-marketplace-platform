@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BD-F-RANGPUR",
+    "countryCode": "BD",
+    "stateId": "BD-F",
+    "stateCode": "F",
+    "name": "Rangpur",
+    "normalizedName": "rangpur",
+    "slug": "RANGPUR",
+    "locationType": "city",
+    "timeZone": "Asia/Dhaka",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BY-BR-BREST",
+    "countryCode": "BY",
+    "stateId": "BY-BR",
+    "stateCode": "BR",
+    "name": "Brest",
+    "normalizedName": "brest",
+    "slug": "BREST",
+    "locationType": "city",
+    "timeZone": "Europe/Minsk",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

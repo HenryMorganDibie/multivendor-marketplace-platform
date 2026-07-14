@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BY-MA-MOGILEV",
+    "countryCode": "BY",
+    "stateId": "BY-MA",
+    "stateCode": "MA",
+    "name": "Mogilev",
+    "normalizedName": "mogilev",
+    "slug": "MOGILEV",
+    "locationType": "city",
+    "timeZone": "Europe/Minsk",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

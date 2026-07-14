@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BY-MI-MINSK",
+    "countryCode": "BY",
+    "stateId": "BY-MI",
+    "stateCode": "MI",
+    "name": "Minsk",
+    "normalizedName": "minsk",
+    "slug": "MINSK",
+    "locationType": "city",
+    "timeZone": "Europe/Minsk",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

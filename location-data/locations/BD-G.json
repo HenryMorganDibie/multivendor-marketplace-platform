@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BD-G-SYLHET",
+    "countryCode": "BD",
+    "stateId": "BD-G",
+    "stateCode": "G",
+    "name": "Sylhet",
+    "normalizedName": "sylhet",
+    "slug": "SYLHET",
+    "locationType": "city",
+    "timeZone": "Asia/Dhaka",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BY-HO-GOMEL",
+    "countryCode": "BY",
+    "stateId": "BY-HO",
+    "stateCode": "HO",
+    "name": "Gomel",
+    "normalizedName": "gomel",
+    "slug": "GOMEL",
+    "locationType": "city",
+    "timeZone": "Europe/Minsk",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

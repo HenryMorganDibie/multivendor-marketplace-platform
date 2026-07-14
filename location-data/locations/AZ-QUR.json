@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-QUR-GUSAR",
+    "countryCode": "AZ",
+    "stateId": "AZ-QUR",
+    "stateCode": "QUR",
+    "name": "Gusar",
+    "normalizedName": "gusar",
+    "slug": "GUSAR",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

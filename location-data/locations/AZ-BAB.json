@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-BAB-BABEK",
+    "countryCode": "AZ",
+    "stateId": "AZ-BAB",
+    "stateCode": "BAB",
+    "name": "Babek",
+    "normalizedName": "babek",
+    "slug": "BABEK",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

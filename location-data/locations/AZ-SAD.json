@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-SAD-SADARAK",
+    "countryCode": "AZ",
+    "stateId": "AZ-SAD",
+    "stateCode": "SAD",
+    "name": "Sadarak",
+    "normalizedName": "sadarak",
+    "slug": "SADARAK",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

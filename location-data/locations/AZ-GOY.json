@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-GOY-GOYCHAY",
+    "countryCode": "AZ",
+    "stateId": "AZ-GOY",
+    "stateCode": "GOY",
+    "name": "Goychay",
+    "normalizedName": "goychay",
+    "slug": "GOYCHAY",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

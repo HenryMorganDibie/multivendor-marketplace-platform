@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-TAR-TARTAR",
+    "countryCode": "AZ",
+    "stateId": "AZ-TAR",
+    "stateCode": "TAR",
+    "name": "Tartar",
+    "normalizedName": "tartar",
+    "slug": "TARTAR",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

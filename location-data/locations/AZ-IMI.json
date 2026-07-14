@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-IMI-IMISHLI",
+    "countryCode": "AZ",
+    "stateId": "AZ-IMI",
+    "stateCode": "IMI",
+    "name": "Imishli",
+    "normalizedName": "imishli",
+    "slug": "IMISHLI",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

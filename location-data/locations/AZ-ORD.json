@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-ORD-ORDUBAD",
+    "countryCode": "AZ",
+    "stateId": "AZ-ORD",
+    "stateCode": "ORD",
+    "name": "Ordubad",
+    "normalizedName": "ordubad",
+    "slug": "ORDUBAD",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

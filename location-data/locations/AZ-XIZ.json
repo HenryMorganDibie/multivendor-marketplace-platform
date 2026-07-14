@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-XIZ-KHIZI",
+    "countryCode": "AZ",
+    "stateId": "AZ-XIZ",
+    "stateCode": "XIZ",
+    "name": "Khizi",
+    "normalizedName": "khizi",
+    "slug": "KHIZI",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

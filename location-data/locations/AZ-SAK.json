@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-SAK-SHEKI",
+    "countryCode": "AZ",
+    "stateId": "AZ-SAK",
+    "stateCode": "SAK",
+    "name": "Sheki",
+    "normalizedName": "sheki",
+    "slug": "SHEKI",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

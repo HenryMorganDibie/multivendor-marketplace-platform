@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-FUZ-FUZULI",
+    "countryCode": "AZ",
+    "stateId": "AZ-FUZ",
+    "stateCode": "FUZ",
+    "name": "Fuzuli",
+    "normalizedName": "fuzuli",
+    "slug": "FUZULI",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

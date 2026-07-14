@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BE-BRU-BRUSSELS",
+    "countryCode": "BE",
+    "stateId": "BE-BRU",
+    "stateCode": "BRU",
+    "name": "Brussels",
+    "normalizedName": "brussels",
+    "slug": "BRUSSELS",
+    "locationType": "city",
+    "timeZone": "Europe/Brussels",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-XAN-KHANLAR",
+    "countryCode": "AZ",
+    "stateId": "AZ-XAN",
+    "stateCode": "XAN",
+    "name": "Khanlar",
+    "normalizedName": "khanlar",
+    "slug": "KHANLAR",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

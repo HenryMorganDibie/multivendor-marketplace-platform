@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-AGM-AGHDAM",
+    "countryCode": "AZ",
+    "stateId": "AZ-AGM",
+    "stateCode": "AGM",
+    "name": "Aghdam",
+    "normalizedName": "aghdam",
+    "slug": "AGHDAM",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

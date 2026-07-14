@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-XAC-KHACHMAZ",
+    "countryCode": "AZ",
+    "stateId": "AZ-XAC",
+    "stateCode": "XAC",
+    "name": "Khachmaz",
+    "normalizedName": "khachmaz",
+    "slug": "KHACHMAZ",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

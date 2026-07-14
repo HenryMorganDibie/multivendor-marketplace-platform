@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-QUB-GUBA",
+    "countryCode": "AZ",
+    "stateId": "AZ-QUB",
+    "stateCode": "QUB",
+    "name": "Guba",
+    "normalizedName": "guba",
+    "slug": "GUBA",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

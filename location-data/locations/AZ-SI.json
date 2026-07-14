@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-SI-SHIRVAN",
+    "countryCode": "AZ",
+    "stateId": "AZ-SI",
+    "stateCode": "SI",
+    "name": "Shirvan",
+    "normalizedName": "shirvan",
+    "slug": "SHIRVAN",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

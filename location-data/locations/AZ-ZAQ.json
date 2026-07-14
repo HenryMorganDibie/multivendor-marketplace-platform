@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-ZAQ-ZAQATALA",
+    "countryCode": "AZ",
+    "stateId": "AZ-ZAQ",
+    "stateCode": "ZAQ",
+    "name": "Zaqatala",
+    "normalizedName": "zaqatala",
+    "slug": "ZAQATALA",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-CAL-JALILABAD",
+    "countryCode": "AZ",
+    "stateId": "AZ-CAL",
+    "stateCode": "CAL",
+    "name": "Jalilabad",
+    "normalizedName": "jalilabad",
+    "slug": "JALILABAD",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

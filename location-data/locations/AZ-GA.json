@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-GA-GANJA",
+    "countryCode": "AZ",
+    "stateId": "AZ-GA",
+    "stateCode": "GA",
+    "name": "Ganja",
+    "normalizedName": "ganja",
+    "slug": "GANJA",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

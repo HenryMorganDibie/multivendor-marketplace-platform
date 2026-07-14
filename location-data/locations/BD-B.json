@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BD-B-CHITTAGONG",
+    "countryCode": "BD",
+    "stateId": "BD-B",
+    "stateCode": "B",
+    "name": "Chittagong",
+    "normalizedName": "chittagong",
+    "slug": "CHITTAGONG",
+    "locationType": "city",
+    "timeZone": "Asia/Dhaka",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

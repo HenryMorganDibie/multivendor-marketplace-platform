@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-QAB-GABALA",
+    "countryCode": "AZ",
+    "stateId": "AZ-QAB",
+    "stateCode": "QAB",
+    "name": "Gabala",
+    "normalizedName": "gabala",
+    "slug": "GABALA",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

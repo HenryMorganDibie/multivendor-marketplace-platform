@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BE-WLX-ARLON",
+    "countryCode": "BE",
+    "stateId": "BE-WLX",
+    "stateCode": "WLX",
+    "name": "Arlon",
+    "normalizedName": "arlon",
+    "slug": "ARLON",
+    "locationType": "city",
+    "timeZone": "Europe/Brussels",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

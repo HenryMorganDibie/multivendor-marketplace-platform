@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-BA-BAKU",
+    "countryCode": "AZ",
+    "stateId": "AZ-BA",
+    "stateCode": "BA",
+    "name": "Baku",
+    "normalizedName": "baku",
+    "slug": "BAKU",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

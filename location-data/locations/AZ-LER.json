@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-LER-LERIK",
+    "countryCode": "AZ",
+    "stateId": "AZ-LER",
+    "stateCode": "LER",
+    "name": "Lerik",
+    "normalizedName": "lerik",
+    "slug": "LERIK",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

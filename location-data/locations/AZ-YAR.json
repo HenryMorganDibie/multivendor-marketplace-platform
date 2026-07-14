@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-YAR-YARDYMLI",
+    "countryCode": "AZ",
+    "stateId": "AZ-YAR",
+    "stateCode": "YAR",
+    "name": "Yardymli",
+    "normalizedName": "yardymli",
+    "slug": "YARDYMLI",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

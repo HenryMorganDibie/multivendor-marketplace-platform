@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-BIL-BILASUVAR",
+    "countryCode": "AZ",
+    "stateId": "AZ-BIL",
+    "stateCode": "BIL",
+    "name": "Bilasuvar",
+    "normalizedName": "bilasuvar",
+    "slug": "BILASUVAR",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

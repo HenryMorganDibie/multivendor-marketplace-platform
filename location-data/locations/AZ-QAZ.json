@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-QAZ-QAZAKH",
+    "countryCode": "AZ",
+    "stateId": "AZ-QAZ",
+    "stateCode": "QAZ",
+    "name": "Qazakh",
+    "normalizedName": "qazakh",
+    "slug": "QAZAKH",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

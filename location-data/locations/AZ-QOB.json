@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-QOB-GOBUSTAN",
+    "countryCode": "AZ",
+    "stateId": "AZ-QOB",
+    "stateCode": "QOB",
+    "name": "Gobustan",
+    "normalizedName": "gobustan",
+    "slug": "GOBUSTAN",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

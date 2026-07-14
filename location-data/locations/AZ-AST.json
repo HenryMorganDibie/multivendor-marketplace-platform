@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-AST-ASTARA",
+    "countryCode": "AZ",
+    "stateId": "AZ-AST",
+    "stateCode": "AST",
+    "name": "Astara",
+    "normalizedName": "astara",
+    "slug": "ASTARA",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

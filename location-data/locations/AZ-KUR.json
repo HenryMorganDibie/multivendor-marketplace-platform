@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-KUR-KURDAMIR",
+    "countryCode": "AZ",
+    "stateId": "AZ-KUR",
+    "stateCode": "KUR",
+    "name": "Kurdamir",
+    "normalizedName": "kurdamir",
+    "slug": "KURDAMIR",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

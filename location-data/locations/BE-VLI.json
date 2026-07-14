@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BE-VLI-HASSELT",
+    "countryCode": "BE",
+    "stateId": "BE-VLI",
+    "stateCode": "VLI",
+    "name": "Hasselt",
+    "normalizedName": "hasselt",
+    "slug": "HASSELT",
+    "locationType": "city",
+    "timeZone": "Europe/Brussels",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-ISM-ISMAYILLI",
+    "countryCode": "AZ",
+    "stateId": "AZ-ISM",
+    "stateCode": "ISM",
+    "name": "Ismayilli",
+    "normalizedName": "ismayilli",
+    "slug": "ISMAYILLI",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

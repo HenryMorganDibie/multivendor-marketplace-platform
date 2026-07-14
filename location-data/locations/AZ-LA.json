@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-LA-LANKARAN",
+    "countryCode": "AZ",
+    "stateId": "AZ-LA",
+    "stateCode": "LA",
+    "name": "Lankaran",
+    "normalizedName": "lankaran",
+    "slug": "LANKARAN",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-XVD-KHOJAVAND",
+    "countryCode": "AZ",
+    "stateId": "AZ-XVD",
+    "stateCode": "XVD",
+    "name": "Khojavand",
+    "normalizedName": "khojavand",
+    "slug": "KHOJAVAND",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

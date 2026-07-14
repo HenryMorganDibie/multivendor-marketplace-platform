@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-AGC-AGHJABADI",
+    "countryCode": "AZ",
+    "stateId": "AZ-AGC",
+    "stateCode": "AGC",
+    "name": "Aghjabadi",
+    "normalizedName": "aghjabadi",
+    "slug": "AGHJABADI",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

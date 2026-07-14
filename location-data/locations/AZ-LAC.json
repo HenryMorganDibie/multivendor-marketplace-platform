@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-LAC-LACHIN",
+    "countryCode": "AZ",
+    "stateId": "AZ-LAC",
+    "stateCode": "LAC",
+    "name": "Lachin",
+    "normalizedName": "lachin",
+    "slug": "LACHIN",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

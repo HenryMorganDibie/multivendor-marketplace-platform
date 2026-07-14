@@ -72,8 +72,8 @@
 
 ## Azerbaijan
 - [x] Country
-- [ ] States
-- [ ] Areas
+- [x] States
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
@@ -93,8 +93,8 @@
 
 ## Bangladesh
 - [x] Country
-- [ ] States
-- [ ] Areas
+- [x] States
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
@@ -107,15 +107,15 @@
 
 ## Belarus
 - [x] Country
-- [ ] States
-- [ ] Areas
+- [x] States
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 
 ## Belgium
 - [x] Country
-- [ ] States
-- [ ] Areas
+- [x] States
+- [x] Areas
 - [ ] Validated
 - [ ] Imported
 

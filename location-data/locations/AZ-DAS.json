@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-DAS-DASHKASAN",
+    "countryCode": "AZ",
+    "stateId": "AZ-DAS",
+    "stateCode": "DAS",
+    "name": "Dashkasan",
+    "normalizedName": "dashkasan",
+    "slug": "DASHKASAN",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

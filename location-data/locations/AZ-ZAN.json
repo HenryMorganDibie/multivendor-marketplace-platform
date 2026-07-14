@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-ZAN-ZANGILAN",
+    "countryCode": "AZ",
+    "stateId": "AZ-ZAN",
+    "stateCode": "ZAN",
+    "name": "Zangilan",
+    "normalizedName": "zangilan",
+    "slug": "ZANGILAN",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

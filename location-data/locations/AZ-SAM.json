@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-SAM-SAMUKH",
+    "countryCode": "AZ",
+    "stateId": "AZ-SAM",
+    "stateCode": "SAM",
+    "name": "Samukh",
+    "normalizedName": "samukh",
+    "slug": "SAMUKH",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

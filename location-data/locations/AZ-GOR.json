@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-GOR-GORANBOY",
+    "countryCode": "AZ",
+    "stateId": "AZ-GOR",
+    "stateCode": "GOR",
+    "name": "Goranboy",
+    "normalizedName": "goranboy",
+    "slug": "GORANBOY",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

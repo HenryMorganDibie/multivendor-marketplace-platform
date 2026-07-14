@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-SIY-SIYAZAN",
+    "countryCode": "AZ",
+    "stateId": "AZ-SIY",
+    "stateCode": "SIY",
+    "name": "Siyazan",
+    "normalizedName": "siyazan",
+    "slug": "SIYAZAN",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

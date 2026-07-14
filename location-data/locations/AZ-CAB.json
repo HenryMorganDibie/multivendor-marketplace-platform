@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-CAB-JABRAYIL",
+    "countryCode": "AZ",
+    "stateId": "AZ-CAB",
+    "stateCode": "CAB",
+    "name": "Jabrayil",
+    "normalizedName": "jabrayil",
+    "slug": "JABRAYIL",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

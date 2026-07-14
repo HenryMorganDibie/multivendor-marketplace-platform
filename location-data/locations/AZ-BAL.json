@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-BAL-BALAKAN",
+    "countryCode": "AZ",
+    "stateId": "AZ-BAL",
+    "stateCode": "BAL",
+    "name": "Balakan",
+    "normalizedName": "balakan",
+    "slug": "BALAKAN",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

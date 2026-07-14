@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BE-WBR-WAVRE",
+    "countryCode": "BE",
+    "stateId": "BE-WBR",
+    "stateCode": "WBR",
+    "name": "Wavre",
+    "normalizedName": "wavre",
+    "slug": "WAVRE",
+    "locationType": "city",
+    "timeZone": "Europe/Brussels",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-UCA-UJAR",
+    "countryCode": "AZ",
+    "stateId": "AZ-UCA",
+    "stateCode": "UCA",
+    "name": "Ujar",
+    "normalizedName": "ujar",
+    "slug": "UJAR",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

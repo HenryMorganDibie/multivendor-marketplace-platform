@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-MI-MINGACHEVIR",
+    "countryCode": "AZ",
+    "stateId": "AZ-MI",
+    "stateCode": "MI",
+    "name": "Mingachevir",
+    "normalizedName": "mingachevir",
+    "slug": "MINGACHEVIR",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

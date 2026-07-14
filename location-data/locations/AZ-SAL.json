@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-SAL-SALYAN",
+    "countryCode": "AZ",
+    "stateId": "AZ-SAL",
+    "stateCode": "SAL",
+    "name": "Salyan",
+    "normalizedName": "salyan",
+    "slug": "SALYAN",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

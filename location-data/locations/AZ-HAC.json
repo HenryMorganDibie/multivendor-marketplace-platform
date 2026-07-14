@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-HAC-HAJIGABUL",
+    "countryCode": "AZ",
+    "stateId": "AZ-HAC",
+    "stateCode": "HAC",
+    "name": "Hajigabul",
+    "normalizedName": "hajigabul",
+    "slug": "HAJIGABUL",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BD-H-MYMENSINGH",
+    "countryCode": "BD",
+    "stateId": "BD-H",
+    "stateCode": "H",
+    "name": "Mymensingh",
+    "normalizedName": "mymensingh",
+    "slug": "MYMENSINGH",
+    "locationType": "city",
+    "timeZone": "Asia/Dhaka",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

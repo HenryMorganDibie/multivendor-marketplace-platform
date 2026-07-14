@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-SUS-SHUSHA",
+    "countryCode": "AZ",
+    "stateId": "AZ-SUS",
+    "stateCode": "SUS",
+    "name": "Shusha",
+    "normalizedName": "shusha",
+    "slug": "SHUSHA",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

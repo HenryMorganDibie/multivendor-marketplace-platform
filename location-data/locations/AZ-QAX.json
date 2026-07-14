@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-QAX-QAKH",
+    "countryCode": "AZ",
+    "stateId": "AZ-QAX",
+    "stateCode": "QAX",
+    "name": "Qakh",
+    "normalizedName": "qakh",
+    "slug": "QAKH",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

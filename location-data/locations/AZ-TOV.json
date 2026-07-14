@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-TOV-TOVUZ",
+    "countryCode": "AZ",
+    "stateId": "AZ-TOV",
+    "stateCode": "TOV",
+    "name": "Tovuz",
+    "normalizedName": "tovuz",
+    "slug": "TOVUZ",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

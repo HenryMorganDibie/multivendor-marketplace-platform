@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BD-E-RAJSHAHI",
+    "countryCode": "BD",
+    "stateId": "BD-E",
+    "stateCode": "E",
+    "name": "Rajshahi",
+    "normalizedName": "rajshahi",
+    "slug": "RAJSHAHI",
+    "locationType": "city",
+    "timeZone": "Asia/Dhaka",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

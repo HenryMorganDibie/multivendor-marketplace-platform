@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BE-VOV-GHENT",
+    "countryCode": "BE",
+    "stateId": "BE-VOV",
+    "stateCode": "VOV",
+    "name": "Ghent",
+    "normalizedName": "ghent",
+    "slug": "GHENT",
+    "locationType": "city",
+    "timeZone": "Europe/Brussels",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

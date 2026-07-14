@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-NA-NAFTALAN",
+    "countryCode": "AZ",
+    "stateId": "AZ-NA",
+    "stateCode": "NA",
+    "name": "Naftalan",
+    "normalizedName": "naftalan",
+    "slug": "NAFTALAN",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

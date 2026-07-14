@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-SAB-SABIRABAD",
+    "countryCode": "AZ",
+    "stateId": "AZ-SAB",
+    "stateCode": "SAB",
+    "name": "Sabirabad",
+    "normalizedName": "sabirabad",
+    "slug": "SABIRABAD",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

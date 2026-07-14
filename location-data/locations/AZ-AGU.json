@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-AGU-AGHSU",
+    "countryCode": "AZ",
+    "stateId": "AZ-AGU",
+    "stateCode": "AGU",
+    "name": "Aghsu",
+    "normalizedName": "aghsu",
+    "slug": "AGHSU",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

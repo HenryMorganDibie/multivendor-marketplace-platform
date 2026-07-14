@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-KAL-KALBAJAR",
+    "countryCode": "AZ",
+    "stateId": "AZ-KAL",
+    "stateCode": "KAL",
+    "name": "Kalbajar",
+    "normalizedName": "kalbajar",
+    "slug": "KALBAJAR",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

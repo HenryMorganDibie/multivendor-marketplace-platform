@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BD-A-BARISAL",
+    "countryCode": "BD",
+    "stateId": "BD-A",
+    "stateCode": "A",
+    "name": "Barisal",
+    "normalizedName": "barisal",
+    "slug": "BARISAL",
+    "locationType": "city",
+    "timeZone": "Asia/Dhaka",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

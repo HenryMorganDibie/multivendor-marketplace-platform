@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-OGU-OGHUZ",
+    "countryCode": "AZ",
+    "stateId": "AZ-OGU",
+    "stateCode": "OGU",
+    "name": "Oghuz",
+    "normalizedName": "oghuz",
+    "slug": "OGHUZ",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

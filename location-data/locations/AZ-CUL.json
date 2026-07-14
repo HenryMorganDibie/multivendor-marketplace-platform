@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-CUL-JULFA",
+    "countryCode": "AZ",
+    "stateId": "AZ-CUL",
+    "stateCode": "CUL",
+    "name": "Julfa",
+    "normalizedName": "julfa",
+    "slug": "JULFA",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

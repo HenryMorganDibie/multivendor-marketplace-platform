@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BE-WNA-NAMUR",
+    "countryCode": "BE",
+    "stateId": "BE-WNA",
+    "stateCode": "WNA",
+    "name": "Namur",
+    "normalizedName": "namur",
+    "slug": "NAMUR",
+    "locationType": "city",
+    "timeZone": "Europe/Brussels",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

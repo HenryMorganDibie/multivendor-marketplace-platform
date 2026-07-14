@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-XOC-KHOJALI",
+    "countryCode": "AZ",
+    "stateId": "AZ-XOC",
+    "stateCode": "XOC",
+    "name": "Khojali",
+    "normalizedName": "khojali",
+    "slug": "KHOJALI",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

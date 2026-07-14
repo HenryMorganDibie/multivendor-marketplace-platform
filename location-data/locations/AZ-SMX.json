@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-SMX-SHAKHBUZ",
+    "countryCode": "AZ",
+    "stateId": "AZ-SMX",
+    "stateCode": "SMX",
+    "name": "Shakhbuz",
+    "normalizedName": "shakhbuz",
+    "slug": "SHAKHBUZ",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

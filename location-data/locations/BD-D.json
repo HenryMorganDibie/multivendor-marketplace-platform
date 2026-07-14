@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BD-D-KHULNA",
+    "countryCode": "BD",
+    "stateId": "BD-D",
+    "stateCode": "D",
+    "name": "Khulna",
+    "normalizedName": "khulna",
+    "slug": "KHULNA",
+    "locationType": "city",
+    "timeZone": "Asia/Dhaka",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

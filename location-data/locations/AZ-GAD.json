@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-GAD-GADABAY",
+    "countryCode": "AZ",
+    "stateId": "AZ-GAD",
+    "stateCode": "GAD",
+    "name": "Gadabay",
+    "normalizedName": "gadabay",
+    "slug": "GADABAY",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

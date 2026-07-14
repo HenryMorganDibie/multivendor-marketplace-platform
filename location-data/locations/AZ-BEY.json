@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-BEY-BEYLAGAN",
+    "countryCode": "AZ",
+    "stateId": "AZ-BEY",
+    "stateCode": "BEY",
+    "name": "Beylagan",
+    "normalizedName": "beylagan",
+    "slug": "BEYLAGAN",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

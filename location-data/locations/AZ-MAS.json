@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-MAS-MASALLY",
+    "countryCode": "AZ",
+    "stateId": "AZ-MAS",
+    "stateCode": "MAS",
+    "name": "Masally",
+    "normalizedName": "masally",
+    "slug": "MASALLY",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

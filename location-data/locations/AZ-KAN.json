@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-KAN-KANGARLI",
+    "countryCode": "AZ",
+    "stateId": "AZ-KAN",
+    "stateCode": "KAN",
+    "name": "Kangarli",
+    "normalizedName": "kangarli",
+    "slug": "KANGARLI",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

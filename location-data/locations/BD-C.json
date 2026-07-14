@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BD-C-DHAKA",
+    "countryCode": "BD",
+    "stateId": "BD-C",
+    "stateCode": "C",
+    "name": "Dhaka",
+    "normalizedName": "dhaka",
+    "slug": "DHAKA",
+    "locationType": "city",
+    "timeZone": "Asia/Dhaka",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

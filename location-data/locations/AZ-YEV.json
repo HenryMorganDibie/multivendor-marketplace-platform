@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-YEV-YEVLAKH",
+    "countryCode": "AZ",
+    "stateId": "AZ-YEV",
+    "stateCode": "YEV",
+    "name": "Yevlakh",
+    "normalizedName": "yevlakh",
+    "slug": "YEVLAKH",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

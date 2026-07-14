@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-AGS-AGDASH",
+    "countryCode": "AZ",
+    "stateId": "AZ-AGS",
+    "stateCode": "AGS",
+    "name": "Agdash",
+    "normalizedName": "agdash",
+    "slug": "AGDASH",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

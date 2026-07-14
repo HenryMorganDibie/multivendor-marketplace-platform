@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BE-VBR-LEUVEN",
+    "countryCode": "BE",
+    "stateId": "BE-VBR",
+    "stateCode": "VBR",
+    "name": "Leuven",
+    "normalizedName": "leuven",
+    "slug": "LEUVEN",
+    "locationType": "city",
+    "timeZone": "Europe/Brussels",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

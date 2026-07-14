@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-BAR-BARDA",
+    "countryCode": "AZ",
+    "stateId": "AZ-BAR",
+    "stateCode": "BAR",
+    "name": "Barda",
+    "normalizedName": "barda",
+    "slug": "BARDA",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BE-WLG-LIEGE",
+    "countryCode": "BE",
+    "stateId": "BE-WLG",
+    "stateCode": "WLG",
+    "name": "Liege",
+    "normalizedName": "liege",
+    "slug": "LIEGE",
+    "locationType": "city",
+    "timeZone": "Europe/Brussels",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AZ-GYG-GOYGOL",
+    "countryCode": "AZ",
+    "stateId": "AZ-GYG",
+    "stateCode": "GYG",
+    "name": "Goygol",
+    "normalizedName": "goygol",
+    "slug": "GOYGOL",
+    "locationType": "city",
+    "timeZone": "Asia/Baku",
+    "status": "active",
+    "sortOrder": 1
+  }
+]
