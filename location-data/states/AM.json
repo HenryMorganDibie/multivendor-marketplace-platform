@@ -1,0 +1,112 @@
+[
+  {
+    "stateId": "AM-AG",
+    "countryCode": "AM",
+    "stateCode": "AG",
+    "name": "Aragatsotn",
+    "normalizedName": "aragatsotn",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "AM-AR",
+    "countryCode": "AM",
+    "stateCode": "AR",
+    "name": "Ararat",
+    "normalizedName": "ararat",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "AM-AV",
+    "countryCode": "AM",
+    "stateCode": "AV",
+    "name": "Armavir",
+    "normalizedName": "armavir",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "AM-GR",
+    "countryCode": "AM",
+    "stateCode": "GR",
+    "name": "Gegharkunik",
+    "normalizedName": "gegharkunik",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "AM-KT",
+    "countryCode": "AM",
+    "stateCode": "KT",
+    "name": "Kotayk",
+    "normalizedName": "kotayk",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "AM-LO",
+    "countryCode": "AM",
+    "stateCode": "LO",
+    "name": "Lori",
+    "normalizedName": "lori",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "AM-SH",
+    "countryCode": "AM",
+    "stateCode": "SH",
+    "name": "Shirak",
+    "normalizedName": "shirak",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "AM-SU",
+    "countryCode": "AM",
+    "stateCode": "SU",
+    "name": "Syunik",
+    "normalizedName": "syunik",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "AM-TV",
+    "countryCode": "AM",
+    "stateCode": "TV",
+    "name": "Tavush",
+    "normalizedName": "tavush",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "AM-VD",
+    "countryCode": "AM",
+    "stateCode": "VD",
+    "name": "Vayots Dzor",
+    "normalizedName": "vayots dzor",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "AM-ER",
+    "countryCode": "AM",
+    "stateCode": "ER",
+    "name": "Yerevan",
+    "normalizedName": "yerevan",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 11
+  }
+]
