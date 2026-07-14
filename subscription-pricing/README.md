@@ -56,6 +56,51 @@ Document ID is `{countryCode}-{planId}` (e.g. `NG-standard`, `CA-pro_plus`). All
 
 Checking out for `plan: "basic"` is rejected outright (`invalid-argument`) — there's nothing to check out for a free plan.
 
+## How to add a country's price
+
+Add one object per country to the array in `pricing.json` — not a new file, just a new entry in this one file. `countryCode` must match a country already in `location-data/countries.json`, and `currencyCode` must match that country's `currencyCode` exactly (validation will reject it otherwise).
+
+**Copy-paste template:**
+```json
+{
+  "countryCode": "XX",
+  "currencyCode": "XXX",
+  "plans": {
+    "standard": { "monthlyPriceMinorUnits": 0 },
+    "pro": { "monthlyPriceMinorUnits": 0 },
+    "pro_plus": { "monthlyPriceMinorUnits": 0 }
+  },
+  "status": "active"
+}
+```
+
+**Worked example — Nigeria (NGN, 2 decimal places, the normal case):** ₦9,900.00/month for Standard → multiply by 100 → `990000`.
+```json
+{
+  "countryCode": "NG",
+  "currencyCode": "NGN",
+  "plans": {
+    "standard": { "monthlyPriceMinorUnits": 990000 },
+    "pro": { "monthlyPriceMinorUnits": 2500000 },
+    "pro_plus": { "monthlyPriceMinorUnits": 4000000 }
+  },
+  "status": "active"
+}
+```
+
+**Watch out for currencies that don't use 2 decimal places** — most do, but not all:
+- **0 decimal places** (whole-number currency, don't multiply by 100 at all): JPY, KRW, VND, and most CFA franc currencies (XAF/XOF). ¥1,500/month → `1500`, not `150000`.
+- **3 decimal places** (multiply by 1,000, not 100): BHD, KWD, OMR, and a few other Gulf-region currencies. 9.900 KWD/month → `9900`.
+- Everything else: 2 decimal places, multiply by 100, same as the Nigeria example.
+
+If unsure which bucket a currency falls into, check `currencyMinorUnitExponent()` in `functions/src/subscriptions/countryPricing.ts` — that's the exact list the validator checks against, so getting it wrong there will be caught immediately by `validate:pricing` rather than silently overcharging or undercharging a country by 100x.
+
+**`plans.basic` should never be added** — Basic is free everywhere and isn't part of this schema. `validate:pricing` will flag it as an error if present.
+
+After adding entries, always run `npm run validate:pricing` before committing (see below) — it catches wrong currency codes, non-integer amounts, missing plans, and the minor-unit mistake above before anything reaches Firestore.
+
+**Note:** entering a country's price here alone doesn't make real checkout work for that country yet — `providerPlanMapping.json` also needs a matching entry with real Paystack/Flutterwave/Stripe plan IDs (created in each provider's dashboard first). That's a separate step, likely not the client's to do since it requires provider account access — pricing data and provider IDs can be added independently and don't need to land at the same time.
+
 ## Validating and importing
 
 Same pattern as `location-data/`, in `scripts/`:
