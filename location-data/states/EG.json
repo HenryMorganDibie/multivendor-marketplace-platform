@@ -1,0 +1,272 @@
+[
+  {
+    "stateId": "EG-ALX",
+    "countryCode": "EG",
+    "stateCode": "ALX",
+    "name": "Alexandria",
+    "normalizedName": "alexandria",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "EG-ASN",
+    "countryCode": "EG",
+    "stateCode": "ASN",
+    "name": "Aswan",
+    "normalizedName": "aswan",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "EG-AST",
+    "countryCode": "EG",
+    "stateCode": "AST",
+    "name": "Asyut",
+    "normalizedName": "asyut",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "EG-BH",
+    "countryCode": "EG",
+    "stateCode": "BH",
+    "name": "Beheira",
+    "normalizedName": "beheira",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "EG-BNS",
+    "countryCode": "EG",
+    "stateCode": "BNS",
+    "name": "Beni Suef",
+    "normalizedName": "beni suef",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "EG-C",
+    "countryCode": "EG",
+    "stateCode": "C",
+    "name": "Cairo",
+    "normalizedName": "cairo",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "EG-DK",
+    "countryCode": "EG",
+    "stateCode": "DK",
+    "name": "Dakahlia",
+    "normalizedName": "dakahlia",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "EG-DT",
+    "countryCode": "EG",
+    "stateCode": "DT",
+    "name": "Damietta",
+    "normalizedName": "damietta",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "EG-FYM",
+    "countryCode": "EG",
+    "stateCode": "FYM",
+    "name": "Faiyum",
+    "normalizedName": "faiyum",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "EG-GH",
+    "countryCode": "EG",
+    "stateCode": "GH",
+    "name": "Gharbia",
+    "normalizedName": "gharbia",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "EG-GZ",
+    "countryCode": "EG",
+    "stateCode": "GZ",
+    "name": "Giza",
+    "normalizedName": "giza",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "EG-IS",
+    "countryCode": "EG",
+    "stateCode": "IS",
+    "name": "Ismailia",
+    "normalizedName": "ismailia",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "EG-KFS",
+    "countryCode": "EG",
+    "stateCode": "KFS",
+    "name": "Kafr el-Sheikh",
+    "normalizedName": "kafr el-sheikh",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 13
+  },
+  {
+    "stateId": "EG-LX",
+    "countryCode": "EG",
+    "stateCode": "LX",
+    "name": "Luxor",
+    "normalizedName": "luxor",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 14
+  },
+  {
+    "stateId": "EG-MT",
+    "countryCode": "EG",
+    "stateCode": "MT",
+    "name": "Matrouh",
+    "normalizedName": "matrouh",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 15
+  },
+  {
+    "stateId": "EG-MN",
+    "countryCode": "EG",
+    "stateCode": "MN",
+    "name": "Minya",
+    "normalizedName": "minya",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 16
+  },
+  {
+    "stateId": "EG-MNF",
+    "countryCode": "EG",
+    "stateCode": "MNF",
+    "name": "Monufia",
+    "normalizedName": "monufia",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 17
+  },
+  {
+    "stateId": "EG-WAD",
+    "countryCode": "EG",
+    "stateCode": "WAD",
+    "name": "New Valley",
+    "normalizedName": "new valley",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 18
+  },
+  {
+    "stateId": "EG-SIN",
+    "countryCode": "EG",
+    "stateCode": "SIN",
+    "name": "North Sinai",
+    "normalizedName": "north sinai",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 19
+  },
+  {
+    "stateId": "EG-PTS",
+    "countryCode": "EG",
+    "stateCode": "PTS",
+    "name": "Port Said",
+    "normalizedName": "port said",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 20
+  },
+  {
+    "stateId": "EG-KB",
+    "countryCode": "EG",
+    "stateCode": "KB",
+    "name": "Qalyubia",
+    "normalizedName": "qalyubia",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 21
+  },
+  {
+    "stateId": "EG-KN",
+    "countryCode": "EG",
+    "stateCode": "KN",
+    "name": "Qena",
+    "normalizedName": "qena",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 22
+  },
+  {
+    "stateId": "EG-BA",
+    "countryCode": "EG",
+    "stateCode": "BA",
+    "name": "Red Sea",
+    "normalizedName": "red sea",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 23
+  },
+  {
+    "stateId": "EG-SHR",
+    "countryCode": "EG",
+    "stateCode": "SHR",
+    "name": "Sharqia",
+    "normalizedName": "sharqia",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 24
+  },
+  {
+    "stateId": "EG-SHG",
+    "countryCode": "EG",
+    "stateCode": "SHG",
+    "name": "Sohag",
+    "normalizedName": "sohag",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 25
+  },
+  {
+    "stateId": "EG-JS",
+    "countryCode": "EG",
+    "stateCode": "JS",
+    "name": "South Sinai",
+    "normalizedName": "south sinai",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 26
+  },
+  {
+    "stateId": "EG-SUZ",
+    "countryCode": "EG",
+    "stateCode": "SUZ",
+    "name": "Suez",
+    "normalizedName": "suez",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 27
+  }
+]
