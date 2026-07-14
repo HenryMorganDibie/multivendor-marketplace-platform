@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ID-PB-MANOKWARI",
+    "countryCode": "ID",
+    "stateId": "ID-PB",
+    "stateCode": "PB",
+    "name": "Manokwari",
+    "normalizedName": "manokwari",
+    "slug": "MANOKWARI",
+    "locationType": "city",
+    "timeZone": "Asia/Jayapura",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

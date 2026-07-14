@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-IN-MAGAS",
+    "countryCode": "RU",
+    "stateId": "RU-IN",
+    "stateCode": "IN",
+    "name": "Magas",
+    "normalizedName": "magas",
+    "slug": "MAGAS",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

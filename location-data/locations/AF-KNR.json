@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-KNR-ASADABAD",
+    "countryCode": "AF",
+    "stateId": "AF-KNR",
+    "stateCode": "KNR",
+    "name": "Asadabad",
+    "normalizedName": "asadabad",
+    "slug": "ASADABAD",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

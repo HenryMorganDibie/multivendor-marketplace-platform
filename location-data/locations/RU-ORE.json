@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-ORE-ORENBURG",
+    "countryCode": "RU",
+    "stateId": "RU-ORE",
+    "stateCode": "ORE",
+    "name": "Orenburg",
+    "normalizedName": "orenburg",
+    "slug": "ORENBURG",
+    "locationType": "city",
+    "timeZone": "Asia/Yekaterinburg",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

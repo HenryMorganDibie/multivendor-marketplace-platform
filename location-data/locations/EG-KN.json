@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "EG-KN-QENA",
+    "countryCode": "EG",
+    "stateId": "EG-KN",
+    "stateCode": "KN",
+    "name": "Qena",
+    "normalizedName": "qena",
+    "slug": "QENA",
+    "locationType": "city",
+    "timeZone": "Africa/Cairo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

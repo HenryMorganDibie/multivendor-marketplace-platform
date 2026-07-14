@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MX-COL-COLIMA",
+    "countryCode": "MX",
+    "stateId": "MX-COL",
+    "stateCode": "COL",
+    "name": "Colima",
+    "normalizedName": "colima",
+    "slug": "COLIMA",
+    "locationType": "city",
+    "timeZone": "America/Mexico_City",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

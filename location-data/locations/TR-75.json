@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-75-ARDAHAN",
+    "countryCode": "TR",
+    "stateId": "TR-75",
+    "stateCode": "75",
+    "name": "Ardahan",
+    "normalizedName": "ardahan",
+    "slug": "ARDAHAN",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

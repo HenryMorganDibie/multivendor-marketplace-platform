@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MX-OAX-OAXACA",
+    "countryCode": "MX",
+    "stateId": "MX-OAX",
+    "stateCode": "OAX",
+    "name": "Oaxaca",
+    "normalizedName": "oaxaca",
+    "slug": "OAXACA",
+    "locationType": "city",
+    "timeZone": "America/Mexico_City",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

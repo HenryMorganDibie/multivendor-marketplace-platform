@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-29-GUMUSHANE",
+    "countryCode": "TR",
+    "stateId": "TR-29",
+    "stateCode": "29",
+    "name": "Gumushane",
+    "normalizedName": "gumushane",
+    "slug": "GUMUSHANE",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

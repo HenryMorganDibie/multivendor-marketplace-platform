@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-51-NIGDE",
+    "countryCode": "TR",
+    "stateId": "TR-51",
+    "stateCode": "51",
+    "name": "Nigde",
+    "normalizedName": "nigde",
+    "slug": "NIGDE",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

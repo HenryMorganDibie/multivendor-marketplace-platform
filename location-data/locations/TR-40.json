@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-40-KIRSEHIR",
+    "countryCode": "TR",
+    "stateId": "TR-40",
+    "stateCode": "40",
+    "name": "Kirsehir",
+    "normalizedName": "kirsehir",
+    "slug": "KIRSEHIR",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

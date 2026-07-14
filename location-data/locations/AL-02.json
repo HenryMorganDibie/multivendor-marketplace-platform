@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AL-02-PESHKOPI",
+    "countryCode": "AL",
+    "stateId": "AL-02",
+    "stateCode": "02",
+    "name": "Peshkopi",
+    "normalizedName": "peshkopi",
+    "slug": "PESHKOPI",
+    "locationType": "city",
+    "timeZone": "Europe/Tirane",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

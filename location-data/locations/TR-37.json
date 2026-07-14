@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-37-KASTAMONU",
+    "countryCode": "TR",
+    "stateId": "TR-37",
+    "stateCode": "37",
+    "name": "Kastamonu",
+    "normalizedName": "kastamonu",
+    "slug": "KASTAMONU",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

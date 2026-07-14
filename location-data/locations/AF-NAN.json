@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-NAN-JALALABAD",
+    "countryCode": "AF",
+    "stateId": "AF-NAN",
+    "stateCode": "NAN",
+    "name": "Jalalabad",
+    "normalizedName": "jalalabad",
+    "slug": "JALALABAD",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

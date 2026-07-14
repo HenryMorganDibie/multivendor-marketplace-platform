@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-SAM-SAMARA",
+    "countryCode": "RU",
+    "stateId": "RU-SAM",
+    "stateCode": "SAM",
+    "name": "Samara",
+    "normalizedName": "samara",
+    "slug": "SAMARA",
+    "locationType": "city",
+    "timeZone": "Europe/Samara",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

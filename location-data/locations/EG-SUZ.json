@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "EG-SUZ-SUEZ",
+    "countryCode": "EG",
+    "stateId": "EG-SUZ",
+    "stateCode": "SUZ",
+    "name": "Suez",
+    "normalizedName": "suez",
+    "slug": "SUEZ",
+    "locationType": "city",
+    "timeZone": "Africa/Cairo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

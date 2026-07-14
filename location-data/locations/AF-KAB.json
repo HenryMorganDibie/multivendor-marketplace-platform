@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-KAB-KABUL",
+    "countryCode": "AF",
+    "stateId": "AF-KAB",
+    "stateCode": "KAB",
+    "name": "Kabul",
+    "normalizedName": "kabul",
+    "slug": "KABUL",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

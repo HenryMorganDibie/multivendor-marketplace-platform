@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AL-09-LEZHE",
+    "countryCode": "AL",
+    "stateId": "AL-09",
+    "stateCode": "09",
+    "name": "Lezhe",
+    "normalizedName": "lezhe",
+    "slug": "LEZHE",
+    "locationType": "city",
+    "timeZone": "Europe/Tirane",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

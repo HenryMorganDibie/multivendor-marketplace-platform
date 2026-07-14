@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BR-MS-CAMPO-GRANDE",
+    "countryCode": "BR",
+    "stateId": "BR-MS",
+    "stateCode": "MS",
+    "name": "Campo Grande",
+    "normalizedName": "campo grande",
+    "slug": "CAMPO-GRANDE",
+    "locationType": "city",
+    "timeZone": "America/Campo_Grande",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

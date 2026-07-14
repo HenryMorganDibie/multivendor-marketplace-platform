@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-BDG-QALA-I-NAW",
+    "countryCode": "AF",
+    "stateId": "AF-BDG",
+    "stateCode": "BDG",
+    "name": "Qala i Naw",
+    "normalizedName": "qala i naw",
+    "slug": "QALA-I-NAW",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

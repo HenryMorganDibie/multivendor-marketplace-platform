@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-AD-MAYKOP",
+    "countryCode": "RU",
+    "stateId": "RU-AD",
+    "stateCode": "AD",
+    "name": "Maykop",
+    "normalizedName": "maykop",
+    "slug": "MAYKOP",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MX-SON-HERMOSILLO",
+    "countryCode": "MX",
+    "stateId": "MX-SON",
+    "stateCode": "SON",
+    "name": "Hermosillo",
+    "normalizedName": "hermosillo",
+    "slug": "HERMOSILLO",
+    "locationType": "city",
+    "timeZone": "America/Hermosillo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

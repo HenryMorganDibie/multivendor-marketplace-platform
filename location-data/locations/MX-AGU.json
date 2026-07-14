@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MX-AGU-AGUASCALIENTES",
+    "countryCode": "MX",
+    "stateId": "MX-AGU",
+    "stateCode": "AGU",
+    "name": "Aguascalientes",
+    "normalizedName": "aguascalientes",
+    "slug": "AGUASCALIENTES",
+    "locationType": "city",
+    "timeZone": "America/Mexico_City",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

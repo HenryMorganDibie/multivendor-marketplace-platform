@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ES-CE-CEUTA",
+    "countryCode": "ES",
+    "stateId": "ES-CE",
+    "stateCode": "CE",
+    "name": "Ceuta",
+    "normalizedName": "ceuta",
+    "slug": "CEUTA",
+    "locationType": "city",
+    "timeZone": "Africa/Ceuta",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

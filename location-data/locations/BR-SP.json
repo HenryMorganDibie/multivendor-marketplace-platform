@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BR-SP-SAO-PAULO",
+    "countryCode": "BR",
+    "stateId": "BR-SP",
+    "stateCode": "SP",
+    "name": "Sao Paulo",
+    "normalizedName": "sao paulo",
+    "slug": "SAO-PAULO",
+    "locationType": "city",
+    "timeZone": "America/Sao_Paulo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

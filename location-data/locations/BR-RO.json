@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BR-RO-PORTO-VELHO",
+    "countryCode": "BR",
+    "stateId": "BR-RO",
+    "stateCode": "RO",
+    "name": "Porto Velho",
+    "normalizedName": "porto velho",
+    "slug": "PORTO-VELHO",
+    "locationType": "city",
+    "timeZone": "America/Porto_Velho",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

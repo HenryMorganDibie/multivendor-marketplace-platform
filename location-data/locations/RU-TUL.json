@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-TUL-TULA",
+    "countryCode": "RU",
+    "stateId": "RU-TUL",
+    "stateCode": "TUL",
+    "name": "Tula",
+    "normalizedName": "tula",
+    "slug": "TULA",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

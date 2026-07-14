@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ID-SS-PALEMBANG",
+    "countryCode": "ID",
+    "stateId": "ID-SS",
+    "stateCode": "SS",
+    "name": "Palembang",
+    "normalizedName": "palembang",
+    "slug": "PALEMBANG",
+    "locationType": "city",
+    "timeZone": "Asia/Jakarta",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

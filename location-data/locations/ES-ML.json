@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ES-ML-MELILLA",
+    "countryCode": "ES",
+    "stateId": "ES-ML",
+    "stateCode": "ML",
+    "name": "Melilla",
+    "normalizedName": "melilla",
+    "slug": "MELILLA",
+    "locationType": "city",
+    "timeZone": "Europe/Madrid",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MX-SIN-CULIACAN",
+    "countryCode": "MX",
+    "stateId": "MX-SIN",
+    "stateCode": "SIN",
+    "name": "Culiacan",
+    "normalizedName": "culiacan",
+    "slug": "CULIACAN",
+    "locationType": "city",
+    "timeZone": "America/Mazatlan",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

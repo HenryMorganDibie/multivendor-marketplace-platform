@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-GHA-GHAZNI",
+    "countryCode": "AF",
+    "stateId": "AF-GHA",
+    "stateCode": "GHA",
+    "name": "Ghazni",
+    "normalizedName": "ghazni",
+    "slug": "GHAZNI",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

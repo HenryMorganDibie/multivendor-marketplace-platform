@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-KO-SYKTYVKAR",
+    "countryCode": "RU",
+    "stateId": "RU-KO",
+    "stateCode": "KO",
+    "name": "Syktyvkar",
+    "normalizedName": "syktyvkar",
+    "slug": "SYKTYVKAR",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

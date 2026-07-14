@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-10-BALIKESIR",
+    "countryCode": "TR",
+    "stateId": "TR-10",
+    "stateCode": "10",
+    "name": "Balikesir",
+    "normalizedName": "balikesir",
+    "slug": "BALIKESIR",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

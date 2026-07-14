@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ES-CT-BARCELONA",
+    "countryCode": "ES",
+    "stateId": "ES-CT",
+    "stateCode": "CT",
+    "name": "Barcelona",
+    "normalizedName": "barcelona",
+    "slug": "BARCELONA",
+    "locationType": "city",
+    "timeZone": "Europe/Madrid",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AL-06-GJIROKASTER",
+    "countryCode": "AL",
+    "stateId": "AL-06",
+    "stateCode": "06",
+    "name": "Gjirokaster",
+    "normalizedName": "gjirokaster",
+    "slug": "GJIROKASTER",
+    "locationType": "city",
+    "timeZone": "Europe/Tirane",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-55-SAMSUN",
+    "countryCode": "TR",
+    "stateId": "TR-55",
+    "stateCode": "55",
+    "name": "Samsun",
+    "normalizedName": "samsun",
+    "slug": "SAMSUN",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

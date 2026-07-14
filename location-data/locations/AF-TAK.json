@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-TAK-TALOQAN",
+    "countryCode": "AF",
+    "stateId": "AF-TAK",
+    "stateCode": "TAK",
+    "name": "Taloqan",
+    "normalizedName": "taloqan",
+    "slug": "TALOQAN",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

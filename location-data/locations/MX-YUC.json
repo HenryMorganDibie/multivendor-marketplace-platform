@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MX-YUC-MERIDA",
+    "countryCode": "MX",
+    "stateId": "MX-YUC",
+    "stateCode": "YUC",
+    "name": "Merida",
+    "normalizedName": "merida",
+    "slug": "MERIDA",
+    "locationType": "city",
+    "timeZone": "America/Merida",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

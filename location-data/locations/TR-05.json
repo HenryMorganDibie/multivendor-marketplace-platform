@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-05-AMASYA",
+    "countryCode": "TR",
+    "stateId": "TR-05",
+    "stateCode": "05",
+    "name": "Amasya",
+    "normalizedName": "amasya",
+    "slug": "AMASYA",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

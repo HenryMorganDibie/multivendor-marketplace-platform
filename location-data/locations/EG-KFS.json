@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "EG-KFS-KAFR-EL-SHEIKH",
+    "countryCode": "EG",
+    "stateId": "EG-KFS",
+    "stateCode": "KFS",
+    "name": "Kafr el-Sheikh",
+    "normalizedName": "kafr el-sheikh",
+    "slug": "KAFR-EL-SHEIKH",
+    "locationType": "city",
+    "timeZone": "Africa/Cairo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

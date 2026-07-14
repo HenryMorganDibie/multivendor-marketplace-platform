@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-KR-PETROZAVODSK",
+    "countryCode": "RU",
+    "stateId": "RU-KR",
+    "stateCode": "KR",
+    "name": "Petrozavodsk",
+    "normalizedName": "petrozavodsk",
+    "slug": "PETROZAVODSK",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

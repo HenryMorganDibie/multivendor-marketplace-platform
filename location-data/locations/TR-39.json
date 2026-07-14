@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-39-KIRKLARELI",
+    "countryCode": "TR",
+    "stateId": "TR-39",
+    "stateCode": "39",
+    "name": "Kirklareli",
+    "normalizedName": "kirklareli",
+    "slug": "KIRKLARELI",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

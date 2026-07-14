@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BR-SC-FLORIANOPOLIS",
+    "countryCode": "BR",
+    "stateId": "BR-SC",
+    "stateCode": "SC",
+    "name": "Florianopolis",
+    "normalizedName": "florianopolis",
+    "slug": "FLORIANOPOLIS",
+    "locationType": "city",
+    "timeZone": "America/Sao_Paulo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

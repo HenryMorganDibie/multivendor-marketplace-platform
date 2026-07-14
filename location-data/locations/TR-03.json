@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-03-AFYONKARAHISAR",
+    "countryCode": "TR",
+    "stateId": "TR-03",
+    "stateCode": "03",
+    "name": "Afyonkarahisar",
+    "normalizedName": "afyonkarahisar",
+    "slug": "AFYONKARAHISAR",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

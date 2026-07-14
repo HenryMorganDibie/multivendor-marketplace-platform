@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "EG-ASN-ASWAN",
+    "countryCode": "EG",
+    "stateId": "EG-ASN",
+    "stateCode": "ASN",
+    "name": "Aswan",
+    "normalizedName": "aswan",
+    "slug": "ASWAN",
+    "locationType": "city",
+    "timeZone": "Africa/Cairo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

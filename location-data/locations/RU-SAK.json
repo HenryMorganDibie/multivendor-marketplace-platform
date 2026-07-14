@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-SAK-YUZHNO-SAKHALINSK",
+    "countryCode": "RU",
+    "stateId": "RU-SAK",
+    "stateCode": "SAK",
+    "name": "Yuzhno-Sakhalinsk",
+    "normalizedName": "yuzhno-sakhalinsk",
+    "slug": "YUZHNO-SAKHALINSK",
+    "locationType": "city",
+    "timeZone": "Asia/Sakhalin",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

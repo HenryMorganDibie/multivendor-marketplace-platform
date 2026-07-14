@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-SAR-SARATOV",
+    "countryCode": "RU",
+    "stateId": "RU-SAR",
+    "stateCode": "SAR",
+    "name": "Saratov",
+    "normalizedName": "saratov",
+    "slug": "SARATOV",
+    "locationType": "city",
+    "timeZone": "Europe/Saratov",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

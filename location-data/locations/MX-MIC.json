@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MX-MIC-MORELIA",
+    "countryCode": "MX",
+    "stateId": "MX-MIC",
+    "stateCode": "MIC",
+    "name": "Morelia",
+    "normalizedName": "morelia",
+    "slug": "MORELIA",
+    "locationType": "city",
+    "timeZone": "America/Mexico_City",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

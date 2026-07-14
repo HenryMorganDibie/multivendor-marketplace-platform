@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ID-JK-JAKARTA",
+    "countryCode": "ID",
+    "stateId": "ID-JK",
+    "stateCode": "JK",
+    "name": "Jakarta",
+    "normalizedName": "jakarta",
+    "slug": "JAKARTA",
+    "locationType": "city",
+    "timeZone": "Asia/Jakarta",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

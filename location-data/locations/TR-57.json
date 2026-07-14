@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-57-SINOP",
+    "countryCode": "TR",
+    "stateId": "TR-57",
+    "stateCode": "57",
+    "name": "Sinop",
+    "normalizedName": "sinop",
+    "slug": "SINOP",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

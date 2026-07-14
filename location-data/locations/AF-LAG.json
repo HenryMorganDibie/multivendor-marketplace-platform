@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-LAG-MIHTARLAM",
+    "countryCode": "AF",
+    "stateId": "AF-LAG",
+    "stateCode": "LAG",
+    "name": "Mihtarlam",
+    "normalizedName": "mihtarlam",
+    "slug": "MIHTARLAM",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

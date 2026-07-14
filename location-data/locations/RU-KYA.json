@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-KYA-KRASNOYARSK",
+    "countryCode": "RU",
+    "stateId": "RU-KYA",
+    "stateCode": "KYA",
+    "name": "Krasnoyarsk",
+    "normalizedName": "krasnoyarsk",
+    "slug": "KRASNOYARSK",
+    "locationType": "city",
+    "timeZone": "Asia/Krasnoyarsk",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

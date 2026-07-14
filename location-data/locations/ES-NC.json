@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ES-NC-PAMPLONA",
+    "countryCode": "ES",
+    "stateId": "ES-NC",
+    "stateCode": "NC",
+    "name": "Pamplona",
+    "normalizedName": "pamplona",
+    "slug": "PAMPLONA",
+    "locationType": "city",
+    "timeZone": "Europe/Madrid",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

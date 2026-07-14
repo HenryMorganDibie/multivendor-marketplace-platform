@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BR-AM-MANAUS",
+    "countryCode": "BR",
+    "stateId": "BR-AM",
+    "stateCode": "AM",
+    "name": "Manaus",
+    "normalizedName": "manaus",
+    "slug": "MANAUS",
+    "locationType": "city",
+    "timeZone": "America/Manaus",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

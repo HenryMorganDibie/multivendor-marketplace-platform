@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-18-CANKIRI",
+    "countryCode": "TR",
+    "stateId": "TR-18",
+    "stateCode": "18",
+    "name": "Cankiri",
+    "normalizedName": "cankiri",
+    "slug": "CANKIRI",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

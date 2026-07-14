@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-52-ORDU",
+    "countryCode": "TR",
+    "stateId": "TR-52",
+    "stateCode": "52",
+    "name": "Ordu",
+    "normalizedName": "ordu",
+    "slug": "ORDU",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

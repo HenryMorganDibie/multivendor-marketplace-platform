@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BR-PA-BELEM",
+    "countryCode": "BR",
+    "stateId": "BR-PA",
+    "stateCode": "PA",
+    "name": "Belem",
+    "normalizedName": "belem",
+    "slug": "BELEM",
+    "locationType": "city",
+    "timeZone": "America/Belem",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

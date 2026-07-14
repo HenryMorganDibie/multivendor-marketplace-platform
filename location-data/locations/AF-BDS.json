@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-BDS-FAYZABAD",
+    "countryCode": "AF",
+    "stateId": "AF-BDS",
+    "stateCode": "BDS",
+    "name": "Fayzabad",
+    "normalizedName": "fayzabad",
+    "slug": "FAYZABAD",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

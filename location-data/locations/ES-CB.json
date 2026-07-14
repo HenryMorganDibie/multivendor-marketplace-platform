@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ES-CB-SANTANDER",
+    "countryCode": "ES",
+    "stateId": "ES-CB",
+    "stateCode": "CB",
+    "name": "Santander",
+    "normalizedName": "santander",
+    "slug": "SANTANDER",
+    "locationType": "city",
+    "timeZone": "Europe/Madrid",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

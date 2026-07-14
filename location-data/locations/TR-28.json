@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-28-GIRESUN",
+    "countryCode": "TR",
+    "stateId": "TR-28",
+    "stateCode": "28",
+    "name": "Giresun",
+    "normalizedName": "giresun",
+    "slug": "GIRESUN",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

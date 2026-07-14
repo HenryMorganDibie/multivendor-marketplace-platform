@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BR-MG-BELO-HORIZONTE",
+    "countryCode": "BR",
+    "stateId": "BR-MG",
+    "stateCode": "MG",
+    "name": "Belo Horizonte",
+    "normalizedName": "belo horizonte",
+    "slug": "BELO-HORIZONTE",
+    "locationType": "city",
+    "timeZone": "America/Sao_Paulo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

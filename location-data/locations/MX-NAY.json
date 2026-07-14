@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MX-NAY-TEPIC",
+    "countryCode": "MX",
+    "stateId": "MX-NAY",
+    "stateCode": "NAY",
+    "name": "Tepic",
+    "normalizedName": "tepic",
+    "slug": "TEPIC",
+    "locationType": "city",
+    "timeZone": "America/Mazatlan",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

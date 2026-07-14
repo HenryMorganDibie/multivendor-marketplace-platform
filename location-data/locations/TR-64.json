@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-64-USAK",
+    "countryCode": "TR",
+    "stateId": "TR-64",
+    "stateCode": "64",
+    "name": "Usak",
+    "normalizedName": "usak",
+    "slug": "USAK",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

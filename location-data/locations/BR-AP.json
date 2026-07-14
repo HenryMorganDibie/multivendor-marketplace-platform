@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BR-AP-MACAPA",
+    "countryCode": "BR",
+    "stateId": "BR-AP",
+    "stateCode": "AP",
+    "name": "Macapa",
+    "normalizedName": "macapa",
+    "slug": "MACAPA",
+    "locationType": "city",
+    "timeZone": "America/Belem",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

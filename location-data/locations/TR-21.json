@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-21-DIYARBAKIR",
+    "countryCode": "TR",
+    "stateId": "TR-21",
+    "stateCode": "21",
+    "name": "Diyarbakir",
+    "normalizedName": "diyarbakir",
+    "slug": "DIYARBAKIR",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

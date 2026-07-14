@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BR-PE-RECIFE",
+    "countryCode": "BR",
+    "stateId": "BR-PE",
+    "stateCode": "PE",
+    "name": "Recife",
+    "normalizedName": "recife",
+    "slug": "RECIFE",
+    "locationType": "city",
+    "timeZone": "America/Recife",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

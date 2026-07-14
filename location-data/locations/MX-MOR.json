@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MX-MOR-CUERNAVACA",
+    "countryCode": "MX",
+    "stateId": "MX-MOR",
+    "stateCode": "MOR",
+    "name": "Cuernavaca",
+    "normalizedName": "cuernavaca",
+    "slug": "CUERNAVACA",
+    "locationType": "city",
+    "timeZone": "America/Mexico_City",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

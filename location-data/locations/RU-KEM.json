@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-KEM-KEMEROVO",
+    "countryCode": "RU",
+    "stateId": "RU-KEM",
+    "stateCode": "KEM",
+    "name": "Kemerovo",
+    "normalizedName": "kemerovo",
+    "slug": "KEMEROVO",
+    "locationType": "city",
+    "timeZone": "Asia/Novokuznetsk",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

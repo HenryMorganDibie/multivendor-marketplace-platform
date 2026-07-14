@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-KIR-KIROV",
+    "countryCode": "RU",
+    "stateId": "RU-KIR",
+    "stateCode": "KIR",
+    "name": "Kirov",
+    "normalizedName": "kirov",
+    "slug": "KIROV",
+    "locationType": "city",
+    "timeZone": "Europe/Kirov",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

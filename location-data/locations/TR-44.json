@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-44-MALATYA",
+    "countryCode": "TR",
+    "stateId": "TR-44",
+    "stateCode": "44",
+    "name": "Malatya",
+    "normalizedName": "malatya",
+    "slug": "MALATYA",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

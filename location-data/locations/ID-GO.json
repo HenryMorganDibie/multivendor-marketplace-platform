@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ID-GO-GORONTALO",
+    "countryCode": "ID",
+    "stateId": "ID-GO",
+    "stateCode": "GO",
+    "name": "Gorontalo",
+    "normalizedName": "gorontalo",
+    "slug": "GORONTALO",
+    "locationType": "city",
+    "timeZone": "Asia/Makassar",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

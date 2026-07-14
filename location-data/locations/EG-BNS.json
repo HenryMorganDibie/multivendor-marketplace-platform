@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "EG-BNS-BENI-SUEF",
+    "countryCode": "EG",
+    "stateId": "EG-BNS",
+    "stateCode": "BNS",
+    "name": "Beni Suef",
+    "normalizedName": "beni suef",
+    "slug": "BENI-SUEF",
+    "locationType": "city",
+    "timeZone": "Africa/Cairo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

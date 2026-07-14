@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ID-NT-KUPANG",
+    "countryCode": "ID",
+    "stateId": "ID-NT",
+    "stateCode": "NT",
+    "name": "Kupang",
+    "normalizedName": "kupang",
+    "slug": "KUPANG",
+    "locationType": "city",
+    "timeZone": "Asia/Makassar",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

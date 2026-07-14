@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-33-MERSIN",
+    "countryCode": "TR",
+    "stateId": "TR-33",
+    "stateCode": "33",
+    "name": "Mersin",
+    "normalizedName": "mersin",
+    "slug": "MERSIN",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

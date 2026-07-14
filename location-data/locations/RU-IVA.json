@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-IVA-IVANOVO",
+    "countryCode": "RU",
+    "stateId": "RU-IVA",
+    "stateCode": "IVA",
+    "name": "Ivanovo",
+    "normalizedName": "ivanovo",
+    "slug": "IVANOVO",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

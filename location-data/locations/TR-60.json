@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-60-TOKAT",
+    "countryCode": "TR",
+    "stateId": "TR-60",
+    "stateCode": "60",
+    "name": "Tokat",
+    "normalizedName": "tokat",
+    "slug": "TOKAT",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

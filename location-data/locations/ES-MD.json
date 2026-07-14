@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ES-MD-MADRID",
+    "countryCode": "ES",
+    "stateId": "ES-MD",
+    "stateCode": "MD",
+    "name": "Madrid",
+    "normalizedName": "madrid",
+    "slug": "MADRID",
+    "locationType": "city",
+    "timeZone": "Europe/Madrid",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

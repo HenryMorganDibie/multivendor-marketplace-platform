@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-URU-TARINKOT",
+    "countryCode": "AF",
+    "stateId": "AF-URU",
+    "stateCode": "URU",
+    "name": "Tarinkot",
+    "normalizedName": "tarinkot",
+    "slug": "TARINKOT",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

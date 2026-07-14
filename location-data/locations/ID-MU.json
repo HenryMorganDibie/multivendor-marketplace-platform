@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ID-MU-SOFIFI",
+    "countryCode": "ID",
+    "stateId": "ID-MU",
+    "stateCode": "MU",
+    "name": "Sofifi",
+    "normalizedName": "sofifi",
+    "slug": "SOFIFI",
+    "locationType": "city",
+    "timeZone": "Asia/Jayapura",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

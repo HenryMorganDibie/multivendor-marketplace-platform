@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-KOS-KOSTROMA",
+    "countryCode": "RU",
+    "stateId": "RU-KOS",
+    "stateCode": "KOS",
+    "name": "Kostroma",
+    "normalizedName": "kostroma",
+    "slug": "KOSTROMA",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

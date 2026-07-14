@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-AL-GORNO-ALTAYSK",
+    "countryCode": "RU",
+    "stateId": "RU-AL",
+    "stateCode": "AL",
+    "name": "Gorno-Altaysk",
+    "normalizedName": "gorno-altaysk",
+    "slug": "GORNO-ALTAYSK",
+    "locationType": "city",
+    "timeZone": "Asia/Barnaul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

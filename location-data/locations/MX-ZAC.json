@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MX-ZAC-ZACATECAS",
+    "countryCode": "MX",
+    "stateId": "MX-ZAC",
+    "stateCode": "ZAC",
+    "name": "Zacatecas",
+    "normalizedName": "zacatecas",
+    "slug": "ZACATECAS",
+    "locationType": "city",
+    "timeZone": "America/Mexico_City",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-BU-ULAN-UDE",
+    "countryCode": "RU",
+    "stateId": "RU-BU",
+    "stateCode": "BU",
+    "name": "Ulan-Ude",
+    "normalizedName": "ulan-ude",
+    "slug": "ULAN-UDE",
+    "locationType": "city",
+    "timeZone": "Asia/Irkutsk",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

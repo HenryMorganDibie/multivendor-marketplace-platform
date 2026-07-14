@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BR-RJ-RIO-DE-JANEIRO",
+    "countryCode": "BR",
+    "stateId": "BR-RJ",
+    "stateCode": "RJ",
+    "name": "Rio de Janeiro",
+    "normalizedName": "rio de janeiro",
+    "slug": "RIO-DE-JANEIRO",
+    "locationType": "city",
+    "timeZone": "America/Sao_Paulo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-VLG-VOLOGDA",
+    "countryCode": "RU",
+    "stateId": "RU-VLG",
+    "stateCode": "VLG",
+    "name": "Vologda",
+    "normalizedName": "vologda",
+    "slug": "VOLOGDA",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

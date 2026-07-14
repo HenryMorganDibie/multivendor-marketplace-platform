@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "EG-BH-DAMANHUR",
+    "countryCode": "EG",
+    "stateId": "EG-BH",
+    "stateCode": "BH",
+    "name": "Damanhur",
+    "normalizedName": "damanhur",
+    "slug": "DAMANHUR",
+    "locationType": "city",
+    "timeZone": "Africa/Cairo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

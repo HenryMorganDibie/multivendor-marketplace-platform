@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ID-PP-MERAUKE",
+    "countryCode": "ID",
+    "stateId": "ID-PP",
+    "stateCode": "PP",
+    "name": "Merauke",
+    "normalizedName": "merauke",
+    "slug": "MERAUKE",
+    "locationType": "city",
+    "timeZone": "Asia/Jayapura",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

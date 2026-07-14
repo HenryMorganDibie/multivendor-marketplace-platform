@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-69-BAYBURT",
+    "countryCode": "TR",
+    "stateId": "TR-69",
+    "stateCode": "69",
+    "name": "Bayburt",
+    "normalizedName": "bayburt",
+    "slug": "BAYBURT",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

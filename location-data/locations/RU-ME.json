@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-ME-YOSHKAR-OLA",
+    "countryCode": "RU",
+    "stateId": "RU-ME",
+    "stateCode": "ME",
+    "name": "Yoshkar-Ola",
+    "normalizedName": "yoshkar-ola",
+    "slug": "YOSHKAR-OLA",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

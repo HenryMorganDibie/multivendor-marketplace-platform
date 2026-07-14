@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-32-ISPARTA",
+    "countryCode": "TR",
+    "stateId": "TR-32",
+    "stateCode": "32",
+    "name": "Isparta",
+    "normalizedName": "isparta",
+    "slug": "ISPARTA",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

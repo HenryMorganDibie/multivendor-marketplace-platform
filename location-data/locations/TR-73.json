@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-73-SIRNAK",
+    "countryCode": "TR",
+    "stateId": "TR-73",
+    "stateCode": "73",
+    "name": "Sirnak",
+    "normalizedName": "sirnak",
+    "slug": "SIRNAK",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BR-PR-CURITIBA",
+    "countryCode": "BR",
+    "stateId": "BR-PR",
+    "stateCode": "PR",
+    "name": "Curitiba",
+    "normalizedName": "curitiba",
+    "slug": "CURITIBA",
+    "locationType": "city",
+    "timeZone": "America/Sao_Paulo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

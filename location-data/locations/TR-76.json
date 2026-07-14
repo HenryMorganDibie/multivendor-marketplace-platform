@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-76-IGDIR",
+    "countryCode": "TR",
+    "stateId": "TR-76",
+    "stateCode": "76",
+    "name": "Igdir",
+    "normalizedName": "igdir",
+    "slug": "IGDIR",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ID-PE-NABIRE",
+    "countryCode": "ID",
+    "stateId": "ID-PE",
+    "stateCode": "PE",
+    "name": "Nabire",
+    "normalizedName": "nabire",
+    "slug": "NABIRE",
+    "locationType": "city",
+    "timeZone": "Asia/Jayapura",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

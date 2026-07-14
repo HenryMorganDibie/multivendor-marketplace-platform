@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-KLU-KALUGA",
+    "countryCode": "RU",
+    "stateId": "RU-KLU",
+    "stateCode": "KLU",
+    "name": "Kaluga",
+    "normalizedName": "kaluga",
+    "slug": "KALUGA",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

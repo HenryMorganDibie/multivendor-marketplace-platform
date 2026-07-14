@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-MUR-MURMANSK",
+    "countryCode": "RU",
+    "stateId": "RU-MUR",
+    "stateCode": "MUR",
+    "name": "Murmansk",
+    "normalizedName": "murmansk",
+    "slug": "MURMANSK",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

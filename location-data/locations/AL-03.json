@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AL-03-DURRES",
+    "countryCode": "AL",
+    "stateId": "AL-03",
+    "stateCode": "03",
+    "name": "Durres",
+    "normalizedName": "durres",
+    "slug": "DURRES",
+    "locationType": "city",
+    "timeZone": "Europe/Tirane",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

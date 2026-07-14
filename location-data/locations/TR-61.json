@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-61-TRABZON",
+    "countryCode": "TR",
+    "stateId": "TR-61",
+    "stateCode": "61",
+    "name": "Trabzon",
+    "normalizedName": "trabzon",
+    "slug": "TRABZON",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-ZAB-CHITA",
+    "countryCode": "RU",
+    "stateId": "RU-ZAB",
+    "stateCode": "ZAB",
+    "name": "Chita",
+    "normalizedName": "chita",
+    "slug": "CHITA",
+    "locationType": "city",
+    "timeZone": "Asia/Chita",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-KRS-KURSK",
+    "countryCode": "RU",
+    "stateId": "RU-KRS",
+    "stateCode": "KRS",
+    "name": "Kursk",
+    "normalizedName": "kursk",
+    "slug": "KURSK",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

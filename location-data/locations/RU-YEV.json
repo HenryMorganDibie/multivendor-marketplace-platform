@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-YEV-BIROBIDZHAN",
+    "countryCode": "RU",
+    "stateId": "RU-YEV",
+    "stateCode": "YEV",
+    "name": "Birobidzhan",
+    "normalizedName": "birobidzhan",
+    "slug": "BIROBIDZHAN",
+    "locationType": "city",
+    "timeZone": "Asia/Vladivostok",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

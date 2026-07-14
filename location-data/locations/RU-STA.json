@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-STA-STAVROPOL",
+    "countryCode": "RU",
+    "stateId": "RU-STA",
+    "stateCode": "STA",
+    "name": "Stavropol",
+    "normalizedName": "stavropol",
+    "slug": "STAVROPOL",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-KAM-PETROPAVLOVSK-KAMCHATSKY",
+    "countryCode": "RU",
+    "stateId": "RU-KAM",
+    "stateCode": "KAM",
+    "name": "Petropavlovsk-Kamchatsky",
+    "normalizedName": "petropavlovsk-kamchatsky",
+    "slug": "PETROPAVLOVSK-KAMCHATSKY",
+    "locationType": "city",
+    "timeZone": "Asia/Kamchatka",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

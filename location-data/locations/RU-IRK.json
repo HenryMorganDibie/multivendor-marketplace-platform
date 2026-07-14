@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-IRK-IRKUTSK",
+    "countryCode": "RU",
+    "stateId": "RU-IRK",
+    "stateCode": "IRK",
+    "name": "Irkutsk",
+    "normalizedName": "irkutsk",
+    "slug": "IRKUTSK",
+    "locationType": "city",
+    "timeZone": "Asia/Irkutsk",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-35-IZMIR",
+    "countryCode": "TR",
+    "stateId": "TR-35",
+    "stateCode": "35",
+    "name": "Izmir",
+    "normalizedName": "izmir",
+    "slug": "IZMIR",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

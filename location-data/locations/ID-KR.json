@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ID-KR-TANJUNG-PINANG",
+    "countryCode": "ID",
+    "stateId": "ID-KR",
+    "stateCode": "KR",
+    "name": "Tanjung Pinang",
+    "normalizedName": "tanjung pinang",
+    "slug": "TANJUNG-PINANG",
+    "locationType": "city",
+    "timeZone": "Asia/Jakarta",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

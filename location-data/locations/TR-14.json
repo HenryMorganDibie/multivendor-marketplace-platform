@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-14-BOLU",
+    "countryCode": "TR",
+    "stateId": "TR-14",
+    "stateCode": "14",
+    "name": "Bolu",
+    "normalizedName": "bolu",
+    "slug": "BOLU",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

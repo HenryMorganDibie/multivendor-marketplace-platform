@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-KK-ABAKAN",
+    "countryCode": "RU",
+    "stateId": "RU-KK",
+    "stateCode": "KK",
+    "name": "Abakan",
+    "normalizedName": "abakan",
+    "slug": "ABAKAN",
+    "locationType": "city",
+    "timeZone": "Asia/Krasnoyarsk",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

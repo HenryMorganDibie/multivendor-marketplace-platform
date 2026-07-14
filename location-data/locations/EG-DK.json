@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "EG-DK-MANSOURA",
+    "countryCode": "EG",
+    "stateId": "EG-DK",
+    "stateCode": "DK",
+    "name": "Mansoura",
+    "normalizedName": "mansoura",
+    "slug": "MANSOURA",
+    "locationType": "city",
+    "timeZone": "Africa/Cairo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

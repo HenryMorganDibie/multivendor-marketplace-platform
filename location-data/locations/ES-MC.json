@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ES-MC-MURCIA",
+    "countryCode": "ES",
+    "stateId": "ES-MC",
+    "stateCode": "MC",
+    "name": "Murcia",
+    "normalizedName": "murcia",
+    "slug": "MURCIA",
+    "locationType": "city",
+    "timeZone": "Europe/Madrid",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

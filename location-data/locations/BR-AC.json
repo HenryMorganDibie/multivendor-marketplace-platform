@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BR-AC-RIO-BRANCO",
+    "countryCode": "BR",
+    "stateId": "BR-AC",
+    "stateCode": "AC",
+    "name": "Rio Branco",
+    "normalizedName": "rio branco",
+    "slug": "RIO-BRANCO",
+    "locationType": "city",
+    "timeZone": "America/Rio_Branco",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

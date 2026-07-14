@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-BAL-MAZAR-I-SHARIF",
+    "countryCode": "AF",
+    "stateId": "AF-BAL",
+    "stateCode": "BAL",
+    "name": "Mazar-i-Sharif",
+    "normalizedName": "mazar-i-sharif",
+    "slug": "MAZAR-I-SHARIF",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

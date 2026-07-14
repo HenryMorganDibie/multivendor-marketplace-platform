@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ID-KU-TANJUNG-SELOR",
+    "countryCode": "ID",
+    "stateId": "ID-KU",
+    "stateCode": "KU",
+    "name": "Tanjung Selor",
+    "normalizedName": "tanjung selor",
+    "slug": "TANJUNG-SELOR",
+    "locationType": "city",
+    "timeZone": "Asia/Makassar",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

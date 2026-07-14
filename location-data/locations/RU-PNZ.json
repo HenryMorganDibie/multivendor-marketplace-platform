@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-PNZ-PENZA",
+    "countryCode": "RU",
+    "stateId": "RU-PNZ",
+    "stateCode": "PNZ",
+    "name": "Penza",
+    "normalizedName": "penza",
+    "slug": "PENZA",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

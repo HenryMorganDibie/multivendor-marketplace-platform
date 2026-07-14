@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-NGR-VELIKY-NOVGOROD",
+    "countryCode": "RU",
+    "stateId": "RU-NGR",
+    "stateCode": "NGR",
+    "name": "Veliky Novgorod",
+    "normalizedName": "veliky novgorod",
+    "slug": "VELIKY-NOVGOROD",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-72-BATMAN",
+    "countryCode": "TR",
+    "stateId": "TR-72",
+    "stateCode": "72",
+    "name": "Batman",
+    "normalizedName": "batman",
+    "slug": "BATMAN",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

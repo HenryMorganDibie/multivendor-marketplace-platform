@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-TA-KAZAN",
+    "countryCode": "RU",
+    "stateId": "RU-TA",
+    "stateCode": "TA",
+    "name": "Kazan",
+    "normalizedName": "kazan",
+    "slug": "KAZAN",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

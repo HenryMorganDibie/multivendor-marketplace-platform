@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-SA-YAKUTSK",
+    "countryCode": "RU",
+    "stateId": "RU-SA",
+    "stateCode": "SA",
+    "name": "Yakutsk",
+    "normalizedName": "yakutsk",
+    "slug": "YAKUTSK",
+    "locationType": "city",
+    "timeZone": "Asia/Yakutsk",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

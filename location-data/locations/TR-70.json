@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-70-KARAMAN",
+    "countryCode": "TR",
+    "stateId": "TR-70",
+    "stateCode": "70",
+    "name": "Karaman",
+    "normalizedName": "karaman",
+    "slug": "KARAMAN",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

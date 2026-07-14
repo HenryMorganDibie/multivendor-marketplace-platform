@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BR-DF-BRASILIA",
+    "countryCode": "BR",
+    "stateId": "BR-DF",
+    "stateCode": "DF",
+    "name": "Brasilia",
+    "normalizedName": "brasilia",
+    "slug": "BRASILIA",
+    "locationType": "city",
+    "timeZone": "America/Sao_Paulo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

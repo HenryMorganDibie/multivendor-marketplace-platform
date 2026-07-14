@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-DAY-NILI",
+    "countryCode": "AF",
+    "stateId": "AF-DAY",
+    "stateCode": "DAY",
+    "name": "Nili",
+    "normalizedName": "nili",
+    "slug": "NILI",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

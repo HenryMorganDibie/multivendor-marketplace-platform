@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-AST-ASTRAKHAN",
+    "countryCode": "RU",
+    "stateId": "RU-AST",
+    "stateCode": "AST",
+    "name": "Astrakhan",
+    "normalizedName": "astrakhan",
+    "slug": "ASTRAKHAN",
+    "locationType": "city",
+    "timeZone": "Europe/Astrakhan",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

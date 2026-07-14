@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AL-05-FIER",
+    "countryCode": "AL",
+    "stateId": "AL-05",
+    "stateCode": "05",
+    "name": "Fier",
+    "normalizedName": "fier",
+    "slug": "FIER",
+    "locationType": "city",
+    "timeZone": "Europe/Tirane",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

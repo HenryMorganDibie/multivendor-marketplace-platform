@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ES-CL-VALLADOLID",
+    "countryCode": "ES",
+    "stateId": "ES-CL",
+    "stateCode": "CL",
+    "name": "Valladolid",
+    "normalizedName": "valladolid",
+    "slug": "VALLADOLID",
+    "locationType": "city",
+    "timeZone": "Europe/Madrid",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

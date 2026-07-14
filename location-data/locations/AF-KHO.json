@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-KHO-KHOST",
+    "countryCode": "AF",
+    "stateId": "AF-KHO",
+    "stateCode": "KHO",
+    "name": "Khost",
+    "normalizedName": "khost",
+    "slug": "KHOST",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

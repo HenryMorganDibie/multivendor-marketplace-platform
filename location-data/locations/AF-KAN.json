@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-KAN-KANDAHAR",
+    "countryCode": "AF",
+    "stateId": "AF-KAN",
+    "stateCode": "KAN",
+    "name": "Kandahar",
+    "normalizedName": "kandahar",
+    "slug": "KANDAHAR",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

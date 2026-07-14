@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BR-MT-CUIABA",
+    "countryCode": "BR",
+    "stateId": "BR-MT",
+    "stateCode": "MT",
+    "name": "Cuiaba",
+    "normalizedName": "cuiaba",
+    "slug": "CUIABA",
+    "locationType": "city",
+    "timeZone": "America/Cuiaba",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-FRA-FARAH",
+    "countryCode": "AF",
+    "stateId": "AF-FRA",
+    "stateCode": "FRA",
+    "name": "Farah",
+    "normalizedName": "farah",
+    "slug": "FARAH",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

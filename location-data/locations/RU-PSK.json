@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-PSK-PSKOV",
+    "countryCode": "RU",
+    "stateId": "RU-PSK",
+    "stateCode": "PSK",
+    "name": "Pskov",
+    "normalizedName": "pskov",
+    "slug": "PSKOV",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

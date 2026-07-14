@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "EG-JS-EL-TOR",
+    "countryCode": "EG",
+    "stateId": "EG-JS",
+    "stateCode": "JS",
+    "name": "El Tor",
+    "normalizedName": "el tor",
+    "slug": "EL-TOR",
+    "locationType": "city",
+    "timeZone": "Africa/Cairo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

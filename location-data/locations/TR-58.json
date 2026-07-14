@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-58-SIVAS",
+    "countryCode": "TR",
+    "stateId": "TR-58",
+    "stateCode": "58",
+    "name": "Sivas",
+    "normalizedName": "sivas",
+    "slug": "SIVAS",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ID-SA-MANADO",
+    "countryCode": "ID",
+    "stateId": "ID-SA",
+    "stateCode": "SA",
+    "name": "Manado",
+    "normalizedName": "manado",
+    "slug": "MANADO",
+    "locationType": "city",
+    "timeZone": "Asia/Makassar",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

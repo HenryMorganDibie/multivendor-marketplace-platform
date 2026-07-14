@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MX-SLP-SAN-LUIS-POTOSI",
+    "countryCode": "MX",
+    "stateId": "MX-SLP",
+    "stateCode": "SLP",
+    "name": "San Luis Potosi",
+    "normalizedName": "san luis potosi",
+    "slug": "SAN-LUIS-POTOSI",
+    "locationType": "city",
+    "timeZone": "America/Mexico_City",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

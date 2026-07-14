@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-DA-MAKHACHKALA",
+    "countryCode": "RU",
+    "stateId": "RU-DA",
+    "stateCode": "DA",
+    "name": "Makhachkala",
+    "normalizedName": "makhachkala",
+    "slug": "MAKHACHKALA",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ID-PA-JAYAPURA",
+    "countryCode": "ID",
+    "stateId": "ID-PA",
+    "stateCode": "PA",
+    "name": "Jayapura",
+    "normalizedName": "jayapura",
+    "slug": "JAYAPURA",
+    "locationType": "city",
+    "timeZone": "Asia/Jayapura",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

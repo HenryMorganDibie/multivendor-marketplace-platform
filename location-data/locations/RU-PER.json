@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-PER-PERM",
+    "countryCode": "RU",
+    "stateId": "RU-PER",
+    "stateCode": "PER",
+    "name": "Perm",
+    "normalizedName": "perm",
+    "slug": "PERM",
+    "locationType": "city",
+    "timeZone": "Asia/Yekaterinburg",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

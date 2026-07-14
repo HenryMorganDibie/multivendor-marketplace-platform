@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-50-NEVSEHIR",
+    "countryCode": "TR",
+    "stateId": "TR-50",
+    "stateCode": "50",
+    "name": "Nevsehir",
+    "normalizedName": "nevsehir",
+    "slug": "NEVSEHIR",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

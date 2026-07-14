@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-38-KAYSERI",
+    "countryCode": "TR",
+    "stateId": "TR-38",
+    "stateCode": "38",
+    "name": "Kayseri",
+    "normalizedName": "kayseri",
+    "slug": "KAYSERI",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

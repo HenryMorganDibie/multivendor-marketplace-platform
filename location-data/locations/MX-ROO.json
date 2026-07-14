@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MX-ROO-CHETUMAL",
+    "countryCode": "MX",
+    "stateId": "MX-ROO",
+    "stateCode": "ROO",
+    "name": "Chetumal",
+    "normalizedName": "chetumal",
+    "slug": "CHETUMAL",
+    "locationType": "city",
+    "timeZone": "America/Cancun",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-KDA-KRASNODAR",
+    "countryCode": "RU",
+    "stateId": "RU-KDA",
+    "stateCode": "KDA",
+    "name": "Krasnodar",
+    "normalizedName": "krasnodar",
+    "slug": "KRASNODAR",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

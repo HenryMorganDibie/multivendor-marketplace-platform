@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MX-MEX-TOLUCA",
+    "countryCode": "MX",
+    "stateId": "MX-MEX",
+    "stateCode": "MEX",
+    "name": "Toluca",
+    "normalizedName": "toluca",
+    "slug": "TOLUCA",
+    "locationType": "city",
+    "timeZone": "America/Mexico_City",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

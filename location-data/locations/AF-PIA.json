@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-PIA-GARDEZ",
+    "countryCode": "AF",
+    "stateId": "AF-PIA",
+    "stateCode": "PIA",
+    "name": "Gardez",
+    "normalizedName": "gardez",
+    "slug": "GARDEZ",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BR-BA-SALVADOR",
+    "countryCode": "BR",
+    "stateId": "BR-BA",
+    "stateCode": "BA",
+    "name": "Salvador",
+    "normalizedName": "salvador",
+    "slug": "SALVADOR",
+    "locationType": "city",
+    "timeZone": "America/Bahia",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

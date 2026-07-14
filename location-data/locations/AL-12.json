@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AL-12-VLORE",
+    "countryCode": "AL",
+    "stateId": "AL-12",
+    "stateCode": "12",
+    "name": "Vlore",
+    "normalizedName": "vlore",
+    "slug": "VLORE",
+    "locationType": "city",
+    "timeZone": "Europe/Tirane",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

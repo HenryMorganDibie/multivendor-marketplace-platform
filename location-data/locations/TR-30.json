@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-30-HAKKARI",
+    "countryCode": "TR",
+    "stateId": "TR-30",
+    "stateCode": "30",
+    "name": "Hakkari",
+    "normalizedName": "hakkari",
+    "slug": "HAKKARI",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

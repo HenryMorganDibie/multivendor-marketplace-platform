@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-CHU-ANADYR",
+    "countryCode": "RU",
+    "stateId": "RU-CHU",
+    "stateCode": "CHU",
+    "name": "Anadyr",
+    "normalizedName": "anadyr",
+    "slug": "ANADYR",
+    "locationType": "city",
+    "timeZone": "Asia/Anadyr",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

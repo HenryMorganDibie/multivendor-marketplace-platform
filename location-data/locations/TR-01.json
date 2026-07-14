@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-01-ADANA",
+    "countryCode": "TR",
+    "stateId": "TR-01",
+    "stateCode": "01",
+    "name": "Adana",
+    "normalizedName": "adana",
+    "slug": "ADANA",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

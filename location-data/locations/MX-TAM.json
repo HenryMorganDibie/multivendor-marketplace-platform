@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MX-TAM-CIUDAD-VICTORIA",
+    "countryCode": "MX",
+    "stateId": "MX-TAM",
+    "stateCode": "TAM",
+    "name": "Ciudad Victoria",
+    "normalizedName": "ciudad victoria",
+    "slug": "CIUDAD-VICTORIA",
+    "locationType": "city",
+    "timeZone": "America/Mexico_City",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

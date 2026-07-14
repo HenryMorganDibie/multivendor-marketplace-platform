@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-20-DENIZLI",
+    "countryCode": "TR",
+    "stateId": "TR-20",
+    "stateCode": "20",
+    "name": "Denizli",
+    "normalizedName": "denizli",
+    "slug": "DENIZLI",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

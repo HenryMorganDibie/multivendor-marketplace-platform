@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "EG-IS-ISMAILIA",
+    "countryCode": "EG",
+    "stateId": "EG-IS",
+    "stateCode": "IS",
+    "name": "Ismailia",
+    "normalizedName": "ismailia",
+    "slug": "ISMAILIA",
+    "locationType": "city",
+    "timeZone": "Africa/Cairo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

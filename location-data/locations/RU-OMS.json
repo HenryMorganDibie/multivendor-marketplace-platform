@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-OMS-OMSK",
+    "countryCode": "RU",
+    "stateId": "RU-OMS",
+    "stateCode": "OMS",
+    "name": "Omsk",
+    "normalizedName": "omsk",
+    "slug": "OMSK",
+    "locationType": "city",
+    "timeZone": "Asia/Omsk",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

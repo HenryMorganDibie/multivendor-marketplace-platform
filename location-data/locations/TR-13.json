@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-13-BITLIS",
+    "countryCode": "TR",
+    "stateId": "TR-13",
+    "stateCode": "13",
+    "name": "Bitlis",
+    "normalizedName": "bitlis",
+    "slug": "BITLIS",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

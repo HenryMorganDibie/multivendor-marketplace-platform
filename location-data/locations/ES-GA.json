@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ES-GA-SANTIAGO-DE-COMPOSTELA",
+    "countryCode": "ES",
+    "stateId": "ES-GA",
+    "stateCode": "GA",
+    "name": "Santiago de Compostela",
+    "normalizedName": "santiago de compostela",
+    "slug": "SANTIAGO-DE-COMPOSTELA",
+    "locationType": "city",
+    "timeZone": "Europe/Madrid",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

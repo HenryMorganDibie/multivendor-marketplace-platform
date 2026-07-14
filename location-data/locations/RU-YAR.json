@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-YAR-YAROSLAVL",
+    "countryCode": "RU",
+    "stateId": "RU-YAR",
+    "stateCode": "YAR",
+    "name": "Yaroslavl",
+    "normalizedName": "yaroslavl",
+    "slug": "YAROSLAVL",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

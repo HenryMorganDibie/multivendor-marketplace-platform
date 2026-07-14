@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MX-BCN-MEXICALI",
+    "countryCode": "MX",
+    "stateId": "MX-BCN",
+    "stateCode": "BCN",
+    "name": "Mexicali",
+    "normalizedName": "mexicali",
+    "slug": "MEXICALI",
+    "locationType": "city",
+    "timeZone": "America/Tijuana",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-CHE-CHELYABINSK",
+    "countryCode": "RU",
+    "stateId": "RU-CHE",
+    "stateCode": "CHE",
+    "name": "Chelyabinsk",
+    "normalizedName": "chelyabinsk",
+    "slug": "CHELYABINSK",
+    "locationType": "city",
+    "timeZone": "Asia/Yekaterinburg",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

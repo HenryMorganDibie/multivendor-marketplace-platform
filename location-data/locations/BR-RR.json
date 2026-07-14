@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BR-RR-BOA-VISTA",
+    "countryCode": "BR",
+    "stateId": "BR-RR",
+    "stateCode": "RR",
+    "name": "Boa Vista",
+    "normalizedName": "boa vista",
+    "slug": "BOA-VISTA",
+    "locationType": "city",
+    "timeZone": "America/Boa_Vista",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

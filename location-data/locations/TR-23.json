@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-23-ELAZIG",
+    "countryCode": "TR",
+    "stateId": "TR-23",
+    "stateCode": "23",
+    "name": "Elazig",
+    "normalizedName": "elazig",
+    "slug": "ELAZIG",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

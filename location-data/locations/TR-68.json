@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-68-AKSARAY",
+    "countryCode": "TR",
+    "stateId": "TR-68",
+    "stateCode": "68",
+    "name": "Aksaray",
+    "normalizedName": "aksaray",
+    "slug": "AKSARAY",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

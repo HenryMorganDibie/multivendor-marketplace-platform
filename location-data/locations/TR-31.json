@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-31-HATAY",
+    "countryCode": "TR",
+    "stateId": "TR-31",
+    "stateCode": "31",
+    "name": "Hatay",
+    "normalizedName": "hatay",
+    "slug": "HATAY",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-FYB-MAIMANA",
+    "countryCode": "AF",
+    "stateId": "AF-FYB",
+    "stateCode": "FYB",
+    "name": "Maimana",
+    "normalizedName": "maimana",
+    "slug": "MAIMANA",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

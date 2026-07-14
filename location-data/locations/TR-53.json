@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-53-RIZE",
+    "countryCode": "TR",
+    "stateId": "TR-53",
+    "stateCode": "53",
+    "name": "Rize",
+    "normalizedName": "rize",
+    "slug": "RIZE",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

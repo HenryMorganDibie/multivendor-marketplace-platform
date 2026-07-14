@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-71-KIRIKKALE",
+    "countryCode": "TR",
+    "stateId": "TR-71",
+    "stateCode": "71",
+    "name": "Kirikkale",
+    "normalizedName": "kirikkale",
+    "slug": "KIRIKKALE",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

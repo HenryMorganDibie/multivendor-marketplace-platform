@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-NVS-NOVOSIBIRSK",
+    "countryCode": "RU",
+    "stateId": "RU-NVS",
+    "stateCode": "NVS",
+    "name": "Novosibirsk",
+    "normalizedName": "novosibirsk",
+    "slug": "NOVOSIBIRSK",
+    "locationType": "city",
+    "timeZone": "Asia/Novosibirsk",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

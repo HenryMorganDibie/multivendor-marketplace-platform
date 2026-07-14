@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ID-ST-PALU",
+    "countryCode": "ID",
+    "stateId": "ID-ST",
+    "stateCode": "ST",
+    "name": "Palu",
+    "normalizedName": "palu",
+    "slug": "PALU",
+    "locationType": "city",
+    "timeZone": "Asia/Makassar",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-KAP-MAHMUD-I-RAQI",
+    "countryCode": "AF",
+    "stateId": "AF-KAP",
+    "stateCode": "KAP",
+    "name": "Mahmud-i-Raqi",
+    "normalizedName": "mahmud-i-raqi",
+    "slug": "MAHMUD-I-RAQI",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

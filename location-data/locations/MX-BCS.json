@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MX-BCS-LA-PAZ",
+    "countryCode": "MX",
+    "stateId": "MX-BCS",
+    "stateCode": "BCS",
+    "name": "La Paz",
+    "normalizedName": "la paz",
+    "slug": "LA-PAZ",
+    "locationType": "city",
+    "timeZone": "America/Mazatlan",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

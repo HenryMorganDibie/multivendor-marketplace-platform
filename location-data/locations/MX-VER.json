@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MX-VER-XALAPA",
+    "countryCode": "MX",
+    "stateId": "MX-VER",
+    "stateCode": "VER",
+    "name": "Xalapa",
+    "normalizedName": "xalapa",
+    "slug": "XALAPA",
+    "locationType": "city",
+    "timeZone": "America/Mexico_City",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

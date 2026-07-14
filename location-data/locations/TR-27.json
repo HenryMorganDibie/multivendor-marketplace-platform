@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-27-GAZIANTEP",
+    "countryCode": "TR",
+    "stateId": "TR-27",
+    "stateCode": "27",
+    "name": "Gaziantep",
+    "normalizedName": "gaziantep",
+    "slug": "GAZIANTEP",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

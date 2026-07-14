@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-PAN-BAZARAK",
+    "countryCode": "AF",
+    "stateId": "AF-PAN",
+    "stateCode": "PAN",
+    "name": "Bazarak",
+    "normalizedName": "bazarak",
+    "slug": "BAZARAK",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

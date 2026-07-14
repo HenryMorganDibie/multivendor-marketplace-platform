@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-BRY-BRYANSK",
+    "countryCode": "RU",
+    "stateId": "RU-BRY",
+    "stateCode": "BRY",
+    "name": "Bryansk",
+    "normalizedName": "bryansk",
+    "slug": "BRYANSK",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

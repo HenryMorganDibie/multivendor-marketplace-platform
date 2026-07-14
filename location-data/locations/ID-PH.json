@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ID-PH-WAMENA",
+    "countryCode": "ID",
+    "stateId": "ID-PH",
+    "stateCode": "PH",
+    "name": "Wamena",
+    "normalizedName": "wamena",
+    "slug": "WAMENA",
+    "locationType": "city",
+    "timeZone": "Asia/Jayapura",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

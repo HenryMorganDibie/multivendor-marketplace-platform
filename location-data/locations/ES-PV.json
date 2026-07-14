@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ES-PV-VITORIA-GASTEIZ",
+    "countryCode": "ES",
+    "stateId": "ES-PV",
+    "stateCode": "PV",
+    "name": "Vitoria-Gasteiz",
+    "normalizedName": "vitoria-gasteiz",
+    "slug": "VITORIA-GASTEIZ",
+    "locationType": "city",
+    "timeZone": "Europe/Madrid",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

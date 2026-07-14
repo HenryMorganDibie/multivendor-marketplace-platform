@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MX-DUR-DURANGO",
+    "countryCode": "MX",
+    "stateId": "MX-DUR",
+    "stateCode": "DUR",
+    "name": "Durango",
+    "normalizedName": "durango",
+    "slug": "DURANGO",
+    "locationType": "city",
+    "timeZone": "America/Mexico_City",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

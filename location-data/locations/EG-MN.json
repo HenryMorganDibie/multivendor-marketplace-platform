@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "EG-MN-MINYA",
+    "countryCode": "EG",
+    "stateId": "EG-MN",
+    "stateCode": "MN",
+    "name": "Minya",
+    "normalizedName": "minya",
+    "slug": "MINYA",
+    "locationType": "city",
+    "timeZone": "Africa/Cairo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

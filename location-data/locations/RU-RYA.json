@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-RYA-RYAZAN",
+    "countryCode": "RU",
+    "stateId": "RU-RYA",
+    "stateCode": "RYA",
+    "name": "Ryazan",
+    "normalizedName": "ryazan",
+    "slug": "RYAZAN",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

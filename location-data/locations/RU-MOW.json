@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-MOW-MOSCOW",
+    "countryCode": "RU",
+    "stateId": "RU-MOW",
+    "stateCode": "MOW",
+    "name": "Moscow",
+    "normalizedName": "moscow",
+    "slug": "MOSCOW",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

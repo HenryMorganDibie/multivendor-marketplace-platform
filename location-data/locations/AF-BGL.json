@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-BGL-PULI-KHUMRI",
+    "countryCode": "AF",
+    "stateId": "AF-BGL",
+    "stateCode": "BGL",
+    "name": "Puli Khumri",
+    "normalizedName": "puli khumri",
+    "slug": "PULI-KHUMRI",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

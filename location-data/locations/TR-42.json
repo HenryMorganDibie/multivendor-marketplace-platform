@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-42-KONYA",
+    "countryCode": "TR",
+    "stateId": "TR-42",
+    "stateCode": "42",
+    "name": "Konya",
+    "normalizedName": "konya",
+    "slug": "KONYA",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

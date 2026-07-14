@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-78-KARABUK",
+    "countryCode": "TR",
+    "stateId": "TR-78",
+    "stateCode": "78",
+    "name": "Karabuk",
+    "normalizedName": "karabuk",
+    "slug": "KARABUK",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

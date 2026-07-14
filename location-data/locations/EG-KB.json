@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "EG-KB-BANHA",
+    "countryCode": "EG",
+    "stateId": "EG-KB",
+    "stateCode": "KB",
+    "name": "Banha",
+    "normalizedName": "banha",
+    "slug": "BANHA",
+    "locationType": "city",
+    "timeZone": "Africa/Cairo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

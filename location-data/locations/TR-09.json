@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-09-AYDIN",
+    "countryCode": "TR",
+    "stateId": "TR-09",
+    "stateCode": "09",
+    "name": "Aydin",
+    "normalizedName": "aydin",
+    "slug": "AYDIN",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-16-BURSA",
+    "countryCode": "TR",
+    "stateId": "TR-16",
+    "stateCode": "16",
+    "name": "Bursa",
+    "normalizedName": "bursa",
+    "slug": "BURSA",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

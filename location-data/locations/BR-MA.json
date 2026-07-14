@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BR-MA-SAO-LUIS",
+    "countryCode": "BR",
+    "stateId": "BR-MA",
+    "stateCode": "MA",
+    "name": "Sao Luis",
+    "normalizedName": "sao luis",
+    "slug": "SAO-LUIS",
+    "locationType": "city",
+    "timeZone": "America/Fortaleza",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

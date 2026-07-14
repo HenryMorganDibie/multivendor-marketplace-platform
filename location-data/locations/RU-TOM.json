@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-TOM-TOMSK",
+    "countryCode": "RU",
+    "stateId": "RU-TOM",
+    "stateCode": "TOM",
+    "name": "Tomsk",
+    "normalizedName": "tomsk",
+    "slug": "TOMSK",
+    "locationType": "city",
+    "timeZone": "Asia/Tomsk",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

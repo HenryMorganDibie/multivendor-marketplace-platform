@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-34-ISTANBUL",
+    "countryCode": "TR",
+    "stateId": "TR-34",
+    "stateCode": "34",
+    "name": "Istanbul",
+    "normalizedName": "istanbul",
+    "slug": "ISTANBUL",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

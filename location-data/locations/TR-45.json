@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-45-MANISA",
+    "countryCode": "TR",
+    "stateId": "TR-45",
+    "stateCode": "45",
+    "name": "Manisa",
+    "normalizedName": "manisa",
+    "slug": "MANISA",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

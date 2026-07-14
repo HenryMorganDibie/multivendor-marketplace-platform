@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-PRI-VLADIVOSTOK",
+    "countryCode": "RU",
+    "stateId": "RU-PRI",
+    "stateCode": "PRI",
+    "name": "Vladivostok",
+    "normalizedName": "vladivostok",
+    "slug": "VLADIVOSTOK",
+    "locationType": "city",
+    "timeZone": "Asia/Vladivostok",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-11-BILECIK",
+    "countryCode": "TR",
+    "stateId": "TR-11",
+    "stateCode": "11",
+    "name": "Bilecik",
+    "normalizedName": "bilecik",
+    "slug": "BILECIK",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

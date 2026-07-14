@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-12-BINGOL",
+    "countryCode": "TR",
+    "stateId": "TR-12",
+    "stateCode": "12",
+    "name": "Bingol",
+    "normalizedName": "bingol",
+    "slug": "BINGOL",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

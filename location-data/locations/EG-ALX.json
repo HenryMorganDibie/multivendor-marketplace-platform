@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "EG-ALX-ALEXANDRIA",
+    "countryCode": "EG",
+    "stateId": "EG-ALX",
+    "stateCode": "ALX",
+    "name": "Alexandria",
+    "normalizedName": "alexandria",
+    "slug": "ALEXANDRIA",
+    "locationType": "city",
+    "timeZone": "Africa/Cairo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-KHM-KHANTY-MANSIYSK",
+    "countryCode": "RU",
+    "stateId": "RU-KHM",
+    "stateCode": "KHM",
+    "name": "Khanty-Mansiysk",
+    "normalizedName": "khanty-mansiysk",
+    "slug": "KHANTY-MANSIYSK",
+    "locationType": "city",
+    "timeZone": "Asia/Yekaterinburg",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

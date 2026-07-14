@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-ROS-ROSTOV-ON-DON",
+    "countryCode": "RU",
+    "stateId": "RU-ROS",
+    "stateCode": "ROS",
+    "name": "Rostov-on-Don",
+    "normalizedName": "rostov-on-don",
+    "slug": "ROSTOV-ON-DON",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

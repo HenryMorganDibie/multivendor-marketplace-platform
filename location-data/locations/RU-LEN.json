@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-LEN-GATCHINA",
+    "countryCode": "RU",
+    "stateId": "RU-LEN",
+    "stateCode": "LEN",
+    "name": "Gatchina",
+    "normalizedName": "gatchina",
+    "slug": "GATCHINA",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

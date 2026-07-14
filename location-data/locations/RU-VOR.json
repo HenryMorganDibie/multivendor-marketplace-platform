@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-VOR-VORONEZH",
+    "countryCode": "RU",
+    "stateId": "RU-VOR",
+    "stateCode": "VOR",
+    "name": "Voronezh",
+    "normalizedName": "voronezh",
+    "slug": "VORONEZH",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

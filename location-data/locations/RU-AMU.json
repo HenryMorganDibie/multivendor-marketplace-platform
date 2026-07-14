@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-AMU-BLAGOVESHCHENSK",
+    "countryCode": "RU",
+    "stateId": "RU-AMU",
+    "stateCode": "AMU",
+    "name": "Blagoveshchensk",
+    "normalizedName": "blagoveshchensk",
+    "slug": "BLAGOVESHCHENSK",
+    "locationType": "city",
+    "timeZone": "Asia/Yakutsk",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-WAR-MAIDAN-SHAHR",
+    "countryCode": "AF",
+    "stateId": "AF-WAR",
+    "stateCode": "WAR",
+    "name": "Maidan Shahr",
+    "normalizedName": "maidan shahr",
+    "slug": "MAIDAN-SHAHR",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

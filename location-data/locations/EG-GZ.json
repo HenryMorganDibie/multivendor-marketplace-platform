@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "EG-GZ-GIZA",
+    "countryCode": "EG",
+    "stateId": "EG-GZ",
+    "stateCode": "GZ",
+    "name": "Giza",
+    "normalizedName": "giza",
+    "slug": "GIZA",
+    "locationType": "city",
+    "timeZone": "Africa/Cairo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

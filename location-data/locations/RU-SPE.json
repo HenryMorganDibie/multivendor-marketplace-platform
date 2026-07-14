@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-SPE-SAINT-PETERSBURG",
+    "countryCode": "RU",
+    "stateId": "RU-SPE",
+    "stateCode": "SPE",
+    "name": "Saint Petersburg",
+    "normalizedName": "saint petersburg",
+    "slug": "SAINT-PETERSBURG",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

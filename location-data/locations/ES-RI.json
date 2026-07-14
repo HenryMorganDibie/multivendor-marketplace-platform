@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ES-RI-LOGRONO",
+    "countryCode": "ES",
+    "stateId": "ES-RI",
+    "stateCode": "RI",
+    "name": "Logrono",
+    "normalizedName": "logrono",
+    "slug": "LOGRONO",
+    "locationType": "city",
+    "timeZone": "Europe/Madrid",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

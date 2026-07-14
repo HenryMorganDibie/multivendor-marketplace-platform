@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-MAG-MAGADAN",
+    "countryCode": "RU",
+    "stateId": "RU-MAG",
+    "stateCode": "MAG",
+    "name": "Magadan",
+    "normalizedName": "magadan",
+    "slug": "MAGADAN",
+    "locationType": "city",
+    "timeZone": "Asia/Magadan",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

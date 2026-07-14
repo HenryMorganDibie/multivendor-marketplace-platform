@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-02-ADIYAMAN",
+    "countryCode": "TR",
+    "stateId": "TR-02",
+    "stateCode": "02",
+    "name": "Adiyaman",
+    "normalizedName": "adiyaman",
+    "slug": "ADIYAMAN",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

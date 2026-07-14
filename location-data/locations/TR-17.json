@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-17-CANAKKALE",
+    "countryCode": "TR",
+    "stateId": "TR-17",
+    "stateCode": "17",
+    "name": "Canakkale",
+    "normalizedName": "canakkale",
+    "slug": "CANAKKALE",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

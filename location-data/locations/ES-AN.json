@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ES-AN-SEVILLE",
+    "countryCode": "ES",
+    "stateId": "ES-AN",
+    "stateCode": "AN",
+    "name": "Seville",
+    "normalizedName": "seville",
+    "slug": "SEVILLE",
+    "locationType": "city",
+    "timeZone": "Europe/Madrid",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

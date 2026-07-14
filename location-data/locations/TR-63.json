@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-63-SANLIURFA",
+    "countryCode": "TR",
+    "stateId": "TR-63",
+    "stateCode": "63",
+    "name": "Sanliurfa",
+    "normalizedName": "sanliurfa",
+    "slug": "SANLIURFA",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MX-TAB-VILLAHERMOSA",
+    "countryCode": "MX",
+    "stateId": "MX-TAB",
+    "stateCode": "TAB",
+    "name": "Villahermosa",
+    "normalizedName": "villahermosa",
+    "slug": "VILLAHERMOSA",
+    "locationType": "city",
+    "timeZone": "America/Mexico_City",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

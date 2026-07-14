@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-24-ERZINCAN",
+    "countryCode": "TR",
+    "stateId": "TR-24",
+    "stateCode": "24",
+    "name": "Erzincan",
+    "normalizedName": "erzincan",
+    "slug": "ERZINCAN",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

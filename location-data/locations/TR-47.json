@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-47-MARDIN",
+    "countryCode": "TR",
+    "stateId": "TR-47",
+    "stateCode": "47",
+    "name": "Mardin",
+    "normalizedName": "mardin",
+    "slug": "MARDIN",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

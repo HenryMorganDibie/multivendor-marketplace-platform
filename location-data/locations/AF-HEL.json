@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-HEL-LASHKAR-GAH",
+    "countryCode": "AF",
+    "stateId": "AF-HEL",
+    "stateCode": "HEL",
+    "name": "Lashkar Gah",
+    "normalizedName": "lashkar gah",
+    "slug": "LASHKAR-GAH",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

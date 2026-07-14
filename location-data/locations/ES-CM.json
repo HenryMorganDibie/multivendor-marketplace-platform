@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ES-CM-TOLEDO",
+    "countryCode": "ES",
+    "stateId": "ES-CM",
+    "stateCode": "CM",
+    "name": "Toledo",
+    "normalizedName": "toledo",
+    "slug": "TOLEDO",
+    "locationType": "city",
+    "timeZone": "Europe/Madrid",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

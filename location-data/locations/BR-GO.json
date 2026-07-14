@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BR-GO-GOIANIA",
+    "countryCode": "BR",
+    "stateId": "BR-GO",
+    "stateCode": "GO",
+    "name": "Goiania",
+    "normalizedName": "goiania",
+    "slug": "GOIANIA",
+    "locationType": "city",
+    "timeZone": "America/Sao_Paulo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

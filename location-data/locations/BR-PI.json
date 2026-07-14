@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BR-PI-TERESINA",
+    "countryCode": "BR",
+    "stateId": "BR-PI",
+    "stateCode": "PI",
+    "name": "Teresina",
+    "normalizedName": "teresina",
+    "slug": "TERESINA",
+    "locationType": "city",
+    "timeZone": "America/Fortaleza",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

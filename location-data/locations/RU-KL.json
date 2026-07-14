@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-KL-ELISTA",
+    "countryCode": "RU",
+    "stateId": "RU-KL",
+    "stateCode": "KL",
+    "name": "Elista",
+    "normalizedName": "elista",
+    "slug": "ELISTA",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

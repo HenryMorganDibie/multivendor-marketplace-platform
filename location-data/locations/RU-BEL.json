@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-BEL-BELGOROD",
+    "countryCode": "RU",
+    "stateId": "RU-BEL",
+    "stateCode": "BEL",
+    "name": "Belgorod",
+    "normalizedName": "belgorod",
+    "slug": "BELGOROD",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

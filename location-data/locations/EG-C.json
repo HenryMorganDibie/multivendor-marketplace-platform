@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "EG-C-CAIRO",
+    "countryCode": "EG",
+    "stateId": "EG-C",
+    "stateCode": "C",
+    "name": "Cairo",
+    "normalizedName": "cairo",
+    "slug": "CAIRO",
+    "locationType": "city",
+    "timeZone": "Africa/Cairo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

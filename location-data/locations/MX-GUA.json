@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MX-GUA-GUANAJUATO",
+    "countryCode": "MX",
+    "stateId": "MX-GUA",
+    "stateCode": "GUA",
+    "name": "Guanajuato",
+    "normalizedName": "guanajuato",
+    "slug": "GUANAJUATO",
+    "locationType": "city",
+    "timeZone": "America/Mexico_City",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

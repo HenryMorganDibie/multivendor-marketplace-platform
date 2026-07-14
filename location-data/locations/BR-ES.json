@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BR-ES-VITORIA",
+    "countryCode": "BR",
+    "stateId": "BR-ES",
+    "stateCode": "ES",
+    "name": "Vitoria",
+    "normalizedName": "vitoria",
+    "slug": "VITORIA",
+    "locationType": "city",
+    "timeZone": "America/Sao_Paulo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

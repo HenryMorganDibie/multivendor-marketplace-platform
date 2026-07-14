@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-TY-KYZYL",
+    "countryCode": "RU",
+    "stateId": "RU-TY",
+    "stateCode": "TY",
+    "name": "Kyzyl",
+    "normalizedName": "kyzyl",
+    "slug": "KYZYL",
+    "locationType": "city",
+    "timeZone": "Asia/Krasnoyarsk",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

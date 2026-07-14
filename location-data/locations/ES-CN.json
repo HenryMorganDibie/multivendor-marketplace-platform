@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ES-CN-LAS-PALMAS-DE-GRAN-CANARIA",
+    "countryCode": "ES",
+    "stateId": "ES-CN",
+    "stateCode": "CN",
+    "name": "Las Palmas de Gran Canaria",
+    "normalizedName": "las palmas de gran canaria",
+    "slug": "LAS-PALMAS-DE-GRAN-CANARIA",
+    "locationType": "city",
+    "timeZone": "Atlantic/Canary",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

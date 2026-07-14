@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "EG-PTS-PORT-SAID",
+    "countryCode": "EG",
+    "stateId": "EG-PTS",
+    "stateCode": "PTS",
+    "name": "Port Said",
+    "normalizedName": "port said",
+    "slug": "PORT-SAID",
+    "locationType": "city",
+    "timeZone": "Africa/Cairo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

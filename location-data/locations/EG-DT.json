@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "EG-DT-DAMIETTA",
+    "countryCode": "EG",
+    "stateId": "EG-DT",
+    "stateCode": "DT",
+    "name": "Damietta",
+    "normalizedName": "damietta",
+    "slug": "DAMIETTA",
+    "locationType": "city",
+    "timeZone": "Africa/Cairo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

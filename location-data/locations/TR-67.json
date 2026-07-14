@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-67-ZONGULDAK",
+    "countryCode": "TR",
+    "stateId": "TR-67",
+    "stateCode": "67",
+    "name": "Zonguldak",
+    "normalizedName": "zonguldak",
+    "slug": "ZONGULDAK",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-SVR-YEKATERINBURG",
+    "countryCode": "RU",
+    "stateId": "RU-SVR",
+    "stateCode": "SVR",
+    "name": "Yekaterinburg",
+    "normalizedName": "yekaterinburg",
+    "slug": "YEKATERINBURG",
+    "locationType": "city",
+    "timeZone": "Asia/Yekaterinburg",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

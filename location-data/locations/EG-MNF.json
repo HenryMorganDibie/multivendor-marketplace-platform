@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "EG-MNF-SHIBIN-EL-KOM",
+    "countryCode": "EG",
+    "stateId": "EG-MNF",
+    "stateCode": "MNF",
+    "name": "Shibin El Kom",
+    "normalizedName": "shibin el kom",
+    "slug": "SHIBIN-EL-KOM",
+    "locationType": "city",
+    "timeZone": "Africa/Cairo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

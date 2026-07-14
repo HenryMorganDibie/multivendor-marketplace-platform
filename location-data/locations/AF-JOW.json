@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-JOW-SHEBERGHAN",
+    "countryCode": "AF",
+    "stateId": "AF-JOW",
+    "stateCode": "JOW",
+    "name": "Sheberghan",
+    "normalizedName": "sheberghan",
+    "slug": "SHEBERGHAN",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

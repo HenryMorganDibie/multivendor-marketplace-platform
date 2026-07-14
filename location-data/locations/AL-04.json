@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AL-04-ELBASAN",
+    "countryCode": "AL",
+    "stateId": "AL-04",
+    "stateCode": "04",
+    "name": "Elbasan",
+    "normalizedName": "elbasan",
+    "slug": "ELBASAN",
+    "locationType": "city",
+    "timeZone": "Europe/Tirane",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

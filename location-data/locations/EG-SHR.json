@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "EG-SHR-ZAGAZIG",
+    "countryCode": "EG",
+    "stateId": "EG-SHR",
+    "stateCode": "SHR",
+    "name": "Zagazig",
+    "normalizedName": "zagazig",
+    "slug": "ZAGAZIG",
+    "locationType": "city",
+    "timeZone": "Africa/Cairo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

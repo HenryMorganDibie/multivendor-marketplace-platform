@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BR-RS-PORTO-ALEGRE",
+    "countryCode": "BR",
+    "stateId": "BR-RS",
+    "stateCode": "RS",
+    "name": "Porto Alegre",
+    "normalizedName": "porto alegre",
+    "slug": "PORTO-ALEGRE",
+    "locationType": "city",
+    "timeZone": "America/Sao_Paulo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

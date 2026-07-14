@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ES-VC-VALENCIA",
+    "countryCode": "ES",
+    "stateId": "ES-VC",
+    "stateCode": "VC",
+    "name": "Valencia",
+    "normalizedName": "valencia",
+    "slug": "VALENCIA",
+    "locationType": "city",
+    "timeZone": "Europe/Madrid",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

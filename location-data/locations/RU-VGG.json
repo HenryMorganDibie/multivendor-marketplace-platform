@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-VGG-VOLGOGRAD",
+    "countryCode": "RU",
+    "stateId": "RU-VGG",
+    "stateCode": "VGG",
+    "name": "Volgograd",
+    "normalizedName": "volgograd",
+    "slug": "VOLGOGRAD",
+    "locationType": "city",
+    "timeZone": "Europe/Volgograd",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

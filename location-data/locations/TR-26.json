@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-26-ESKISEHIR",
+    "countryCode": "TR",
+    "stateId": "TR-26",
+    "stateCode": "26",
+    "name": "Eskisehir",
+    "normalizedName": "eskisehir",
+    "slug": "ESKISEHIR",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

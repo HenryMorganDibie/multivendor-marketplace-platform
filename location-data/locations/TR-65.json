@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-65-VAN",
+    "countryCode": "TR",
+    "stateId": "TR-65",
+    "stateCode": "65",
+    "name": "Van",
+    "normalizedName": "van",
+    "slug": "VAN",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

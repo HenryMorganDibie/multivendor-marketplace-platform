@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "EG-MT-MERSA-MATRUH",
+    "countryCode": "EG",
+    "stateId": "EG-MT",
+    "stateCode": "MT",
+    "name": "Mersa Matruh",
+    "normalizedName": "mersa matruh",
+    "slug": "MERSA-MATRUH",
+    "locationType": "city",
+    "timeZone": "Africa/Cairo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

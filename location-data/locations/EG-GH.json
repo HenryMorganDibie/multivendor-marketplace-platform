@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "EG-GH-TANTA",
+    "countryCode": "EG",
+    "stateId": "EG-GH",
+    "stateCode": "GH",
+    "name": "Tanta",
+    "normalizedName": "tanta",
+    "slug": "TANTA",
+    "locationType": "city",
+    "timeZone": "Africa/Cairo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

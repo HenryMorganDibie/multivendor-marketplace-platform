@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-CU-CHEBOKSARY",
+    "countryCode": "RU",
+    "stateId": "RU-CU",
+    "stateCode": "CU",
+    "name": "Cheboksary",
+    "normalizedName": "cheboksary",
+    "slug": "CHEBOKSARY",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

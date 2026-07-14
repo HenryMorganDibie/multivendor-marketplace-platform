@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BR-RN-NATAL",
+    "countryCode": "BR",
+    "stateId": "BR-RN",
+    "stateCode": "RN",
+    "name": "Natal",
+    "normalizedName": "natal",
+    "slug": "NATAL",
+    "locationType": "city",
+    "timeZone": "America/Fortaleza",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

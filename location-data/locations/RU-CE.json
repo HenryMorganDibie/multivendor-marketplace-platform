@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-CE-GROZNY",
+    "countryCode": "RU",
+    "stateId": "RU-CE",
+    "stateCode": "CE",
+    "name": "Grozny",
+    "normalizedName": "grozny",
+    "slug": "GROZNY",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

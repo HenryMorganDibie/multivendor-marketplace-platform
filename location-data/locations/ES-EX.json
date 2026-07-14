@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ES-EX-MERIDA",
+    "countryCode": "ES",
+    "stateId": "ES-EX",
+    "stateCode": "EX",
+    "name": "Merida",
+    "normalizedName": "merida",
+    "slug": "MERIDA",
+    "locationType": "city",
+    "timeZone": "Europe/Madrid",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MX-GRO-CHILPANCINGO",
+    "countryCode": "MX",
+    "stateId": "MX-GRO",
+    "stateCode": "GRO",
+    "name": "Chilpancingo",
+    "normalizedName": "chilpancingo",
+    "slug": "CHILPANCINGO",
+    "locationType": "city",
+    "timeZone": "America/Mexico_City",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

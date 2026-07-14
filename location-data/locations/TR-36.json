@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-36-KARS",
+    "countryCode": "TR",
+    "stateId": "TR-36",
+    "stateCode": "36",
+    "name": "Kars",
+    "normalizedName": "kars",
+    "slug": "KARS",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

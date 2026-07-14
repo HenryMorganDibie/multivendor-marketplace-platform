@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-MO-SARANSK",
+    "countryCode": "RU",
+    "stateId": "RU-MO",
+    "stateCode": "MO",
+    "name": "Saransk",
+    "normalizedName": "saransk",
+    "slug": "SARANSK",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

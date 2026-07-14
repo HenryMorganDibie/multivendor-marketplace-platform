@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-LOG-PUL-I-ALAM",
+    "countryCode": "AF",
+    "stateId": "AF-LOG",
+    "stateCode": "LOG",
+    "name": "Pul-i-Alam",
+    "normalizedName": "pul-i-alam",
+    "slug": "PUL-I-ALAM",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

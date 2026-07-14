@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-HER-HERAT",
+    "countryCode": "AF",
+    "stateId": "AF-HER",
+    "stateCode": "HER",
+    "name": "Herat",
+    "normalizedName": "herat",
+    "slug": "HERAT",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

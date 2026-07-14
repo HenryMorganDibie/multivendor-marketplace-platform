@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-54-SAKARYA",
+    "countryCode": "TR",
+    "stateId": "TR-54",
+    "stateCode": "54",
+    "name": "Sakarya",
+    "normalizedName": "sakarya",
+    "slug": "SAKARYA",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MX-PUE-PUEBLA",
+    "countryCode": "MX",
+    "stateId": "MX-PUE",
+    "stateCode": "PUE",
+    "name": "Puebla",
+    "normalizedName": "puebla",
+    "slug": "PUEBLA",
+    "locationType": "city",
+    "timeZone": "America/Mexico_City",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

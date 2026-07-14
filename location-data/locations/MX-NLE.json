@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MX-NLE-MONTERREY",
+    "countryCode": "MX",
+    "stateId": "MX-NLE",
+    "stateCode": "NLE",
+    "name": "Monterrey",
+    "normalizedName": "monterrey",
+    "slug": "MONTERREY",
+    "locationType": "city",
+    "timeZone": "America/Mexico_City",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

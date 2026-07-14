@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BR-SE-ARACAJU",
+    "countryCode": "BR",
+    "stateId": "BR-SE",
+    "stateCode": "SE",
+    "name": "Aracaju",
+    "normalizedName": "aracaju",
+    "slug": "ARACAJU",
+    "locationType": "city",
+    "timeZone": "America/Maceio",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

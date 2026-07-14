@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MX-CHH-CHIHUAHUA",
+    "countryCode": "MX",
+    "stateId": "MX-CHH",
+    "stateCode": "CHH",
+    "name": "Chihuahua",
+    "normalizedName": "chihuahua",
+    "slug": "CHIHUAHUA",
+    "locationType": "city",
+    "timeZone": "America/Chihuahua",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

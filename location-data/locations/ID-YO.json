@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ID-YO-YOGYAKARTA",
+    "countryCode": "ID",
+    "stateId": "ID-YO",
+    "stateCode": "YO",
+    "name": "Yogyakarta",
+    "normalizedName": "yogyakarta",
+    "slug": "YOGYAKARTA",
+    "locationType": "city",
+    "timeZone": "Asia/Jakarta",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

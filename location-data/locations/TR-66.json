@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-66-YOZGAT",
+    "countryCode": "TR",
+    "stateId": "TR-66",
+    "stateCode": "66",
+    "name": "Yozgat",
+    "normalizedName": "yozgat",
+    "slug": "YOZGAT",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

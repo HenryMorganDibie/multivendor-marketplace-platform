@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-22-EDIRNE",
+    "countryCode": "TR",
+    "stateId": "TR-22",
+    "stateCode": "22",
+    "name": "Edirne",
+    "normalizedName": "edirne",
+    "slug": "EDIRNE",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

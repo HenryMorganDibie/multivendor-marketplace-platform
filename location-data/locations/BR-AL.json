@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BR-AL-MACEIO",
+    "countryCode": "BR",
+    "stateId": "BR-AL",
+    "stateCode": "AL",
+    "name": "Maceio",
+    "normalizedName": "maceio",
+    "slug": "MACEIO",
+    "locationType": "city",
+    "timeZone": "America/Maceio",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

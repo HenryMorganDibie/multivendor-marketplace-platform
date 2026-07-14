@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-NUR-PARUN",
+    "countryCode": "AF",
+    "stateId": "AF-NUR",
+    "stateCode": "NUR",
+    "name": "Parun",
+    "normalizedName": "parun",
+    "slug": "PARUN",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

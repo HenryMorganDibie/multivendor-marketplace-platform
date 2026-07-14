@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "EG-BA-HURGHADA",
+    "countryCode": "EG",
+    "stateId": "EG-BA",
+    "stateCode": "BA",
+    "name": "Hurghada",
+    "normalizedName": "hurghada",
+    "slug": "HURGHADA",
+    "locationType": "city",
+    "timeZone": "Africa/Cairo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

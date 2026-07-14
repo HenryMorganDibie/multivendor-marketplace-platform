@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "EG-AST-ASYUT",
+    "countryCode": "EG",
+    "stateId": "EG-AST",
+    "stateCode": "AST",
+    "name": "Asyut",
+    "normalizedName": "asyut",
+    "slug": "ASYUT",
+    "locationType": "city",
+    "timeZone": "Africa/Cairo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

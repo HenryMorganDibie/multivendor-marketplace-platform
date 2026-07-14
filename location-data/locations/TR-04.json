@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-04-AGRI",
+    "countryCode": "TR",
+    "stateId": "TR-04",
+    "stateCode": "04",
+    "name": "Agri",
+    "normalizedName": "agri",
+    "slug": "AGRI",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

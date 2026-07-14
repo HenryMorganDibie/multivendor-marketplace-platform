@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-SME-SMOLENSK",
+    "countryCode": "RU",
+    "stateId": "RU-SME",
+    "stateCode": "SME",
+    "name": "Smolensk",
+    "normalizedName": "smolensk",
+    "slug": "SMOLENSK",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

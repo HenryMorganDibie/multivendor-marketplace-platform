@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BR-CE-FORTALEZA",
+    "countryCode": "BR",
+    "stateId": "BR-CE",
+    "stateCode": "CE",
+    "name": "Fortaleza",
+    "normalizedName": "fortaleza",
+    "slug": "FORTALEZA",
+    "locationType": "city",
+    "timeZone": "America/Fortaleza",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MX-CAM-CAMPECHE",
+    "countryCode": "MX",
+    "stateId": "MX-CAM",
+    "stateCode": "CAM",
+    "name": "Campeche",
+    "normalizedName": "campeche",
+    "slug": "CAMPECHE",
+    "locationType": "city",
+    "timeZone": "America/Mexico_City",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

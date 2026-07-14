@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-19-CORUM",
+    "countryCode": "TR",
+    "stateId": "TR-19",
+    "stateCode": "19",
+    "name": "Corum",
+    "normalizedName": "corum",
+    "slug": "CORUM",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

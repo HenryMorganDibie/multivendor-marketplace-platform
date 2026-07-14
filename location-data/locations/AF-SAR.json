@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-SAR-SAR-E-POL",
+    "countryCode": "AF",
+    "stateId": "AF-SAR",
+    "stateCode": "SAR",
+    "name": "Sar-e Pol",
+    "normalizedName": "sar-e pol",
+    "slug": "SAR-E-POL",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-ULY-ULYANOVSK",
+    "countryCode": "RU",
+    "stateId": "RU-ULY",
+    "stateCode": "ULY",
+    "name": "Ulyanovsk",
+    "normalizedName": "ulyanovsk",
+    "slug": "ULYANOVSK",
+    "locationType": "city",
+    "timeZone": "Europe/Ulyanovsk",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

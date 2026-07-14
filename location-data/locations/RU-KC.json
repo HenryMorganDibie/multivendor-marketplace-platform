@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-KC-CHERKESSK",
+    "countryCode": "RU",
+    "stateId": "RU-KC",
+    "stateCode": "KC",
+    "name": "Cherkessk",
+    "normalizedName": "cherkessk",
+    "slug": "CHERKESSK",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

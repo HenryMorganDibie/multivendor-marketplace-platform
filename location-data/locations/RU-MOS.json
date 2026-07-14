@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-MOS-KRASNOGORSK",
+    "countryCode": "RU",
+    "stateId": "RU-MOS",
+    "stateCode": "MOS",
+    "name": "Krasnogorsk",
+    "normalizedName": "krasnogorsk",
+    "slug": "KRASNOGORSK",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BR-PB-JOAO-PESSOA",
+    "countryCode": "BR",
+    "stateId": "BR-PB",
+    "stateCode": "PB",
+    "name": "Joao Pessoa",
+    "normalizedName": "joao pessoa",
+    "slug": "JOAO-PESSOA",
+    "locationType": "city",
+    "timeZone": "America/Fortaleza",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

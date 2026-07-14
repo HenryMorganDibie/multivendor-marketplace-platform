@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-56-SIIRT",
+    "countryCode": "TR",
+    "stateId": "TR-56",
+    "stateCode": "56",
+    "name": "Siirt",
+    "normalizedName": "siirt",
+    "slug": "SIIRT",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

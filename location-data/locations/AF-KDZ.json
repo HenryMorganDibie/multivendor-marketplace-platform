@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-KDZ-KUNDUZ",
+    "countryCode": "AF",
+    "stateId": "AF-KDZ",
+    "stateCode": "KDZ",
+    "name": "Kunduz",
+    "normalizedName": "kunduz",
+    "slug": "KUNDUZ",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

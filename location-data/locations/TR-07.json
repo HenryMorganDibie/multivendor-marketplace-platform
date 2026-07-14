@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-07-ANTALYA",
+    "countryCode": "TR",
+    "stateId": "TR-07",
+    "stateCode": "07",
+    "name": "Antalya",
+    "normalizedName": "antalya",
+    "slug": "ANTALYA",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

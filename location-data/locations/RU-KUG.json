@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-KUG-KURGAN",
+    "countryCode": "RU",
+    "stateId": "RU-KUG",
+    "stateCode": "KUG",
+    "name": "Kurgan",
+    "normalizedName": "kurgan",
+    "slug": "KURGAN",
+    "locationType": "city",
+    "timeZone": "Asia/Yekaterinburg",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

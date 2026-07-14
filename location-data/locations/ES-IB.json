@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ES-IB-PALMA",
+    "countryCode": "ES",
+    "stateId": "ES-IB",
+    "stateCode": "IB",
+    "name": "Palma",
+    "normalizedName": "palma",
+    "slug": "PALMA",
+    "locationType": "city",
+    "timeZone": "Europe/Madrid",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-79-KILIS",
+    "countryCode": "TR",
+    "stateId": "TR-79",
+    "stateCode": "79",
+    "name": "Kilis",
+    "normalizedName": "kilis",
+    "slug": "KILIS",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

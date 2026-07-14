@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-ORL-ORYOL",
+    "countryCode": "RU",
+    "stateId": "RU-ORL",
+    "stateCode": "ORL",
+    "name": "Oryol",
+    "normalizedName": "oryol",
+    "slug": "ORYOL",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

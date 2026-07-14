@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ES-AS-OVIEDO",
+    "countryCode": "ES",
+    "stateId": "ES-AS",
+    "stateCode": "AS",
+    "name": "Oviedo",
+    "normalizedName": "oviedo",
+    "slug": "OVIEDO",
+    "locationType": "city",
+    "timeZone": "Europe/Madrid",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-ZAB-QALAT",
+    "countryCode": "AF",
+    "stateId": "AF-ZAB",
+    "stateCode": "ZAB",
+    "name": "Qalat",
+    "normalizedName": "qalat",
+    "slug": "QALAT",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

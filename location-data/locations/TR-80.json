@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-80-OSMANIYE",
+    "countryCode": "TR",
+    "stateId": "TR-80",
+    "stateCode": "80",
+    "name": "Osmaniye",
+    "normalizedName": "osmaniye",
+    "slug": "OSMANIYE",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-LIP-LIPETSK",
+    "countryCode": "RU",
+    "stateId": "RU-LIP",
+    "stateCode": "LIP",
+    "name": "Lipetsk",
+    "normalizedName": "lipetsk",
+    "slug": "LIPETSK",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

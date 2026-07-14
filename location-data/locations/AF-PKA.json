@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-PKA-SHARANA",
+    "countryCode": "AF",
+    "stateId": "AF-PKA",
+    "stateCode": "PKA",
+    "name": "Sharana",
+    "normalizedName": "sharana",
+    "slug": "SHARANA",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

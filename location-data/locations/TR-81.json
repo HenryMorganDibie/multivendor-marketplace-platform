@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-81-DUZCE",
+    "countryCode": "TR",
+    "stateId": "TR-81",
+    "stateCode": "81",
+    "name": "Duzce",
+    "normalizedName": "duzce",
+    "slug": "DUZCE",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

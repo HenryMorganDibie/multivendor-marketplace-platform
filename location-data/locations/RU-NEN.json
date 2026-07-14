@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-NEN-NARYAN-MAR",
+    "countryCode": "RU",
+    "stateId": "RU-NEN",
+    "stateCode": "NEN",
+    "name": "Naryan-Mar",
+    "normalizedName": "naryan-mar",
+    "slug": "NARYAN-MAR",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

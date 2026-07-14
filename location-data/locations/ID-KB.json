@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ID-KB-PONTIANAK",
+    "countryCode": "ID",
+    "stateId": "ID-KB",
+    "stateCode": "KB",
+    "name": "Pontianak",
+    "normalizedName": "pontianak",
+    "slug": "PONTIANAK",
+    "locationType": "city",
+    "timeZone": "Asia/Jakarta",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-41-KOCAELI",
+    "countryCode": "TR",
+    "stateId": "TR-41",
+    "stateCode": "41",
+    "name": "Kocaeli",
+    "normalizedName": "kocaeli",
+    "slug": "KOCAELI",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

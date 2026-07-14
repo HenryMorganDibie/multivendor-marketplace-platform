@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-KB-NALCHIK",
+    "countryCode": "RU",
+    "stateId": "RU-KB",
+    "stateCode": "KB",
+    "name": "Nalchik",
+    "normalizedName": "nalchik",
+    "slug": "NALCHIK",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

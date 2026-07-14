@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ID-KI-SAMARINDA",
+    "countryCode": "ID",
+    "stateId": "ID-KI",
+    "stateCode": "KI",
+    "name": "Samarinda",
+    "normalizedName": "samarinda",
+    "slug": "SAMARINDA",
+    "locationType": "city",
+    "timeZone": "Asia/Makassar",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

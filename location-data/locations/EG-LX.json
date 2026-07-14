@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "EG-LX-LUXOR",
+    "countryCode": "EG",
+    "stateId": "EG-LX",
+    "stateCode": "LX",
+    "name": "Luxor",
+    "normalizedName": "luxor",
+    "slug": "LUXOR",
+    "locationType": "city",
+    "timeZone": "Africa/Cairo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MX-JAL-GUADALAJARA",
+    "countryCode": "MX",
+    "stateId": "MX-JAL",
+    "stateCode": "JAL",
+    "name": "Guadalajara",
+    "normalizedName": "guadalajara",
+    "slug": "GUADALAJARA",
+    "locationType": "city",
+    "timeZone": "America/Mexico_City",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

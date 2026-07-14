@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-77-YALOVA",
+    "countryCode": "TR",
+    "stateId": "TR-77",
+    "stateCode": "77",
+    "name": "Yalova",
+    "normalizedName": "yalova",
+    "slug": "YALOVA",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

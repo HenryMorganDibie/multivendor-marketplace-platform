@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MX-CHP-TUXTLA-GUTIERREZ",
+    "countryCode": "MX",
+    "stateId": "MX-CHP",
+    "stateCode": "CHP",
+    "name": "Tuxtla Gutierrez",
+    "normalizedName": "tuxtla gutierrez",
+    "slug": "TUXTLA-GUTIERREZ",
+    "locationType": "city",
+    "timeZone": "America/Mexico_City",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

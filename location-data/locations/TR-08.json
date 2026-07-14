@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-08-ARTVIN",
+    "countryCode": "TR",
+    "stateId": "TR-08",
+    "stateCode": "08",
+    "name": "Artvin",
+    "normalizedName": "artvin",
+    "slug": "ARTVIN",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

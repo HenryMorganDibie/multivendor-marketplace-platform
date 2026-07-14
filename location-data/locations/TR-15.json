@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-15-BURDUR",
+    "countryCode": "TR",
+    "stateId": "TR-15",
+    "stateCode": "15",
+    "name": "Burdur",
+    "normalizedName": "burdur",
+    "slug": "BURDUR",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

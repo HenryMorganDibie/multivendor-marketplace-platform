@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-KGD-KALININGRAD",
+    "countryCode": "RU",
+    "stateId": "RU-KGD",
+    "stateCode": "KGD",
+    "name": "Kaliningrad",
+    "normalizedName": "kaliningrad",
+    "slug": "KALININGRAD",
+    "locationType": "city",
+    "timeZone": "Europe/Kaliningrad",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

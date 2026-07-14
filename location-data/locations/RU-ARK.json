@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-ARK-ARKHANGELSK",
+    "countryCode": "RU",
+    "stateId": "RU-ARK",
+    "stateCode": "ARK",
+    "name": "Arkhangelsk",
+    "normalizedName": "arkhangelsk",
+    "slug": "ARKHANGELSK",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

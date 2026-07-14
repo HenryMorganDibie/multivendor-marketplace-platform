@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-TYU-TYUMEN",
+    "countryCode": "RU",
+    "stateId": "RU-TYU",
+    "stateCode": "TYU",
+    "name": "Tyumen",
+    "normalizedName": "tyumen",
+    "slug": "TYUMEN",
+    "locationType": "city",
+    "timeZone": "Asia/Yekaterinburg",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

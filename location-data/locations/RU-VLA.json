@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-VLA-VLADIMIR",
+    "countryCode": "RU",
+    "stateId": "RU-VLA",
+    "stateCode": "VLA",
+    "name": "Vladimir",
+    "normalizedName": "vladimir",
+    "slug": "VLADIMIR",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

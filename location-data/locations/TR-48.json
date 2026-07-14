@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-48-MUGLA",
+    "countryCode": "TR",
+    "stateId": "TR-48",
+    "stateCode": "48",
+    "name": "Mugla",
+    "normalizedName": "mugla",
+    "slug": "MUGLA",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

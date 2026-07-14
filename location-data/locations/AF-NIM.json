@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-NIM-ZARANJ",
+    "countryCode": "AF",
+    "stateId": "AF-NIM",
+    "stateCode": "NIM",
+    "name": "Zaranj",
+    "normalizedName": "zaranj",
+    "slug": "ZARANJ",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

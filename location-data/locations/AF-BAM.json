@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-BAM-BAMYAN",
+    "countryCode": "AF",
+    "stateId": "AF-BAM",
+    "stateCode": "BAM",
+    "name": "Bamyan",
+    "normalizedName": "bamyan",
+    "slug": "BAMYAN",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

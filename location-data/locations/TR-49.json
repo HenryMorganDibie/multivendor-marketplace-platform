@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-49-MUS",
+    "countryCode": "TR",
+    "stateId": "TR-49",
+    "stateCode": "49",
+    "name": "Mus",
+    "normalizedName": "mus",
+    "slug": "MUS",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MX-HID-PACHUCA",
+    "countryCode": "MX",
+    "stateId": "MX-HID",
+    "stateCode": "HID",
+    "name": "Pachuca",
+    "normalizedName": "pachuca",
+    "slug": "PACHUCA",
+    "locationType": "city",
+    "timeZone": "America/Mexico_City",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

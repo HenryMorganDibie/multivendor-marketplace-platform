@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-59-TEKIRDAG",
+    "countryCode": "TR",
+    "stateId": "TR-59",
+    "stateCode": "59",
+    "name": "Tekirdag",
+    "normalizedName": "tekirdag",
+    "slug": "TEKIRDAG",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

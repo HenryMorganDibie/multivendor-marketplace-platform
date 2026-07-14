@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ID-PD-SORONG",
+    "countryCode": "ID",
+    "stateId": "ID-PD",
+    "stateCode": "PD",
+    "name": "Sorong",
+    "normalizedName": "sorong",
+    "slug": "SORONG",
+    "locationType": "city",
+    "timeZone": "Asia/Jayapura",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "EG-SHG-SOHAG",
+    "countryCode": "EG",
+    "stateId": "EG-SHG",
+    "stateCode": "SHG",
+    "name": "Sohag",
+    "normalizedName": "sohag",
+    "slug": "SOHAG",
+    "locationType": "city",
+    "timeZone": "Africa/Cairo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

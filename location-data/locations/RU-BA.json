@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-BA-UFA",
+    "countryCode": "RU",
+    "stateId": "RU-BA",
+    "stateCode": "BA",
+    "name": "Ufa",
+    "normalizedName": "ufa",
+    "slug": "UFA",
+    "locationType": "city",
+    "timeZone": "Asia/Yekaterinburg",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

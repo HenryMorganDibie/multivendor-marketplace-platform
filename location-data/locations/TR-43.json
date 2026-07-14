@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-43-KUTAHYA",
+    "countryCode": "TR",
+    "stateId": "TR-43",
+    "stateCode": "43",
+    "name": "Kutahya",
+    "normalizedName": "kutahya",
+    "slug": "KUTAHYA",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

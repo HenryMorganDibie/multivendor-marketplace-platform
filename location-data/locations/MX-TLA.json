@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MX-TLA-TLAXCALA",
+    "countryCode": "MX",
+    "stateId": "MX-TLA",
+    "stateCode": "TLA",
+    "name": "Tlaxcala",
+    "normalizedName": "tlaxcala",
+    "slug": "TLAXCALA",
+    "locationType": "city",
+    "timeZone": "America/Mexico_City",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "EG-WAD-KHARGA",
+    "countryCode": "EG",
+    "stateId": "EG-WAD",
+    "stateCode": "WAD",
+    "name": "Kharga",
+    "normalizedName": "kharga",
+    "slug": "KHARGA",
+    "locationType": "city",
+    "timeZone": "Africa/Cairo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

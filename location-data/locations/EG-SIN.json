@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "EG-SIN-ARISH",
+    "countryCode": "EG",
+    "stateId": "EG-SIN",
+    "stateCode": "SIN",
+    "name": "Arish",
+    "normalizedName": "arish",
+    "slug": "ARISH",
+    "locationType": "city",
+    "timeZone": "Africa/Cairo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

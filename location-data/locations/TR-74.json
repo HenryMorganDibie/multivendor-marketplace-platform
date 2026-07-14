@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-74-BARTIN",
+    "countryCode": "TR",
+    "stateId": "TR-74",
+    "stateCode": "74",
+    "name": "Bartin",
+    "normalizedName": "bartin",
+    "slug": "BARTIN",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

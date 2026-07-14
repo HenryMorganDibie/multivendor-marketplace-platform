@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "EG-FYM-FAIYUM",
+    "countryCode": "EG",
+    "stateId": "EG-FYM",
+    "stateCode": "FYM",
+    "name": "Faiyum",
+    "normalizedName": "faiyum",
+    "slug": "FAIYUM",
+    "locationType": "city",
+    "timeZone": "Africa/Cairo",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

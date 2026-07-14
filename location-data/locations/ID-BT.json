@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ID-BT-SERANG",
+    "countryCode": "ID",
+    "stateId": "ID-BT",
+    "stateCode": "BT",
+    "name": "Serang",
+    "normalizedName": "serang",
+    "slug": "SERANG",
+    "locationType": "city",
+    "timeZone": "Asia/Jakarta",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

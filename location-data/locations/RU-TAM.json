@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-TAM-TAMBOV",
+    "countryCode": "RU",
+    "stateId": "RU-TAM",
+    "stateCode": "TAM",
+    "name": "Tambov",
+    "normalizedName": "tambov",
+    "slug": "TAMBOV",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

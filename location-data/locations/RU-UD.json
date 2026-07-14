@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-UD-IZHEVSK",
+    "countryCode": "RU",
+    "stateId": "RU-UD",
+    "stateCode": "UD",
+    "name": "Izhevsk",
+    "normalizedName": "izhevsk",
+    "slug": "IZHEVSK",
+    "locationType": "city",
+    "timeZone": "Europe/Samara",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

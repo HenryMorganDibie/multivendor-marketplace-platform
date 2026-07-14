@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ID-SR-MAMUJU",
+    "countryCode": "ID",
+    "stateId": "ID-SR",
+    "stateCode": "SR",
+    "name": "Mamuju",
+    "normalizedName": "mamuju",
+    "slug": "MAMUJU",
+    "locationType": "city",
+    "timeZone": "Asia/Makassar",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

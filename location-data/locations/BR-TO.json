@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "BR-TO-PALMAS",
+    "countryCode": "BR",
+    "stateId": "BR-TO",
+    "stateCode": "TO",
+    "name": "Palmas",
+    "normalizedName": "palmas",
+    "slug": "PALMAS",
+    "locationType": "city",
+    "timeZone": "America/Araguaina",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-SAM-AYBAK",
+    "countryCode": "AF",
+    "stateId": "AF-SAM",
+    "stateCode": "SAM",
+    "name": "Aybak",
+    "normalizedName": "aybak",
+    "slug": "AYBAK",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

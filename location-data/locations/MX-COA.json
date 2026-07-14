@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MX-COA-SALTILLO",
+    "countryCode": "MX",
+    "stateId": "MX-COA",
+    "stateCode": "COA",
+    "name": "Saltillo",
+    "normalizedName": "saltillo",
+    "slug": "SALTILLO",
+    "locationType": "city",
+    "timeZone": "America/Mexico_City",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

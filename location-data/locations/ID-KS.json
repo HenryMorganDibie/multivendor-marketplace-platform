@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ID-KS-BANJARMASIN",
+    "countryCode": "ID",
+    "stateId": "ID-KS",
+    "stateCode": "KS",
+    "name": "Banjarmasin",
+    "normalizedName": "banjarmasin",
+    "slug": "BANJARMASIN",
+    "locationType": "city",
+    "timeZone": "Asia/Makassar",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

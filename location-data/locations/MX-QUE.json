@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "MX-QUE-QUERETARO",
+    "countryCode": "MX",
+    "stateId": "MX-QUE",
+    "stateCode": "QUE",
+    "name": "Queretaro",
+    "normalizedName": "queretaro",
+    "slug": "QUERETARO",
+    "locationType": "city",
+    "timeZone": "America/Mexico_City",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

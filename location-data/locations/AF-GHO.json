@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AF-GHO-CHAGHCHARAN",
+    "countryCode": "AF",
+    "stateId": "AF-GHO",
+    "stateCode": "GHO",
+    "name": "Chaghcharan",
+    "normalizedName": "chaghcharan",
+    "slug": "CHAGHCHARAN",
+    "locationType": "city",
+    "timeZone": "Asia/Kabul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

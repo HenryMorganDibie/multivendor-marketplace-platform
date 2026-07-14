@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AL-08-KUKES",
+    "countryCode": "AL",
+    "stateId": "AL-08",
+    "stateCode": "08",
+    "name": "Kukes",
+    "normalizedName": "kukes",
+    "slug": "KUKES",
+    "locationType": "city",
+    "timeZone": "Europe/Tirane",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

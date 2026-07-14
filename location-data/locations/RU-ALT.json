@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-ALT-BARNAUL",
+    "countryCode": "RU",
+    "stateId": "RU-ALT",
+    "stateCode": "ALT",
+    "name": "Barnaul",
+    "normalizedName": "barnaul",
+    "slug": "BARNAUL",
+    "locationType": "city",
+    "timeZone": "Asia/Barnaul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

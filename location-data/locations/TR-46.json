@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-46-KAHRAMANMARAS",
+    "countryCode": "TR",
+    "stateId": "TR-46",
+    "stateCode": "46",
+    "name": "Kahramanmaras",
+    "normalizedName": "kahramanmaras",
+    "slug": "KAHRAMANMARAS",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

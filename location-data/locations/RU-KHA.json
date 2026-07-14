@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-KHA-KHABAROVSK",
+    "countryCode": "RU",
+    "stateId": "RU-KHA",
+    "stateCode": "KHA",
+    "name": "Khabarovsk",
+    "normalizedName": "khabarovsk",
+    "slug": "KHABAROVSK",
+    "locationType": "city",
+    "timeZone": "Asia/Vladivostok",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

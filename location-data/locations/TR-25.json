@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "TR-25-ERZURUM",
+    "countryCode": "TR",
+    "stateId": "TR-25",
+    "stateCode": "25",
+    "name": "Erzurum",
+    "normalizedName": "erzurum",
+    "slug": "ERZURUM",
+    "locationType": "city",
+    "timeZone": "Europe/Istanbul",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

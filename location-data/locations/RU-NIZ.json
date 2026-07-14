@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-NIZ-NIZHNY-NOVGOROD",
+    "countryCode": "RU",
+    "stateId": "RU-NIZ",
+    "stateCode": "NIZ",
+    "name": "Nizhny Novgorod",
+    "normalizedName": "nizhny novgorod",
+    "slug": "NIZHNY-NOVGOROD",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

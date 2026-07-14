@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-TVE-TVER",
+    "countryCode": "RU",
+    "stateId": "RU-TVE",
+    "stateCode": "TVE",
+    "name": "Tver",
+    "normalizedName": "tver",
+    "slug": "TVER",
+    "locationType": "city",
+    "timeZone": "Europe/Moscow",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

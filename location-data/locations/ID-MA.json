@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ID-MA-AMBON",
+    "countryCode": "ID",
+    "stateId": "ID-MA",
+    "stateCode": "MA",
+    "name": "Ambon",
+    "normalizedName": "ambon",
+    "slug": "AMBON",
+    "locationType": "city",
+    "timeZone": "Asia/Jayapura",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "AL-11-TIRANA",
+    "countryCode": "AL",
+    "stateId": "AL-11",
+    "stateCode": "11",
+    "name": "Tirana",
+    "normalizedName": "tirana",
+    "slug": "TIRANA",
+    "locationType": "city",
+    "timeZone": "Europe/Tirane",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

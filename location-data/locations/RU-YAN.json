@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "RU-YAN-SALEKHARD",
+    "countryCode": "RU",
+    "stateId": "RU-YAN",
+    "stateCode": "YAN",
+    "name": "Salekhard",
+    "normalizedName": "salekhard",
+    "slug": "SALEKHARD",
+    "locationType": "city",
+    "timeZone": "Asia/Yekaterinburg",
+    "status": "active",
+    "sortOrder": 1
+  }
+]

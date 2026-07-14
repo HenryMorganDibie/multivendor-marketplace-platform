@@ -1,0 +1,15 @@
+[
+  {
+    "locationId": "ES-AR-ZARAGOZA",
+    "countryCode": "ES",
+    "stateId": "ES-AR",
+    "stateCode": "AR",
+    "name": "Zaragoza",
+    "normalizedName": "zaragoza",
+    "slug": "ZARAGOZA",
+    "locationType": "city",
+    "timeZone": "Europe/Madrid",
+    "status": "active",
+    "sortOrder": 1
+  }
+]
