@@ -25,12 +25,16 @@ function getStripeSecret(): string {
 }
 
 /**
- * createFlutterwaveCheckout — Flutterwave as a second Nigeria-capable
- * provider alongside Paystack (Provider Abstraction Contract). Exists so
- * a Paystack account issue never blocks a vendor from subscribing —
- * having a second provider ready from day one, rather than discovering
- * weeks in that the first one has a problem, was the explicit reason for
- * building this now rather than after Paystack was already in production.
+ * createFlutterwaveCheckout — Flutterwave as a second provider alongside
+ * Paystack (Provider Abstraction Contract). Originally built as a
+ * Nigeria-only fallback so a Paystack account issue never blocks a vendor
+ * from subscribing, but the currency charged is now read from
+ * subscriptionPricing/{countryCode} rather than hardcoded to NGN, so any
+ * country with an active Flutterwave entry in providerPlanMapping can use
+ * this — not just Nigeria. In practice Flutterwave still only covers
+ * African markets in reality (it is not a global processor the way Stripe
+ * is), so providerPlanMapping entries for it should only be added for
+ * countries Flutterwave actually supports.
  *
  * Rate limited: 5/60s per vendor, same as createSubscriptionCheckout.
  */
@@ -52,7 +56,7 @@ export const createFlutterwaveCheckout = https.onCall(async (request) => {
 
   const vendorSnap = await db.collection("vendors").doc(vendorId).get();
   const countryCode = (vendorSnap.data()?.countryCode as string | undefined) ?? "";
-  await requireActiveCountryPricing(countryCode);
+  const pricing = await requireActiveCountryPricing(countryCode);
   const mapping = await requireProviderPlanMapping(countryCode, planId, "flutterwave");
   const planCode = mapping.flutterwave!.monthlyPlanId;
 
@@ -82,7 +86,7 @@ export const createFlutterwaveCheckout = https.onCall(async (request) => {
     body: JSON.stringify({
       tx_ref: txRef,
       amount: "0", // real amount is resolved server-side from planCode via Flutterwave's Payment Plan, never client-supplied
-      currency: "NGN",
+      currency: pricing.currencyCode, // read from subscriptionPricing/{countryCode}, never hardcoded — Flutterwave now supports non-Nigeria countries via providerPlanMapping
       payment_plan: planCode,
       customer: { email },
       meta: { vendorId, planId: plan, billingInterval: "monthly" },
