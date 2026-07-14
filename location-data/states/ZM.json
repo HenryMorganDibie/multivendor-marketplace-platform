@@ -1,0 +1,102 @@
+[
+  {
+    "stateId": "ZM-02",
+    "countryCode": "ZM",
+    "stateCode": "02",
+    "name": "Central",
+    "normalizedName": "central",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "ZM-03",
+    "countryCode": "ZM",
+    "stateCode": "03",
+    "name": "Copperbelt",
+    "normalizedName": "copperbelt",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "ZM-04",
+    "countryCode": "ZM",
+    "stateCode": "04",
+    "name": "Eastern",
+    "normalizedName": "eastern",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "ZM-05",
+    "countryCode": "ZM",
+    "stateCode": "05",
+    "name": "Luapula",
+    "normalizedName": "luapula",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "ZM-06",
+    "countryCode": "ZM",
+    "stateCode": "06",
+    "name": "Lusaka",
+    "normalizedName": "lusaka",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "ZM-07",
+    "countryCode": "ZM",
+    "stateCode": "07",
+    "name": "Muchinga",
+    "normalizedName": "muchinga",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "ZM-08",
+    "countryCode": "ZM",
+    "stateCode": "08",
+    "name": "North-Western",
+    "normalizedName": "north-western",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "ZM-01",
+    "countryCode": "ZM",
+    "stateCode": "01",
+    "name": "Northern",
+    "normalizedName": "northern",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "ZM-09",
+    "countryCode": "ZM",
+    "stateCode": "09",
+    "name": "Southern",
+    "normalizedName": "southern",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "ZM-10",
+    "countryCode": "ZM",
+    "stateCode": "10",
+    "name": "Western",
+    "normalizedName": "western",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 10
+  }
+]

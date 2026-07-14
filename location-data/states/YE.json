@@ -1,0 +1,222 @@
+[
+  {
+    "stateId": "YE-AB",
+    "countryCode": "YE",
+    "stateCode": "AB",
+    "name": "Abyan",
+    "normalizedName": "abyan",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "YE-AD",
+    "countryCode": "YE",
+    "stateCode": "AD",
+    "name": "Aden",
+    "normalizedName": "aden",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "YE-AM",
+    "countryCode": "YE",
+    "stateCode": "AM",
+    "name": "Amran",
+    "normalizedName": "amran",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "YE-BA",
+    "countryCode": "YE",
+    "stateCode": "BA",
+    "name": "Al Bayda",
+    "normalizedName": "al bayda",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "YE-DA",
+    "countryCode": "YE",
+    "stateCode": "DA",
+    "name": "Dhale",
+    "normalizedName": "dhale",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "YE-DH",
+    "countryCode": "YE",
+    "stateCode": "DH",
+    "name": "Dhamar",
+    "normalizedName": "dhamar",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "YE-HD",
+    "countryCode": "YE",
+    "stateCode": "HD",
+    "name": "Hadhramaut",
+    "normalizedName": "hadhramaut",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "YE-HJ",
+    "countryCode": "YE",
+    "stateCode": "HJ",
+    "name": "Hajjah",
+    "normalizedName": "hajjah",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "YE-HU",
+    "countryCode": "YE",
+    "stateCode": "HU",
+    "name": "Al Hudaydah",
+    "normalizedName": "al hudaydah",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "YE-IB",
+    "countryCode": "YE",
+    "stateCode": "IB",
+    "name": "Ibb",
+    "normalizedName": "ibb",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "YE-JA",
+    "countryCode": "YE",
+    "stateCode": "JA",
+    "name": "Al Jawf",
+    "normalizedName": "al jawf",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "YE-LA",
+    "countryCode": "YE",
+    "stateCode": "LA",
+    "name": "Lahij",
+    "normalizedName": "lahij",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "YE-MA",
+    "countryCode": "YE",
+    "stateCode": "MA",
+    "name": "Marib",
+    "normalizedName": "marib",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 13
+  },
+  {
+    "stateId": "YE-MR",
+    "countryCode": "YE",
+    "stateCode": "MR",
+    "name": "Al Mahrah",
+    "normalizedName": "al mahrah",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 14
+  },
+  {
+    "stateId": "YE-MW",
+    "countryCode": "YE",
+    "stateCode": "MW",
+    "name": "Al Mahwit",
+    "normalizedName": "al mahwit",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 15
+  },
+  {
+    "stateId": "YE-RA",
+    "countryCode": "YE",
+    "stateCode": "RA",
+    "name": "Raymah",
+    "normalizedName": "raymah",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 16
+  },
+  {
+    "stateId": "YE-SD",
+    "countryCode": "YE",
+    "stateCode": "SD",
+    "name": "Saada",
+    "normalizedName": "saada",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 17
+  },
+  {
+    "stateId": "YE-SH",
+    "countryCode": "YE",
+    "stateCode": "SH",
+    "name": "Shabwah",
+    "normalizedName": "shabwah",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 18
+  },
+  {
+    "stateId": "YE-SN",
+    "countryCode": "YE",
+    "stateCode": "SN",
+    "name": "Sanaa Governorate",
+    "normalizedName": "sanaa governorate",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 19
+  },
+  {
+    "stateId": "YE-SU",
+    "countryCode": "YE",
+    "stateCode": "SU",
+    "name": "Socotra",
+    "normalizedName": "socotra",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 20
+  },
+  {
+    "stateId": "YE-TA",
+    "countryCode": "YE",
+    "stateCode": "TA",
+    "name": "Taiz",
+    "normalizedName": "taiz",
+    "type": "province",
+    "status": "active",
+    "sortOrder": 21
+  },
+  {
+    "stateId": "YE-SA",
+    "countryCode": "YE",
+    "stateCode": "SA",
+    "name": "Sanaa Municipality",
+    "normalizedName": "sanaa municipality",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 22
+  }
+]

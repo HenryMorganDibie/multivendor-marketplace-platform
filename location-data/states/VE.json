@@ -1,0 +1,252 @@
+[
+  {
+    "stateId": "VE-A",
+    "countryCode": "VE",
+    "stateCode": "A",
+    "name": "Amazonas",
+    "normalizedName": "amazonas",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "VE-B",
+    "countryCode": "VE",
+    "stateCode": "B",
+    "name": "Anzoátegui",
+    "normalizedName": "anzoategui",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "VE-C",
+    "countryCode": "VE",
+    "stateCode": "C",
+    "name": "Apure",
+    "normalizedName": "apure",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "VE-D",
+    "countryCode": "VE",
+    "stateCode": "D",
+    "name": "Aragua",
+    "normalizedName": "aragua",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "VE-E",
+    "countryCode": "VE",
+    "stateCode": "E",
+    "name": "Barinas",
+    "normalizedName": "barinas",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "VE-F",
+    "countryCode": "VE",
+    "stateCode": "F",
+    "name": "Bolívar",
+    "normalizedName": "bolivar",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "VE-G",
+    "countryCode": "VE",
+    "stateCode": "G",
+    "name": "Carabobo",
+    "normalizedName": "carabobo",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "VE-H",
+    "countryCode": "VE",
+    "stateCode": "H",
+    "name": "Cojedes",
+    "normalizedName": "cojedes",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "VE-Y",
+    "countryCode": "VE",
+    "stateCode": "Y",
+    "name": "Delta Amacuro",
+    "normalizedName": "delta amacuro",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "VE-I",
+    "countryCode": "VE",
+    "stateCode": "I",
+    "name": "Falcón",
+    "normalizedName": "falcon",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "VE-J",
+    "countryCode": "VE",
+    "stateCode": "J",
+    "name": "Guárico",
+    "normalizedName": "guarico",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "VE-K",
+    "countryCode": "VE",
+    "stateCode": "K",
+    "name": "Lara",
+    "normalizedName": "lara",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "VE-L",
+    "countryCode": "VE",
+    "stateCode": "L",
+    "name": "Mérida",
+    "normalizedName": "merida",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 13
+  },
+  {
+    "stateId": "VE-M",
+    "countryCode": "VE",
+    "stateCode": "M",
+    "name": "Miranda",
+    "normalizedName": "miranda",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 14
+  },
+  {
+    "stateId": "VE-N",
+    "countryCode": "VE",
+    "stateCode": "N",
+    "name": "Monagas",
+    "normalizedName": "monagas",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 15
+  },
+  {
+    "stateId": "VE-O",
+    "countryCode": "VE",
+    "stateCode": "O",
+    "name": "Nueva Esparta",
+    "normalizedName": "nueva esparta",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 16
+  },
+  {
+    "stateId": "VE-P",
+    "countryCode": "VE",
+    "stateCode": "P",
+    "name": "Portuguesa",
+    "normalizedName": "portuguesa",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 17
+  },
+  {
+    "stateId": "VE-R",
+    "countryCode": "VE",
+    "stateCode": "R",
+    "name": "Sucre",
+    "normalizedName": "sucre",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 18
+  },
+  {
+    "stateId": "VE-S",
+    "countryCode": "VE",
+    "stateCode": "S",
+    "name": "Táchira",
+    "normalizedName": "tachira",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 19
+  },
+  {
+    "stateId": "VE-T",
+    "countryCode": "VE",
+    "stateCode": "T",
+    "name": "Trujillo",
+    "normalizedName": "trujillo",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 20
+  },
+  {
+    "stateId": "VE-X",
+    "countryCode": "VE",
+    "stateCode": "X",
+    "name": "Vargas (La Guaira)",
+    "normalizedName": "vargas (la guaira)",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 21
+  },
+  {
+    "stateId": "VE-U",
+    "countryCode": "VE",
+    "stateCode": "U",
+    "name": "Yaracuy",
+    "normalizedName": "yaracuy",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 22
+  },
+  {
+    "stateId": "VE-V",
+    "countryCode": "VE",
+    "stateCode": "V",
+    "name": "Zulia",
+    "normalizedName": "zulia",
+    "type": "state",
+    "status": "active",
+    "sortOrder": 23
+  },
+  {
+    "stateId": "VE-A",
+    "countryCode": "VE",
+    "stateCode": "A",
+    "name": "Capital District",
+    "normalizedName": "capital district",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 24
+  },
+  {
+    "stateId": "VE-Z",
+    "countryCode": "VE",
+    "stateCode": "Z",
+    "name": "Federal Dependencies",
+    "normalizedName": "federal dependencies",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 25
+  }
+]
