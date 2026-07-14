@@ -1,0 +1,72 @@
+[
+  {
+    "stateId": "BY-BR",
+    "countryCode": "BY",
+    "stateCode": "BR",
+    "name": "Brest Region",
+    "normalizedName": "brest region",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "BY-HO",
+    "countryCode": "BY",
+    "stateCode": "HO",
+    "name": "Gomel Region",
+    "normalizedName": "gomel region",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "BY-HR",
+    "countryCode": "BY",
+    "stateCode": "HR",
+    "name": "Grodno Region",
+    "normalizedName": "grodno region",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "BY-MA",
+    "countryCode": "BY",
+    "stateCode": "MA",
+    "name": "Mogilev Region",
+    "normalizedName": "mogilev region",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "BY-MI",
+    "countryCode": "BY",
+    "stateCode": "MI",
+    "name": "Minsk Region",
+    "normalizedName": "minsk region",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "BY-VI",
+    "countryCode": "BY",
+    "stateCode": "VI",
+    "name": "Vitebsk Region",
+    "normalizedName": "vitebsk region",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "BY-HM",
+    "countryCode": "BY",
+    "stateCode": "HM",
+    "name": "Minsk City",
+    "normalizedName": "minsk city",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 7
+  }
+]
