@@ -67,7 +67,7 @@ export { seedSubscriptionPlans, cancelSubscriptionAdmin, applyManualSubscription
 export { handlePaystackWebhook } from "./subscriptions/paystackWebhook";
 export { handleFlutterwaveWebhook } from "./subscriptions/flutterwaveWebhook";
 export { handleStripeWebhook } from "./subscriptions/stripeWebhook";
-export { createSubscriptionCheckout, getSubscriptionStatus, cancelSubscription, reactivateSubscription } from "./subscriptions/subscriptionFunctions";
+export { createSubscriptionCheckout, getCheckoutAvailability, getSubscriptionStatus, cancelSubscription, reactivateSubscription } from "./subscriptions/subscriptionFunctions";
 export { createFlutterwaveCheckout, createStripeCheckout } from "./subscriptions/internationalCheckout";
 export { expireStaleSubscriptions, gracePeriodReminder } from "./subscriptions/scheduledJobs";
 export { updateVendorSettings } from "./vendors/updateVendorSettings";

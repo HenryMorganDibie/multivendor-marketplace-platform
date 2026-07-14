@@ -6,7 +6,7 @@ import { SubscriptionPlanId, VendorSubscriptionDoc } from "../types4";
 import { resolveEffectivePlan } from "./resolveEffectivePlan";
 import { enforceRateLimit } from "./rateLimit";
 import { withSubscriptionLock, LockContentionError } from "./subscriptionLock";
-import { requireActiveCountryPricing, requireProviderPlanMapping, PaidPlanId } from "./countryPricing";
+import { requireActiveCountryPricing, requireProviderPlanMapping, checkCheckoutAvailability, PaidPlanId } from "./countryPricing";
 
 const VALID_PLAN_IDS: SubscriptionPlanId[] = ["basic", "standard", "pro", "pro_plus"];
 
@@ -85,6 +85,30 @@ export const createSubscriptionCheckout = https.onCall(async (request) => {
   }
 
   return { success: true, authorizationUrl: json.data.authorization_url, reference: json.data.reference };
+});
+
+/**
+ * getCheckoutAvailability — read-only, never throws. Lets the frontend
+ * decide whether to render a working "Subscribe" button for the vendor's
+ * country+plan before they ever tap it, instead of only discovering
+ * unavailability from a failed createSubscriptionCheckout call. An active
+ * subscriptionPricing record with zero configured providers is NOT
+ * available — both pricing and at least one provider mapping must be
+ * active for checkout to actually be possible.
+ */
+export const getCheckoutAvailability = https.onCall(async (request) => {
+  checkAppCheck(request, "getCheckoutAvailability");
+  const vendorId = await requireVendorId(request);
+
+  const { plan } = request.data ?? {};
+  if (!VALID_PLAN_IDS.includes(plan) || plan === "basic") {
+    throw new https.HttpsError("invalid-argument", `plan must be one of: standard, pro, pro_plus.`);
+  }
+
+  const vendorSnap = await db.collection("vendors").doc(vendorId).get();
+  const countryCode = (vendorSnap.data()?.countryCode as string | undefined) ?? "";
+  const result = await checkCheckoutAvailability(countryCode, plan as PaidPlanId);
+  return { success: true, ...result };
 });
 
 /**

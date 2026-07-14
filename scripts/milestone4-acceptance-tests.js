@@ -249,6 +249,34 @@ async function section2() {
       assert(false, "expected createSubscriptionCheckout to reject, but it succeeded");
     } catch (err) {
       assertEqual(err.code, "functions/failed-precondition");
+      assertEqual(err.details?.errorCode, "PRICING_NOT_CONFIGURED");
+    }
+  });
+
+  await test("getCheckoutAvailability reports unavailable + PRICING_NOT_CONFIGURED for the same no-pricing country", async () => {
+    // Still signed in as the Ghana no-pricing vendor from the previous test.
+    const r = await httpsCallable(fns, "getCheckoutAvailability")({ plan: "pro" });
+    assertEqual(r.data.available, false);
+    assertEqual(r.data.reason, "PRICING_NOT_CONFIGURED");
+    assertEqual(r.data.availableProviders.length, 0);
+  });
+
+  await test("getCheckoutAvailability reports available + provider list for a properly configured country (NG)", async () => {
+    await signInAs(vendorEmail);
+    const r = await httpsCallable(fns, "getCheckoutAvailability")({ plan: "pro" });
+    assertEqual(r.data.available, true);
+    assert(r.data.availableProviders.includes("paystack"), "expected paystack in availableProviders for NG");
+    assert(r.data.availableProviders.includes("flutterwave"), "expected flutterwave in availableProviders for NG");
+  });
+
+  await test("createStripeCheckout rejects with PAYMENT_PROVIDER_NOT_CONFIGURED for a country with pricing but no Stripe mapping (NG)", async () => {
+    await signInAs(vendorEmail);
+    try {
+      await httpsCallable(fns, "createStripeCheckout")({ plan: "pro", billingInterval: "monthly" });
+      assert(false, "expected createStripeCheckout to reject for NG (Stripe not mapped there), but it succeeded");
+    } catch (err) {
+      assertEqual(err.code, "functions/failed-precondition");
+      assertEqual(err.details?.errorCode, "PAYMENT_PROVIDER_NOT_CONFIGURED");
     }
   });
 
