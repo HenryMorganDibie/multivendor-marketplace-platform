@@ -1,0 +1,192 @@
+[
+  {
+    "stateId": "ES-AN",
+    "countryCode": "ES",
+    "stateCode": "AN",
+    "name": "Andalusia",
+    "normalizedName": "andalusia",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 1
+  },
+  {
+    "stateId": "ES-AR",
+    "countryCode": "ES",
+    "stateCode": "AR",
+    "name": "Aragon",
+    "normalizedName": "aragon",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 2
+  },
+  {
+    "stateId": "ES-AS",
+    "countryCode": "ES",
+    "stateCode": "AS",
+    "name": "Asturias",
+    "normalizedName": "asturias",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 3
+  },
+  {
+    "stateId": "ES-IB",
+    "countryCode": "ES",
+    "stateCode": "IB",
+    "name": "Balearic Islands",
+    "normalizedName": "balearic islands",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 4
+  },
+  {
+    "stateId": "ES-PV",
+    "countryCode": "ES",
+    "stateCode": "PV",
+    "name": "Basque Country",
+    "normalizedName": "basque country",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 5
+  },
+  {
+    "stateId": "ES-CN",
+    "countryCode": "ES",
+    "stateCode": "CN",
+    "name": "Canary Islands",
+    "normalizedName": "canary islands",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 6
+  },
+  {
+    "stateId": "ES-CB",
+    "countryCode": "ES",
+    "stateCode": "CB",
+    "name": "Cantabria",
+    "normalizedName": "cantabria",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 7
+  },
+  {
+    "stateId": "ES-CM",
+    "countryCode": "ES",
+    "stateCode": "CM",
+    "name": "Castile-La Mancha",
+    "normalizedName": "castile-la mancha",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 8
+  },
+  {
+    "stateId": "ES-CL",
+    "countryCode": "ES",
+    "stateCode": "CL",
+    "name": "Castile and León",
+    "normalizedName": "castile and leon",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 9
+  },
+  {
+    "stateId": "ES-CT",
+    "countryCode": "ES",
+    "stateCode": "CT",
+    "name": "Catalonia",
+    "normalizedName": "catalonia",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 10
+  },
+  {
+    "stateId": "ES-EX",
+    "countryCode": "ES",
+    "stateCode": "EX",
+    "name": "Extremadura",
+    "normalizedName": "extremadura",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 11
+  },
+  {
+    "stateId": "ES-GA",
+    "countryCode": "ES",
+    "stateCode": "GA",
+    "name": "Galicia",
+    "normalizedName": "galicia",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 12
+  },
+  {
+    "stateId": "ES-RI",
+    "countryCode": "ES",
+    "stateCode": "RI",
+    "name": "La Rioja",
+    "normalizedName": "la rioja",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 13
+  },
+  {
+    "stateId": "ES-MD",
+    "countryCode": "ES",
+    "stateCode": "MD",
+    "name": "Madrid",
+    "normalizedName": "madrid",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 14
+  },
+  {
+    "stateId": "ES-MC",
+    "countryCode": "ES",
+    "stateCode": "MC",
+    "name": "Murcia",
+    "normalizedName": "murcia",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 15
+  },
+  {
+    "stateId": "ES-NC",
+    "countryCode": "ES",
+    "stateCode": "NC",
+    "name": "Navarre",
+    "normalizedName": "navarre",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 16
+  },
+  {
+    "stateId": "ES-VC",
+    "countryCode": "ES",
+    "stateCode": "VC",
+    "name": "Valencian Community",
+    "normalizedName": "valencian community",
+    "type": "region",
+    "status": "active",
+    "sortOrder": 17
+  },
+  {
+    "stateId": "ES-CE",
+    "countryCode": "ES",
+    "stateCode": "CE",
+    "name": "Ceuta",
+    "normalizedName": "ceuta",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 18
+  },
+  {
+    "stateId": "ES-ML",
+    "countryCode": "ES",
+    "stateCode": "ML",
+    "name": "Melilla",
+    "normalizedName": "melilla",
+    "type": "territory",
+    "status": "active",
+    "sortOrder": 19
+  }
+]
