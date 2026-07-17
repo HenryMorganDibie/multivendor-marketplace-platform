@@ -11,7 +11,6 @@ export const metadata: Metadata = {
 
 const FALLBACK: SiteContentSectionContent = {
   nodes: [
-    { type: "heading", level: 1, text: "Customer Terms" },
     { type: "paragraph", text: "This page will contain the platform's Customer Terms once legal copy is provided and published through the CMS." },
   ],
 };

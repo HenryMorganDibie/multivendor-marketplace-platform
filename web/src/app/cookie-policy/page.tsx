@@ -16,7 +16,6 @@ export const metadata: Metadata = {
 // this copy and the no-banner decision both need revisiting together.
 const FALLBACK: SiteContentSectionContent = {
   nodes: [
-    { type: "heading", level: 1, text: "Cookie Policy" },
     {
       type: "paragraph",
       text: "the platform's website uses only essential storage required for the site to function — such as keeping you signed in to the Vendor Portal. We do not use analytics or marketing cookies or trackers.",
