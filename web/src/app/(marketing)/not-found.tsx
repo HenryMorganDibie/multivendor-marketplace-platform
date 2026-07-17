@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function NotFound() {
+export default function MarketingNotFound() {
   return (
     <div id="main-content" className="mx-auto flex max-w-2xl flex-col items-center px-4 py-32 text-center">
       <p className="text-sm font-semibold text-brand">404</p>

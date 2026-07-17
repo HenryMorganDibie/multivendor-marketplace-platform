@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default async function PublicInvoicePage({ params }: { params: Promise<{ shareToken: string }> }) {
   const { shareToken } = await params;
   return (
-    <section className="mx-auto max-w-2xl px-4 py-16 sm:px-6">
+    <section id="main-content" className="mx-auto max-w-2xl px-4 py-16 sm:px-6">
       <InvoiceView shareToken={shareToken} />
     </section>
   );

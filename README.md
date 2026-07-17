@@ -11,7 +11,7 @@ Status is described precisely rather than as a blanket "complete." Every row bel
 | **Milestone 1** — Auth, users, vendors, verification, admin, security rules | 67/67 acceptance tests passing in developer environment |
 | **Milestone 2** — Catalog, cart pricing, orders, inventory, payment proofs, receipts | 60/60 acceptance tests passing in developer environment |
 | **Milestone 3** — Commerce chat, notifications, blocks, pickup auto-send, support tickets, AI help placeholder, chat moderation | 131/131 acceptance tests passing in developer environment |
-| **Milestone 4** — Vendor subscriptions (Paystack, Flutterwave, Stripe), full plan-gating matrix, ratings, invoices/branding/PDF | 100/100 acceptance tests passing in developer environment |
+| **Milestone 4** — Vendor subscriptions (Paystack, Flutterwave, Stripe), full plan-gating matrix, ratings, invoices/branding/PDF | 109/109 acceptance tests passing in developer environment (includes Section 15, an end-to-end narrative walkthrough — see below) |
 | **Landing Page, CMS & Vendor Portal** — Provider-neutral checkout, subscription offerings callables, invoice/receipt renumbering, price-change policy | 32/32 acceptance tests passing in developer environment |
 | **Frontend** (`web/`) — 14-page landing site, CMS editor, Vendor Portal | Built, typechecked, and production-build-verified (26/26 routes). Not yet deployed; needs real Firebase Web App config and the client's legal/marketing copy. See `web/README.md`. |
 | App Check | Implemented in **monitor mode only** (see App Check Rollout below). Not yet enforced. |
@@ -43,9 +43,11 @@ node milestone4-acceptance-tests.js
 node landing-page-cms-vendor-portal-acceptance-tests.js
 ```
 
-The Storage emulator is required for all four suites. Milestone 1 exercises real file upload tests against Storage security rules (MIME allowlist, size limits, ownership, admin-only raw read). Milestones 2-4 use it for verification document setup during test provisioning; Milestone 4 additionally uses it for invoice branding logo upload validation.
+The Storage emulator is required for all five suites. Milestone 1 exercises real file upload tests against Storage security rules (MIME allowlist, size limits, ownership, admin-only raw read). Milestones 2-4 use it for verification document setup during test provisioning; Milestone 4 additionally uses it for invoice branding logo upload validation.
 
-Each suite provisions its own test accounts and vendor with a timestamped, unique identifier, so the four suites can be run independently and repeatedly without collisions. Milestone 4's webhook-related tests additionally generate a per-run identifier (`RUN_ID`) baked into every simulated Paystack event ID, so re-running the suite against an already-live (not restarted) emulator never false-triggers idempotency dedup from a prior run.
+Each suite provisions its own test accounts and vendor with a timestamped, unique identifier, so all five suites can be run independently and repeatedly without collisions. Milestone 4's webhook-related tests additionally generate a per-run identifier (`RUN_ID`) baked into every simulated Paystack event ID, so re-running the suite against an already-live (not restarted) emulator never false-triggers idempotency dedup from a prior run.
+
+**One script per milestone, no separate demo script.** Milestone 4 used to ship a second, non-asserting `milestone4-workflow-demo.js` alongside the real acceptance suite — same subscription workflow, two files to keep in sync during integration. It's been folded into `milestone4-acceptance-tests.js` as Section 15: a single end-to-end vendor journey (signup → checkout → Paystack webhook → invoice → PDF → cancel → reactivate → admin override) that prints the real request/response payload at every step *and* asserts on it, so a broken step fails the run instead of just printing wrong data. `node milestone4-acceptance-tests.js` is now the only command needed for both the pass/fail suite and the readable walkthrough.
 
 ## What each milestone covers
 

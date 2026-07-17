@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import SiteHeader from "@/components/SiteHeader";
-import SiteFooter from "@/components/SiteFooter";
 import "./globals.css";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.the platform.com";
@@ -23,6 +21,12 @@ export const metadata: Metadata = {
   },
 };
 
+// Deliberately no SiteHeader/SiteFooter here — those are marketing-site
+// chrome and belong only to the (marketing) route group. /portal and /cms
+// are separate authenticated app surfaces with their own nav (see their
+// own layout.tsx); showing the public "Become a Vendor" marketing nav on
+// top of a logged-in vendor's dashboard was a real bug, caught by actually
+// logging into the portal and looking at the screenshot.
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -33,11 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to main content
         </a>
-        <SiteHeader />
-        <main id="main-content" className="flex-1">
-          {children}
-        </main>
-        <SiteFooter />
+        {children}
       </body>
     </html>
   );

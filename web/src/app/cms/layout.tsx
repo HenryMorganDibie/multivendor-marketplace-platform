@@ -22,18 +22,18 @@ export default function CmsLayout({ children }: { children: React.ReactNode }) {
   }, [loading, user, pathname, router]);
 
   if (pathname === "/cms/login") {
-    return <div className="mx-auto max-w-md px-4 py-16 sm:px-6">{children}</div>;
+    return <div id="main-content" className="mx-auto max-w-md px-4 py-16 sm:px-6">{children}</div>;
   }
 
   if (loading) {
-    return <div className="mx-auto max-w-5xl px-4 py-16 text-sm text-gray-500 sm:px-6">Loading…</div>;
+    return <div id="main-content" className="mx-auto max-w-5xl px-4 py-16 text-sm text-gray-500 sm:px-6">Loading…</div>;
   }
 
   if (!user) return null;
 
   if (!isSuperAdmin) {
     return (
-      <div className="mx-auto max-w-2xl px-4 py-16 text-center sm:px-6">
+      <div id="main-content" className="mx-auto max-w-2xl px-4 py-16 text-center sm:px-6">
         <h1 className="text-2xl font-bold">Super-Admin access required</h1>
         <p className="mt-3 text-gray-600 dark:text-gray-400">This account doesn&apos;t have CMS editing access.</p>
         <button
@@ -48,7 +48,7 @@ export default function CmsLayout({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
+    <div id="main-content" className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
       <div className="flex items-center justify-between border-b border-gray-100 pb-6 dark:border-gray-800">
         <Link href="/cms" className="text-xl font-bold text-brand">
           the platform CMS

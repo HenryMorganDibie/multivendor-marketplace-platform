@@ -1220,6 +1220,134 @@ async function section14() {
   });
 }
 
+// show() prints a real request/response payload during Section 15's
+// narrative walkthrough — the console-output style is deliberately kept
+// closer to a human-readable demo than the terse ✅/❌ lines above, but
+// every meaningful step is still wrapped in test()/assert() so a broken
+// step fails the run instead of just printing wrong data.
+function show(label, data) { console.log(`\n    --- ${label} ---`); console.log(JSON.stringify(data, null, 2).split("\n").map(l => `    ${l}`).join("\n")); }
+
+/**
+ * Section 15 absorbs the former milestone4-workflow-demo.js (deleted —
+ * a standalone, non-asserting "demo" script and this acceptance suite
+ * covering overlapping ground was two things to keep in sync during
+ * integration instead of one). Runs one full vendor journey end to end
+ * on a fresh vendor — signup → checkout → webhook activation → invoice
+ * → PDF → cancel → reactivate → admin override — printing real
+ * request/response payloads at each step. Flutterwave and Stripe
+ * checkout/webhook/idempotency/provider-isolation coverage already
+ * lives in Section 14 as real assertions (stronger than the old demo's
+ * unasserted narrative), so this section stays focused on the single
+ * primary-provider (Paystack) story rather than repeating that ground.
+ */
+async function section15() {
+  console.log("\n📋 Section 15: End-to-End Workflow Narrative (Paystack, real payloads)");
+
+  let demoVendorId, demoVendorEmail, demoInvoiceId;
+
+  await test("Setup: fresh vendor for the narrative walkthrough", async () => {
+    demoVendorEmail = `p4demo_${Date.now()}@test.com`;
+    const c = await createUserWithEmailAndPassword(auth, demoVendorEmail, PASSWORD);
+    await waitFor(async () => { const s = await getDoc(doc(db, "users", c.user.uid)); return s.exists() ? s : null; });
+    await signInAs(demoVendorEmail);
+    const rr = await httpsCallable(fns, "completeRegistration")({ role: "vendor", businessName: "P4 Demo Vendor", username: `p4demov_${Date.now()}`, fullName: "Vendor Owner", categoryId: "food_catering", categoryName: "Food & Catering", country: "Nigeria", state: "Lagos", area: "Lekki", plan: "basic" });
+    demoVendorId = rr.data.vendorId;
+    await auth.currentUser.getIdToken(true);
+    console.log(`    Vendor created: ${demoVendorId} (${demoVendorEmail})`);
+  });
+
+  await test("Vendor starts on Basic (no subscription yet)", async () => {
+    const status0 = await httpsCallable(fns, "getSubscriptionStatus")({});
+    show("getSubscriptionStatus (before any subscription)", { effectivePlan: status0.data.effectivePlan, reason: status0.data.reason });
+    assertEqual(status0.data.effectivePlan, "basic");
+    assertEqual(status0.data.reason, "no_subscription");
+  });
+
+  let checkoutData;
+  await test("createSubscriptionCheckout (provider-neutral) selects Paystack for this NG vendor", async () => {
+    const checkout = await httpsCallable(fns, "createSubscriptionCheckout")({ plan: "pro" });
+    checkoutData = checkout.data;
+    show("createSubscriptionCheckout response", checkoutData);
+    assert(checkoutData.authorizationUrl.startsWith("https://checkout.paystack.test/"), "NG's provider priority puts paystack first — see seedTestCountryPricing");
+  });
+
+  await test("Simulated Paystack webhook activates the subscription", async () => {
+    const webhookResp = await postWebhook({
+      event: "subscription.create",
+      data: {
+        id: `evt_demo_${RUN_ID}`, created_at: new Date().toISOString(),
+        metadata: { vendorId: demoVendorId },
+        subscription_code: "SUB_demo_1", customer: { customer_code: "CUS_demo_1" },
+        plan: { plan_code: "PLN_pro_monthly_placeholder", plan_code_metadata: { planId: "pro" } },
+        amount: 1500000, currency: "NGN",
+      },
+    });
+    console.log(`\n    Webhook HTTP status: ${webhookResp.status} (this is what Paystack would receive back)`);
+    assertEqual(webhookResp.status, 200);
+    await sleep(500);
+
+    const status1 = await httpsCallable(fns, "getSubscriptionStatus")({});
+    show("getSubscriptionStatus (after webhook activation)", { effectivePlan: status1.data.effectivePlan, reason: status1.data.reason, canDownloadInvoicePdf: status1.data.planLimits.canDownloadInvoicePdf });
+    assertEqual(status1.data.effectivePlan, "pro");
+    assertEqual(status1.data.reason, "active");
+  });
+
+  await test("Create an invoice — subtotal computed server-side, never trusted from the client", async () => {
+    const invoiceResult = await httpsCallable(fns, "createInvoice")({
+      customerName: "Jane Doe", customerPhone: "+2348011112222",
+      lineItems: [
+        { description: "Jollof rice tray (large)", quantity: 2, unitPrice: 8500 },
+        { description: "Delivery fee", quantity: 1, unitPrice: 1500 },
+      ],
+      notes: "Thank you for your order!",
+    });
+    demoInvoiceId = invoiceResult.data.invoiceId;
+    show("createInvoice response", invoiceResult.data);
+
+    const invoiceSnap = await admin.firestore().collection("invoices").doc(demoInvoiceId).get();
+    show("The actual invoice document in Firestore", { subtotal: invoiceSnap.data().subtotal, invoiceNumber: invoiceSnap.data().invoiceNumber, status: invoiceSnap.data().status });
+    assertEqual(invoiceSnap.data().subtotal, 18500);
+    assert(/-INV-\d+$/.test(invoiceSnap.data().invoiceNumber), `expected {VENDORSLUG}-INV-{seq}, got "${invoiceSnap.data().invoiceNumber}"`);
+  });
+
+  await test("Download the invoice as a PDF (Pro plan allows it)", async () => {
+    const pdfResult = await httpsCallable(fns, "downloadInvoicePdf")({ invoiceId: demoInvoiceId });
+    const pdfBytes = Buffer.from(pdfResult.data.pdfBase64, "base64");
+    console.log(`\n    fileName: ${pdfResult.data.fileName}, size: ${pdfBytes.length} bytes`);
+    assertEqual(pdfBytes.slice(0, 5).toString("ascii"), "%PDF-", "expected a real PDF magic header");
+  });
+
+  await test("Cancel the subscription — stays Pro until period end (cancel-at-period-end, not immediate)", async () => {
+    const cancelResult = await httpsCallable(fns, "cancelSubscription")({});
+    show("cancelSubscription response", cancelResult.data);
+    const statusAfterCancel = await httpsCallable(fns, "getSubscriptionStatus")({});
+    show("getSubscriptionStatus (right after cancelling)", { effectivePlan: statusAfterCancel.data.effectivePlan, cancelAtPeriodEnd: statusAfterCancel.data.subscription?.cancelAtPeriodEnd });
+    assertEqual(statusAfterCancel.data.effectivePlan, "pro", "still Pro until the period actually ends");
+    assertEqual(statusAfterCancel.data.subscription?.cancelAtPeriodEnd, true);
+  });
+
+  await test("Reactivate before period end", async () => {
+    const reactivateResult = await httpsCallable(fns, "reactivateSubscription")({});
+    show("reactivateSubscription response", reactivateResult.data);
+    const statusAfterReactivate = await httpsCallable(fns, "getSubscriptionStatus")({});
+    assertEqual(statusAfterReactivate.data.subscription?.cancelAtPeriodEnd, false);
+  });
+
+  await test("Admin override (support comp to Pro Plus) takes effect immediately", async () => {
+    await signInAs(adminEmail);
+    const overrideResult = await httpsCallable(fns, "applyManualSubscriptionOverride")({ vendorId: demoVendorId, plan: "pro_plus", reason: "Customer support goodwill credit", ticketId: "SUPPORT-4821" });
+    show("applyManualSubscriptionOverride response", overrideResult.data);
+
+    await signInAs(demoVendorEmail);
+    const statusAfterOverride = await httpsCallable(fns, "getSubscriptionStatus")({});
+    show("getSubscriptionStatus (after admin override)", { effectivePlan: statusAfterOverride.data.effectivePlan, reason: statusAfterOverride.data.reason });
+    assertEqual(statusAfterOverride.data.effectivePlan, "pro_plus");
+    assertEqual(statusAfterOverride.data.reason, "admin_override");
+  });
+
+  console.log("\n  Every step above ran against the real Cloud Functions emulator, real Firestore, and a real simulated Paystack webhook — no mocked responses.");
+}
+
 async function main() {
   console.log("🚀 THE PLATFORM — Milestone 4 Acceptance Test Suite");
   console.log("=".repeat(60));
@@ -1240,6 +1368,7 @@ async function main() {
   await section12();
   await section13();
   await section14();
+  await section15();
 
   console.log("\n" + "=".repeat(60));
   console.log(`Results: ${passed}/${total} passed, ${failed} failed`);

@@ -14,10 +14,17 @@ export type PublishedSections = Record<string, { content: SiteContentSectionCont
 
 export async function getPublishedSiteContent(): Promise<PublishedSections> {
   const region = process.env.NEXT_PUBLIC_FIREBASE_FUNCTIONS_REGION ?? "us-central1";
-  const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
+  const useEmulator = process.env.NEXT_PUBLIC_USE_FIREBASE_EMULATOR === "true";
+  const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || (useEmulator ? "demo-the platform" : undefined);
   if (!projectId) return {};
 
-  const url = `https://${region}-${projectId}.cloudfunctions.net/getPublicSiteContent`;
+  // Emulator mode calls the local Functions emulator directly (the
+  // production https://{region}-{projectId}.cloudfunctions.net URL format
+  // doesn't exist locally) — same host/port the acceptance test scripts
+  // and firebase.ts's client-side emulator connection use.
+  const url = useEmulator
+    ? `http://127.0.0.1:5001/${projectId}/${region}/getPublicSiteContent`
+    : `https://${region}-${projectId}.cloudfunctions.net/getPublicSiteContent`;
 
   try {
     const res = await fetch(url, {
