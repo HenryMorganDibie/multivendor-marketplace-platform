@@ -38,7 +38,7 @@ export default async function HomePage() {
           }),
         }}
       />
-      <section className="bg-brand-light dark:bg-gray-900">
+      <section className="bg-white dark:bg-gray-950">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
           <div className="max-w-2xl">
             <RichText content={content} />
