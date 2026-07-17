@@ -67,8 +67,16 @@ export { seedSubscriptionPlans, cancelSubscriptionAdmin, applyManualSubscription
 export { handlePaystackWebhook } from "./subscriptions/paystackWebhook";
 export { handleFlutterwaveWebhook } from "./subscriptions/flutterwaveWebhook";
 export { handleStripeWebhook } from "./subscriptions/stripeWebhook";
-export { createSubscriptionCheckout, getCheckoutAvailability, getSubscriptionStatus, cancelSubscription, reactivateSubscription } from "./subscriptions/subscriptionFunctions";
-export { createFlutterwaveCheckout, createStripeCheckout } from "./subscriptions/internationalCheckout";
+export { createSubscriptionCheckout, getVendorSubscriptionOfferings, getPublicSubscriptionOfferings, getSubscriptionStatus, cancelSubscription, reactivateSubscription } from "./subscriptions/subscriptionFunctions";
+// createFlutterwaveCheckout / createStripeCheckout are no longer exported —
+// they became internal-only functions (runFlutterwaveCheckout /
+// runStripeCheckout) called exclusively by createSubscriptionCheckout, per
+// the provider-neutral checkout correction (frontend-subscription-
+// alignment-scope.md Section 4 / LANDING_PAGE_CMS_VENDOR_PORTAL_MAPPING.md
+// Section 4). Confirmed safe: no client ever called these two directly.
+// getCheckoutAvailability is superseded by getVendorSubscriptionOfferings /
+// getPublicSubscriptionOfferings, which also return pricing — not just a
+// boolean — and is no longer exported.
 export { expireStaleSubscriptions, gracePeriodReminder } from "./subscriptions/scheduledJobs";
 export { updateVendorSettings } from "./vendors/updateVendorSettings";
 export { getVendorDashboard, getBusinessAnalytics } from "./vendors/dashboardAnalytics";

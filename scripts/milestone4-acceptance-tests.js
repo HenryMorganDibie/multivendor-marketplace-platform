@@ -140,7 +140,18 @@ async function seedTestCountryPricing() {
     countryCode: "US", planId: "pro",
     stripe: { monthlyPriceId: "price_pro_monthly_placeholder" },
   });
-  console.log("  -> Test-only subscriptionPricing/providerPlanMapping fixtures seeded for NG, US");
+  // subscriptionProviderConfig — provider-neutral checkout (Milestone 5)
+  // needs a priority list per country to pick a provider server-side.
+  // NG intentionally prioritizes paystack ahead of flutterwave (both are
+  // mapped for NG-pro above), so tests can distinguish "server picked the
+  // first eligible provider" from "server picked the only mapped one".
+  await admin.firestore().collection("subscriptionProviderConfig").doc("NG").set({
+    countryCode: "NG", providerPriority: ["paystack", "flutterwave"], status: "active", updatedAt: now,
+  });
+  await admin.firestore().collection("subscriptionProviderConfig").doc("US").set({
+    countryCode: "US", providerPriority: ["stripe"], status: "active", updatedAt: now,
+  });
+  console.log("  -> Test-only subscriptionPricing/providerPlanMapping/subscriptionProviderConfig fixtures seeded for NG, US");
 }
 
 async function setVendorPlan(plan) {
@@ -253,31 +264,40 @@ async function section2() {
     }
   });
 
-  await test("getCheckoutAvailability reports unavailable + PRICING_NOT_CONFIGURED for the same no-pricing country", async () => {
+  // getCheckoutAvailability was superseded by getVendorSubscriptionOfferings
+  // / getPublicSubscriptionOfferings (Milestone 5) — see milestone5-
+  // acceptance-tests.js Section 2 for the full offerings-callable coverage,
+  // including the never-exposes-a-provider-name assertion. The two checks
+  // below are kept here since they exercise the same no-pricing/has-pricing
+  // vendors this section already set up.
+  await test("getVendorSubscriptionOfferings reports unavailable + PRICING_NOT_CONFIGURED for the same no-pricing country", async () => {
     // Still signed in as the Ghana no-pricing vendor from the previous test.
-    const r = await httpsCallable(fns, "getCheckoutAvailability")({ plan: "pro" });
-    assertEqual(r.data.available, false);
-    assertEqual(r.data.reason, "PRICING_NOT_CONFIGURED");
-    assertEqual(r.data.availableProviders.length, 0);
-  });
-
-  await test("getCheckoutAvailability reports available + provider list for a properly configured country (NG)", async () => {
-    await signInAs(vendorEmail);
-    const r = await httpsCallable(fns, "getCheckoutAvailability")({ plan: "pro" });
-    assertEqual(r.data.available, true);
-    assert(r.data.availableProviders.includes("paystack"), "expected paystack in availableProviders for NG");
-    assert(r.data.availableProviders.includes("flutterwave"), "expected flutterwave in availableProviders for NG");
-  });
-
-  await test("createStripeCheckout rejects with PAYMENT_PROVIDER_NOT_CONFIGURED for a country with pricing but no Stripe mapping (NG)", async () => {
-    await signInAs(vendorEmail);
-    try {
-      await httpsCallable(fns, "createStripeCheckout")({ plan: "pro", billingInterval: "monthly" });
-      assert(false, "expected createStripeCheckout to reject for NG (Stripe not mapped there), but it succeeded");
-    } catch (err) {
-      assertEqual(err.code, "functions/failed-precondition");
-      assertEqual(err.details?.errorCode, "PAYMENT_PROVIDER_NOT_CONFIGURED");
+    const r = await httpsCallable(fns, "getVendorSubscriptionOfferings")({});
+    // resolveCountryCode()'s name->code map is deliberately minimal (Nigeria/US
+    // only, per its own comment) — "Ghana" falls through to .toUpperCase(),
+    // i.e. "GHANA", not an ISO "GH". Asserting the real current behavior here,
+    // not the ISO code this map doesn't produce for uncovered countries yet.
+    assertEqual(r.data.countryCode, "GHANA");
+    for (const p of r.data.plans) {
+      assertEqual(p.available, false);
+      assertEqual(p.unavailableReason, "PRICING_NOT_CONFIGURED");
     }
+  });
+
+  await test("getVendorSubscriptionOfferings reports available pricing for a properly configured country (NG), never exposing a provider name", async () => {
+    await signInAs(vendorEmail);
+    const r = await httpsCallable(fns, "getVendorSubscriptionOfferings")({});
+    const pro = r.data.plans.find(p => p.plan === "pro");
+    assertEqual(pro.available, true);
+    assertEqual(pro.monthlyPriceMinorUnits, 250000);
+    assert(JSON.stringify(r.data).toLowerCase().indexOf("paystack") === -1, "offerings response must never mention a provider name");
+    assert(JSON.stringify(r.data).toLowerCase().indexOf("flutterwave") === -1, "offerings response must never mention a provider name");
+  });
+
+  await test("createSubscriptionCheckout for NG selects the first priority provider with a mapping (Paystack)", async () => {
+    await signInAs(vendorEmail);
+    const r = await httpsCallable(fns, "createSubscriptionCheckout")({ plan: "pro" });
+    assert(r.data.authorizationUrl.startsWith("https://checkout.paystack.test/"), "expected NG's priority order (paystack, flutterwave) to select paystack first");
   });
 
   await test("createSubscriptionCheckout rejects checkout for the Basic plan (nothing to check out)", async () => {
@@ -721,7 +741,9 @@ async function section12() {
     assert(r.data.success);
     invoiceId = r.data.invoiceId;
     invoiceNumber = r.data.invoiceNumber;
-    assert(invoiceNumber.startsWith("INV-"));
+    // {VENDORSLUG}-INV-{seq} (Milestone 5 correction) — no longer the old
+    // INV-{year}-{vendorCode}-{padded} format this assertion used to check.
+    assert(/-INV-\d+$/.test(invoiceNumber), `expected {VENDORSLUG}-INV-{seq}, got "${invoiceNumber}"`);
   });
 
   await test("Server computes subtotal — client cannot override line totals", async () => {
@@ -1069,10 +1091,15 @@ async function section14() {
     await auth.currentUser.getIdToken(true);
   });
 
-  await test("createFlutterwaveCheckout returns an authorization URL (emulator fake)", async () => {
-    const r = await httpsCallable(fns, "createFlutterwaveCheckout")({ plan: "pro", billingInterval: "monthly" });
-    assert(r.data.authorizationUrl.startsWith("https://checkout.flutterwave.test/"));
-  });
+  // createFlutterwaveCheckout is no longer a public callable — Flutterwave
+  // is now selected server-side by createSubscriptionCheckout based on a
+  // country's provider priority (Milestone 5). Since this vendor's country
+  // (Nigeria) prioritizes paystack ahead of flutterwave, exercising
+  // checkout-time Flutterwave *selection* specifically requires a
+  // flutterwave-only-priority country fixture — covered in
+  // milestone5-acceptance-tests.js Section 1. This test file continues
+  // straight to webhook activation, which is independent of which provider
+  // checkout would have selected.
 
   await test("Flutterwave webhook rejects an incorrect verif-hash", async () => {
     const resp = await postFlutterwaveWebhook({
@@ -1125,8 +1152,8 @@ async function section14() {
     await auth.currentUser.getIdToken(true);
   });
 
-  await test("createStripeCheckout returns an authorization URL (emulator fake)", async () => {
-    const r = await httpsCallable(fns, "createStripeCheckout")({ plan: "pro", billingInterval: "monthly" });
+  await test("createSubscriptionCheckout for US selects Stripe (its only configured provider)", async () => {
+    const r = await httpsCallable(fns, "createSubscriptionCheckout")({ plan: "pro" });
     assert(r.data.authorizationUrl.startsWith("https://checkout.stripe.test/"));
   });
 

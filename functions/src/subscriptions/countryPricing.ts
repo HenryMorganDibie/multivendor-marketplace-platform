@@ -11,9 +11,27 @@
  */
 import { https } from "firebase-functions/v2";
 import { db } from "../admin";
-import { SubscriptionPricingRecord, ProviderPlanMapping } from "../types4";
+import { SubscriptionPricingRecord, ProviderPlanMapping, SubscriptionProviderConfig, SubscriptionProvider } from "../types4";
 
 export type PaidPlanId = "standard" | "pro" | "pro_plus";
+export type CheckoutProvider = "paystack" | "flutterwave" | "stripe";
+const VALID_CHECKOUT_PROVIDERS: CheckoutProvider[] = ["paystack", "flutterwave", "stripe"];
+
+/**
+ * Migration-safe vendor country resolution (LANDING_PAGE_CMS_VENDOR_PORTAL_
+ * MAPPING.md Section 1.1 / frontend-subscription-alignment-scope.md Section
+ * 3). Existing vendors have only the legacy flat `countryCode` field;
+ * newly migrated vendors have `businessLocation.countryCode`. Neither the
+ * mobile app nor the Vendor Portal ever sees or chooses between the two —
+ * this is the one place that resolves it, server-side, always.
+ */
+export async function resolveVendorCountry(vendorId: string): Promise<string> {
+  const vendorSnap = await db.collection("vendors").doc(vendorId).get();
+  const data = vendorSnap.data();
+  const structured = data?.businessLocation?.countryCode as string | undefined;
+  const legacy = data?.countryCode as string | undefined;
+  return structured ?? legacy ?? "";
+}
 
 /**
  * Monthly billing only for MVP — a deliberate decision, not a temporary
@@ -128,6 +146,95 @@ export async function requireProviderPlanMapping(
     );
   }
   return mapping;
+}
+
+/**
+ * Fetches subscriptionProviderConfig/{countryCode} — private, Admin-SDK
+ * only, never stored in the public subscriptionPricing document (see
+ * frontend-subscription-alignment-scope.md Section 4.1 for why: a public
+ * document must never reveal which providers the platform uses per country or
+ * their priority order). Throws the same PAYMENT_PROVIDER_NOT_CONFIGURED
+ * error a missing providerPlanMapping would, since "no provider priority
+ * configured for this country" and "no provider mapped for this country"
+ * are the same failure from the caller's point of view: checkout isn't
+ * possible here, full stop.
+ */
+export async function requireProviderPriority(countryCode: string): Promise<SubscriptionProvider[]> {
+  const snap = await db.collection("subscriptionProviderConfig").doc(countryCode).get();
+  if (!snap.exists) {
+    throw new https.HttpsError(
+      "failed-precondition",
+      `No provider configuration exists for country "${countryCode}".`,
+      { errorCode: PAYMENT_PROVIDER_NOT_CONFIGURED }
+    );
+  }
+  const config = snap.data() as SubscriptionProviderConfig;
+  if (config.status !== "active" || !Array.isArray(config.providerPriority) || config.providerPriority.length === 0) {
+    throw new https.HttpsError(
+      "failed-precondition",
+      `Provider configuration for country "${countryCode}" is not active or has no priority list.`,
+      { errorCode: PAYMENT_PROVIDER_NOT_CONFIGURED }
+    );
+  }
+  return config.providerPriority;
+}
+
+/**
+ * Validation for subscriptionProviderConfig writes (admin tooling / import
+ * scripts, not any client path — the collection is Admin-SDK write-only).
+ * Rejects: values outside the checkout-provider enum, duplicates, and an
+ * empty list. Exported so admin scripts can reuse it rather than
+ * reimplementing the same checks.
+ */
+export function validateProviderPriority(providerPriority: unknown): asserts providerPriority is CheckoutProvider[] {
+  if (!Array.isArray(providerPriority) || providerPriority.length === 0) {
+    throw new Error("providerPriority must be a non-empty array.");
+  }
+  const seen = new Set<string>();
+  for (const p of providerPriority) {
+    if (!VALID_CHECKOUT_PROVIDERS.includes(p as CheckoutProvider)) {
+      throw new Error(`providerPriority contains an unsupported provider: "${p}". Must be one of: ${VALID_CHECKOUT_PROVIDERS.join(", ")}.`);
+    }
+    if (seen.has(p as string)) {
+      throw new Error(`providerPriority contains a duplicate entry: "${p}".`);
+    }
+    seen.add(p as string);
+  }
+}
+
+/**
+ * Picks the first provider in a country's priority list that also has an
+ * active providerPlanMapping entry for the requested plan — the single
+ * server-side provider-selection decision point (Section 4.1). Returns
+ * both the chosen provider and its resolved mapping so the caller never
+ * has to look it up a second time. Throws PAYMENT_PROVIDER_NOT_CONFIGURED
+ * if nothing in the priority list has a usable mapping — never silently
+ * falls back to a provider outside the configured order.
+ */
+export async function selectProvider(
+  countryCode: string,
+  planId: PaidPlanId
+): Promise<{ provider: CheckoutProvider; mapping: ProviderPlanMapping }> {
+  const priority = await requireProviderPriority(countryCode);
+  const mappingSnap = await db.collection("providerPlanMapping").doc(`${countryCode}-${planId}`).get();
+  if (!mappingSnap.exists) {
+    throw new https.HttpsError(
+      "failed-precondition",
+      `No provider plan mapping configured for ${countryCode}-${planId}.`,
+      { errorCode: PAYMENT_PROVIDER_NOT_CONFIGURED }
+    );
+  }
+  const mapping = mappingSnap.data() as ProviderPlanMapping;
+  for (const candidate of priority) {
+    if ((candidate === "paystack" || candidate === "flutterwave" || candidate === "stripe") && mapping[candidate]) {
+      return { provider: candidate, mapping };
+    }
+  }
+  throw new https.HttpsError(
+    "failed-precondition",
+    `No provider in ${countryCode}'s priority list has a plan mapping for ${planId}.`,
+    { errorCode: PAYMENT_PROVIDER_NOT_CONFIGURED }
+  );
 }
 
 /**

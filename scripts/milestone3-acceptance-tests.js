@@ -756,6 +756,11 @@ async function section7() {
 async function section8() {
   console.log("\n📋 Section 8: Pickup details auto-send");
 
+  await test("Setup: upgrade vendor to Pro (auto-send pickup details is Pro+ only per Milestone 4's plan gating, added after this script was written)", async () => {
+    await signInAs(adminEmail);
+    await httpsCallable(fns, "applyManualSubscriptionOverride")({ vendorId, plan: "pro", reason: "milestone3 pickup-auto-send test fixture" });
+  });
+
   await test("Vendor cannot enable auto-send without pickup address/instructions", async () => {
     await signInAs(vendorEmail);
     await assertFnError(

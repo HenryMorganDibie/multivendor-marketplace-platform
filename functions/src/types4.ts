@@ -104,6 +104,18 @@ export interface VendorSubscriptionDoc {
   status: SubscriptionStatus;
   currency: string;
   amountPaid: number;
+  /**
+   * The vendor's currently-billed monthly amount, in minor currency units
+   * (LANDING_PAGE_CMS_VENDOR_PORTAL_MAPPING.md Section 12.3). Set at
+   * subscription creation and on every activation/renewal webhook — always
+   * mirrors what the provider actually charged (converted from `amountPaid`),
+   * never proactively re-fetched from `subscriptionPricing`. This is what
+   * makes the "existing subscribers keep their price until a real renewal
+   * charges them the new one" guarantee true: this field only ever changes
+   * when a real payment at a real amount happens, never on a pricing-config
+   * edit alone.
+   */
+  currentMonthlyPriceMinorUnits?: number;
   billingInterval: "monthly" | "yearly";
   currentPeriodStart: firestore.Timestamp | firestore.FieldValue;
   currentPeriodEnd: firestore.Timestamp | firestore.FieldValue;
@@ -211,16 +223,45 @@ export interface ProviderPlanCodesDoc {
 
 // ─── subscriptionPricing/{countryCode} — PUBLIC read, seed-script write only
 
+export interface SubscriptionPricingPlanEntry {
+  monthlyPriceMinorUnits: number;
+  /**
+   * Record-keeping metadata only (Section 12.3) — the backend never
+   * compares this against the current date to decide whether to apply a
+   * price. Documents when a price became/becomes effective, for admin
+   * reference and so a future automated-notice-enforcement version has the
+   * data it needs without a schema migration. Optional: older/never-changed
+   * prices may not have one.
+   */
+  effectiveFrom?: firestore.Timestamp | firestore.FieldValue;
+}
+
 export interface SubscriptionPricingRecord {
   countryCode: string;
   currencyCode: string;
   plans: {
-    standard: { monthlyPriceMinorUnits: number };
-    pro: { monthlyPriceMinorUnits: number };
-    pro_plus: { monthlyPriceMinorUnits: number };
+    standard: SubscriptionPricingPlanEntry;
+    pro: SubscriptionPricingPlanEntry;
+    pro_plus: SubscriptionPricingPlanEntry;
   };
   status: "active" | "inactive" | "archived";
   createdAt: firestore.Timestamp | firestore.FieldValue;
+  updatedAt: firestore.Timestamp | firestore.FieldValue;
+}
+
+// ─── subscriptionProviderConfig/{countryCode} — PRIVATE, Admin SDK only ───
+//
+// Country-specific provider priority order (frontend-subscription-
+// alignment-scope.md Section 4.1). Never stored in the public
+// subscriptionPricing document — provider names/priority must never reach
+// any client. createSubscriptionCheckout picks the first provider in this
+// list that also has an active providerPlanMapping entry for the requested
+// plan. No universal fallback order across countries.
+
+export interface SubscriptionProviderConfig {
+  countryCode: string;
+  providerPriority: Array<Extract<SubscriptionProvider, "paystack" | "flutterwave" | "stripe">>;
+  status: "active" | "inactive";
   updatedAt: firestore.Timestamp | firestore.FieldValue;
 }
 

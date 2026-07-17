@@ -20,8 +20,7 @@ export async function getNextOrderNumber(vendorId: string, slug: string, type: "
 
 export async function getNextReceiptNumber(vendorId: string, slug: string): Promise<string> {
   const seqRef = db.collection("vendorSequences").doc(vendorId);
-  const year = new Date().getFullYear();
-  const vendorCode = slug.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 7);
+  const upperSlug = slug.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 10);
   let nextSeq = 1;
   await db.runTransaction(async (tx) => {
     const snap = await tx.get(seqRef);
@@ -33,13 +32,17 @@ export async function getNextReceiptNumber(vendorId: string, slug: string): Prom
       tx.set(seqRef, { vendorId, orderSequence: 0, externalOrderSequence: 0, receiptSequence: nextSeq, updatedAt: FieldValue.serverTimestamp() });
     }
   });
-  return `LVT-${year}-${vendorCode}-${String(nextSeq).padStart(6, "0")}`;
+  // {vendorSlug}-RCT-{seq}, no year, no zero-padding — matches order/invoice
+  // numbering convention. Never uses a the platform-branded prefix (the platform is
+  // the platform, not the merchant). Sequence only ever increases, per
+  // vendor, never reused (LANDING_PAGE_CMS_VENDOR_PORTAL_MAPPING.md Section
+  // 4.4/13.7).
+  return `${upperSlug}-RCT-${nextSeq}`;
 }
 
 export async function getNextInvoiceNumber(vendorId: string, slug: string): Promise<string> {
   const seqRef = db.collection("vendorSequences").doc(vendorId);
-  const year = new Date().getFullYear();
-  const vendorCode = slug.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 7);
+  const upperSlug = slug.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 10);
   let nextSeq = 1;
   await db.runTransaction(async (tx) => {
     const snap = await tx.get(seqRef);
@@ -51,5 +54,9 @@ export async function getNextInvoiceNumber(vendorId: string, slug: string): Prom
       tx.set(seqRef, { vendorId, orderSequence: 0, externalOrderSequence: 0, receiptSequence: 0, invoiceSequence: nextSeq, updatedAt: FieldValue.serverTimestamp() });
     }
   });
-  return `INV-${year}-${vendorCode}-${String(nextSeq).padStart(6, "0")}`;
+  // {vendorSlug}-INV-{seq}, no year, no zero-padding — matches the order-ID
+  // convention exactly (same 10-char slug truncation as getNextOrderNumber).
+  // Immutable once issued: this is generated once, at invoice creation,
+  // and never regenerated if the vendor later changes their slug.
+  return `${upperSlug}-INV-${nextSeq}`;
 }

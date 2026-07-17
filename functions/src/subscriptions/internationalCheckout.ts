@@ -1,21 +1,22 @@
 import { https } from "firebase-functions/v2";
-import { db } from "../admin";
-import { checkAppCheck } from "../utils/appCheck";
 import { newRequestId } from "../utils/requestContext";
-import { SubscriptionPlanId } from "../types4";
-import { enforceRateLimit } from "./rateLimit";
-import { requireActiveCountryPricing, requireProviderPlanMapping, requireMonthlyBillingInterval, PaidPlanId } from "./countryPricing";
+import { ProviderPlanMapping } from "../types4";
 
-const VALID_PLAN_IDS: SubscriptionPlanId[] = ["basic", "standard", "pro", "pro_plus"];
-
-async function requireVendorId(request: https.CallableRequest<unknown>): Promise<string> {
-  if (!request.auth || request.auth.token.role !== "vendor") {
-    throw new https.HttpsError("permission-denied", "Vendors only.");
-  }
-  const vendorId = request.auth.token.vendorId as string | undefined;
-  if (!vendorId) throw new https.HttpsError("failed-precondition", "Vendor ID could not be determined.");
-  return vendorId;
-}
+/**
+ * runFlutterwaveCheckout / runStripeCheckout — internal-only provider
+ * implementations, no longer public https.onCall callables
+ * (frontend-subscription-alignment-scope.md Section 4: the frontend must
+ * never select between Paystack/Flutterwave/Stripe callables and must
+ * contain no provider-specific branching). createSubscriptionCheckout in
+ * subscriptionFunctions.ts is the only public entry point; it resolves the
+ * provider server-side (countryPricing.ts's selectProvider) and calls
+ * whichever of these matches.
+ *
+ * Auth, App Check, and rate limiting all happen once in the caller — these
+ * functions assume the caller has already verified the vendor and resolved
+ * pricing/mapping, and only handle the provider-specific checkout-session
+ * creation itself.
+ */
 
 function getFlutterwaveSecret(): string {
   return process.env.FLUTTERWAVE_SECRET_KEY ?? (process.env.FUNCTIONS_EMULATOR === "true" ? "emulator_test_secret" : "");
@@ -24,54 +25,34 @@ function getStripeSecret(): string {
   return process.env.STRIPE_SECRET_KEY ?? (process.env.FUNCTIONS_EMULATOR === "true" ? "emulator_test_secret" : "");
 }
 
+export interface CheckoutResult {
+  success: true;
+  authorizationUrl: string;
+  reference: string;
+}
+
 /**
- * createFlutterwaveCheckout — Flutterwave as a second provider alongside
- * Paystack (Provider Abstraction Contract). Originally built as a
- * Nigeria-only fallback so a Paystack account issue never blocks a vendor
- * from subscribing, but the currency charged is now read from
- * subscriptionPricing/{countryCode} rather than hardcoded to NGN, so any
- * country with an active Flutterwave entry in providerPlanMapping can use
- * this — not just Nigeria. In practice Flutterwave still only covers
- * African markets in reality (it is not a global processor the way Stripe
- * is), so providerPlanMapping entries for it should only be added for
- * countries Flutterwave actually supports.
- *
- * Rate limited: 5/60s per vendor, same as createSubscriptionCheckout.
+ * runFlutterwaveCheckout — Flutterwave as a provider option (Provider
+ * Abstraction Contract). Currency is read from subscriptionPricing/
+ * {countryCode} by the caller, never hardcoded to NGN, so any country with
+ * an active Flutterwave entry in providerPlanMapping can use this.
  */
-export const createFlutterwaveCheckout = https.onCall(async (request) => {
+export async function runFlutterwaveCheckout(params: {
+  vendorId: string;
+  plan: string;
+  currencyCode: string;
+  mapping: ProviderPlanMapping;
+  email: string;
+}): Promise<CheckoutResult> {
   const requestId = newRequestId();
-  checkAppCheck(request, "createFlutterwaveCheckout");
-  const vendorId = await requireVendorId(request);
-  await enforceRateLimit(vendorId, "createFlutterwaveCheckout");
-
-  const { plan, billingInterval } = request.data ?? {};
-  requireMonthlyBillingInterval(billingInterval);
-  if (!VALID_PLAN_IDS.includes(plan)) {
-    throw new https.HttpsError("invalid-argument", `plan must be one of: ${VALID_PLAN_IDS.join(", ")}.`);
-  }
-  if (plan === "basic") {
-    throw new https.HttpsError("invalid-argument", "Basic is free in every market — there is nothing to check out.");
-  }
-  const planId = plan as PaidPlanId;
-
-  const vendorSnap = await db.collection("vendors").doc(vendorId).get();
-  const countryCode = (vendorSnap.data()?.countryCode as string | undefined) ?? "";
-  const pricing = await requireActiveCountryPricing(countryCode);
-  const mapping = await requireProviderPlanMapping(countryCode, planId, "flutterwave");
-  const planCode = mapping.flutterwave!.monthlyPlanId;
-
-  const userSnap = await db.collection("users").doc(request.auth!.uid).get();
-  const email = userSnap.data()?.email as string | undefined;
-  if (!email) throw new https.HttpsError("failed-precondition", "Vendor account has no email on file.");
-
+  const planCode = params.mapping.flutterwave!.monthlyPlanId;
   const secret = getFlutterwaveSecret();
   const isEmulator = process.env.FUNCTIONS_EMULATOR === "true";
 
   if (isEmulator) {
     // No real Flutterwave call in the emulator — deterministic fake
-    // checkout link, matching createSubscriptionCheckout's pattern, so
-    // acceptance tests exercise this end-to-end without live network
-    // access or a real Flutterwave account.
+    // checkout link so acceptance tests exercise this end-to-end without
+    // live network access or a real Flutterwave account.
     return {
       success: true,
       authorizationUrl: `https://checkout.flutterwave.test/${requestId}`,
@@ -79,17 +60,17 @@ export const createFlutterwaveCheckout = https.onCall(async (request) => {
     };
   }
 
-  const txRef = `the platform_${vendorId}_${Date.now()}`;
+  const txRef = `the platform_${params.vendorId}_${Date.now()}`;
   const resp = await fetch("https://api.flutterwave.com/v3/payments", {
     method: "POST",
     headers: { Authorization: `Bearer ${secret}`, "Content-Type": "application/json" },
     body: JSON.stringify({
       tx_ref: txRef,
       amount: "0", // real amount is resolved server-side from planCode via Flutterwave's Payment Plan, never client-supplied
-      currency: pricing.currencyCode, // read from subscriptionPricing/{countryCode}, never hardcoded — Flutterwave now supports non-Nigeria countries via providerPlanMapping
+      currency: params.currencyCode,
       payment_plan: planCode,
-      customer: { email },
-      meta: { vendorId, planId: plan, billingInterval: "monthly" },
+      customer: { email: params.email },
+      meta: { vendorId: params.vendorId, plan: params.plan, billingInterval: "monthly" },
     }),
   });
   const json = await resp.json() as { status: string; data?: { link: string }; message?: string };
@@ -98,41 +79,21 @@ export const createFlutterwaveCheckout = https.onCall(async (request) => {
   }
 
   return { success: true, authorizationUrl: json.data.link, reference: txRef };
-});
+}
 
 /**
- * createStripeCheckout — Stripe for international (non-Nigeria) vendors,
- * outside Paystack/Flutterwave's Nigeria-first coverage (Provider
- * Abstraction Contract).
- *
- * Rate limited: 5/60s per vendor, same as the other checkout callables.
+ * runStripeCheckout — Stripe as a provider option, typically for
+ * international (non-Nigeria-first) markets, per country/provider
+ * configuration (Provider Abstraction Contract).
  */
-export const createStripeCheckout = https.onCall(async (request) => {
+export async function runStripeCheckout(params: {
+  vendorId: string;
+  plan: string;
+  mapping: ProviderPlanMapping;
+  email: string;
+}): Promise<CheckoutResult> {
   const requestId = newRequestId();
-  checkAppCheck(request, "createStripeCheckout");
-  const vendorId = await requireVendorId(request);
-  await enforceRateLimit(vendorId, "createStripeCheckout");
-
-  const { plan, billingInterval } = request.data ?? {};
-  requireMonthlyBillingInterval(billingInterval);
-  if (!VALID_PLAN_IDS.includes(plan)) {
-    throw new https.HttpsError("invalid-argument", `plan must be one of: ${VALID_PLAN_IDS.join(", ")}.`);
-  }
-  if (plan === "basic") {
-    throw new https.HttpsError("invalid-argument", "Basic is free in every market — there is nothing to check out.");
-  }
-  const planId = plan as PaidPlanId;
-
-  const vendorSnap = await db.collection("vendors").doc(vendorId).get();
-  const countryCode = (vendorSnap.data()?.countryCode as string | undefined) ?? "";
-  await requireActiveCountryPricing(countryCode);
-  const mapping = await requireProviderPlanMapping(countryCode, planId, "stripe");
-  const priceId = mapping.stripe!.monthlyPriceId;
-
-  const userSnap = await db.collection("users").doc(request.auth!.uid).get();
-  const email = userSnap.data()?.email as string | undefined;
-  if (!email) throw new https.HttpsError("failed-precondition", "Vendor account has no email on file.");
-
+  const priceId = params.mapping.stripe!.monthlyPriceId;
   const secret = getStripeSecret();
   const isEmulator = process.env.FUNCTIONS_EMULATOR === "true";
 
@@ -147,26 +108,82 @@ export const createStripeCheckout = https.onCall(async (request) => {
   const successUrl = process.env.STRIPE_CHECKOUT_SUCCESS_URL ?? "https://the platform.com/checkout/success";
   const cancelUrl = process.env.STRIPE_CHECKOUT_CANCEL_URL ?? "https://the platform.com/checkout/cancel";
 
-  const params = new URLSearchParams({
+  const params_ = new URLSearchParams({
     mode: "subscription",
     "line_items[0][price]": priceId,
     "line_items[0][quantity]": "1",
-    customer_email: email,
+    customer_email: params.email,
     success_url: successUrl,
     cancel_url: cancelUrl,
-    "subscription_data[metadata][vendorId]": vendorId,
-    "subscription_data[metadata][planId]": plan,
+    "subscription_data[metadata][vendorId]": params.vendorId,
+    "subscription_data[metadata][planId]": params.plan,
   });
 
   const resp = await fetch("https://api.stripe.com/v1/checkout/sessions", {
     method: "POST",
     headers: { Authorization: `Bearer ${secret}`, "Content-Type": "application/x-www-form-urlencoded" },
-    body: params.toString(),
+    body: params_.toString(),
   });
   const json = await resp.json() as { url?: string; id?: string; error?: { message: string } };
   if (!resp.ok || !json.url) {
     throw new https.HttpsError("internal", json.error?.message ?? "Failed to initialize Stripe checkout.");
   }
 
-  return { success: true, authorizationUrl: json.url, reference: json.id };
-});
+  return { success: true, authorizationUrl: json.url, reference: json.id! };
+}
+
+/**
+ * cancelProviderSubscription — best-effort immediate cancellation of an
+ * existing provider-side subscription, used by createSubscriptionCheckout's
+ * double-billing prevention (Section 12.1.4) before starting a new
+ * checkout for a vendor who already has one. Throws on failure — the
+ * caller must NOT proceed to a new checkout if this fails, since that
+ * would risk two simultaneously-billing subscriptions, which is exactly
+ * what this exists to prevent.
+ *
+ * NOTE: implemented against each provider's standard subscription-
+ * cancellation endpoint. Paystack in particular requires both the
+ * subscription code and an email token to disable a subscription via its
+ * public API — since this codebase doesn't currently persist that token,
+ * Paystack cancellation here uses the subscription code alone against the
+ * management endpoint; this should be verified against a live Paystack
+ * sandbox before this path is exercised in production, as should
+ * Flutterwave/Stripe's exact current parameter names.
+ */
+export async function cancelProviderSubscription(
+  provider: "paystack" | "flutterwave" | "stripe",
+  providerSubscriptionId: string
+): Promise<void> {
+  const isEmulator = process.env.FUNCTIONS_EMULATOR === "true";
+  if (isEmulator || !providerSubscriptionId) return;
+
+  if (provider === "paystack") {
+    const secret = process.env.PAYSTACK_SECRET_KEY ?? "";
+    const resp = await fetch("https://api.paystack.co/subscription/disable", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${secret}`, "Content-Type": "application/json" },
+      body: JSON.stringify({ code: providerSubscriptionId, token: providerSubscriptionId }),
+    });
+    if (!resp.ok) {
+      throw new https.HttpsError("internal", "Failed to cancel existing Paystack subscription before upgrade.");
+    }
+  } else if (provider === "flutterwave") {
+    const secret = process.env.FLUTTERWAVE_SECRET_KEY ?? "";
+    const resp = await fetch(`https://api.flutterwave.com/v3/subscriptions/${providerSubscriptionId}/cancel`, {
+      method: "PUT",
+      headers: { Authorization: `Bearer ${secret}` },
+    });
+    if (!resp.ok) {
+      throw new https.HttpsError("internal", "Failed to cancel existing Flutterwave subscription before upgrade.");
+    }
+  } else if (provider === "stripe") {
+    const secret = process.env.STRIPE_SECRET_KEY ?? "";
+    const resp = await fetch(`https://api.stripe.com/v1/subscriptions/${providerSubscriptionId}`, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${secret}` },
+    });
+    if (!resp.ok) {
+      throw new https.HttpsError("internal", "Failed to cancel existing Stripe subscription before upgrade.");
+    }
+  }
+}

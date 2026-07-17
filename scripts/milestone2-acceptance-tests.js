@@ -58,8 +58,22 @@ let catalogItemId, catalogItem2Id, categoryId, cartId, orderId, publicOrderId, e
 
 async function signInAs(email) { const c = await signInWithEmailAndPassword(auth, email, PASSWORD); await c.user.getIdToken(true); return c; }
 
+async function seedCountryAvailability() {
+  // Phase 3 added a countryAvailability gate on createOrder/createCommerceConversation
+  // (functions/src/orders/createOrder.ts) that this script predates and was
+  // never updated for. Without this, every order-creation test in this file
+  // fails with "the platform is not currently available in this vendor's region"
+  // when run standalone (i.e. not preceded by milestone3/4, which happen to
+  // seed this same fixture themselves). Matches milestone3's exact seed.
+  await admin.firestore().collection("countryAvailability").doc("NG").set({
+    countryCode: "NG", countryName: "Nigeria", status: "ACTIVE",
+    updatedAt: admin.firestore.FieldValue.serverTimestamp(), updatedBy: "p2_acceptance_seed",
+  });
+}
+
 async function setup() {
   console.log("\n⚙️  Setup: provisioning test accounts...");
+  await seedCountryAvailability();
   customerEmail = `p2cust_${Date.now()}@test.com`;
   const cc = await createUserWithEmailAndPassword(auth, customerEmail, PASSWORD);
   customerUid = cc.user.uid;
@@ -184,10 +198,13 @@ async function section2() {
 
 async function section3() {
   console.log("\n📋 Section 3: Order creation and inventory reservation");
-  await test("createOrderFromCart requires conversationId", async () => {
-    await signInAs(customerEmail);
-    await assertFnError(httpsCallable(fns, "createOrderFromCart")({ cartId }), "invalid-argument");
-  });
+  // "createOrderFromCart requires conversationId" removed: per Phase 3
+  // (createOrder.ts's own comment), conversationId is no longer accepted
+  // as client input at all — the server computes it deterministically
+  // (`commerce_${customerId}_${vendorId}`). Calling without one used to be
+  // rejected; now it's just a normal, valid call, so the old rejection
+  // assertion here was itself testing pre-Phase-3 behavior that no longer
+  // exists — and worse, silently consumed the cart the next test needed.
   await test("createOrderFromCart creates order and reserves inventory", async () => {
     await signInAs(customerEmail);
     const r = await httpsCallable(fns, "createOrderFromCart")({ cartId, conversationId: `conv_${Date.now()}` });
@@ -274,7 +291,8 @@ async function section4() {
     await httpsCallable(fns, "updateOrderStatus")({ orderId, newStatus: "completed" });
     await sleep(1500);
     const rs = await admin.firestore().collection("orders").doc(orderId).collection("receipts").get();
-    assert(rs.docs.length > 0, "Receipt must be generated"); assert(rs.docs[0].data().receiptNumber.startsWith("LVT-"));
+    assert(rs.docs.length > 0, "Receipt must be generated");
+    assert(/-RCT-\d+$/.test(rs.docs[0].data().receiptNumber), `expected {VENDORSLUG}-RCT-{seq}, got "${rs.docs[0].data().receiptNumber}"`);
     const s = await admin.firestore().collection("vendors").doc(vendorId).collection("catalogItems").doc(catalogItemId).get();
     assertEqual(s.data().reservedQuantity, 0, "Reserved quantity must be 0 after completion");
     assert(s.data().inventoryQuantity < 10, "inventoryQuantity must decrease");
@@ -294,16 +312,21 @@ async function section4() {
 
 async function section5() {
   console.log("\n📋 Section 5: External orders");
+  await test("Setup: upgrade vendor to Standard (external orders are Standard+ only per Milestone 4's plan gating, added after this script was written)", async () => {
+    await signInAs(adminEmail);
+    await httpsCallable(fns, "applyManualSubscriptionOverride")({ vendorId, plan: "standard", reason: "milestone2 external-order test fixture" });
+  });
   await test("Vendor can create external order with EXT in publicOrderId", async () => {
     await signInAs(vendorEmail);
     const r = await httpsCallable(fns, "createExternalOrder")({ externalCustomerName: "Chidi Okeke", externalCustomerPhone: "+2348012345678", conversationId: `conv_ext_${Date.now()}`, fulfillmentType: "pickup", items: [{ itemId: catalogItem2Id, quantity: 1 }] });
     assert(r.data.success); externalOrderId = r.data.orderId;
     assert(r.data.publicOrderId.includes("EXT"), `Expected EXT in publicOrderId: ${r.data.publicOrderId}`);
   });
-  await test("External order requires conversationId", async () => {
-    await signInAs(vendorEmail);
-    await assertFnError(httpsCallable(fns, "createExternalOrder")({ externalCustomerName: "Test", items: [{ itemId: catalogItem2Id, quantity: 1 }] }), "invalid-argument");
-  });
+  // "External order requires conversationId" removed: createExternalOrder
+  // (createOrder.ts) only ever validates externalCustomerName and items —
+  // conversationId was never a required client field here either; the
+  // server always derives its own (`external_${orderRef.id}`). Same stale
+  // pre-Phase-3 assumption as the internal-order test above.
   await test("Customer CANNOT create external order", async () => {
     await signInAs(customerEmail);
     await assertFnError(httpsCallable(fns, "createExternalOrder")({ externalCustomerName: "Fake", conversationId: "c", items: [{ itemId: catalogItemId, quantity: 1 }] }), "permission-denied");
@@ -413,17 +436,23 @@ async function section8() {
   await test("getReceipt returns receipt after completion", async () => {
     await signInAs(customerEmail);
     const r = await httpsCallable(fns, "getReceipt")({ orderId });
-    assert(r.data.success); assert(r.data.receipt.receiptNumber.startsWith("LVT-")); assert(r.data.receipt.total > 0);
+    assert(r.data.success);
+    assert(/-RCT-\d+$/.test(r.data.receipt.receiptNumber), `expected {VENDORSLUG}-RCT-{seq}, got "${r.data.receipt.receiptNumber}"`);
+    assert(r.data.receipt.total > 0);
   });
   await test("Receipt is immutable — client CANNOT write", async () => {
     await signInAs(customerEmail);
     const rs = await admin.firestore().collection("orders").doc(orderId).collection("receipts").get();
     await assertDenied(setDoc(doc(db, "orders", orderId, "receipts", rs.docs[0].id), { total: 0 }, { merge: true }));
   });
-  await test("Receipt number format is LVT-YEAR-CODE-SEQ", async () => {
+  await test("Receipt number format is {VENDORSLUG}-RCT-{seq}", async () => {
+    // Corrected per LANDING_PAGE_CMS_VENDOR_PORTAL_MAPPING.md Section 4.4:
+    // no more LVT-{year}-{code}-{padded} — matches the order/invoice
+    // numbering convention now (no the platform-branded prefix, no year, no
+    // zero-padding).
     const rs = await admin.firestore().collection("orders").doc(orderId).collection("receipts").get();
-    const parts = rs.docs[0].data().receiptNumber.split("-");
-    assert(parts.length >= 4); assertEqual(parts[0], "LVT"); assert(parseInt(parts[1]) >= 2024);
+    const receiptNumber = rs.docs[0].data().receiptNumber;
+    assert(/-RCT-\d+$/.test(receiptNumber), `expected {VENDORSLUG}-RCT-{seq}, got "${receiptNumber}"`);
   });
   await test("Another user CANNOT get this receipt", async () => {
     const e = `recother_${Date.now()}@test.com`;
@@ -455,9 +484,15 @@ async function section9() {
     const phone = "+2347011223344";
     await httpsCallable(fns, "sendPhoneOtp")({ phoneNumber: phone });
     await sleep(1000);
-    const smsSnap = await admin.firestore().collection("smsQueue").orderBy("createdAt","desc").limit(5).get();
-    let code = null;
-    smsSnap.forEach(d => { if (d.data().to === phone && d.data()._emulatorCode) code = d.data()._emulatorCode; });
+    // Filtered + limited to exactly this phone's single most recent entry —
+    // scanning the last 5 unfiltered docs and letting a plain forEach
+    // overwrite `code` on every match actually picks the OLDEST of those 5
+    // (desc order means later loop iterations are older), which silently
+    // verifies a stale code from a prior run against the same emulator
+    // session instead of the one just sent.
+    const smsSnap = await admin.firestore().collection("smsQueue")
+      .where("to", "==", phone).orderBy("createdAt", "desc").limit(1).get();
+    const code = smsSnap.empty ? null : smsSnap.docs[0].data()._emulatorCode;
     assert(code, "OTP code must be in smsQueue doc (_emulatorCode field)");
     const r = await httpsCallable(fns, "verifyPhoneOtp")({ phoneNumber: phone, code });
     assertEqual(r.data.verified, true);

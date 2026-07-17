@@ -4,6 +4,7 @@ import { SubscriptionPlanId, SubscriptionProvider, VendorSubscriptionDoc } from 
 import { NORMALIZED_EVENT_PRIORITY, NormalizedEventType } from "./eventPriority";
 import { acquireSubscriptionLock, releaseSubscriptionLock, LockContentionError } from "./subscriptionLock";
 import { logOperationalEvent } from "../utils/operationalLogging";
+import { currencyMinorUnitExponent } from "./countryPricing";
 
 const STALE_WEBHOOK_MS = 24 * 60 * 60 * 1000;
 const GRACE_PERIOD_MS = 7 * 24 * 60 * 60 * 1000;
@@ -213,6 +214,18 @@ export async function processNormalizedWebhookEvent(event: NormalizedWebhookEven
         if (event.providerPlanId) updates.providerPlanId = event.providerPlanId;
         if (typeof event.amountPaid === "number") updates.amountPaid = event.amountPaid;
         updates.currency = event.currency ?? existing?.currency ?? "NGN";
+        // Price Change & Existing Subscriber Policy (LANDING_PAGE_CMS_
+        // VENDOR_PORTAL_MAPPING.md Section 12.3): currentMonthlyPriceMinorUnits
+        // always mirrors what the provider actually charged on THIS
+        // activation/renewal — never a live re-fetch of subscriptionPricing.
+        // This is what makes "existing subscribers keep their price until a
+        // real renewal charges them the new one" true even under Option 1
+        // (no automated notice enforcement): the field only ever changes
+        // when a real payment at a real amount happens.
+        if (typeof event.amountPaid === "number") {
+          const exponent = currencyMinorUnitExponent(updates.currency as string);
+          updates.currentMonthlyPriceMinorUnits = Math.round(event.amountPaid * Math.pow(10, exponent));
+        }
         const periodStart = Timestamp.now();
         const periodEnd = Timestamp.fromMillis(periodStart.toMillis() + 30 * 24 * 60 * 60 * 1000);
         updates.currentPeriodStart = periodStart;

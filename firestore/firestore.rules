@@ -533,6 +533,14 @@ service cloud.firestore {
       // plan/price identifiers. Never client-readable.
       allow read, write: if false;
     }
+    match /subscriptionProviderConfig/{countryCode} {
+      // Private: which provider(s) the platform uses per country, and in what
+      // priority order. Must never be client-readable — that would expose
+      // provider identifiers and routing configuration to any client
+      // (LANDING_PAGE_CMS_VENDOR_PORTAL_MAPPING.md Section 4.1). Admin
+      // SDK only, same as providerPlanMapping.
+      allow read, write: if false;
+    }
     match /invoiceBranding/{vendorId} {
       allow read: if isVendorOwner(vendorId) || isAdmin();
       allow create, update, delete: if false;
