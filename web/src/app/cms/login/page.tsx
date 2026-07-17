@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { SyntheticEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { adminLogin } from "@/lib/useAdminAuth";
 
@@ -10,7 +10,7 @@ export default function CmsLoginPage() {
   const [password, setPassword] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "error">("idle");
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("submitting");
     try {

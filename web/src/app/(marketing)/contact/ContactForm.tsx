@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { SyntheticEvent, useState } from "react";
 import { callable } from "@/lib/firebase";
 
 const SUBJECT_CATEGORIES = ["Vendor Support", "Customer Support", "General Enquiries", "Partnerships", "Media"];
@@ -13,7 +13,7 @@ export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "sent" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("submitting");
     setErrorMessage(null);

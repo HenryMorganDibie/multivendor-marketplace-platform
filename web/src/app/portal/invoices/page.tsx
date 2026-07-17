@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { SyntheticEvent, useEffect, useState } from "react";
 import { callable } from "@/lib/firebase";
 import { InvoiceLineItem, InvoiceSummary } from "@/lib/types";
 
@@ -54,7 +54,7 @@ export default function InvoicesPage() {
     );
   }
 
-  async function handleCreate(e: React.FormEvent<HTMLFormElement>) {
+  async function handleCreate(e: SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
     setCreating(true);
     setError(null);

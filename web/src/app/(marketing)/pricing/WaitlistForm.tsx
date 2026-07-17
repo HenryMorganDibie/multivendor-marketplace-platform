@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { SyntheticEvent, useState } from "react";
 import { callable } from "@/lib/firebase";
 
 interface JoinWaitlistResponse {
@@ -11,7 +11,7 @@ export default function WaitlistForm({ countryCode, countryLabel }: { countryCod
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "joined" | "error">("idle");
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("submitting");
     try {

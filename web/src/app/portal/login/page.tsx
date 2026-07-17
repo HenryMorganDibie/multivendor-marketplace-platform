@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { SyntheticEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { vendorLogin } from "@/lib/useVendorAuth";
 
@@ -11,7 +11,7 @@ export default function PortalLoginPage() {
   const [status, setStatus] = useState<"idle" | "submitting" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("submitting");
     setErrorMessage(null);
