@@ -21,6 +21,16 @@ service firebase.storage {
       return role() == 'admin';
     }
 
+    function isSuperAdmin() {
+      return isAdmin() &&
+             ('adminRoleIds' in request.auth.token) &&
+             ('super_admin' in request.auth.token.adminRoleIds);
+    }
+
+    function isCmsImage() {
+      return request.resource.contentType.matches('image/(jpeg|jpg|png|webp)');
+    }
+
     function isVendor() {
       return role() == 'vendor';
     }
@@ -132,6 +142,29 @@ service firebase.storage {
         && underMb(2);
 
       allow delete: if isVendorOwner(vendorId);
+    }
+
+    // ==========================================================
+    // Landing Page CMS images (LANDING_PAGE_CMS_VENDOR_PORTAL_MAPPING.md
+    // Section 2.4). Publicly readable (used on public pages); write is
+    // Super-Admin only, JPEG/PNG/WebP only (SVG rejected — XSS risk), max
+    // 10MB, server-side compression/resizing happens at CMS-editor upload
+    // time. Note: this check is custom-claims-only (Storage rules cannot
+    // query Firestore), so unlike assertAdmin's live adminUsers status
+    // check, a just-revoked Super-Admin's existing token could still
+    // upload until it naturally expires (up to 1 hour) — an accepted MVP
+    // tradeoff, same shape as App Check's monitor-mode gap.
+    // ==========================================================
+    match /siteContent/{fileId} {
+
+      allow read: if true;
+
+      allow create, update: if
+        isSuperAdmin()
+        && isCmsImage()
+        && underMb(10);
+
+      allow delete: if isSuperAdmin();
     }
 
     // ==========================================================

@@ -424,3 +424,74 @@ export interface VendorRatingStatsDoc {
   lastRatingAt: firestore.Timestamp | firestore.FieldValue;
   updatedAt: firestore.Timestamp | firestore.FieldValue;
 }
+
+// ─── siteContent/{sectionId} — PRIVATE, Admin SDK only ────────────────────
+//
+// LANDING_PAGE_CMS_VENDOR_PORTAL_MAPPING.md Section 2.1. Public visitors
+// never read this collection directly — getPublicSiteContent projects only
+// publishedContent + version. All writes go through saveSiteContentDraft /
+// publishSiteContent (Super-Admin only), never a direct client write.
+
+export type SiteContentNode =
+  | { type: "heading"; level: 1 | 2 | 3; text: string }
+  | { type: "paragraph"; text: string }
+  | { type: "bulletList"; items: string[] }
+  | { type: "orderedList"; items: string[] }
+  | { type: "link"; text: string; href: string }
+  | { type: "bold"; text: string }
+  | { type: "italic"; text: string };
+
+export interface SiteContentImageRef {
+  storagePath: string;
+  altText: string;
+}
+
+export interface SiteContentSectionContent {
+  nodes: SiteContentNode[];
+  images?: Record<string, SiteContentImageRef>;
+  [key: string]: unknown;
+}
+
+export interface SiteContentDoc {
+  sectionId: string;
+  draftContent: SiteContentSectionContent;
+  publishedContent: SiteContentSectionContent | null;
+  previousPublishedContent?: SiteContentSectionContent | null;
+  status: "draft" | "published";
+  version: number;
+  publishedAt: firestore.Timestamp | firestore.FieldValue | null;
+  publishedBy: string | null;
+  updatedAt: firestore.Timestamp | firestore.FieldValue;
+  updatedBy: string;
+}
+
+// ─── contactSubmissions/{submissionId} — PRIVATE, Admin SDK only ──────────
+//
+// Section 3. Public create only, through submitContactForm — never a
+// direct client write. status/createdAt/source are always server-owned.
+
+export interface ContactSubmissionDoc {
+  submissionId: string;
+  name: string;
+  email: string;
+  subjectCategory: string;
+  message: string;
+  status: "new" | "reviewed" | "closed" | "spam";
+  source: "public_website";
+  createdAt: firestore.Timestamp | firestore.FieldValue;
+}
+
+// ─── Vendor-safe billing history projection (Section 4.3) ─────────────────
+//
+// Returned by getVendorBillingHistory — never the raw subscriptionEvents
+// document. No webhook payloads, provider IDs beyond a display reference,
+// internal error detail, or admin override notes.
+
+export interface VendorBillingHistoryEntry {
+  paymentDate: string | null; // ISO string, or null if not yet processed
+  amount: number | null;
+  currency: string | null;
+  plan: string;
+  paymentStatus: string; // plain-language, not a raw backend status string
+  providerReference: string | null;
+}

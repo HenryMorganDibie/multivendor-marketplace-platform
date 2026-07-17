@@ -648,7 +648,26 @@ service cloud.firestore {
       allow read, write: if false;
     }
 
+    // -----------------------------------------------------------------------
+    // Landing Page CMS — siteContent is Admin-SDK-only. Public visitors read
+    // published content exclusively through getPublicSiteContent, which
+    // projects publishedContent and never draftContent (Section 2.1). Writes
+    // go through saveSiteContentDraft / publishSiteContent only, never a
+    // direct client write (Section 2.2), even for an authenticated
+    // Super-Admin session.
+    // -----------------------------------------------------------------------
+    match /siteContent/{sectionId} {
+      allow read, write: if false;
+    }
 
+    // -----------------------------------------------------------------------
+    // Public contact form — write-only via submitContactForm. Never a
+    // direct client write or read (Section 3); status/assignment fields are
+    // server-owned.
+    // -----------------------------------------------------------------------
+    match /contactSubmissions/{submissionId} {
+      allow read, write: if false;
+    }
 
     // -----------------------------------------------------------------------
     // Default deny — anything not explicitly matched above

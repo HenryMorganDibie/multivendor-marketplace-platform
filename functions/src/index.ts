@@ -80,6 +80,7 @@ export { createSubscriptionCheckout, getVendorSubscriptionOfferings, getPublicSu
 export { expireStaleSubscriptions, gracePeriodReminder } from "./subscriptions/scheduledJobs";
 export { updateVendorSettings } from "./vendors/updateVendorSettings";
 export { getVendorDashboard, getBusinessAnalytics } from "./vendors/dashboardAnalytics";
+export { getVendorPortalAccess } from "./vendors/portalAccess";
 
 // ── Phase 4: Ratings ────────────────────────────────────────────────────────────
 export { submitRating, getVendorRatings, moderateRating } from "./ratings/ratingFunctions";
@@ -90,3 +91,8 @@ export { createInvoice, listInvoices, downloadInvoicePdf, duplicateInvoice,
          updateInvoiceStatus, getPublicInvoice } from "./invoices/invoiceFunctions";
 export { updateInvoiceBranding } from "./invoices/invoiceBranding";
 export { cleanupExpiredInvoiceVisibility } from "./invoices/cleanupExpiredInvoiceVisibility";
+export { getVendorBillingHistory } from "./subscriptions/billingHistoryFunctions";
+
+// ── Landing Page / CMS / Vendor Portal (LANDING_PAGE_CMS_VENDOR_PORTAL_MAPPING.md) ─
+export { getPublicSiteContent, getSiteContentDraft, saveSiteContentDraft, publishSiteContent } from "./site/siteContentFunctions";
+export { submitContactForm } from "./site/contactFormFunctions";
