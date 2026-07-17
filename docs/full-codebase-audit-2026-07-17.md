@@ -15,7 +15,7 @@ Installed a JDK and `firebase-tools` locally, built the functions, and ran the r
 | Milestone 2 (catalog, cart, orders, payment proofs, receipts) | 60/60 |
 | Milestone 3 (chat, pickup, quick replies, blocking) | 131/131 |
 | Milestone 4 (subscriptions, plan gating, ratings, invoices) | 100/100 |
-| Milestone 5 (provider-neutral checkout, offerings, price policy) | 32/32 |
+| Landing Page, CMS & Vendor Portal (provider-neutral checkout, offerings, price policy) | 32/32 |
 | **Total** | **390/390** |
 
 This was not a clean pass on the first attempt — **10 real bugs were found and fixed along the way**, all in the test scripts themselves, none in the actual backend code. Documenting all of them, because a report that only shows green checkmarks isn't verifiable:
@@ -24,9 +24,9 @@ This was not a clean pass on the first attempt — **10 real bugs were found and
 |---|---|---|---|
 | 1 | M4 | Offerings country-code assertion | My test assumed `resolveCountryCode("Ghana")` → `"GH"`. It doesn't — that map only covers Nigeria/US, so uncovered countries fall through to the raw uppercased name (`"GHANA"`). My assumption was wrong, not the code. |
 | 2 | M4 | Invoice format assertion (pre-existing test) | Still checked the old `INV-` prefix after the numbering format changed to `{slug}-INV-{seq}`. |
-| 3 | M5 | Kenya/South Africa provider-selection tests | Same root cause as #1 — fixtures keyed by ISO codes (`KE`/`ZA`) that `resolveCountryCode` never actually produces for those country names. |
-| 4 | M5 | NG offerings availability test | My own fixture only mapped the `pro` plan for NG, not `standard`/`pro_plus` — an incomplete test fixture. |
-| 5 | M5 | `currentMonthlyPriceMinorUnits` off by exactly 100× | Paystack sends amounts in kobo; the webhook divides by 100. My test passed naira directly instead of kobo. |
+| 3 | LP/CMS/VP | Kenya/South Africa provider-selection tests | Same root cause as #1 — fixtures keyed by ISO codes (`KE`/`ZA`) that `resolveCountryCode` never actually produces for those country names. |
+| 4 | LP/CMS/VP | NG offerings availability test | My own fixture only mapped the `pro` plan for NG, not `standard`/`pro_plus` — an incomplete test fixture. |
+| 5 | LP/CMS/VP | `currentMonthlyPriceMinorUnits` off by exactly 100× | Paystack sends amounts in kobo; the webhook divides by 100. My test passed naira directly instead of kobo. |
 | 6 | M2 | `countryAvailability` gate — ~15 cascading failures | **Pre-existing, unrelated to my work.** Phase 3 added a region-availability gate on order creation; milestone2's script was never updated to seed that fixture, so it's been broken standalone since Phase 3 shipped (only milestone3/4 happened to seed it). |
 | 7 | M2 | External-order plan gate | **Pre-existing.** `createExternalOrder` became Standard+-only in Phase 4; milestone2 predates that and never upgrades its test vendor. |
 | 8 | M2 | "requires conversationId" tests (×2) | **Pre-existing, and interesting.** Phase 3 removed `conversationId` as client input entirely — the server now derives it deterministically. The old "must reject without it" tests actually *succeeded* (nothing to reject anymore), which silently consumed a cart/order the next test needed. |
@@ -34,7 +34,7 @@ This was not a clean pass on the first attempt — **10 real bugs were found and
 | 10 | M2 | Phone OTP verification | Query fragility, not a functional bug: fetched the last 5 `smsQueue` docs unfiltered and let a bare `forEach` overwrite a variable, which — combined with re-running the script against the same emulator session — picked a *stale* code from a prior run instead of the newest one. Fixed to filter by phone number and take exactly the latest entry. |
 | 11 | M3 | Pickup auto-send plan gate | **Pre-existing**, same shape as #7 — auto-send became Pro+-only in Phase 4; milestone3 never upgrades its test vendor. |
 
-**Pattern worth naming directly:** roughly half of these (#6, #7, #8, #11) were bugs in the *test suite*, not the backend — specifically, milestones 2 and 3 were written before Phase 3/4 added region gating and plan gating, and were never updated when those shipped. The backend was correctly enforcing rules the older tests didn't know about. That's now fixed, and all five suites pass together in a single fresh run, in the order they're documented to run.
+**Pattern worth naming directly:** roughly half of these (#6, #7, #8, #11) were bugs in the *test suite*, not the backend — specifically, milestones 2 and 3 were written before Phase 3/4 added region gating and plan gating, and were never updated when those shipped. The backend was correctly enforcing rules the older tests didn't know about. That's now fixed, and all five suites (Milestones 1-4 plus Landing Page, CMS & Vendor Portal) pass together in a single fresh run, in the order they're documented to run.
 
 ---
 

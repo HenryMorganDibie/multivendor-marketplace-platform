@@ -1,16 +1,21 @@
 /**
- * THE PLATFORM — Milestone 5 Acceptance Test Suite
+ * THE PLATFORM — Landing Page, CMS & Vendor Portal Acceptance Test Suite
  * Provider-neutral checkout (server-side provider selection), the two
  * subscription-offerings callables, migration-safe country resolution,
  * double-billing prevention on upgrade, the corrected invoice/receipt
  * numbering format, and the Price Change & Existing Subscriber Policy's
  * MVP-required implementation (currentMonthlyPriceMinorUnits mirroring).
  *
+ * Formerly called "Milestone 5" internally — renamed to avoid colliding
+ * with the client's own numbering, where Phase 5 refers to the separate,
+ * not-yet-started Admin Web Portal (LANDING_PAGE_CMS_VENDOR_PORTAL_MAPPING.md
+ * Section 0).
+ *
  * Source of truth: LANDING_PAGE_CMS_VENDOR_PORTAL_MAPPING.md v6 (Sections
  * 4, 4.4, 12.1.4, 12.3) and frontend-subscription-alignment-scope.md
  * Section 7.
  *
- * Run: node milestone5-acceptance-tests.js
+ * Run: node landing-page-cms-vendor-portal-acceptance-tests.js
  * Requires: firebase emulators:start --only auth,firestore,functions,storage --project demo-the platform
  */
 const crypto = require("crypto");
@@ -541,7 +546,7 @@ async function section6() {
 }
 
 async function main() {
-  console.log("🚀 THE PLATFORM — Milestone 5 Acceptance Test Suite");
+  console.log("🚀 THE PLATFORM — Landing Page, CMS & Vendor Portal Acceptance Test Suite");
   console.log("=".repeat(60));
 
   await setup();
@@ -554,7 +559,7 @@ async function main() {
 
   console.log("\n" + "=".repeat(60));
   console.log(`Results: ${passed}/${total} passed, ${failed} failed`);
-  if (failed === 0) console.log("✅ ALL TESTS PASSED — Milestone 5 ready for sign-off");
+  if (failed === 0) console.log("✅ ALL TESTS PASSED — Landing Page, CMS & Vendor Portal ready for sign-off");
   else { console.log("❌ SOME TESTS FAILED — see errors above"); process.exitCode = 1; }
   process.exit(process.exitCode || 0);
 }

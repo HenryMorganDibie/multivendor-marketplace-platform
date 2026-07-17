@@ -140,8 +140,9 @@ async function seedTestCountryPricing() {
     countryCode: "US", planId: "pro",
     stripe: { monthlyPriceId: "price_pro_monthly_placeholder" },
   });
-  // subscriptionProviderConfig — provider-neutral checkout (Milestone 5)
-  // needs a priority list per country to pick a provider server-side.
+  // subscriptionProviderConfig — provider-neutral checkout (Landing Page,
+  // CMS & Vendor Portal work) needs a priority list per country to pick a
+  // provider server-side.
   // NG intentionally prioritizes paystack ahead of flutterwave (both are
   // mapped for NG-pro above), so tests can distinguish "server picked the
   // first eligible provider" from "server picked the only mapped one".
@@ -265,11 +266,12 @@ async function section2() {
   });
 
   // getCheckoutAvailability was superseded by getVendorSubscriptionOfferings
-  // / getPublicSubscriptionOfferings (Milestone 5) — see milestone5-
-  // acceptance-tests.js Section 2 for the full offerings-callable coverage,
-  // including the never-exposes-a-provider-name assertion. The two checks
-  // below are kept here since they exercise the same no-pricing/has-pricing
-  // vendors this section already set up.
+  // / getPublicSubscriptionOfferings (Landing Page, CMS & Vendor Portal
+  // work) — see landing-page-cms-vendor-portal-acceptance-tests.js Section
+  // 2 for the full offerings-callable coverage, including the
+  // never-exposes-a-provider-name assertion. The two checks below are kept
+  // here since they exercise the same no-pricing/has-pricing vendors this
+  // section already set up.
   await test("getVendorSubscriptionOfferings reports unavailable + PRICING_NOT_CONFIGURED for the same no-pricing country", async () => {
     // Still signed in as the Ghana no-pricing vendor from the previous test.
     const r = await httpsCallable(fns, "getVendorSubscriptionOfferings")({});
@@ -741,8 +743,9 @@ async function section12() {
     assert(r.data.success);
     invoiceId = r.data.invoiceId;
     invoiceNumber = r.data.invoiceNumber;
-    // {VENDORSLUG}-INV-{seq} (Milestone 5 correction) — no longer the old
-    // INV-{year}-{vendorCode}-{padded} format this assertion used to check.
+    // {VENDORSLUG}-INV-{seq} (Landing Page, CMS & Vendor Portal correction)
+    // — no longer the old INV-{year}-{vendorCode}-{padded} format this
+    // assertion used to check.
     assert(/-INV-\d+$/.test(invoiceNumber), `expected {VENDORSLUG}-INV-{seq}, got "${invoiceNumber}"`);
   });
 
@@ -1093,13 +1096,13 @@ async function section14() {
 
   // createFlutterwaveCheckout is no longer a public callable — Flutterwave
   // is now selected server-side by createSubscriptionCheckout based on a
-  // country's provider priority (Milestone 5). Since this vendor's country
-  // (Nigeria) prioritizes paystack ahead of flutterwave, exercising
-  // checkout-time Flutterwave *selection* specifically requires a
-  // flutterwave-only-priority country fixture — covered in
-  // milestone5-acceptance-tests.js Section 1. This test file continues
-  // straight to webhook activation, which is independent of which provider
-  // checkout would have selected.
+  // country's provider priority (Landing Page, CMS & Vendor Portal work).
+  // Since this vendor's country (Nigeria) prioritizes paystack ahead of
+  // flutterwave, exercising checkout-time Flutterwave *selection*
+  // specifically requires a flutterwave-only-priority country fixture —
+  // covered in landing-page-cms-vendor-portal-acceptance-tests.js Section
+  // 1. This test file continues straight to webhook activation, which is
+  // independent of which provider checkout would have selected.
 
   await test("Flutterwave webhook rejects an incorrect verif-hash", async () => {
     const resp = await postFlutterwaveWebhook({
