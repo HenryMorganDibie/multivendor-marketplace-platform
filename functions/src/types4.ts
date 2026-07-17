@@ -481,6 +481,19 @@ export interface ContactSubmissionDoc {
   createdAt: firestore.Timestamp | firestore.FieldValue;
 }
 
+// ─── waitlistSubmissions/{docId} — PRIVATE, Admin SDK only ────────────────
+//
+// docId is sha256(email:countryCode) so a repeat signup for the same
+// email+country updates in place rather than creating a duplicate row.
+// Written only by joinWaitlist, never a direct client write.
+
+export interface WaitlistSubmissionDoc {
+  email: string;
+  countryCode: string;
+  createdAt: firestore.Timestamp | firestore.FieldValue;
+  updatedAt: firestore.Timestamp | firestore.FieldValue;
+}
+
 // ─── Vendor-safe billing history projection (Section 4.3) ─────────────────
 //
 // Returned by getVendorBillingHistory — never the raw subscriptionEvents

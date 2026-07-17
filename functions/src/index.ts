@@ -95,4 +95,4 @@ export { getVendorBillingHistory } from "./subscriptions/billingHistoryFunctions
 
 // ── Landing Page / CMS / Vendor Portal (LANDING_PAGE_CMS_VENDOR_PORTAL_MAPPING.md) ─
 export { getPublicSiteContent, getSiteContentDraft, saveSiteContentDraft, publishSiteContent } from "./site/siteContentFunctions";
-export { submitContactForm } from "./site/contactFormFunctions";
+export { submitContactForm, joinWaitlist } from "./site/contactFormFunctions";

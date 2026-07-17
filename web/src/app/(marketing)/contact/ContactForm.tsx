@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { callable } from "@/lib/firebase";
 
-const SUBJECT_CATEGORIES = ["General", "Vendor support", "Order issue", "Billing", "Report a problem", "Other"];
+const SUBJECT_CATEGORIES = ["Vendor Support", "Customer Support", "General Enquiries", "Partnerships", "Media"];
 
 interface SubmitContactFormResponse {
   success: true;

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import RichText from "@/components/RichText";
+import { AppStoreBadge, GooglePlayBadge } from "@/components/AppBadges";
 import { getPublishedSiteContent, sectionOrFallback } from "@/lib/siteContent";
 import { SiteContentSectionContent } from "@/lib/types";
 
@@ -11,15 +12,14 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-// Placeholder hero copy — CMS-editable (siteContent/home), pending
-// the client's approved marketing copy. Picked the option that most directly
-// states why the platform exists, per the product review's own stated goal.
+// Hero copy per the client's content spec (2026-07-17) — CMS-editable
+// (siteContent/home) once published; this is the fallback shown until then.
 const FALLBACK: SiteContentSectionContent = {
   nodes: [
-    { type: "heading", level: 1, text: "The marketplace where customers and vendors actually talk." },
+    { type: "heading", level: 1, text: "Buy and sell directly." },
     {
       type: "paragraph",
-      text: "the platform connects customers and vendors directly — chat before you buy, browse verified local businesses, and order with confidence.",
+      text: "the platform connects customers and vendors directly. Browse verified vendors, chat before ordering, place orders, and manage your business — all in one platform.",
     },
   ],
 };
@@ -42,6 +42,13 @@ const VENDOR_CATEGORIES = [
   "Safe Verified Services",
 ];
 
+const WHY_THE PLATFORM = [
+  { title: "Verified Vendors", body: "Browse trusted businesses in your area." },
+  { title: "Chat Before Ordering", body: "Ask questions before placing an order." },
+  { title: "Marketplace Orders", body: "Track orders from request to completion." },
+  { title: "Built for Local Businesses", body: "Create a storefront and grow your business." },
+];
+
 const CUSTOMER_STEPS = [
   { label: "Browse", body: "Find verified vendors near you, by category or search." },
   { label: "Chat", body: "Ask questions directly before you commit to buying." },
@@ -50,23 +57,24 @@ const CUSTOMER_STEPS = [
 ];
 
 const VENDOR_STEPS = [
-  { label: "Register", body: "Sign up and set up your storefront in the mobile app." },
-  { label: "Verify", body: "Submit your business documents for a verified badge customers trust." },
-  { label: "Sell", body: "List your catalog and start chatting with customers directly." },
-  { label: "Receive orders", body: "Manage orders, invoices, and your subscription plan as you grow." },
+  { label: "Register", body: "Sign up in the mobile app." },
+  { label: "Verify", body: "Submit your business documents for a verified badge." },
+  { label: "Create Storefront", body: "List your catalog and set up your business profile." },
+  { label: "Receive Orders", body: "Chat with customers and fulfill orders directly." },
+  { label: "Grow Business", body: "Track performance and upgrade your plan as you scale." },
 ];
 
 function StepFlow({ title, steps }: { title: string; steps: { label: string; body: string }[] }) {
   return (
     <div>
       <p className="text-sm font-semibold uppercase tracking-wide text-brand">{title}</p>
-      <div className="mt-4 grid gap-4 sm:grid-cols-4">
+      <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
         {steps.map((step, i) => (
-          <div key={step.label} className="relative rounded-card border border-hairline p-5 shadow-soft">
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-light text-sm font-bold text-brand">
+          <div key={step.label} className="relative rounded-card border border-hairline p-4 shadow-soft">
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-brand-light text-xs font-bold text-brand">
               {i + 1}
             </span>
-            <p className="mt-3 font-bold tracking-[-0.01em] text-ink">{step.label}</p>
+            <p className="mt-2 font-bold tracking-[-0.01em] text-ink">{step.label}</p>
             <p className="mt-1 text-sm text-ink-secondary">{step.body}</p>
           </div>
         ))}
@@ -104,29 +112,21 @@ export default async function HomePage() {
 
       {/* Hero */}
       <section className="bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
           <div className="max-w-2xl">
             <RichText content={content} />
-            <div className="mt-8 flex flex-wrap gap-4">
-              <a
-                href="https://apps.apple.com/"
-                className="rounded-button bg-black px-6 py-3 text-sm font-semibold text-white shadow-soft-md transition hover:bg-gray-800"
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link
+                href="/vendors"
+                className="rounded-button bg-brand px-6 py-3 text-sm font-semibold text-white shadow-soft-md transition hover:bg-brand-dark"
               >
-                Download on the App Store
-              </a>
-              <a
-                href="https://play.google.com/store"
-                className="rounded-button bg-black px-6 py-3 text-sm font-semibold text-white shadow-soft-md transition hover:bg-gray-800"
-              >
-                Get it on Google Play
-              </a>
-            </div>
-            <div className="mt-4 flex flex-wrap gap-x-6 gap-y-1 text-sm">
-              <Link href="/vendors" className="font-medium text-brand hover:text-brand-dark">
-                Become a Vendor &rarr;
+                Become a Vendor
               </Link>
-              <Link href="/customers" className="font-medium text-brand hover:text-brand-dark">
-                Shop on the platform &rarr;
+              <Link
+                href="/customers"
+                className="rounded-button border border-hairline-strong bg-white px-6 py-3 text-sm font-semibold text-ink transition hover:border-brand hover:text-brand"
+              >
+                Shop on the platform
               </Link>
             </div>
           </div>
@@ -134,21 +134,17 @@ export default async function HomePage() {
       </section>
 
       {/* Why the platform */}
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+      <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         <h2 className="text-2xl font-bold tracking-[-0.015em] text-ink">Why the platform</h2>
-        <div className="mt-6 grid gap-8 sm:grid-cols-3">
-          {[
-            { title: "Chat before buying", body: "Message vendors directly to ask questions before you buy." },
-            { title: "Direct vendor communication", body: "No middleman — every conversation goes straight to the business." },
-            { title: "Local verified businesses", body: "Every vendor goes through verification before they can sell." },
-          ].map((item) => (
-            <div key={item.title} className="rounded-card border border-hairline p-6 shadow-soft">
-              <h3 className="text-lg font-bold tracking-[-0.01em] text-ink">{item.title}</h3>
-              <p className="mt-2 text-sm text-ink-secondary">{item.body}</p>
+        <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {WHY_THE PLATFORM.map((item) => (
+            <div key={item.title} className="rounded-card border border-hairline p-5 shadow-soft">
+              <h3 className="font-bold tracking-[-0.01em] text-ink">{item.title}</h3>
+              <p className="mt-1.5 text-sm text-ink-secondary">{item.body}</p>
             </div>
           ))}
         </div>
-        <div className="mt-10 text-center">
+        <div className="mt-8 text-center">
           <Link href="/features" className="text-sm font-semibold text-brand hover:text-brand-dark">
             See all features &rarr;
           </Link>
@@ -157,19 +153,19 @@ export default async function HomePage() {
 
       {/* How it works */}
       <section className="bg-surface-canvas">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
           <h2 className="text-2xl font-bold tracking-[-0.015em] text-ink">How it works</h2>
-          <div className="mt-6 space-y-10">
-            <StepFlow title="For customers" steps={CUSTOMER_STEPS} />
-            <StepFlow title="For vendors" steps={VENDOR_STEPS} />
+          <div className="mt-5 space-y-8">
+            <StepFlow title="Customers" steps={CUSTOMER_STEPS} />
+            <StepFlow title="Vendors" steps={VENDOR_STEPS} />
           </div>
         </div>
       </section>
 
       {/* Vendor categories */}
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <h2 className="text-2xl font-bold tracking-[-0.015em] text-ink">What you&apos;ll find on the platform</h2>
-        <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
+      <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+        <h2 className="text-2xl font-bold tracking-[-0.015em] text-ink">Vendor Categories</h2>
+        <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
           {VENDOR_CATEGORIES.map((category) => (
             <div
               key={category}
@@ -183,20 +179,31 @@ export default async function HomePage() {
 
       {/* Screenshots */}
       <section className="bg-surface-canvas">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-          <h2 className="text-2xl font-bold tracking-[-0.015em] text-ink">See it in action</h2>
-          <div className="mt-6 grid gap-6 sm:grid-cols-3">
-            <ScreenshotPlaceholder label="Customer app" />
-            <ScreenshotPlaceholder label="Vendor app" />
+        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+          <h2 className="text-2xl font-bold tracking-[-0.015em] text-ink">App Screenshots</h2>
+          <div className="mt-5 grid gap-5 sm:grid-cols-3">
+            <ScreenshotPlaceholder label="Customer App" />
+            <ScreenshotPlaceholder label="Vendor App" />
             <ScreenshotPlaceholder label="Vendor Portal" />
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* CTA */}
       <section className="mx-auto max-w-6xl px-4 py-16 text-center sm:px-6">
-        <h2 className="text-2xl font-bold tracking-[-0.015em] text-ink">What people are saying</h2>
-        <p className="mt-3 text-sm text-ink-tertiary">Coming soon.</p>
+        <h2 className="text-2xl font-bold tracking-[-0.015em] text-ink">Ready to start?</h2>
+        <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <Link
+            href="/vendors"
+            className="rounded-button bg-brand px-6 py-3 text-sm font-semibold text-white shadow-soft-md transition hover:bg-brand-dark"
+          >
+            Become a Vendor
+          </Link>
+          <div className="flex gap-3">
+            <AppStoreBadge href="https://apps.apple.com/" />
+            <GooglePlayBadge href="https://play.google.com/store" />
+          </div>
+        </div>
       </section>
     </>
   );

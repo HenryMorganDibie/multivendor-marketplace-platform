@@ -670,6 +670,14 @@ service cloud.firestore {
     }
 
     // -----------------------------------------------------------------------
+    // Country waitlist — write-only via joinWaitlist. Never a direct
+    // client write or read.
+    // -----------------------------------------------------------------------
+    match /waitlistSubmissions/{docId} {
+      allow read, write: if false;
+    }
+
+    // -----------------------------------------------------------------------
     // Default deny — anything not explicitly matched above
     // -----------------------------------------------------------------------
     match /{document=**} {

@@ -17,7 +17,7 @@ export default function LegalPage({
   const headingCount = content.nodes.filter((n) => n.type === "heading").length;
 
   return (
-    <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+    <section className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
       <h1 className="text-3xl font-extrabold tracking-[-0.02em] text-ink sm:text-4xl">{title}</h1>
       <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs text-ink-tertiary">
         <span>{version !== null ? `Version ${version}` : "Content pending publication"}</span>

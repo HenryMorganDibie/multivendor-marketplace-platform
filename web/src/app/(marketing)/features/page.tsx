@@ -11,26 +11,49 @@ export const metadata: Metadata = {
 
 const FALLBACK: SiteContentSectionContent = {
   nodes: [
-    { type: "heading", level: 1, text: "Features" },
-    { type: "paragraph", text: "A full breakdown of what the platform offers vendors and customers." },
-    { type: "heading", level: 2, text: "For customers" },
+    { type: "heading", level: 1, text: "Everything the platform can do" },
+
+    { type: "heading", level: 2, text: "Customers" },
     {
       type: "bulletList",
       items: [
-        "Browse vendors by category and location",
-        "Message vendors directly before you buy",
-        "Track orders and pickup status in real time",
-        "Rate and review vendors after every order",
+        "Browse vendors",
+        "Search",
+        "Chat",
+        "Favorites",
+        "Notifications",
+        "Reviews",
+        "Order tracking",
+        "Order history",
       ],
     },
-    { type: "heading", level: 2, text: "For vendors" },
+
+    { type: "heading", level: 2, text: "Vendors" },
     {
       type: "bulletList",
       items: [
-        "A verified storefront customers can trust",
-        "Direct chat with customers, no lost leads",
-        "Invoicing with your own branding",
-        "Subscription plans that scale with your business",
+        "Verified storefront",
+        "Product catalog",
+        "Customer chat",
+        "Marketplace orders",
+        "External orders",
+        "Invoices",
+        "Vendor Portal",
+        "Business profile",
+        "Notifications",
+        "Subscription management",
+      ],
+    },
+
+    { type: "heading", level: 2, text: "Platform" },
+    {
+      type: "bulletList",
+      items: [
+        "Multi-country support",
+        "Country-specific pricing",
+        "Cloud sync",
+        "Spam protection",
+        "Secure authentication",
       ],
     },
   ],

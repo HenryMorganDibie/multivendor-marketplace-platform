@@ -5,7 +5,7 @@ import { checkAppCheck } from "../utils/appCheck";
 import { writeAuditLog } from "../utils/auditLog";
 import { newRequestId } from "../utils/requestContext";
 import { enforceRateLimit } from "../subscriptions/rateLimit";
-import { ContactSubmissionDoc } from "../types4";
+import { ContactSubmissionDoc, WaitlistSubmissionDoc } from "../types4";
 
 /**
  * Public contact form — LANDING_PAGE_CMS_VENDOR_PORTAL_MAPPING.md Section 3.
@@ -118,6 +118,57 @@ export const submitContactForm = https.onCall(async (request) => {
     targetType: "contactSubmissions",
     targetId: submissionRef.id,
     eventType: isDuplicate ? "contactForm.duplicate_flagged" : "contactForm.submitted",
+    appCheck,
+  });
+
+  return { success: true };
+});
+
+/**
+ * joinWaitlist — public, unauthenticated. Section 1.1's "not available in
+ * this country yet" state on the Pricing page and Vendor Portal offers a
+ * waitlist signup instead of a dead end. Writes to waitlistSubmissions,
+ * never a direct client write. One entry per email+country pair — a
+ * repeat submission updates the timestamp rather than creating a
+ * duplicate row, so re-clicking the button isn't destructive but also
+ * doesn't spam the notification inbox.
+ */
+export const joinWaitlist = https.onCall(async (request) => {
+  const requestId = newRequestId();
+  const appCheck = checkAppCheck(request, "joinWaitlist");
+
+  const ip = request.rawRequest?.ip ?? "unknown";
+  await enforceRateLimit(`public:${ip}`, "joinWaitlist", 5);
+
+  const data = request.data as { email?: unknown; countryCode?: unknown } | undefined;
+  const email = requireField(data?.email, "email", MAX_EMAIL_LENGTH).toLowerCase();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    throw new https.HttpsError("invalid-argument", "A valid email address is required.");
+  }
+  const countryCode = requireField(data?.countryCode, "countryCode", 100);
+
+  const docId = crypto.createHash("sha256").update(`${email}:${countryCode}`).digest("hex");
+  const ref = db.collection("waitlistSubmissions").doc(docId);
+  const existing = await ref.get();
+  const now = FieldValue.serverTimestamp();
+
+  const doc: WaitlistSubmissionDoc = {
+    email,
+    countryCode,
+    createdAt: existing.exists ? (existing.data() as WaitlistSubmissionDoc).createdAt : now,
+    updatedAt: now,
+  };
+  await ref.set(doc);
+
+  await writeAuditLog({
+    requestId,
+    functionName: "joinWaitlist",
+    actorUid: null,
+    actorRole: "system",
+    actorType: "system",
+    targetType: "waitlistSubmissions",
+    targetId: docId,
+    eventType: existing.exists ? "waitlist.resubmitted" : "waitlist.joined",
     appCheck,
   });
 
