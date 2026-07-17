@@ -9,18 +9,26 @@ function isSafeHref(href: string): boolean {
 function renderNode(node: SiteContentNode, key: number, headingIndex?: number) {
   switch (node.type) {
     case "heading": {
+      // Weight/tracking ported from rork-the platform/expo/constants/theme.ts's
+      // Typography scale (displayHero: 800/-0.8, pageTitle: 700/-0.4,
+      // sectionTitle: 700/-0.2) — tight negative tracking on heavy display
+      // text, same as Apple's own site.
       const Tag = (`h${node.level}` as unknown) as "h1" | "h2" | "h3";
       const sizeClass =
-        node.level === 1 ? "text-4xl md:text-5xl font-bold" : node.level === 2 ? "text-2xl md:text-3xl font-semibold" : "text-xl font-semibold";
+        node.level === 1
+          ? "text-4xl md:text-5xl font-extrabold tracking-[-0.02em]"
+          : node.level === 2
+            ? "text-2xl md:text-3xl font-bold tracking-[-0.015em]"
+            : "text-xl font-bold tracking-[-0.01em]";
       return (
-        <Tag key={key} id={headingIndex !== undefined ? `section-${headingIndex}` : undefined} className={`${sizeClass} tracking-tight scroll-mt-24`}>
+        <Tag key={key} id={headingIndex !== undefined ? `section-${headingIndex}` : undefined} className={`${sizeClass} scroll-mt-24 text-ink`}>
           {node.text}
         </Tag>
       );
     }
     case "paragraph":
       return (
-        <p key={key} className="text-base leading-relaxed text-gray-700 dark:text-gray-300">
+        <p key={key} className="text-base leading-relaxed text-ink-secondary">
           {node.text}
         </p>
       );
@@ -44,7 +52,7 @@ function renderNode(node: SiteContentNode, key: number, headingIndex?: number) {
       ) : null;
     case "bulletList":
       return (
-        <ul key={key} className="list-disc space-y-1 pl-6 text-gray-700 dark:text-gray-300">
+        <ul key={key} className="list-disc space-y-1 pl-6 text-ink-secondary">
           {node.items.map((item, i) => (
             <li key={i}>{item}</li>
           ))}
@@ -52,7 +60,7 @@ function renderNode(node: SiteContentNode, key: number, headingIndex?: number) {
       );
     case "orderedList":
       return (
-        <ol key={key} className="list-decimal space-y-1 pl-6 text-gray-700 dark:text-gray-300">
+        <ol key={key} className="list-decimal space-y-1 pl-6 text-ink-secondary">
           {node.items.map((item, i) => (
             <li key={i}>{item}</li>
           ))}

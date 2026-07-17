@@ -82,13 +82,13 @@ export default function PricingClient() {
   return (
     <div>
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">Pricing</h1>
+        <h1 className="text-3xl font-extrabold tracking-[-0.02em] text-ink sm:text-4xl">Pricing</h1>
         <label className="flex items-center gap-2 text-sm">
-          <span className="text-gray-600 dark:text-gray-400">Country</span>
+          <span className="text-ink-secondary">Country</span>
           <select
             value={countryCode ?? ""}
             onChange={(e) => handleCountryChange(e.target.value)}
-            className="rounded-lg border border-gray-300 px-3 py-2 text-sm dark:border-gray-700 dark:bg-gray-900"
+            className="rounded-input border border-transparent bg-surface px-3 py-2 text-sm text-ink focus:border-brand focus:bg-white"
           >
             <option value="" disabled>
               Select a country
@@ -103,25 +103,25 @@ export default function PricingClient() {
       </div>
 
       {!countryCode && initialized && (
-        <p className="mt-8 rounded-2xl border border-gray-200 bg-gray-50 p-6 text-sm text-gray-700 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-300">
+        <p className="mt-8 rounded-card border border-hairline bg-surface-canvas p-6 text-sm text-ink-secondary">
           Select your country above to see pricing.
         </p>
       )}
 
       {loading && (
-        <p aria-live="polite" className="mt-8 text-sm text-gray-500">
+        <p aria-live="polite" className="mt-8 text-sm text-ink-tertiary">
           Loading pricing…
         </p>
       )}
 
       {error && (
-        <p role="alert" className="mt-8 text-sm text-red-600 dark:text-red-400">
+        <p role="alert" className="mt-8 text-sm text-red-600">
           {error}
         </p>
       )}
 
       {offerings && allUnavailable && (
-        <p className="mt-8 rounded-2xl border border-gray-200 bg-gray-50 p-6 text-sm text-gray-700 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-300">
+        <p className="mt-8 rounded-card border border-hairline bg-surface-canvas p-6 text-sm text-ink-secondary">
           Paid plans are not available in this country yet.
         </p>
       )}
@@ -129,15 +129,15 @@ export default function PricingClient() {
       {offerings && !allUnavailable && (
         <div className="mt-10 grid gap-6 sm:grid-cols-3">
           {offerings.plans.map((plan) => (
-            <div key={plan.plan} className="flex flex-col rounded-2xl border border-gray-100 p-6 dark:border-gray-800">
-              <h2 className="text-lg font-semibold">{PLAN_DISPLAY_NAME[plan.plan]}</h2>
-              <p className="mt-2 text-2xl font-bold">
+            <div key={plan.plan} className="flex flex-col rounded-card border border-hairline p-6 shadow-soft">
+              <h2 className="text-lg font-bold tracking-[-0.01em] text-ink">{PLAN_DISPLAY_NAME[plan.plan]}</h2>
+              <p className="mt-2 text-2xl font-extrabold tracking-[-0.01em] text-ink">
                 {plan.available ? formatPrice(plan.monthlyPriceMinorUnits, offerings.currencyCode) : "—"}
                 {plan.available && plan.monthlyPriceMinorUnits > 0 ? (
-                  <span className="text-sm font-normal text-gray-500">/mo</span>
+                  <span className="text-sm font-normal text-ink-tertiary">/mo</span>
                 ) : null}
               </p>
-              <ul className="mt-4 flex-1 space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="mt-4 flex-1 space-y-2 text-sm text-ink-secondary">
                 {PLAN_FEATURES[plan.plan].map((feature) => (
                   <li key={feature}>{feature}</li>
                 ))}
@@ -145,12 +145,12 @@ export default function PricingClient() {
               {plan.available ? (
                 <a
                   href="/vendors"
-                  className="mt-6 rounded-full bg-brand px-4 py-2 text-center text-sm font-semibold text-white hover:bg-brand-dark"
+                  className="mt-6 rounded-button bg-brand px-4 py-2 text-center text-sm font-semibold text-white shadow-soft transition hover:bg-brand-dark"
                 >
                   Become a Vendor
                 </a>
               ) : (
-                <p className="mt-6 text-center text-xs text-gray-500">Temporarily unavailable</p>
+                <p className="mt-6 text-center text-xs text-ink-tertiary">Temporarily unavailable</p>
               )}
             </div>
           ))}

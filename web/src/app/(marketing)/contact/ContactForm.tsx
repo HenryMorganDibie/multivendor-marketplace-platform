@@ -40,7 +40,7 @@ export default function ContactForm() {
 
   if (status === "sent") {
     return (
-      <div role="status" className="rounded-2xl border border-green-200 bg-green-50 p-6 text-green-800 dark:border-green-900 dark:bg-green-950 dark:text-green-300">
+      <div role="status" className="rounded-card border border-green-200 bg-green-50 p-6 text-green-800">
         <p className="font-semibold">Message sent</p>
         <p className="mt-1 text-sm">Thanks for reaching out — our team will get back to you.</p>
       </div>
@@ -65,7 +65,7 @@ export default function ContactForm() {
           type="text"
           required
           maxLength={100}
-          className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm dark:border-gray-700 dark:bg-gray-900"
+          className="mt-1 w-full rounded-input border border-transparent bg-surface px-3 py-2.5 text-sm text-ink focus:border-brand focus:bg-white"
         />
       </div>
 
@@ -79,7 +79,7 @@ export default function ContactForm() {
           type="email"
           required
           maxLength={254}
-          className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm dark:border-gray-700 dark:bg-gray-900"
+          className="mt-1 w-full rounded-input border border-transparent bg-surface px-3 py-2.5 text-sm text-ink focus:border-brand focus:bg-white"
         />
       </div>
 
@@ -91,7 +91,7 @@ export default function ContactForm() {
           id="subjectCategory"
           name="subjectCategory"
           required
-          className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm dark:border-gray-700 dark:bg-gray-900"
+          className="mt-1 w-full rounded-input border border-transparent bg-surface px-3 py-2.5 text-sm text-ink focus:border-brand focus:bg-white"
         >
           {SUBJECT_CATEGORIES.map((category) => (
             <option key={category} value={category}>
@@ -111,12 +111,12 @@ export default function ContactForm() {
           required
           maxLength={4000}
           rows={6}
-          className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm dark:border-gray-700 dark:bg-gray-900"
+          className="mt-1 w-full rounded-input border border-transparent bg-surface px-3 py-2.5 text-sm text-ink focus:border-brand focus:bg-white"
         />
       </div>
 
       {status === "error" && (
-        <p role="alert" className="text-sm text-red-600 dark:text-red-400">
+        <p role="alert" className="text-sm text-red-600">
           {errorMessage}
         </p>
       )}
@@ -124,7 +124,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand-dark disabled:opacity-50"
+        className="rounded-button bg-brand px-6 py-3 text-sm font-semibold text-white shadow-soft-md transition hover:bg-brand-dark disabled:opacity-50"
       >
         {status === "submitting" ? "Sending…" : "Send message"}
       </button>

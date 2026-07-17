@@ -38,20 +38,20 @@ export default async function HomePage() {
           }),
         }}
       />
-      <section className="bg-white dark:bg-gray-950">
+      <section className="bg-white">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
           <div className="max-w-2xl">
             <RichText content={content} />
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="/vendors"
-                className="rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand-dark"
+                className="rounded-button bg-brand px-6 py-3 text-sm font-semibold text-white shadow-soft-md transition hover:bg-brand-dark"
               >
                 Become a Vendor
               </Link>
               <Link
                 href="/customers"
-                className="rounded-full border border-gray-300 bg-white px-6 py-3 text-sm font-semibold text-gray-900 transition hover:border-brand hover:text-brand dark:border-gray-700 dark:bg-transparent dark:text-white"
+                className="rounded-button border border-hairline-strong bg-white px-6 py-3 text-sm font-semibold text-ink transition hover:border-brand hover:text-brand"
               >
                 Shop on the platform
               </Link>
@@ -67,9 +67,9 @@ export default async function HomePage() {
             { title: "Real vendors", body: "Every vendor goes through verification before they can sell." },
             { title: "Simple checkout", body: "Pay securely with the payment method available in your country." },
           ].map((item) => (
-            <div key={item.title} className="rounded-2xl border border-gray-100 p-6 dark:border-gray-800">
-              <h3 className="text-lg font-semibold">{item.title}</h3>
-              <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{item.body}</p>
+            <div key={item.title} className="rounded-card border border-hairline p-6 shadow-soft">
+              <h3 className="text-lg font-bold tracking-[-0.01em] text-ink">{item.title}</h3>
+              <p className="mt-2 text-sm text-ink-secondary">{item.body}</p>
             </div>
           ))}
         </div>

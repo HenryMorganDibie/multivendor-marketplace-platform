@@ -25,26 +25,20 @@ export default async function VendorsPage() {
 
   return (
     <MarketingSection content={content}>
-      <div className="mt-10 rounded-2xl border border-brand/30 bg-brand-light p-8 dark:bg-gray-900">
-        <h2 className="text-xl font-semibold">Become a Vendor</h2>
-        <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">
+      <div className="mt-10 rounded-card-lg border border-brand/20 bg-brand-light p-8">
+        <h2 className="text-xl font-bold tracking-[-0.01em] text-ink">Become a Vendor</h2>
+        <p className="mt-2 text-sm text-ink-secondary">
           Vendor registration happens in the the platform mobile app. Download it to get started — sign up, verify your business, and start selling.
         </p>
         <div className="mt-6 flex flex-wrap gap-4">
-          <a
-            href="https://apps.apple.com/"
-            className="rounded-full bg-black px-6 py-3 text-sm font-semibold text-white hover:bg-gray-800"
-          >
+          <a href="https://apps.apple.com/" className="rounded-button bg-black px-6 py-3 text-sm font-semibold text-white hover:bg-gray-800">
             Download on the App Store
           </a>
-          <a
-            href="https://play.google.com/store"
-            className="rounded-full bg-black px-6 py-3 text-sm font-semibold text-white hover:bg-gray-800"
-          >
+          <a href="https://play.google.com/store" className="rounded-button bg-black px-6 py-3 text-sm font-semibold text-white hover:bg-gray-800">
             Get it on Google Play
           </a>
         </div>
-        <p className="mt-4 text-xs text-gray-500 dark:text-gray-500">
+        <p className="mt-4 text-xs text-ink-tertiary">
           Already a vendor?{" "}
           <a href="https://vendor.the platform.com" className="font-medium text-brand hover:text-brand-dark">
             Log in to your Vendor Portal

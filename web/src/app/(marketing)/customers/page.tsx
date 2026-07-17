@@ -26,10 +26,10 @@ export default async function CustomersPage() {
   return (
     <MarketingSection content={content}>
       <div className="mt-10 flex flex-wrap gap-4">
-        <a href="https://apps.apple.com/" className="rounded-full bg-black px-6 py-3 text-sm font-semibold text-white hover:bg-gray-800">
+        <a href="https://apps.apple.com/" className="rounded-button bg-black px-6 py-3 text-sm font-semibold text-white hover:bg-gray-800">
           Download on the App Store
         </a>
-        <a href="https://play.google.com/store" className="rounded-full bg-black px-6 py-3 text-sm font-semibold text-white hover:bg-gray-800">
+        <a href="https://play.google.com/store" className="rounded-button bg-black px-6 py-3 text-sm font-semibold text-white hover:bg-gray-800">
           Get it on Google Play
         </a>
       </div>

@@ -8,10 +8,11 @@
 
 html {
   scroll-behavior: smooth;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 body {
-  color: #1a1a1a;
+  color: #0b0c0f; /* ink — matches rork-the platform's the platformColors.textPrimary */
 }
 
 a:focus-visible,
