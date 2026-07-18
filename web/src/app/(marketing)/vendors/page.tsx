@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import RichText from "@/components/RichText";
+import AccordionItem from "@/components/Accordion";
 import { AppStoreBadge, GooglePlayBadge } from "@/components/AppBadges";
 import { getPublishedSiteContent, sectionOrFallback } from "@/lib/siteContent";
 import { SiteContentSectionContent } from "@/lib/types";
@@ -127,12 +128,11 @@ export default async function VendorsPage() {
 
       <section className="mx-auto max-w-4xl px-4 pb-16 sm:px-6">
         <h2 className="text-xl font-bold tracking-[-0.015em] text-ink">FAQ</h2>
-        <div className="mt-4 space-y-5">
+        <div className="mt-2">
           {VENDOR_FAQ.map((item) => (
-            <div key={item.q}>
-              <p className="font-semibold text-ink">{item.q}</p>
-              <p className="mt-1 text-sm text-ink-secondary">{item.a}</p>
-            </div>
+            <AccordionItem key={item.q} question={item.q}>
+              {item.a}
+            </AccordionItem>
           ))}
         </div>
         <p className="mt-6 text-sm">

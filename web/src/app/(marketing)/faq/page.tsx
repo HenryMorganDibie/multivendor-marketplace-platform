@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import MarketingSection from "@/components/MarketingSection";
+import FaqAccordion from "./FaqAccordion";
 import { getPublishedSiteContent, sectionOrFallback } from "@/lib/siteContent";
 import { SiteContentSectionContent } from "@/lib/types";
 
@@ -11,11 +11,12 @@ export const metadata: Metadata = {
 
 // Answers describe actual built behavior (backend-verified this session),
 // not aspirational copy — safe to publish as-is, though the client may still
-// want to adjust tone/wording once this goes through the CMS.
+// want to adjust tone/wording once this goes through the CMS. Structure:
+// heading level 2 = category, heading level 3 = question, the paragraph
+// right after it = answer — see FaqAccordion.tsx for how this is parsed
+// into an expandable list.
 const FALLBACK: SiteContentSectionContent = {
   nodes: [
-    { type: "heading", level: 1, text: "Frequently Asked Questions" },
-
     { type: "heading", level: 2, text: "General" },
     { type: "heading", level: 3, text: "What is the platform?" },
     { type: "paragraph", text: "A marketplace that connects customers and vendors directly — browse, chat, order, and pay, all in one platform." },
@@ -77,5 +78,12 @@ const FALLBACK: SiteContentSectionContent = {
 export default async function FaqPage() {
   const sections = await getPublishedSiteContent();
   const { content } = sectionOrFallback(sections, "faq", FALLBACK);
-  return <MarketingSection content={content} />;
+  return (
+    <section className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
+      <h1 className="text-3xl font-extrabold tracking-[-0.02em] text-ink sm:text-4xl">Frequently Asked Questions</h1>
+      <div className="mt-8">
+        <FaqAccordion content={content} />
+      </div>
+    </section>
+  );
 }

@@ -5,6 +5,7 @@ import { callable } from "@/lib/firebase";
 import { GetOfferingsResponse, PaidSubscriptionPlanId } from "@/lib/types";
 import { PRICING_COUNTRIES, suggestCountryFromLocale } from "./countries";
 import WaitlistForm from "./WaitlistForm";
+import AccordionItem from "@/components/Accordion";
 
 const STORAGE_KEY = "the platform:pricing:countryCode";
 
@@ -202,12 +203,11 @@ export default function PricingClient() {
 
       <div className="mt-16 border-t border-hairline pt-10">
         <h2 className="text-xl font-bold tracking-[-0.015em] text-ink">Pricing FAQ</h2>
-        <div className="mt-4 space-y-5">
+        <div className="mt-2">
           {PRICING_FAQ.map((item) => (
-            <div key={item.q}>
-              <p className="font-semibold text-ink">{item.q}</p>
-              <p className="mt-1 text-sm text-ink-secondary">{item.a}</p>
-            </div>
+            <AccordionItem key={item.q} question={item.q}>
+              {item.a}
+            </AccordionItem>
           ))}
         </div>
       </div>

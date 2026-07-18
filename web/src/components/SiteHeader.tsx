@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const NAV_LINKS = [
   { href: "/features", label: "Features" },
@@ -11,6 +14,8 @@ const NAV_LINKS = [
 ];
 
 export default function SiteHeader() {
+  const pathname = usePathname();
+
   return (
     <header className="sticky top-0 z-40 border-b border-hairline bg-white/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
@@ -18,11 +23,21 @@ export default function SiteHeader() {
           the platform
         </Link>
         <nav aria-label="Primary" className="hidden gap-6 md:flex">
-          {NAV_LINKS.map((link) => (
-            <Link key={link.href} href={link.href} className="text-sm font-medium text-ink-secondary hover:text-brand">
-              {link.label}
-            </Link>
-          ))}
+          {NAV_LINKS.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={isActive ? "page" : undefined}
+                className={`border-b-2 pb-1 text-sm font-medium transition ${
+                  isActive ? "border-brand font-semibold text-brand" : "border-transparent text-ink-secondary hover:text-brand"
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
         <div className="flex items-center gap-3">
           <a href="https://vendor.the platform.com" className="hidden text-sm font-medium text-ink-secondary hover:text-brand sm:inline">

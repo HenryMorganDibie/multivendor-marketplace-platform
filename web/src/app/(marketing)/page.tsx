@@ -192,17 +192,9 @@ export default async function HomePage() {
       {/* CTA */}
       <section className="mx-auto max-w-6xl px-4 py-16 text-center sm:px-6">
         <h2 className="text-2xl font-bold tracking-[-0.015em] text-ink">Ready to start?</h2>
-        <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-          <Link
-            href="/vendors"
-            className="rounded-button bg-brand px-6 py-3 text-sm font-semibold text-white shadow-soft-md transition hover:bg-brand-dark"
-          >
-            Become a Vendor
-          </Link>
-          <div className="flex gap-3">
-            <AppStoreBadge href="https://apps.apple.com/" />
-            <GooglePlayBadge href="https://play.google.com/store" />
-          </div>
+        <div className="mt-6 flex justify-center gap-3">
+          <AppStoreBadge href="https://apps.apple.com/" />
+          <GooglePlayBadge href="https://play.google.com/store" />
         </div>
       </section>
     </>
