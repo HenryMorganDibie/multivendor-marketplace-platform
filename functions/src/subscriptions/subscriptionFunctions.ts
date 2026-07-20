@@ -165,6 +165,8 @@ interface PlanOffering {
   monthlyPriceMinorUnits: number;
   available: boolean;
   unavailableReason?: typeof PRICING_NOT_CONFIGURED | typeof PAYMENT_PROVIDER_NOT_CONFIGURED;
+  displayName?: string;
+  features?: string[];
 }
 
 /**
@@ -175,23 +177,41 @@ interface PlanOffering {
  * whole point is to let the frontend render an unavailable state instead
  * of discovering it from a failed checkout call.
  */
+/** Reads displayName/features from the seeded subscriptionPlans/{planId}
+ * docs (single source of truth per seedSubscriptionPlans) so the frontend
+ * never hardcodes marketing copy — an admin editing a plan doc changes what
+ * vendors see without a redeploy. */
+async function attachPlanDisplay(offerings: PlanOffering[]): Promise<PlanOffering[]> {
+  const planDocs = await Promise.all(
+    offerings.map((o) => db.collection("subscriptionPlans").doc(o.plan).get())
+  );
+  return offerings.map((offering, i) => {
+    const doc = planDocs[i].exists ? planDocs[i].data() : null;
+    return {
+      ...offering,
+      displayName: (doc?.displayName as string | undefined) ?? offering.plan,
+      features: (doc?.features as string[] | undefined) ?? [],
+    };
+  });
+}
+
 async function buildOfferingsResponse(countryCode: string): Promise<{
   success: true; countryCode: string; currencyCode: string | null; plans: PlanOffering[];
 }> {
   if (!countryCode) {
-    return {
-      success: true, countryCode, currencyCode: null,
-      plans: PAID_PLAN_IDS.map((plan) => ({ plan, monthlyPriceMinorUnits: 0, available: false, unavailableReason: PRICING_NOT_CONFIGURED })),
-    };
+    const plans = await attachPlanDisplay(
+      PAID_PLAN_IDS.map((plan) => ({ plan, monthlyPriceMinorUnits: 0, available: false, unavailableReason: PRICING_NOT_CONFIGURED }))
+    );
+    return { success: true, countryCode, currencyCode: null, plans };
   }
 
   const pricingSnap = await db.collection("subscriptionPricing").doc(countryCode).get();
   const pricing = pricingSnap.exists ? (pricingSnap.data() as import("../types4").SubscriptionPricingRecord) : null;
   if (!pricing || pricing.status !== "active") {
-    return {
-      success: true, countryCode, currencyCode: pricing?.currencyCode ?? null,
-      plans: PAID_PLAN_IDS.map((plan) => ({ plan, monthlyPriceMinorUnits: 0, available: false, unavailableReason: PRICING_NOT_CONFIGURED })),
-    };
+    const plans = await attachPlanDisplay(
+      PAID_PLAN_IDS.map((plan) => ({ plan, monthlyPriceMinorUnits: 0, available: false, unavailableReason: PRICING_NOT_CONFIGURED }))
+    );
+    return { success: true, countryCode, currencyCode: pricing?.currencyCode ?? null, plans };
   }
 
   const providerConfigSnap = await db.collection("subscriptionProviderConfig").doc(countryCode).get();
@@ -214,7 +234,7 @@ async function buildOfferingsResponse(countryCode: string): Promise<{
     return { plan, monthlyPriceMinorUnits, available: true };
   }));
 
-  return { success: true, countryCode, currencyCode: pricing.currencyCode, plans };
+  return { success: true, countryCode, currencyCode: pricing.currencyCode, plans: await attachPlanDisplay(plans) };
 }
 
 /**

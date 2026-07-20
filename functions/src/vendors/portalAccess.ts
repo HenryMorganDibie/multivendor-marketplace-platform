@@ -64,5 +64,12 @@ export const getVendorPortalAccess = https.onCall(async (request) => {
     businessName: vendor.businessName ?? null,
     verificationStatus: vendor.verificationStatus,
     vendorStatus: vendor.vendorStatus,
+    logoImage: vendor.logoImage ?? null,
+    username: vendor.username ?? null,
+    categoryName: vendor.categoryName ?? null,
+    area: vendor.area ?? null,
+    country: vendor.country ?? null,
+    email: vendor.email ?? user.email ?? null,
+    phone: vendor.phone ?? null,
   };
 });
