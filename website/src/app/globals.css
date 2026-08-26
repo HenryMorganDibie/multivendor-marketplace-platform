@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  color: #0b0c0f; /* ink — matches rork-the platform's the platformColors.textPrimary */
+  color: #0b0c0f; /* ink — matches rork-platform's platformColors.textPrimary */
 }
 
 a:focus-visible,

@@ -14,7 +14,7 @@ const CUSTOMER_LINKS = [
 
 const VENDOR_LINKS = [
   { href: "/vendors", label: "Become a Vendor" },
-  { href: "https://vendor.the platform.com", label: "Vendor Login" },
+  { href: "https://vendor.theplatform.com", label: "Vendor Login" },
   { href: "/pricing", label: "Pricing" },
 ];
 

@@ -60,7 +60,7 @@ export async function runFlutterwaveCheckout(params: {
     };
   }
 
-  const txRef = `the platform_${params.vendorId}_${Date.now()}`;
+  const txRef = `platform_${params.vendorId}_${Date.now()}`;
   const resp = await fetch("https://api.flutterwave.com/v3/payments", {
     method: "POST",
     headers: { Authorization: `Bearer ${secret}`, "Content-Type": "application/json" },
@@ -105,8 +105,8 @@ export async function runStripeCheckout(params: {
     };
   }
 
-  const successUrl = process.env.STRIPE_CHECKOUT_SUCCESS_URL ?? "https://the platform.com/checkout/success";
-  const cancelUrl = process.env.STRIPE_CHECKOUT_CANCEL_URL ?? "https://the platform.com/checkout/cancel";
+  const successUrl = process.env.STRIPE_CHECKOUT_SUCCESS_URL ?? "https://theplatform.com/checkout/success";
+  const cancelUrl = process.env.STRIPE_CHECKOUT_CANCEL_URL ?? "https://theplatform.com/checkout/cancel";
 
   const params_ = new URLSearchParams({
     mode: "subscription",

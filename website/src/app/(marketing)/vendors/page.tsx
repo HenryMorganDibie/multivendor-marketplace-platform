@@ -118,7 +118,7 @@ export default async function VendorsPage() {
           </div>
           <p className="mt-4 text-xs text-ink-tertiary">
             Already a vendor?{" "}
-            <a href="https://vendor.the platform.com" className="font-medium text-brand hover:text-brand-dark">
+            <a href="https://vendor.theplatform.com" className="font-medium text-brand hover:text-brand-dark">
               Log in to your Vendor Portal
             </a>
             .

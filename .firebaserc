@@ -1,8 +1,8 @@
 {
   "projects": {
-    "dev": "the platform-dev",
-    "staging": "the platform-staging",
-    "prod": "the platform-prod",
-    "default": "the platform-dev"
+    "dev": "platform-dev",
+    "staging": "platform-staging",
+    "prod": "platform-prod",
+    "default": "platform-dev"
   }
 }

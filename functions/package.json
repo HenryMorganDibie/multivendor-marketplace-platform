@@ -1,5 +1,5 @@
 {
-  "name": "the platform-functions",
+  "name": "platform-functions",
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc --watch",

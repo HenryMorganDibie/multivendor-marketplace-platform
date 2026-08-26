@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.the platform.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.theplatform.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -26,10 +26,10 @@ export const metadata: Metadata = {
 // separate authenticated app surface with its own nav (see its own
 // layout.tsx) — showing the public "Become a Vendor" marketing nav on
 // top of the CMS editor was a real bug in the single-app version of this
-// codebase (the platform-backend/web), caught by actually logging in and
+// codebase (platform-backend/web), caught by actually logging in and
 // looking at the screenshot. The Vendor Portal used to live at /portal in
 // that same app; it's since been extracted to its own repo
-// (the platform-vendor-portal), which is why there's no /portal reference here.
+// (platform-vendor-portal), which is why there's no /portal reference here.
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">

@@ -33,7 +33,7 @@ export async function getNextReceiptNumber(vendorId: string, slug: string): Prom
     }
   });
   // {vendorSlug}-RCT-{seq}, no year, no zero-padding — matches order/invoice
-  // numbering convention. Never uses a the platform-branded prefix (the platform is
+  // numbering convention. Never uses a platform-branded prefix (the platform is
   // the platform, not the merchant). Sequence only ever increases, per
   // vendor, never reused (LANDING_PAGE_CMS_VENDOR_PORTAL_MAPPING.md Section
   // 4.4/13.7).

@@ -4,9 +4,9 @@
  * greeting/away messages, quick replies, country availability.
  *
  * Run: node milestone3-acceptance-tests.js
- * Requires: firebase emulators:start --only auth,firestore,functions,storage --project demo-the platform
+ * Requires: firebase emulators:start --only auth,firestore,functions,storage --project demo-platform
  */
-const PROJECT_ID = "demo-the platform";
+const PROJECT_ID = "demo-platform";
 process.env.FIREBASE_AUTH_EMULATOR_HOST = "127.0.0.1:9099";
 process.env.FIRESTORE_EMULATOR_HOST = "127.0.0.1:8080";
 process.env.FIREBASE_STORAGE_EMULATOR_HOST = "127.0.0.1:9199";
@@ -91,7 +91,7 @@ async function setup() {
   vendorId = rr.data.vendorId;
   await auth.currentUser.getIdToken(true);
 
-  adminEmail = `p3admin_${Date.now()}@the platform.com`;
+  adminEmail = `p3admin_${Date.now()}@theplatform.com`;
   const ac = await createUserWithEmailAndPassword(auth, adminEmail, PASSWORD);
   adminUid = ac.user.uid;
   await waitFor(async () => { const s = await getDoc(doc(db, "users", adminUid)); return s.exists() ? s : null; });
@@ -1061,7 +1061,7 @@ async function section10() {
   });
 
   await test("A limited support_admin who is not the assigned agent (and not super_admin) cannot resolve the ticket", async () => {
-    const limitedEmail = `p3supportadmin_${Date.now()}@the platform.com`;
+    const limitedEmail = `p3supportadmin_${Date.now()}@theplatform.com`;
     const limitedCred = await createUserWithEmailAndPassword(auth, limitedEmail, PASSWORD);
     const limitedUid = limitedCred.user.uid;
     await waitFor(async () => { const s = await getDoc(doc(db, "users", limitedUid)); return s.exists() ? s : null; });

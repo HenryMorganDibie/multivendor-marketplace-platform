@@ -73,7 +73,7 @@ export function VendorProfileMenu({ businessName, logoImage, identityLine, expan
             Your account
           </Link>
           <a
-            href="mailto:support@the platform.com"
+            href="mailto:support@theplatform.com"
             role="menuitem"
             className="flex items-center gap-2.5 px-3.5 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-900"
           >

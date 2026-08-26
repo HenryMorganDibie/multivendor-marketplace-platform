@@ -15,7 +15,7 @@ export type PublishedSections = Record<string, { content: SiteContentSectionCont
 export async function getPublishedSiteContent(): Promise<PublishedSections> {
   const region = process.env.NEXT_PUBLIC_FIREBASE_FUNCTIONS_REGION ?? "us-central1";
   const useEmulator = process.env.NEXT_PUBLIC_USE_FIREBASE_EMULATOR === "true";
-  const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || (useEmulator ? "demo-the platform" : undefined);
+  const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || (useEmulator ? "demo-platform" : undefined);
   if (!projectId) return {};
 
   // Emulator mode calls the local Functions emulator directly (the

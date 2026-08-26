@@ -1,4 +1,4 @@
-// Mirrors the platform-backend/functions/src/types4.ts — kept in sync manually
+// Mirrors platform-backend/functions/src/types4.ts — kept in sync manually
 // since the web app and Cloud Functions are separate deploy targets.
 
 export type SiteContentNode =

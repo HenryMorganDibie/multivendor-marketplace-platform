@@ -61,7 +61,7 @@ export async function sendSubscriptionEmail(
       method: "POST",
       headers: { Authorization: `Bearer ${getResendKey()}`, "Content-Type": "application/json" },
       body: JSON.stringify({
-        from: "the platform <billing@the platform.com>",
+        from: "the platform <billing@theplatform.com>",
         to: [toEmail],
         subject,
         html: `<p>${subject}</p>`,

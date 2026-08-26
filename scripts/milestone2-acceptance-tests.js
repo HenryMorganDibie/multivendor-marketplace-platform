@@ -4,9 +4,9 @@
  * Change Requests, Payment Proofs, Receipts, Security Rules
  *
  * Run: node milestone2-acceptance-tests.js
- * Requires: firebase emulators:start --only auth,firestore,functions,storage --project demo-the platform
+ * Requires: firebase emulators:start --only auth,firestore,functions,storage --project demo-platform
  */
-const PROJECT_ID = "demo-the platform";
+const PROJECT_ID = "demo-platform";
 process.env.FIREBASE_AUTH_EMULATOR_HOST = "127.0.0.1:9099";
 process.env.FIRESTORE_EMULATOR_HOST = "127.0.0.1:8080";
 process.env.FIREBASE_STORAGE_EMULATOR_HOST = "127.0.0.1:9199";
@@ -88,7 +88,7 @@ async function setup() {
   vendorId = rr.data.vendorId;
   await auth.currentUser.getIdToken(true);
 
-  adminEmail = `p2admin_${Date.now()}@the platform.com`;
+  adminEmail = `p2admin_${Date.now()}@theplatform.com`;
   const ac = await createUserWithEmailAndPassword(auth, adminEmail, PASSWORD);
   adminUid = ac.user.uid;
   await waitFor(async () => { const s = await getDoc(doc(db, "users", adminUid)); return s.exists() ? s : null; });
@@ -448,7 +448,7 @@ async function section8() {
   await test("Receipt number format is {VENDORSLUG}-RCT-{seq}", async () => {
     // Corrected per LANDING_PAGE_CMS_VENDOR_PORTAL_MAPPING.md Section 4.4:
     // no more LVT-{year}-{code}-{padded} — matches the order/invoice
-    // numbering convention now (no the platform-branded prefix, no year, no
+    // numbering convention now (no platform-branded prefix, no year, no
     // zero-padding).
     const rs = await admin.firestore().collection("orders").doc(orderId).collection("receipts").get();
     const receiptNumber = rs.docs[0].data().receiptNumber;

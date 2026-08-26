@@ -15,7 +15,7 @@ import { ContactSubmissionDoc, WaitlistSubmissionDoc } from "../types4";
  * visitor acknowledgement email is sent, per the section's stated MVP
  * default.
  */
-const SUPPORT_INBOX = process.env.CONTACT_FORM_SUPPORT_INBOX ?? "support@the platform.com";
+const SUPPORT_INBOX = process.env.CONTACT_FORM_SUPPORT_INBOX ?? "support@theplatform.com";
 
 const MAX_NAME_LENGTH = 100;
 const MAX_EMAIL_LENGTH = 254;

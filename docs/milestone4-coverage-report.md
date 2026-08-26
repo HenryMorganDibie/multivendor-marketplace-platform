@@ -21,18 +21,18 @@ Of the 19 not directly invoked:
 
 ## Firestore rules coverage
 
-Firebase's Firestore emulator can generate a rules-coverage report (`http://localhost:8080/emulator/v1/projects/demo-the platform:ruleCoverage.html`) while it's running, showing exactly which `allow` expressions were evaluated `true`/`false`/never during a test run. **This wasn't captured for this report** — every attempt to run a full suite against the emulator today hit a genuine out-of-memory crash in either the Firestore emulator (Java) or the Node test client itself, a hardware constraint on this specific machine, not a code issue (the same suites passed cleanly, in full, earlier in this session — see the 81/81 transcript already shared).
+Firebase's Firestore emulator can generate a rules-coverage report (`http://localhost:8080/emulator/v1/projects/demo-platform:ruleCoverage.html`) while it's running, showing exactly which `allow` expressions were evaluated `true`/`false`/never during a test run. **This wasn't captured for this report** — every attempt to run a full suite against the emulator today hit a genuine out-of-memory crash in either the Firestore emulator (Java) or the Node test client itself, a hardware constraint on this specific machine, not a code issue (the same suites passed cleanly, in full, earlier in this session — see the 81/81 transcript already shared).
 
 As a static proxy: of `firestore.rules`'s ~30 real top-level collection `match` blocks (excluding structural boilerplate), the acceptance suites directly exercise reads/writes against 25 of them: `adminUsers`, `auditLogs`, `blocks`, `carts`, `chatThreads`, `emailOtps`, `invoiceBranding`, `invoices`, `moderationEvents`, `moderationRules`, `orders`, `phoneOtps`, `providerPlanCodes`, `ratings`, `smsQueue`, `subscriptionEvents`, `subscriptionPlans`, `supportTickets`, `usernameReservations`, `users`, `vendorRatingStats`, `vendorSequences`, `vendorSubscriptions`, `vendorVerification`, `vendors`. Collections without direct test-file references: `analyticsDaily`, `countryAvailability` (seeded via Admin SDK, not read/written via client SDK in assertions), `favorites`, `recentSearches`, `recentlyViewed`, `waitlistEntries` — several of these (`favorites`, `recentSearches`, `recentlyViewed`, `waitlistEntries`) are reserved for future phases and have no backing Cloud Functions yet, so "untested" here means "not yet built," not "built but unverified."
 
 **To get the real branch-level rules coverage report yourself** (reliable on a machine with more headroom than this one):
 
 ```powershell
-firebase emulators:start --only auth,firestore,functions,storage --project demo-the platform
+firebase emulators:start --only auth,firestore,functions,storage --project demo-platform
 # in a second terminal, once ready:
 node scripts/milestone4-acceptance-tests.js
 # then, while the emulator is still running, open in a browser:
-# http://localhost:8080/emulator/v1/projects/demo-the platform:ruleCoverage.html
+# http://localhost:8080/emulator/v1/projects/demo-platform:ruleCoverage.html
 ```
 
 ## Bottom line

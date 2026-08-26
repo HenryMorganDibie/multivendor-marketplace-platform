@@ -6,7 +6,7 @@ Status: Approved
 Last Updated:
 Next Review:
 
-**Status:** Canonical — this is the single source of truth for Country, State/Province, and Area/City data across the the platform backend and frontend. All future countries must be added following this specification.
+**Status:** Canonical — this is the single source of truth for Country, State/Province, and Area/City data across the platform backend and frontend. All future countries must be added following this specification.
 
 **v1.4 update (corrections from the client's second review):**
 1. Removed the pricing/scope conclusion from the Section 8 closing note — the spec now stays purely technical and doesn't determine chargeability.

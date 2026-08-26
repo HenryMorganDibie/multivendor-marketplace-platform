@@ -9,7 +9,7 @@ function isSafeHref(href: string): boolean {
 function renderNode(node: SiteContentNode, key: number, headingIndex?: number) {
   switch (node.type) {
     case "heading": {
-      // Weight/tracking ported from rork-the platform/expo/constants/theme.ts's
+      // Weight/tracking ported from rork-platform/expo/constants/theme.ts's
       // Typography scale (displayHero: 800/-0.8, pageTitle: 700/-0.4,
       // sectionTitle: 700/-0.2) — tight negative tracking on heavy display
       // text, same as Apple's own site.

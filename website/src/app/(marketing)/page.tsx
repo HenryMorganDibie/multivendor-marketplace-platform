@@ -24,7 +24,7 @@ const FALLBACK: SiteContentSectionContent = {
   ],
 };
 
-// Real category taxonomy — rork-the platform/expo/constants/categories.ts
+// Real category taxonomy — rork-platform/expo/constants/categories.ts
 // (DAY_ONE_CATEGORIES). Kept in sync manually; update both if the
 // mobile app's category list changes.
 const VENDOR_CATEGORIES = [
@@ -105,7 +105,7 @@ export default async function HomePage() {
             "@context": "https://schema.org",
             "@type": "Organization",
             name: "the platform",
-            url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.the platform.com",
+            url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.theplatform.com",
           }),
         }}
       />

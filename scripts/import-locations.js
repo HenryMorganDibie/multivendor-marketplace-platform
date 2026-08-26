@@ -27,7 +27,7 @@ const { execFileSync } = require("child_process");
 const args = process.argv.slice(2);
 const isLive = args.includes("--live");
 const projectArgIdx = args.indexOf("--project");
-const projectId = projectArgIdx !== -1 ? args[projectArgIdx + 1] : "demo-the platform";
+const projectId = projectArgIdx !== -1 ? args[projectArgIdx + 1] : "demo-platform";
 
 if (!isLive) {
   process.env.FIRESTORE_EMULATOR_HOST = process.env.FIRESTORE_EMULATOR_HOST || "127.0.0.1:8080";

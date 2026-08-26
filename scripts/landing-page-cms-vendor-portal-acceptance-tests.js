@@ -16,10 +16,10 @@
  * Section 7.
  *
  * Run: node landing-page-cms-vendor-portal-acceptance-tests.js
- * Requires: firebase emulators:start --only auth,firestore,functions,storage --project demo-the platform
+ * Requires: firebase emulators:start --only auth,firestore,functions,storage --project demo-platform
  */
 const crypto = require("crypto");
-const PROJECT_ID = "demo-the platform";
+const PROJECT_ID = "demo-platform";
 process.env.FIREBASE_AUTH_EMULATOR_HOST = "127.0.0.1:9099";
 process.env.FIRESTORE_EMULATOR_HOST = "127.0.0.1:8080";
 process.env.FIREBASE_STORAGE_EMULATOR_HOST = "127.0.0.1:9199";
@@ -94,7 +94,7 @@ async function registerVendor({ prefix, country, state = "Lagos", area = "Lekki"
 async function setup() {
   console.log("\n⚙️  Setup: admin account + country/pricing/provider fixtures...");
 
-  adminEmail = `p5admin_${Date.now()}@the platform.com`;
+  adminEmail = `p5admin_${Date.now()}@theplatform.com`;
   const ac = await createUserWithEmailAndPassword(auth, adminEmail, PASSWORD);
   adminUid = ac.user.uid;
   await waitFor(async () => { const s = await getDoc(doc(db, "users", adminUid)); return s.exists() ? s : null; });

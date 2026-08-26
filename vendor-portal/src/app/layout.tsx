@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import PortalChrome from "./PortalChrome";
 import "./globals.css";
 
-// This app was extracted from the platform-backend/web's /portal route group
-// into its own repo (the platform-vendor-portal) — routes that used to be
+// This app was extracted from platform-backend/web's /portal route group
+// into its own repo (platform-vendor-portal) — routes that used to be
 // /portal/subscription etc. are now just /subscription at the root of
-// this app's own domain (vendor.the platform.com). The public invoice
+// this app's own domain (vendor.theplatform.com). The public invoice
 // share-link view (/invoice/[shareToken]) came along too since it shares
 // the same invoice types/components and is functionally part of the
 // portal's invoice feature, not the marketing site's.

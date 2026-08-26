@@ -1,7 +1,7 @@
 # the platform — Subscription Alignment: Findings, Decisions & Status Correction
 
 **Status:** Architectural decisions locked by the client (2026-07-15), reconciled against `LANDING_PAGE_CMS_VENDOR_PORTAL_MAPPING.md` (v5). Approved in principle, pending final adjustments below. Provider-priority config corrected to a private collection (Section 4.1) — never the public `subscriptionPricing` document. Pricing offerings split into an authenticated and a public callable (Section 5). Cost/scope resolved with a fixed boundary (Section 11). v5 must be corrected **before** Section 7 coding begins (Section 10). Backend prerequisite work (Section 7) must ship before the Rork frontend brief (Section 9) goes out.
-**Repos reviewed:** `the platform-backend` (Firebase Functions/Firestore), `rork-the platform` (Expo frontend)
+**Repos reviewed:** `platform-backend` (Firebase Functions/Firestore), `rork-platform` (Expo frontend)
 
 ---
 
@@ -11,7 +11,7 @@ v5, Section 4, states: *"Payment provider neutrality: confirmed as already archi
 
 v5, Section 10 (Dependencies table), lists Vendor Portal subscription/payment flow as **"✅ Already exists and tested."**
 
-**Neither statement matches the current backend code**, verified directly against `the platform-backend/functions/src/subscriptions/`:
+**Neither statement matches the current backend code**, verified directly against `platform-backend/functions/src/subscriptions/`:
 
 - `createSubscriptionCheckout` is **hardcoded to Paystack** (`requireProviderPlanMapping(countryCode, planId, "paystack")` is a literal string, not a resolved choice).
 - Two more **public, separately-exported** callables exist — `createFlutterwaveCheckout`, `createStripeCheckout` — not internal helpers behind a single entry point.
@@ -170,13 +170,13 @@ No backend change needed — `requireMonthlyBillingInterval()` already accepts a
 
 ## 7. Backend prerequisite work (blocking — must ship before Section 9)
 
-All in `the platform-backend/functions/src/subscriptions/`:
+All in `platform-backend/functions/src/subscriptions/`:
 
 | Change | File(s) | Notes |
 |---|---|---|
 | `resolveVendorCountry(vendorId)` helper implementing the Section 3 fallback | `countryPricing.ts` (or new file) | Replace the inline `vendorSnap.data()?.countryCode` reads in `subscriptionFunctions.ts` and `internationalCheckout.ts`. |
 | New private `subscriptionProviderConfig/{countryCode}` collection (typed `SubscriptionProvider[]`, validated) + selection logic inside `createSubscriptionCheckout` | New collection, `firestore.rules` (Admin-SDK-only, matching `providerPlanMapping`'s existing `allow read, write: if false`), `subscriptionFunctions.ts` | New. Country-specific, per Section 4.1 — picks the first provider in that country's list with an active `providerPlanMapping` entry for the plan. No universal fallback order, never stored in the public `subscriptionPricing` document. |
-| De-export `createFlutterwaveCheckout` / `createStripeCheckout` as public callables; keep as internal functions called by `createSubscriptionCheckout` | `internationalCheckout.ts`, `subscriptionFunctions.ts` | Safe — confirmed the frontend never calls these two directly today (no `httpsCallable`/`getFunctions` usage exists anywhere in `rork-the platform`), so this isn't a breaking change for any real client. |
+| De-export `createFlutterwaveCheckout` / `createStripeCheckout` as public callables; keep as internal functions called by `createSubscriptionCheckout` | `internationalCheckout.ts`, `subscriptionFunctions.ts` | Safe — confirmed the frontend never calls these two directly today (no `httpsCallable`/`getFunctions` usage exists anywhere in `rork-platform`), so this isn't a breaking change for any real client. |
 | New `getVendorSubscriptionOfferings` (authenticated) and `getPublicSubscriptionOfferings` (unauthenticated, rate-limited) callables | New file, or added to `subscriptionFunctions.ts` | Per Section 5.1/5.2. Neither may ever expose `providerPlanMapping` or `subscriptionProviderConfig` contents. The public one is scoped for the marketing website, not Rork/Vendor Portal, but is still part of this backend prerequisite work since both share the same underlying pricing-resolution logic. |
 
 ---

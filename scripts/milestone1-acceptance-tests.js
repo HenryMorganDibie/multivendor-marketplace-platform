@@ -10,10 +10,10 @@
  *
  * Requires the emulator suite running first (NOTE: storage is required —
  * Milestone 1 acceptance now includes real Storage upload/rules tests):
- *   firebase emulators:start --only auth,firestore,functions,storage --project demo-the platform
+ *   firebase emulators:start --only auth,firestore,functions,storage --project demo-platform
  */
 
-const PROJECT_ID = "demo-the platform";
+const PROJECT_ID = "demo-platform";
 
 process.env.FIREBASE_AUTH_EMULATOR_HOST = "127.0.0.1:9099";
 process.env.FIRESTORE_EMULATOR_HOST = "127.0.0.1:8080";
@@ -266,7 +266,7 @@ async function section3() {
   console.log("\n📋 Section 3: Admin provisioning");
 
   await test("Create admin user via Admin SDK + adminUsers doc", async () => {
-    adminEmail = `admin_${Date.now()}@the platform.com`;
+    adminEmail = `admin_${Date.now()}@theplatform.com`;
     const cred = await createUserWithEmailAndPassword(auth, adminEmail, PASSWORD);
     adminUid = cred.user.uid;
 
@@ -574,7 +574,7 @@ async function section5() {
 
   await test("verification_admin WITHOUT safety_admin role cannot suspendVendor", async () => {
     // Create a limited admin with only verification_admin role
-    const limitedEmail = `limited_${Date.now()}@the platform.com`;
+    const limitedEmail = `limited_${Date.now()}@theplatform.com`;
     const limitedCred = await createUserWithEmailAndPassword(auth, limitedEmail, PASSWORD);
     const limitedUid = limitedCred.user.uid;
     await waitFor(async () => {
@@ -611,7 +611,7 @@ async function section5() {
   });
 
   await test("Revoked admin CANNOT call admin functions (adminUsers.status check)", async () => {
-    const revokedEmail = `revoked_${Date.now()}@the platform.com`;
+    const revokedEmail = `revoked_${Date.now()}@theplatform.com`;
     const revokedCred = await createUserWithEmailAndPassword(auth, revokedEmail, PASSWORD);
     const revokedUid = revokedCred.user.uid;
     await waitFor(async () => {

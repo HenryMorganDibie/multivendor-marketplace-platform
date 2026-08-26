@@ -37,14 +37,14 @@ interface OperationalLogParams {
  * contention, or a downstream dependency (Storage, Auth, an external
  * push provider) returning an error.
  *
- * Every entry is tagged with `component: "the platform-backend"` and the
+ * Every entry is tagged with `component: "platform-backend"` and the
  * calling function's name, which is the minimum structure a Cloud
  * Monitoring log-based metric needs to filter on this application's
  * output specifically, distinct from Firebase's own platform logs.
  */
 export function logOperationalEvent(params: OperationalLogParams): void {
   const payload = {
-    component: "the platform-backend",
+    component: "platform-backend",
     functionName: params.functionName,
     event: params.event,
     ...params.metadata,
@@ -112,21 +112,21 @@ export async function withOperationalLogging<T>(
  * infrastructure configuration outside a Cloud Functions deployment.
  *
  * 1. Elevated error rate
- *    Filter: resource.type="cloud_function" AND jsonPayload.component="the platform-backend" AND severity="ERROR"
+ *    Filter: resource.type="cloud_function" AND jsonPayload.component="platform-backend" AND severity="ERROR"
  *    Condition: count > 10 within 5 minutes
  *    Rationale: a burst of unhandled errors across any function usually
  *    indicates a bad deploy, a Firestore outage, or a downstream
  *    dependency failure, and should page whoever owns production.
  *
  * 2. Repeated slow execution on a single function
- *    Filter: jsonPayload.component="the platform-backend" AND jsonPayload.event="slow_execution"
+ *    Filter: jsonPayload.component="platform-backend" AND jsonPayload.event="slow_execution"
  *    Condition: count > 5 within 10 minutes, grouped by jsonPayload.functionName
  *    Rationale: isolates a specific function degrading rather than a
  *    general platform issue, which usually points at an unindexed query
  *    or a transaction contention hotspot in that function specifically.
  *
  * 3. Payment proof abuse lock triggered repeatedly
- *    Filter: jsonPayload.component="the platform-backend" AND jsonPayload.event="PAYMENT_PROOF_LIMIT_REACHED"
+ *    Filter: jsonPayload.component="platform-backend" AND jsonPayload.event="PAYMENT_PROOF_LIMIT_REACHED"
  *    Condition: count > 20 within 1 hour, project-wide
  *    Rationale: a spike here across many distinct orders, rather than
  *    isolated to one customer, may indicate a coordinated abuse attempt

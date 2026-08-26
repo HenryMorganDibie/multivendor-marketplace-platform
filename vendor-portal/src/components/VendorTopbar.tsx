@@ -26,7 +26,7 @@ export function VendorTopbar({ onOpenMenu }: VendorTopbarProps) {
         <p className="text-sm font-semibold text-gray-500 dark:text-gray-400 md:hidden">{currentItem?.label ?? "Vendor Portal"}</p>
       </div>
       <a
-        href="mailto:support@the platform.com"
+        href="mailto:support@theplatform.com"
         aria-label="Help and support"
         className="rounded-full p-1.5 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-900"
       >

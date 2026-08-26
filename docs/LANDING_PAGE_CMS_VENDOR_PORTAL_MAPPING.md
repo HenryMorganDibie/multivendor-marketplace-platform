@@ -14,7 +14,7 @@
 
 ## 0. What This Is (and Isn't)
 
-For MVP, the Vendor Portal is **login-only for existing vendors**. New vendor registration and full onboarding remain **mobile-only**. The landing page's "Become a Vendor" CTA (within the Vendors page and navigation, not a standalone page) directs prospective vendors to download the mobile app. Once registered on mobile, vendors log into `vendor.the platform.com` with the same Firebase Auth credentials.
+For MVP, the Vendor Portal is **login-only for existing vendors**. New vendor registration and full onboarding remain **mobile-only**. The landing page's "Become a Vendor" CTA (within the Vendors page and navigation, not a standalone page) directs prospective vendors to download the mobile app. Once registered on mobile, vendors log into `vendor.theplatform.com` with the same Firebase Auth credentials.
 
 **Post-MVP:** full web registration once the portal reaches onboarding feature parity with mobile.
 
@@ -265,7 +265,7 @@ Practical WCAG 2.1 AA-level behavior: keyboard navigation, visible focus states,
 Not everything on the page is CMS-editable — that would make the CMS far more complex than its scoped 50,000 NGN. Split: **code-owned** (layout, components, navigation structure, safety constraints) versus **CMS-owned** (headings, paragraphs, images, CTA copy/links, FAQ entries, legal content). Arbitrary layout configuration is not stored in Firestore for MVP.
 
 ### 6.5 Deployment and Environments
-Domains: `www.the platform.com` (landing page) and `vendor.the platform.com` (vendor portal). Scope includes: hosting (Firebase Hosting or equivalent), SSL, custom-domain setup, dev/staging/production environment separation matching the existing the platform convention, environment variable configuration, necessary redirects, and basic deployment documentation. Error monitoring, analytics, and performance monitoring are included at a basic level (e.g. Firebase's built-in tooling), not a dedicated observability stack.
+Domains: `www.theplatform.com` (landing page) and `vendor.theplatform.com` (vendor portal). Scope includes: hosting (Firebase Hosting or equivalent), SSL, custom-domain setup, dev/staging/production environment separation matching the existing the platform convention, environment variable configuration, necessary redirects, and basic deployment documentation. Error monitoring, analytics, and performance monitoring are included at a basic level (e.g. Firebase's built-in tooling), not a dedicated observability stack.
 
 ---
 

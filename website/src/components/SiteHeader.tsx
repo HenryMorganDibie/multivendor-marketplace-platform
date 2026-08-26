@@ -40,7 +40,7 @@ export default function SiteHeader() {
           })}
         </nav>
         <div className="flex items-center gap-3">
-          <a href="https://vendor.the platform.com" className="hidden text-sm font-medium text-ink-secondary hover:text-brand sm:inline">
+          <a href="https://vendor.theplatform.com" className="hidden text-sm font-medium text-ink-secondary hover:text-brand sm:inline">
             Vendor Login
           </a>
           <Link

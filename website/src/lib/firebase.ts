@@ -11,13 +11,13 @@ import {
 
 // Emulator mode — set NEXT_PUBLIC_USE_FIREBASE_EMULATOR=true to run this
 // app against the same local Firebase Emulator Suite the acceptance test
-// scripts use (`firebase emulators:start ... --project demo-the platform`),
+// scripts use (`firebase emulators:start ... --project demo-platform`),
 // with no real Firebase project or credentials required at all. This is
 // the fastest path for anyone to actually run and click through the app.
 const USE_EMULATOR = process.env.NEXT_PUBLIC_USE_FIREBASE_EMULATOR === "true";
 
 const firebaseConfig = USE_EMULATOR
-  ? { apiKey: "demo", projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || "demo-the platform" }
+  ? { apiKey: "demo", projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || "demo-platform" }
   : {
       apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
       authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -36,13 +36,13 @@ export const storage = getStorage(firebaseApp);
 // if called twice on the same instance — guard with a global flag.
 declare global {
   // eslint-disable-next-line no-var
-  var __the platformEmulatorConnected: boolean | undefined;
+  var __platformEmulatorConnected: boolean | undefined;
 }
-if (USE_EMULATOR && typeof window !== "undefined" && !globalThis.__the platformEmulatorConnected) {
+if (USE_EMULATOR && typeof window !== "undefined" && !globalThis.__platformEmulatorConnected) {
   connectAuthEmulator(auth, "http://127.0.0.1:9099", { disableWarnings: true });
   connectFunctionsEmulator(functions, "127.0.0.1", 5001);
   connectStorageEmulator(storage, "127.0.0.1", 9199);
-  globalThis.__the platformEmulatorConnected = true;
+  globalThis.__platformEmulatorConnected = true;
 }
 
 // App Check runs in monitor mode on the backend (appCheck.ts) until

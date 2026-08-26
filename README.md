@@ -1,6 +1,6 @@
-# the platform Backend
+# Multi-Vendor Marketplace Platform: Backend & Web
 
-Firebase backend for the the platform multi-vendor marketplace, plus the Next.js frontend that consumes it. This repository covers four numbered milestones (Auth/Users/Vendors/Verification; Catalog/Orders/Inventory/Payments/Receipts; Commerce Chat/Notifications/Blocks/Pickup Auto-Send/Support Tickets/AI Help Placeholder/Chat Moderation; Vendor Subscriptions/Plan Gating/Ratings/Invoices) plus a fifth completed unit of work, the **Landing Page, CMS & Vendor Portal** package (provider-neutral checkout plus the public site, CMS, and vendor web portal built on top of it). That package is deliberately *not* called "Milestone 5" anywhere in this repo — the client's own numbering reserves **Phase 5** for the separate, not-yet-started Admin Web Portal, and reusing "5" for both would be confusing once that phase starts.
+Firebase backend for a multi-vendor marketplace platform, plus the Next.js frontend that consumes it. This repository covers four numbered milestones (Auth/Users/Vendors/Verification; Catalog/Orders/Inventory/Payments/Receipts; Commerce Chat/Notifications/Blocks/Pickup Auto-Send/Support Tickets/AI Help Placeholder/Chat Moderation; Vendor Subscriptions/Plan Gating/Ratings/Invoices) plus a fifth completed unit of work, the **Landing Page, CMS & Vendor Portal** package (provider-neutral checkout plus the public site, CMS, and vendor web portal built on top of it). That package is deliberately *not* called "Milestone 5" anywhere in this repo — the client's own numbering reserves **Phase 5** for the separate, not-yet-started Admin Web Portal, and reusing "5" for both would be confusing once that phase starts.
 
 ## Status
 
@@ -21,6 +21,12 @@ Status is described precisely rather than as a blanket "complete." Every row bel
 
 "Acceptance tests passing in developer environment" means: run against the local Firebase Emulator Suite, on this developer's machine, as of the date of the corresponding test run. It is not a substitute for independent review, staging deployment, or production verification.
 
+## Mobile app (companion repository)
+
+The backend above is consumed by a separate React Native/Expo app (`rork-platform` locally), covering both the customer and vendor sides of the marketplace: registration and vendor onboarding/verification, catalog browsing and vendor-side catalog moderation, cart and checkout against the trusted pricing this backend computes, the full order lifecycle including external/offline orders, real-time chat across the four conversation types described above, push and in-app notifications, vendor settings (greeting/away auto-messages, fulfillment method, pickup details, minimum-order enforcement, plan-gated auto-accept and auto-pickup-send), subscription plan tiers with server-enforced feature gating read from this backend, vendor analytics dashboards, ratings, and invoicing.
+
+It's a separate repository from this one, delivered on its own phased schedule rather than 1:1 against Milestones 1-4 above, and it has its own test/acceptance process. Its results aren't folded into this repo's Status table, since every number there is backend-only.
+
 ## Running the acceptance tests
 
 ```bash
@@ -28,7 +34,7 @@ cd functions
 npm install
 npm run build
 cd ..
-firebase emulators:start --only auth,firestore,functions,storage --project demo-the platform
+firebase emulators:start --only auth,firestore,functions,storage --project demo-platform
 ```
 
 In a second terminal:
@@ -152,4 +158,4 @@ A Next.js app covering the public landing page (14 pages), the CMS editor, and t
 - AI Replies, AI Insights, Promotions, and Auto-Accept-Orders all have their `PlanLimits` fields reserved and returned correctly today, but the underlying features themselves (an AI reply engine, a promotions system, automated order acceptance) do not exist yet — those are future-phase scope per the source spec's own table. Only the *gate*, not the *feature*, is Milestone 4 work.
 - Dashboard/analytics data computation (`getVendorDashboard`, `getBusinessAnalytics`) returns real data from actual order records where feasible today; any metric the spec itself defers to a future phase is marked explicitly rather than faked.
 - **Landing Page, CMS & Vendor Portal deferrals**, per `docs/LANDING_PAGE_CMS_VENDOR_PORTAL_MAPPING.md` Section 14: automated price-change notice enforcement (the 60-day notice period is an operational/manual process, not backend-enforced), automated notification workflow, full price versioning/audit history, a `pendingPriceChange` UI preview, and automated provider-side price migration tooling.
-- **Frontend (`web/`) deferrals**: real legal/marketing copy (the client supplies this — pages render placeholder fallback content until published through the CMS), the `www.the platform.com`/`vendor.the platform.com` domain split (currently one app with `/portal` and `/cms` path prefixes — a deployment-config change, not a rebuild), a one-click "restore previous version" button for legal pages (the backend already retains the prior published version), and a formal accessibility audit (acceptance-criteria-level coverage only, per scope).
+- **Frontend (`web/`) deferrals**: real legal/marketing copy (the client supplies this — pages render placeholder fallback content until published through the CMS), the `www.theplatform.com`/`vendor.theplatform.com` domain split (currently one app with `/portal` and `/cms` path prefixes — a deployment-config change, not a rebuild), a one-click "restore previous version" button for legal pages (the backend already retains the prior published version), and a formal accessibility audit (acceptance-criteria-level coverage only, per scope).

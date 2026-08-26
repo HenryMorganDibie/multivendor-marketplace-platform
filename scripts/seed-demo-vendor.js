@@ -10,9 +10,9 @@
  * through the real callables, same way the acceptance tests do.
  *
  * Run: node seed-demo-vendor.js
- * Requires: firebase emulators:start --only auth,firestore,functions,storage --project demo-the platform
+ * Requires: firebase emulators:start --only auth,firestore,functions,storage --project demo-platform
  */
-const PROJECT_ID = "demo-the platform";
+const PROJECT_ID = "demo-platform";
 process.env.FIREBASE_AUTH_EMULATOR_HOST = "127.0.0.1:9099";
 process.env.FIRESTORE_EMULATOR_HOST = "127.0.0.1:8080";
 process.env.FIREBASE_STORAGE_EMULATOR_HOST = "127.0.0.1:9199";
@@ -36,8 +36,8 @@ connectStorageEmulator(storage, "127.0.0.1", 9199);
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const PASSWORD = "DemoPass123!";
-const VENDOR_EMAIL = "demo.vendor@the platform.com";
-const ADMIN_EMAIL = "demo.admin@the platform.com";
+const VENDOR_EMAIL = "demo.vendor@theplatform.com";
+const ADMIN_EMAIL = "demo.admin@theplatform.com";
 
 async function waitFor(fn, retries = 15, delay = 1000) {
   for (let i = 0; i < retries; i++) {

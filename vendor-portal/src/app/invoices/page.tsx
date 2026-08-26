@@ -27,7 +27,7 @@ interface CreateInvoiceResponse {
   invoiceNumber: string;
 }
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://vendor.the platform.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://vendor.theplatform.com";
 
 type PillKey = "all" | InvoiceStatus;
 
