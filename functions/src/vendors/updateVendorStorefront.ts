@@ -39,7 +39,7 @@ function assertVendorMediaUrl(
   if (!value.startsWith(STORAGE_HOST)) {
     throw new https.HttpsError(
       "invalid-argument",
-      `${label} must be an image uploaded to Laetiva storage, not an external link.`
+      `${label} must be an image uploaded to the platform storage, not an external link.`
     );
   }
   // Storage download URLs percent-encode the object path, so the prefix

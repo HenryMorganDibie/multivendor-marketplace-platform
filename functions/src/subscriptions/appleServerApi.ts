@@ -24,18 +24,18 @@ import { SubscriptionPlanId } from "../types4";
  * in values, not writing new code.
  */
 
-const BUNDLE_ID = "com.laetiva.app";
+const BUNDLE_ID = "com.platform.app";
 
 /**
  * Maps an Apple product identifier (configured per-subscription in App
  * Store Connect) to this app's own plan id.
  *
- * Only the plan tier lives here -- deliberately, per Nneoma's question
+ * Only the plan tier lives here -- deliberately, per the client's question
  * about platform/country/billing-period/environment:
  *
  *  - Billing period (monthly/yearly) does not need its own dimension in
  *    this map. It is encoded directly in the product id string itself
- *    (Nneoma's own convention below), and the actual renewal cadence a
+ *    (the client's own convention below), and the actual renewal cadence a
  *    subscription is on comes from Apple's transaction data
  *    (expiresDate/purchaseDate) at verification time, not from this
  *    lookup. Adding yearly products later is adding two more keys here,
@@ -62,13 +62,13 @@ const BUNDLE_ID = "com.laetiva.app";
  *    product id means the same plan in both environments.
  */
 export const PRODUCT_ID_TO_PLAN: Record<string, SubscriptionPlanId> = {
-  "com.laetiva.app.standard.monthly": "standard",
-  "com.laetiva.app.pro.monthly": "pro",
-  "com.laetiva.app.proplus.monthly": "pro_plus",
+  "com.platform.app.standard.monthly": "standard",
+  "com.platform.app.pro.monthly": "pro",
+  "com.platform.app.proplus.monthly": "pro_plus",
   // Yearly convention, added the moment these exist in App Store Connect:
-  // "com.laetiva.app.standard.yearly": "standard",
-  // "com.laetiva.app.pro.yearly": "pro",
-  // "com.laetiva.app.proplus.yearly": "pro_plus",
+  // "com.platform.app.standard.yearly": "standard",
+  // "com.platform.app.pro.yearly": "pro",
+  // "com.platform.app.proplus.yearly": "pro_plus",
 };
 
 function getKeyId(): string {
@@ -84,7 +84,7 @@ function getIssuerId(): string {
  * Secret Manager (bound via the `secrets: ["APPLE_IAP_PRIVATE_KEY"]` option
  * on each function that needs it -- see appleWebhook.ts). Never read from a
  * plain env var or committed file the way Stripe/Flutterwave/Paystack's
- * keys are, since Nneoma generates and owns this one directly rather than
+ * keys are, since the client generates and owns this one directly rather than
  * handing it to Henry to configure.
  */
 function getPrivateKey(): string {
@@ -99,7 +99,7 @@ function isConfigured(): boolean {
  * The environment WE target when WE initiate an outbound call to Apple
  * (requestTestNotification, looking up a transaction by id) -- there is no
  * ambiguity here, since we choose which environment we mean. Defaults to
- * sandbox: laetiva-dev has no production App Store listing yet. Once one
+ * sandbox: platform-dev has no production App Store listing yet. Once one
  * exists, set APPLE_IAP_ENVIRONMENT=production for calls that should target
  * it (a plain, non-secret env var, same .env.<project> file the Key ID/
  * Issuer ID live in).

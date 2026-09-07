@@ -101,7 +101,7 @@ export const expireStaleOrders = onSchedule("every 1 hours", async () => {
         domain: "order",
         title: "Order expired",
         body: `${order.vendorSnapshot.name} didn't respond to your order in time, so it's been cancelled and any reserved items released.`,
-        deepLink: `laetiva://chat/${order.conversationId}`,
+        deepLink: `the platform://chat/${order.conversationId}`,
         isCritical: true,
       });
     }
@@ -118,7 +118,7 @@ export const expireStaleOrders = onSchedule("every 1 hours", async () => {
         domain: "order",
         title: "Order expired — no response in time",
         body: `Order ${order.publicOrderId} expired after 48 hours with no response and has been cancelled.`,
-        deepLink: `laetiva://chat/${order.conversationId}`,
+        deepLink: `the platform://chat/${order.conversationId}`,
         isCritical: false,
       });
     }

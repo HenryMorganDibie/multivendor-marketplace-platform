@@ -44,7 +44,7 @@ export interface VendorOnboardingStatus {
   blockedReasons: string[];
   isPublished: boolean;
   isDiscoverable: boolean;
-  /** Whether Laetiva is open for commerce in this vendor's country right now.
+  /** Whether the platform is open for commerce in this vendor's country right now.
    * Every other step can be complete and isDiscoverable can still be false
    * for this reason alone — surfaced separately so the checklist can tell a
    * fully set-up vendor why they're still invisible, instead of just

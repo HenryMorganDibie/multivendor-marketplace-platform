@@ -75,7 +75,7 @@ export const beginAdminMfaEnrollment = https.onCall(async (request) => {
   };
   await db.collection("adminMfaSecrets").doc(uid).set(secretDoc);
 
-  const otpauthUrl = authenticator.keyuri(email, "Laetiva Admin", secret);
+  const otpauthUrl = authenticator.keyuri(email, "the platform Admin", secret);
 
   await writeAuditLog({
     requestId,

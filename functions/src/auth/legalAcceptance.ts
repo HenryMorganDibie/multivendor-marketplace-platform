@@ -34,9 +34,9 @@ export interface LegalAcceptanceRecord {
 }
 
 const VENDOR_CONSENT_TEXT =
-  "By creating a vendor account, you agree to Laetiva's Terms of Use, Privacy Policy, and Vendor Agreement.";
+  "By creating a vendor account, you agree to the platform's Terms of Use, Privacy Policy, and Vendor Agreement.";
 const CUSTOMER_CONSENT_TEXT =
-  "By creating a customer account, you agree to Laetiva's Terms of Use, Privacy Policy, and Customer Agreement.";
+  "By creating a customer account, you agree to the platform's Terms of Use, Privacy Policy, and Customer Agreement.";
 
 /**
  * Reads the currently published version of each document that applies to this

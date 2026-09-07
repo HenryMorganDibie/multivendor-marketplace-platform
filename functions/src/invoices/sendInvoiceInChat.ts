@@ -6,11 +6,11 @@ import { newRequestId } from "../utils/requestContext";
 import { enforceRateLimit } from "../subscriptions/rateLimit";
 
 /**
- * sendInvoiceInChat — deliver an invoice into a Laetiva conversation.
+ * sendInvoiceInChat — deliver an invoice into a the platform conversation.
  *
  * The missing half of internal invoice delivery. The message schema has carried
  * an "invoice" type and an invoiceData field since the chat model was written,
- * the Create Invoice screen has always had a "Laetiva customer" mode that picks
+ * the Create Invoice screen has always had a "the platform customer" mode that picks
  * a real conversation, and the invoice detail screen shows an "Open chat"
  * action when chatId is set. Nothing ever wrote any of it, so the action could
  * never fire and the type was never used.

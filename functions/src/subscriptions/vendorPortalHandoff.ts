@@ -4,7 +4,7 @@ import { checkAppCheck } from "../utils/appCheck";
 import { writeAuditLog } from "../utils/auditLog";
 import { newRequestId } from "../utils/requestContext";
 
-const PORTAL_BASE_URL = process.env.VENDOR_PORTAL_URL ?? "https://vendor.laetiva.com";
+const PORTAL_BASE_URL = process.env.VENDOR_PORTAL_URL ?? "https://vendor.theplatform.com";
 
 /**
  * generateVendorPortalHandoffUrl — the missing half of "Manage billing on

@@ -65,7 +65,7 @@ export const processSiteContentImage = onObjectFinalized(
     // during the CLI's local introspection pass, and Storage triggers
     // must run in the same region as the bucket itself (an Eventarc
     // requirement), which for this project's default bucket is us-east1.
-    bucket: "laetiva-dev.firebasestorage.app",
+    bucket: "platform-dev.firebasestorage.app",
     region: "us-east1",
     memory: "512MiB",
     timeoutSeconds: 120,

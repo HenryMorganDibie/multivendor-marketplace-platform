@@ -57,7 +57,7 @@ export const scanUploadedFile = onObjectFinalized(
     // introspection pass before deploy, which crashed the whole codebase
     // load (surfaced as a generic "Cannot determine backend specification"
     // timeout) until this was made explicit.
-    bucket: "laetiva-dev.firebasestorage.app",
+    bucket: "platform-dev.firebasestorage.app",
     // Storage triggers must run in the same region as the bucket itself
     // (an Eventarc requirement) — the default bucket here is us-east1, not
     // us-central1 like the rest of this codebase's callables. The Cloud Run
