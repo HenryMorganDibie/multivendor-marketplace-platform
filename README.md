@@ -181,3 +181,8 @@ A Next.js app covering the public landing page (14 pages), the CMS editor, and t
 - Dashboard/analytics data computation (`getVendorDashboard`, `getBusinessAnalytics`) returns real data from actual order records where feasible today; any metric the spec itself defers to a future phase is marked explicitly rather than faked.
 - **Landing Page, CMS & Vendor Portal deferrals**, per `docs/LANDING_PAGE_CMS_VENDOR_PORTAL_MAPPING.md` Section 14: automated price-change notice enforcement (the 60-day notice period is an operational/manual process, not backend-enforced), automated notification workflow, full price versioning/audit history, a `pendingPriceChange` UI preview, and automated provider-side price migration tooling.
 - **Frontend (`web/`) deferrals**: real legal/marketing copy (the client supplies this — pages render placeholder fallback content until published through the CMS), the `www.theplatform.com`/`vendor.theplatform.com` domain split (currently one app with `/portal` and `/cms` path prefixes — a deployment-config change, not a rebuild), a one-click "restore previous version" button for legal pages (the backend already retains the prior published version), and a formal accessibility audit (acceptance-criteria-level coverage only, per scope).
+
+## Author
+
+**Henry Dibie** — Backend & AI Systems Engineer. Sole engineer on this backend since Milestone 1; still actively extending it (see [Additional backend work](#additional-backend-work-since-the-original-four-milestones) above).
+[LinkedIn](https://linkedin.com/in/kinghenrymorgan) · [GitHub](https://github.com/HenryMorganDibie)
