@@ -114,15 +114,17 @@ export const submitRating = https.onCall(async (request) => {
 
 function toVendorFacing(doc: RatingDoc): VendorFacingRating {
   // Explicit allowlist projection — the enforcement point that guarantees
-  // orderId/customerId never leak to a vendor client, not just an
-  // omission a future edit to this function could accidentally undo.
+  // orderId/customerId/any date or timestamp never leak to a vendor client,
+  // not just an omission a future edit to this function could accidentally
+  // undo. submittedAt is deliberately absent: even a month/year is enough for
+  // a vendor with few orders in a period to infer which customer left a
+  // given rating, so nothing date-shaped is sent at all.
   return {
     ratingId: doc.ratingId,
     displayId: doc.displayId,
     stars: doc.stars,
     privateFeedback: doc.privateFeedback ?? null,
     hasPrivateFeedback: doc.hasPrivateFeedback,
-    submittedAt: doc.submittedAt,
     readByVendor: doc.readByVendor,
   };
 }

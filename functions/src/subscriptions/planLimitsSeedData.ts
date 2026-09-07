@@ -14,15 +14,27 @@ import { PlanLimits, SubscriptionPlanId } from "../types4";
  */
 export const DEFAULT_PLAN_LIMITS: Record<SubscriptionPlanId, PlanLimits> = {
   basic: {
-    planLimitsVersion: "v1",
-    catalogItemLimit: 10,
-    photosPerItemLimit: 2,
-    canAccessExternalOrders: false,
+    // Bumped when a limit changes so a cached plan is not mistaken for the
+    // current one. Basic tightened from 10 items / 2 photos / 3 invoices.
+    planLimitsVersion: "v2",
+    catalogItemLimit: 7,
+    photosPerItemLimit: 1,
+    // Recording an order taken over the phone or WhatsApp is free on every
+    // plan. A vendor's own bookkeeping is not a feature to sell them, and
+    // blocking it pushed the exact orders the platform wants visible back into a
+    // notebook.
+    //
+    // The paid line sits at canViewAdvancedAnalytics below instead: Basic can
+    // record external orders but cannot see platform-versus-external
+    // breakdown that compares them. Recording is bookkeeping; the comparison is
+    // insight.
+    canAccessExternalOrders: true,
     canSetMinimumOrderAmount: false,
     canSetBusinessPolicies: false,
     canAutoSendPickupDetails: false,
     canAutoAcceptOrders: false,
     canShowAIButton: false,
+    canChangeUsername: false,
     aiRepliesPerMonth: 0,
     aiInsightsLimit: 1,
     activePromotionsLimit: 0,
@@ -30,7 +42,7 @@ export const DEFAULT_PLAN_LIMITS: Record<SubscriptionPlanId, PlanLimits> = {
     canViewBestSellerWidget: false,
     canViewRevenueCard: false,
     canViewAdvancedAnalytics: false,
-    invoicesPerMonth: 3,
+    invoicesPerMonth: 2,
     invoiceHistoryDays: 30,
     canDownloadInvoicePdf: false,
     canDuplicateInvoice: false,
@@ -53,6 +65,7 @@ export const DEFAULT_PLAN_LIMITS: Record<SubscriptionPlanId, PlanLimits> = {
     canAutoSendPickupDetails: false,
     canAutoAcceptOrders: false,
     canShowAIButton: true,
+    canChangeUsername: true,
     aiRepliesPerMonth: 100,
     aiInsightsLimit: 3,
     activePromotionsLimit: 0,
@@ -83,6 +96,7 @@ export const DEFAULT_PLAN_LIMITS: Record<SubscriptionPlanId, PlanLimits> = {
     canAutoSendPickupDetails: true,
     canAutoAcceptOrders: false,
     canShowAIButton: true,
+    canChangeUsername: true,
     aiRepliesPerMonth: 300,
     aiInsightsLimit: 10,
     activePromotionsLimit: 10,
@@ -113,6 +127,7 @@ export const DEFAULT_PLAN_LIMITS: Record<SubscriptionPlanId, PlanLimits> = {
     canAutoSendPickupDetails: true,
     canAutoAcceptOrders: true,
     canShowAIButton: true,
+    canChangeUsername: true,
     aiRepliesPerMonth: 500,
     aiInsightsLimit: 25,
     activePromotionsLimit: 25,
@@ -145,7 +160,7 @@ export const DEFAULT_PLAN_LIMITS: Record<SubscriptionPlanId, PlanLimits> = {
  * text only, never a code identifier.
  */
 export const DEFAULT_PLAN_DISPLAY: Record<SubscriptionPlanId, { displayName: string; features: string[] }> = {
-  basic: { displayName: "Basic", features: ["10 catalog items", "2 photos per item", "3 invoices/month"] },
+  basic: { displayName: "Basic", features: ["7 catalog items", "1 photo per item", "2 invoices/month"] },
   standard: { displayName: "Standard", features: ["30 catalog items", "External orders", "Best seller & revenue widgets", "25 invoices/month"] },
   pro: { displayName: "Pro", features: ["100 catalog items", "Auto-send pickup details", "Advanced analytics", "Invoice branding", "100 invoices/month"] },
   pro_plus: { displayName: "Pro+", features: ["250 catalog items", "Auto-accept orders", "Premium invoice templates", "200 invoices/month"] },

@@ -50,7 +50,12 @@ export type DashboardFilterRange = "today" | "week" | "month" | "year";
  * not a redeploy.
  */
 export interface PlanLimits {
-  planLimitsVersion: "v1";
+  /**
+   * Bumped when a plan's limits change, so a stored or cached copy is
+   * distinguishable from the current one. v2 tightened Basic from 10 catalogue
+   * items, 2 photos and 3 invoices to 7 / 1 / 2.
+   */
+  planLimitsVersion: "v1" | "v2";
 
   // Core
   catalogItemLimit: number;
@@ -61,6 +66,7 @@ export interface PlanLimits {
   canAutoSendPickupDetails: boolean;
   canAutoAcceptOrders: boolean; // gate reserved, enforced in a future automation phase
   canShowAIButton: boolean; // gate reserved, enforced in a future AI phase
+  canChangeUsername: boolean;
 
   // AI (gate reserved, enforced in future AI phase)
   aiRepliesPerMonth: number;
@@ -343,6 +349,8 @@ export interface InvoiceDoc {
   invoiceNumber: string;
   vendorId: string;
   customerId?: string | null;
+  /** Bound the platform conversation, when the invoice was raised against a chat. */
+  conversationId?: string | null;
   customerName: string;
   customerPhone?: string | null;
   customerEmail?: string | null;
@@ -397,15 +405,16 @@ export interface RatingDoc {
   moderationReason?: string | null;
 }
 
-/** The ONLY shape a vendor client is ever allowed to see. orderId and
- * customerId must never appear here, under any circumstance. */
+/** The ONLY shape a vendor client is ever allowed to see. orderId, customerId,
+ * and any date/timestamp must never appear here, under any circumstance — a
+ * vendor with few enough orders in a period could otherwise infer which
+ * customer left a given rating from its timing alone. */
 export interface VendorFacingRating {
   ratingId: string;
   displayId: string;
   stars: number;
   privateFeedback?: string | null;
   hasPrivateFeedback: boolean;
-  submittedAt: firestore.Timestamp | firestore.FieldValue;
   readByVendor: boolean;
 }
 
@@ -502,7 +511,14 @@ export interface WaitlistSubmissionDoc {
 
 export interface VendorBillingHistoryEntry {
   paymentDate: string | null; // ISO string, or null if not yet processed
-  amount: number | null;
+  /**
+   * Minor units (kobo, cents), matching every other money field crossing this
+   * API. Was previously `amount`, carrying major units while the vendor portal
+   * divided it by 100 like the minor-unit fields beside it, so every payment
+   * rendered at a hundredth of its value: a ₦25,000 charge showed as ₦250.00.
+   * The name now states the unit so the two cannot be confused again.
+   */
+  amountMinorUnits: number | null;
   currency: string | null;
   plan: string;
   paymentStatus: string; // plain-language, not a raw backend status string

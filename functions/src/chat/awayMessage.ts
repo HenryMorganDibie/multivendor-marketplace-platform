@@ -15,6 +15,46 @@ import { applyUserModerationScore, recordModerationEvent, runModerationCheck } f
  * potentially "away"). Cooldown is per-thread to avoid spamming a customer
  * who sends multiple messages while the vendor is away.
  */
+/**
+ * Mirrors VendorAwayMessageContext.tsx's isScheduleActive on the client —
+ * that function only ever decided whether the CLIENT thought an away
+ * message should be shown; the actual send decision is made here,
+ * server-side, in sendAwayMessageIfEligible. Before this, awaySchedule was
+ * saved by updateVendorChatSettings and read back into the UI, but never
+ * consulted here — a vendor who picked "outside business hours" or a custom
+ * window still got away-messages fired at any hour, gated only by
+ * awayMessageEnabled + the cooldown. Operates on UTC hours (no per-vendor
+ * timezone field exists on VendorChatSettingsDoc to do otherwise).
+ */
+function isAwayScheduleActive(awaySchedule: Record<string, unknown> | null | undefined): boolean {
+  const type = (awaySchedule?.type as string | undefined) ?? "always";
+  if (type === "always") return true;
+
+  const now = new Date();
+  const currentMinutes = now.getUTCHours() * 60 + now.getUTCMinutes();
+
+  if (type === "outside_business_hours") {
+    const inBusinessHours = currentMinutes >= 9 * 60 && currentMinutes < 18 * 60;
+    return !inBusinessHours;
+  }
+
+  if (type === "custom") {
+    const start = (awaySchedule?.start as string | undefined) ?? "18:00";
+    const end = (awaySchedule?.end as string | undefined) ?? "09:00";
+    const [sh, sm] = start.split(":").map(Number);
+    const [eh, em] = end.split(":").map(Number);
+    const startMinutes = sh * 60 + sm;
+    const endMinutes = eh * 60 + em;
+
+    if (startMinutes <= endMinutes) {
+      return currentMinutes >= startMinutes && currentMinutes < endMinutes;
+    }
+    return currentMinutes >= startMinutes || currentMinutes < endMinutes;
+  }
+
+  return true;
+}
+
 export async function sendAwayMessageIfEligible(
   chatId: string,
   vendorId: string,
@@ -26,6 +66,7 @@ export async function sendAwayMessageIfEligible(
 
   const settings = settingsSnap.data() as VendorChatSettingsDoc;
   if (!settings.awayMessageEnabled || !settings.awayMessage?.trim()) return;
+  if (!isAwayScheduleActive(settings.awaySchedule)) return;
 
   const cooldownHours = settings.awayCooldownHours ?? 12;
   const lastSentMap = settings.lastAwayMessageSentAtByThread ?? {};

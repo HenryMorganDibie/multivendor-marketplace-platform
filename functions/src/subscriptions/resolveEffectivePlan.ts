@@ -15,6 +15,15 @@ import { DEFAULT_PLAN_LIMITS } from "./planLimitsSeedData";
  * staleness bug already found and fixed in moderationEngine.ts.
  */
 
+// Section 4.5 requires "Payment failed (initial)" to be a distinct UI state
+// from the ongoing "past_due / grace period" row, with its own immediate-
+// failure messaging. Both are backend status "past_due" — gracePeriodSetAt
+// (set once, the first time this billing cycle fails, see
+// subscriptionWebhookCore.ts) is the only timestamp available to derive a
+// split from, so the first day of the 7-day grace window is treated as the
+// initial failure and the rest as the ongoing grace period.
+const PAYMENT_FAILED_INITIAL_WINDOW_MS = 24 * 60 * 60 * 1000;
+
 export interface EffectivePlanResult {
   plan: SubscriptionPlanId;
   limits: PlanLimits;
@@ -24,8 +33,11 @@ export interface EffectivePlanResult {
     | "admin_override"
     | "active"
     | "trialing"
+    | "payment_failed_initial"
     | "grace_period"
     | "cancelled_before_period_end"
+    | "cancelled"
+    | "expired"
     | "no_subscription"
     | "expired_or_other";
 }
@@ -38,14 +50,14 @@ async function loadPlanLimits(planId: SubscriptionPlanId): Promise<PlanLimits> {
     // (displayName, pricing, features) are present on the same document.
     const { planLimitsVersion, catalogItemLimit, photosPerItemLimit, canAccessExternalOrders,
       canSetMinimumOrderAmount, canSetBusinessPolicies, canAutoSendPickupDetails, canAutoAcceptOrders,
-      canShowAIButton, aiRepliesPerMonth, aiInsightsLimit, activePromotionsLimit, dashboardFilterRange,
+      canShowAIButton, canChangeUsername, aiRepliesPerMonth, aiInsightsLimit, activePromotionsLimit, dashboardFilterRange,
       canViewBestSellerWidget, canViewRevenueCard, canViewAdvancedAnalytics, invoicesPerMonth,
       invoiceHistoryDays, canDownloadInvoicePdf, canDuplicateInvoice, canUploadLogo, canSetBrandColor,
       canSetThankYouMessage, canSetFooterText, canUsePremiumTemplates, canUseSeasonalThemes,
       canAddQrCode, canUsePrintLayout } = doc;
     return { planLimitsVersion, catalogItemLimit, photosPerItemLimit, canAccessExternalOrders,
       canSetMinimumOrderAmount, canSetBusinessPolicies, canAutoSendPickupDetails, canAutoAcceptOrders,
-      canShowAIButton, aiRepliesPerMonth, aiInsightsLimit, activePromotionsLimit, dashboardFilterRange,
+      canShowAIButton, canChangeUsername, aiRepliesPerMonth, aiInsightsLimit, activePromotionsLimit, dashboardFilterRange,
       canViewBestSellerWidget, canViewRevenueCard, canViewAdvancedAnalytics, invoicesPerMonth,
       invoiceHistoryDays, canDownloadInvoicePdf, canDuplicateInvoice, canUploadLogo, canSetBrandColor,
       canSetThankYouMessage, canSetFooterText, canUsePremiumTemplates, canUseSeasonalThemes,
@@ -88,9 +100,13 @@ export async function resolveEffectivePlan(vendorId: string): Promise<EffectiveP
     return { plan: sub.plan, limits: await loadPlanLimits(sub.plan), subscription: sub, reason: "trialing" };
   }
 
-  // 4. Status past_due and before gracePeriodEnd.
+  // 4. Status past_due and before gracePeriodEnd — split into the initial
+  // failure (first 24h since gracePeriodSetAt) vs. the ongoing grace
+  // period, per Section 4.5.
   if (sub.status === "past_due" && sub.gracePeriodEnd && "toMillis" in sub.gracePeriodEnd && sub.gracePeriodEnd.toMillis() > Date.now()) {
-    return { plan: sub.plan, limits: await loadPlanLimits(sub.plan), subscription: sub, reason: "grace_period" };
+    const gracePeriodSetAtMs = sub.gracePeriodSetAt && "toMillis" in sub.gracePeriodSetAt ? sub.gracePeriodSetAt.toMillis() : 0;
+    const isInitialFailure = gracePeriodSetAtMs > 0 && Date.now() - gracePeriodSetAtMs < PAYMENT_FAILED_INITIAL_WINDOW_MS;
+    return { plan: sub.plan, limits: await loadPlanLimits(sub.plan), subscription: sub, reason: isInitialFailure ? "payment_failed_initial" : "grace_period" };
   }
 
   // 5. Status cancelled and before currentPeriodEnd.
@@ -98,6 +114,24 @@ export async function resolveEffectivePlan(vendorId: string): Promise<EffectiveP
     return { plan: sub.plan, limits: await loadPlanLimits(sub.plan), subscription: sub, reason: "cancelled_before_period_end" };
   }
 
-  // 6. All other cases.
+  // 6. Status cancelled, past currentPeriodEnd — a provider- or admin-driven
+  // immediate termination (Section 4.5), reported distinctly from a
+  // scheduled-job expiry even though both currently render the same
+  // "inactive plan, resubscribe" copy. The doc's acceptance criterion is
+  // that the two are sourced from the correct backend status, not
+  // conflated internally, not that the copy itself must differ today.
+  if (sub.status === "cancelled") {
+    return { plan: "basic", limits: await loadPlanLimits("basic"), subscription: sub, reason: "cancelled" };
+  }
+
+  // 7. Status expired — set only by expireStaleSubscriptions (scheduled
+  // renewal sweep): a self-service cancellation reaching its period end, a
+  // renewal that never happened, or an exhausted grace period.
+  if (sub.status === "expired") {
+    return { plan: "basic", limits: await loadPlanLimits("basic"), subscription: sub, reason: "expired" };
+  }
+
+  // 8. Any other unexpected status value — fail closed to Basic without
+  // pretending to know which named state this is.
   return { plan: "basic", limits: await loadPlanLimits("basic"), subscription: sub, reason: "expired_or_other" };
 }

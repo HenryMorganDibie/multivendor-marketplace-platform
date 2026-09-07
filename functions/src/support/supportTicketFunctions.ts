@@ -6,6 +6,7 @@ import { writeAuditLog } from "../utils/auditLog";
 import { newRequestId } from "../utils/requestContext";
 import { assertAdmin } from "../utils/adminAuth";
 import { createNotificationInternal } from "../notifications/notificationFunctions";
+import { enforceRateLimit } from "../subscriptions/rateLimit";
 
 /**
  * Support ticket lifecycle (P3-FB-015).
@@ -23,6 +24,11 @@ import { createNotificationInternal } from "../notifications/notificationFunctio
 // ─── createSupportTicket ──────────────────────────────────────────────────────
 
 export const createSupportTicket = https.onCall(async (request) => {
+  await enforceRateLimit(
+    request.auth?.uid ?? `ip:${request.rawRequest?.ip ?? "unknown"}`,
+    "createSupportTicket",
+    5,
+  );
   const requestId = newRequestId();
   const appCheck = checkAppCheck(request, "createSupportTicket");
 

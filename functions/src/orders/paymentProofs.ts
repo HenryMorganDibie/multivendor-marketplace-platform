@@ -1,4 +1,4 @@
-import { https } from "firebase-functions/v2";
+import { https, logger } from "firebase-functions/v2";
 import { db, FieldValue, Timestamp } from "../admin";
 import { OrderDoc, PaymentProofDoc, PaymentProofImage } from "../types2";
 import { checkAppCheck } from "../utils/appCheck";
@@ -7,6 +7,7 @@ import { newRequestId } from "../utils/requestContext";
 import { writeOrderEvent } from "./orderEvents";
 import { sendPickupDetailsIfEligible } from "../chat/sendPickupDetails";
 import { logOperationalEvent } from "../utils/operationalLogging";
+import { createNotificationInternal } from "../notifications/notificationFunctions";
 const MAX_SUBMISSIONS = 2, MAX_IMAGES = 3;
 export const submitPaymentProof = https.onCall(async (request) => {
   const requestId = newRequestId();
@@ -50,6 +51,28 @@ export const submitPaymentProof = https.onCall(async (request) => {
   await batch.commit();
   await writeOrderEvent({ orderId, vendorId: order.vendorId, eventType: "PAYMENT_PROOF_SUBMITTED", actorUid: customerId, actorRole: "customer", after: { proofId: proofRef.id, submissionCount: newCount } });
   await writeAuditLog({ requestId, functionName: "submitPaymentProof", actorUid: customerId, actorRole: "customer", actorType: "customer", targetType: "paymentProof", targetId: proofRef.id, eventType: "payment.proof_submitted", after: { submissionCount: newCount }, appCheck });
+
+  // Named alongside order/verification events as an expected notification
+  // trigger, never wired — a vendor previously found out about a payment
+  // proof only by having the order chat open.
+  const vendorSnap = await db.collection("vendors").doc(order.vendorId).get();
+  const vendorOwnerUid = vendorSnap.data()?.ownerUid as string | undefined;
+  if (vendorOwnerUid) {
+    await createNotificationInternal({
+      recipientUid: vendorOwnerUid,
+      recipientRole: "vendor",
+      vendorId: order.vendorId,
+      customerId,
+      type: "payment_proof_submitted",
+      domain: "order",
+      title: "Payment proof submitted",
+      body: `${order.customerSnapshot.displayName} submitted proof of payment for their order.`,
+      deepLink: `the platform://chat/${order.conversationId}`,
+      metadata: { orderId },
+      isCritical: true,
+    }).catch((err) => logger.error(`createNotificationInternal (payment_proof_submitted) failed for order ${orderId}`, err));
+  }
+
   return { success: true, proofId: proofRef.id, submissionCount: newCount };
 });
 export const reviewPaymentProof = https.onCall(async (request) => {
@@ -89,5 +112,24 @@ export const reviewPaymentProof = https.onCall(async (request) => {
     );
   }
   await writeAuditLog({ requestId, functionName: "reviewPaymentProof", actorUid: request.auth.uid, actorRole: "vendor", actorType: "vendor", targetType: "paymentProof", targetId: proofId, eventType: `payment.proof_${decision}ed`, metadata: reviewReason ? { reviewReason } : undefined, appCheck });
+
+  // Same gap as the submission side — a customer previously found out their
+  // payment was confirmed/rejected only by reopening the order/chat screen.
+  await createNotificationInternal({
+    recipientUid: order.customerId,
+    recipientRole: "customer",
+    vendorId: order.vendorId,
+    customerId: order.customerId,
+    type: isAccept ? "payment_confirmed" : "payment_rejected",
+    domain: "order",
+    title: isAccept ? "Payment confirmed" : "Payment not confirmed",
+    body: isAccept
+      ? `${order.vendorSnapshot.name} confirmed your payment.`
+      : `${order.vendorSnapshot.name} couldn't confirm your payment${reviewReason ? `: ${reviewReason}` : "."}`,
+    deepLink: `the platform://chat/${order.conversationId}`,
+    metadata: { orderId },
+    isCritical: true,
+  }).catch((err) => logger.error(`createNotificationInternal (payment_${decision}ed) failed for order ${orderId}`, err));
+
   return { success: true, proofId, status: isAccept ? "REVIEWED" : "REJECTED" };
 });

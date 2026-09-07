@@ -1,4 +1,5 @@
 import * as crypto from "crypto";
+import * as admin from "firebase-admin";
 import { https } from "firebase-functions/v2";
 import { db, FieldValue } from "../admin";
 import { InvoiceBrandingDoc, InvoiceDoc, InvoiceLineItem } from "../types4";
@@ -9,6 +10,9 @@ import { resolveEffectivePlan } from "../subscriptions/resolveEffectivePlan";
 import { consumeInvoiceQuota } from "./invoiceQuota";
 import { getNextInvoiceNumber } from "../orders/orderNumbers";
 import { renderInvoicePdf, filterBrandingByPlan } from "./invoicePdf";
+import { enforceRateLimit } from "../subscriptions/rateLimit";
+import { resolveVendorCurrency } from "../vendors/vendorCurrency";
+import { requireBillingEligibleVendor } from "../vendors/requireBillingEligible";
 
 function requireVendor(request: https.CallableRequest<unknown>): { uid: string; vendorId: string } {
   if (!request.auth || request.auth.token.role !== "vendor") {
@@ -44,11 +48,21 @@ function buildLineItems(raw: unknown): { lineItems: InvoiceLineItem[]; subtotal:
  * supplied or server-computed-from-a-scan count.
  */
 export const createInvoice = https.onCall(async (request) => {
+  await enforceRateLimit(
+    request.auth?.uid ?? `ip:${request.rawRequest?.ip ?? "unknown"}`,
+    "createInvoice",
+    20,
+  );
   const requestId = newRequestId();
   const appCheck = checkAppCheck(request, "createInvoice");
   const { uid, vendorId } = requireVendor(request);
+  await requireBillingEligibleVendor(vendorId);
 
-  const { customerName, customerPhone, customerEmail, lineItems: rawItems, notes, currency } = request.data ?? {};
+  // currency is deliberately not read from the request. A vendor invoices in
+  // their own country's currency, which the server knows; taking it from the
+  // caller meant an app sending a hardcoded "NGN" gave a vendor in the United
+  // States naira invoices while their subscription correctly showed dollars.
+  const { customerName, customerPhone, customerEmail, lineItems: rawItems, notes, customerId, conversationId } = request.data ?? {};
   if (!customerName || typeof customerName !== "string" || !customerName.trim()) {
     throw new https.HttpsError("invalid-argument", "customerName is required.");
   }
@@ -67,13 +81,35 @@ export const createInvoice = https.onCall(async (request) => {
     invoiceId: invoiceRef.id,
     invoiceNumber,
     vendorId,
-    customerId: null,
+    /**
+     * The bound the platform customer, when the vendor picked one.
+     *
+     * This was the literal `null`, while the Create Invoice screen has always
+     * had a "the platform customer" mode with a customer picker that reads the
+     * vendor's real chats. The screen collected a customerId and a
+     * conversationId and the backend threw both away, so an invoice raised
+     * against a real customer arrived indistinguishable from one typed by hand.
+     * That is why the "Open chat" action on the detail screen could never fire:
+     * chatId was never written by anything.
+     *
+     * Storing them does not by itself deliver an invoice into a chat — nothing
+     * posts the invoice card yet, and that remains unbuilt. It does stop the
+     * binding being lost, which is the part that made the feature impossible to
+     * finish incrementally.
+     *
+     * Both are validated as strings and otherwise stored as given; ownership of
+     * the conversation is checked when a card is actually posted into it, which
+     * is where it matters.
+     */
+    customerId: typeof customerId === "string" && customerId.trim() ? customerId.trim() : null,
+    conversationId:
+      typeof conversationId === "string" && conversationId.trim() ? conversationId.trim() : null,
     customerName: customerName.trim(),
     customerPhone: customerPhone ?? null,
     customerEmail: customerEmail ?? null,
     lineItems,
     subtotal,
-    currency: currency ?? "NGN",
+    currency: await resolveVendorCurrency(vendor ?? {}),
     notes: notes?.trim() ?? null,
     status: "unpaid",
     paidAt: null,
@@ -152,6 +188,11 @@ export const downloadInvoicePdf = https.onCall(async (request) => {
 /** duplicateInvoice (Phase 4, Section 2.3) — gated by canDuplicateInvoice.
  * Counts against the same monthly quota as any other new invoice. */
 export const duplicateInvoice = https.onCall(async (request) => {
+  await enforceRateLimit(
+    request.auth?.uid ?? `ip:${request.rawRequest?.ip ?? "unknown"}`,
+    "duplicateInvoice",
+    20,
+  );
   const requestId = newRequestId();
   const appCheck = checkAppCheck(request, "duplicateInvoice");
   const { uid, vendorId } = requireVendor(request);
@@ -209,13 +250,40 @@ export const duplicateInvoice = https.onCall(async (request) => {
  * spec's own edge cases (brandingSnapshot, public link revocation) assume
  * are reachable. */
 export const updateInvoiceStatus = https.onCall(async (request) => {
+  await enforceRateLimit(
+    request.auth?.uid ?? `ip:${request.rawRequest?.ip ?? "unknown"}`,
+    "updateInvoiceStatus",
+    30,
+  );
   const requestId = newRequestId();
   const appCheck = checkAppCheck(request, "updateInvoiceStatus");
   const { uid, vendorId } = requireVendor(request);
   const { invoiceId, status } = request.data ?? {};
   if (!invoiceId) throw new https.HttpsError("invalid-argument", "invoiceId is required.");
-  if (status !== "paid" && status !== "cancelled") {
-    throw new https.HttpsError("invalid-argument", "status must be 'paid' or 'cancelled'.");
+
+  /**
+   * "paid" is no longer settable.
+   *
+   * Payment status is derived from the ledger now, so writing it directly would
+   * put the invoice at odds with the payments behind it — an invoice marked
+   * paid with nothing recorded against it, and revenue that disagrees with the
+   * invoice list. Marking an invoice paid means recording the money that was
+   * actually received.
+   *
+   * The client keeps its one-tap button; it calls recordPayment for the
+   * outstanding balance instead of writing a status.
+   *
+   * "cancelled" stays, because that is a genuine status change rather than a
+   * financial event.
+   */
+  if (status === "paid") {
+    throw new https.HttpsError(
+      "invalid-argument",
+      "Invoices are marked paid by recording a payment. Call recordPayment with the outstanding balance."
+    );
+  }
+  if (status !== "cancelled") {
+    throw new https.HttpsError("invalid-argument", "status must be 'cancelled'.");
   }
 
   const invoiceRef = db.collection("invoices").doc(invoiceId);
@@ -225,16 +293,15 @@ export const updateInvoiceStatus = https.onCall(async (request) => {
   }
 
   const now = FieldValue.serverTimestamp();
-  const updates: Record<string, unknown> = { status, updatedAt: now };
 
-  if (status === "paid") {
-    const { limits: planLimits } = await resolveEffectivePlan(vendorId);
-    const brandingDoc = (await db.collection("invoiceBranding").doc(vendorId).get()).data() as InvoiceBrandingDoc | undefined;
-    updates.brandingSnapshot = filterBrandingByPlan(brandingDoc, planLimits);
-    updates.paidAt = now;
-  } else {
-    updates.cancelledAt = now;
-  }
+  // Cancellation is the only transition left here. Branding used to be
+  // snapshotted on the "paid" branch; that moved to recomputeInvoiceFromLedger,
+  // which is what decides an invoice is settled now.
+  const updates: Record<string, unknown> = {
+    status,
+    cancelledAt: now,
+    updatedAt: now,
+  };
 
   await invoiceRef.update(updates);
 
@@ -273,5 +340,54 @@ export const getPublicInvoice = https.onCall(async (request) => {
   }
 
   const { shareToken: _shareToken, ...publicSafe } = invoice;
-  return { success: true, invoice: publicSafe };
+
+  /**
+   * Branding travels with the invoice.
+   *
+   * It lives in its own document, so a customer opening a shared link got an
+   * unbranded page while the PDF of the same invoice carried the vendor's logo
+   * and colours — the same document looking like two different businesses.
+   *
+   * A settled invoice uses the snapshot frozen when it was paid, so a receipt
+   * keeps the look it had at the time and a later rebrand or downgrade cannot
+   * restyle history. Anything unsettled uses current branding filtered through
+   * the vendor's current plan, which is the same rule the PDF renderer applies.
+   */
+  const { limits } = await resolveEffectivePlan(invoice.vendorId);
+  const branding =
+    invoice.status === "paid" && invoice.brandingSnapshot
+      ? invoice.brandingSnapshot
+      : filterBrandingByPlan(
+        (await db.collection("invoiceBranding").doc(invoice.vendorId).get()).data(),
+        limits,
+      );
+
+  /**
+   * The logo is stored as a path, not a URL, and Storage rules let only the
+   * vendor read it. A customer's browser therefore cannot load it, and the
+   * public page would render a broken image where a business logo should be.
+   *
+   * Signed here for a week. Long enough that a link mailed on Friday still
+   * shows the logo when it is opened on Monday, short enough that a URL copied
+   * out of the page stops working rather than becoming permanent hosting.
+   *
+   * A failure to sign is not a failure to show the invoice — the logo is
+   * dropped and the rest renders.
+   */
+  let brandingForCustomer = branding ?? null;
+  const logoPath = (brandingForCustomer as { logoUrl?: string } | null)?.logoUrl;
+  if (logoPath && !logoPath.startsWith("http")) {
+    try {
+      const [signed] = await admin
+        .storage()
+        .bucket()
+        .file(logoPath)
+        .getSignedUrl({ action: "read", expires: Date.now() + 7 * 24 * 60 * 60 * 1000 });
+      brandingForCustomer = { ...brandingForCustomer, logoUrl: signed };
+    } catch {
+      brandingForCustomer = { ...brandingForCustomer, logoUrl: null };
+    }
+  }
+
+  return { success: true, invoice: publicSafe, branding: brandingForCustomer };
 });

@@ -1,4 +1,20 @@
+import { db } from "../admin";
 import { logOperationalEvent } from "../utils/operationalLogging";
+
+/**
+ * Resolves the email address to notify for a vendor's subscription
+ * lifecycle events, via vendors/{vendorId}.ownerUid -> users/{uid}.email.
+ * Shared by every subscription mutation path (webhook core, vendor
+ * callables, admin callables, scheduled jobs) so there is exactly one
+ * place that knows how a vendorId maps to a notifiable email address.
+ */
+export async function getVendorEmail(vendorId: string): Promise<string | null> {
+  const vendorSnap = await db.collection("vendors").doc(vendorId).get();
+  const ownerUid = vendorSnap.data()?.ownerUid as string | undefined;
+  if (!ownerUid) return null;
+  const userSnap = await db.collection("users").doc(ownerUid).get();
+  return (userSnap.data()?.email as string | undefined) ?? null;
+}
 
 /**
  * Resend email dispatch for subscription lifecycle events (Phase 4, Section
@@ -16,6 +32,7 @@ export type SubscriptionEmailTrigger =
   | "reactivated"
   | "plan_changed_upgrade"
   | "plan_changed_downgrade_pending"
+  | "downgrade_effective_checkout_required"
   | "expired"
   | "admin_override_applied";
 
@@ -28,6 +45,7 @@ const SUBJECTS: Record<SubscriptionEmailTrigger, (plan?: string, date?: string) 
   reactivated: () => "Your the platform subscription has been reactivated",
   plan_changed_upgrade: (plan) => `You have been upgraded to ${plan ?? "a new plan"}, effective now`,
   plan_changed_downgrade_pending: (plan, date) => `Your plan will change to ${plan ?? "a new plan"} on ${date ?? "your next billing date"}`,
+  downgrade_effective_checkout_required: (plan) => `Action required to continue on ${plan ?? "your requested plan"}`,
   expired: () => "Your the platform subscription has ended",
   admin_override_applied: () => "Your the platform plan has been temporarily adjusted",
 };

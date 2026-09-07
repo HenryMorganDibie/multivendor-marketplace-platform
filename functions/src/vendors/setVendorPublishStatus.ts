@@ -3,6 +3,7 @@ import { db, FieldValue } from "../admin";
 import { writeAuditLog } from "../utils/auditLog";
 import { checkAppCheck } from "../utils/appCheck";
 import { newRequestId } from "../utils/requestContext";
+import { resolveOnboardingStatus } from "./onboardingStatus";
 
 /**
  * setVendorPublishStatus — vendor "go live" toggle.
@@ -34,6 +35,19 @@ export const setVendorPublishStatus = https.onCall(async (request) => {
   const vendorSnap = await vendorRef.get();
   if (!vendorSnap.exists) {
     throw new https.HttpsError("not-found", "Vendor not found.");
+  }
+
+  // Phase 1 publication gating. Only enforced when going live — a vendor can
+  // always unpublish, even from an incomplete state, otherwise a vendor whose
+  // only item was later rejected would be trapped live with no way to pull the
+  // storefront down.
+  if (isPublished) {
+    const status = await resolveOnboardingStatus(vendorId);
+    if (!status.canPublish) {
+      throw new https.HttpsError("failed-precondition", status.blockedReasons.join(" "), {
+        blockedReasons: status.blockedReasons,
+      });
+    }
   }
 
   const before = { isPublished: vendorSnap.data()?.isPublished };

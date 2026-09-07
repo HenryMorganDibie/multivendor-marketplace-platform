@@ -2,16 +2,9 @@ import { onSchedule } from "firebase-functions/v2/scheduler";
 import { db, FieldValue, Timestamp } from "../admin";
 import { VendorSubscriptionDoc } from "../types4";
 import { withSubscriptionLock, LockContentionError } from "./subscriptionLock";
-import { sendSubscriptionEmail } from "./subscriptionEmail";
+import { sendSubscriptionEmail, getVendorEmail } from "./subscriptionEmail";
 import { logOperationalEvent } from "../utils/operationalLogging";
-
-async function getVendorEmail(vendorId: string): Promise<string | null> {
-  const vendorSnap = await db.collection("vendors").doc(vendorId).get();
-  const ownerUid = vendorSnap.data()?.ownerUid as string | undefined;
-  if (!ownerUid) return null;
-  const userSnap = await db.collection("users").doc(ownerUid).get();
-  return (userSnap.data()?.email as string | undefined) ?? null;
-}
+import { cancelProviderSubscription } from "./internationalCheckout";
 
 async function processOneVendor(vendorId: string, mutate: (sub: VendorSubscriptionDoc, subRef: FirebaseFirestore.DocumentReference) => Promise<Record<string, unknown> | null>): Promise<void> {
   try {
@@ -56,21 +49,44 @@ export const expireStaleSubscriptions = onSchedule("every day 03:00", async () =
 
   for (const doc of periodEndedSnap.docs) {
     const vendorId = doc.id;
+    let downgradeCheckoutRequired: string | null = null;
+
     await processOneVendor(vendorId, async (sub) => {
       if (sub.cancelAtPeriodEnd) {
         // Cancellation always wins over any pending downgrade (Section 4.1).
         return { status: "expired", plan: "basic", lastEventType: "scheduled.expired_cancelled" };
       }
       if (sub.pendingDowngradePlan) {
-        const newPeriodEnd = Timestamp.fromMillis(Date.now() + 30 * 24 * 60 * 60 * 1000);
+        // No provider here supports a silent re-charge at a new amount —
+        // every checkout is a vendor-driven hosted-page redirect, nothing
+        // is stored server-side to bill against later (approved direction,
+        // 2026-08-27). So the safe transition is: stop the old (higher)
+        // price from billing again now, and drop entitlement to Basic
+        // rather than silently granting an unpaid mid-tier plan.
+        if (
+          (sub.provider === "paystack" || sub.provider === "flutterwave" || sub.provider === "stripe")
+          && sub.providerSubscriptionId
+        ) {
+          await cancelProviderSubscription(sub.provider, sub.providerSubscriptionId);
+        }
+        // A downgrade TO basic is already fully resolved by dropping to
+        // Basic above — nothing further to check out, so pendingDowngradePlan
+        // is cleared like any other completed transition. A downgrade to a
+        // paid tier still needs one checkout to activate it, so
+        // pendingDowngradePlan is deliberately left set (pendingDowngradeAt
+        // cleared) — getSubscriptionStatus keeps surfacing it, and the
+        // portal reads reason:"expired" + a still-present pendingDowngrade
+        // as "checkout needed to finish this downgrade," distinct from
+        // reason:"active" + pendingDowngrade, which means it's still
+        // counting down.
+        const isDowngradeToBasic = sub.pendingDowngradePlan === "basic";
+        if (!isDowngradeToBasic) downgradeCheckoutRequired = sub.pendingDowngradePlan;
         return {
-          status: "active",
-          plan: sub.pendingDowngradePlan,
-          pendingDowngradePlan: null,
+          status: "expired",
+          plan: "basic",
+          pendingDowngradePlan: isDowngradeToBasic ? null : sub.pendingDowngradePlan,
           pendingDowngradeAt: null,
-          currentPeriodStart: now,
-          currentPeriodEnd: newPeriodEnd,
-          lastEventType: "scheduled.downgrade_applied",
+          lastEventType: "scheduled.downgrade_effective_checkout_required",
         };
       }
       // No cancellation and no pending downgrade, yet the period has
@@ -78,6 +94,11 @@ export const expireStaleSubscriptions = onSchedule("every day 03:00", async () =
       // fail closed rather than silently keep granting paid access.
       return { status: "expired", plan: "basic", lastEventType: "scheduled.expired_no_renewal" };
     });
+
+    if (downgradeCheckoutRequired) {
+      const email = await getVendorEmail(vendorId);
+      if (email) await sendSubscriptionEmail(email, "downgrade_effective_checkout_required", { vendorId, plan: downgradeCheckoutRequired });
+    }
   }
 
   // Group B: past_due subscriptions whose grace period has fully elapsed.

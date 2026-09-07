@@ -9,6 +9,7 @@ import { isCountryActive } from "../utils/countryAvailability";
 import { createNotificationInternal } from "../notifications/notificationFunctions";
 import { sendAwayMessageIfEligible } from "./awayMessage";
 import { applyUserModerationScore, checkUserModerationRestriction, recordModerationEvent, runModerationCheck } from "../moderation/moderationEngine";
+import { enforceRateLimit } from "../subscriptions/rateLimit";
 
 const MAX_ATTACHMENTS = 5;
 const MAX_ATTACHMENT_BYTES = 15 * 1024 * 1024; // 15MB, matches Phase 1 verification doc limit
@@ -20,6 +21,11 @@ const MAX_TEXT_LENGTH = 4000;
 const CLIENT_CREATABLE_TYPES: MessageType[] = ["text", "contact-card", "catalog_item"];
 
 export const sendChatMessage = https.onCall(async (request) => {
+  await enforceRateLimit(
+    request.auth?.uid ?? `ip:${request.rawRequest?.ip ?? "unknown"}`,
+    "sendChatMessage",
+    60,
+  );
   const requestId = newRequestId();
   const appCheck = checkAppCheck(request, "sendChatMessage");
 

@@ -2,6 +2,7 @@ import { https } from "firebase-functions/v2";
 import { db } from "../admin";
 import { checkAppCheck } from "../utils/appCheck";
 import { SubscriptionEventDoc, VendorBillingHistoryEntry } from "../types4";
+import { currencyMinorUnitExponent } from "./countryPricing";
 
 /**
  * getVendorBillingHistory — vendor-safe projection over subscriptionEvents
@@ -57,10 +58,20 @@ export const getVendorBillingHistory = https.onCall(async (request) => {
         ? (processedAt.toDate() as Date).toISOString()
         : null;
 
+    // amountPaid is stored in major units (the provider webhooks divide down
+    // before writing it). Convert here so the API speaks minor units
+    // throughout, using the same ISO 4217 exponent the subscription writer
+    // uses rather than assuming every currency has two decimal places.
+    const currency = event.currency ?? null;
+    const amountMinorUnits =
+      typeof event.amountPaid === "number" && currency
+        ? Math.round(event.amountPaid * Math.pow(10, currencyMinorUnitExponent(currency)))
+        : null;
+
     return {
       paymentDate,
-      amount: typeof event.amountPaid === "number" ? event.amountPaid : null,
-      currency: event.currency ?? null,
+      amountMinorUnits,
+      currency,
       plan: event.plan,
       paymentStatus: toPlainLanguageStatus(event.normalizedEventType),
       providerReference: event.providerEventId ?? null,

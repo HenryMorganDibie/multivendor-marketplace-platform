@@ -1,10 +1,11 @@
 import { https, logger } from "firebase-functions/v2";
-import { db, FieldValue, messaging } from "../admin";
+import { db, FieldValue } from "../admin";
 import { NotificationDoc, NotificationDomain, PushTokenDoc,
          VendorNotificationPreferences, CustomerNotificationPreferences,
          VENDOR_NOTIFICATION_DEFAULTS, CUSTOMER_NOTIFICATION_DEFAULTS } from "../types3";
 import { checkAppCheck } from "../utils/appCheck";
 import { newRequestId } from "../utils/requestContext";
+import { enforceRateLimit } from "../subscriptions/rateLimit";
 
 interface CreateNotificationParams {
   recipientUid: string;
@@ -79,6 +80,52 @@ export async function createNotificationInternal(
 }
 
 /**
+ * The mobile app registers push tokens via Expo's `getExpoPushTokenAsync`
+ * (`ExponentPushToken[...]`), not real FCM/APNs tokens — those only mean
+ * anything to Expo's own push relay, which internally forwards to FCM/APNs
+ * on Expo's own credentials. Sending one to `admin.messaging().send()`
+ * directly always fails: the Firebase Admin SDK expects a real FCM
+ * registration token, and an Expo token isn't one, so no push notification
+ * has ever actually reached a device through this path.
+ */
+interface ExpoPushTicket {
+  status: "ok" | "error";
+  message?: string;
+  details?: { error?: string };
+}
+
+async function sendExpoPush(
+  token: string,
+  title: string,
+  body: string,
+  data: Record<string, string>
+): Promise<{ ok: true } | { ok: false; deviceNotRegistered: boolean; message: string }> {
+  const resp = await fetch("https://exp.host/--/api/v2/push/send", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+      "Accept-Encoding": "gzip, deflate",
+    },
+    body: JSON.stringify([{ to: token, title, body, data, sound: "default", priority: "high" }]),
+  });
+
+  if (!resp.ok) {
+    return { ok: false, deviceNotRegistered: false, message: `Expo push HTTP ${resp.status}` };
+  }
+
+  const json = (await resp.json()) as { data?: ExpoPushTicket[] };
+  const ticket = json.data?.[0];
+  if (!ticket || ticket.status === "ok") return { ok: true };
+
+  return {
+    ok: false,
+    deviceNotRegistered: ticket.details?.error === "DeviceNotRegistered",
+    message: ticket.message ?? "unknown Expo push error",
+  };
+}
+
+/**
  * dispatchPush — checks preferences/quiet-hours, sends to all enabled
  * tokens, prunes invalid tokens, never fails the caller if one device fails.
  */
@@ -104,6 +151,17 @@ async function dispatchPush(
     pushEnabled = prefs.pushEnabled;
     quietHoursActive = isWithinQuietHours(prefs.quietHours);
 
+    // Category toggles were saved (updateVendorNotificationPreferences) but
+    // never read back here — every category fired as long as pushEnabled
+    // was on. Only categories with a real notification-creation call site
+    // are gated; the rest of VendorNotificationPreferences (paymentConfirmed,
+    // orderChanges, actionRequired, pendingOrderReminder,
+    // unreadMessageReminder) has no corresponding event anywhere yet, so
+    // there is nothing yet to gate for those.
+    if (notification.domain === "vendor_chat") {
+      pushEnabled = pushEnabled && prefs.newMessage;
+    }
+
     // Security alerts always bypass — never disableable
     if (notification.domain === "system" && notification.type === "security_alert") {
       pushEnabled = true;
@@ -117,6 +175,15 @@ async function dispatchPush(
       : { ...CUSTOMER_NOTIFICATION_DEFAULTS, updatedAt: FieldValue.serverTimestamp() };
 
     pushEnabled = prefs.pushEnabled;
+
+    // Same gap as the vendor side — only categories with a real
+    // notification-creation call site are gated here. pickupReminders,
+    // cartReminders and promotions have no corresponding event anywhere yet.
+    if (notification.domain === "customer_chat") {
+      pushEnabled = pushEnabled && prefs.chatMessages;
+    } else if (notification.domain === "order") {
+      pushEnabled = pushEnabled && prefs.orderUpdates;
+    }
   }
 
   if (!pushEnabled) {
@@ -149,18 +216,20 @@ async function dispatchPush(
 
   for (const tokenDoc of tokens) {
     try {
-      await messaging.send({
-        token: tokenDoc.token,
-        notification: { title: notification.title, body: notification.body },
-        data: { deepLink: notification.deepLink ?? "", notificationId: notificationDocId },
-      });
-      anySucceeded = true;
-    } catch (err: any) {
-      // One device failing must not fail the whole notification.
-      if (err?.code === "messaging/registration-token-not-registered" ||
-          err?.code === "messaging/invalid-registration-token") {
-        invalidTokenIds.push(tokenDoc.tokenId);
+      const result = await sendExpoPush(
+        tokenDoc.token,
+        notification.title,
+        notification.body,
+        { deepLink: notification.deepLink ?? "", notificationId: notificationDocId }
+      );
+      if (result.ok) {
+        anySucceeded = true;
+      } else {
+        // One device failing must not fail the whole notification.
+        if (result.deviceNotRegistered) invalidTokenIds.push(tokenDoc.tokenId);
+        logger.warn(`Push send failed for token ${tokenDoc.tokenId}: ${result.message}`);
       }
+    } catch (err: any) {
       logger.warn(`Push send failed for token ${tokenDoc.tokenId}: ${err?.message}`);
     }
   }
@@ -209,6 +278,11 @@ export const markNotificationRead = https.onCall(async (request) => {
 // ─── registerPushToken ────────────────────────────────────────────────────────
 
 export const registerPushToken = https.onCall(async (request) => {
+  await enforceRateLimit(
+    request.auth?.uid ?? `ip:${request.rawRequest?.ip ?? "unknown"}`,
+    "registerPushToken",
+    10,
+  );
   const requestId = newRequestId();
   checkAppCheck(request, "registerPushToken");
   if (!request.auth) throw new https.HttpsError("unauthenticated", "Sign in required.");

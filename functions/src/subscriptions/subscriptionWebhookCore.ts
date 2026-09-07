@@ -5,6 +5,9 @@ import { NORMALIZED_EVENT_PRIORITY, NormalizedEventType } from "./eventPriority"
 import { acquireSubscriptionLock, releaseSubscriptionLock, LockContentionError } from "./subscriptionLock";
 import { logOperationalEvent } from "../utils/operationalLogging";
 import { currencyMinorUnitExponent } from "./countryPricing";
+import { reconcileChargeAgainstApprovedPrice } from "./priceReconciliation";
+import { verifyProviderSubscriptionActive } from "./providerSubscriptionStatus";
+import { sendSubscriptionEmail, getVendorEmail, SubscriptionEmailTrigger } from "./subscriptionEmail";
 
 const STALE_WEBHOOK_MS = 24 * 60 * 60 * 1000;
 const GRACE_PERIOD_MS = 7 * 24 * 60 * 60 * 1000;
@@ -138,7 +141,16 @@ export async function processNormalizedWebhookEvent(event: NormalizedWebhookEven
   try {
     const subRef = db.collection("vendorSubscriptions").doc(vendorId);
 
-    await db.runTransaction(async (tx) => {
+    // The transaction returns which lifecycle email (if any) the mutation
+    // warrants, rather than mutating an outer variable from inside the
+    // callback — a `let` assigned only inside an async closure like this
+    // one is not narrowed back to its assigned type by TypeScript once
+    // control returns to the surrounding scope, and returning the value
+    // sidesteps that entirely. Dispatched AFTER the transaction commits
+    // (Section 7: "Email dispatch happens after the Firestore transaction
+    // commits"), never from inside it — a transaction can retry on
+    // contention, and a network call has no business inside that retry loop.
+    const emailToSend = await db.runTransaction<{ trigger: SubscriptionEmailTrigger; plan?: string } | null>(async (tx) => {
       const subSnap = await tx.get(subRef);
       const existing = subSnap.exists ? (subSnap.data() as VendorSubscriptionDoc) : null;
 
@@ -168,7 +180,7 @@ export async function processNormalizedWebhookEvent(event: NormalizedWebhookEven
             provider, vendorId, providerEventId, rawEventType, normalizedEventType,
             ignoreReason: "superseded_by_newer_or_higher_priority_event",
           });
-          return;
+          return null;
         }
       }
 
@@ -179,13 +191,14 @@ export async function processNormalizedWebhookEvent(event: NormalizedWebhookEven
           provider, vendorId, providerEventId, rawEventType, normalizedEventType,
           ignoreReason: "admin_override_active",
         });
-        return;
+        return null;
       }
 
       const now = FieldValue.serverTimestamp();
       const planFromPayload = event.planIdFromPayload && VALID_PLAN_IDS.includes(event.planIdFromPayload)
         ? event.planIdFromPayload
         : existing?.plan ?? "basic";
+      let emailToSend: { trigger: SubscriptionEmailTrigger; plan?: string } | null = null;
 
       const updates: Record<string, unknown> = {
         vendorId,
@@ -199,12 +212,31 @@ export async function processNormalizedWebhookEvent(event: NormalizedWebhookEven
       };
 
       if (normalizedEventType === "activation" || normalizedEventType === "renewal") {
-        // Late-payment-after-expiry (EC2/v7 simplified): any signature-
-        // verified activation/renewal webhook restores an expired
-        // subscription to active, regardless of provider. A full
-        // re-verification against the provider's own subscription-status
-        // API (the stricter v7 behavior) is intentionally deferred for all
-        // three providers — see README known-gaps.
+        // Late-payment-after-expiry (Section 4.1, v7): a subscription that
+        // expireStaleSubscriptions has already marked `expired` is NOT
+        // blindly restored by any later activation/renewal webhook. Only a
+        // genuinely late-arriving webhook — one whose payment corresponds
+        // to a subscription that was still active on the provider's side —
+        // restores automatically. A payment on a subscription the provider
+        // independently cancelled does not restore; the vendor must start a
+        // new subscription via createSubscriptionCheckout. This check is
+        // scoped to exactly this recovery case (existing.status ===
+        // "expired") and does not run on the hot path (active → renewal,
+        // new subscriber, upgrade during grace, etc.), so it never turns
+        // the provider into the general-purpose source of truth. A brand
+        // new subscription cycle (isNewSubscriptionCycle — a different
+        // providerSubscriptionId than what's on file) is exempt: that's a
+        // fresh subscription, not a late payment on the old expired one.
+        if (existing?.status === "expired" && !isNewSubscriptionCycle) {
+          const stillActive = await verifyProviderSubscriptionActive(provider, event.providerSubscriptionId);
+          if (!stillActive) {
+            await writeIgnoredEvent({
+              provider, vendorId, providerEventId, rawEventType, normalizedEventType,
+              ignoreReason: "payment_after_full_expiry_no_active_provider_subscription",
+            });
+            return null;
+          }
+        }
         updates.status = "active";
         updates.plan = planFromPayload;
         updates.gracePeriodEnd = null;
@@ -225,6 +257,21 @@ export async function processNormalizedWebhookEvent(event: NormalizedWebhookEven
         if (typeof event.amountPaid === "number") {
           const exponent = currencyMinorUnitExponent(updates.currency as string);
           updates.currentMonthlyPriceMinorUnits = Math.round(event.amountPaid * Math.pow(10, exponent));
+
+          // What the provider actually took, checked against what was approved.
+          // The provider is the billing authority and nothing forces the two to
+          // agree: change a country's price without mapping a new provider-side
+          // plan and the app shows one amount while the card is charged another,
+          // silently, every month. Deliberately not awaited — a reconciliation
+          // failure must never hold up recording a payment that really happened.
+          void reconcileChargeAgainstApprovedPrice({
+            vendorId,
+            plan: String(planFromPayload),
+            chargedMinorUnits: updates.currentMonthlyPriceMinorUnits as number,
+            chargedCurrency: updates.currency as string,
+            provider: event.provider ?? "unknown",
+            providerPlanId: event.providerPlanId ?? null,
+          });
         }
         const periodStart = Timestamp.now();
         const periodEnd = Timestamp.fromMillis(periodStart.toMillis() + 30 * 24 * 60 * 60 * 1000);
@@ -237,13 +284,31 @@ export async function processNormalizedWebhookEvent(event: NormalizedWebhookEven
           updates.pendingDowngradePlan = null;
           updates.pendingDowngradeAt = null;
         }
+        // Section 7 email triggers: a subscriber coming from no record, or
+        // from cancelled/expired/incomplete, is a fresh activation; an
+        // existing active/trialing/past_due subscriber paying the same plan
+        // again is a renewal; a plan change on this immediate-effect path is
+        // always an upgrade (downgrades take effect later via
+        // pendingDowngradePlan, never through this branch).
+        const wasLiveBefore = !!existing && (existing.status === "active" || existing.status === "trialing" || existing.status === "past_due");
+        if (!wasLiveBefore) {
+          emailToSend = { trigger: "activated", plan: String(planFromPayload) };
+        } else if (existing && planFromPayload !== existing.plan) {
+          emailToSend = { trigger: "plan_changed_upgrade", plan: String(planFromPayload) };
+        } else {
+          emailToSend = { trigger: "renewed" };
+        }
       } else if (normalizedEventType === "past_due") {
         updates.status = "past_due";
         // EC3: duplicate failed-payment webhooks must not extend the grace
         // period — only set it the FIRST time this billing cycle fails.
+        // The same guard doubles as the "first failure only" email dedup
+        // required by Section 7 — a second/third failed-payment webhook for
+        // the same billing cycle never re-enters this branch.
         if (!existing?.gracePeriodSetAt) {
           updates.gracePeriodEnd = Timestamp.fromMillis(Date.now() + GRACE_PERIOD_MS);
           updates.gracePeriodSetAt = now;
+          emailToSend = { trigger: "payment_failed_first" };
         }
       } else if (normalizedEventType === "cancelled") {
         // A PROVIDER-side cancellation is distinct from a vendor-initiated
@@ -254,6 +319,7 @@ export async function processNormalizedWebhookEvent(event: NormalizedWebhookEven
         updates.status = "cancelled";
         updates.cancelAtPeriodEnd = true;
         updates.cancelledAt = now;
+        emailToSend = { trigger: "cancelled" };
       }
 
       if (!subSnap.exists) {
@@ -297,7 +363,21 @@ export async function processNormalizedWebhookEvent(event: NormalizedWebhookEven
         updatedAt: now,
         processedAt: now,
       });
+
+      return emailToSend;
     });
+
+    // Fire-and-forget, strictly after the transaction above has committed.
+    // sendSubscriptionEmail never throws (it catches and logs internally
+    // via logOperationalEvent), so a dropped `void` here cannot surface as
+    // an unhandled rejection; email failure can never roll back or delay
+    // the response already being returned to the provider.
+    if (emailToSend) {
+      const trigger = emailToSend;
+      void getVendorEmail(vendorId).then((email) => {
+        if (email) void sendSubscriptionEmail(email, trigger.trigger, { plan: trigger.plan, vendorId });
+      });
+    }
 
     return { httpStatus: 200, message: "Processed" };
   } catch (err) {

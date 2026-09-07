@@ -1,10 +1,14 @@
 import { https } from "firebase-functions/v2";
 import { firestore as functionsFirestore } from "firebase-functions/v1";
+import { GoogleAuth } from "google-auth-library";
 import { db, FieldValue, admin } from "../admin";
 import { VerificationDocumentDoc } from "../types";
 import { checkAppCheck } from "../utils/appCheck";
 import { writeAuditLog } from "../utils/auditLog";
 import { newRequestId } from "../utils/requestContext";
+
+const MALWARE_SCANNER_URL = "https://malware-scanner-765656912787.us-central1.run.app/scan";
+const googleAuth = new GoogleAuth();
 
 /**
  * Vendor verification submission flow (P1-FB-005 — previously missing).
@@ -224,13 +228,63 @@ export const submitVendorVerification = https.onCall(
 );
 
 /**
- * onVendorVerificationDocumentWrite — Firestore trigger, currently a no-op
- * placeholder for future virus-scan/MIME-revalidation hooks. Included so
- * the trigger registration exists and is documented for Phase 2 extension.
+ * onVendorVerificationDocumentWrite — scans every newly uploaded
+ * verification document (ID photos, selfies, business docs) for malware
+ * before it can be reviewed.
+ *
+ * Runs against a self-hosted ClamAV instance (malware-scanner Cloud Run
+ * service, not a third-party API — no external account or per-scan cost).
+ * The scanner has no public access; only this function's service account
+ * can invoke it, authenticated via a Google-signed ID token for its exact
+ * audience.
+ *
+ * An infected file is immediately flagged rejected — malwareScanStatus
+ * lets an admin see why, and status:"rejected" reuses the same field the
+ * manual review flow already checks, so no separate code path is needed
+ * to keep an infected upload out of review.
  */
 export const onVendorVerificationDocumentWrite = functionsFirestore
   .document("vendorVerification/{vendorId}/documents/{docId}")
-  .onCreate(async () => {
-    // Reserved for future virus-scan / re-validation pipeline.
-    return null;
+  .onCreate(async (snap) => {
+    const data = snap.data() as VerificationDocumentDoc;
+    const bucket = admin.storage().bucket().name;
+
+    try {
+      // The deployed scanner (services/malware-scanner/server.js) destructures
+      // `{ bucket, name }` from the request body and returns
+      // `{ clean: boolean, threat?: string }` — this sent `storagePath`
+      // instead of `name`, so `name` was always undefined, the scanner always
+      // 400'd, and every real scan landed in the catch block below and
+      // recorded "error" regardless of the file's actual content.
+      const client = await googleAuth.getIdTokenClient(MALWARE_SCANNER_URL);
+      const response = await client.request<{ clean: boolean; threat?: string }>({
+        url: MALWARE_SCANNER_URL,
+        method: "POST",
+        data: { bucket, name: data.storagePath },
+      });
+
+      const result = response.data;
+
+      if (result.clean === true) {
+        await snap.ref.update({
+          malwareScanStatus: "clean",
+          malwareScanAt: FieldValue.serverTimestamp(),
+          malwareSignature: null,
+        });
+        return;
+      }
+
+      await snap.ref.update({
+        malwareScanStatus: "infected",
+        malwareScanAt: FieldValue.serverTimestamp(),
+        malwareSignature: result.threat ?? "unknown",
+        status: "rejected",
+      });
+    } catch (err) {
+      console.error("[onVendorVerificationDocumentWrite] Scan request failed:", err);
+      await snap.ref.update({
+        malwareScanStatus: "error",
+        malwareScanAt: FieldValue.serverTimestamp(),
+      });
+    }
   });

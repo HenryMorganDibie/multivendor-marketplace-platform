@@ -23,6 +23,30 @@ const MAX_SUBJECT_LENGTH = 100;
 const MAX_MESSAGE_LENGTH = 4000;
 const DUPLICATE_WINDOW_MS = 10 * 60 * 1000;
 
+// Section 3: "CAPTCHA or equivalent challenge triggered after suspicious
+// submission velocity." No reCAPTCHA/hCaptcha/Turnstile keys exist for this
+// project (provisioning one needs the client's Google/Cloudflare account
+// access), and the spec text itself allows "or equivalent" — so no real
+// human can read the contact form and type name/email/subject/message
+// faster than this; this is a well-established anti-bot heuristic.
+const MIN_SUBMISSION_ELAPSED_MS = 4000;
+
+/**
+ * Mirrors computeChallengeAnswer in platform-website's
+ * src/app/(marketing)/contact/ContactForm.tsx — must stay in sync. Deterministic
+ * function of the page-render timestamp the frontend already sends for the
+ * velocity check above, so no extra field or extra network round-trip is
+ * needed: a client that never actually ran this page's JS (e.g. a script
+ * posting straight to this callable) won't know to compute it, which is the
+ * "equivalent challenge" this section calls for without a third-party
+ * CAPTCHA service or secret.
+ */
+function computeChallengeAnswer(renderedAtMs: number): number {
+  const a = (renderedAtMs % 97) + 3;
+  const b = (renderedAtMs % 47) + 5;
+  return a * b;
+}
+
 function requireField(value: unknown, field: string, maxLength: number): string {
   const str = String(value ?? "").trim();
   if (!str) {
@@ -51,13 +75,34 @@ export const submitContactForm = https.onCall(async (request) => {
   await enforceRateLimit(`public:${ip}`, "submitContactForm", 5);
 
   const data = request.data as
-    | { name?: unknown; email?: unknown; subjectCategory?: unknown; message?: unknown; honeypot?: unknown }
+    | {
+        name?: unknown;
+        email?: unknown;
+        subjectCategory?: unknown;
+        message?: unknown;
+        honeypot?: unknown;
+        formRenderedAtMs?: unknown;
+        challengeAnswer?: unknown;
+      }
     | undefined;
 
   // Honeypot — hidden from real users; a filled value indicates a bot.
   if (typeof data?.honeypot === "string" && data.honeypot.trim().length > 0) {
     // Silently accept without writing anything, so the bot gets no signal
     // that it was detected.
+    return { success: true };
+  }
+
+  // Suspicious-submission-velocity + proof-of-JS check (Section 3). Both
+  // failure modes below are as unambiguous a bot signal as the honeypot
+  // above (no legitimate human/browser flow produces them), so they get the
+  // same silent-accept treatment for the same reason: don't tip off the bot.
+  const renderedAtMs = typeof data?.formRenderedAtMs === "number" ? data.formRenderedAtMs : null;
+  const elapsedMs = renderedAtMs === null ? -1 : Date.now() - renderedAtMs;
+  const velocityOk = elapsedMs >= MIN_SUBMISSION_ELAPSED_MS;
+  const expectedChallengeAnswer = renderedAtMs === null ? null : computeChallengeAnswer(renderedAtMs);
+  const challengeOk = expectedChallengeAnswer !== null && data?.challengeAnswer === expectedChallengeAnswer;
+  if (!velocityOk || !challengeOk) {
     return { success: true };
   }
 

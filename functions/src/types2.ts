@@ -66,9 +66,51 @@ export interface CatalogItemDoc {
   orderCount: number;          // server-controlled
   moderationStatus: ModerationStatus;
   moderationNotes?: string | null;
+  /** Phase 2: whether a proposed edit is awaiting review. Only a boolean lives
+   * on the item itself — the proposed values are stored in the private
+   * `moderation/pendingRevision` subcollection instead.
+   *
+   * This split is deliberate and load-bearing. Customers read approved catalog
+   * item documents directly under Firestore rules, and rules cannot restrict
+   * individual fields on a read: anything on this document is readable by
+   * anyone allowed to read the document at all. Keeping the proposed edit here
+   * would therefore publish unreviewed content (and any rejection reason) to
+   * every customer, which is exactly what moderation exists to prevent. */
+  hasPendingRevision?: boolean;
   createdAt: firestore.Timestamp | firestore.FieldValue;
   updatedAt: firestore.Timestamp | firestore.FieldValue;
 }
+
+/** The subset of catalog fields a vendor edit can propose. Deliberately only
+ * the material ones — operational fields (stock, visibility, availability)
+ * apply immediately and never sit in a revision. */
+export interface PendingRevisionChanges {
+  name?: string;
+  description?: string | null;
+  categoryId?: string | null;
+  basePrice?: number;
+  salePrice?: number | null;
+  photos?: string[];
+  addOnGroups?: AddOnGroup[];
+}
+
+/**
+ * Stored at vendors/{vendorId}/catalogItems/{itemId}/moderation/pendingRevision
+ * — a subcollection, so Firestore rules can deny customers access to it
+ * entirely while still allowing them to read the approved parent item.
+ */
+export interface PendingRevision {
+  changes: PendingRevisionChanges;
+  submittedAt: firestore.Timestamp | firestore.FieldValue;
+  /** Set when an admin rejects the revision, so the vendor can see why and fix
+   * it. Cleared on resubmission. */
+  rejectionReason?: string | null;
+  status: "pending" | "rejected";
+}
+
+/** Single well-known document id for an item's current pending revision. One
+ * outstanding revision per item, so this never needs to be a generated id. */
+export const PENDING_REVISION_DOC_ID = "pendingRevision";
 
 // ─── Carts ────────────────────────────────────────────────────────────────────
 
@@ -101,6 +143,38 @@ export interface CartDoc {
   fulfillmentType: "pickup" | "delivery" | "shipping";
   orderNote?: string | null;
   expiresAt: firestore.Timestamp | firestore.FieldValue;
+  createdAt: firestore.Timestamp | firestore.FieldValue;
+  updatedAt: firestore.Timestamp | firestore.FieldValue;
+  appliedPromotion?: { promotionId: string; title: string; discountAmount: number } | null;
+}
+
+// ─── Promotions ─────────────────────────────────────────────────────────────
+// Mirrors the mobile app's VendorPromotion shape (mocks/promotionsData.ts)
+// exactly, field for field, so the eventual repository swap there is a
+// straight passthrough rather than a remapping.
+
+export type PromotionType = "percentage" | "flat" | "bogo" | "free_item" | "free_delivery";
+
+export interface PromotionDoc {
+  promotionId: string;
+  vendorId: string;
+  title: string;
+  shortDescription: string;
+  fullDescription: string;
+  type: PromotionType;
+  discountValue: number;
+  minimumOrder: number;
+  maxDiscount?: number | null;
+  freeItemName?: string | null;
+  bogoItemName?: string | null;
+  applicableItemIds?: string[] | null;
+  applicableCategoryIds?: string[] | null;
+  active: boolean;
+  startDate: string; // ISO date
+  endDate: string; // ISO date
+  icon: "percent" | "gift" | "truck" | "tag" | "zap";
+  eligibility?: "all" | "pickup" | "delivery" | null;
+  vendorTerms?: string | null;
   createdAt: firestore.Timestamp | firestore.FieldValue;
   updatedAt: firestore.Timestamp | firestore.FieldValue;
 }
@@ -186,7 +260,8 @@ export type OrderEventType =
   | "INVENTORY_RESERVED" | "INVENTORY_RELEASED"
   | "PAYMENT_PROOF_SUBMITTED" | "PAYMENT_PROOF_REJECTED"
   | "PAYMENT_PROOF_APPROVED" | "PAYMENT_PROOF_LOCKED"
-  | "RECEIPT_GENERATED" | "PAYMENT_PROOF_LIMIT_REACHED";
+  | "RECEIPT_GENERATED" | "PAYMENT_PROOF_LIMIT_REACHED"
+  | "CHANGE_REQUEST_ACCEPTED" | "CHANGE_REQUEST_DECLINED";
 
 export interface OrderEventDoc {
   eventId: string;
@@ -242,6 +317,87 @@ export interface PaymentProofDoc {
   createdAt: firestore.Timestamp | firestore.FieldValue;
   updatedAt: firestore.Timestamp | firestore.FieldValue;
   uploadedBy: string;
+}
+
+// ─── Payment Requests (chat) ───────────────────────────────────────────────────
+//
+// A vendor's "pay me" ask sent through an order's chat thread. Unlike
+// PaymentProofDoc (the customer's evidence that they paid), this is the
+// vendor's own request that names an amount and points the customer at the
+// vendor's real payment instructions.
+//
+// There is deliberately no structured bank-name/account-name/account-number
+// selection here. The only real, backend-persisted vendor payment field is a
+// single free-text instructions string (vendors/{vendorId}.paymentInstructions,
+// gated by paymentInstructionsEnabled, written by
+// updateVendorPaymentInstructions.ts) — there is no paymentMethods array, no
+// primaryPaymentMethod/secondaryPaymentMethod, anywhere in this backend. A
+// captured snapshot of that text lives on this doc so a later edit to the
+// vendor's instructions never rewrites what was actually shown at send time.
+//
+// Status vocabulary is deliberately narrower than the order/proof lifecycle:
+// this doc only tracks the request's own lifecycle (was it superseded by a
+// newer request, cancelled, or eventually confirmed), never the payment
+// proof review outcome, which paymentProofs/reviewPaymentProof already own.
+export type PaymentRequestStatus = "active" | "resent" | "replaced" | "cancelled" | "confirmed";
+
+export interface PaymentRequestDoc {
+  requestId: string;
+  orderId: string;
+  vendorId: string;
+  customerId: string;
+  amount: number;
+  currency: string;
+  // Snapshot of the vendor's structured Payment Method at send time — never
+  // re-read live by the chat card, so a method edit afterward cannot
+  // silently rewrite what the customer was already shown. paymentInstructions
+  // stays optional for requests sent before the structured method existed;
+  // new requests populate the type-specific fields instead.
+  paymentInstructions?: string;
+  paymentMethodType?: VendorPaymentMethodType;
+  bankName?: string;
+  accountNumber?: string;
+  accountName?: string;
+  cashInstructions?: string;
+  message?: string | null;
+  status: PaymentRequestStatus;
+  chatId: string;
+  messageId: string;
+  sentAt: firestore.Timestamp | firestore.FieldValue;
+  replacedAt?: firestore.Timestamp | firestore.FieldValue | null;
+  replacedByRequestId?: string | null;
+  createdAt: firestore.Timestamp | firestore.FieldValue;
+  updatedAt: firestore.Timestamp | firestore.FieldValue;
+}
+
+// ─── Vendor Payment Method ─────────────────────────────────────────────────
+// Deliberately its own subcollection (vendors/{vendorId}/paymentMethod), not
+// a field on the vendor document itself — see firestore.rules for why.
+
+export type VendorPaymentMethodType = "bank_transfer" | "cash";
+
+export interface VendorPaymentMethodDoc {
+  type: VendorPaymentMethodType;
+  bankName?: string;
+  accountNumber?: string;
+  accountName?: string;
+  cashInstructions?: string;
+  // Attested once, the first time a vendor ever sets a bank_transfer method,
+  // and carried forward across later replacements — same convention as
+  // updateVendorPaymentInstructions.ts's ownershipConfirmed.
+  ownershipConfirmed: boolean;
+  ownershipConfirmedAt?: firestore.Timestamp | firestore.FieldValue;
+  ownershipConfirmedBy?: string;
+  activeSince: firestore.Timestamp | firestore.FieldValue;
+  updatedAt: firestore.Timestamp | firestore.FieldValue;
+  updatedBy: string;
+}
+
+export interface VendorPaymentMethodHistoryDoc {
+  historyId: string;
+  previousMethod: VendorPaymentMethodDoc;
+  replacedAt: firestore.Timestamp | firestore.FieldValue;
+  replacedBy: string;
 }
 
 // ─── Receipts ────────────────────────────────────────────────────────────────

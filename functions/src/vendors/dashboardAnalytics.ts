@@ -2,6 +2,8 @@ import { https } from "firebase-functions/v2";
 import { db, Timestamp } from "../admin";
 import { checkAppCheck } from "../utils/appCheck";
 import { OrderDoc } from "../types2";
+import { sumLedger } from "../payments/paymentLedger";
+import { readVendorRevenueTotal } from "../payments/vendorRevenueTotals";
 import { resolveEffectivePlan } from "../subscriptions/resolveEffectivePlan";
 import { DashboardFilterRange } from "../types4";
 
@@ -73,10 +75,49 @@ export const getVendorDashboard = https.onCall(async (request) => {
 
   const ordersToday = todayOrders.length;
   const pendingOrders = todayOrders.filter((o) => ["requested", "accepted", "confirmed", "in_progress"].includes(o.status)).length;
-  const todayRevenue = todayOrders
-    .filter((o) => o.status === "completed")
-    .reduce((sum, o) => sum + (o.orderSnapshot?.total ?? 0), 0);
   const upcomingOrders = todayOrders.filter((o) => ["accepted", "confirmed", "in_progress"].includes(o.status)).length;
+
+  /**
+   * Revenue comes from the payment ledger, not from orders.
+   *
+   * This summed the totals of orders completed today. That is a count of work
+   * finished, not of money received, and it reintroduced exactly what the
+   * ledger was built to remove: it cannot express a partial payment, ignores a
+   * reversal entirely, and counts an order and its invoice as two amounts.
+   *
+   * The two genuinely differ and the ledger's answer is the right one. An order
+   * completed today but not yet paid is not revenue. A payment that arrived
+   * today against last week's order is. A vendor recording a payment and
+   * watching this figure not move was the visible symptom.
+   *
+   * Read through the same helpers getVendorRevenue uses, so the dashboard and
+   * the invoice screens cannot drift apart again.
+   */
+  const todayPaymentsSnap = await db.collection("payments")
+    .where("vendorId", "==", vendorId)
+    .where("paidAt", ">=", todayStart)
+    .get();
+
+  const todayRevenue = sumLedger(
+    todayPaymentsSnap.docs.map((d) => ({
+      amountMinorUnits: (d.data().amountMinorUnits as number) ?? 0,
+      type: d.data().type as "payment" | "reversal",
+    })),
+  );
+
+  // The lifetime figure is the maintained total rather than a scan, and
+  // outstanding is filtered in the query so a vendor with years of settled
+  // invoices reads only what is still owed.
+  const totalRevenue = await readVendorRevenueTotal(vendorId);
+
+  const owedSnap = await db.collection("invoices")
+    .where("vendorId", "==", vendorId)
+    .where("status", "in", ["unpaid", "partial"])
+    .get();
+  const outstandingRevenue = owedSnap.docs.reduce(
+    (sum, d) => sum + ((d.data().balanceMinorUnits as number) ?? 0),
+    0,
+  );
 
   const response: Record<string, unknown> = {
     success: true,
@@ -85,6 +126,10 @@ export const getVendorDashboard = https.onCall(async (request) => {
     ordersToday,
     pendingOrders,
     todayRevenue,
+    // Sent alongside so the dashboard has the whole ledger picture without a
+    // second call, and without recomputing any of it client-side.
+    totalRevenue,
+    outstandingRevenue,
     todaysSchedule: todayOrders
       .filter((o) => ["accepted", "confirmed", "in_progress"].includes(o.status))
       .map((o) => ({ orderId: o.orderId, publicOrderId: o.publicOrderId, status: o.status, fulfillmentType: o.fulfillmentType })),
@@ -162,6 +207,56 @@ export const getBusinessAnalytics = https.onCall(async (request) => {
   for (const o of completed) {
     spendByCustomer.set(o.customerId, (spendByCustomer.get(o.customerId) ?? 0) + (o.orderSnapshot?.total ?? 0));
   }
+  /**
+   * Repeat customers: how many ordered more than once, and what share of the
+   * total that is. Counted on completed orders only — an abandoned request is
+   * not a customer returning.
+   */
+  const ordersPerCustomer = new Map<string, number>();
+  for (const o of completed) {
+    if (o.orderSource !== "internal" || !o.customerId) continue;
+    ordersPerCustomer.set(o.customerId, (ordersPerCustomer.get(o.customerId) ?? 0) + 1);
+  }
+  const distinctCustomers = ordersPerCustomer.size;
+  const repeatCustomers = [...ordersPerCustomer.values()].filter((n) => n > 1).length;
+
+  const repeatCustomerAnalytics = distinctCustomers === 0
+    // No customers at all is not a zero percent repeat rate; it is nothing to
+    // report. Saying "0% returned" to a vendor with no orders reads as failure
+    // rather than as absence.
+    ? { dataPending: true as const }
+    : {
+        distinctCustomers,
+        repeatCustomers,
+        repeatRatePercent: Math.round((repeatCustomers / distinctCustomers) * 100),
+      };
+
+  /**
+   * Customer growth: first-time customers per day across the window, taken from
+   * each customer's earliest order rather than from order dates, so a regular
+   * is counted once on the day they first appeared.
+   */
+  const firstSeen = new Map<string, number>();
+  for (const o of orders) {
+    if (o.orderSource !== "internal" || !o.customerId) continue;
+    const ms = o.createdAt && "toMillis" in o.createdAt ? (o.createdAt as Timestamp).toMillis() : Date.now();
+    const existing = firstSeen.get(o.customerId);
+    if (existing === undefined || ms < existing) firstSeen.set(o.customerId, ms);
+  }
+  const newByDay = new Map<string, number>();
+  for (const ms of firstSeen.values()) {
+    const day = new Date(ms).toISOString().slice(0, 10);
+    newByDay.set(day, (newByDay.get(day) ?? 0) + 1);
+  }
+  const customerGrowth = firstSeen.size === 0
+    ? { dataPending: true as const }
+    : {
+        totalCustomers: firstSeen.size,
+        newCustomersByDay: [...newByDay.entries()]
+          .sort(([a], [b]) => a.localeCompare(b))
+          .map(([date, count]) => ({ date, count })),
+      };
+
   const topCustomers = [...spendByCustomer.entries()].sort(([, a], [, b]) => b - a).slice(0, 10).map(([customerId, total]) => ({ customerId, total }));
 
   const internalCount = orders.filter((o) => o.orderSource === "internal").length;
@@ -176,10 +271,21 @@ export const getBusinessAnalytics = https.onCall(async (request) => {
     ordersBySource: { internal: internalCount, external: externalCount },
     platformVsExternalAnalytics: { internal: internalCount, external: externalCount },
     // Deferred to a future phase — see function doc comment.
+    /**
+     * Still pending, and honestly so. Both need storefront visit tracking,
+     * which does not exist: there is no record of somebody opening a storefront
+     * and not ordering. A conversion rate invented without it would be a
+     * specific claim about the vendor's business with nothing behind it.
+     */
     conversionFunnel: { dataPending: true },
     storefrontPerformance: { dataPending: true },
-    customerGrowth: { dataPending: true },
-    repeatCustomerAnalytics: { dataPending: true },
+
+    /**
+     * These two are computed now. Both come from orders, which the vendor
+     * already has, so nothing needs to be tracked that is not already recorded.
+     */
+    customerGrowth,
+    repeatCustomerAnalytics,
     customerSourceBreakdown: { dataPending: true },
   };
 });

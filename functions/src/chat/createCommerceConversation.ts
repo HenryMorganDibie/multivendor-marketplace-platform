@@ -7,6 +7,7 @@ import { newRequestId } from "../utils/requestContext";
 import { canStartNewCommerce } from "../blocks/blockUtils";
 import { isCountryActive } from "../utils/countryAvailability";
 import { createNotificationInternal } from "../notifications/notificationFunctions";
+import { toCustomerDisplayName } from "../utils/customerDisplayName";
 
 /**
  * Deterministic thread ID for a customer/vendor pair. This is the
@@ -115,7 +116,13 @@ export const createCommerceConversation = https.onCall(async (request) => {
     return { success: true, chatId, created: false };
   }
 
-  const fullName: string = customer.profile?.fullName ?? customer.displayName ?? "Customer";
+  // Never the raw fullName here — this lands on customerName, which the
+  // vendor sees directly in their chat list/header (phase2-mapping-spec.txt:
+  // customerSnapshot.displayName = "Jane D."). createOrder.ts already
+  // truncated correctly for the order snapshot; this thread doc did not.
+  const fullName: string = toCustomerDisplayName(
+    customer.profile?.fullName ?? customer.displayName ?? "Customer",
+  );
   const now = FieldValue.serverTimestamp();
 
   const threadDoc: ChatThreadDoc = {

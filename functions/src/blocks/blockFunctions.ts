@@ -5,6 +5,8 @@ import { checkAppCheck } from "../utils/appCheck";
 import { writeAuditLog } from "../utils/auditLog";
 import { newRequestId } from "../utils/requestContext";
 import { blockDocId } from "./blockUtils";
+import { enforceRateLimit } from "../subscriptions/rateLimit";
+import { toCustomerDisplayName } from "../utils/customerDisplayName";
 
 function computeInitials(name: string): string {
   const parts = name.trim().split(/\s+/).filter(Boolean);
@@ -16,6 +18,11 @@ function computeInitials(name: string): string {
 // ─── blockUser ──────────────────────────────────────────────────────────────
 
 export const blockUser = https.onCall(async (request) => {
+  await enforceRateLimit(
+    request.auth?.uid ?? `ip:${request.rawRequest?.ip ?? "unknown"}`,
+    "blockUser",
+    20,
+  );
   const requestId = newRequestId();
   const appCheck = checkAppCheck(request, "blockUser");
 
@@ -34,8 +41,11 @@ export const blockUser = https.onCall(async (request) => {
   const blockedUser = blockedUserSnap.data()!;
   const blockedRole: "customer" | "vendor" = blockedUser.role;
 
-  // Build the display snapshot at block time — never updated after creation
-  let displayName = blockedUser.profile?.fullName ?? blockedUser.displayName ?? "User";
+  // Build the display snapshot at block time — never updated after creation.
+  // Truncated the same way a vendor sees a customer's name anywhere else
+  // (phase2-mapping-spec.txt: "Jane D."); overwritten below with the real
+  // business name when the blocked user turns out to be a vendor.
+  let displayName = toCustomerDisplayName(blockedUser.profile?.fullName ?? blockedUser.displayName ?? "User");
   let businessName: string | null = null;
   let vendorId: string | null = null;
   let customerId: string | null = null;
@@ -109,6 +119,11 @@ export const blockUser = https.onCall(async (request) => {
 // ─── unblockUser ────────────────────────────────────────────────────────────
 
 export const unblockUser = https.onCall(async (request) => {
+  await enforceRateLimit(
+    request.auth?.uid ?? `ip:${request.rawRequest?.ip ?? "unknown"}`,
+    "unblockUser",
+    20,
+  );
   const requestId = newRequestId();
   const appCheck = checkAppCheck(request, "unblockUser");
 

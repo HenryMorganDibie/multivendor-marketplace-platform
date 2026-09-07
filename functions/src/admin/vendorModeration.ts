@@ -4,6 +4,7 @@ import { writeAuditLog } from "../utils/auditLog";
 import { checkAppCheck } from "../utils/appCheck";
 import { assertAdmin } from "../utils/adminAuth";
 import { newRequestId } from "../utils/requestContext";
+import { createNotificationInternal } from "../notifications/notificationFunctions";
 
 /**
  * Admin-only vendor moderation functions — full multi-role model.
@@ -63,6 +64,25 @@ export const approveVendorVerification = https.onCall(async (request) => {
   });
 
   await batch.commit();
+
+  // Named as an expected notification trigger in the Phase 3 spec alongside
+  // onMessageCreate and order status changes, but never actually wired — a
+  // vendor only ever found out about a decision by having the app open.
+  const vendorSnap = await vendorRef.get();
+  const vendorOwnerUid = vendorSnap.data()?.ownerUid as string | undefined;
+  if (vendorOwnerUid) {
+    await createNotificationInternal({
+      recipientUid: vendorOwnerUid,
+      recipientRole: "vendor",
+      vendorId,
+      type: "verification_approved",
+      domain: "system",
+      title: "You're verified!",
+      body: "Your account has been verified. Customers can now discover your store.",
+      deepLink: "the platform://vendor/settings/verification",
+      isCritical: true,
+    });
+  }
 
   await writeAuditLog({
     requestId,
@@ -133,6 +153,22 @@ export const rejectVendorVerification = https.onCall(async (request) => {
   });
 
   await batch.commit();
+
+  const vendorSnap = await vendorRef.get();
+  const vendorOwnerUid = vendorSnap.data()?.ownerUid as string | undefined;
+  if (vendorOwnerUid) {
+    await createNotificationInternal({
+      recipientUid: vendorOwnerUid,
+      recipientRole: "vendor",
+      vendorId,
+      type: "verification_rejected",
+      domain: "system",
+      title: "Verification needs another look",
+      body: reason,
+      deepLink: "the platform://vendor/settings/verification",
+      isCritical: true,
+    });
+  }
 
   await writeAuditLog({
     requestId,

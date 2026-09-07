@@ -17,7 +17,22 @@ export type AccountStatus =
   | "frozen"
   | "banned";
 
+export interface LegalAcceptanceDoc {
+  termsVersion: number | null;
+  privacyVersion: number | null;
+  vendorAgreementVersion?: number | null;
+  customerAgreementVersion?: number | null;
+  /** The exact wording shown when consent was given. */
+  consentText: string;
+  acceptedFrom: string;
+  acceptedAt: firestore.Timestamp | firestore.FieldValue;
+}
+
 export interface UserDoc {
+  /** What this user agreed to at registration, and when. Written once by
+   *  completeRegistration and never updated: republishing a legal document
+   *  must not change what somebody already accepted. */
+  legalAcceptance?: LegalAcceptanceDoc;
   uid: string;
   email?: string | null;
   phoneNumber?: string | null;
@@ -105,6 +120,10 @@ export interface VendorDoc {
 
   username: string;
   slug?: string;
+  /** True while the vendor still has the placeholder username assigned at
+   * registration (e.g. "platform_k7m2pq"). Lets the dashboard prompt them to
+   * pick a real one without guessing from the string's shape. */
+  isSystemGeneratedUsername?: boolean;
   name: string;
   businessName?: string;
   category?: string;
@@ -151,6 +170,12 @@ export interface VendorDoc {
   isOpenNow?: boolean;
   awayMessage?: string;
   closedMessage?: string;
+
+  // Random UUID minted once by getOrCreateAppleAppAccountToken, passed as
+  // StoreKit's appAccountToken on every Apple purchase this vendor makes.
+  // Not the vendorId itself -- StoreKit requires a real UUID. See
+  // appleAppAccountToken.ts for the reverse (token -> vendorId) lookup.
+  appleAppAccountToken?: string;
 
   contactLinks?: {
     website?: string;
@@ -228,6 +253,9 @@ export interface VerificationDocumentDoc {
   sizeBytes: number;
   uploadedByUid: string;
   status: "uploaded" | "rejected" | "accepted";
+  malwareScanStatus?: "pending" | "clean" | "infected" | "error";
+  malwareScanAt?: firestore.Timestamp | firestore.FieldValue;
+  malwareSignature?: string | null;
   createdAt: firestore.Timestamp | firestore.FieldValue;
 }
 
@@ -344,7 +372,13 @@ export interface CompleteRegistrationRequest {
   region?: string;
   city?: string;
   area?: string;
+  /** Phase 1 progressive onboarding: no longer collected at registration.
+   * Supplied later via the onboarding checklist. Still accepted here so any
+   * older client build keeps working. */
   businessName?: string;
+  /** Phase 1: no longer collected at registration — the system assigns a
+   * temporary username instead, which the vendor can change later if their
+   * plan allows. Still accepted for backwards compatibility. */
   username?: string;
   plan?: VendorPlan;
   fullName?: string;
@@ -352,6 +386,8 @@ export interface CompleteRegistrationRequest {
   categoryName?: string;
   country?: string;
   state?: string;
+  phoneNumber?: string;
+  referralCode?: string;
 }
 
 // ---------------------------------------------------------------------------

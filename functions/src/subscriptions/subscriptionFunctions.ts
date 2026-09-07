@@ -12,10 +12,27 @@ import {
   PRICING_NOT_CONFIGURED, PAYMENT_PROVIDER_NOT_CONFIGURED,
 } from "./countryPricing";
 import { runFlutterwaveCheckout, runStripeCheckout, cancelProviderSubscription } from "./internationalCheckout";
+import { requireBillingEligibleVendor } from "../vendors/requireBillingEligible";
+import { sendSubscriptionEmail, getVendorEmail } from "./subscriptionEmail";
 
 const VALID_PLAN_IDS: SubscriptionPlanId[] = ["basic", "standard", "pro", "pro_plus"];
 const PAID_PLAN_IDS: PaidPlanId[] = ["standard", "pro", "pro_plus"];
 const ACTIVE_SUBSCRIPTION_STATUSES = new Set(["active", "trialing", "past_due"]);
+
+/**
+ * A vendor billed through Apple/Google IAP cannot be moved to a web
+ * provider by cancel-and-recheckout the way Paystack/Flutterwave/Stripe can
+ * be swapped between each other. Apple/Google subscriptions can only be
+ * cancelled by the vendor themselves, in that store's own subscription
+ * settings, not by a server-side API call (per the client's business decision,
+ * 2026-08-09: one active subscription across Apple/Google/web at a time;
+ * switching providers means cancel with the current one, keep access until
+ * the paid period ends, then subscribe fresh with the new one). Web-to-web
+ * switches are unaffected by this and keep the existing immediate
+ * cancel-and-recheckout behavior below, since the frontend already treats
+ * Paystack/Flutterwave/Stripe as one interchangeable "web billing" rail.
+ */
+export const ALREADY_SUBSCRIBED_VIA_STORE = "ALREADY_SUBSCRIBED_VIA_STORE";
 
 function getPaystackSecret(): string {
   return process.env.PAYSTACK_SECRET_KEY ?? (process.env.FUNCTIONS_EMULATOR === "true" ? "emulator_test_secret" : "");
@@ -76,6 +93,7 @@ async function runPaystackCheckout(params: {
 export const createSubscriptionCheckout = https.onCall(async (request) => {
   checkAppCheck(request, "createSubscriptionCheckout");
   const vendorId = await requireVendorId(request);
+  await requireBillingEligibleVendor(vendorId);
   await enforceRateLimit(vendorId, "createSubscriptionCheckout");
 
   const { plan, billingInterval } = request.data ?? {};
@@ -106,8 +124,29 @@ export const createSubscriptionCheckout = https.onCall(async (request) => {
       const subSnap = await db.collection("vendorSubscriptions").doc(vendorId).get();
       if (subSnap.exists) {
         const existing = subSnap.data() as VendorSubscriptionDoc;
-        if (ACTIVE_SUBSCRIPTION_STATUSES.has(existing.status) && existing.providerSubscriptionId) {
-          await cancelProviderSubscription(existing.provider as "paystack" | "flutterwave" | "stripe", existing.providerSubscriptionId);
+        if (ACTIVE_SUBSCRIPTION_STATUSES.has(existing.status)) {
+          // Apple/Google cannot be cancelled by a server-side call; only the
+          // vendor can do that in the store's own subscription settings.
+          // Reject outright rather than silently leaving them billed twice.
+          if (existing.provider === "apple" || existing.provider === "google") {
+            const storeName = existing.provider === "apple" ? "the App Store" : "Google Play";
+            const periodEndMs = existing.currentPeriodEnd && "toMillis" in existing.currentPeriodEnd
+              ? existing.currentPeriodEnd.toMillis()
+              : null;
+            throw new https.HttpsError(
+              "failed-precondition",
+              `Already subscribed to ${existing.plan} via ${storeName}. Cancel there first, keep access until the period ends, then subscribe again.`,
+              {
+                errorCode: ALREADY_SUBSCRIBED_VIA_STORE,
+                provider: existing.provider,
+                plan: existing.plan,
+                currentPeriodEndMs: periodEndMs,
+              }
+            );
+          }
+          if (existing.providerSubscriptionId) {
+            await cancelProviderSubscription(existing.provider as "paystack" | "flutterwave" | "stripe", existing.providerSubscriptionId);
+          }
         }
       }
     });
@@ -287,6 +326,24 @@ export const cancelSubscription = https.onCall(async (request) => {
       const subRef = db.collection("vendorSubscriptions").doc(vendorId);
       const subSnap = await subRef.get();
       if (!subSnap.exists) throw new https.HttpsError("not-found", "No active subscription.");
+      const sub = subSnap.data() as VendorSubscriptionDoc;
+
+      // Setting cancelAtPeriodEnd alone only changes the platform's own record —
+      // the provider's recurring billing keeps running until told to stop,
+      // and its next renewal webhook would silently overwrite this flag
+      // back to false (processNormalizedWebhookEvent's activation/renewal
+      // branch), re-"activating" a subscription the vendor explicitly
+      // cancelled while charging their card again. Apple/Google can only be
+      // cancelled by the vendor in the store's own settings (same
+      // constraint as ALREADY_SUBSCRIBED_VIA_STORE above); web providers
+      // must be told directly, same call already used for plan switches.
+      if (
+        (sub.provider === "paystack" || sub.provider === "flutterwave" || sub.provider === "stripe")
+        && sub.providerSubscriptionId
+      ) {
+        await cancelProviderSubscription(sub.provider, sub.providerSubscriptionId);
+      }
+
       const now = FieldValue.serverTimestamp();
       await subRef.update({
         cancelAtPeriodEnd: true,
@@ -303,6 +360,9 @@ export const cancelSubscription = https.onCall(async (request) => {
     if (err instanceof LockContentionError) throw new https.HttpsError("aborted", "Subscription is mid-update. Please retry shortly.");
     throw err;
   }
+
+  // Fire-and-forget, after the lock-guarded update above has committed.
+  void getVendorEmail(vendorId).then((email) => { if (email) void sendSubscriptionEmail(email, "cancelled", { vendorId }); });
 
   return { success: true };
 });
@@ -338,6 +398,131 @@ export const reactivateSubscription = https.onCall(async (request) => {
         cancelAtPeriodEnd: false,
         cancelledAt: null,
         lastEventType: "vendor.reactivated",
+        lastEventAt: now,
+        version: FieldValue.increment(1),
+        updatedAt: now,
+      });
+    });
+  } catch (err) {
+    if (err instanceof LockContentionError) throw new https.HttpsError("aborted", "Subscription is mid-update. Please retry shortly.");
+    throw err;
+  }
+
+  // Fire-and-forget, after the lock-guarded update above has committed.
+  void getVendorEmail(vendorId).then((email) => { if (email) void sendSubscriptionEmail(email, "reactivated", { vendorId }); });
+
+  return { success: true };
+});
+
+/**
+ * requestSubscriptionDowngrade (Section 12.2). Sets pendingDowngradePlan
+ * only — never touches the provider or the vendor's current access, since
+ * the vendor keeps their current plan's features until the period ends
+ * (Section 12.2 point 2). The actual transition happens in
+ * expireStaleSubscriptions at currentPeriodEnd.
+ *
+ * Direction confirmed 2026-08-27: the current checkout architecture (every
+ * provider is a vendor-driven hosted-page redirect, no stored card/
+ * authorization anywhere) cannot silently re-bill a vendor at a new amount
+ * with zero action, which is what a literal reading of Section 12.2 would
+ * require for a downgrade between two paid tiers. Approved fallback: at the
+ * effective date the old provider subscription is cancelled (so the higher
+ * price never bills again) and the vendor is prompted to complete one
+ * checkout for the target plan — see expireStaleSubscriptions. Downgrading
+ * to Basic needs no such follow-up since Basic has no checkout at all.
+ */
+export const requestSubscriptionDowngrade = https.onCall(async (request) => {
+  const requestId = newRequestId();
+  checkAppCheck(request, "requestSubscriptionDowngrade");
+  const vendorId = await requireVendorId(request);
+  await enforceRateLimit(vendorId, "requestSubscriptionDowngrade");
+
+  const { plan } = request.data ?? {};
+  if (!VALID_PLAN_IDS.includes(plan)) {
+    throw new https.HttpsError("invalid-argument", `plan must be one of: ${VALID_PLAN_IDS.join(", ")}.`);
+  }
+  const targetPlan = plan as SubscriptionPlanId;
+
+  try {
+    await withSubscriptionLock(vendorId, `requestSubscriptionDowngrade:${requestId}`, async () => {
+      const subRef = db.collection("vendorSubscriptions").doc(vendorId);
+      const subSnap = await subRef.get();
+      if (!subSnap.exists) throw new https.HttpsError("not-found", "No active subscription.");
+      const sub = subSnap.data() as VendorSubscriptionDoc;
+
+      if (!ACTIVE_SUBSCRIPTION_STATUSES.has(sub.status)) {
+        throw new https.HttpsError("failed-precondition", "No active subscription to downgrade.");
+      }
+      if (sub.cancelAtPeriodEnd) {
+        throw new https.HttpsError("failed-precondition", "Subscription is already scheduled for cancellation. Reactivate first if you want to downgrade instead.");
+      }
+      if (sub.provider === "apple" || sub.provider === "google") {
+        // Store-billed subscriptions can only be changed by the vendor in
+        // that store's own subscription settings — same constraint as
+        // ALREADY_SUBSCRIBED_VIA_STORE above, applied to downgrades too.
+        const storeName = sub.provider === "apple" ? "the App Store" : "Google Play";
+        throw new https.HttpsError(
+          "failed-precondition",
+          `This subscription is billed through ${storeName}. Change or cancel your plan there — it can't be scheduled from the portal.`,
+          { errorCode: ALREADY_SUBSCRIBED_VIA_STORE, provider: sub.provider }
+        );
+      }
+
+      const currentRank = VALID_PLAN_IDS.indexOf(sub.plan);
+      const targetRank = VALID_PLAN_IDS.indexOf(targetPlan);
+      if (targetRank >= currentRank) {
+        throw new https.HttpsError("invalid-argument", "Target plan must be lower than your current plan. Use upgrade instead.");
+      }
+
+      const now = FieldValue.serverTimestamp();
+      await subRef.update({
+        pendingDowngradePlan: targetPlan,
+        pendingDowngradeAt: now,
+        lastEventType: "vendor.downgrade_requested",
+        lastEventAt: now,
+        version: FieldValue.increment(1),
+        updatedAt: now,
+      });
+    });
+  } catch (err) {
+    if (err instanceof LockContentionError) throw new https.HttpsError("aborted", "Subscription is mid-update. Please retry shortly.");
+    throw err;
+  }
+
+  void getVendorEmail(vendorId).then((email) => {
+    if (email) void sendSubscriptionEmail(email, "plan_changed_downgrade_pending", { vendorId, plan: targetPlan });
+  });
+
+  return { success: true };
+});
+
+/**
+ * cancelPendingDowngrade (Section 12.2 point 4). Vendor may cancel a
+ * pending downgrade at any point before it becomes effective, remaining on
+ * their current plan — mirrors reactivateSubscription's shape.
+ */
+export const cancelPendingDowngrade = https.onCall(async (request) => {
+  const requestId = newRequestId();
+  checkAppCheck(request, "cancelPendingDowngrade");
+  const vendorId = await requireVendorId(request);
+  await enforceRateLimit(vendorId, "cancelPendingDowngrade");
+
+  try {
+    await withSubscriptionLock(vendorId, `cancelPendingDowngrade:${requestId}`, async () => {
+      const subRef = db.collection("vendorSubscriptions").doc(vendorId);
+      const subSnap = await subRef.get();
+      if (!subSnap.exists) throw new https.HttpsError("not-found", "No subscription.");
+      const sub = subSnap.data() as VendorSubscriptionDoc;
+
+      if (!sub.pendingDowngradePlan) {
+        throw new https.HttpsError("failed-precondition", "No pending downgrade to cancel.");
+      }
+
+      const now = FieldValue.serverTimestamp();
+      await subRef.update({
+        pendingDowngradePlan: null,
+        pendingDowngradeAt: null,
+        lastEventType: "vendor.downgrade_cancelled",
         lastEventAt: now,
         version: FieldValue.increment(1),
         updatedAt: now,

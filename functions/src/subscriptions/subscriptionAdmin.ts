@@ -7,6 +7,7 @@ import { assertAdmin } from "../utils/adminAuth";
 import { DEFAULT_PLAN_DISPLAY, DEFAULT_PLAN_LIMITS, DEFAULT_PROVIDER_PLAN_CODES } from "./planLimitsSeedData";
 import { SubscriptionPlanDoc, SubscriptionPlanId, ProviderPlanCodesDoc, VendorSubscriptionDoc } from "../types4";
 import { withSubscriptionLock, LockContentionError } from "./subscriptionLock";
+import { sendSubscriptionEmail, getVendorEmail } from "./subscriptionEmail";
 
 const ALL_PLAN_IDS: SubscriptionPlanId[] = ["basic", "standard", "pro", "pro_plus"];
 
@@ -169,6 +170,9 @@ export const cancelSubscriptionAdmin = https.onCall(async (request) => {
     throw err;
   }
 
+  // Fire-and-forget, after the lock-guarded update above has committed.
+  void getVendorEmail(vendorId).then((email) => { if (email) void sendSubscriptionEmail(email, "cancelled", { vendorId }); });
+
   return { success: true };
 });
 
@@ -275,6 +279,9 @@ export const applyManualSubscriptionOverride = https.onCall(async (request) => {
     }
     throw err;
   }
+
+  // Fire-and-forget, after the lock-guarded update above has committed.
+  void getVendorEmail(vendorId).then((email) => { if (email) void sendSubscriptionEmail(email, "admin_override_applied", { vendorId }); });
 
   return { success: true };
 });

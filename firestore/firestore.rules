@@ -64,10 +64,29 @@ service cloud.firestore {
           && data.isDiscoverable == true;
     }
 
-    // Immutable once written (used for audit logs, order events, etc.)
-    function isImmutable() {
-      return request.method == 'create';
+    // Direct storefront link, deliberately separate from search/browse.
+    //
+    // A vendor's own shared link is meant to work as soon as they choose to
+    // publish, before verification — verification only gates being found by
+    // search, never being reachable by a link the vendor themselves handed
+    // out. isPublished is a vendor's own explicit action (setVendorPublishStatus),
+    // never the default state of an account, which is what keeps this narrower
+    // than the rule the audit fix (see isDiscoverableVendor's read rule below)
+    // replaced: that one leaked every vendorStatus == 'active' vendor — active
+    // is the default for every account, published or not, verified or not.
+    // Requiring isPublished == true here means an account still mid-onboarding,
+    // which has never touched Publish, stays exactly as unreadable as before.
+    function isPublishedVendor(data) {
+      return data.isPublished == true
+          && data.vendorStatus == 'active';
     }
+
+    // isImmutable() was removed here. It returned `request.method == 'create'`,
+    // and `request.method` does not exist in rules_version 2 — the compiler
+    // flagged it as an unresolvable name. Nothing called it, so nothing broke,
+    // but it read like a reusable helper and would have failed at evaluation
+    // for whoever reached for it first. Collections that are genuinely
+    // write-once say so directly with `allow update, delete: if false`.
 
     // User update allowlist — every server-only field must hold the EXACT
     // SAME VALUE after the write as before it. This correctly blocks a
@@ -138,6 +157,24 @@ service cloud.firestore {
     function vendorOwnerUpdateAllowed() {
       return unchanged('vendorId') &&
              unchanged('ownerUid') &&
+             // Country decides three things a vendor must not decide for
+             // themselves: whether they are discoverable, whether they may take
+             // orders, and which currency they are priced in.
+             //
+             // onVendorWrite computes isDiscoverable partly from whether the
+             // vendor's country is available, and isCountryActive() is checked
+             // again when an order or conversation is created. Both read
+             // countryCode off this document. Leaving it writable meant a vendor
+             // whose country had been closed could set it to an open one with a
+             // single client write, reappear in discovery and resume trading —
+             // and would then also be missed by the sweep that hides vendors
+             // when a country closes, since that queries on countryCode.
+             //
+             // Set at registration, validated against the location catalogue.
+             // A genuine relocation is rare enough to belong in an audited
+             // callable rather than a field the owner can edit.
+             unchanged('countryCode') &&
+             unchanged('country') &&
              unchanged('verificationStatus') &&
              unchanged('vendorStatus') &&
              unchanged('isVerified') &&
@@ -220,20 +257,21 @@ service cloud.firestore {
     // vendors/{vendorId}
     // -----------------------------------------------------------------------
     match /vendors/{vendorId} {
-      // Public/non-owner read: ONLY approved + active + discoverable vendors.
-      // Owner and admin can always read their own/any vendor regardless of
-      // status, for dashboard/moderation purposes.
+      // Public/non-owner read: discoverable vendors (search/browse), OR a
+      // vendor's own published-but-not-yet-verified storefront (direct link
+      // only — never surfaced by search). Owner and admin can always read
+      // their own/any vendor regardless of status.
       //
-      // SECURITY FIX (audit High-1): the previous version also allowed ANY
-      // signed-in user to read ANY vendor with vendorStatus == 'active',
-      // regardless of verificationStatus or isDiscoverable. That leaked
-      // unapproved/non-discoverable vendor documents to any authenticated
-      // customer who knew or guessed a vendorId. "Direct storefront link"
-      // access for not-yet-approved vendors is NOT supported by this rule
-      // set; if that product requirement is needed later, it must be served
-      // through a dedicated callable that returns a restricted, explicitly
-      // safe field projection — never a raw Firestore document read.
+      // SECURITY FIX (audit High-1) — still holds: the previous version
+      // allowed ANY signed-in user to read ANY vendor with vendorStatus ==
+      // 'active', regardless of isPublished at all. That leaked vendors still
+      // mid-onboarding who had never chosen to go live. isPublishedVendor is
+      // narrower than that — isPublished is the vendor's own explicit action
+      // (setVendorPublishStatus), never the default — so this reopens
+      // exactly the "share before verification" case product wants, and
+      // nothing broader than that.
       allow read: if isDiscoverableVendor(resource.data)
+                  || isPublishedVendor(resource.data)
                   || isVendorOwner(vendorId)
                   || isAdmin();
 
@@ -259,6 +297,25 @@ service cloud.firestore {
       }
 
       match /analyticsDaily/{period} {
+        allow read: if isVendorOwner(vendorId) || isAdmin();
+        allow write: if false;
+      }
+
+      // Structured Payment Method (bank_transfer/cash) - deliberately NOT a
+      // field on the parent vendor document. That document is world-readable
+      // to anyone viewing a discoverable storefront (isDiscoverableVendor
+      // above), and Firestore rules can't redact individual fields from a
+      // document read - a real bank account number has no business living
+      // somewhere every storefront visitor's client can read. A customer
+      // sent a payment request never reads this collection directly; they
+      // see a server-assembled snapshot copied onto the chat message by
+      // sendPaymentRequestInChat, which is already scoped to thread
+      // participants.
+      match /paymentMethod/{doc} {
+        allow read: if isVendorOwner(vendorId) || isAdmin();
+        allow write: if false;
+      }
+      match /paymentMethodHistory/{historyId} {
         allow read: if isVendorOwner(vendorId) || isAdmin();
         allow write: if false;
       }
@@ -293,6 +350,14 @@ service cloud.firestore {
       allow write: if false;
     }
 
+    // MFA TOTP secrets. Deliberately NOT under adminUsers -- that document
+    // is readable by any admin (not scoped to the caller's own uid), so a
+    // secret stored there would leak to every other admin. Cloud-Function-
+    // only, same pattern as subscriptionLocks/providerPlanCodes.
+    match /adminMfaSecrets/{adminUid} {
+      allow read, write: if false;
+    }
+
     match /adminRoles/{roleId} {
       allow read: if isAdmin();
       allow write: if false;
@@ -312,6 +377,16 @@ service cloud.firestore {
     // auditLogs/{logId} — immutable, admin-readable only
     // -----------------------------------------------------------------------
     match /auditLogs/{logId} {
+      allow read: if isAdmin();
+      allow write: if false;
+    }
+
+    // -----------------------------------------------------------------------
+    // malwareScanEvents/{eventId} — written only by scanUploadedFile (Admin
+    // SDK, bypasses rules entirely). Admin-readable for review, never
+    // client-writable, same shape as auditLogs above.
+    // -----------------------------------------------------------------------
+    match /malwareScanEvents/{eventId} {
       allow read: if isAdmin();
       allow write: if false;
     }
@@ -354,15 +429,58 @@ service cloud.firestore {
     // Phase 2: Catalog subcollections
     // -----------------------------------------------------------------------
     match /vendors/{vendorId}/catalogCategories/{categoryId} {
+      // Same widening as the parent vendor doc: a published-but-unverified
+      // vendor's own direct link should show their real catalog, not an
+      // empty storefront — search/browse still requires full discoverability.
       allow read: if isDiscoverableVendor(
+        get(/databases/$(database)/documents/vendors/$(vendorId)).data
+      ) || isPublishedVendor(
         get(/databases/$(database)/documents/vendors/$(vendorId)).data
       ) || isVendorOwner(vendorId) || isAdmin();
       allow create, update, delete: if false;
     }
     match /vendors/{vendorId}/catalogItems/{itemId} {
-      allow read: if (isDiscoverableVendor(
+      // moderationStatus must be "approved" for a public read — every item
+      // starts "pending" on creation, so this is the only thing that keeps
+      // an unreviewed listing from being publicly visible the moment it's
+      // created (createCatalogItem seeds the field; nothing else defaults
+      // it to public without going through approveCatalogItem). This check
+      // is unchanged by the isPublishedVendor widening below — an unverified
+      // vendor's storefront can be viewed early, but an unapproved item is
+      // still never public, on any vendor, at any stage.
+      allow read: if ((isDiscoverableVendor(
         get(/databases/$(database)/documents/vendors/$(vendorId)).data
-      ) && resource.data.isHidden == false) || isVendorOwner(vendorId) || isAdmin();
+      ) || isPublishedVendor(
+        get(/databases/$(database)/documents/vendors/$(vendorId)).data
+      )) && resource.data.isHidden == false && resource.data.moderationStatus == "approved") || isVendorOwner(vendorId) || isAdmin();
+      allow create, update, delete: if false;
+    }
+
+    // Pending revisions to an approved catalog item, plus any rejection reason.
+    // A subcollection specifically so this can be denied to customers: rules
+    // cannot restrict individual fields on a read, so anything stored on the
+    // item document itself is visible to everyone allowed to read that item.
+    // Holding unreviewed edits here is what stops moderation being bypassed by
+    // simply reading the document the edit was attached to.
+    match /vendors/{vendorId}/catalogItems/{itemId}/moderation/{docId} {
+      allow read: if isVendorOwner(vendorId) || isAdmin();
+      allow create, update, delete: if false; // Cloud Functions only
+    }
+    // Promotions had no rule at all, so default-deny applied to a path the
+    // app actively listens on: PromoContext subscribes to
+    // vendors/{vendorId}/promotions for the signed-in vendor, and every one
+    // of those listeners failed permission-denied for every vendor, always —
+    // a vendor could create a promotion through the callable and never see
+    // it come back. Same read shape as catalogCategories above, since
+    // promotions are shown on the storefront too (PromotionCarousel), and
+    // writes stay Cloud-Functions-only: createPromotion / updatePromotion /
+    // deletePromotion / togglePromotionActive own the business rules.
+    match /vendors/{vendorId}/promotions/{promotionId} {
+      allow read: if isDiscoverableVendor(
+        get(/databases/$(database)/documents/vendors/$(vendorId)).data
+      ) || isPublishedVendor(
+        get(/databases/$(database)/documents/vendors/$(vendorId)).data
+      ) || isVendorOwner(vendorId) || isAdmin();
       allow create, update, delete: if false;
     }
     // -----------------------------------------------------------------------
@@ -521,6 +639,49 @@ service cloud.firestore {
       // reaches provider plan codes through any direct Firestore path.
       allow read, write: if false;
     }
+    // ── Location catalogue ────────────────────────────────────────────────
+    // Reference data: country, state and area names. Public to read, because
+    // registration needs the lists before anyone has an account, and a place
+    // name is not private. Writes are importer-only through the Admin SDK, so
+    // nothing client-side can add a place that does not exist or retire one
+    // that does.
+    match /countries/{countryCode} {
+      allow read: if true;
+      allow create, update, delete: if false;
+    }
+    match /states/{stateId} {
+      allow read: if true;
+      allow create, update, delete: if false;
+    }
+    match /locations/{locationId} {
+      allow read: if true;
+      allow create, update, delete: if false;
+    }
+
+    match /payments/{paymentId} {
+      // The canonical record of money received. A vendor may read their own
+      // ledger and a customer the payments against their own orders; nobody
+      // writes it from a client. Every row is created by recordPayment or
+      // reversePayment, which resolve the vendor from the invoice or order
+      // rather than trusting the caller, and no row is ever edited or deleted —
+      // a correction is a reversal row, so the history stays intact.
+      allow read: if isSignedIn() && (
+        (isVendor() && tokenVendorId() == resource.data.vendorId)
+        || request.auth.uid == resource.data.customerId
+        || isAdmin()
+      );
+      allow write: if false;
+    }
+
+    match /pricingDiscrepancies/{discrepancyId} {
+      // A record that a provider charged something other than the approved
+      // price. It names a vendor, what they were charged and what they should
+      // have been, so it is operational rather than public: readable by admins
+      // only, and written solely by the reconciliation running server-side.
+      allow read: if isAdmin();
+      allow write: if false;
+    }
+
     match /subscriptionPricing/{countryCode} {
       // Public safe, same pattern as subscriptionPlans: per-country plan
       // prices in minor currency units. No provider identifiers live here
@@ -588,6 +749,23 @@ service cloud.firestore {
     }
 
     // -----------------------------------------------------------------------
+    // Payment requests (chat) — a vendor's "pay me" ask sent through an
+    // order's chat thread. Same shape as invoices above: owner vendor and
+    // admin can read directly, plus the recipient customer can read their
+    // own (the chat message duplicates the display data anyway, so this adds
+    // no new exposure — it just lets a customer-side screen query the
+    // canonical record instead of only ever reading it out of a chat
+    // message). All writes are Cloud-Function-only, via
+    // sendPaymentRequestInChat.
+    // -----------------------------------------------------------------------
+    match /paymentRequests/{requestId} {
+      allow read: if isVendorOwner(resource.data.vendorId)
+                  || (isCustomer() && uid() == resource.data.customerId)
+                  || isAdmin();
+      allow create, update, delete: if false;
+    }
+
+    // -----------------------------------------------------------------------
     // Phase 3: Blocks
     // Only the blocker can read their own blocked-list entries. The
     // blocked party cannot see themselves in anyone's list (no read rule
@@ -645,6 +823,18 @@ service cloud.firestore {
     // unnecessary surface area for a document with no other use).
     // -----------------------------------------------------------------------
     match /vendors/{vendorId}/invoiceCounters/{monthKey} {
+      allow read, write: if false;
+    }
+
+    // -----------------------------------------------------------------------
+    // Apple StoreKit appAccountToken -> vendorId reverse lookup
+    // (getOrCreateAppleAppAccountToken / appleWebhook.ts). Cloud-Function-
+    // only: the token itself is not secret, but there is no legitimate
+    // client read of this collection -- the vendor's own token is returned
+    // directly by the callable that creates it, and nothing else ever needs
+    // to look one up except the webhook resolving an incoming Apple event.
+    // -----------------------------------------------------------------------
+    match /appleAppAccountTokens/{token} {
       allow read, write: if false;
     }
 
