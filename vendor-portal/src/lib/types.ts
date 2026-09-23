@@ -1,4 +1,4 @@
-// Mirrors platform-backend/functions/src/types4.ts — kept in sync manually
+// Mirrors this repo/functions/src/types4.ts — kept in sync manually
 // since the web app and Cloud Functions are separate deploy targets.
 
 export type SiteContentNode =
@@ -91,10 +91,13 @@ export interface EffectiveSubscription {
   status: VendorSubscriptionStatus | string;
   cancelAtPeriodEnd?: boolean;
   currentPeriodEnd?: { seconds: number; nanoseconds: number } | string | null;
+  gracePeriodEnd?: { seconds: number; nanoseconds: number } | string | null;
+  gracePeriodSetAt?: { seconds: number; nanoseconds: number } | string | null;
   pendingDowngradePlan?: SubscriptionPlanId | null;
   pendingDowngradeAt?: unknown;
   currentMonthlyPriceMinorUnits?: number;
   currency?: string;
+  providerSubscriptionId?: string;
 }
 
 export interface GetSubscriptionStatusResponse {
@@ -107,7 +110,8 @@ export interface GetSubscriptionStatusResponse {
 
 export interface VendorBillingHistoryEntry {
   paymentDate: string | null;
-  amount: number | null;
+  /** Minor units (kobo, cents), same as every other money field from the API. */
+  amountMinorUnits: number | null;
   currency: string | null;
   plan: string;
   paymentStatus: string;

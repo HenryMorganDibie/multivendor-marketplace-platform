@@ -1,0 +1,10 @@
+{
+  "US": "tier_1",
+  "CA": "tier_1",
+  "GB": "tier_1",
+  "AU": "tier_1",
+  "GH": "tier_3",
+  "KE": "tier_3",
+  "NG": "tier_4",
+  "IN": "tier_4"
+}

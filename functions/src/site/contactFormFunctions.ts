@@ -10,12 +10,12 @@ import { ContactSubmissionDoc, WaitlistSubmissionDoc } from "../types4";
 /**
  * Public contact form — LANDING_PAGE_CMS_VENDOR_PORTAL_MAPPING.md Section 3.
  *
- * Support inbox address needs the client's confirmation (Section 3: "designated
- * the platform support inbox"); using a placeholder until that's provided. No
+ * Support inbox address needs the Founder's confirmation (Section 3: "designated
+ * Platform support inbox"); using a placeholder until that's provided. No
  * visitor acknowledgement email is sent, per the section's stated MVP
  * default.
  */
-const SUPPORT_INBOX = process.env.CONTACT_FORM_SUPPORT_INBOX ?? "support@theplatform.com";
+const SUPPORT_INBOX = process.env.CONTACT_FORM_SUPPORT_INBOX ?? "support@example.com";
 
 const MAX_NAME_LENGTH = 100;
 const MAX_EMAIL_LENGTH = 254;
@@ -32,7 +32,7 @@ const DUPLICATE_WINDOW_MS = 10 * 60 * 1000;
 const MIN_SUBMISSION_ELAPSED_MS = 4000;
 
 /**
- * Mirrors computeChallengeAnswer in platform-website's
+ * Mirrors computeChallengeAnswer in this repo (website/)'s
  * src/app/(marketing)/contact/ContactForm.tsx — must stay in sync. Deterministic
  * function of the page-render timestamp the frontend already sends for the
  * velocity check above, so no extra field or extra network round-trip is

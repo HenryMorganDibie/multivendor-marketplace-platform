@@ -73,6 +73,16 @@ export function currencyMinorUnitExponent(currencyCode: string): number {
 }
 
 /**
+ * Converts a major-unit amount (e.g. orderSnapshot.total, in naira) to the
+ * integer minor units the payment ledger deals in exclusively. Exists so
+ * recordPayment, reversePayment and the order-payment-projection rebuild
+ * share one conversion instead of each inlining Math.round(amount * 10^exp).
+ */
+export function toMinorUnits(majorAmount: number, currencyCode: string): number {
+  return Math.round(majorAmount * Math.pow(10, currencyMinorUnitExponent(currencyCode)));
+}
+
+/**
  * Machine-readable error codes, carried in HttpsError.details.errorCode
  * (in addition to the existing HttpsError.code/message), so the frontend
  * can distinguish "no pricing at all for this country" from "pricing
@@ -152,7 +162,7 @@ export async function requireProviderPlanMapping(
  * Fetches subscriptionProviderConfig/{countryCode} — private, Admin-SDK
  * only, never stored in the public subscriptionPricing document (see
  * frontend-subscription-alignment-scope.md Section 4.1 for why: a public
- * document must never reveal which providers the platform uses per country or
+ * document must never reveal which providers Platform uses per country or
  * their priority order). Throws the same PAYMENT_PROVIDER_NOT_CONFIGURED
  * error a missing providerPlanMapping would, since "no provider priority
  * configured for this country" and "no provider mapped for this country"

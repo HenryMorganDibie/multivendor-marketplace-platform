@@ -26,7 +26,7 @@ export default function WaitlistForm({ countryCode, countryLabel }: { countryCod
   if (status === "joined") {
     return (
       <p role="status" className="mt-4 text-sm font-medium text-brand">
-        You&apos;re on the list — we&apos;ll email you when the platform launches paid plans in {countryLabel}.
+        You&apos;re on the list. We&apos;ll email you when Platform launches paid plans in {countryLabel}.
       </p>
     );
   }

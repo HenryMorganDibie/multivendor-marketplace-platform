@@ -105,8 +105,8 @@ export async function runStripeCheckout(params: {
     };
   }
 
-  const successUrl = process.env.STRIPE_CHECKOUT_SUCCESS_URL ?? "https://theplatform.com/checkout/success";
-  const cancelUrl = process.env.STRIPE_CHECKOUT_CANCEL_URL ?? "https://theplatform.com/checkout/cancel";
+  const successUrl = process.env.STRIPE_CHECKOUT_SUCCESS_URL ?? "https://example.com/checkout/success";
+  const cancelUrl = process.env.STRIPE_CHECKOUT_CANCEL_URL ?? "https://example.com/checkout/cancel";
 
   const params_ = new URLSearchParams({
     mode: "subscription",

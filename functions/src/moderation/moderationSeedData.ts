@@ -20,7 +20,7 @@ import { ModerationAction, ModerationAppliesTo, ModerationCategory, ModerationSe
  * the requested severity tiers as given.
  *
  * The `standalone: false` entries are payment/contact terms and bare
- * off-platform-channel names explicitly called out as normal the platform
+ * off-platform-channel names explicitly called out as normal Platform
  * commerce chatter — they never flag on their own, only when a genuine
  * off-platform-avoidance phrase is present in the same message (see
  * moderationEngine.ts's standalone-combination logic).
@@ -69,9 +69,9 @@ export const DEFAULT_MODERATION_RULES: SeedRule[] = [
   ...bothScopes("illegal_items", ILLEGAL_ITEMS_TERMS, "critical", "block_message"),
 
   // ── off_platform_ordering: standalone avoidance phrases (block) ────────
-  { category: "off_platform_ordering", pattern: "pay outside the platform", severity: "high", action: "block_message", appliesTo: "chat" },
-  { category: "off_platform_ordering", pattern: "don't use the platform", severity: "high", action: "block_message", appliesTo: "chat" },
-  { category: "off_platform_ordering", pattern: "dont use the platform", severity: "high", action: "block_message", appliesTo: "chat" },
+  { category: "off_platform_ordering", pattern: "pay outside platform", severity: "high", action: "block_message", appliesTo: "chat" },
+  { category: "off_platform_ordering", pattern: "don't use platform", severity: "high", action: "block_message", appliesTo: "chat" },
+  { category: "off_platform_ordering", pattern: "dont use platform", severity: "high", action: "block_message", appliesTo: "chat" },
   { category: "off_platform_ordering", pattern: "order outside the app", severity: "high", action: "block_message", appliesTo: "chat" },
   { category: "off_platform_ordering", pattern: "message me on whatsapp to order", severity: "high", action: "block_message", appliesTo: "chat" },
   { category: "off_platform_ordering", pattern: "message me on whatsapp instead", severity: "high", action: "block_message", appliesTo: "chat" },
@@ -142,7 +142,7 @@ export const DEFAULT_MODERATION_RULES: SeedRule[] = [
   { category: "phishing_hacking", pattern: "bank login", severity: "critical", action: "block_message", appliesTo: "chat" },
   { category: "phishing_hacking", pattern: "hack bank", severity: "critical", action: "block_message", appliesTo: "chat" },
   { category: "phishing_hacking", pattern: "bank account for sale", severity: "critical", action: "block_message", appliesTo: "chat" },
-  // "otp" bare is deliberately excluded from critical/block — the platform's own
+  // "otp" bare is deliberately excluded from critical/block — Platform's own
   // email/phone verification flows legitimately reference "otp" in support
   // conversations ("my otp didn't arrive"). "send your otp" above already
   // catches the actual phishing pattern.

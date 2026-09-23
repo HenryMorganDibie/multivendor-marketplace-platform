@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Instagram, Facebook, Linkedin, Youtube } from "lucide-react";
+import { Instagram } from "lucide-react";
 
 const COMPANY_LINKS = [
   { href: "/about", label: "About" },
@@ -9,41 +9,37 @@ const COMPANY_LINKS = [
 
 const CUSTOMER_LINKS = [
   { href: "/customers", label: "Download App" },
-  { href: "/customers", label: "Browse Vendors" },
+  // "Browse Vendors" was removed rather than relabelled: it pointed at the
+  // customers marketing page, and there is no public vendor directory to send
+  // anyone to. It goes back the moment one exists.
 ];
 
 const VENDOR_LINKS = [
   { href: "/vendors", label: "Become a Vendor" },
-  { href: "https://vendor.theplatform.com", label: "Vendor Login" },
+  { href: "https://vendor.example.com", label: "Vendor Login" },
   { href: "/pricing", label: "Pricing" },
 ];
 
+// Labels match the wording used in the app's registration consent line, so a
+// user agrees to "Terms of Use" and then finds a link with that same name here.
+// The routes are unchanged; only the display names were inconsistent.
 const LEGAL_LINKS = [
   { href: "/privacy-policy", label: "Privacy Policy" },
-  { href: "/terms-of-service", label: "Terms of Service" },
-  { href: "/vendor-terms", label: "Vendor Terms" },
-  { href: "/customer-terms", label: "Customer Terms" },
+  { href: "/terms-of-service", label: "Terms of Use" },
+  { href: "/vendor-terms", label: "Vendor Agreement" },
+  { href: "/customer-terms", label: "Customer Agreement" },
   { href: "/cookie-policy", label: "Cookie Policy" },
   { href: "/acceptable-use-policy", label: "Acceptable Use Policy" },
 ];
 
-// No real social handles exist yet — rendered as inert icons (not links to
-// nowhere) rather than fabricating URLs. Swap for real <a href> once
-// the platform's accounts exist.
-const SOCIAL_ICONS = [
-  { Icon: Instagram, label: "Instagram" },
-  { Icon: Facebook, label: "Facebook" },
-  { Icon: Linkedin, label: "LinkedIn" },
-  { Icon: Youtube, label: "YouTube" },
+// Only accounts that actually exist are shown. Facebook, LinkedIn, YouTube and
+// X were removed rather than left as inert icons: an icon with no destination
+// reads as broken, and a footer that advertises five channels Platform is not on
+// is worse than one that advertises the one it is. Add each back with its URL
+// as the accounts go live.
+const SOCIAL_LINKS = [
+  { Icon: Instagram, label: "Instagram", href: "https://www.instagram.com/platformhq" },
 ];
-
-function XIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true">
-      <path d="M18.9 2H22l-7.6 8.7L23 22h-6.9l-5.4-6.9L4.4 22H1.3l8.1-9.3L1 2h7l4.9 6.3L18.9 2Zm-1.2 18h1.9L7.4 4H5.4l12.3 16Z" />
-    </svg>
-  );
-}
 
 function FooterColumn({ title, links }: { title: string; links: { href: string; label: string }[] }) {
   return (
@@ -68,7 +64,7 @@ export default function SiteFooter() {
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
         <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-6">
           <div className="col-span-2 md:col-span-2">
-            <p className="text-lg font-extrabold tracking-[-0.02em] text-brand">the platform</p>
+            <p className="text-lg font-extrabold tracking-[-0.02em] text-brand">Platform</p>
             <p className="mt-2 max-w-xs text-sm text-ink-secondary">
               The marketplace connecting vendors and customers directly, built for how people actually buy and sell.
             </p>
@@ -79,12 +75,21 @@ export default function SiteFooter() {
           <FooterColumn title="Legal" links={LEGAL_LINKS} />
         </div>
         <div className="mt-8 flex flex-col items-start justify-between gap-4 border-t border-hairline pt-5 sm:flex-row sm:items-center">
-          <p className="text-xs text-ink-tertiary">&copy; {new Date().getFullYear()} the platform. All rights reserved.</p>
-          <div className="flex items-center gap-3 text-ink-tertiary" aria-label="Social links coming soon">
-            {SOCIAL_ICONS.map(({ Icon, label }) => (
-              <Icon key={label} className="h-4 w-4" aria-label={label} />
+          <p className="text-xs text-ink-tertiary">&copy; {new Date().getFullYear()} Platform. All rights reserved.</p>
+          <div className="flex items-center gap-1">
+            {SOCIAL_LINKS.map(({ Icon, label, href }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Platform on ${label}`}
+                // 44px target: the bare 16px icons were too small to tap.
+                className="inline-flex h-11 w-11 items-center justify-center rounded-button text-ink-tertiary transition hover:bg-surface-muted hover:text-brand"
+              >
+                <Icon className="h-5 w-5" aria-hidden="true" />
+              </a>
             ))}
-            <XIcon />
           </div>
         </div>
       </div>

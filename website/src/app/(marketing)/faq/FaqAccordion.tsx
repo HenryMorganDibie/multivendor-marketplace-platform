@@ -16,7 +16,7 @@ interface FaqCategory {
 // groups: heading level 2 = category, heading level 3 = question,
 // the paragraph immediately after it = answer. This is a structural
 // assumption specific to how the FAQ page's content is authored (see the
-// fallback in page.tsx) — the CMS node schema itself has no dedicated
+// fallback in page.tsx). The CMS node schema itself has no dedicated
 // "FAQ" node type, so this page interprets the general schema rather than
 // needing a new one.
 function parseFaq(content: SiteContentSectionContent): FaqCategory[] {

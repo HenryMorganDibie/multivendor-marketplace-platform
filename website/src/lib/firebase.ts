@@ -9,7 +9,7 @@ import {
   ReCaptchaV3Provider,
 } from "firebase/app-check";
 
-// Emulator mode — set NEXT_PUBLIC_USE_FIREBASE_EMULATOR=true to run this
+// Emulator mode: set NEXT_PUBLIC_USE_FIREBASE_EMULATOR=true to run this
 // app against the same local Firebase Emulator Suite the acceptance test
 // scripts use (`firebase emulators:start ... --project demo-platform`),
 // with no real Firebase project or credentials required at all. This is
@@ -33,7 +33,7 @@ export const functions = getFunctions(firebaseApp);
 export const storage = getStorage(firebaseApp);
 
 // Fast-refresh in dev re-runs this module, and connect*Emulator() throws
-// if called twice on the same instance — guard with a global flag.
+// if called twice on the same instance, so guard with a global flag.
 declare global {
   // eslint-disable-next-line no-var
   var __platformEmulatorConnected: boolean | undefined;
@@ -46,7 +46,7 @@ if (USE_EMULATOR && typeof window !== "undefined" && !globalThis.__platformEmula
 }
 
 // App Check runs in monitor mode on the backend (appCheck.ts) until
-// the client confirms enforcement — initializing it here is harmless even
+// Founder confirms enforcement. Initializing it here is harmless even
 // before a site key is configured; requests just proceed without a token,
 // which the backend logs but does not block (see functions/src/utils/appCheck.ts).
 if (!USE_EMULATOR && typeof window !== "undefined" && process.env.NEXT_PUBLIC_FIREBASE_APPCHECK_SITE_KEY) {

@@ -1,5 +1,5 @@
 /**
- * THE PLATFORM — Milestone 3 Acceptance Test Suite
+ * PLATFORM — Milestone 3 Acceptance Test Suite
  * Commerce chat, notifications, blocks, pickup auto-send, drafts,
  * greeting/away messages, quick replies, country availability.
  *
@@ -91,7 +91,7 @@ async function setup() {
   vendorId = rr.data.vendorId;
   await auth.currentUser.getIdToken(true);
 
-  adminEmail = `p3admin_${Date.now()}@theplatform.com`;
+  adminEmail = `p3admin_${Date.now()}@example.com`;
   const ac = await createUserWithEmailAndPassword(auth, adminEmail, PASSWORD);
   adminUid = ac.user.uid;
   await waitFor(async () => { const s = await getDoc(doc(db, "users", adminUid)); return s.exists() ? s : null; });
@@ -1061,7 +1061,7 @@ async function section10() {
   });
 
   await test("A limited support_admin who is not the assigned agent (and not super_admin) cannot resolve the ticket", async () => {
-    const limitedEmail = `p3supportadmin_${Date.now()}@theplatform.com`;
+    const limitedEmail = `p3supportadmin_${Date.now()}@example.com`;
     const limitedCred = await createUserWithEmailAndPassword(auth, limitedEmail, PASSWORD);
     const limitedUid = limitedCred.user.uid;
     await waitFor(async () => { const s = await getDoc(doc(db, "users", limitedUid)); return s.exists() ? s : null; });
@@ -1207,7 +1207,7 @@ async function section11() {
     await signInAs(customerEmail);
     const before = await getDocs(collection(db, "chatThreads", modChatId, "messages"));
     await assertFnError(
-      httpsCallable(fns, "sendChatMessage")({ chatId: modChatId, type: "text", content: "let's pay outside the platform" }),
+      httpsCallable(fns, "sendChatMessage")({ chatId: modChatId, type: "text", content: "let's pay outside platform" }),
       "invalid-argument"
     );
     const after = await getDocs(collection(db, "chatThreads", modChatId, "messages"));
@@ -1404,7 +1404,7 @@ async function section12() {
 }
 
 async function main() {
-  console.log("🚀 THE PLATFORM — Milestone 3 Acceptance Test Suite");
+  console.log("🚀 PLATFORM — Milestone 3 Acceptance Test Suite");
   console.log("=".repeat(60));
 
   await setup();

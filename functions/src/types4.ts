@@ -1,5 +1,5 @@
 /**
- * THE PLATFORM Phase 4 Types — Vendor Subscriptions (Provider-Agnostic)
+ * PLATFORM Phase 4 Types — Vendor Subscriptions (Provider-Agnostic)
  *
  * Source of truth: PHASE_4_COLLECTION_MAPPING.md v10 (APPROVED FOR
  * IMPLEMENTATION). Covers vendorSubscriptions, subscriptionEvents,
@@ -187,7 +187,7 @@ export interface SubscriptionEventDoc {
 // ─── subscriptionPlans/{planId} — PUBLIC SAFE ──────────────────────────────
 //
 // Deliberately carries NO pricing. Pricing moved to subscriptionPricing/
-// {countryCode} (per-country, per the client's architecture decision) precisely
+// {countryCode} (per-country, per the Founder's architecture decision) precisely
 // because a single global price per plan was never correct — see
 // subscriptionPricing/README.md for the full history of why.
 
@@ -349,7 +349,7 @@ export interface InvoiceDoc {
   invoiceNumber: string;
   vendorId: string;
   customerId?: string | null;
-  /** Bound the platform conversation, when the invoice was raised against a chat. */
+  /** Bound Platform conversation, when the invoice was raised against a chat. */
   conversationId?: string | null;
   customerName: string;
   customerPhone?: string | null;
@@ -358,6 +358,8 @@ export interface InvoiceDoc {
   subtotal: number;
   currency: string;
   notes?: string | null;
+  /** Payment-due date, ISO string. Optional - not every invoice has one. */
+  dueDate?: string | null;
   status: InvoiceStatus;
   paidAt?: firestore.Timestamp | firestore.FieldValue | null;
   cancelledAt?: firestore.Timestamp | firestore.FieldValue | null;

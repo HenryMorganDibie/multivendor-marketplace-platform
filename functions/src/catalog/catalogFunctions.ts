@@ -92,7 +92,7 @@ async function rejectIfListingUnsafe(vendorId: string, actorUid: string, name: s
   });
   await applyUserModerationScore(actorUid, result.score);
   if (!result.blocked) return;
-  throw new https.HttpsError("invalid-argument", "This listing contains content that is not allowed on the platform.");
+  throw new https.HttpsError("invalid-argument", "This listing contains content that is not allowed on Platform.");
 }
 
 export const createCatalogCategory = https.onCall(async (request) => {
@@ -146,6 +146,33 @@ export const deleteCatalogCategory = https.onCall(async (request) => {
     eventType: "catalog.category_deleted", metadata: { reassignedItemCount: itemsSnap.size }, appCheck,
   });
   return { success: true, reassignedItemCount: itemsSnap.size };
+});
+
+/** No caller may rename a system category (e.g. "Uncategorized") — same
+ * protection deleteCatalogCategory already applies. */
+export const updateCatalogCategory = https.onCall(async (request) => {
+  const requestId = newRequestId();
+  const appCheck = checkAppCheck(request, "updateCatalogCategory");
+  if (!request.auth || request.auth.token.role !== "vendor") throw new https.HttpsError("permission-denied", "Vendors only.");
+  const vendorId = request.auth.token.vendorId as string;
+  const { categoryId, name } = request.data ?? {};
+  if (!categoryId) throw new https.HttpsError("invalid-argument", "categoryId is required.");
+  if (!name?.trim()) throw new https.HttpsError("invalid-argument", "name is required.");
+
+  const catRef = db.collection("vendors").doc(vendorId).collection("catalogCategories").doc(categoryId);
+  const catSnap = await catRef.get();
+  if (!catSnap.exists) throw new https.HttpsError("not-found", "Category not found.");
+  if (catSnap.data()?.vendorId !== vendorId) throw new https.HttpsError("permission-denied", "You do not own this category.");
+  if (catSnap.data()?.isSystem) throw new https.HttpsError("failed-precondition", "This category cannot be renamed.");
+
+  await catRef.update({ name: name.trim(), updatedAt: FieldValue.serverTimestamp() });
+
+  await writeAuditLog({
+    requestId, functionName: "updateCatalogCategory", actorUid: request.auth.uid, actorRole: "vendor",
+    actorType: "vendor", targetType: "catalogCategory", targetId: categoryId,
+    eventType: "catalog.category_renamed", after: { name: name.trim() }, appCheck,
+  });
+  return { success: true };
 });
 
 export const createCatalogItem = https.onCall(async (request) => {

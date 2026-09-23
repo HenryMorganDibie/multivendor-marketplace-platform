@@ -1,7 +1,7 @@
 /**
  * Order status classification helper.
  *
- * Per the client's architectural note: never hard-code status strings across
+ * Per the Founder's architectural note: never hard-code status strings across
  * Cloud Functions. All active/terminal checks go through these two
  * functions so that adding a new status (e.g. ready_for_pickup,
  * out_for_delivery in a later phase) requires updating exactly one file.

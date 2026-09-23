@@ -11,7 +11,7 @@ function renderNode(node: SiteContentNode, key: number, headingIndex?: number) {
     case "heading": {
       // Weight/tracking ported from rork-platform/expo/constants/theme.ts's
       // Typography scale (displayHero: 800/-0.8, pageTitle: 700/-0.4,
-      // sectionTitle: 700/-0.2) — tight negative tracking on heavy display
+      // sectionTitle: 700/-0.2): tight negative tracking on heavy display
       // text, same as Apple's own site.
       const Tag = (`h${node.level}` as unknown) as "h1" | "h2" | "h3";
       const sizeClass =

@@ -5,13 +5,13 @@ import { SiteContentSectionContent } from "@/lib/types";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "How the platform collects, uses, and protects your information.",
+  description: "How Platform collects, uses, and protects your information.",
   alternates: { canonical: "/privacy-policy" },
 };
 
 const FALLBACK: SiteContentSectionContent = {
   nodes: [
-    { type: "paragraph", text: "This page will contain the platform's full Privacy Policy once legal copy is provided and published through the CMS." },
+    { type: "paragraph", text: "This page will contain Platform's full Privacy Policy once legal copy is provided and published through the CMS." },
   ],
 };
 

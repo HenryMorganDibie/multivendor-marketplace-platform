@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "platform-dev"
+  },
+  "targets": {
+    "platform-dev": {
+      "hosting": {
+        "portal": [
+          "platform-portal-dev"
+        ]
+      }
+    }
+  }
+}

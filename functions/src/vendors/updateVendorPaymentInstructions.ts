@@ -16,6 +16,15 @@ const MAX_INSTRUCTIONS_LENGTH = 200;
  * profile is also driven by a live onSnapshot listener, so any local-only
  * edit here was silently overwritten by the next real snapshot. This is the
  * first write path for these fields.
+ *
+ * SECURITY FIX: these fields used to live directly on vendors/{vendorId},
+ * which is publicly readable (no auth required) by any discoverable or
+ * published vendor's storefront — Firestore rules cannot filter individual
+ * fields on a document read, so a vendor's real payment instructions
+ * (potentially bank account details) were exposed to anyone. Now written to
+ * the private vendors/{vendorId}/settings/payment subdoc instead, matching
+ * the existing owner-only pattern used by settings/notifications,
+ * settings/chat, and settings/pickup.
  */
 export const updateVendorPaymentInstructions = https.onCall(async (request) => {
   const requestId = newRequestId();
@@ -28,6 +37,12 @@ export const updateVendorPaymentInstructions = https.onCall(async (request) => {
 
   const enabled = Boolean(request.data?.enabled);
   const vendorRef = db.collection("vendors").doc(vendorId);
+  const paymentSettingsRef = vendorRef.collection("settings").doc("payment");
+
+  const vendorSnap = await vendorRef.get();
+  if (!vendorSnap.exists) {
+    throw new https.HttpsError("not-found", "Vendor profile not found.");
+  }
 
   const updates: Record<string, unknown> = {
     paymentInstructionsEnabled: enabled,
@@ -49,11 +64,8 @@ export const updateVendorPaymentInstructions = https.onCall(async (request) => {
     }
     updates.paymentInstructions = instructions;
 
-    const vendorSnap = await vendorRef.get();
-    if (!vendorSnap.exists) {
-      throw new https.HttpsError("not-found", "Vendor profile not found.");
-    }
-    const alreadyConfirmed = vendorSnap.data()?.ownershipConfirmed === true;
+    const paymentSettingsSnap = await paymentSettingsRef.get();
+    const alreadyConfirmed = paymentSettingsSnap.exists && paymentSettingsSnap.data()?.ownershipConfirmed === true;
 
     if (!alreadyConfirmed) {
       // First time enabling: the client-side checkbox ("I confirm this
@@ -71,7 +83,7 @@ export const updateVendorPaymentInstructions = https.onCall(async (request) => {
     }
   }
 
-  await vendorRef.update(updates);
+  await paymentSettingsRef.set(updates, { merge: true });
 
   await writeAuditLog({
     requestId,

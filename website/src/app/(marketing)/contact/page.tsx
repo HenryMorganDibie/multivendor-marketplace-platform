@@ -4,7 +4,7 @@ import ContactForm from "./ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact Us",
-  description: "Get in touch with the the platform team.",
+  description: "Get in touch with the Platform team.",
   alternates: { canonical: "/contact" },
 };
 

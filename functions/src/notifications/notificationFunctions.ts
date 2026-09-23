@@ -193,7 +193,7 @@ async function dispatchPush(
 
   // Critical notifications bypass quiet hours; non-critical are delayed
   // (delay implementation = simply not sent now; a scheduled resend job
-  // is out of MVP scope per the client's "keep it lightweight" instruction —
+  // is out of MVP scope per the Founder's "keep it lightweight" instruction —
   // documented as a known limitation).
   if (quietHoursActive && !notification.isCritical) {
     await notifRef.update({ pushSent: false, pushError: "deferred_quiet_hours" });

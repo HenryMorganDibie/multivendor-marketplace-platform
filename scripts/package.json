@@ -1,5 +1,5 @@
 {
-  "name": "platform-backend-scripts",
+  "name": "this repo-scripts",
   "private": true,
   "scripts": {
     "test:m1": "node milestone1-acceptance-tests.js",

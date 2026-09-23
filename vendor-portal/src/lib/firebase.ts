@@ -46,7 +46,7 @@ if (USE_EMULATOR && typeof window !== "undefined" && !globalThis.__platformEmula
 }
 
 // App Check runs in monitor mode on the backend (appCheck.ts) until
-// the client confirms enforcement — initializing it here is harmless even
+// Founder confirms enforcement — initializing it here is harmless even
 // before a site key is configured; requests just proceed without a token,
 // which the backend logs but does not block (see functions/src/utils/appCheck.ts).
 if (!USE_EMULATOR && typeof window !== "undefined" && process.env.NEXT_PUBLIC_FIREBASE_APPCHECK_SITE_KEY) {

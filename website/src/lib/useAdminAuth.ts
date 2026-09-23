@@ -11,7 +11,7 @@ interface AdminAuthState {
 }
 
 /**
- * Client-side gate only — the real enforcement is assertAdmin() re-checking
+ * Client-side gate only: the real enforcement is assertAdmin() re-checking
  * the live adminUsers doc status on every CMS callable (Section 2.2). This
  * hook just decides what the browser renders.
  */

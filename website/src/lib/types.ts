@@ -1,4 +1,4 @@
-// Mirrors platform-backend/functions/src/types4.ts — kept in sync manually
+// Mirrors this repo/functions/src/types4.ts, kept in sync manually
 // since the web app and Cloud Functions are separate deploy targets.
 
 export type SiteContentNode =
@@ -58,7 +58,7 @@ export type SubscriptionPlanId = "basic" | "standard" | "pro" | "pro_plus";
 export type PaidSubscriptionPlanId = "standard" | "pro" | "pro_plus";
 
 // Mirrors the real buildOfferingsResponse shape in
-// functions/src/subscriptions/subscriptionFunctions.ts exactly — field
+// functions/src/subscriptions/subscriptionFunctions.ts exactly. Field
 // names (`plan`, `monthlyPriceMinorUnits`) and per-plan (not per-country)
 // availability are load-bearing, not cosmetic.
 export interface PlanOffering {
@@ -66,6 +66,10 @@ export interface PlanOffering {
   monthlyPriceMinorUnits: number;
   available: boolean;
   unavailableReason?: "PRICING_NOT_CONFIGURED" | "PAYMENT_PROVIDER_NOT_CONFIGURED";
+  /** From subscriptionPlans/{planId}, the canonical plan config. The API has
+   *  always returned these two; the pricing page just was not reading them. */
+  displayName?: string;
+  features?: string[];
 }
 
 export interface GetOfferingsResponse {

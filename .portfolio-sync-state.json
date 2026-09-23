@@ -1,6 +1,6 @@
 {
-  "backend_source_last_seen_sha": "461573b5d1e1ca3e5eee206c83b11b1a066e5202",
-  "mobile_source_last_seen_sha": "e0c595690bd090c164408ec7c9d6df5bba7b581a",
-  "last_checked_utc": "2026-09-07T00:00:00Z",
+  "backend_source_last_seen_sha": "49062e74e61c88d80477ef4a0ba2580528e29faa",
+  "mobile_source_last_seen_sha": "eb03498e6f7327a8bf084f9743a30e10874d9c1e",
+  "last_checked_utc": "2026-09-23T14:00:00Z",
   "note": "Internal tracking file for the weekly portfolio-sync routine. Not a client identifier by itself; do not add real repo names or client names here."
 }

@@ -6,7 +6,7 @@ import { newRequestId } from "../utils/requestContext";
 
 /**
  * submitDeliveryContact — the ONLY path by which contact details reach
- * Firebase. Per the client's decision, contact cards are local-device-only;
+ * Firebase. Per the Founder's decision, contact cards are local-device-only;
  * this function receives an inline snapshot from the frontend (read from
  * local storage at submit time) and attaches it to exactly one order.
  *

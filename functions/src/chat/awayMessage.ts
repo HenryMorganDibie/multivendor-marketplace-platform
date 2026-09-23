@@ -155,7 +155,7 @@ export const updateVendorChatSettings = https.onCall(async (request) => {
     if (result.blocked) {
       throw new https.HttpsError(
         "invalid-argument",
-        `${label} contains content that is not allowed on the platform.`
+        `${label} contains content that is not allowed on Platform.`
       );
     }
   }

@@ -23,11 +23,67 @@
     }
   ],
   "emulators": {
-    "auth": { "port": 9099 },
-    "functions": { "port": 5001 },
-    "firestore": { "port": 8080 },
-    "storage": { "port": 9199 },
-    "ui": { "enabled": true },
+    "auth": {
+      "port": 9099
+    },
+    "functions": {
+      "port": 5001
+    },
+    "firestore": {
+      "port": 8080
+    },
+    "storage": {
+      "port": 9199
+    },
+    "pubsub": {
+      "port": 8085
+    },
+    "ui": {
+      "enabled": true
+    },
     "singleProjectMode": true
+  },
+  "hosting": {
+    "public": "webapp",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
+    "headers": [
+      {
+        "//": "index.html must never be served from cache. Firebase Hosting defaults to max-age=3600, and index.html is the file that names the current content-hashed bundle (entry-<hash>.js). Every export produces a new hash and the previous bundle is removed on deploy, so a browser holding an hour-old index.html requested a JS file that no longer existed and rendered nothing at all - which is why the app intermittently failed to load until cookies and cache were cleared by hand.",
+        "source": "/index.html",
+        "headers": [
+          { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" }
+        ]
+      },
+      {
+        "//": "Same for the bare route and any client-side route resolved through the SPA rewrite above - all of them return index.html.",
+        "source": "/",
+        "headers": [
+          { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" }
+        ]
+      },
+      {
+        "//": "The opposite treatment for the hashed assets: their filenames change whenever their contents do, so they can be cached indefinitely and a returning visitor re-downloads nothing.",
+        "source": "/_expo/static/**",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        ]
+      },
+      {
+        "source": "/assets/**",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        ]
+      }
+    ]
   }
 }

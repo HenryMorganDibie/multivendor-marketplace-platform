@@ -58,7 +58,7 @@ export default function ImageUploader({
           {Object.entries(images).map(([imageKey, img]) => (
             <li key={imageKey} className="flex items-center justify-between text-sm">
               <span>
-                <span className="font-mono text-xs text-gray-500">{imageKey}</span> — {img.altText}
+                <span className="font-mono text-xs text-gray-500">{imageKey}:</span> {img.altText}
               </span>
               <button type="button" onClick={() => removeImage(imageKey)} className="text-xs text-red-500 hover:text-red-700">
                 Remove

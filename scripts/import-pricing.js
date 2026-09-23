@@ -1,8 +1,13 @@
 /**
- * THE PLATFORM — Subscription Pricing Importer
- * Writes subscription-pricing/pricing.json and
- * subscription-pricing/providerPlanMapping.json to Firestore's
- * `subscriptionPricing` and `providerPlanMapping` collections.
+ * PLATFORM — Subscription Pricing Importer
+ * Writes subscription-pricing/pricing.json, providerPlanMapping.json and
+ * providerConfig.json to Firestore's `subscriptionPricing`,
+ * `providerPlanMapping` and `subscriptionProviderConfig` collections.
+ *
+ * All three are required before a plan is purchasable in a country: the
+ * price, the provider's plan codes, and which provider serves that country.
+ * providerConfig was previously written by nothing at all, so a country could
+ * be fully priced and mapped and still report PAYMENT_PROVIDER_NOT_CONFIGURED.
  *
  * Always validates first (refuses to import invalid data). Rerun-safe:
  * createdAt preserved, updatedAt only touched on a real field change,
@@ -45,6 +50,11 @@ console.log("");
 const ROOT = path.join(__dirname, "..");
 const pricing = JSON.parse(fs.readFileSync(path.join(ROOT, "subscription-pricing", "pricing.json"), "utf8"));
 const mapping = JSON.parse(fs.readFileSync(path.join(ROOT, "subscription-pricing", "providerPlanMapping.json"), "utf8"));
+// Tolerated as absent so an older checkout without this file still imports.
+const providerConfigPath = path.join(ROOT, "subscription-pricing", "providerConfig.json");
+const providerConfig = fs.existsSync(providerConfigPath)
+  ? JSON.parse(fs.readFileSync(providerConfigPath, "utf8"))
+  : [];
 
 const admin = require("firebase-admin");
 if (!admin.apps.length) admin.initializeApp({ projectId });
@@ -92,6 +102,7 @@ async function importCollection(label, collection, records, idFn) {
   console.log("Importing...\n");
   await importCollection("Subscription pricing", "subscriptionPricing", pricing, (r) => r.countryCode);
   await importCollection("Provider plan mappings", "providerPlanMapping", mapping, (r) => `${r.countryCode}-${r.planId}`);
+  await importCollection("Provider configs", "subscriptionProviderConfig", providerConfig, (r) => r.countryCode);
   console.log("\nDone.");
   process.exit(0);
 })().catch((err) => {

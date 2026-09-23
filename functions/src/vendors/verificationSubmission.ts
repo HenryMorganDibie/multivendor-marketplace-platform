@@ -7,7 +7,7 @@ import { checkAppCheck } from "../utils/appCheck";
 import { writeAuditLog } from "../utils/auditLog";
 import { newRequestId } from "../utils/requestContext";
 
-const MALWARE_SCANNER_URL = "https://malware-scanner-765656912787.us-central1.run.app/scan";
+const MALWARE_SCANNER_URL = "https://malware-scanner-YOUR_PROJECT_NUMBER.us-central1.run.app/scan";
 const googleAuth = new GoogleAuth();
 
 /**

@@ -1,10 +1,10 @@
 /**
- * THE PLATFORM Phase 3 Types
+ * PLATFORM Phase 3 Types
  * Covers: Commerce/Support/AI chat, notifications, push tokens, blocks,
  *         read receipts, drafts, greeting/away messages, quick replies,
  *         pickup details auto-send, order-scoped contact snapshots.
  *
- * Source of truth: the client's Milestone 3 Scope Update (final, post-edge-case
+ * Source of truth: the Founder's Milestone 3 Scope Update (final, post-edge-case
  * revisions) — one canonical commerce thread per customerId+vendorId pair,
  * no persistent contact-card library (local-device only per MVP decision),
  * system-wide always-on read receipts (no toggle yet).
@@ -524,7 +524,7 @@ export interface ModerationRuleDoc {
   // Default true. Some terms (e.g. "bank transfer", "call me") are only
   // meaningful as evidence of off-platform steering when they co-occur with
   // an actual avoidance phrase in the same message — on their own they are
-  // normal the platform commerce chatter and must never trigger anything.
+  // normal Platform commerce chatter and must never trigger anything.
   // standalone: false marks exactly that kind of weak-signal-only term.
   standalone?: boolean;
   severity: ModerationSeverity;

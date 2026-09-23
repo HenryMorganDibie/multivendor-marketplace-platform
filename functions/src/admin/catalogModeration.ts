@@ -27,7 +27,7 @@ async function notifyVendorOwner(
     body: outcome === "approved"
       ? `"${itemName}" is now live on your storefront.`
       : `"${itemName}" wasn't approved${reason ? `: ${reason}` : "."}`,
-    deepLink: "the platform://vendor/catalog",
+    deepLink: "platform://vendor/catalog",
     metadata: { itemId },
     isCritical: false,
   }).catch((err) => logger.error(`createNotificationInternal (catalog_item_${outcome}) failed for item ${itemId}`, err));

@@ -1,5 +1,5 @@
 /**
- * THE PLATFORM — Milestone 1 Acceptance Test Suite
+ * PLATFORM — Milestone 1 Acceptance Test Suite
  *
  * Verifies every acceptance criterion from tickets P1-FB-001 through
  * P1-FB-013 against a live Firebase Emulator Suite instance. This is the
@@ -206,7 +206,7 @@ async function section2() {
     const fn = httpsCallable(fns, "completeRegistration");
     const result = await fn({
       role: "vendor",
-      businessName: "the platform Test Store",
+      businessName: "Platform Test Store",
       username,
       fullName: "Henry Dibie",
       categoryId: "food_catering",
@@ -266,7 +266,7 @@ async function section3() {
   console.log("\n📋 Section 3: Admin provisioning");
 
   await test("Create admin user via Admin SDK + adminUsers doc", async () => {
-    adminEmail = `admin_${Date.now()}@theplatform.com`;
+    adminEmail = `admin_${Date.now()}@example.com`;
     const cred = await createUserWithEmailAndPassword(auth, adminEmail, PASSWORD);
     adminUid = cred.user.uid;
 
@@ -574,7 +574,7 @@ async function section5() {
 
   await test("verification_admin WITHOUT safety_admin role cannot suspendVendor", async () => {
     // Create a limited admin with only verification_admin role
-    const limitedEmail = `limited_${Date.now()}@theplatform.com`;
+    const limitedEmail = `limited_${Date.now()}@example.com`;
     const limitedCred = await createUserWithEmailAndPassword(auth, limitedEmail, PASSWORD);
     const limitedUid = limitedCred.user.uid;
     await waitFor(async () => {
@@ -611,7 +611,7 @@ async function section5() {
   });
 
   await test("Revoked admin CANNOT call admin functions (adminUsers.status check)", async () => {
-    const revokedEmail = `revoked_${Date.now()}@theplatform.com`;
+    const revokedEmail = `revoked_${Date.now()}@example.com`;
     const revokedCred = await createUserWithEmailAndPassword(auth, revokedEmail, PASSWORD);
     const revokedUid = revokedCred.user.uid;
     await waitFor(async () => {
@@ -768,16 +768,23 @@ async function section6() {
     );
   });
 
-  await test("Vendor CANNOT directly write verificationStatus (no-op same-value write is harmless, but field stays under rule control)", async () => {
-    // A same-value write is a legitimate no-op success (the resulting
-    // document is unchanged), so it is correctly ALLOWED by the rules.
-    // We verify here that even though the write succeeds, the value is
-    // still exactly what the server set it to — i.e. the vendor gained no
-    // actual control over the field.
+  await test("Vendor CANNOT directly write verificationStatus at all, even a harmless same-value no-op (Batch 2A: parent vendors/{vendorId} client updates are fully denied)", async () => {
+    // Superseded by the Batch 2A security fix: vendors/{vendorId} used to
+    // allow a client update as long as every server-only field was left
+    // unchanged (vendorOwnerUpdateAllowed()), so a same-value write of an
+    // already-server-controlled field succeeded as a harmless no-op. That
+    // denylist had no keys().hasOnly() bound, so anything NOT on its list
+    // (e.g. paymentInstructions) could be forged outright by the client.
+    // The fix (allow update: if false) closes that gap by denying every
+    // direct client update unconditionally — including this previously-
+    // allowed same-value case. Every legitimate mutation already went
+    // through a Cloud Functions callable or Firestore trigger (Admin SDK,
+    // which bypasses this rule regardless), confirmed by full-repo audit,
+    // so this tightening has no effect on any real client.
     await signInAs(vendorEmail, PASSWORD);
-    await setDoc(doc(db, "vendors", vendorId), { verificationStatus: "approved" }, { merge: true });
-    const snap = await getDoc(doc(db, "vendors", vendorId));
-    assertEqual(snap.data().verificationStatus, "approved", "Value must remain exactly what the server set, proving the vendor has no real write control over this field");
+    await assertDenied(
+      setDoc(doc(db, "vendors", vendorId), { verificationStatus: "approved" }, { merge: true })
+    );
   });
 
   await test("Vendor CANNOT directly flip isDiscoverable to a NEW value (escalation attempt)", async () => {
@@ -790,11 +797,18 @@ async function section6() {
     );
   });
 
-  await test("onVendorWrite remains the sole authority over isDiscoverable after a no-op same-value write", async () => {
+  await test("onVendorWrite remains the sole authority over isDiscoverable — even a same-value client write is now denied outright (Batch 2A)", async () => {
+    // Same rationale as the verificationStatus test above: previously a
+    // same-value write was allowed as a no-op under vendorOwnerUpdateAllowed(),
+    // proving the vendor had no real control over the field's VALUE. The
+    // Batch 2A fix (allow update: if false) is stricter — the vendor now has
+    // no client write path to this document at all, so onVendorWrite (a
+    // Firestore trigger using the Admin SDK) remains the only writer,
+    // period, not merely the only writer that can change the value.
     await signInAs(vendorEmail, PASSWORD);
-    await setDoc(doc(db, "vendors", vendorId), { isDiscoverable: true }, { merge: true });
-    const snap = await getDoc(doc(db, "vendors", vendorId));
-    assertEqual(snap.data().isDiscoverable, true, "Value must remain exactly what the server computed");
+    await assertDenied(
+      setDoc(doc(db, "vendors", vendorId), { isDiscoverable: true }, { merge: true })
+    );
   });
 
   await test("Suspended vendor has isDiscoverable=false and fails discovery criteria", async () => {
@@ -1048,7 +1062,7 @@ async function section10() {
 // MAIN
 // ─────────────────────────────────────────────────────────────────────────
 async function main() {
-  console.log("🚀 THE PLATFORM — Milestone 1 Acceptance Test Suite");
+  console.log("🚀 PLATFORM — Milestone 1 Acceptance Test Suite");
   console.log("=".repeat(60));
 
   await section1();

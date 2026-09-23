@@ -5,13 +5,13 @@ import { SiteContentSectionContent } from "@/lib/types";
 
 export const metadata: Metadata = {
   title: "Acceptable Use Policy",
-  description: "What is and isn't allowed on the platform.",
+  description: "What is and isn't allowed on Platform.",
   alternates: { canonical: "/acceptable-use-policy" },
 };
 
 const FALLBACK: SiteContentSectionContent = {
   nodes: [
-    { type: "paragraph", text: "This page will contain the platform's Acceptable Use Policy once legal copy is provided and published through the CMS." },
+    { type: "paragraph", text: "This page will contain Platform's Acceptable Use Policy once legal copy is provided and published through the CMS." },
   ],
 };
 

@@ -21,7 +21,25 @@ export const repriceCart = https.onCall(async (request) => {
   // Checked here as well as at order creation, so a customer is told before
   // they fill a basket rather than after.
   const countryOk = await isCountryActive(vendorSnap.data()?.countryCode);
-  if (!countryOk) throw new https.HttpsError("failed-precondition", "the platform is not currently available in this country.");
+  if (!countryOk) throw new https.HttpsError("failed-precondition", "Platform is not currently available in this country.");
+
+  // fulfillmentTypes is now the authoritative list of methods a vendor has
+  // actually enabled (updateVendorSettings.ts). A vendor whose array is
+  // empty/missing has simply never configured it yet through the real
+  // settings screen — every existing vendor is in this state today, since
+  // the writer for this field did not exist until now — so that case is
+  // treated as "not yet configured, do not restrict" rather than rejecting
+  // every legacy checkout. Once a vendor has configured at least one
+  // method, only that vendor's own enabled methods are accepted.
+  const vendorFulfillmentTypes = Array.isArray(vendorData.fulfillmentTypes)
+    ? (vendorData.fulfillmentTypes as string[])
+    : [];
+  if (vendorFulfillmentTypes.length > 0 && !vendorFulfillmentTypes.includes(fulfillmentType)) {
+    throw new https.HttpsError(
+      "failed-precondition",
+      "This vendor does not currently offer that fulfillment method."
+    );
+  }
   const itemRefs = clientItems.map((ci: { itemId: string }) => vendorRef.collection("catalogItems").doc(ci.itemId));
   const itemSnaps = await db.getAll(...itemRefs);
   const pricedItems: CartItem[] = [];

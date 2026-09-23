@@ -1,4 +1,4 @@
-# the platform Location Data — Country Progress Checklist
+# Platform Location Data — Country Progress Checklist
 
 ## Afghanistan
 - [x] Country

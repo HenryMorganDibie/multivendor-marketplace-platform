@@ -1,5 +1,5 @@
 /**
- * THE PLATFORM — Milestone 2 Acceptance Test Suite
+ * PLATFORM — Milestone 2 Acceptance Test Suite
  * 53 tests across: Catalog, Cart, Orders, Inventory, External Orders,
  * Change Requests, Payment Proofs, Receipts, Security Rules
  *
@@ -62,7 +62,7 @@ async function seedCountryAvailability() {
   // Phase 3 added a countryAvailability gate on createOrder/createCommerceConversation
   // (functions/src/orders/createOrder.ts) that this script predates and was
   // never updated for. Without this, every order-creation test in this file
-  // fails with "the platform is not currently available in this vendor's region"
+  // fails with "Platform is not currently available in this vendor's region"
   // when run standalone (i.e. not preceded by milestone3/4, which happen to
   // seed this same fixture themselves). Matches milestone3's exact seed.
   await admin.firestore().collection("countryAvailability").doc("NG").set({
@@ -88,7 +88,7 @@ async function setup() {
   vendorId = rr.data.vendorId;
   await auth.currentUser.getIdToken(true);
 
-  adminEmail = `p2admin_${Date.now()}@theplatform.com`;
+  adminEmail = `p2admin_${Date.now()}@example.com`;
   const ac = await createUserWithEmailAndPassword(auth, adminEmail, PASSWORD);
   adminUid = ac.user.uid;
   await waitFor(async () => { const s = await getDoc(doc(db, "users", adminUid)); return s.exists() ? s : null; });
@@ -448,7 +448,7 @@ async function section8() {
   await test("Receipt number format is {VENDORSLUG}-RCT-{seq}", async () => {
     // Corrected per LANDING_PAGE_CMS_VENDOR_PORTAL_MAPPING.md Section 4.4:
     // no more LVT-{year}-{code}-{padded} — matches the order/invoice
-    // numbering convention now (no platform-branded prefix, no year, no
+    // numbering convention now (no Platform-branded prefix, no year, no
     // zero-padding).
     const rs = await admin.firestore().collection("orders").doc(orderId).collection("receipts").get();
     const receiptNumber = rs.docs[0].data().receiptNumber;
@@ -541,7 +541,7 @@ async function section10() {
 }
 
 async function main() {
-  console.log("🚀 THE PLATFORM — Milestone 2 Acceptance Test Suite");
+  console.log("🚀 PLATFORM — Milestone 2 Acceptance Test Suite");
   console.log("=".repeat(60));
   await setup();
   await section1();

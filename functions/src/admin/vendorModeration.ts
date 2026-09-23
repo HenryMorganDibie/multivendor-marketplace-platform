@@ -79,7 +79,7 @@ export const approveVendorVerification = https.onCall(async (request) => {
       domain: "system",
       title: "You're verified!",
       body: "Your account has been verified. Customers can now discover your store.",
-      deepLink: "the platform://vendor/settings/verification",
+      deepLink: "platform://vendor/settings/verification",
       isCritical: true,
     });
   }
@@ -165,7 +165,7 @@ export const rejectVendorVerification = https.onCall(async (request) => {
       domain: "system",
       title: "Verification needs another look",
       body: reason,
-      deepLink: "the platform://vendor/settings/verification",
+      deepLink: "platform://vendor/settings/verification",
       isCritical: true,
     });
   }

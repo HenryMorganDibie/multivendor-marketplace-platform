@@ -9,9 +9,29 @@ interface SubmitContactFormResponse {
   success: true;
 }
 
+/**
+ * Self-contained "requires JS execution" challenge — LANDING_PAGE_CMS_VENDOR_PORTAL_MAPPING.md
+ * Section 3's "CAPTCHA or equivalent challenge triggered after suspicious
+ * submission velocity." No reCAPTCHA/hCaptcha/Turnstile keys exist for this
+ * project, so this is the equivalent the spec text explicitly allows: a
+ * deterministic value derived from the page-render timestamp (already sent
+ * for the velocity check below) that a script posting straight to the
+ * callable, without running this page's JS, wouldn't know to compute. Must
+ * stay in sync with computeChallengeAnswer in this repo's
+ * functions/src/site/contactFormFunctions.ts.
+ */
+function computeChallengeAnswer(renderedAtMs: number): number {
+  const a = (renderedAtMs % 97) + 3;
+  const b = (renderedAtMs % 47) + 5;
+  return a * b;
+}
+
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "sent" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  // Captured once, at first render — used server-side to reject submissions
+  // faster than any real human could read the form and fill it in.
+  const [formRenderedAtMs] = useState(() => Date.now());
 
   async function handleSubmit(e: SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -29,6 +49,8 @@ export default function ContactForm() {
         subjectCategory: formData.get("subjectCategory"),
         message: formData.get("message"),
         honeypot: formData.get("company_website"),
+        formRenderedAtMs,
+        challengeAnswer: computeChallengeAnswer(formRenderedAtMs),
       });
       setStatus("sent");
       form.reset();
@@ -42,14 +64,14 @@ export default function ContactForm() {
     return (
       <div role="status" className="rounded-card border border-green-200 bg-green-50 p-6 text-green-800">
         <p className="font-semibold">Message sent</p>
-        <p className="mt-1 text-sm">Thanks for reaching out — our team will get back to you.</p>
+        <p className="mt-1 text-sm">Thanks for reaching out. Our team will get back to you.</p>
       </div>
     );
   }
 
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-5">
-      {/* Honeypot — hidden from real users via CSS, not display:none, so screen readers/bots that check computed style still see an empty field to fill */}
+      {/* Honeypot, hidden from real users via CSS, not display:none, so screen readers/bots that check computed style still see an empty field to fill */}
       <div className="absolute -left-[9999px]" aria-hidden="true">
         <label htmlFor="company_website">Company website</label>
         <input type="text" id="company_website" name="company_website" tabIndex={-1} autoComplete="off" />

@@ -1,5 +1,5 @@
 // Recreations of the standard "Download on the App Store" / "Get it on
-// Google Play" badges — the format both Apple and Google publish design
+// Google Play" badges, the format both Apple and Google publish design
 // guidelines for specifically so app listings can use them. Sized small,
 // matching the reference (uber.com's footer): compact, black fill, white
 // outline/text, icon + two-line label, not a plain solid rectangle.

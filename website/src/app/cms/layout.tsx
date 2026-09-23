@@ -5,7 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useAdminAuth, adminLogout } from "@/lib/useAdminAuth";
 
-// Auth-gated, never public/indexed (robots.ts disallows /cms) — no benefit
+// Auth-gated, never public/indexed (robots.ts disallows /cms), so no benefit
 // to static generation, and prerendering would evaluate the Firebase
 // client SDK at build time with no real runtime env config available yet.
 export const dynamic = "force-dynamic";
@@ -51,7 +51,7 @@ export default function CmsLayout({ children }: { children: React.ReactNode }) {
     <div id="main-content" className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
       <div className="flex items-center justify-between border-b border-gray-100 pb-6 dark:border-gray-800">
         <Link href="/cms" className="text-xl font-bold text-brand">
-          the platform CMS
+          Platform CMS
         </Link>
         <button type="button" onClick={() => adminLogout()} className="text-sm font-medium text-gray-600 hover:text-brand dark:text-gray-400">
           Sign out

@@ -1,11 +1,16 @@
 /**
- * THE PLATFORM — Milestone 4 Acceptance Test Suite
+ * PLATFORM — Milestone 4 Acceptance Test Suite
  * Vendor subscriptions (provider-agnostic, Paystack-first), plan gating
  * across catalog/orders/pickup/vendor-settings/dashboard/analytics, and
  * the ratings system.
  *
- * Run: node milestone4-acceptance-tests.js
- * Requires: firebase emulators:start --only auth,firestore,functions,storage --project demo-platform
+ * Run:
+ *   firebase emulators:start --only auth,firestore,functions,storage --project demo-platform
+ *   node mirror-countries-to-emulator.js   (once per emulator session — mirrors
+ *                                            the real 196-country catalogue in;
+ *                                            needs GOOGLE_APPLICATION_CREDENTIALS
+ *                                            for platform-dev)
+ *   node milestone4-acceptance-tests.js
  */
 const crypto = require("crypto");
 const PROJECT_ID = "demo-platform";
@@ -52,14 +57,29 @@ async function waitFor(fn, retries = 15, delay = 1000) {
 
 const RUN_ID = Date.now(); // keeps webhook event ids unique per run, so re-running against an already-live emulator never false-triggers idempotency dedup from a prior run
 const PASSWORD = "TestPass123!";
-let vendorEmail, vendorUid, vendorId, adminEmail, adminUid, customerEmail, customerUid, catalogItemId;
+let vendorEmail, vendorUid, vendorId, adminEmail, adminUid, customerEmail, customerUid, catalogItemId, catalogCategoryId;
 async function signInAs(email) { const c = await signInWithEmailAndPassword(auth, email, PASSWORD); await c.user.getIdToken(true); return c; }
 
 async function seedCountryAvailability() {
-  await admin.firestore().collection("countryAvailability").doc("NG").set({
-    countryCode: "NG", countryName: "Nigeria", status: "ACTIVE",
-    updatedAt: admin.firestore.FieldValue.serverTimestamp(), updatedBy: "p4_acceptance_seed",
-  });
+  // The real countries catalogue (all 196) is mirrored into the emulator by
+  // mirror-countries-to-emulator.js — run that first, or completeRegistration's
+  // validateLocation() will reject every country with "is not an available
+  // country" (countries/{code}.status is checked, and the collection is
+  // empty on a fresh emulator otherwise).
+  //
+  // countryAvailability is different: it gates real commerce (createOrder,
+  // repriceCart, chat — isCountryActive(), fails closed by design) and the
+  // real platform-dev project currently has ZERO documents in it — there is
+  // nothing real to mirror, which is itself worth flagging separately, not
+  // papering over here. This seeds just the countries this suite actually
+  // exercises commerce for (NG for the main narrative, US for the Stripe
+  // section), as a test fixture for a flag production hasn't populated yet.
+  for (const { code, name } of [{ code: "NG", name: "Nigeria" }, { code: "US", name: "United States" }]) {
+    await admin.firestore().collection("countryAvailability").doc(code).set({
+      countryCode: code, countryName: name, status: "ACTIVE",
+      updatedAt: admin.firestore.FieldValue.serverTimestamp(), updatedBy: "p4_acceptance_seed",
+    }, { merge: true });
+  }
 }
 
 async function setup() {
@@ -75,7 +95,7 @@ async function setup() {
   vendorId = rr.data.vendorId;
   await auth.currentUser.getIdToken(true);
 
-  adminEmail = `p4admin_${Date.now()}@theplatform.com`;
+  adminEmail = `p4admin_${Date.now()}@example.com`;
   const ac = await createUserWithEmailAndPassword(auth, adminEmail, PASSWORD);
   adminUid = ac.user.uid;
   await waitFor(async () => { const s = await getDoc(doc(db, "users", adminUid)); return s.exists() ? s : null; });
@@ -90,7 +110,7 @@ async function setup() {
 
   // Verify + publish vendor so orders can be placed later (Sections 7-11).
   await signInAs(vendorEmail);
-  for (const type of ["business_info", "identity_document", "proof_of_address"]) {
+  for (const type of ["business_info", "identity_document", "proof_of_address", "other"]) {
     const path = `verificationDocuments/${vendorId}/${type}_p4.pdf`;
     await uploadBytes(ref(storage, path), new Uint8Array([0x25, 0x50, 0x44, 0x46]), { contentType: "application/pdf" });
     await httpsCallable(fns, "recordVerificationDocument")({ type, storagePath: path });
@@ -100,13 +120,22 @@ async function setup() {
   await httpsCallable(fns, "approveVendorVerification")({ vendorId });
   await sleep(1500);
   await signInAs(vendorEmail);
+
+  // The publish gate (resolveOnboardingStatus) requires at least one
+  // approved, non-hidden catalog item before it will allow isPublished:true —
+  // so the item has to exist and be approved first, not after. createCatalogItem
+  // also requires a real catalogCategories doc (it does a transactional
+  // .update() on vendors/{id}/catalogCategories/{categoryId}, which throws if
+  // the doc doesn't exist), so the category has to be created first too.
+  const categoryResult = await httpsCallable(fns, "createCatalogCategory")({ name: "P4 Category" });
+  catalogCategoryId = categoryResult.data.categoryId;
+  const itemResult = await httpsCallable(fns, "createCatalogItem")({ name: "P4 Item", basePrice: 1000, currency: "NGN", isAvailable: true, categoryId: catalogCategoryId });
+  catalogItemId = itemResult.data.itemId;
+  await admin.firestore().collection("vendors").doc(vendorId).collection("catalogItems").doc(catalogItemId).update({ moderationStatus: "approved" });
+
   await httpsCallable(fns, "setVendorPublishStatus")({ isPublished: true });
   await sleep(1500);
   await admin.firestore().collection("vendors").doc(vendorId).update({ storefrontPublished: true, ownerUid: vendorUid, countryCode: "NG" });
-
-  const itemResult = await httpsCallable(fns, "createCatalogItem")({ name: "P4 Item", basePrice: 1000, currency: "NGN", isAvailable: true });
-  catalogItemId = itemResult.data.itemId;
-  await admin.firestore().collection("vendors").doc(vendorId).collection("catalogItems").doc(catalogItemId).update({ moderationStatus: "approved" });
 
   console.log(`  -> Vendor ${vendorId} ready (basic plan)`);
 }
@@ -230,7 +259,10 @@ async function section1() {
     await signInAs(vendorEmail);
     const r = await httpsCallable(fns, "getSubscriptionStatus")({});
     assertEqual(r.data.effectivePlan, "basic");
-    assertEqual(r.data.planLimits.catalogItemLimit, 10);
+    // Basic was tightened from 10 to drive upgrades.
+    assertEqual(r.data.planLimits.catalogItemLimit, 7);
+    assertEqual(r.data.planLimits.photosPerItemLimit, 1);
+    assertEqual(r.data.planLimits.invoicesPerMonth, 2);
     assertEqual(r.data.subscription, null);
   });
 }
@@ -275,11 +307,11 @@ async function section2() {
   await test("getVendorSubscriptionOfferings reports unavailable + PRICING_NOT_CONFIGURED for the same no-pricing country", async () => {
     // Still signed in as the Ghana no-pricing vendor from the previous test.
     const r = await httpsCallable(fns, "getVendorSubscriptionOfferings")({});
-    // resolveCountryCode()'s name->code map is deliberately minimal (Nigeria/US
-    // only, per its own comment) — "Ghana" falls through to .toUpperCase(),
-    // i.e. "GHANA", not an ISO "GH". Asserting the real current behavior here,
-    // not the ISO code this map doesn't produce for uncovered countries yet.
-    assertEqual(r.data.countryCode, "GHANA");
+    // resolveCountryCode()'s name->code map used to only know Nigeria/US and
+    // fell through to .toUpperCase() ("GHANA") for everything else — fixed
+    // since (countryCode.ts now builds the map from the full 196-country
+    // catalogue), so this resolves to the real ISO code now.
+    assertEqual(r.data.countryCode, "GH");
     for (const p of r.data.plans) {
       assertEqual(p.available, false);
       assertEqual(p.unavailableReason, "PRICING_NOT_CONFIGURED");
@@ -506,20 +538,22 @@ async function section5() {
 // SECTION 6: Catalog gating (item + photo limits)
 // ─────────────────────────────────────────────────────────────────────────
 async function section6() {
-  console.log("\n📋 Section 6: Catalog gating (Basic = 2 photos/item)");
+  console.log("\n📋 Section 6: Catalog gating (Basic = 1 photo/item)");
 
   await setVendorPlan("basic");
 
-  await test("Basic vendor cannot create item with 3 photos", async () => {
+  // photosPerItemLimit tightened to 1 for Basic (planLimitsSeedData.ts,
+  // same pass that tightened catalogItemLimit and invoicesPerMonth).
+  await test("Basic vendor cannot create item with 2 photos", async () => {
     await signInAs(vendorEmail);
     await assertFnError(
-      httpsCallable(fns, "createCatalogItem")({ name: "Too many photos", basePrice: 500, photos: ["a", "b", "c"] }),
+      httpsCallable(fns, "createCatalogItem")({ name: "Too many photos", basePrice: 500, photos: ["a", "b"], categoryId: catalogCategoryId }),
       "resource-exhausted"
     );
   });
-  await test("Basic vendor CAN create item with 2 photos", async () => {
+  await test("Basic vendor CAN create item with 1 photo", async () => {
     await signInAs(vendorEmail);
-    const r = await httpsCallable(fns, "createCatalogItem")({ name: "OK photos", basePrice: 500, photos: ["a", "b"] });
+    const r = await httpsCallable(fns, "createCatalogItem")({ name: "OK photos", basePrice: 500, photos: ["a"], categoryId: catalogCategoryId });
     assert(r.data.success);
   });
 }
@@ -528,14 +562,18 @@ async function section6() {
 // SECTION 7: External order gate
 // ─────────────────────────────────────────────────────────────────────────
 async function section7() {
-  console.log("\n📋 Section 7: External order gate");
+  console.log("\n📋 Section 7: External order recording (free on every plan)");
 
-  await test("Basic vendor cannot create external order", async () => {
+  // canAccessExternalOrders is deliberately true on every tier now
+  // (planLimitsSeedData.ts): recording an order taken over the phone or
+  // WhatsApp is bookkeeping, not a feature to sell. The paid line sits at
+  // canViewAdvancedAnalytics instead (Section 10), which gates the
+  // platform-vs-external comparison, not recording itself.
+  await test("Basic vendor CAN create an external order", async () => {
+    await setVendorPlan("basic");
     await signInAs(vendorEmail);
-    await assertFnError(
-      httpsCallable(fns, "createExternalOrder")({ externalCustomerName: "Walk-in", items: [{ itemId: catalogItemId, quantity: 1 }], fulfillmentType: "pickup" }),
-      "permission-denied"
-    );
+    const r = await httpsCallable(fns, "createExternalOrder")({ externalCustomerName: "Walk-in", items: [{ itemId: catalogItemId, quantity: 1 }], fulfillmentType: "pickup" });
+    assert(r.data.success);
   });
   await test("Standard vendor CAN create external order", async () => {
     await setVendorPlan("standard");
@@ -754,11 +792,12 @@ async function section12() {
     assertEqual(snap.data().subtotal, 10000);
   });
 
-  await test("Basic vendor hits the 3/month invoice quota on the 4th invoice", async () => {
+  await test("Basic vendor hits the 2/month invoice quota on the 3rd invoice", async () => {
+    // Basic was tightened to invoicesPerMonth: 2 (planLimitsSeedData.ts);
+    // one invoice already exists from the previous test, so exactly one
+    // more is allowed before the quota is hit.
     await signInAs(vendorEmail);
-    for (let i = 0; i < 2; i++) {
-      await httpsCallable(fns, "createInvoice")({ customerName: `Cust ${i}`, lineItems: [{ description: "Item", quantity: 1, unitPrice: 100 }] });
-    }
+    await httpsCallable(fns, "createInvoice")({ customerName: "Cust 2", lineItems: [{ description: "Item", quantity: 1, unitPrice: 100 }] });
     await assertFnError(
       httpsCallable(fns, "createInvoice")({ customerName: "One too many", lineItems: [{ description: "Item", quantity: 1, unitPrice: 100 }] }),
       "resource-exhausted"
@@ -768,7 +807,7 @@ async function section12() {
   await test("listInvoices returns the vendor's own invoices", async () => {
     await signInAs(vendorEmail);
     const r = await httpsCallable(fns, "listInvoices")({});
-    assert(r.data.invoices.length >= 3);
+    assert(r.data.invoices.length >= 2);
   });
 
   await test("invoices collection is not client-writable, and only the owner can read", async () => {
@@ -865,9 +904,12 @@ async function section12() {
     cancelledInvoiceId = r2.data.invoiceId;
   });
 
-  await test("Marking an invoice paid captures a permanent branding snapshot", async () => {
+  await test("Recording a full payment marks the invoice paid and captures a permanent branding snapshot", async () => {
+    // updateInvoiceStatus no longer accepts status:"paid" (invoiceFunctions.ts) —
+    // payment status is derived from the ledger now, so the client calls
+    // recordPayment for the outstanding balance instead of writing a status.
     await signInAs(vendorEmail);
-    const r = await httpsCallable(fns, "updateInvoiceStatus")({ invoiceId: paidInvoiceId, status: "paid" });
+    const r = await httpsCallable(fns, "recordPayment")({ invoiceId: paidInvoiceId, amountMinorUnits: 2000, method: "transfer", idempotencyKey: crypto.randomUUID() });
     assert(r.data.success);
     const snap = await admin.firestore().collection("invoices").doc(paidInvoiceId).get();
     assertEqual(snap.data().status, "paid");
@@ -1349,7 +1391,7 @@ async function section15() {
 }
 
 async function main() {
-  console.log("🚀 THE PLATFORM — Milestone 4 Acceptance Test Suite");
+  console.log("🚀 PLATFORM — Milestone 4 Acceptance Test Suite");
   console.log("=".repeat(60));
 
   await setup();

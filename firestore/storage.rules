@@ -124,6 +124,19 @@ service firebase.storage {
         isVendorOwner(vendorId);
     }
 
+    match /vendorMedia/{vendorId}/catalogItems/{fileId} {
+
+      allow read: if true;
+
+      allow create, update: if
+        isVendorOwner(vendorId)
+        && isImage()
+        && underMb(8);
+
+      allow delete: if
+        isVendorOwner(vendorId);
+    }
+
     // ==========================================================
     // Invoice branding logos (Phase 4) — the vendor uploads here first,
     // then references the path via updateInvoiceBranding, which validates
@@ -177,6 +190,28 @@ service firebase.storage {
       allow create: if
         isVendorOwner(vendorId)
         && isPdfOrImage()
+        && underMb(15);
+
+      allow update: if false;
+
+      allow delete: if isAdmin();
+    }
+
+    // ==========================================================
+    // Payment proof images (Phase 2/3 — submitPaymentProof /
+    // reviewPaymentProof). The callable is the source of truth for order
+    // ownership (verifies order.customerId server-side against the caller);
+    // Storage only gatekeeps the blob upload itself, same division of
+    // responsibility as verificationDocuments above.
+    // ==========================================================
+    match /paymentProofs/{vendorId}/{orderId}/{fileId} {
+
+      allow read: if isVendorOwner(vendorId) || isAdmin();
+
+      allow create: if
+        isSignedIn()
+        && !isVendor()
+        && isImage()
         && underMb(15);
 
       allow update: if false;

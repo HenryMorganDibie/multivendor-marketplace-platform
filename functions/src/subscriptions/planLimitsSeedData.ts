@@ -21,11 +21,11 @@ export const DEFAULT_PLAN_LIMITS: Record<SubscriptionPlanId, PlanLimits> = {
     photosPerItemLimit: 1,
     // Recording an order taken over the phone or WhatsApp is free on every
     // plan. A vendor's own bookkeeping is not a feature to sell them, and
-    // blocking it pushed the exact orders the platform wants visible back into a
+    // blocking it pushed the exact orders Platform wants visible back into a
     // notebook.
     //
     // The paid line sits at canViewAdvancedAnalytics below instead: Basic can
-    // record external orders but cannot see platform-versus-external
+    // record external orders but cannot see the platform-versus-external
     // breakdown that compares them. Recording is bookkeeping; the comparison is
     // insight.
     canAccessExternalOrders: true,

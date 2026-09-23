@@ -39,7 +39,7 @@ function assertVendorMediaUrl(
   if (!value.startsWith(STORAGE_HOST)) {
     throw new https.HttpsError(
       "invalid-argument",
-      `${label} must be an image uploaded to the platform storage, not an external link.`
+      `${label} must be an image uploaded to Platform storage, not an external link.`
     );
   }
   // Storage download URLs percent-encode the object path, so the prefix
@@ -56,14 +56,84 @@ function assertVendorMediaUrl(
   return value;
 }
 
-function normalizeLink(value: unknown, label: string): string | null {
+const SOCIAL_CANONICAL_HOST: Record<"instagram" | "tiktok", string> = {
+  instagram: "instagram.com",
+  tiktok: "tiktok.com",
+};
+const SCHEME_RE = /^[a-zA-Z][a-zA-Z0-9+.-]*:\/\//;
+const DOMAIN_LIKE_RE = /^[\w.-]+\.[a-z]{2,}(\/.*)?$/i;
+
+/**
+ * Vendor-supplied Website/Instagram/TikTok links (storefront-appearance.tsx)
+ * previously passed straight through with only a trim + length check. That
+ * accepted any scheme (javascript:, file:, intent:, etc.) and any host for
+ * Instagram/TikTok, and the mobile customer-facing storefront opened the
+ * stored value directly with Linking.openURL -- an unvalidated stored value
+ * would run at open-time with no further check. Rebuilt so the value that
+ * ends up in Firestore is always resolvable to a real http(s) destination,
+ * and (for Instagram/TikTok) actually on that platform's domain. Accepts the
+ * shapes the input UI's placeholders advertise: a bare domain
+ * ("yourwebsite.com") for Website, and an "@handle" for Instagram/TikTok, in
+ * addition to full URLs a vendor might paste directly.
+ */
+function normalizeLink(
+  value: unknown,
+  label: string,
+  kind: "website" | "instagram" | "tiktok"
+): string | null {
   if (value === undefined || value === null) return null;
   const trimmed = String(value).trim();
   if (!trimmed) return null;
   if (trimmed.length > MAX_LINK_LENGTH) {
     throw new https.HttpsError("invalid-argument", `${label} is too long.`);
   }
-  return trimmed;
+
+  const hasScheme = SCHEME_RE.test(trimmed);
+  let candidate = trimmed;
+
+  if (kind === "website") {
+    if (!hasScheme) candidate = `https://${trimmed}`;
+  } else {
+    const canonicalHost = SOCIAL_CANONICAL_HOST[kind];
+    if (trimmed.startsWith("@")) {
+      const handle = trimmed.slice(1).trim();
+      if (!handle) {
+        throw new https.HttpsError("invalid-argument", `${label} handle cannot be empty.`);
+      }
+      candidate = `https://${canonicalHost}/${handle}`;
+    } else if (!hasScheme) {
+      candidate = DOMAIN_LIKE_RE.test(trimmed)
+        ? `https://${trimmed}`
+        : `https://${canonicalHost}/${trimmed.replace(/^\/+/, "")}`;
+    }
+  }
+
+  let url: URL;
+  try {
+    url = new URL(candidate);
+  } catch {
+    throw new https.HttpsError("invalid-argument", `${label} is not a valid link.`);
+  }
+
+  if (url.protocol !== "https:" && url.protocol !== "http:") {
+    throw new https.HttpsError(
+      "invalid-argument",
+      `${label} must be a valid http or https link.`
+    );
+  }
+  if (!url.hostname) {
+    throw new https.HttpsError("invalid-argument", `${label} is not a valid link.`);
+  }
+
+  if (kind !== "website") {
+    const canonicalHost = SOCIAL_CANONICAL_HOST[kind];
+    const host = url.hostname.toLowerCase();
+    if (host !== canonicalHost && host !== `www.${canonicalHost}`) {
+      throw new https.HttpsError("invalid-argument", `${label} must be a ${canonicalHost} link.`);
+    }
+  }
+
+  return url.toString();
 }
 
 export const updateVendorStorefront = https.onCall(async (request) => {
@@ -99,9 +169,9 @@ export const updateVendorStorefront = https.onCall(async (request) => {
   if ("contactLinks" in data) {
     const links = (data.contactLinks ?? {}) as Record<string, unknown>;
     updates.contactLinks = {
-      website: normalizeLink(links.website, "Website"),
-      instagram: normalizeLink(links.instagram, "Instagram"),
-      tiktok: normalizeLink(links.tiktok, "TikTok"),
+      website: normalizeLink(links.website, "Website", "website"),
+      instagram: normalizeLink(links.instagram, "Instagram", "instagram"),
+      tiktok: normalizeLink(links.tiktok, "TikTok", "tiktok"),
     };
   }
 

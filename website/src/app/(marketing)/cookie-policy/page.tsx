@@ -5,11 +5,11 @@ import { SiteContentSectionContent } from "@/lib/types";
 
 export const metadata: Metadata = {
   title: "Cookie Policy",
-  description: "How the platform uses cookies and similar storage.",
+  description: "How Platform uses cookies and similar storage.",
   alternates: { canonical: "/cookie-policy" },
 };
 
-// Default MVP assumption (Section 6.3, pending the client's explicit
+// Default MVP assumption (Section 6.3, pending the Founder's explicit
 // confirmation): no analytics or marketing cookies/trackers. Only
 // essential storage (e.g. session/auth tokens) is used, so no consent
 // banner is required. If analytics/advertising cookies are added later,
@@ -18,7 +18,7 @@ const FALLBACK: SiteContentSectionContent = {
   nodes: [
     {
       type: "paragraph",
-      text: "the platform's website uses only essential storage required for the site to function — such as keeping you signed in to the Vendor Portal. We do not use analytics or marketing cookies or trackers.",
+      text: "Platform's website uses only essential storage required for the site to function, such as keeping you signed in to the Vendor Portal. We do not use analytics or marketing cookies or trackers.",
     },
     { type: "paragraph", text: "Because no non-essential cookies are used, no cookie consent banner is shown." },
   ],

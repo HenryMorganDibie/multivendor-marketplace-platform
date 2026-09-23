@@ -23,7 +23,7 @@ export default function CmsIndexPage() {
     <div>
       <h1 className="text-xl font-semibold">Site Content</h1>
       <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-        Pricing and Contact aren&apos;t edited here — pricing comes from subscription pricing records, and the contact form has no editable copy.
+        Pricing and Contact aren&apos;t edited here. Pricing comes from subscription pricing records, and the contact form has no editable copy.
       </p>
       <ul className="mt-6 divide-y divide-gray-100 rounded-2xl border border-gray-100 dark:divide-gray-800 dark:border-gray-800">
         {SITE_CONTENT_SECTION_IDS.map((id) => (

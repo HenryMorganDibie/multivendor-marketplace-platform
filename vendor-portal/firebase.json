@@ -1,0 +1,15 @@
+{
+  "//": "Deploys this Next.js app to Firebase Hosting via the web-frameworks integration. `source` (rather than `public`) is what tells Firebase to build the app and put its server-rendered routes behind a Cloud Function - needed because /invoice/[shareToken] is rendered on demand (share tokens can't be known at build time) and so cannot be a static export. Everything else in the app prerenders as static.",
+  "hosting": {
+    "site": "platform-portal-dev",
+    "source": ".",
+    "frameworksBackend": {
+      "region": "us-central1"
+    },
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

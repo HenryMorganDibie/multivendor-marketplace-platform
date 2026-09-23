@@ -8,7 +8,7 @@ import { newRequestId } from "../utils/requestContext";
  *
  * The provider is the billing authority. A subscription lives on Paystack,
  * Flutterwave or Stripe, attached to a plan defined there, and that plan is what
- * charges the card. `pricing.json` is what the platform approved and displays.
+ * charges the card. `pricing.json` is what Platform approved and displays.
  *
  * Nothing forces those two to agree. Update a country's price without creating
  * and mapping a new provider-side plan and the two silently diverge: the app
@@ -58,7 +58,7 @@ export async function reconcileChargeAgainstApprovedPrice(
     const pricingSnap = await db.collection("subscriptionPricing").doc(countryCode).get();
     if (!pricingSnap.exists) {
       // A charge for a country with no approved price at all is worth knowing
-      // about: somebody is paying for a plan the platform never published there.
+      // about: somebody is paying for a plan Platform never published there.
       await flag({
         ...input,
         countryCode,

@@ -1,5 +1,5 @@
 /**
- * THE PLATFORM — Landing Page, CMS & Vendor Portal Acceptance Test Suite
+ * PLATFORM — Landing Page, CMS & Vendor Portal Acceptance Test Suite
  * Provider-neutral checkout (server-side provider selection), the two
  * subscription-offerings callables, migration-safe country resolution,
  * double-billing prevention on upgrade, the corrected invoice/receipt
@@ -94,7 +94,7 @@ async function registerVendor({ prefix, country, state = "Lagos", area = "Lekki"
 async function setup() {
   console.log("\n⚙️  Setup: admin account + country/pricing/provider fixtures...");
 
-  adminEmail = `p5admin_${Date.now()}@theplatform.com`;
+  adminEmail = `p5admin_${Date.now()}@example.com`;
   const ac = await createUserWithEmailAndPassword(auth, adminEmail, PASSWORD);
   adminUid = ac.user.uid;
   await waitFor(async () => { const s = await getDoc(doc(db, "users", adminUid)); return s.exists() ? s : null; });
@@ -546,7 +546,7 @@ async function section6() {
 }
 
 async function main() {
-  console.log("🚀 THE PLATFORM — Landing Page, CMS & Vendor Portal Acceptance Test Suite");
+  console.log("🚀 PLATFORM — Landing Page, CMS & Vendor Portal Acceptance Test Suite");
   console.log("=".repeat(60));
 
   await setup();

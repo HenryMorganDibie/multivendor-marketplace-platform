@@ -1,9 +1,10 @@
 /**
- * THE PLATFORM Phase 2 Types
+ * PLATFORM Phase 2 Types
  * Covers: Catalog, Carts, Orders, Inventory, Receipts, Payment Proofs,
  *         Change Requests, Order Events
  */
 import { firestore } from "firebase-admin";
+import { PaymentDestination } from "./types5";
 
 export const PLAN_CATALOG_LIMITS: Record<string, number> = {
   basic: 10,
@@ -38,6 +39,9 @@ export interface AddOnOption {
 export interface AddOnGroup {
   groupId: string;
   name: string;
+  /** Optional vendor-set override for the group's helper text (e.g. "Choose
+   * up to 2"); the client falls back to a computed default when absent. */
+  subheading?: string;
   required: boolean;
   multiSelect: boolean;
   maxSelections?: number;
@@ -247,7 +251,41 @@ export interface OrderDoc {
   rejectedAt?: firestore.Timestamp | firestore.FieldValue | null;
   completedAt?: firestore.Timestamp | firestore.FieldValue | null;
   cancelledAt?: firestore.Timestamp | firestore.FieldValue | null;
+  /**
+   * The reason typed into the vendor's reject/cancel modal. Already sent to
+   * updateOrderStatus and already used for the customer's push notification
+   * body and the order-events log, but never persisted onto the order
+   * itself - the customer's order detail screen has always displayed
+   * order.rejectionReason/cancellationReason directly, so re-opening the
+   * order after the notification was gone showed no reason at all.
+   */
+  rejectionReason?: string | null;
+  cancellationReason?: string | null;
   expiredAt?: firestore.Timestamp | firestore.FieldValue | null;
+  // External Orders only — the payment ledger's derived projection onto this
+  // order (recordPayment/reversePayment). Separate from paymentStatus above,
+  // which is the customer proof-workflow enum: these describe what a vendor
+  // has actually recorded against the order, not what a customer claimed.
+  // Absent on internal orders, and absent on external orders created before
+  // this field existed until the ledger next touches them (see
+  // rebuildOrderPaymentProjection for the lazy-reconstruction path).
+  ledgerAmountPaidMinorUnits?: number;
+  ledgerPaymentStatus?: "unpaid" | "partial" | "paid" | "overpaid";
+  lastLedgerActivityAt?: firestore.Timestamp | firestore.FieldValue | null;
+  /**
+   * Points at whichever paymentRequests/{requestId} document is currently
+   * "active"/"resent" for this order, if any -- the deterministic
+   * serialization point sendPaymentRequestInChat reads and writes inside
+   * one transaction so that two concurrent, genuinely different Send
+   * Payment Request attempts (two different idempotency keys) for the same
+   * order conflict and retry through this shared document rather than
+   * relying solely on query-based transaction semantics. Absent on orders
+   * created before this field existed, or that have never had a payment
+   * request sent against them -- sendPaymentRequestInChat falls back to a
+   * legacy status-based query the first time such an order gets one, then
+   * populates this field going forward.
+   */
+  activePaymentRequestId?: string;
   createdAt: firestore.Timestamp | firestore.FieldValue;
   updatedAt: firestore.Timestamp | firestore.FieldValue;
 }
@@ -327,12 +365,15 @@ export interface PaymentProofDoc {
 // vendor's real payment instructions.
 //
 // There is deliberately no structured bank-name/account-name/account-number
-// selection here. The only real, backend-persisted vendor payment field is a
-// single free-text instructions string (vendors/{vendorId}.paymentInstructions,
-// gated by paymentInstructionsEnabled, written by
-// updateVendorPaymentInstructions.ts) — there is no paymentMethods array, no
-// primaryPaymentMethod/secondaryPaymentMethod, anywhere in this backend. A
-// captured snapshot of that text lives on this doc so a later edit to the
+// selection on the legacy path. The only free-text vendor payment field is a
+// single instructions string (vendors/{vendorId}/settings/payment
+// .paymentInstructions, a private owner-only subdoc — gated by
+// paymentInstructionsEnabled, written by updateVendorPaymentInstructions.ts)
+// — there is no paymentMethods array, no primaryPaymentMethod/
+// secondaryPaymentMethod on that legacy path. A structured alternative now
+// also exists (paymentDestinationSnapshot below), sourced from the vendor's
+// canonical Payment Instructions record instead. A captured snapshot of
+// whichever source applied lives on this doc so a later edit to the
 // vendor's instructions never rewrites what was actually shown at send time.
 //
 // Status vocabulary is deliberately narrower than the order/proof lifecycle:
@@ -348,17 +389,29 @@ export interface PaymentRequestDoc {
   customerId: string;
   amount: number;
   currency: string;
-  // Snapshot of the vendor's structured Payment Method at send time — never
-  // re-read live by the chat card, so a method edit afterward cannot
-  // silently rewrite what the customer was already shown. paymentInstructions
-  // stays optional for requests sent before the structured method existed;
-  // new requests populate the type-specific fields instead.
+  // Snapshot of vendors/{vendorId}/settings/payment.paymentInstructions at
+  // send time — never re-read live by the chat card, so an instructions
+  // edit afterward cannot silently rewrite what the customer was already
+  // shown. Optional: legacy documents (created before the structured
+  // snapshot below existed) all have this set; new structured requests omit
+  // it entirely rather than writing a fake/empty string merely to satisfy
+  // this field.
   paymentInstructions?: string;
-  paymentMethodType?: VendorPaymentMethodType;
-  bankName?: string;
-  accountNumber?: string;
-  accountName?: string;
-  cashInstructions?: string;
+  // Structured Batch 2B/2C.2 snapshot — the sole location for the raw
+  // destination (account number, IBAN, routing, SWIFT/BIC, contact
+  // email/phone). Never duplicated into the chat message; the message only
+  // ever carries enough metadata to look this document up. Immutable once
+  // created, same as paymentInstructions above.
+  paymentDestinationSnapshot?: {
+    paymentDestination: PaymentDestination | null;
+    acceptCash: boolean;
+  };
+  // Audit metadata pointing back at the exact vendors/{vendorId}/
+  // paymentInstructions/{recordId} history entry that was current at send
+  // time — does not replace the immutable destination snapshot above, just
+  // makes it traceable back to that historical record.
+  paymentInstructionsVersion?: number;
+  paymentInstructionsRecordId?: string;
   message?: string | null;
   status: PaymentRequestStatus;
   chatId: string;
@@ -366,38 +419,14 @@ export interface PaymentRequestDoc {
   sentAt: firestore.Timestamp | firestore.FieldValue;
   replacedAt?: firestore.Timestamp | firestore.FieldValue | null;
   replacedByRequestId?: string | null;
+  // Set by reviewPaymentProof on accept, alongside status: "confirmed" —
+  // previously nothing ever moved this doc (or the chat message's own
+  // paymentRequestData.status) out of "active" once a payment actually
+  // cleared, so the request looked permanently outstanding regardless of
+  // real payment state.
+  confirmedAt?: firestore.Timestamp | firestore.FieldValue | null;
   createdAt: firestore.Timestamp | firestore.FieldValue;
   updatedAt: firestore.Timestamp | firestore.FieldValue;
-}
-
-// ─── Vendor Payment Method ─────────────────────────────────────────────────
-// Deliberately its own subcollection (vendors/{vendorId}/paymentMethod), not
-// a field on the vendor document itself — see firestore.rules for why.
-
-export type VendorPaymentMethodType = "bank_transfer" | "cash";
-
-export interface VendorPaymentMethodDoc {
-  type: VendorPaymentMethodType;
-  bankName?: string;
-  accountNumber?: string;
-  accountName?: string;
-  cashInstructions?: string;
-  // Attested once, the first time a vendor ever sets a bank_transfer method,
-  // and carried forward across later replacements — same convention as
-  // updateVendorPaymentInstructions.ts's ownershipConfirmed.
-  ownershipConfirmed: boolean;
-  ownershipConfirmedAt?: firestore.Timestamp | firestore.FieldValue;
-  ownershipConfirmedBy?: string;
-  activeSince: firestore.Timestamp | firestore.FieldValue;
-  updatedAt: firestore.Timestamp | firestore.FieldValue;
-  updatedBy: string;
-}
-
-export interface VendorPaymentMethodHistoryDoc {
-  historyId: string;
-  previousMethod: VendorPaymentMethodDoc;
-  replacedAt: firestore.Timestamp | firestore.FieldValue;
-  replacedBy: string;
 }
 
 // ─── Receipts ────────────────────────────────────────────────────────────────

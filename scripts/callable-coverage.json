@@ -1,0 +1,512 @@
+{
+  "called": [
+    {
+      "name": "cancelSubscription",
+      "by": [
+        "vendor-portal"
+      ]
+    },
+    {
+      "name": "changeUsername",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "checkUsernameAvailability",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "clearChatDraft",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "completeRegistration",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "createCatalogCategory",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "createCatalogItem",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "createCommerceConversation",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "createInvoice",
+      "by": [
+        "mobile",
+        "vendor-portal"
+      ]
+    },
+    {
+      "name": "createOrderFromCart",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "createPromotion",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "createQuickReply",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "createSubscriptionCheckout",
+      "by": [
+        "vendor-portal"
+      ]
+    },
+    {
+      "name": "createSupportTicket",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "deleteCatalogItem",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "deleteInvoice",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "deletePromotion",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "deleteQuickReply",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "downloadInvoicePdf",
+      "by": [
+        "mobile",
+        "vendor-portal"
+      ]
+    },
+    {
+      "name": "duplicateInvoice",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "generateVendorPortalHandoffUrl",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "getBusinessAnalytics",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "getCatalogItemModeration",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "getDashboardInsights",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "getPublicInvoice",
+      "by": [
+        "mobile",
+        "vendor-portal",
+        "website"
+      ]
+    },
+    {
+      "name": "getPublicSiteContent",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "getPublicSubscriptionOfferings",
+      "by": [
+        "website"
+      ]
+    },
+    {
+      "name": "getSiteContentDraft",
+      "by": [
+        "website"
+      ]
+    },
+    {
+      "name": "getSubscriptionStatus",
+      "by": [
+        "vendor-portal"
+      ]
+    },
+    {
+      "name": "getVendorBillingHistory",
+      "by": [
+        "vendor-portal"
+      ]
+    },
+    {
+      "name": "getVendorDashboard",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "getVendorOnboardingStatus",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "getVendorPortalAccess",
+      "by": [
+        "vendor-portal"
+      ]
+    },
+    {
+      "name": "getVendorRatings",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "getVendorSubscriptionOfferings",
+      "by": [
+        "vendor-portal"
+      ]
+    },
+    {
+      "name": "joinWaitlist",
+      "by": [
+        "website"
+      ]
+    },
+    {
+      "name": "listAreas",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "listCountries",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "listInvoices",
+      "by": [
+        "vendor-portal"
+      ]
+    },
+    {
+      "name": "listStates",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "markChatRead",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "publishSiteContent",
+      "by": [
+        "website"
+      ]
+    },
+    {
+      "name": "reactivateSubscription",
+      "by": [
+        "vendor-portal"
+      ]
+    },
+    {
+      "name": "recordPayment",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "recordVerificationDocument",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "registerPushToken",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "repriceCart",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "reversePayment",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "saveChatDraft",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "saveSiteContentDraft",
+      "by": [
+        "website"
+      ]
+    },
+    {
+      "name": "sendChatMessage",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "sendEmailOtp",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "sendInvoiceInChat",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "sendPhoneOtp",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "setVendorPublishStatus",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "submitContactForm",
+      "by": [
+        "website"
+      ]
+    },
+    {
+      "name": "submitPaymentProof",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "submitVendorVerification",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "togglePromotionActive",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "updateCatalogItem",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "updateCustomerNotificationPreferences",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "updateInvoice",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "updateInvoiceBranding",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "updateInvoiceStatus",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "updateOrderStatus",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "updatePromotion",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "updateQuickReply",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "updateVendorChatSettings",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "updateVendorNotificationPreferences",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "updateVendorPickupSettings",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "updateVendorSettings",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "validateLocationSelection",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "verifyEmailOtp",
+      "by": [
+        "mobile"
+      ]
+    },
+    {
+      "name": "verifyPhoneOtp",
+      "by": [
+        "mobile"
+      ]
+    }
+  ],
+  "triggers": [
+    "cleanupExpiredInvoiceVisibility",
+    "cleanupOrphanedAccount",
+    "cleanupOrphanedAccounts",
+    "expireStaleSubscriptions",
+    "gracePeriodReminder",
+    "handleChangeRequest",
+    "handleFlutterwaveWebhook",
+    "handlePaystackWebhook",
+    "handleStripeWebhook",
+    "onCatalogItemWrite",
+    "onCountryAvailabilityWrite",
+    "onRatingWrite",
+    "onUserCreate",
+    "onUserDelete",
+    "onVendorVerificationDocumentWrite",
+    "onVendorWrite"
+  ],
+  "adminPortal": [
+    "acceptAdminInvite",
+    "applyManualSubscriptionOverride",
+    "approveCatalogItem",
+    "approveVendorVerification",
+    "assignSupportTicket",
+    "cancelSubscriptionAdmin",
+    "createAdminInvite",
+    "deactivateVendor",
+    "listCatalogModerationQueue",
+    "moderateRating",
+    "reactivateVendor",
+    "recordAdminSession",
+    "rejectCatalogItem",
+    "rejectVendorVerification",
+    "requestVerificationRetry",
+    "resolveSupportTicket",
+    "reviewModerationRestriction",
+    "reviewPaymentProof",
+    "revokeAdminAccess",
+    "seedDefaultModerationRules",
+    "seedSubscriptionPlans",
+    "suspendVendor"
+  ],
+  "vendorPortal": [],
+  "postMvp": [
+    "createAiHelpThread",
+    "createExternalOrder",
+    "getClaimsVersion",
+    "getReceipt",
+    "submitDeliveryContact"
+  ],
+  "mobileGaps": [
+    "blockUser",
+    "getOrderDetails",
+    "getVendorRevenue",
+    "listPayments",
+    "listVendorPromotions",
+    "markNotificationRead",
+    "submitRating",
+    "unblockUser"
+  ]
+}

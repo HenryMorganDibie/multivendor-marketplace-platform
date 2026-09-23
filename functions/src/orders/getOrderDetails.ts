@@ -5,7 +5,7 @@ import { isOrderTerminal } from "./orderStatus";
 /**
  * getOrderDetails — the vendor-facing "safe" way to read an order.
  *
- * Per the client's contact-card edge cases: "Vendor can view the contact
+ * Per the Founder's contact-card edge cases: "Vendor can view the contact
  * snapshot only while the related order is active. When the order reaches
  * a terminal status, vendor can no longer read/display the contact
  * details."

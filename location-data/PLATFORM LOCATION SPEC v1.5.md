@@ -1,23 +1,23 @@
-# the platform Canonical Location Specification (v1.5)
+# Platform Canonical Location Specification (v1.5)
 
 Version: 1.5
-Owner: the platform
+Owner: Platform
 Status: Approved
 Last Updated:
 Next Review:
 
-**Status:** Canonical — this is the single source of truth for Country, State/Province, and Area/City data across the platform backend and frontend. All future countries must be added following this specification.
+**Status:** Canonical — this is the single source of truth for Country, State/Province, and Area/City data across the Platform backend and frontend. All future countries must be added following this specification.
 
-**v1.4 update (corrections from the client's second review):**
+**v1.4 update (corrections from the Founder's second review):**
 1. Removed the pricing/scope conclusion from the Section 8 closing note — the spec now stays purely technical and doesn't determine chargeability.
 2. Added Section 8.5, server-side enforcement: order creation must independently re-evaluate Store Status against trusted server time and reject if closed, never trusting a client-supplied or cached `isOpenNow` value.
 3. Schedule boundaries are now explicitly defined as start-inclusive, end-exclusive (Section 8.3).
 4. Late-night hours: `"24:00"` is now permitted as an `end` value only, letting vendors represent e.g. `22:00`–`24:00` plus `00:00`–`02:00` the following day. True overnight periods within a single entry remain unsupported for MVP (Section 8.6).
 5. `weeklyHours` is now a fixed `Weekday` union type with all seven days required, replacing the open-ended `[weekday: string]` index type (Section 8.1).
 6. Added `updatedAt`, `manualStatusChangedAt`, and `timeZoneConfirmedAt` to the Store Status model (Section 8.1).
-7. Revised the closing ownership note to acknowledge the platform's use of standard ISO 3166, BCP 47, and IANA identifiers while confirming the platform owns and maintains its own runtime catalogue, with no third-party runtime dependency (see closing note at the end of this document).
+7. Revised the closing ownership note to acknowledge Platform's use of standard ISO 3166, BCP 47, and IANA identifiers while confirming Platform owns and maintains its own runtime catalogue, with no third-party runtime dependency (see closing note at the end of this document).
 
-**Data ownership:** All location data is authored and owned by the platform. No third-party API or dataset is used at runtime or as a data source. This document defines the schema, conventions, and process so that the client (or any future contributor) can add new countries independently, without depending on Henry or any external service.
+**Data ownership:** All location data is authored and owned by Platform. No third-party API or dataset is used at runtime or as a data source. This document defines the schema, conventions, and process so that the Founder (or any future contributor) can add new countries independently, without depending on Henry or any external service.
 
 
 ---
@@ -117,7 +117,7 @@ Every field listed in Section 1 is **required** — there are no optional fields
 | `normalizedName` | Lowercase comparison key, used to detect duplicates and for case-insensitive search |
 | `status` | Controls visibility/selectability without ever deleting the record |
 | `sortOrder` | Controls dropdown/list display order independent of alphabetical sort |
-| `createdAt` / `updatedAt` | Audit trail, consistent with the standard used across every other the platform collection |
+| `createdAt` / `updatedAt` | Audit trail, consistent with the standard used across every other Platform collection |
 
 ---
 
@@ -466,7 +466,7 @@ Unlike the location catalogue (Sections 1–7), this schema is not authored via 
 
 ---
 
-This specification uses standard, publicly published identifier systems where they exist: ISO 3166-1 (country codes), BCP 47 (locale tags), and the IANA Time Zone Database (timezone identifiers). Using these standards is intentional and correct — they are the accepted, stable references for this kind of data, and reinventing them would only introduce inconsistency. What this specification does not do is depend on any third-party API, dataset, or runtime service to operate. the platform owns and maintains its own runtime location catalogue — every `countries`, `states`, and `locations` document is authored by the platform and stored in the platform's own Firestore instance. The application never calls an external service to resolve a country, state, city, or timezone at runtime; it reads only from data the platform has already authored and imported. This is intentional and should remain true for all future countries added to the system.
+This specification uses standard, publicly published identifier systems where they exist: ISO 3166-1 (country codes), BCP 47 (locale tags), and the IANA Time Zone Database (timezone identifiers). Using these standards is intentional and correct — they are the accepted, stable references for this kind of data, and reinventing them would only introduce inconsistency. What this specification does not do is depend on any third-party API, dataset, or runtime service to operate. Platform owns and maintains its own runtime location catalogue — every `countries`, `states`, and `locations` document is authored by Platform and stored in Platform's own Firestore instance. The application never calls an external service to resolve a country, state, city, or timezone at runtime; it reads only from data Platform has already authored and imported. This is intentional and should remain true for all future countries added to the system.
 
 
 ## Country Status

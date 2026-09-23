@@ -11,6 +11,8 @@ import {
   XCircle,
 } from "lucide-react";
 import { callable } from "@/lib/firebase";
+import { useVendorAuth } from "@/lib/useVendorAuth";
+import { formatFirestoreDate } from "@/lib/formatFirestoreDate";
 import { InvoiceLineItem, InvoiceStatus, InvoiceSummary } from "@/lib/types";
 import { PageHeader } from "@/components/PageHeader";
 import { StatusBadge, StatusTone } from "@/components/StatusBadge";
@@ -27,7 +29,7 @@ interface CreateInvoiceResponse {
   invoiceNumber: string;
 }
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://vendor.theplatform.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://vendor.example.com";
 
 type PillKey = "all" | InvoiceStatus;
 
@@ -60,11 +62,9 @@ const STATUS_CONFIG: Record<InvoiceStatus, { label: string; tone: StatusTone; ic
 };
 
 function formatDate(value: InvoiceSummary["createdAt"]): string {
-  if (typeof value === "object" && value !== null && "seconds" in value) {
-    return new Date(value.seconds * 1000).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
-  }
-  if (typeof value === "string") return new Date(value).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
-  return "—";
+  // Was checking only "seconds", so the Admin SDK's { _seconds } shape fell
+  // through to an em dash and invoice rows rendered without a date.
+  return formatFirestoreDate(value);
 }
 
 function formatAmount(amount: number, currency: string): string {
@@ -76,6 +76,12 @@ function formatAmount(amount: number, currency: string): string {
 }
 
 export default function InvoicesPage() {
+  const { access } = useVendorAuth();
+  // Section 4.1 / Edge Case #22: a suspended vendor cannot create invoices.
+  // The backend now rejects createInvoice outright for a suspended vendor
+  // (requireBillingEligibleVendor); disabling the button here means they see
+  // why up front instead of a rejection after filling out the form.
+  const billingRestricted = access?.accessState === "read_only";
   const [invoices, setInvoices] = useState<InvoiceSummary[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [showForm, setShowForm] = useState(false);
@@ -84,7 +90,6 @@ export default function InvoicesPage() {
   const [selectedShareLink, setSelectedShareLink] = useState<string | null>(null);
 
   const [activePill, setActivePill] = useState<PillKey>("all");
-  const [showSearch, setShowSearch] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
   function loadInvoices() {
@@ -195,15 +200,25 @@ export default function InvoicesPage() {
       <PageHeader
         title="Invoices"
         description="Create and manage invoices sent to your customers."
+        /**
+          * Hidden while the ledger is empty, because the empty state below
+          * already carries a "Create invoice" button — two competing primary
+          * CTAs for the same action, one of them directly under the other.
+          * Still rendered when the form is open so there is a way to cancel.
+          */
         action={
-          <button
-            type="button"
-            onClick={() => setShowForm((v) => !v)}
-            className="flex items-center gap-1.5 rounded-full bg-brand px-4 py-2 text-sm font-semibold text-white hover:bg-brand-dark"
-          >
-            {showForm ? <X size={16} /> : <Plus size={16} />}
-            {showForm ? "Cancel" : "New invoice"}
-          </button>
+          showForm || (invoices !== null && invoices.length > 0) ? (
+            <button
+              type="button"
+              disabled={!showForm && billingRestricted}
+              title={!showForm && billingRestricted ? "Billing actions are unavailable while your account is suspended." : undefined}
+              onClick={() => setShowForm((v) => !v)}
+              className="flex items-center gap-1.5 rounded-button bg-brand px-4 py-2.5 text-button text-white transition-colors hover:bg-brand-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand active:bg-brand-darker disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {showForm ? <X size={16} /> : <Plus size={16} />}
+              {showForm ? "Cancel" : "New invoice"}
+            </button>
+          ) : null
         }
       />
 
@@ -321,65 +336,66 @@ export default function InvoicesPage() {
         </form>
       )}
 
-      {/* Status pills + search */}
-      <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
-        <div className="flex flex-wrap gap-2">
-          {PILLS.map((pill) => {
-            const active = activePill === pill.key;
-            const count = pillCounts[pill.key];
-            return (
-              <button
-                key={pill.key}
-                type="button"
-                onClick={() => setActivePill(pill.key)}
-                className={`rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors ${
-                  active
-                    ? "border-gray-900 bg-gray-900 text-white dark:border-gray-100 dark:bg-gray-100 dark:text-gray-900"
-                    : "border-gray-200 text-gray-600 hover:border-gray-300 dark:border-gray-800 dark:text-gray-400 dark:hover:border-gray-700"
-                }`}
-              >
-                {pill.label}
-                {count > 0 ? ` (${count})` : ""}
-              </button>
-            );
-          })}
-        </div>
-
-        <div className="flex items-center gap-2">
-          {showSearch && (
-            <div className="flex items-center gap-2 rounded-full border border-gray-200 px-3 py-1.5 dark:border-gray-800">
-              <Search size={15} className="text-gray-400" />
-              <input
-                autoFocus
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search invoices"
-                className="w-40 bg-transparent text-sm outline-none sm:w-56"
-              />
-              {searchQuery.length > 0 && (
-                <button type="button" onClick={() => setSearchQuery("")} className="text-gray-400 hover:text-gray-600">
-                  <X size={14} />
+      {/**
+        * Filters and search, hidden entirely while there are no invoices —
+        * there is nothing to filter or search, and showing them above an empty
+        * state made the page look like a failed query rather than a fresh
+        * account.
+        *
+        * Search is a real field on the same row as the pills now. It used to be
+        * a lone circular icon button floating below them, which read as
+        * unrelated to the filters and gave no indication of what it searched.
+        */}
+      {invoices !== null && invoices.length > 0 && (
+        <div className="mt-section-y flex flex-col gap-2.5 sm:flex-row sm:items-center sm:justify-between">
+          <div className="-mx-page-x flex gap-2 overflow-x-auto px-page-x pb-0.5 sm:mx-0 sm:flex-wrap sm:px-0">
+            {PILLS.map((pill) => {
+              const active = activePill === pill.key;
+              const count = pillCounts[pill.key];
+              return (
+                <button
+                  key={pill.key}
+                  type="button"
+                  onClick={() => setActivePill(pill.key)}
+                  aria-pressed={active}
+                  className={`shrink-0 rounded-full border px-3.5 py-1.5 text-body-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand ${
+                    active
+                      ? "border-ink bg-ink text-white"
+                      : "border-hairline-strong text-ink-secondary hover:border-ink-tertiary hover:text-ink active:bg-surface"
+                  }`}
+                >
+                  {pill.label}
+                  {count > 0 ? ` (${count})` : ""}
                 </button>
-              )}
-            </div>
-          )}
-          <button
-            type="button"
-            onClick={() => {
-              setShowSearch((v) => !v);
-              if (showSearch) setSearchQuery("");
-            }}
-            aria-label="Toggle search"
-            className={`flex h-9 w-9 items-center justify-center rounded-full border ${
-              showSearch
-                ? "border-brand text-brand"
-                : "border-gray-200 text-gray-500 hover:border-gray-300 dark:border-gray-800 dark:text-gray-400"
-            }`}
-          >
-            <Search size={16} />
-          </button>
+              );
+            })}
+          </div>
+
+          <div className="flex items-center gap-2 rounded-input border border-hairline-strong px-3 py-2 transition-colors focus-within:border-brand sm:w-56">
+            <Search size={15} className="shrink-0 text-ink-tertiary" />
+            <label htmlFor="invoice-search" className="sr-only">
+              Search invoices
+            </label>
+            <input
+              id="invoice-search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search invoices"
+              className="min-w-0 flex-1 bg-transparent text-body-sm text-ink outline-none placeholder:text-ink-tertiary"
+            />
+            {searchQuery.length > 0 && (
+              <button
+                type="button"
+                onClick={() => setSearchQuery("")}
+                aria-label="Clear search"
+                className="shrink-0 rounded-full text-ink-tertiary transition-colors hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+              >
+                <X size={14} />
+              </button>
+            )}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* List */}
       {invoices === null && !error && <p className="mt-8 text-sm text-gray-500">Loading…</p>}
@@ -390,7 +406,7 @@ export default function InvoicesPage() {
             icon={invoices.length === 0 ? FileText : Search}
             title={invoices.length === 0 ? "No invoices yet" : "No invoices found"}
             description={invoices.length === 0 ? "Create your first invoice and share it with a customer." : "Try a different search or filter."}
-            action={invoices.length === 0 ? { label: "Create invoice", onClick: () => setShowForm(true) } : undefined}
+            action={invoices.length === 0 && !billingRestricted ? { label: "Create invoice", onClick: () => setShowForm(true) } : undefined}
           />
         </div>
       )}

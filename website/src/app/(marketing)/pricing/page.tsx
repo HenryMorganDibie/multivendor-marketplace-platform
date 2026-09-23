@@ -3,7 +3,7 @@ import PricingClient from "./PricingClient";
 
 export const metadata: Metadata = {
   title: "Pricing",
-  description: "See the platform vendor subscription pricing for your country.",
+  description: "See Platform vendor subscription pricing for your country.",
   alternates: { canonical: "/pricing" },
 };
 

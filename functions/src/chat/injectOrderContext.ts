@@ -5,7 +5,7 @@ import { commerceThreadId } from "./createCommerceConversation";
 /**
  * injectOrderContext — called internally whenever an order is created.
  *
- * Per the client: a new order NEVER creates a new chat thread. It reuses the
+ * Per the Founder: a new order NEVER creates a new chat thread. It reuses the
  * canonical commerce thread for the (customerId, vendorId) pair, creating
  * that thread first ONLY if it does not already exist (e.g. a vendor
  * created an external order for a customer who never messaged first).

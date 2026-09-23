@@ -116,7 +116,7 @@ export async function runModerationCheck(
   if (standaloneMatches.length === 0) {
     // Only weak-signal (standalone:false) terms matched — e.g. "bank
     // transfer" with no off-platform-avoidance phrase alongside it. This is
-    // normal the platform commerce chatter and must not be flagged at all.
+    // normal Platform commerce chatter and must not be flagged at all.
     return CLEAN_RESULT;
   }
 

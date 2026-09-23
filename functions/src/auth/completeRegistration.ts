@@ -108,7 +108,32 @@ export const completeRegistration = https.onCall(
     if (existingRole === "vendor") {
       if (existingVendorId) {
         const existingVendor = await db.collection("vendors").doc(existingVendorId).get();
-        if (existingVendor.exists) {
+        if (existingVendor.exists && existingVendor.data()?.ownerUid === uid) {
+          /**
+           * Firestore alone is not proof that this account can actually act as
+           * a vendor. This early return used to trust it outright, which meant
+           * that if the earlier registration attempt's batch.commit() (role +
+           * vendorId + vendor doc) succeeded but the standalone
+           * setCustomUserClaims() call right after it failed or was
+           * interrupted, every retry landed here, saw a "finished" account in
+           * Firestore, and returned success without ever repairing the token.
+           * The vendor doc existing, and existingVendor.data()?.ownerUid
+           * matching this uid, is what makes it safe to (re)issue claims from
+           * — vendorId is never taken from request.data.
+           */
+          const currentUser = await auth.getUser(uid);
+          const currentClaims = currentUser.customClaims ?? {};
+          if (currentClaims.role !== "vendor" || currentClaims.vendorId !== existingVendorId) {
+            const repairedClaimsVersion = ((userSnap.data()?.claimsVersion as number | undefined) ?? 1) + 1;
+            await auth.setCustomUserClaims(uid, {
+              role: "vendor",
+              vendorId: existingVendorId,
+              claimsVersion: repairedClaimsVersion,
+            });
+            await userRef.update({ claimsVersion: repairedClaimsVersion, updatedAt: FieldValue.serverTimestamp() });
+            logger.warn("completeRegistration repaired missing/mismatched vendor claims on retry.", { uid, vendorId: existingVendorId });
+          }
+
           logger.info("completeRegistration called again for a finished account; returning the existing record.", { uid, vendorId: existingVendorId });
           return {
             success: true,
@@ -355,3 +380,85 @@ export const getClaimsVersion = https.onCall(async (request): Promise<{ claimsVe
 
   return { claimsVersion };
 });
+
+/**
+ * repairVendorClaims — re-issues vendor custom claims for the authenticated
+ * caller when Firestore already shows a finished vendor registration but the
+ * ID token's claims are missing or stale (the same gap completeRegistration's
+ * retry fast-path now closes on a fresh retry — this exists for a vendor who
+ * is already stuck and whose client never calls completeRegistration again).
+ *
+ * Deliberately narrow: no vendorId (or any other field) is ever accepted from
+ * the client. The only identity input is request.auth.uid, and every value
+ * used to build the repaired claims is read back from Firestore records this
+ * function itself just verified belong to that same uid — a caller can only
+ * ever repair their own account, never anyone else's.
+ */
+export const repairVendorClaims = https.onCall(
+  async (request): Promise<{ repaired: boolean; vendorId?: string }> => {
+    const requestId = newRequestId();
+    const appCheck = checkAppCheck(request, "repairVendorClaims");
+
+    if (!request.auth) {
+      throw new https.HttpsError("unauthenticated", "Sign in required.");
+    }
+    const uid = request.auth.uid;
+
+    const userSnap = await db.collection("users").doc(uid).get();
+    if (!userSnap.exists) {
+      throw new https.HttpsError("failed-precondition", "No account record found for this user.");
+    }
+    const userData = userSnap.data()!;
+    if (userData.role !== "vendor") {
+      throw new https.HttpsError("failed-precondition", "This account is not a registered vendor.");
+    }
+
+    const vendorId = userData.vendorId as string | undefined;
+    if (!vendorId) {
+      throw new https.HttpsError("failed-precondition", "This account has no vendor record to repair.");
+    }
+
+    const vendorSnap = await db.collection("vendors").doc(vendorId).get();
+    if (!vendorSnap.exists || vendorSnap.data()?.ownerUid !== uid) {
+      throw new https.HttpsError("failed-precondition", "No owned vendor record found to repair claims from.");
+    }
+
+    const currentUser = await auth.getUser(uid);
+    const currentClaims = currentUser.customClaims ?? {};
+
+    if (currentClaims.role === "vendor" && currentClaims.vendorId === vendorId) {
+      return { repaired: false, vendorId };
+    }
+
+    const currentClaimsVersion = (userData.claimsVersion as number | undefined) ?? 1;
+    const newClaimsVersion = currentClaimsVersion + 1;
+
+    await auth.setCustomUserClaims(uid, {
+      role: "vendor",
+      vendorId,
+      claimsVersion: newClaimsVersion,
+    });
+    await db.collection("users").doc(uid).update({
+      claimsVersion: newClaimsVersion,
+      updatedAt: FieldValue.serverTimestamp(),
+    });
+
+    await writeAuditLog({
+      requestId,
+      functionName: "repairVendorClaims",
+      actorUid: uid,
+      actorRole: "vendor",
+      actorType: "vendor",
+      targetType: "user",
+      targetId: uid,
+      eventType: "user.vendor_claims_repaired",
+      message: `Vendor claims repaired for ${vendorId}.`,
+      after: { vendorId, claimsVersion: newClaimsVersion },
+      appCheck,
+    });
+
+    logger.warn("repairVendorClaims repaired missing/stale vendor claims.", { uid, vendorId });
+
+    return { repaired: true, vendorId };
+  }
+);

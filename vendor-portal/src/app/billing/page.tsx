@@ -27,6 +27,9 @@ function formatDate(value: string | null): string {
   return new Date(value).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
 }
 
+// Takes minor units. The API previously sent this field in major units while
+// this function divided by 100 like the minor-unit fields elsewhere in the
+// portal, so a NGN 25,000 payment rendered as NGN 250.00.
 function formatAmount(amount: number | null, currency: string | null): string {
   if (amount === null || !currency) return "—";
   try {
@@ -175,7 +178,7 @@ export default function BillingHistoryPage() {
                   <tr key={i} className="border-b border-gray-100 dark:border-gray-900">
                     <td className="py-3 pr-4">{formatDate(entry.paymentDate)}</td>
                     <td className="py-3 pr-4 capitalize">{entry.plan.replace("_", "+")}</td>
-                    <td className="py-3 pr-4 font-medium">{formatAmount(entry.amount, entry.currency)}</td>
+                    <td className="py-3 pr-4 font-medium">{formatAmount(entry.amountMinorUnits, entry.currency)}</td>
                     <td className="py-3 pr-4">
                       <StatusBadge label={entry.paymentStatus} tone={STATUS_TONE[entry.paymentStatus] ?? "neutral"} />
                     </td>
@@ -198,7 +201,7 @@ export default function BillingHistoryPage() {
                 </div>
                 <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">{formatDate(entry.paymentDate)}</p>
                 <div className="mt-3 flex items-center justify-between">
-                  <p className="text-sm font-semibold">{formatAmount(entry.amount, entry.currency)}</p>
+                  <p className="text-sm font-semibold">{formatAmount(entry.amountMinorUnits, entry.currency)}</p>
                   {entry.providerReference && <p className="max-w-[140px] truncate text-xs text-gray-400">{entry.providerReference}</p>}
                 </div>
               </div>

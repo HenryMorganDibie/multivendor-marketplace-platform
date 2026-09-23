@@ -13,7 +13,7 @@ import { AppCheckContext } from "../types";
  *  - MONITOR MODE (default, controlled by APP_CHECK_ENFORCE env var):
  *    Functions are defined WITHOUT `enforceAppCheck: true`. We inspect
  *    `request.app` ourselves, log/record whether App Check was present and
- *    valid, but do NOT block the request. This lets the client roll out App
+ *    valid, but do NOT block the request. This lets the Founder roll out App
  *    Check on the frontend first and watch real traffic before enforcing.
  *
  *  - ENFORCEMENT MODE (APP_CHECK_ENFORCE=true):

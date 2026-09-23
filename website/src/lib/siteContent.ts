@@ -3,10 +3,10 @@ import { GetPublicSiteContentResponse, SiteContentSectionContent, SiteContentSec
 
 /**
  * Server-side fetch of published CMS content via getPublicSiteContent.
- * Runs at request/build time in a Server Component — never in the
- * browser — so no client Firestore access is needed for the landing
+ * Runs at request/build time in a Server Component, never in the
+ * browser, so no client Firestore access is needed for the landing
  * pages at all. Falls back to null per-section when the CMS hasn't
- * published that section yet (fresh install, or the client's copy not
+ * published that section yet (fresh install, or Founder's copy not
  * loaded), so pages still render with the code-owned fallback content
  * baked into each page component.
  */
@@ -20,7 +20,7 @@ export async function getPublishedSiteContent(): Promise<PublishedSections> {
 
   // Emulator mode calls the local Functions emulator directly (the
   // production https://{region}-{projectId}.cloudfunctions.net URL format
-  // doesn't exist locally) — same host/port the acceptance test scripts
+  // doesn't exist locally), same host/port the acceptance test scripts
   // and firebase.ts's client-side emulator connection use.
   const url = useEmulator
     ? `http://127.0.0.1:5001/${projectId}/${region}/getPublicSiteContent`

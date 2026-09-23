@@ -110,7 +110,15 @@ export async function resolveEffectivePlan(vendorId: string): Promise<EffectiveP
   }
 
   // 5. Status cancelled and before currentPeriodEnd.
-  if (sub.status === "cancelled" && "toMillis" in sub.currentPeriodEnd && sub.currentPeriodEnd.toMillis() > Date.now()) {
+  //
+  // The `sub.currentPeriodEnd &&` guard below was missing (inconsistent with
+  // the admin-override and grace-period checks above, which both guard their
+  // own `"toMillis" in x` the same way): a "cancelled" subscription with no
+  // currentPeriodEnd threw `TypeError: Cannot use 'in' operator to search
+  // for 'toMillis' in undefined` -- an uncaught, non-HttpsError exception
+  // that every caller of resolveEffectivePlan (including updateVendorSettings)
+  // surfaces to the client as an opaque "internal". Reproduced directly.
+  if (sub.status === "cancelled" && sub.currentPeriodEnd && "toMillis" in sub.currentPeriodEnd && sub.currentPeriodEnd.toMillis() > Date.now()) {
     return { plan: sub.plan, limits: await loadPlanLimits(sub.plan), subscription: sub, reason: "cancelled_before_period_end" };
   }
 

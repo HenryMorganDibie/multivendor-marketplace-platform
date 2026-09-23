@@ -37,17 +37,17 @@ export type SubscriptionEmailTrigger =
   | "admin_override_applied";
 
 const SUBJECTS: Record<SubscriptionEmailTrigger, (plan?: string, date?: string) => string> = {
-  activated: (plan) => `Your the platform ${plan ?? ""} subscription is active`.replace("  ", " "),
-  renewed: () => "Your the platform subscription has renewed",
-  payment_failed_first: () => "Action required: payment failed for your the platform subscription",
-  grace_period_t_minus_2: () => "Your the platform access ends in 2 days",
-  cancelled: () => "Your the platform subscription has been cancelled",
-  reactivated: () => "Your the platform subscription has been reactivated",
+  activated: (plan) => `Your Platform ${plan ?? ""} subscription is active`.replace("  ", " "),
+  renewed: () => "Your Platform subscription has renewed",
+  payment_failed_first: () => "Action required: payment failed for your Platform subscription",
+  grace_period_t_minus_2: () => "Your Platform access ends in 2 days",
+  cancelled: () => "Your Platform subscription has been cancelled",
+  reactivated: () => "Your Platform subscription has been reactivated",
   plan_changed_upgrade: (plan) => `You have been upgraded to ${plan ?? "a new plan"}, effective now`,
   plan_changed_downgrade_pending: (plan, date) => `Your plan will change to ${plan ?? "a new plan"} on ${date ?? "your next billing date"}`,
   downgrade_effective_checkout_required: (plan) => `Action required to continue on ${plan ?? "your requested plan"}`,
-  expired: () => "Your the platform subscription has ended",
-  admin_override_applied: () => "Your the platform plan has been temporarily adjusted",
+  expired: () => "Your Platform subscription has ended",
+  admin_override_applied: () => "Your Platform plan has been temporarily adjusted",
 };
 
 function getResendKey(): string {
@@ -79,7 +79,7 @@ export async function sendSubscriptionEmail(
       method: "POST",
       headers: { Authorization: `Bearer ${getResendKey()}`, "Content-Type": "application/json" },
       body: JSON.stringify({
-        from: "the platform <billing@theplatform.com>",
+        from: "Platform <billing@example.com>",
         to: [toEmail],
         subject,
         html: `<p>${subject}</p>`,

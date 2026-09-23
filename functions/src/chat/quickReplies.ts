@@ -13,7 +13,7 @@ async function rejectIfUnsafe(vendorId: string, actorUid: string, label: string,
   });
   await applyUserModerationScore(actorUid, result.score);
   if (!result.blocked) return;
-  throw new https.HttpsError("invalid-argument", `${label} contains content that is not allowed on the platform.`);
+  throw new https.HttpsError("invalid-argument", `${label} contains content that is not allowed on Platform.`);
 }
 
 function normalizeShortcut(raw: string): string {

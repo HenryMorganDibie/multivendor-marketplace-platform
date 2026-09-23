@@ -191,7 +191,7 @@ export const assignSupportTicket = https.onCall(async (request) => {
     domain: "support",
     title: "Your support request has been picked up",
     body: `An agent is now reviewing: ${ticket.subject}`,
-    deepLink: `the platform://chat/${ticket.chatId}`,
+    deepLink: `platform://chat/${ticket.chatId}`,
     isCritical: false,
   });
 
@@ -248,7 +248,7 @@ export const resolveSupportTicket = https.onCall(async (request) => {
     domain: "support",
     title: "Your support request has been resolved",
     body: ticket.subject,
-    deepLink: `the platform://chat/${ticket.chatId}`,
+    deepLink: `platform://chat/${ticket.chatId}`,
     isCritical: false,
   });
 

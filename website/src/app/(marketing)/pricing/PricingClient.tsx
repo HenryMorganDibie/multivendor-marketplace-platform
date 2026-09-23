@@ -7,9 +7,9 @@ import { PRICING_COUNTRIES, suggestCountryFromLocale } from "./countries";
 import WaitlistForm from "./WaitlistForm";
 import AccordionItem from "@/components/Accordion";
 
-const STORAGE_KEY = "the platform:pricing:countryCode";
+const STORAGE_KEY = "platform:pricing:countryCode";
 
-// "Pro Plus" (with a space) must never appear in the UI (Section 1.1) —
+// "Pro Plus" (with a space) must never appear in the UI (Section 1.1):
 // pro_plus displays as "Pro+" exclusively.
 const PLAN_DISPLAY_NAME: Record<PaidSubscriptionPlanId, string> = {
   standard: "Standard",
@@ -17,16 +17,20 @@ const PLAN_DISPLAY_NAME: Record<PaidSubscriptionPlanId, string> = {
   pro_plus: "Pro+",
 };
 
-// Mirrors functions/src/subscriptions/planLimitsSeedData.ts's
-// DEFAULT_PLAN_DISPLAY exactly — real seeded limits, not invented copy.
-// Kept in sync manually; update both if the plan-gating matrix changes.
-const PLAN_FEATURES: Record<PaidSubscriptionPlanId, string[]> = {
-  standard: ["30 catalog items", "External orders", "Best seller & revenue widgets", "25 invoices/month"],
-  pro: ["100 catalog items", "Auto-send pickup details", "Advanced analytics", "Invoice branding", "100 invoices/month"],
-  pro_plus: ["250 catalog items", "Auto-accept orders", "Premium invoice templates", "200 invoices/month"],
-};
+// Paid-plan features now come from the API, which reads subscriptionPlans/
+// {planId} in Firestore. This page used to keep its own copy of the limits and
+// said so: "kept in sync manually". That is exactly how a public pricing page
+// ends up advertising catalog and invoice limits that no longer match what the
+// platform actually enforces, and it is why the limits here looked wrong.
+//
+// Free/Basic is not part of the paid offerings response, so its bullets stay
+// local until there is a subscriptionPlans/basic document to read.
 
-const FREE_PLAN_FEATURES = ["10 catalog items", "2 photos per item", "3 invoices/month"];
+// Must match DEFAULT_PLAN_DISPLAY.basic.features in the backend's
+// planLimitsSeedData.ts. Tightened from 10 items / 2 photos / 3 invoices when
+// Basic was judged too generous to drive upgrades. If that changes again, the
+// backend is the source and this follows it.
+const FREE_PLAN_FEATURES = ["7 catalog items", "1 photo per item", "2 invoices/month"];
 
 const PRICING_FAQ = [
   {
@@ -39,7 +43,7 @@ const PRICING_FAQ = [
   },
   {
     q: "How do downgrades work?",
-    a: "Downgrades take effect at the end of your current billing period — you keep your current plan's features until then.",
+    a: "Downgrades take effect at the end of your current billing period. You keep your current plan's features until then.",
   },
   {
     q: "Can I cancel anytime?",
@@ -47,12 +51,12 @@ const PRICING_FAQ = [
   },
   {
     q: "What payment methods are supported?",
-    a: "the platform supports the payment methods available in your country, selected automatically — you never have to choose a provider.",
+    a: "Platform supports the payment methods available in your country, selected automatically. You never have to choose a provider.",
   },
 ];
 
 function formatPrice(minorUnits: number, currencyCode: string | null): string {
-  if (!currencyCode) return "—";
+  if (!currencyCode) return "N/A";
   if (minorUnits === 0) return "Free";
   const amount = minorUnits / 100;
   try {
@@ -68,6 +72,9 @@ export default function PricingClient() {
   const [offerings, setOfferings] = useState<GetOfferingsResponse | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // Bumped by "Try again"; the fetch effect depends on it, so incrementing it
+  // re-runs the request without duplicating the fetch logic.
+  const [retryCount, setRetryCount] = useState(0);
 
   useEffect(() => {
     const stored = typeof window !== "undefined" ? window.localStorage.getItem(STORAGE_KEY) : null;
@@ -96,7 +103,7 @@ export default function PricingClient() {
     return () => {
       cancelled = true;
     };
-  }, [initialized, countryCode]);
+  }, [initialized, countryCode, retryCount]);
 
   function handleCountryChange(next: string) {
     setCountryCode(next);
@@ -136,16 +143,42 @@ export default function PricingClient() {
         </p>
       )}
 
+      {/* A skeleton in the shape of the real cards, rather than a line of text.
+          A screenshot taken mid-load previously showed nothing but the words
+          "Loading pricing", which reads as a broken page rather than a loading
+          one. */}
       {loading && (
-        <p aria-live="polite" className="mt-6 text-sm text-ink-tertiary">
-          Loading pricing…
-        </p>
+        <div aria-live="polite" aria-busy="true" className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <span className="sr-only">Loading pricing</span>
+          {[0, 1, 2, 3].map((i) => (
+            <div key={i} className="flex flex-col rounded-card border border-hairline p-6 shadow-soft">
+              <div className="h-5 w-24 animate-pulse rounded bg-surface-muted" />
+              <div className="mt-3 h-8 w-32 animate-pulse rounded bg-surface-muted" />
+              <div className="mt-5 flex-1 space-y-2.5">
+                {[0, 1, 2, 3].map((j) => (
+                  <div key={j} className="h-3.5 w-full animate-pulse rounded bg-surface-muted" />
+                ))}
+              </div>
+              <div className="mt-6 h-10 w-full animate-pulse rounded-button bg-surface-muted" />
+            </div>
+          ))}
+        </div>
       )}
 
-      {error && (
-        <p role="alert" className="mt-6 text-sm text-red-600">
-          {error}
-        </p>
+      {error && !loading && (
+        <div role="alert" className="mt-6 rounded-card border border-hairline bg-surface-canvas p-6">
+          <p className="text-sm font-semibold text-ink">Pricing could not be loaded</p>
+          <p className="mt-1 text-sm text-ink-secondary">
+            This is usually a connection problem rather than a change to your plan options.
+          </p>
+          <button
+            type="button"
+            onClick={() => setRetryCount((n) => n + 1)}
+            className="mt-4 inline-flex min-h-[44px] items-center rounded-button bg-brand px-4 text-sm font-semibold text-white shadow-soft transition hover:bg-brand-dark"
+          >
+            Try again
+          </button>
+        </div>
       )}
 
       {offerings && allUnavailable && (
@@ -176,13 +209,13 @@ export default function PricingClient() {
             <div key={plan.plan} className="flex flex-col rounded-card border border-hairline p-6 shadow-soft">
               <h2 className="text-lg font-bold tracking-[-0.01em] text-ink">{PLAN_DISPLAY_NAME[plan.plan]}</h2>
               <p className="mt-2 text-2xl font-extrabold tracking-[-0.01em] text-ink">
-                {plan.available ? formatPrice(plan.monthlyPriceMinorUnits, offerings.currencyCode) : "—"}
+                {plan.available ? formatPrice(plan.monthlyPriceMinorUnits, offerings.currencyCode) : "N/A"}
                 {plan.available && plan.monthlyPriceMinorUnits > 0 ? (
                   <span className="text-sm font-normal text-ink-tertiary">/mo</span>
                 ) : null}
               </p>
               <ul className="mt-4 flex-1 space-y-2 text-sm text-ink-secondary">
-                {PLAN_FEATURES[plan.plan].map((feature) => (
+                {(plan.features ?? []).map((feature) => (
                   <li key={feature}>{feature}</li>
                 ))}
               </ul>

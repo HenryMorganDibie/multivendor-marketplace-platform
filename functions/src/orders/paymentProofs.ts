@@ -1,6 +1,6 @@
 import { https, logger } from "firebase-functions/v2";
 import { db, FieldValue, Timestamp } from "../admin";
-import { OrderDoc, PaymentProofDoc, PaymentProofImage } from "../types2";
+import { OrderDoc, PaymentProofDoc, PaymentProofImage, PaymentRequestDoc, PaymentRequestStatus } from "../types2";
 import { checkAppCheck } from "../utils/appCheck";
 import { writeAuditLog } from "../utils/auditLog";
 import { newRequestId } from "../utils/requestContext";
@@ -8,9 +8,15 @@ import { writeOrderEvent } from "./orderEvents";
 import { sendPickupDetailsIfEligible } from "../chat/sendPickupDetails";
 import { logOperationalEvent } from "../utils/operationalLogging";
 import { createNotificationInternal } from "../notifications/notificationFunctions";
+import { enforceRateLimit } from "../subscriptions/rateLimit";
 const MAX_SUBMISSIONS = 2, MAX_IMAGES = 3;
 export const submitPaymentProof = https.onCall(async (request) => {
   const requestId = newRequestId();
+  await enforceRateLimit(
+    request.auth?.uid ?? `ip:${request.rawRequest?.ip ?? "unknown"}`,
+    "submitPaymentProof",
+    10,
+  );
   const appCheck = checkAppCheck(request, "submitPaymentProof");
   if (!request.auth) throw new https.HttpsError("unauthenticated", "Sign in required.");
   const customerId = request.auth.uid;
@@ -67,7 +73,7 @@ export const submitPaymentProof = https.onCall(async (request) => {
       domain: "order",
       title: "Payment proof submitted",
       body: `${order.customerSnapshot.displayName} submitted proof of payment for their order.`,
-      deepLink: `the platform://chat/${order.conversationId}`,
+      deepLink: `platform://chat/${order.conversationId}`,
       metadata: { orderId },
       isCritical: true,
     }).catch((err) => logger.error(`createNotificationInternal (payment_proof_submitted) failed for order ${orderId}`, err));
@@ -77,6 +83,11 @@ export const submitPaymentProof = https.onCall(async (request) => {
 });
 export const reviewPaymentProof = https.onCall(async (request) => {
   const requestId = newRequestId();
+  await enforceRateLimit(
+    request.auth?.uid ?? `ip:${request.rawRequest?.ip ?? "unknown"}`,
+    "reviewPaymentProof",
+    10,
+  );
   const appCheck = checkAppCheck(request, "reviewPaymentProof");
   if (!request.auth || request.auth.token.role !== "vendor") throw new https.HttpsError("permission-denied", "Only vendors can review payment proofs.");
   const vendorId = request.auth.token.vendorId as string;
@@ -99,6 +110,41 @@ export const reviewPaymentProof = https.onCall(async (request) => {
   const batch = db.batch();
   batch.update(proofRef, { status: isAccept ? "REVIEWED" : "REJECTED", reviewedBy: request.auth.uid, reviewedAt: now, reviewReason: reviewReason?.trim() ?? null, updatedAt: now });
   batch.update(orderRef, { paymentStatus: isAccept ? "PROOF_ACCEPTED" : "PROOF_REJECTED", updatedAt: now });
+
+  // The payment-request chat card and every UI state derived from it
+  // (the "pending payment" banner, the pickup verification code visibility
+  // check) read paymentRequestData.status off the original chat message,
+  // which sendPaymentRequestInChat sets to "requested" once and nothing
+  // ever updated again — PaymentRequestStatus already reserved "confirmed"
+  // for exactly this (see its comment in types2.ts), it was just never
+  // wired up. Only accept moves it: a rejected proof leaves the request
+  // "active" so the customer can still pay against it, matching that the
+  // 2-submission cap (not this status) is what actually locks a customer
+  // out of retrying.
+  if (isAccept) {
+    const activeRequestsSnap = await db
+      .collection("paymentRequests")
+      .where("orderId", "==", orderId)
+      .where("status", "in", ["active", "resent"] as PaymentRequestStatus[])
+      .get();
+    // batch.update() throws at commit time if its target doc doesn't exist,
+    // which would take the entire accept (proof + order status) down with
+    // it — checked separately, outside the batch, so a stale/deleted chat
+    // message can never block the actual payment confirmation.
+    const messageRefs = activeRequestsSnap.docs.map((doc) =>
+      db.collection("chatThreads").doc((doc.data() as PaymentRequestDoc).chatId).collection("messages").doc((doc.data() as PaymentRequestDoc).messageId)
+    );
+    const messageSnaps = messageRefs.length > 0 ? await db.getAll(...messageRefs) : [];
+    activeRequestsSnap.docs.forEach((doc, i) => {
+      batch.update(doc.ref, { status: "confirmed" as PaymentRequestStatus, confirmedAt: now, updatedAt: now });
+      if (messageSnaps[i]?.exists) {
+        batch.update(messageRefs[i], { "paymentRequestData.status": "confirmed" });
+      } else {
+        logger.warn(`reviewPaymentProof: chat message ${messageRefs[i].path} for paymentRequest ${doc.id} not found, skipping status sync`);
+      }
+    });
+  }
+
   await batch.commit();
   await writeOrderEvent({ orderId, vendorId: order.vendorId, eventType: isAccept ? "PAYMENT_PROOF_APPROVED" : "PAYMENT_PROOF_REJECTED", actorUid: request.auth.uid, actorRole: "vendor", after: { status: isAccept ? "REVIEWED" : "REJECTED" } });
 
@@ -126,7 +172,7 @@ export const reviewPaymentProof = https.onCall(async (request) => {
     body: isAccept
       ? `${order.vendorSnapshot.name} confirmed your payment.`
       : `${order.vendorSnapshot.name} couldn't confirm your payment${reviewReason ? `: ${reviewReason}` : "."}`,
-    deepLink: `the platform://chat/${order.conversationId}`,
+    deepLink: `platform://chat/${order.conversationId}`,
     metadata: { orderId },
     isCritical: true,
   }).catch((err) => logger.error(`createNotificationInternal (payment_${decision}ed) failed for order ${orderId}`, err));

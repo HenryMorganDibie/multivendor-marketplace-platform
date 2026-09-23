@@ -62,7 +62,7 @@ export const createInvoice = https.onCall(async (request) => {
   // their own country's currency, which the server knows; taking it from the
   // caller meant an app sending a hardcoded "NGN" gave a vendor in the United
   // States naira invoices while their subscription correctly showed dollars.
-  const { customerName, customerPhone, customerEmail, lineItems: rawItems, notes, customerId, conversationId } = request.data ?? {};
+  const { customerName, customerPhone, customerEmail, lineItems: rawItems, notes, customerId, conversationId, dueDate } = request.data ?? {};
   if (!customerName || typeof customerName !== "string" || !customerName.trim()) {
     throw new https.HttpsError("invalid-argument", "customerName is required.");
   }
@@ -82,10 +82,10 @@ export const createInvoice = https.onCall(async (request) => {
     invoiceNumber,
     vendorId,
     /**
-     * The bound the platform customer, when the vendor picked one.
+     * The bound Platform customer, when the vendor picked one.
      *
      * This was the literal `null`, while the Create Invoice screen has always
-     * had a "the platform customer" mode with a customer picker that reads the
+     * had a "Platform customer" mode with a customer picker that reads the
      * vendor's real chats. The screen collected a customerId and a
      * conversationId and the backend threw both away, so an invoice raised
      * against a real customer arrived indistinguishable from one typed by hand.
@@ -111,6 +111,11 @@ export const createInvoice = https.onCall(async (request) => {
     subtotal,
     currency: await resolveVendorCurrency(vendor ?? {}),
     notes: notes?.trim() ?? null,
+    // Same field updateInvoice.ts already writes - create-invoice.tsx has
+    // always collected a due date on this screen, but this callable never
+    // accepted it, so it was silently dropped for every new invoice and only
+    // ever recoverable by immediately editing the invoice right after.
+    dueDate: typeof dueDate === "string" && dueDate.trim() ? dueDate.trim() : null,
     status: "unpaid",
     paidAt: null,
     cancelledAt: null,

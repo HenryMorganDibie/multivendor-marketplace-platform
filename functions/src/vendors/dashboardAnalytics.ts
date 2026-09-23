@@ -67,10 +67,36 @@ export const getVendorDashboard = https.onCall(async (request) => {
   const filterRange = clampRange((request.data as { filterRange?: unknown } | undefined)?.filterRange, planLimits.dashboardFilterRange);
 
   const todayStart = startOfToday();
-  const todayOrdersSnap = await db.collection("orders")
-    .where("vendorId", "==", vendorId)
-    .where("createdAt", ">=", todayStart)
-    .get();
+  const wantsRangeWidgets = planLimits.canViewBestSellerWidget || planLimits.canViewRevenueCard;
+  const rangeStart = Timestamp.fromMillis(Date.now() - RANGE_MS[filterRange]);
+
+  // Four (five when a range widget is enabled) independent reads — none
+  // depends on another's result, all need only vendorId/todayStart/rangeStart
+  // already in hand — run together instead of one after another.
+  const [todayOrdersSnap, todayPaymentsSnap, totalRevenue, owedSnap, rangeOrdersSnap] = await Promise.all([
+    db.collection("orders")
+      .where("vendorId", "==", vendorId)
+      .where("createdAt", ">=", todayStart)
+      .get(),
+    db.collection("payments")
+      .where("vendorId", "==", vendorId)
+      .where("paidAt", ">=", todayStart)
+      .get(),
+    // The lifetime figure is the maintained total rather than a scan, and
+    // outstanding is filtered in the query so a vendor with years of settled
+    // invoices reads only what is still owed.
+    readVendorRevenueTotal(vendorId),
+    db.collection("invoices")
+      .where("vendorId", "==", vendorId)
+      .where("status", "in", ["unpaid", "partial"])
+      .get(),
+    wantsRangeWidgets
+      ? db.collection("orders")
+          .where("vendorId", "==", vendorId)
+          .where("createdAt", ">=", rangeStart)
+          .get()
+      : Promise.resolve(null),
+  ]);
   const todayOrders = todayOrdersSnap.docs.map((d) => d.data() as OrderDoc);
 
   const ordersToday = todayOrders.length;
@@ -93,11 +119,6 @@ export const getVendorDashboard = https.onCall(async (request) => {
    * Read through the same helpers getVendorRevenue uses, so the dashboard and
    * the invoice screens cannot drift apart again.
    */
-  const todayPaymentsSnap = await db.collection("payments")
-    .where("vendorId", "==", vendorId)
-    .where("paidAt", ">=", todayStart)
-    .get();
-
   const todayRevenue = sumLedger(
     todayPaymentsSnap.docs.map((d) => ({
       amountMinorUnits: (d.data().amountMinorUnits as number) ?? 0,
@@ -105,15 +126,6 @@ export const getVendorDashboard = https.onCall(async (request) => {
     })),
   );
 
-  // The lifetime figure is the maintained total rather than a scan, and
-  // outstanding is filtered in the query so a vendor with years of settled
-  // invoices reads only what is still owed.
-  const totalRevenue = await readVendorRevenueTotal(vendorId);
-
-  const owedSnap = await db.collection("invoices")
-    .where("vendorId", "==", vendorId)
-    .where("status", "in", ["unpaid", "partial"])
-    .get();
   const outstandingRevenue = owedSnap.docs.reduce(
     (sum, d) => sum + ((d.data().balanceMinorUnits as number) ?? 0),
     0,
@@ -136,12 +148,7 @@ export const getVendorDashboard = https.onCall(async (request) => {
     upcomingOrders,
   };
 
-  if (planLimits.canViewBestSellerWidget || planLimits.canViewRevenueCard) {
-    const rangeStart = Timestamp.fromMillis(Date.now() - RANGE_MS[filterRange]);
-    const rangeOrdersSnap = await db.collection("orders")
-      .where("vendorId", "==", vendorId)
-      .where("createdAt", ">=", rangeStart)
-      .get();
+  if (wantsRangeWidgets && rangeOrdersSnap) {
     const rangeOrders = rangeOrdersSnap.docs.map((d) => d.data() as OrderDoc).filter((o) => o.status === "completed");
 
     if (planLimits.canViewRevenueCard) {
@@ -203,8 +210,13 @@ export const getBusinessAnalytics = https.onCall(async (request) => {
   }
   const revenueTrend = [...revenueByDay.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([date, total]) => ({ date, total }));
 
+  // Same orderSource guard as ordersPerCustomer/firstSeen below: an external
+  // order gets a synthetic one-off customerId (ext_<orderId>), so without
+  // this every external sale showed up as a distinct "customer" and pushed
+  // real repeat customers out of the Top 10.
   const spendByCustomer = new Map<string, number>();
   for (const o of completed) {
+    if (o.orderSource !== "internal" || !o.customerId) continue;
     spendByCustomer.set(o.customerId, (spendByCustomer.get(o.customerId) ?? 0) + (o.orderSnapshot?.total ?? 0));
   }
   /**

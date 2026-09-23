@@ -34,15 +34,19 @@ export const markChatRead = https.onCall(async (request) => {
     updatedAt: now,
   };
 
-  await receiptRef.set(receipt, { merge: true });
-
-  // Mark recent unread messages from OTHER senders as read, bounded batch
-  // to avoid unbounded writes on very long-idle threads.
-  const unreadSnap = await threadRef.collection("messages")
-    .where("status", "in", ["sent", "delivered"])
-    .orderBy("createdAt", "desc")
-    .limit(50)
-    .get();
+  // The receipt write and the unread-messages query touch different
+  // documents and neither depends on the other's result, so run them
+  // together instead of one after another.
+  const [, unreadSnap] = await Promise.all([
+    receiptRef.set(receipt, { merge: true }),
+    // Mark recent unread messages from OTHER senders as read, bounded batch
+    // to avoid unbounded writes on very long-idle threads.
+    threadRef.collection("messages")
+      .where("status", "in", ["sent", "delivered"])
+      .orderBy("createdAt", "desc")
+      .limit(50)
+      .get(),
+  ]);
 
   const batch = db.batch();
   let anyUpdated = false;

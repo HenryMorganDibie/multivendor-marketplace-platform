@@ -1,10 +1,10 @@
 /**
- * THE PLATFORM — Demo Data Seeder
+ * PLATFORM — Demo Data Seeder
  *
  * Creates a fully set-up demo vendor (verified, published, Pro plan active,
  * one paid invoice) and a demo Super-Admin, plus NG/US country pricing, so
  * the web app has something real to look at immediately — for showing
- * the client or anyone else the Vendor Portal/CMS without a blank-slate account.
+ * the Founder or anyone else the Vendor Portal/CMS without a blank-slate account.
  *
  * Not a test suite — no assertions, just seeds the emulator with real data
  * through the real callables, same way the acceptance tests do.
@@ -36,8 +36,8 @@ connectStorageEmulator(storage, "127.0.0.1", 9199);
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const PASSWORD = "DemoPass123!";
-const VENDOR_EMAIL = "demo.vendor@theplatform.com";
-const ADMIN_EMAIL = "demo.admin@theplatform.com";
+const VENDOR_EMAIL = "demo.vendor@example.com";
+const ADMIN_EMAIL = "demo.admin@example.com";
 
 async function waitFor(fn, retries = 15, delay = 1000) {
   for (let i = 0; i < retries; i++) {
@@ -68,7 +68,12 @@ async function seedCountryPricingAndProviders() {
   const now = admin.firestore.FieldValue.serverTimestamp();
   await admin.firestore().collection("subscriptionPricing").doc("NG").set({
     countryCode: "NG", currencyCode: "NGN",
-    plans: { standard: { monthlyPriceMinorUnits: 100000 }, pro: { monthlyPriceMinorUnits: 250000 }, pro_plus: { monthlyPriceMinorUnits: 500000 } },
+    // Approved Nigeria pricing, in kobo: ₦9,900 / ₦25,000 / ₦40,000. These were
+    // previously ₦1,000 / ₦2,500 / ₦5,000, which made the portal look like it
+    // had prices typed into it. It does not: it reads these very documents
+    // through getVendorSubscriptionOfferings, so wrong seed values show up as
+    // wrong prices on screen.
+    plans: { standard: { monthlyPriceMinorUnits: 990000 }, pro: { monthlyPriceMinorUnits: 2500000 }, pro_plus: { monthlyPriceMinorUnits: 4000000 } },
     status: "active", createdAt: now, updatedAt: now,
   });
   await admin.firestore().collection("providerPlanMapping").doc("NG-pro").set({
@@ -89,7 +94,52 @@ async function seedCountryPricingAndProviders() {
   console.log("Country pricing + provider config seeded for Nigeria.");
 }
 
+/**
+ * Removes an account if it already exists, so the seed can be run repeatedly.
+ *
+ * createUserWithEmailAndPassword throws auth/email-already-in-use on a second
+ * run, and the script aborted there — after creating the auth user but before
+ * finishing the vendor record. That left exactly the half-made account this
+ * project has a recovery sweep for: role customer, no vendorId, unable to sign
+ * in as a vendor. Every suite that signs in as the demo vendor then failed with
+ * "Vendors only", which reads like a code regression and is not one.
+ */
+async function ensureFreshAccount(email) {
+  try {
+    const existing = await admin.auth().getUserByEmail(email);
+    await admin.auth().deleteUser(existing.uid);
+    await admin.firestore().collection("users").doc(existing.uid).delete().catch(() => undefined);
+    await admin.firestore().collection("vendors").doc(existing.uid).delete().catch(() => undefined);
+  } catch {
+    // No such account. Nothing to clear.
+  }
+}
+
+/**
+ * The country records registration validates against.
+ *
+ * completeRegistration now checks that the country exists in the catalogue and
+ * is available for commerce, and both checks fail closed. On a freshly started
+ * emulator neither record exists, so the seed's own vendor registration was
+ * refused with "NG is not an available country" — which looks like a code fault
+ * and is a missing fixture.
+ */
+async function ensureCountryFixtures() {
+  await admin.firestore().collection("countries").doc("NG").set({
+    countryCode: "NG", name: "Nigeria", normalizedName: "nigeria",
+    currencyCode: "NGN", dialCode: "+234", flagEmoji: "🇳🇬",
+    status: "active", sortOrder: 1,
+  }, { merge: true });
+
+  await admin.firestore().collection("countryAvailability").doc("NG").set({
+    countryCode: "NG", status: "ACTIVE",
+  }, { merge: true });
+}
+
 async function main() {
+  await ensureCountryFixtures();
+  await ensureFreshAccount(ADMIN_EMAIL);
+  await ensureFreshAccount(VENDOR_EMAIL);
   console.log("Seeding demo data into the emulator...\n");
 
   await seedCountryPricingAndProviders();
@@ -125,7 +175,12 @@ async function main() {
   await auth.currentUser.getIdToken(true);
 
   // Verify + publish so the storefront/plan screens look real.
-  for (const type of ["business_info", "identity_document", "proof_of_address"]) {
+  // completeRegistration sets requiredSteps: ["identity_document", "other"] —
+  // uploading business_info/proof_of_address instead of "other" left
+  // verification permanently stuck at requiredSteps not satisfied, so
+  // submitVendorVerification always failed with "Missing required documents:
+  // other." and the whole seed aborted before creating the vendor account.
+  for (const type of ["identity_document", "other"]) {
     const path = `verificationDocuments/${vendorId}/${type}_demo.pdf`;
     await uploadBytes(ref(storage, path), new Uint8Array([0x25, 0x50, 0x44, 0x46]), { contentType: "application/pdf" });
     await httpsCallable(fns, "recordVerificationDocument")({ type, storagePath: path });
@@ -162,7 +217,18 @@ async function main() {
     ],
     notes: "Thank you for your order!",
   });
-  await httpsCallable(fns, "updateInvoiceStatus")({ invoiceId: paidInvoice.data.invoiceId, status: "paid" });
+  // Settled by recording a payment, not by writing a status. This called
+  // updateInvoiceStatus with "paid", which the ledger refuses outright — the
+  // seed has been failing at this line since Phase 3 shipped, which is why a
+  // fresh emulator had no demo vendor to sign in as.
+  //
+  // 2 x 8500 + 1500, in minor units.
+  await httpsCallable(fns, "recordPayment")({
+    invoiceId: paidInvoice.data.invoiceId,
+    amountMinorUnits: 2 * 8500 + 1500,
+    method: "transfer",
+    idempotencyKey: `seed_paid_${paidInvoice.data.invoiceId}`,
+  });
 
   await httpsCallable(fns, "createInvoice")({
     customerName: "Tunde Bakare",

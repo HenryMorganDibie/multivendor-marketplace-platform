@@ -14,7 +14,7 @@
 
 ## 0. What This Is (and Isn't)
 
-For MVP, the Vendor Portal is **login-only for existing vendors**. New vendor registration and full onboarding remain **mobile-only**. The landing page's "Become a Vendor" CTA (within the Vendors page and navigation, not a standalone page) directs prospective vendors to download the mobile app. Once registered on mobile, vendors log into `vendor.theplatform.com` with the same Firebase Auth credentials.
+For MVP, the Vendor Portal is **login-only for existing vendors**. New vendor registration and full onboarding remain **mobile-only**. The landing page's "Become a Vendor" CTA (within the Vendors page and navigation, not a standalone page) directs prospective vendors to download the mobile app. Once registered on mobile, vendors log into `vendor.example.com` with the same Firebase Auth credentials.
 
 **Post-MVP:** full web registration once the portal reaches onboarding feature parity with mobile.
 
@@ -137,7 +137,7 @@ Collection: `contactSubmissions/{submissionId}`, separate from `supportTickets` 
 - Basic duplicate/spam detection (e.g. identical message content submitted repeatedly in a short window).
 - No file attachments for MVP.
 
-**Where submissions actually get seen (this was previously undefined — real operational gap):** since the Admin Web Portal is Phase 5 and doesn't exist yet, every new `contactSubmissions` write triggers an **email notification to a designated the platform support inbox** (the client to confirm which inbox). This is included in the 400,000 NGN scope as the MVP monitoring mechanism — without it, submissions would silently accumulate in Firestore with nobody watching. Whether the visitor also receives an acknowledgement email is the client's call — default assumption for MVP is **no visitor acknowledgement email**, only the internal notification, unless specified otherwise.
+**Where submissions actually get seen (this was previously undefined — real operational gap):** since the Admin Web Portal is Phase 5 and doesn't exist yet, every new `contactSubmissions` write triggers an **email notification to a designated Platform support inbox** (the Founder to confirm which inbox). This is included in the 400,000 NGN scope as the MVP monitoring mechanism — without it, submissions would silently accumulate in Firestore with nobody watching. Whether the visitor also receives an acknowledgement email is the Founder's call — default assumption for MVP is **no visitor acknowledgement email**, only the internal notification, unless specified otherwise.
 
 ---
 
@@ -169,7 +169,7 @@ Enforced **server-side**, not by hiding UI in the frontend:
 | Upgrade / downgrade / cancel / reactivate | Existing Phase 4 functions, extended per Section 12 | ✅ Included |
 | Billing history | Vendor-safe projection of `subscriptionEvents` — see 4.3 | ✅ Included |
 | **Invoice management — see exact scope in 4.4** | `invoices` and related functions | ✅ Included (scoped) |
-| Dashboard (orders, revenue) | — | ❌ Explicitly excluded, per the client's decision — see 4.4 |
+| Dashboard (orders, revenue) | — | ❌ Explicitly excluded, per the Founder's decision — see 4.4 |
 | Storefront settings | — | ❌ Excluded unless separately priced |
 | Vendor registration / onboarding | — | ❌ Mobile-only, per Section 0 |
 
@@ -186,7 +186,7 @@ The portal never reads raw `subscriptionEvents` documents directly — those may
 
 Provider webhook internals stay private, never surfaced to any vendor under any field name.
 
-### 4.4 Invoice Scope — Exact, Per the client's Decision
+### 4.4 Invoice Scope — Exact, Per the Founder's Decision
 
 The portal stays a **focused vendor utility** (subscriptions + invoices), not a second full vendor app. Dashboard, order management, analytics, catalog, and storefront editing are explicitly excluded from this package.
 
@@ -246,7 +246,7 @@ Since shared backend state is the entire premise of having both a mobile app and
 
 ## 5. Content Responsibility
 
-This package covers page templates, CMS editing, and rendering. It does **not** include drafting legal or marketing copy. the client provides all approved legal text (Privacy Policy, Terms of Service, Vendor Terms, Customer Terms, Cookie Policy, Acceptable Use Policy) and marketing copy for the other pages. Each legal page displays effective date, last-updated date, version number, and contact information; longer pages include a table of contents/section anchors. Editing a legal page's content does not retroactively imply existing users re-accepted the new version — formal version-acceptance/re-consent tracking is explicitly **post-MVP**, documented here as a known limitation rather than a silent gap.
+This package covers page templates, CMS editing, and rendering. It does **not** include drafting legal or marketing copy. the Founder provides all approved legal text (Privacy Policy, Terms of Service, Vendor Terms, Customer Terms, Cookie Policy, Acceptable Use Policy) and marketing copy for the other pages. Each legal page displays effective date, last-updated date, version number, and contact information; longer pages include a table of contents/section anchors. Editing a legal page's content does not retroactively imply existing users re-accepted the new version — formal version-acceptance/re-consent tracking is explicitly **post-MVP**, documented here as a known limitation rather than a silent gap.
 
 ---
 
@@ -259,13 +259,13 @@ Unique page titles and meta descriptions per page, Open Graph metadata, a social
 Practical WCAG 2.1 AA-level behavior: keyboard navigation, visible focus states, semantic heading structure, form labels, image alt text (ties to Section 2.4), adequate color contrast, reduced-motion consideration, screen-reader-friendly error messaging, responsive text sizing. This is acceptance-criteria-level coverage, not a formal accessibility audit/certification.
 
 ### 6.3 Cookies
-**Default assumption for MVP, pending the client's explicit confirmation:** no analytics or marketing cookies/trackers (no Google Analytics, Meta Pixel, etc.) are added without an explicit decision. If MVP uses only essential storage, the Cookie Policy page explains that and **no consent banner is needed.** If analytics/advertising cookies are added, a consent mechanism becomes necessary depending on target region, and that's a scope addition to flag separately, not assumed as already included.
+**Default assumption for MVP, pending the Founder's explicit confirmation:** no analytics or marketing cookies/trackers (no Google Analytics, Meta Pixel, etc.) are added without an explicit decision. If MVP uses only essential storage, the Cookie Policy page explains that and **no consent banner is needed.** If analytics/advertising cookies are added, a consent mechanism becomes necessary depending on target region, and that's a scope addition to flag separately, not assumed as already included.
 
 ### 6.4 CMS Ownership Boundary
 Not everything on the page is CMS-editable — that would make the CMS far more complex than its scoped 50,000 NGN. Split: **code-owned** (layout, components, navigation structure, safety constraints) versus **CMS-owned** (headings, paragraphs, images, CTA copy/links, FAQ entries, legal content). Arbitrary layout configuration is not stored in Firestore for MVP.
 
 ### 6.5 Deployment and Environments
-Domains: `www.theplatform.com` (landing page) and `vendor.theplatform.com` (vendor portal). Scope includes: hosting (Firebase Hosting or equivalent), SSL, custom-domain setup, dev/staging/production environment separation matching the existing the platform convention, environment variable configuration, necessary redirects, and basic deployment documentation. Error monitoring, analytics, and performance monitoring are included at a basic level (e.g. Firebase's built-in tooling), not a dedicated observability stack.
+Domains: `www.example.com` (landing page) and `vendor.example.com` (vendor portal). Scope includes: hosting (Firebase Hosting or equivalent), SSL, custom-domain setup, dev/staging/production environment separation matching the existing Platform convention, environment variable configuration, necessary redirects, and basic deployment documentation. Error monitoring, analytics, and performance monitoring are included at a basic level (e.g. Firebase's built-in tooling), not a dedicated observability stack.
 
 ---
 
@@ -317,7 +317,7 @@ This architecture deliberately separates plan definitions, country pricing, prov
 
 ## 9. Cross-Document Consistency Requirement
 
-This document is now one of several canonical architecture references for the platform's backend, alongside the Phase 4 mapping doc, the Location Specification, and the Subscription Pricing schema. Where the same field, collection, or workflow is described in more than one of these documents, **all of them must match exactly** — there is one source of truth per contract, not one per document. Before this package is implemented, a short consistency pass confirms there's no contradiction between this document and the other three (e.g. `pro_plus`/`Pro+` naming, `businessLocation.countryCode` field naming, `subscriptionPricing` schema shape). Any discrepancy found is corrected in all affected documents together, not just the one being actively worked on.
+This document is now one of several canonical architecture references for Platform's backend, alongside the Phase 4 mapping doc, the Location Specification, and the Subscription Pricing schema. Where the same field, collection, or workflow is described in more than one of these documents, **all of them must match exactly** — there is one source of truth per contract, not one per document. Before this package is implemented, a short consistency pass confirms there's no contradiction between this document and the other three (e.g. `pro_plus`/`Pro+` naming, `businessLocation.countryCode` field naming, `subscriptionPricing` schema shape). Any discrepancy found is corrected in all affected documents together, not just the one being actively worked on.
 
 ---
 
@@ -452,7 +452,7 @@ Documented situation → expected behavior, at the same level of precision alrea
 | 3 | Vendor cancels | No future price migration applies |
 | 4 | Vendor re-subscribes months later | Receives current published pricing, not their historical price |
 | 5 | Admin manually changes a vendor's plan | Admin override controls entitlements; billing does not change silently as a side effect |
-| 6 | Vendor changes business country | Treated as an approved business-location change (per the client's confirmation). Current paid period is unaffected; the new country's pricing applies from the appropriate renewal after the change is approved. **Open item, not yet defined:** the actual approval mechanism (self-service vendor change vs. admin-reviewed request, and any frequency limit) still needs to be specified before this is implementable — flagged for a decision before this edge case is built, not assumed. |
+| 6 | Vendor changes business country | Treated as an approved business-location change (per the Founder's confirmation). Current paid period is unaffected; the new country's pricing applies from the appropriate renewal after the change is approved. **Open item, not yet defined:** the actual approval mechanism (self-service vendor change vs. admin-reviewed request, and any frequency limit) still needs to be specified before this is implementable — flagged for a decision before this edge case is built, not assumed. |
 | 7 | A country's pricing is deactivated *or deleted outright* | Identical behavior either way — already true by construction: `requireActiveCountryPricing` treats "no document" and "document exists but not `active`" the same, both returning `PRICING_NOT_CONFIGURED`. Existing subscriptions continue until renewal; no new subscriptions accepted; the Vendor Portal and Pricing page show *"Subscriptions are not available in your country yet"*; admin decides case-by-case whether existing subscriptions continue past that. |
 | 8 | Preferred payment provider is down for a country | Backend automatically attempts the next provider in that country's priority order (Section 4); vendor never sees which provider was used |
 | 9 | Every configured provider fails | Vendor sees the plain-language unavailable message (Section 4.5) — never an internal error |
@@ -494,7 +494,7 @@ Items 17 and 32 (concurrent-edit handling and confirming no cross-tab stale-stat
 - Blog, Waitlist, How It Works pages
 - Formal accessibility audit/certification (acceptance-criteria-level only, per 6.2)
 - Analytics/marketing cookie implementation (unless explicitly added as a scope change, per 6.3)
-- Legal/marketing copywriting (the client supplies content, per Section 5)
+- Legal/marketing copywriting (the Founder supplies content, per Section 5)
 - Terms version-acceptance/re-consent tracking (documented limitation, post-MVP)
 - Invoice actions not listed in Section 4.4 (duplicate, edit draft, cancel, mark-paid, per-invoice branding editing)
 

@@ -138,7 +138,7 @@ export const sendPhoneOtp = https.onCall(async (request): Promise<{ success: tru
     tx.set(db.collection("smsQueue").doc(), {
       to: phone,
       provider: process.env.SMS_PROVIDER ?? "emulator",
-      message: `Your the platform verification code is ${code}. ` +
+      message: `Your Platform verification code is ${code}. ` +
                `It expires in ${OTP_EXPIRY_MINUTES} minutes. ` +
                `Do not share this code with anyone.`,
       // Store the code in emulator-only field so tests can extract it

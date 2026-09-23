@@ -79,9 +79,9 @@ export const sendEmailOtp = https.onCall(async (request): Promise<{ success: tru
     tx.set(db.collection("mail").doc(), {
       to: [email],
       message: {
-        subject: "Your the platform verification code",
-        text: `Your the platform verification code is ${code}. It expires in ${OTP_EXPIRY_MINUTES} minutes. If you didn't request this, you can ignore this email.`,
-        html: `<p>Your the platform verification code is:</p><h2 style="letter-spacing:4px">${code}</h2><p>This code expires in ${OTP_EXPIRY_MINUTES} minutes. If you didn't request this, you can ignore this email.</p>`,
+        subject: "Your Platform verification code",
+        text: `Your Platform verification code is ${code}. It expires in ${OTP_EXPIRY_MINUTES} minutes. If you didn't request this, you can ignore this email.`,
+        html: `<p>Your Platform verification code is:</p><h2 style="letter-spacing:4px">${code}</h2><p>This code expires in ${OTP_EXPIRY_MINUTES} minutes. If you didn't request this, you can ignore this email.</p>`,
       },
     });
   });

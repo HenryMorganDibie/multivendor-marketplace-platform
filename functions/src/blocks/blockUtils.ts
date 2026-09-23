@@ -5,7 +5,7 @@ import { ACTIVE_ORDER_STATUSES } from "../orders/orderStatus";
  * Block enforcement — the single source of truth for whether a commerce
  * action is allowed between two parties.
  *
- * Rules (per the client's edge-case spec):
+ * Rules (per the Founder's edge-case spec):
  *  - Blocking immediately prevents: new commerce conversations, new
  *    pre-order/inquiry messages, new orders.
  *  - If ANY active order exists between the pair, messaging on that

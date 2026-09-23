@@ -32,8 +32,6 @@ export const getDashboardInsights = https.onCall(async (request) => {
     throw new https.HttpsError("failed-precondition", "Vendor ID could not be determined.");
   }
 
-  const { limits } = await resolveEffectivePlan(vendorId);
-
   const weekAgo = Timestamp.fromMillis(Date.now() - WEEK_MS);
 
   // Bounded, not "every order this vendor has ever had": unbounded here read a
@@ -46,7 +44,11 @@ export const getDashboardInsights = https.onCall(async (request) => {
   // dashboard hint, not a financial record) is the right trade, not a bug.
   const RECENT_ORDERS_LIMIT = 500;
 
-  const [ordersSnap, itemsSnap] = await Promise.all([
+  // resolveEffectivePlan's result (limits) isn't needed until the response
+  // is assembled at the end, so it runs alongside the two reads below
+  // instead of blocking them.
+  const [{ limits }, ordersSnap, itemsSnap] = await Promise.all([
+    resolveEffectivePlan(vendorId),
     db
       .collection("orders")
       .where("vendorId", "==", vendorId)

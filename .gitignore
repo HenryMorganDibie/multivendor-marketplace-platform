@@ -12,6 +12,8 @@ firestore-debug.*.log
 storage-debug.log
 ui-debug.log
 database-debug.log
+pubsub-debug.log
+pubsub-debug.*.log
 
 # Firebase emulator state
 .firebase/
@@ -21,6 +23,10 @@ database-debug.log
 .env.local
 .env.*.local
 *.env
+# Firebase Functions v2's per-project convention (.env.<project-id>, e.g.
+# .env.platform-dev) doesn't match any pattern above — none of them match a
+# file that merely contains ".env" without starting or ending with it.
+.env.*
 
 # Service account keys — NEVER commit these
 *-service-account*.json
@@ -45,4 +51,14 @@ scripts/package-lock.json
 
 # Test artifacts
 coverage/
-.nyc_output/
+.nyc_output/scripts/*-tmp.js
+emu.log
+
+# Generated during deploys; not source.
+.deploy-targets
+
+# Built web bundle copied here for hosting deploys — generated, not source.
+webapp/
+
+# Large reference data dump, not source.
+scripts/geodata/

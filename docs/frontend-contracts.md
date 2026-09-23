@@ -1,4 +1,4 @@
-# the platform Backend — Frontend Integration Contracts (Milestones 1–4)
+# Platform Backend — Frontend Integration Contracts (Milestones 1–4)
 
 This document describes every callable Cloud Function exposed by the backend across Milestones 1–4: required auth state, request payload, response payload, error codes, and any Firestore/Storage side effects the frontend needs to know about.
 
@@ -222,7 +222,7 @@ General notes specific to Milestone 2:
   }
   ```
 - **Response:** `{ success: true, itemId: string }`
-- **Errors:** `invalid-argument` (missing name or negative price; **or `name`/`description` blocked by moderation — message: `"This listing contains content that is not allowed on the platform."`, see Chat moderation below**), `not-found` (vendor doc missing), `resource-exhausted` (plan catalog limit reached — see table below)
+- **Errors:** `invalid-argument` (missing name or negative price; **or `name`/`description` blocked by moderation — message: `"This listing contains content that is not allowed on Platform."`, see Chat moderation below**), `not-found` (vendor doc missing), `resource-exhausted` (plan catalog limit reached — see table below)
 - **Plan limits (server-enforced, counted on visible items only):**
 
   | Plan | Max visible items |
@@ -383,7 +383,7 @@ General notes specific to Milestone 3:
 - **Message types the client will *receive* but can never send directly:** `system`, `payment-request`, `pickup-details`, `receipt`, `invoice`, `ai`, `order_context`, `new_inquiry`, `change_request`. These are always server-assembled from real data and appear in the thread as a side effect of other actions.
 - **Side effects:** updates the thread's `lastMessage` / `lastMessageAt` / `lastSenderUid` summary fields, creates a `new_message` notification for every other participant (never the sender), and — for customer-sent messages only — checks vendor away-message eligibility.
 - **Moderation (P3-FB-021):** every `text` / `contact-card` / `catalog_item` message is checked against the backend rule-based moderation engine before it is saved. Any field named `moderationStatus` or `moderationScore` in the request is silently ignored — these are always server-computed, never client-settable. Two outcomes are visible to the frontend:
-  - **Blocked (high/critical severity):** the callable throws `invalid-argument` with message `"This message contains content that is not allowed on the platform."` The message is never saved — do not optimistically render it in the composer's sent list.
+  - **Blocked (high/critical severity):** the callable throws `invalid-argument` with message `"This message contains content that is not allowed on Platform."` The message is never saved — do not optimistically render it in the composer's sent list.
   - **Allowed but flagged (low/medium severity, or a configured hold-for-review):** the call succeeds normally and the message is saved and delivered exactly as any other message. The saved message document carries `moderationStatus: "clean" | "flagged" | "needs_review"` and a `moderationScore` number, but **the frontend is not expected to branch on these today** — they exist for a future admin moderation queue (Phase 5), not for client-side UI treatment.
 
 ### `markChatRead`
@@ -464,7 +464,7 @@ General notes specific to Milestone 3:
 - **Auth required:** yes, role `vendor`
 - **Request:** any subset of `{ greetingEnabled: boolean, greetingMessage: string, awayMessageEnabled: boolean, awayMessage: string, awaySchedule?: object, quietHours?: object, awayCooldownHours?: number }`
 - **Response:** `{ success: true }`
-- **Errors:** `invalid-argument` if `greetingMessage` or `awayMessage` exceeds 300 characters, **or if either contains content blocked by moderation** (message: `"greetingMessage contains content that is not allowed on the platform."` / same for `awayMessage`) — these become automatically-sent system messages, so they are checked once at save time rather than on every send.
+- **Errors:** `invalid-argument` if `greetingMessage` or `awayMessage` exceeds 300 characters, **or if either contains content blocked by moderation** (message: `"greetingMessage contains content that is not allowed on Platform."` / same for `awayMessage`) — these become automatically-sent system messages, so they are checked once at save time rather than on every send.
 - **Behavioral notes:** the greeting message sends exactly once, on the thread's true first creation — never on subsequent messages, and never at all if `greetingMessage` is empty even with `greetingEnabled: true`. The away message has a per-thread cooldown, default 12 hours, configurable via `awayCooldownHours`, and only fires in response to a customer-sent message.
 
 ### `createQuickReply` / `updateQuickReply` / `deleteQuickReply`
@@ -587,10 +587,10 @@ Support tickets use a dual-document model. Each ticket creates both a `chatThrea
 
 ## Chat moderation (P3-FB-021)
 
-A rule-based content moderation layer that runs inside `sendChatMessage`, `updateVendorChatSettings`, `createQuickReply` / `updateQuickReply`, and `createCatalogItem` / `updateCatalogItem` before anything is saved. For chat it is a **flagging system first**, not an aggressive hard-ban system — the platform does not process payments in-app, so ordinary commerce phrases (`bank transfer`, `proof of payment`, `call me`, `contact me`, etc.) are never flagged on their own. They only contribute to a flag when they co-occur in the same message with a genuine off-platform-avoidance phrase (`pay outside the platform`, `message me on WhatsApp to order`, `DM for price`, etc.). Catalog listings are stricter: any prohibited-item match (weapons, drugs, counterfeit documents, etc.) in a listing's name or description blocks the write outright — there is no flag-only tier for a catalog listing the way there is for chat.
+A rule-based content moderation layer that runs inside `sendChatMessage`, `updateVendorChatSettings`, `createQuickReply` / `updateQuickReply`, and `createCatalogItem` / `updateCatalogItem` before anything is saved. For chat it is a **flagging system first**, not an aggressive hard-ban system — Platform does not process payments in-app, so ordinary commerce phrases (`bank transfer`, `proof of payment`, `call me`, `contact me`, etc.) are never flagged on their own. They only contribute to a flag when they co-occur in the same message with a genuine off-platform-avoidance phrase (`pay outside Platform`, `message me on WhatsApp to order`, `DM for price`, etc.). Catalog listings are stricter: any prohibited-item match (weapons, drugs, counterfeit documents, etc.) in a listing's name or description blocks the write outright — there is no flag-only tier for a catalog listing the way there is for chat.
 
 **What the frontend actually needs to handle:**
-- The `invalid-argument` / `"This message contains content that is not allowed on the platform."` error from `sendChatMessage`, and the equivalent `"This listing contains content that is not allowed on the platform."` from `createCatalogItem` / `updateCatalogItem`.
+- The `invalid-argument` / `"This message contains content that is not allowed on Platform."` error from `sendChatMessage`, and the equivalent `"This listing contains content that is not allowed on Platform."` from `createCatalogItem` / `updateCatalogItem`.
 - Two account-level errors that can now surface from `sendChatMessage` (and from `createCommerceConversation`'s existing `accountStatus` check) once a user's cumulative moderation score crosses an internal threshold:
   - `permission-denied` / `"Your account has been suspended pending review."` — `accountStatus: "banned"`. The account cannot send anything until an admin reviews it via `reviewModerationRestriction`.
   - `failed-precondition` / `"Your account has temporary messaging restrictions pending review."` — `accountStatus: "frozen"`, a lighter, still-admin-reviewed restriction.

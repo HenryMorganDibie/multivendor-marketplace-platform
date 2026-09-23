@@ -5,7 +5,7 @@ import { SubscriptionPlanId } from "../types4";
  * Google Play Developer API integration -- the Play Billing counterpart to
  * appleServerApi.ts. Same SCAFFOLD status: PACKAGE_NAME is real (matches
  * the app's actual package id), but nothing else here is exercisable until
- * the client provides a service account with the Play Developer API enabled
+ * the Founder provides a service account with the Play Developer API enabled
  * and creates the real subscription products in Play Console.
  */
 
@@ -16,7 +16,7 @@ const PACKAGE_NAME = "com.platform.app";
  * appleServerApi.ts's PRODUCT_ID_TO_PLAN exactly -- same reasoning on why
  * billing period/country/platform aren't dimensions of this map, see that
  * file's header comment. Empty because the real product ids don't exist
- * in Play Console yet; fill in once the client creates them, matching
+ * in Play Console yet; fill in once the Founder creates them, matching
  * whatever ids she actually creates (they do not have to match Apple's
  * strings, Play Console has its own naming rules).
  */
@@ -28,7 +28,7 @@ export const GOOGLE_PRODUCT_ID_TO_PLAN: Record<string, SubscriptionPlanId> = {
 
 /**
  * The service account's credentials JSON, injected at runtime from Google
- * Secret Manager the same way Apple's private key is -- the client generates
+ * Secret Manager the same way Apple's private key is -- the Founder generates
  * and owns this directly (Play Console -> API access -> a service account
  * with the Play Developer API enabled), never a plain env var.
  */

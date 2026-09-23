@@ -18,7 +18,7 @@ export function VendorSidebar({ businessName, logoImage, identityLine }: VendorS
   return (
     <aside className="sticky top-0 hidden h-screen w-64 shrink-0 flex-col border-r border-gray-100 py-6 md:flex dark:border-gray-800">
       <div className="px-4">
-        <p className="text-lg font-bold">the platform</p>
+        <p className="text-lg font-bold">Platform</p>
         <p className="text-xs font-medium text-gray-500 dark:text-gray-400">Vendor Portal</p>
       </div>
 
@@ -34,14 +34,17 @@ export function VendorSidebar({ businessName, logoImage, identityLine }: VendorS
                   <Link
                     key={item.id}
                     href={item.route}
-                    className={`flex min-h-[44px] items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors ${
+                    aria-current={active ? "page" : undefined}
+                    /* Same row height, focus ring and pressed state as the
+                       mobile drawer, so the two navigations don't drift. */
+                    className={`flex min-h-nav-row items-center gap-3 rounded-input px-3 text-body-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand ${
                       active
                         ? "bg-brand-light text-brand"
-                        : "text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-gray-900"
+                        : "text-ink-secondary hover:bg-surface hover:text-ink active:bg-surface-muted"
                     }`}
                   >
-                    <Icon size={18} />
-                    {item.label}
+                    <Icon size={18} className="shrink-0" />
+                    <span className="truncate">{item.label}</span>
                     {item.badge ? (
                       <span className="ml-auto rounded-full bg-brand px-1.5 py-0.5 text-[10px] font-semibold text-white">{item.badge}</span>
                     ) : null}

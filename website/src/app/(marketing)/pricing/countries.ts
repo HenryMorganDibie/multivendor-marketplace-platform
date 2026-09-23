@@ -1,16 +1,16 @@
-// Country selector for unauthenticated visitors (Section 1.1) — shows only
-// countries the platform knows about, not all ~200 in the world, per the client's
+// Country selector for unauthenticated visitors (Section 1.1), shows only
+// countries Platform knows about, not all ~200 in the world, per the Founder's
 // direction. This exact list is provisional ("we will add the list of all
-// supported countries for mvp") — update it in place once that's final.
+// supported countries for mvp"). Update it in place once that's final.
 //
 // Sends the same countryCode the backend's resolveCountryCode() would
 // produce for a registering user, so a visitor selecting "Nigeria" here and
 // a vendor who later registers with "Nigeria" resolve to the identical
 // subscriptionPricing document key. Nigeria and the United States are the
 // only countries with seeded pricing right now (functions/src/utils/
-// countryCode.ts) — every other entry, and NG/US too until pricing is
+// countryCode.ts): every other entry, and NG/US too until pricing is
 // actually seeded, correctly shows the "not available yet" + waitlist
-// state. That's expected, not a bug — it's the honest current state.
+// state. That's expected, not a bug: it's the honest current state.
 export const PRICING_COUNTRIES: { label: string; countryCode: string }[] = [
   { label: "Nigeria", countryCode: "NG" },
   { label: "South Africa", countryCode: "SOUTH AFRICA" },
@@ -30,7 +30,7 @@ const LOCALE_HINT_TO_COUNTRY: Record<string, string> = {
 };
 
 /**
- * Suggests an initial country from the browser locale — never authoritative
+ * Suggests an initial country from the browser locale, never authoritative
  * (Section 1.1). Returns null (not a default) when there's no usable
  * signal, so the page shows the neutral "select a country" prompt instead
  * of silently defaulting to Nigeria/NGN.

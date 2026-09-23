@@ -30,12 +30,12 @@ const BUNDLE_ID = "com.platform.app";
  * Maps an Apple product identifier (configured per-subscription in App
  * Store Connect) to this app's own plan id.
  *
- * Only the plan tier lives here -- deliberately, per the client's question
+ * Only the plan tier lives here -- deliberately, per the Founder's question
  * about platform/country/billing-period/environment:
  *
  *  - Billing period (monthly/yearly) does not need its own dimension in
  *    this map. It is encoded directly in the product id string itself
- *    (the client's own convention below), and the actual renewal cadence a
+ *    (the Founder's own convention below), and the actual renewal cadence a
  *    subscription is on comes from Apple's transaction data
  *    (expiresDate/purchaseDate) at verification time, not from this
  *    lookup. Adding yearly products later is adding two more keys here,
@@ -84,7 +84,7 @@ function getIssuerId(): string {
  * Secret Manager (bound via the `secrets: ["APPLE_IAP_PRIVATE_KEY"]` option
  * on each function that needs it -- see appleWebhook.ts). Never read from a
  * plain env var or committed file the way Stripe/Flutterwave/Paystack's
- * keys are, since the client generates and owns this one directly rather than
+ * keys are, since the Founder generates and owns this one directly rather than
  * handing it to Henry to configure.
  */
 function getPrivateKey(): string {

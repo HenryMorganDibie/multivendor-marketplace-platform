@@ -23,13 +23,30 @@ import { db } from "../admin";
  * catalogue, which is the situation the fallback was written for — not a
  * default for vendors whose country simply is not Nigeria.
  */
+/**
+ * The same country-resolution order resolveVendorCurrency() already used
+ * inline, extracted so a second caller (setVendorPaymentInstructions, which
+ * must not fall back to NGN when this is unresolvable) can determine the
+ * exact same country a vendor's currency was derived from, rather than
+ * running a second, differently-ordered lookup that could disagree with
+ * this one for a malformed record with conflicting legacy/structured
+ * fields. Behavior-preserving: resolveVendorCurrency's own fallback order
+ * is unchanged by this extraction.
+ */
+export function resolveVendorCountryCode(
+  vendor: FirebaseFirestore.DocumentData
+): string | undefined {
+  return (
+    vendor.countryCode ??
+    vendor.businessLocation?.countryCode ??
+    vendor.location?.countryCode
+  );
+}
+
 export async function resolveVendorCurrency(
   vendor: FirebaseFirestore.DocumentData
 ): Promise<string> {
-  const countryCode =
-    vendor.countryCode ??
-    vendor.businessLocation?.countryCode ??
-    vendor.location?.countryCode;
+  const countryCode = resolveVendorCountryCode(vendor);
 
   if (!countryCode) return "NGN";
 

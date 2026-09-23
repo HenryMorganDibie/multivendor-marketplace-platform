@@ -1,0 +1,11 @@
+# Shell scripts and Docker build files run inside Linux containers and must
+# stay LF regardless of core.autocrlf on the checkout machine. This is not
+# hypothetical: core.autocrlf=true on a Windows checkout converted
+# services/malware-scanner/start.sh to CRLF, which breaks its shebang line
+# entirely - the container failed with "exec: ./start.sh: not found" (exit
+# 127) until this was caught and fixed. Without this file, the same file
+# reverts to CRLF the next time it's checked out on Windows, silently
+# reintroducing the exact same deploy failure.
+*.sh text eol=lf
+Dockerfile text eol=lf
+*.conf text eol=lf

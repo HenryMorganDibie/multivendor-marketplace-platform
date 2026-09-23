@@ -25,7 +25,7 @@ export function commerceThreadId(customerId: string, vendorId: string): string {
  * createCommerceConversation — creates (or returns the existing) canonical
  * commerce thread between a customer and a vendor.
  *
- * Eligibility (per the client's spec):
+ * Eligibility (per the Founder's spec):
  *  - customer account ACTIVE
  *  - vendor account ACTIVE
  *  - vendor's countryAvailability status ACTIVE
@@ -69,7 +69,7 @@ export const createCommerceConversation = https.onCall(async (request) => {
     throw new https.HttpsError("failed-precondition", "This vendor is not currently accepting messages.");
   }
 
-  // Storefront accessibility: discovery OR direct link (the client's dual-path rule)
+  // Storefront accessibility: discovery OR direct link (the Founder's dual-path rule)
   const accessibleViaDiscovery =
     vendor.verificationStatus === "approved" &&
     vendor.vendorStatus === "active" &&
@@ -86,20 +86,22 @@ export const createCommerceConversation = https.onCall(async (request) => {
     );
   }
 
-  // Country availability — required for BOTH access paths per the client's spec
+  const vendorOwnerUid = vendor.ownerUid;
+
+  // Country availability (required for BOTH access paths per the Founder's spec)
+  // and the block check are independent of each other — neither needs the
+  // other's result — so run them together instead of one after another.
   const countryCode = vendor.countryCode;
-  const countryOk = await isCountryActive(countryCode);
+  const [countryOk, blockCheck] = await Promise.all([
+    isCountryActive(countryCode),
+    canStartNewCommerce(customerId, vendorOwnerUid),
+  ]);
   if (!countryOk) {
     throw new https.HttpsError(
       "failed-precondition",
-      "the platform is not currently available in this vendor's region."
+      "Platform is not currently available in this vendor's region."
     );
   }
-
-  const vendorOwnerUid = vendor.ownerUid;
-
-  // Block check — starting new commerce is ALWAYS denied if blocked
-  const blockCheck = await canStartNewCommerce(customerId, vendorOwnerUid);
   if (!blockCheck.allowed) {
     throw new https.HttpsError(
       "failed-precondition",
@@ -177,7 +179,13 @@ export const createCommerceConversation = https.onCall(async (request) => {
       ? (chatSettingsSnap.data() as VendorChatSettingsDoc)
       : { ...VENDOR_CHAT_SETTINGS_DEFAULTS, updatedAt: now };
 
-    if (chatSettings.greetingEnabled && chatSettings.greetingMessage?.trim()) {
+    // Greeting-message write (if enabled) and the vendor notification don't
+    // depend on each other, so run them together instead of one after
+    // another. The message write and thread update inside the first one
+    // stay sequential — a listener seeing lastMessageAt update before the
+    // message itself is readable is exactly the kind of race worth avoiding.
+    const greetingPromise = (async () => {
+      if (!chatSettings.greetingEnabled || !chatSettings.greetingMessage?.trim()) return;
       const msgRef = threadRef.collection("messages").doc();
       const greetingMsg: MessageDoc = {
         messageId: msgRef.id,
@@ -202,10 +210,9 @@ export const createCommerceConversation = https.onCall(async (request) => {
         lastSenderUid: vendorOwnerUid,
         updatedAt: now,
       });
-    }
+    })();
 
-    // Notify vendor of new inquiry thread
-    await createNotificationInternal({
+    const notifyPromise = createNotificationInternal({
       recipientUid: vendorOwnerUid,
       recipientRole: "vendor",
       vendorId,
@@ -214,9 +221,11 @@ export const createCommerceConversation = https.onCall(async (request) => {
       domain: "vendor_chat",
       title: "New customer inquiry",
       body: `${fullName} started a conversation with you.`,
-      deepLink: `the platform://chat/${chatId}`,
+      deepLink: `platform://chat/${chatId}`,
       isCritical: false,
     });
+
+    await Promise.all([greetingPromise, notifyPromise]);
   }
 
   await writeAuditLog({

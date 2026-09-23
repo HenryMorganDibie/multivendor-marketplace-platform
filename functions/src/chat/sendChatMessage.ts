@@ -1,6 +1,6 @@
-import { https } from "firebase-functions/v2";
+import { https, logger } from "firebase-functions/v2";
 import { db, FieldValue } from "../admin";
-import { ChatThreadDoc, MessageDoc, MessageType } from "../types3";
+import { ChatThreadDoc, MessageDoc, MessageType, ParticipantRole } from "../types3";
 import { checkAppCheck } from "../utils/appCheck";
 import { writeAuditLog } from "../utils/auditLog";
 import { newRequestId } from "../utils/requestContext";
@@ -19,6 +19,34 @@ const MAX_TEXT_LENGTH = 4000;
 // system/Cloud-Function-only (order_context, pickup-details, receipt,
 // invoice, change_request are all server-assembled from real data).
 const CLIENT_CREATABLE_TYPES: MessageType[] = ["text", "contact-card", "catalog_item"];
+
+/**
+ * Resolves a recipient's role for notification purposes, in order:
+ *  1. `thread.participantRoles[recipientUid]`, if it's one of the
+ *     recognized roles — the authoritative, purpose-built source, correctly
+ *     populated by every current thread-creation path (commerce, support,
+ *     AI-help), including "admin"/"system" roles this function cannot
+ *     otherwise derive.
+ *  2. A direct match against `thread.customerId` (already verified to be
+ *     the customer's real uid) or `vendorOwnerUid` (already fetched for the
+ *     vendor-active check on commerce threads) — defensive fallback for a
+ *     thread whose `participantRoles` is missing or malformed.
+ *  3. `null` if neither resolves — callers must skip notifying this
+ *     recipient rather than guess a role.
+ */
+function resolveRecipientRole(
+  thread: ChatThreadDoc,
+  recipientUid: string,
+  vendorOwnerUid: string | undefined,
+): ParticipantRole | null {
+  const fromMap = thread.participantRoles?.[recipientUid];
+  if (fromMap === "customer" || fromMap === "vendor" || fromMap === "admin" || fromMap === "system") {
+    return fromMap;
+  }
+  if (thread.customerId && recipientUid === thread.customerId) return "customer";
+  if (vendorOwnerUid && recipientUid === vendorOwnerUid) return "vendor";
+  return null;
+}
 
 export const sendChatMessage = https.onCall(async (request) => {
   await enforceRateLimit(
@@ -61,8 +89,30 @@ export const sendChatMessage = https.onCall(async (request) => {
     }
   }
 
+  // Rule-based moderation (P3-FB-021) — a flagging system first, not a hard
+  // ban: only rules configured with action "block_message" (via the
+  // Firestore-managed moderationRules set) stop the send outright. Runs on
+  // whatever the sender actually typed, never on server-generated fallback
+  // strings like "Contact details shared". Client-supplied moderationStatus
+  // is never read from request.data anywhere in this function — the value
+  // saved below is always computed here, so the client cannot set it.
+  //
+  // Started here rather than awaited immediately: it depends only on
+  // `content`, already available with no reads, so it can run concurrently
+  // with the thread/restriction/vendor/country/block checks below instead
+  // of adding its own dedicated round trip after all of them finish.
+  const textToModerate = typeof content === "string" ? content.trim() : "";
+  const moderationPromise = textToModerate
+    ? runModerationCheck(textToModerate, "chat")
+    : Promise.resolve({ status: "clean" as const, score: 0, action: null, severity: null, category: null, matchedRuleIds: [], matchedRules: [], blocked: false });
+
   const threadRef = db.collection("chatThreads").doc(chatId);
-  const threadSnap = await threadRef.get();
+  // Independent of each other — neither needs the other's result — so run
+  // together instead of one after another.
+  const [threadSnap, restriction] = await Promise.all([
+    threadRef.get(),
+    checkUserModerationRestriction(senderUid),
+  ]);
   if (!threadSnap.exists) throw new https.HttpsError("not-found", "Chat thread not found.");
 
   const thread = threadSnap.data() as ChatThreadDoc;
@@ -76,7 +126,6 @@ export const sendChatMessage = https.onCall(async (request) => {
   // (see moderationEngine.applyUserModerationScore). Checked before any
   // per-message content check, since a suspended account shouldn't be able
   // to send anything at all, clean or not.
-  const restriction = await checkUserModerationRestriction(senderUid);
   if (restriction.blocked) {
     throw new https.HttpsError("permission-denied", "Your account has been suspended pending review.");
   }
@@ -84,7 +133,11 @@ export const sendChatMessage = https.onCall(async (request) => {
     throw new https.HttpsError("failed-precondition", "Your account has temporary messaging restrictions pending review.");
   }
 
-  // Support and AI-help threads skip commerce-specific block/country/order checks
+  // Support and AI-help threads skip commerce-specific block/country/order checks.
+  // vendorOwnerUid is captured here (already fetched for the vendor-active
+  // check below) so the notification step further down can authoritatively
+  // identify the vendor-side recipient without a second read.
+  let vendorOwnerUid: string | undefined;
   if (thread.chatType === "commerce") {
     if (!thread.customerId || !thread.vendorId) {
       throw new https.HttpsError("internal", "Malformed commerce thread.");
@@ -93,6 +146,7 @@ export const sendChatMessage = https.onCall(async (request) => {
     const vendorSnap = await db.collection("vendors").doc(thread.vendorId).get();
     if (!vendorSnap.exists) throw new https.HttpsError("not-found", "Vendor not found.");
     const vendor = vendorSnap.data()!;
+    vendorOwnerUid = vendor.ownerUid;
 
     if (vendor.vendorStatus !== "active") {
       throw new https.HttpsError(
@@ -101,19 +155,18 @@ export const sendChatMessage = https.onCall(async (request) => {
       );
     }
 
-    const countryOk = await isCountryActive(vendor.countryCode);
+    // Independent of each other, both depend only on data already in hand —
+    // run together rather than sequentially.
+    const [countryOk, blockCheck] = await Promise.all([
+      isCountryActive(vendor.countryCode),
+      canContinueExistingThread(thread.customerId, thread.vendorId, vendor.ownerUid),
+    ]);
     if (!countryOk) {
       throw new https.HttpsError(
         "failed-precondition",
-        "the platform is not currently available in this region for new messages."
+        "Platform is not currently available in this region for new messages."
       );
     }
-
-    const blockCheck = await canContinueExistingThread(
-      thread.customerId,
-      thread.vendorId,
-      vendor.ownerUid
-    );
     if (!blockCheck.allowed) {
       throw new https.HttpsError(
         "failed-precondition",
@@ -122,17 +175,7 @@ export const sendChatMessage = https.onCall(async (request) => {
     }
   }
 
-  // Rule-based moderation (P3-FB-021) — a flagging system first, not a hard
-  // ban: only rules configured with action "block_message" (via the
-  // Firestore-managed moderationRules set) stop the send outright. Runs on
-  // whatever the sender actually typed, never on server-generated fallback
-  // strings like "Contact details shared". Client-supplied moderationStatus
-  // is never read from request.data anywhere in this function — the value
-  // saved below is always computed here, so the client cannot set it.
-  const textToModerate = typeof content === "string" ? content.trim() : "";
-  const moderation = textToModerate
-    ? await runModerationCheck(textToModerate, "chat")
-    : { status: "clean" as const, score: 0, action: null, severity: null, category: null, matchedRuleIds: [], matchedRules: [], blocked: false };
+  const moderation = await moderationPromise;
 
   if (moderation.blocked) {
     await recordModerationEvent({
@@ -146,7 +189,7 @@ export const sendChatMessage = https.onCall(async (request) => {
       result: moderation,
     });
     await applyUserModerationScore(senderUid, moderation.score);
-    throw new https.HttpsError("invalid-argument", "This message contains content that is not allowed on the platform.");
+    throw new https.HttpsError("invalid-argument", "This message contains content that is not allowed on Platform.");
   }
 
   // Determine recipient(s) for notification purposes — everyone except sender
@@ -207,8 +250,6 @@ export const sendChatMessage = https.onCall(async (request) => {
     messageDoc.content = content?.trim() || `Shared: ${item.name}`;
   }
 
-  await msgRef.set(messageDoc);
-
   const threadUpdate: Record<string, unknown> = {
     lastMessage: messageDoc.content.slice(0, 200),
     lastMessageType: type,
@@ -217,59 +258,105 @@ export const sendChatMessage = https.onCall(async (request) => {
     updatedAt: now,
   };
   if (moderation.score > 0) threadUpdate.riskScore = FieldValue.increment(moderation.score);
-  await threadRef.update(threadUpdate);
+
+  // Primary persistence: the message document and the thread's last-message
+  // metadata commit as one atomic write. If this batch rejects, neither
+  // write is left partially applied, and the message is correctly reported
+  // as not sent. If it resolves, the message IS sent — every operation
+  // below this point is secondary/best-effort and independently isolated
+  // (see each try/catch below) so a failure there can never turn an
+  // already-persisted message into a reported failure.
+  const primaryWrite = db.batch();
+  primaryWrite.set(msgRef, messageDoc);
+  primaryWrite.update(threadRef, threadUpdate);
+  await primaryWrite.commit();
 
   if (moderation.status !== "clean") {
-    await recordModerationEvent({
-      actorUid: senderUid,
-      actorRole: senderRole,
-      vendorId: thread.vendorId ?? null,
-      customerId: thread.customerId ?? null,
-      chatId,
-      messageId: msgRef.id,
-      rawText: textToModerate,
-      result: moderation,
-    });
-    await applyUserModerationScore(senderUid, moderation.score);
+    try {
+      await recordModerationEvent({
+        actorUid: senderUid,
+        actorRole: senderRole,
+        vendorId: thread.vendorId ?? null,
+        customerId: thread.customerId ?? null,
+        chatId,
+        messageId: msgRef.id,
+        rawText: textToModerate,
+        result: moderation,
+      });
+      await applyUserModerationScore(senderUid, moderation.score);
+    } catch (err) {
+      logger.error(`sendChatMessage: moderation bookkeeping failed for message ${msgRef.id}`, err);
+    }
   }
 
-  // Notify all recipients (never the sender)
-  for (const recipientUid of recipients) {
-    const recipientRole = thread.participantRoles[recipientUid] ?? "customer";
-    await createNotificationInternal({
-      recipientUid,
-      recipientRole: recipientRole === "admin" ? "admin" : recipientRole === "vendor" ? "vendor" : "customer",
-      vendorId: thread.vendorId,
-      customerId: thread.customerId,
-      type: "new_message",
-      domain: thread.chatType === "support" ? "support" : recipientRole === "vendor" ? "vendor_chat" : "customer_chat",
-      title: senderRole === "vendor" ? (thread.vendorName ?? "Vendor") : (thread.customerName ?? "Customer"),
-      body: messageDoc.content.slice(0, 120),
-      deepLink: `the platform://chat/${chatId}`,
-      isCritical: false,
-    });
-  }
-
-  await writeAuditLog({
-    requestId,
-    functionName: "sendChatMessage",
-    actorUid: senderUid,
-    actorRole: senderRole,
-    actorType: senderRole,
-    targetType: "chatMessage",
-    targetId: msgRef.id,
-    eventType: "chat.message_sent",
-    metadata: { chatId, type },
-    appCheck,
-  });
+  // Notification loop and audit-log write are independent of each other —
+  // and each already isolates its own failures internally, so neither can
+  // affect the already-committed message above — so run them together
+  // instead of one after another. Within the loop, each recipient is
+  // further isolated so one recipient's failure never blocks another.
+  await Promise.all([
+    Promise.all(
+      recipients.map(async (recipientUid) => {
+        try {
+          const recipientRole = resolveRecipientRole(thread, recipientUid, vendorOwnerUid);
+          if (!recipientRole) {
+            logger.warn("sendChatMessage: could not resolve recipient role, skipping notification", {
+              chatId,
+              recipientUid,
+              senderRole,
+            });
+            return;
+          }
+          await createNotificationInternal({
+            recipientUid,
+            recipientRole: recipientRole === "admin" ? "admin" : recipientRole === "vendor" ? "vendor" : "customer",
+            vendorId: thread.vendorId,
+            customerId: thread.customerId,
+            type: "new_message",
+            domain: thread.chatType === "support" ? "support" : recipientRole === "vendor" ? "vendor_chat" : "customer_chat",
+            title: senderRole === "vendor" ? (thread.vendorName ?? "Vendor") : (thread.customerName ?? "Customer"),
+            body: messageDoc.content.slice(0, 120),
+            deepLink: `platform://chat/${chatId}`,
+            isCritical: false,
+          });
+        } catch (err) {
+          logger.error("sendChatMessage: notification failed for recipient", { chatId, recipientUid, err });
+        }
+      })
+    ),
+    (async () => {
+      try {
+        await writeAuditLog({
+          requestId,
+          functionName: "sendChatMessage",
+          actorUid: senderUid,
+          actorRole: senderRole,
+          actorType: senderRole,
+          targetType: "chatMessage",
+          targetId: msgRef.id,
+          eventType: "chat.message_sent",
+          metadata: { chatId, type },
+          appCheck,
+        });
+      } catch (err) {
+        logger.error(`sendChatMessage: audit log write failed for message ${msgRef.id}`, err);
+      }
+    })(),
+  ]);
 
   // Away-message check: only fires for customer-sent messages in commerce
   // threads, and only AFTER the send above has already passed every
   // block/suspension/country check — never an independent bypass path.
+  //
+  // Deliberately still awaited despite not gating the response on its
+  // outcome (errors are swallowed below): a Cloud Function's CPU is not
+  // guaranteed to keep running once its response has been sent, so an
+  // un-awaited call here could get cut off mid-flight and never actually
+  // send. Awaiting is the only way to guarantee it runs to completion.
   if (thread.chatType === "commerce" && senderRole === "customer" && thread.vendorId) {
-    const vendorOwnerUid = recipients[0];
-    if (vendorOwnerUid) {
-      await sendAwayMessageIfEligible(chatId, thread.vendorId, vendorOwnerUid)
+    const awayMessageRecipientUid = recipients[0];
+    if (awayMessageRecipientUid) {
+      await sendAwayMessageIfEligible(chatId, thread.vendorId, awayMessageRecipientUid)
         .catch(() => null); // away-message failure must never fail the send
     }
   }

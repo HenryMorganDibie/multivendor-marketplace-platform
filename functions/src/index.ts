@@ -2,7 +2,7 @@
 export { onUserCreate } from "./auth/onUserCreate";
 export { cleanupOrphanedAccounts, cleanupOrphanedAccount } from "./auth/orphanAccountCleanup";
 export { onUserDelete } from "./auth/onUserDelete";
-export { completeRegistration, getClaimsVersion } from "./auth/completeRegistration";
+export { completeRegistration, getClaimsVersion, repairVendorClaims } from "./auth/completeRegistration";
 export { checkUsernameAvailability, changeUsername } from "./auth/usernameReservation";
 export { sendEmailOtp, verifyEmailOtp } from "./auth/emailOtp";
 export { sendPhoneOtp, verifyPhoneOtp } from "./auth/phoneOtp";
@@ -33,7 +33,7 @@ export { beginAdminMfaEnrollment, confirmAdminMfaEnrollment,
 // ── Phase 2: Catalog ─────────────────────────────────────────────────────────
 export { createCatalogItem, updateCatalogItem, deleteCatalogItem,
          getCatalogItemModeration,
-         onCatalogItemWrite, createCatalogCategory, deleteCatalogCategory } from "./catalog/catalogFunctions";
+         onCatalogItemWrite, createCatalogCategory, updateCatalogCategory, deleteCatalogCategory } from "./catalog/catalogFunctions";
 
 // ── Promotions ────────────────────────────────────────────────────────────────
 export { createPromotion, updatePromotion, deletePromotion,
@@ -114,8 +114,7 @@ export { generateVendorPortalHandoffUrl } from "./subscriptions/vendorPortalHand
 export { expireStaleSubscriptions, gracePeriodReminder } from "./subscriptions/scheduledJobs";
 export { updateVendorSettings } from "./vendors/updateVendorSettings";
 export { updateVendorPaymentInstructions } from "./vendors/updateVendorPaymentInstructions";
-export { updateVendorPaymentMethod } from "./vendors/updateVendorPaymentMethod";
-export { listVendorPaymentMethodHistory } from "./vendors/listVendorPaymentMethodHistory";
+export { setVendorPaymentInstructions } from "./vendors/setVendorPaymentInstructions";
 export { updateVendorBusinessDetails } from "./vendors/updateVendorBusinessDetails";
 export { updateVendorLocation } from "./vendors/updateVendorLocation";
 export { updateVendorStorefront } from "./vendors/updateVendorStorefront";

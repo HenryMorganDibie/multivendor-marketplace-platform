@@ -24,7 +24,7 @@ const ACTIVE_SUBSCRIPTION_STATUSES = new Set(["active", "trialing", "past_due"])
  * provider by cancel-and-recheckout the way Paystack/Flutterwave/Stripe can
  * be swapped between each other. Apple/Google subscriptions can only be
  * cancelled by the vendor themselves, in that store's own subscription
- * settings, not by a server-side API call (per the client's business decision,
+ * settings, not by a server-side API call (per the Founder's business decision,
  * 2026-08-09: one active subscription across Apple/Google/web at a time;
  * switching providers means cancel with the current one, keep access until
  * the paid period ends, then subscribe fresh with the new one). Web-to-web
@@ -328,7 +328,7 @@ export const cancelSubscription = https.onCall(async (request) => {
       if (!subSnap.exists) throw new https.HttpsError("not-found", "No active subscription.");
       const sub = subSnap.data() as VendorSubscriptionDoc;
 
-      // Setting cancelAtPeriodEnd alone only changes the platform's own record —
+      // Setting cancelAtPeriodEnd alone only changes Platform's own record —
       // the provider's recurring billing keeps running until told to stop,
       // and its next renewal webhook would silently overwrite this flag
       // back to false (processNormalizedWebhookEvent's activation/renewal

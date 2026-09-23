@@ -90,9 +90,19 @@ export const updateOrderStatus = https.onCall(async (request) => {
   const now = FieldValue.serverTimestamp();
   const ts: Record<string, unknown> = {};
   if (newStatus === "accepted") ts.acceptedAt = now;
-  if (newStatus === "rejected") ts.rejectedAt = now;
+  if (newStatus === "rejected") {
+    ts.rejectedAt = now;
+    // Already used for the push notification body and the order-events log
+    // below; the order document itself never got it, so the customer's own
+    // order detail screen (which reads rejectionReason directly) could never
+    // show why once the notification was gone.
+    if (typeof reason === "string" && reason.trim()) ts.rejectionReason = reason.trim();
+  }
   if (newStatus === "completed") ts.completedAt = now;
-  if (newStatus === "cancelled") ts.cancelledAt = now;
+  if (newStatus === "cancelled") {
+    ts.cancelledAt = now;
+    if (typeof reason === "string" && reason.trim()) ts.cancellationReason = reason.trim();
+  }
   // The status write is a compare-and-set rather than a blind update. The guard
   // above read the order, then decided; without this, two calls arriving
   // together could both read "in_progress", both pass the guard, and both go on
@@ -111,11 +121,16 @@ export const updateOrderStatus = https.onCall(async (request) => {
 
   if (isOrderTerminal(newStatus) && newStatus !== "completed") await releaseInventory(order.vendorId, orderId, order.items, `order_${newStatus}`);
   if (newStatus === "completed") {
-    // External orders move stock but do not count as sales: the vendor typed
-    // them in, so counting them would let a vendor manufacture their own
-    // Popular tag.
-    await adjustInventoryAfterOrder(order.vendorId, order.items, order.orderSource === "internal");
-    await generateReceiptInternal(orderId, order);
+    // Independent of each other — the receipt is generated from the order
+    // snapshot already in hand, not from post-adjustment inventory state —
+    // so run together instead of one after another.
+    await Promise.all([
+      // External orders move stock but do not count as sales: the vendor
+      // typed them in, so counting them would let a vendor manufacture
+      // their own Popular tag.
+      adjustInventoryAfterOrder(order.vendorId, order.items, order.orderSource === "internal"),
+      generateReceiptInternal(orderId, order),
+    ]);
   }
 
   // Named as an expected notification trigger in the Phase 3 spec alongside
@@ -168,7 +183,7 @@ export const updateOrderStatus = https.onCall(async (request) => {
         domain: "order",
         title: copy.title,
         body: copy.body,
-        deepLink: `the platform://chat/${order.conversationId}`,
+        deepLink: `platform://chat/${order.conversationId}`,
         metadata: { orderId },
         isCritical: copy.isCritical,
       });
@@ -186,15 +201,18 @@ export const updateOrderStatus = https.onCall(async (request) => {
         domain: "order",
         title: "Order cancelled",
         body: `${order.customerSnapshot.displayName} cancelled their order.`,
-        deepLink: `the platform://chat/${order.conversationId}`,
+        deepLink: `platform://chat/${order.conversationId}`,
         metadata: { orderId },
         isCritical: false,
       });
     }
   }
 
-  await writeOrderEvent({ orderId, vendorId: order.vendorId, eventType: "STATUS_CHANGED", actorUid: uid, actorRole: role, before: { status: order.status }, after: { status: newStatus }, metadata: reason ? { reason } : undefined });
-  await writeAuditLog({ requestId, functionName: "updateOrderStatus", actorUid: uid, actorRole: role as any, actorType: role === "vendor" ? "vendor" : "customer", targetType: "order", targetId: orderId, eventType: `order.${newStatus}`, before: { status: order.status }, after: { status: newStatus }, appCheck });
+  // Two independent log writes to different collections — run together.
+  await Promise.all([
+    writeOrderEvent({ orderId, vendorId: order.vendorId, eventType: "STATUS_CHANGED", actorUid: uid, actorRole: role, before: { status: order.status }, after: { status: newStatus }, metadata: reason ? { reason } : undefined }),
+    writeAuditLog({ requestId, functionName: "updateOrderStatus", actorUid: uid, actorRole: role as any, actorType: role === "vendor" ? "vendor" : "customer", targetType: "order", targetId: orderId, eventType: `order.${newStatus}`, before: { status: order.status }, after: { status: newStatus }, appCheck }),
+  ]);
   return { success: true, orderId, newStatus };
 });
 
@@ -204,7 +222,7 @@ export const handleChangeRequest = https.onCall(async (request) => {
   if (!request.auth) throw new https.HttpsError("unauthenticated", "Sign in required.");
   const uid = request.auth.uid;
   const role = request.auth.token.role as string;
-  const { orderId, action, proposedChanges, message, changeRequestId } = request.data ?? {};
+  const { orderId, action, proposedChanges, message, changeRequestId, customerItems } = request.data ?? {};
   if (!orderId) throw new https.HttpsError("invalid-argument", "orderId is required.");
   const orderRef = db.collection("orders").doc(orderId);
   const orderSnap = await orderRef.get();
@@ -226,7 +244,13 @@ export const handleChangeRequest = https.onCall(async (request) => {
     if (!crSnap.exists) throw new https.HttpsError("not-found", "Change request not found.");
     if (crSnap.data()?.status !== "PENDING") throw new https.HttpsError("failed-precondition", "Change request is no longer pending.");
     const newStatus = action === "accept" ? "ACCEPTED" : "REJECTED";
-    const proposedItems = crSnap.data()?.proposedChanges?.items;
+    // The customer's own review screen lets them further adjust quantities
+    // or remove items from what the vendor proposed before accepting -
+    // customerItems, when sent, is that final list and wins over the
+    // vendor's original proposedChanges.items. Neither is trusted for price;
+    // repriceProposedItems re-derives everything from the live catalog
+    // either way, same as every other order-pricing path in this app.
+    const proposedItems = Array.isArray(customerItems) ? customerItems : crSnap.data()?.proposedChanges?.items;
 
     let newSnapshot: OrderDoc["orderSnapshot"] | undefined;
     let repricedItems: OrderItemSnapshot[] | undefined;

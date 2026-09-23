@@ -69,7 +69,7 @@ export default function PortalChrome({ children }: { children: React.ReactNode }
       <div id="main-content" className="mx-auto max-w-2xl px-4 py-16 text-center sm:px-6">
         <h1 className="text-2xl font-bold">Finish setting up your vendor account</h1>
         <p className="mt-3 text-gray-600 dark:text-gray-400">
-          Vendor registration is completed in the the platform mobile app. Download the app to finish setting up your account, then come back here to log in.
+          Vendor registration is completed in the Platform mobile app. Download the app to finish setting up your account, then come back here to log in.
         </p>
         <div className="mt-8 flex justify-center gap-4">
           <a href="https://apps.apple.com/" className="rounded-full bg-black px-6 py-3 text-sm font-semibold text-white hover:bg-gray-800">
@@ -84,7 +84,13 @@ export default function PortalChrome({ children }: { children: React.ReactNode }
   }
 
   const readOnly = access?.accessState === "read_only";
-  const businessName = access?.businessName ?? "Vendor Portal";
+  /**
+   * Falls back to the vendor's @username, not the literal string "Vendor
+   * Portal". A vendor who hasn't set a business name yet had the product's own
+   * name presented as their business, which just looked like the profile row
+   * was showing an email and nothing else.
+   */
+  const businessName = access?.businessName?.trim() || (access?.username ? `@${access.username}` : "Your account");
   const identityLine = access?.email ?? (access?.username ? `@${access.username}` : null);
   const logoImage = access?.logoImage ?? null;
 
@@ -102,14 +108,21 @@ export default function PortalChrome({ children }: { children: React.ReactNode }
       <div className="min-w-0 flex-1">
         <VendorTopbar onOpenMenu={() => setDrawerOpen(true)} />
 
+        {/**
+          * px-page-x (20px) rather than the previous effective ~36px gutter,
+          * and py-6 rather than py-8: on a 375px phone the old padding cost
+          * roughly a fifth of the usable width. pb accounts for
+          * safe-area-inset-bottom instead of padding the bottom generously to
+          * compensate for Safari's overlaid controls.
+          */}
         <div
           id="main-content"
-          className="mx-auto w-full max-w-[1320px] px-4 py-8 sm:px-6 lg:px-8"
+          className="mx-auto w-full max-w-[1320px] px-page-x py-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))] sm:px-6 lg:px-8"
           data-portal-readonly={readOnly ? "true" : "false"}
         >
           {readOnly && (
-            <p className="mb-6 rounded-xl bg-amber-50 px-4 py-3 text-sm font-medium text-amber-800 dark:bg-amber-950 dark:text-amber-300">
-              Your account is suspended — billing actions are restricted.
+            <p className="mb-5 rounded-card bg-amber-50 px-4 py-3 text-body-sm font-medium text-amber-800">
+              Your account is suspended, so billing actions are restricted.
             </p>
           )}
           {children}

@@ -74,7 +74,7 @@ export default function CmsSectionEditorPage() {
       await handleSaveDraft();
       const publish = callable<{ sectionId: string }, { success: true; version: number }>("publishSiteContent");
       const res = await publish({ sectionId });
-      setMessage(`Published — now live as version ${res.data.version}.`);
+      setMessage(`Published. Now live as version ${res.data.version}.`);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Couldn't publish.");
     } finally {

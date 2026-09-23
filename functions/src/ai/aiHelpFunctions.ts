@@ -24,7 +24,7 @@ import { newRequestId } from "../utils/requestContext";
  */
 
 const CANNED_RESPONSE =
-  "Thanks for reaching out. AI assistance is not yet available in the platform. " +
+  "Thanks for reaching out. AI assistance is not yet available in Platform. " +
   "For help right now, please use Contact Support from your settings menu.";
 
 function aiHelpThreadId(uid: string): string {
@@ -63,7 +63,7 @@ export const createAiHelpThread = https.onCall(async (request) => {
       participants: [uid],
       participantRoles: { [uid]: role },
       relatedOrderIds: [],
-      title: "the platform Help",
+      title: "Platform Help",
       lastMessage: CANNED_RESPONSE,
       lastMessageType: "ai",
       lastMessageAt: now,

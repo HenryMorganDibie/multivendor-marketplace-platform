@@ -31,7 +31,7 @@ export default function InvoiceView({ shareToken }: { shareToken: string }) {
     <div className="rounded-2xl border border-gray-100 p-8 dark:border-gray-800">
       <div className="flex items-start justify-between">
         <div>
-          <p className="text-xl font-bold text-brand">the platform</p>
+          <p className="text-xl font-bold text-brand">Platform</p>
           <p className="mt-1 font-mono text-sm text-gray-500">{invoice.invoiceNumber}</p>
         </div>
         <span className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium capitalize dark:bg-gray-900">{invoice.status}</span>

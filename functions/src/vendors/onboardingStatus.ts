@@ -44,7 +44,7 @@ export interface VendorOnboardingStatus {
   blockedReasons: string[];
   isPublished: boolean;
   isDiscoverable: boolean;
-  /** Whether the platform is open for commerce in this vendor's country right now.
+  /** Whether Platform is open for commerce in this vendor's country right now.
    * Every other step can be complete and isDiscoverable can still be false
    * for this reason alone — surfaced separately so the checklist can tell a
    * fully set-up vendor why they're still invisible, instead of just
@@ -103,8 +103,12 @@ export async function resolveOnboardingStatus(vendorId: string): Promise<VendorO
     nestedLocation?.stateName?.trim() || nestedLocation?.areaName?.trim();
   const hasLocation = Boolean(locationCountry && locationRegion);
   const hasFulfillment = Array.isArray(vendor.fulfillmentTypes) && vendor.fulfillmentTypes.length > 0;
-  const hasEligibleItem = (await countPubliclyEligibleItems(vendorId)) > 0;
-  const countryOpen = await isCountryActive(vendor.countryCode ?? "");
+  // Independent of each other — run together instead of one after another.
+  const [eligibleItemCount, countryOpen] = await Promise.all([
+    countPubliclyEligibleItems(vendorId),
+    isCountryActive(vendor.countryCode ?? ""),
+  ]);
+  const hasEligibleItem = eligibleItemCount > 0;
 
   // NOTE: there is no vendor payment-method model in the backend yet, so this
   // step can't be resolved from real data and is reported incomplete rather

@@ -1,7 +1,7 @@
-# the platform — Subscription Alignment: Findings, Decisions & Status Correction
+# Platform — Subscription Alignment: Findings, Decisions & Status Correction
 
-**Status:** Architectural decisions locked by the client (2026-07-15), reconciled against `LANDING_PAGE_CMS_VENDOR_PORTAL_MAPPING.md` (v5). Approved in principle, pending final adjustments below. Provider-priority config corrected to a private collection (Section 4.1) — never the public `subscriptionPricing` document. Pricing offerings split into an authenticated and a public callable (Section 5). Cost/scope resolved with a fixed boundary (Section 11). v5 must be corrected **before** Section 7 coding begins (Section 10). Backend prerequisite work (Section 7) must ship before the Rork frontend brief (Section 9) goes out.
-**Repos reviewed:** `platform-backend` (Firebase Functions/Firestore), `rork-platform` (Expo frontend)
+**Status:** Architectural decisions locked by the Founder (2026-07-15), reconciled against `LANDING_PAGE_CMS_VENDOR_PORTAL_MAPPING.md` (v5). Approved in principle, pending final adjustments below. Provider-priority config corrected to a private collection (Section 4.1) — never the public `subscriptionPricing` document. Pricing offerings split into an authenticated and a public callable (Section 5). Cost/scope resolved with a fixed boundary (Section 11). v5 must be corrected **before** Section 7 coding begins (Section 10). Backend prerequisite work (Section 7) must ship before the Rork frontend brief (Section 9) goes out.
+**Repos reviewed:** `this repo` (Firebase Functions/Firestore), `rork-platform` (Expo frontend)
 
 ---
 
@@ -11,14 +11,14 @@ v5, Section 4, states: *"Payment provider neutrality: confirmed as already archi
 
 v5, Section 10 (Dependencies table), lists Vendor Portal subscription/payment flow as **"✅ Already exists and tested."**
 
-**Neither statement matches the current backend code**, verified directly against `platform-backend/functions/src/subscriptions/`:
+**Neither statement matches the current backend code**, verified directly against `this repo/functions/src/subscriptions/`:
 
 - `createSubscriptionCheckout` is **hardcoded to Paystack** (`requireProviderPlanMapping(countryCode, planId, "paystack")` is a literal string, not a resolved choice).
 - Two more **public, separately-exported** callables exist — `createFlutterwaveCheckout`, `createStripeCheckout` — not internal helpers behind a single entry point.
 - The country field actually read is the flat `vendors/{vendorId}.countryCode`. `businessLocation.countryCode` does not exist anywhere in the codebase yet — the backend's own documentation calls it out explicitly as unbuilt, future work.
 - The request parameter used throughout (checkout functions, webhook handlers, `subscriptionEvents`, `resolveEffectivePlan`) is `plan`, not `planId`.
 
-**Why this matters beyond code style:** v5 is a priced, client-facing scope document. If its dependency table tells the client the payment/checkout backend for the Vendor Portal is already built and tested, that assumption may be baked into the 100,000 NGN Vendor Portal estimate and timeline. The provider-neutral routing described in v5 Section 4 is the *right target* — it matches the decision below — but it is **new backend work**, not a rename of something already shipped. Recommend flagging this status correction back to the client directly, separate from the technical scope below, since it has cost/timeline implications she should see explicitly rather than infer from an engineering doc.
+**Why this matters beyond code style:** v5 is a priced, client-facing scope document. If its dependency table tells the Founder the payment/checkout backend for the Vendor Portal is already built and tested, that assumption may be baked into the 100,000 NGN Vendor Portal estimate and timeline. The provider-neutral routing described in v5 Section 4 is the *right target* — it matches the decision below — but it is **new backend work**, not a rename of something already shipped. Recommend flagging this status correction back to the Founder directly, separate from the technical scope below, since it has cost/timeline implications she should see explicitly rather than infer from an engineering doc.
 
 **Param naming:** this document uses `plan` (not v5's `planId`) as the request field, since `plan` is what's already implemented and tested end-to-end. Recommend correcting v5's wording to match rather than renaming a field that's threaded through checkout, webhooks, and event records.
 
@@ -97,7 +97,7 @@ Priority is configured **per country**:
 { "countryCode": "GB", "providerPriority": ["stripe"], "status": "active" }
 ```
 
-**Storage — corrected.** `subscriptionPricing/{countryCode}` is publicly readable (per `subscription-pricing/README.md`: "public read"), so `providerPriority` must **not** live there — that would expose which providers the platform uses per country, provider preference order, and future provider additions before they're announced, to any unauthenticated client. It also contradicts the rule that the frontend must never know Paystack/Flutterwave/Stripe exist at all.
+**Storage — corrected.** `subscriptionPricing/{countryCode}` is publicly readable (per `subscription-pricing/README.md`: "public read"), so `providerPriority` must **not** live there — that would expose which providers Platform uses per country, provider preference order, and future provider additions before they're announced, to any unauthenticated client. It also contradicts the rule that the frontend must never know Paystack/Flutterwave/Stripe exist at all.
 
 Instead: a new **Admin-SDK-only** collection, `subscriptionProviderConfig/{countryCode}`, alongside the existing private `providerPlanMapping`:
 
@@ -170,7 +170,7 @@ No backend change needed — `requireMonthlyBillingInterval()` already accepts a
 
 ## 7. Backend prerequisite work (blocking — must ship before Section 9)
 
-All in `platform-backend/functions/src/subscriptions/`:
+All in `this repo/functions/src/subscriptions/`:
 
 | Change | File(s) | Notes |
 |---|---|---|
@@ -270,6 +270,6 @@ Frontend refreshes backend status (getSubscriptionStatus)
 
 **Section 7 backend work ships at no extra cost — it's a correction, not additional paid scope.**
 
-Reasoning: v5's Section 4 and Section 10 dependency table both stated, as an accepted premise of the priced 400,000 NGN package (specifically the 100,000 NGN Vendor Portal line), that provider-neutral checkout was "already architecturally resolved" and "already exists and tested." That was the basis the client priced against. Since it wasn't actually built to that spec, completing it — the country-fallback helper, server-side provider priority selection (Section 4.1, including the private `subscriptionProviderConfig` collection and its validation), internalizing the two provider-specific checkout functions, and the new offerings callables (Section 5) — is finishing already-agreed scope, not scope expansion. Had v5 correctly described this as outstanding work at the time it was priced, it would already be inside the 100,000 NGN Vendor Portal estimate; the fix here is to the document's accuracy, not to the invoice.
+Reasoning: v5's Section 4 and Section 10 dependency table both stated, as an accepted premise of the priced 400,000 NGN package (specifically the 100,000 NGN Vendor Portal line), that provider-neutral checkout was "already architecturally resolved" and "already exists and tested." That was the basis the Founder priced against. Since it wasn't actually built to that spec, completing it — the country-fallback helper, server-side provider priority selection (Section 4.1, including the private `subscriptionProviderConfig` collection and its validation), internalizing the two provider-specific checkout functions, and the new offerings callables (Section 5) — is finishing already-agreed scope, not scope expansion. Had v5 correctly described this as outstanding work at the time it was priced, it would already be inside the 100,000 NGN Vendor Portal estimate; the fix here is to the document's accuracy, not to the invoice.
 
 **The reasonable implementation required to complete all four Section 7 items — including private, country-specific provider-priority configuration and its validation — is included at no additional cost. Only genuinely new functionality beyond those four items requires separate written approval**, so this reasoning has a fixed boundary rather than remaining open-ended: it covers exactly the four rows in Section 7's table, nothing implied beyond them.

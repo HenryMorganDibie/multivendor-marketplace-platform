@@ -1,4 +1,4 @@
-# the platform Backend — Full Test Run + Codebase Audit
+# Platform Backend — Full Test Run + Codebase Audit
 
 **Date:** 2026-07-17
 **Scope:** All five milestone acceptance suites, run for real against a live Firebase emulator; a systematic audit of the whole `functions/src` codebase and `firestore.rules`, focused on the risk profile of a multi-vendor marketplace handling payments, PII, and content moderation.

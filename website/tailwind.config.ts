@@ -6,8 +6,8 @@ import type { Config } from "tailwindcss";
 // visitor's OS theme. The mobile app (rork-platform) has no dark theme
 // either — constants/theme.ts's backgroundMain is '#FFFFFF' unconditionally.
 //
-// This file is intentionally identical to platform-vendor-portal's copy —
-// shared design tokens across the two separate repos, per the client's
+// This file is intentionally identical to this repo (vendor-portal/)'s copy —
+// shared design tokens across the two separate repos, per the Founder's
 // direction (branding/UI/design tokens are shared, code is not).
 const config: Config = {
   darkMode: "class",
@@ -22,7 +22,7 @@ const config: Config = {
           light: "#FFF4EC",
         },
         // Ported directly from rork-platform/expo/constants/theme.ts
-        // (platformColors) so the web app's palette matches the mobile
+        // (PlatformColors) so the web app's palette matches the mobile
         // app's exactly, not just approximates it.
         ink: {
           DEFAULT: "#0B0C0F", // textPrimary

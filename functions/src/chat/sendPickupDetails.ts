@@ -145,8 +145,8 @@ export async function sendPickupDetailsIfEligible(orderId: string): Promise<void
       domain: "order",
       title: "Pickup details ready",
       body: `Pickup instructions for your order from ${businessName} are ready.`,
-      deepLink: `the platform://chat/${chatId}`,
-      isCritical: true, // pickup readiness is time-sensitive — bypasses quiet hours per the client's "critical customer examples"
+      deepLink: `platform://chat/${chatId}`,
+      isCritical: true, // pickup readiness is time-sensitive — bypasses quiet hours per the Founder's "critical customer examples"
     });
   }
 }

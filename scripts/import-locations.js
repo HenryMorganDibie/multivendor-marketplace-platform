@@ -1,8 +1,8 @@
 /**
- * THE PLATFORM — Location Data Importer
+ * PLATFORM — Location Data Importer
  * Writes location-data/countries.json, states/*.json, and locations/*.json
  * to Firestore's top-level `countries`, `states`, and `locations`
- * collections, per THE PLATFORM LOCATION SPEC v1.5, Section 5-6.
+ * collections, per PLATFORM LOCATION SPEC v1.5, Section 5-6.
  *
  * Always validates first (reuses validate-locations.js's exit code via a
  * child process) — refuses to import invalid data.

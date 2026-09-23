@@ -1,6 +1,6 @@
 /**
- * THE PLATFORM — Location Data Validator
- * Enforces every rule in THE PLATFORM LOCATION SPEC v1.5, Section 4, against
+ * PLATFORM — Location Data Validator
+ * Enforces every rule in PLATFORM LOCATION SPEC v1.5, Section 4, against
  * location-data/countries.json, location-data/states/*.json, and
  * location-data/locations/*.json. Read-only — never touches Firestore.
  *
