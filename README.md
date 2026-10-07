@@ -26,7 +26,7 @@ This README documents what's actually built and verified, not what's assumed to 
 | **Country availability** — as a condition of discoverability, not only of ordering | 7/7 tests passing |
 | Order/verification notifications | Deployed. Covered by manual verification, no dedicated suite yet |
 | Malware scanning on uploads | Deployed — a Cloud Run service running ClamAV, triggered on every user-supplied file write |
-| **Frontend** (`web/`) | Built, typechecked, production-build-verified (26/26 routes). Not yet deployed anywhere public |
+| **Frontend** (`website/` and `vendor-portal/`) | Built, typechecked, production-build-verified (26/26 routes). Not yet deployed anywhere public |
 | Payment requests & payment instructions | Deployed. Manually verified end to end, including a security fix that moved payment data off a publicly-readable document |
 | Admin MFA enrollment & enforcement backend | Built and deployed; enforcement held behind a flag pending an enrollment UI |
 | Apple & Google in-app subscriptions | Scaffolded against the same provider abstraction as the three live providers, not yet exercisable end to end (needs real App Store Connect / Play Console setup) |
@@ -160,6 +160,6 @@ The three highest-priority items before any real launch: App Check enforcement, 
 - Apple/Google in-app subscription sync is scaffolded but not live, blocked on real store-side product setup rather than a code gap.
 - Several `PlanLimits` fields (AI replies, AI insights, auto-accept-orders) are reserved and gate correctly today, but the underlying features don't exist yet — only the gate is built.
 
-## Frontend (`web/`)
+## Frontend (`website/` and `vendor-portal/`)
 
-A Next.js app covering the public landing page, a CMS editor, and the vendor portal. See `web/README.md` for setup — in short, `npm install`, fill in a real Firebase Web App config, `npm run dev`. Not yet deployed anywhere public.
+Two Next.js apps: `website/` (public landing page and CMS editor) and `vendor-portal/` (vendor billing and subscriptions). See each folder's `README.md` for setup — in short, `npm install`, fill in a real Firebase Web App config, `npm run dev`. Not yet deployed anywhere public.
