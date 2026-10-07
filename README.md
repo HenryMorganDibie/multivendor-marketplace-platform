@@ -26,7 +26,7 @@ This README documents what's actually built and verified, not what's assumed to 
 | **Country availability** — as a condition of discoverability, not only of ordering | 7/7 tests passing |
 | Order/verification notifications | Deployed. Covered by manual verification, no dedicated suite yet |
 | Malware scanning on uploads | Deployed — a Cloud Run service running ClamAV, triggered on every user-supplied file write |
-| **Frontend** (`website/` and `vendor-portal/`) | Built, typechecked, production-build-verified (26/26 routes). Not yet deployed anywhere public |
+| **Frontend** (`website/` and `vendor-portal/`) | Built, typechecked, production-build-verified (26/26 routes). Deployed to Firebase Hosting dev environments (landing site and vendor portal); production domains not yet live |
 | Payment requests & payment instructions | Deployed. Manually verified end to end, including a security fix that moved payment data off a publicly-readable document |
 | Admin MFA enrollment & enforcement backend | Built and deployed; enforcement held behind a flag pending an enrollment UI |
 | Apple & Google in-app subscriptions | Scaffolded against the same provider abstraction as the three live providers, not yet exercisable end to end (needs real App Store Connect / Play Console setup) |
@@ -162,4 +162,4 @@ The three highest-priority items before any real launch: App Check enforcement, 
 
 ## Frontend (`website/` and `vendor-portal/`)
 
-Two Next.js apps: `website/` (public landing page and CMS editor) and `vendor-portal/` (vendor billing and subscriptions). See each folder's `README.md` for setup — in short, `npm install`, fill in a real Firebase Web App config, `npm run dev`. Not yet deployed anywhere public.
+Two Next.js apps: `website/` (public landing page and CMS editor) and `vendor-portal/` (vendor billing and subscriptions). See each folder's `README.md` for setup — in short, `npm install`, fill in a real Firebase Web App config, `npm run dev`. Both are deployed to Firebase Hosting dev environments; production domains are not yet live.
